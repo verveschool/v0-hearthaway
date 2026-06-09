@@ -4,22 +4,22 @@ import Link from 'next/link'
 import { Search } from 'lucide-react'
 
 const universities = [
-  { name: 'University of Manchester', city: 'Manchester', country: 'UK', students: '40,000+', slug: 'manchester', flag: '🇬🇧' },
-  { name: 'University College London', city: 'London', country: 'UK', students: '42,000+', slug: 'ucl', flag: '🇬🇧' },
-  { name: 'University of Edinburgh', city: 'Edinburgh', country: 'UK', students: '35,000+', slug: 'edinburgh', flag: '🇬🇧' },
-  { name: 'University of Birmingham', city: 'Birmingham', country: 'UK', students: '38,000+', slug: 'birmingham', flag: '🇬🇧' },
-  { name: 'University of Bristol', city: 'Bristol', country: 'UK', students: '25,000+', slug: 'bristol', flag: '🇬🇧' },
-  { name: 'University of Leeds', city: 'Leeds', country: 'UK', students: '36,000+', slug: 'leeds', flag: '🇬🇧' },
-  { name: 'University of Sheffield', city: 'Sheffield', country: 'UK', students: '29,000+', slug: 'sheffield', flag: '🇬🇧' },
-  { name: 'King\'s College London', city: 'London', country: 'UK', students: '31,000+', slug: 'kcl', flag: '🇬🇧' },
-  { name: 'Trinity College Dublin', city: 'Dublin', country: 'Ireland', students: '18,000+', slug: 'tcd', flag: '🇮🇪' },
-  { name: 'University College Dublin', city: 'Dublin', country: 'Ireland', students: '32,000+', slug: 'ucd', flag: '🇮🇪' },
-  { name: 'University College Cork', city: 'Cork', country: 'Ireland', students: '21,000+', slug: 'ucc', flag: '🇮🇪' },
-  { name: 'University of Galway', city: 'Galway', country: 'Ireland', students: '18,000+', slug: 'galway', flag: '🇮🇪' },
-  { name: 'University of Melbourne', city: 'Melbourne', country: 'Australia', students: '52,000+', slug: 'melbourne', flag: '🇦🇺' },
-  { name: 'University of Sydney', city: 'Sydney', country: 'Australia', students: '60,000+', slug: 'sydney', flag: '🇦🇺' },
-  { name: 'Monash University', city: 'Melbourne', country: 'Australia', students: '86,000+', slug: 'monash', flag: '🇦🇺' },
-  { name: 'University of Queensland', city: 'Brisbane', country: 'Australia', students: '54,000+', slug: 'uq', flag: '🇦🇺' },
+  { name: 'University of Manchester', city: 'Manchester', country: 'UK', students: '40,000+', slug: 'manchester' },
+  { name: 'University College London', city: 'London', country: 'UK', students: '42,000+', slug: 'ucl' },
+  { name: 'University of Edinburgh', city: 'Edinburgh', country: 'UK', students: '35,000+', slug: 'edinburgh' },
+  { name: 'University of Birmingham', city: 'Birmingham', country: 'UK', students: '38,000+', slug: 'birmingham' },
+  { name: 'University of Bristol', city: 'Bristol', country: 'UK', students: '25,000+', slug: 'bristol' },
+  { name: 'University of Leeds', city: 'Leeds', country: 'UK', students: '36,000+', slug: 'leeds' },
+  { name: 'University of Sheffield', city: 'Sheffield', country: 'UK', students: '29,000+', slug: 'sheffield' },
+  { name: "King's College London", city: 'London', country: 'UK', students: '31,000+', slug: 'kcl' },
+  { name: 'Trinity College Dublin', city: 'Dublin', country: 'Ireland', students: '18,000+', slug: 'tcd' },
+  { name: 'University College Dublin', city: 'Dublin', country: 'Ireland', students: '32,000+', slug: 'ucd' },
+  { name: 'University College Cork', city: 'Cork', country: 'Ireland', students: '21,000+', slug: 'ucc' },
+  { name: 'University of Galway', city: 'Galway', country: 'Ireland', students: '18,000+', slug: 'galway' },
+  { name: 'University of Melbourne', city: 'Melbourne', country: 'Australia', students: '52,000+', slug: 'melbourne' },
+  { name: 'University of Sydney', city: 'Sydney', country: 'Australia', students: '60,000+', slug: 'sydney' },
+  { name: 'Monash University', city: 'Melbourne', country: 'Australia', students: '86,000+', slug: 'monash' },
+  { name: 'University of Queensland', city: 'Brisbane', country: 'Australia', students: '54,000+', slug: 'uq' },
 ]
 
 const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
@@ -83,8 +83,9 @@ export default function UniversitiesPage() {
                   className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#1B365D]/30 hover:shadow-lg transition-all duration-200"
                 >
                   <div className="flex items-start justify-between mb-3">
-                    <span className="text-2xl" role="img" aria-label={uni.country}>{uni.flag}</span>
-                    <span className="text-xs text-[#6B6860] bg-[#F7F6F3] px-2 py-1 rounded-full">{uni.country}</span>
+                    <span className="text-xs font-bold tracking-wider uppercase text-[#1B365D] bg-[#1B365D]/8 px-2.5 py-1 rounded-full">
+                      {uni.country}
+                    </span>
                   </div>
                   <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#1B365D] transition-colors">
                     {uni.name}

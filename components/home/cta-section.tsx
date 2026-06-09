@@ -9,7 +9,7 @@ export default function CtaSection() {
           {/* Background image */}
           <div className="absolute inset-0 z-0">
             <Image
-              src="/images/cta-bg.jpg"
+              src="/images/cta-bg.png"
               alt=""
               fill
               className="object-cover object-center opacity-15"

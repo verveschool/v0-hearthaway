@@ -23,19 +23,19 @@ const values = [
 
 const markets = [
   {
-    flag: '🇬🇧',
+    abbr: 'UK',
     name: 'United Kingdom',
-    description: '140+ universities. Dozens of cities. The world\'s most popular study destination for international students.',
+    description: "140+ universities. Dozens of cities. The world's most popular study destination for international students.",
   },
   {
-    flag: '🇮🇪',
+    abbr: 'IE',
     name: 'Ireland',
     description: 'A welcoming, English-speaking country with world-class universities and a thriving international student community.',
   },
   {
-    flag: '🇦🇺',
+    abbr: 'AU',
     name: 'Australia',
-    description: 'Globally recognised qualifications, outstanding quality of life, and some of the world\'s best universities.',
+    description: "Globally recognised qualifications, outstanding quality of life, and some of the world's best universities.",
   },
 ]
 
@@ -141,7 +141,9 @@ export default function AboutPage() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (
                 <div key={market.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
-                  <div className="text-4xl mb-4" role="img" aria-label={market.name}>{market.flag}</div>
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#1B365D] text-white font-heading font-bold text-sm mb-5">
+                    {market.abbr}
+                  </div>
                   <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">{market.name}</h3>
                   <p className="text-[#6B6860] text-sm leading-relaxed">{market.description}</p>
                 </div>

@@ -36,7 +36,7 @@ export default function HeroSection() {
       {/* Background photo */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/hero-bg.jpg"
+          src="/images/hero-bg.png"
           alt="Student accommodation in a vibrant university city"
           fill
           className="object-cover object-center opacity-30"

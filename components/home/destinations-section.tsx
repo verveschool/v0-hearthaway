@@ -5,7 +5,7 @@ const countries = [
   {
     name: 'United Kingdom',
     slug: 'uk',
-    image: '/images/dest-uk.jpg',
+    image: '/images/dest-uk.png',
     cities: ['London', 'Manchester', 'Edinburgh', 'Birmingham', 'Bristol'],
     universities: '140+ universities',
     description: 'Home to some of the world\'s most respected universities, from the Russell Group to specialist institutions.',
@@ -14,7 +14,7 @@ const countries = [
   {
     name: 'Ireland',
     slug: 'ireland',
-    image: '/images/dest-ireland.jpg',
+    image: '/images/dest-ireland.png',
     cities: ['Dublin', 'Cork', 'Galway', 'Limerick'],
     universities: '30+ universities',
     description: 'A welcoming, English-speaking destination with world-class universities and a thriving student community.',
@@ -23,7 +23,7 @@ const countries = [
   {
     name: 'Australia',
     slug: 'australia',
-    image: '/images/dest-australia.jpg',
+    image: '/images/dest-australia.png',
     cities: ['Sydney', 'Melbourne', 'Brisbane', 'Perth'],
     universities: '40+ universities',
     description: 'World-renowned for its quality of life, diverse culture, and globally recognised university qualifications.',
@@ -32,12 +32,12 @@ const countries = [
 ]
 
 const popularCities = [
-  { name: 'London', country: 'UK', slug: 'london', image: '/images/city-london.jpg', unis: '40+' },
-  { name: 'Manchester', country: 'UK', slug: 'manchester', image: '/images/city-manchester.jpg', unis: '5+' },
-  { name: 'Dublin', country: 'Ireland', slug: 'dublin', image: '/images/city-dublin.jpg', unis: '8+' },
-  { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.jpg', unis: '6+' },
-  { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.jpg', unis: '8+' },
-  { name: 'Edinburgh', country: 'UK', slug: 'edinburgh', image: '/images/city-edinburgh.jpg', unis: '4+' },
+  { name: 'London', country: 'UK', slug: 'london', image: '/images/city-london.png', unis: '40+' },
+  { name: 'Manchester', country: 'UK', slug: 'manchester', image: '/images/city-manchester.png', unis: '5+' },
+  { name: 'Dublin', country: 'Ireland', slug: 'dublin', image: '/images/city-dublin.png', unis: '8+' },
+  { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.png', unis: '6+' },
+  { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.png', unis: '8+' },
+  { name: 'Edinburgh', country: 'UK', slug: 'edinburgh', image: '/images/city-edinburgh.png', unis: '4+' },
 ]
 
 export default function DestinationsSection() {
