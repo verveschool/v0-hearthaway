@@ -5,9 +5,9 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: var(--font-dm-sans), 'DM Sans Fallback', system-ui, sans-serif;
-  --font-serif: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
-  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback', monospace;
+  --font-sans: var(--font-manrope), 'Manrope Fallback', system-ui, sans-serif;
+  --font-serif: var(--font-manrope), 'Manrope Fallback', system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 
   --color-brand-blue: #1B365D;
   --color-brand-blue-light: #24497D;
@@ -90,6 +90,6 @@
     text-wrap: pretty;
   }
   .font-heading {
-    font-family: var(--font-playfair), 'Playfair Display Fallback', Georgia, serif;
+    font-family: var(--font-manrope), 'Manrope Fallback', system-ui, sans-serif;
   }
 }

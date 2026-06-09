@@ -1,18 +1,12 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { DM_Sans, Playfair_Display } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 import './globals.css'
 
-const dmSans = DM_Sans({
-  variable: '--font-dm-sans',
+const manrope = Manrope({
+  variable: '--font-manrope',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-})
-
-const playfairDisplay = Playfair_Display({
-  variable: '--font-playfair',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
+  weight: ['300', '400', '500', '600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -44,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${dmSans.variable} ${playfairDisplay.variable} bg-background`}
+      className={`${manrope.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         {children}
