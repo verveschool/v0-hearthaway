@@ -31,10 +31,6 @@ const navLinks = [
     ],
   },
   {
-    label: 'Accommodation',
-    href: '/accommodation',
-  },
-  {
     label: 'Moving Abroad',
     href: '/moving-abroad',
   },
