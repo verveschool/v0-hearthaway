@@ -16,7 +16,7 @@ const footerLinks = {
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
     { label: 'Moving Abroad Guide', href: '/moving-abroad' },
-    { label: 'How it works', href: '/how-it-works' },
+    { label: 'How it works', href: '/about' },
   ],
 }
 
