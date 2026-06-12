@@ -3,114 +3,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const cities = [
-  {
-    name: 'London',
-    country: 'United Kingdom',
-    countryCode: 'UK',
-    universities: '40+',
-    image: '/images/city-london.png',
-    slug: 'london',
-    description: 'The world\'s greatest student city. Diverse, exciting, and full of opportunity.',
-    avgRent: '£900–£1,400 / mo',
-  },
-  {
-    name: 'Manchester',
-    country: 'United Kingdom',
-    countryCode: 'UK',
-    universities: '5',
-    image: '/images/city-manchester.png',
-    slug: 'manchester',
-    description: 'Vibrant, affordable, and home to two world-class universities.',
-    avgRent: '£550–£850 / mo',
-  },
-  {
-    name: 'Edinburgh',
-    country: 'United Kingdom',
-    countryCode: 'UK',
-    universities: '4',
-    image: '/images/city-edinburgh.png',
-    slug: 'edinburgh',
-    description: 'One of Europe\'s most beautiful cities with a rich academic tradition.',
-    avgRent: '£650–£950 / mo',
-  },
-  {
-    name: 'Birmingham',
-    country: 'United Kingdom',
-    countryCode: 'UK',
-    universities: '5',
-    image: '/images/city-birmingham.png',
-    slug: 'birmingham',
-    description: 'England\'s second city — diverse, affordable, and centrally located.',
-    avgRent: '£500–£750 / mo',
-  },
-  {
-    name: 'Bristol',
-    country: 'United Kingdom',
-    countryCode: 'UK',
-    universities: '2',
-    image: '/images/city-bristol.png',
-    slug: 'bristol',
-    description: 'Creative, compact, and consistently ranked among the best student cities.',
-    avgRent: '£600–£900 / mo',
-  },
-  {
-    name: 'Dublin',
-    country: 'Ireland',
-    countryCode: 'IE',
-    universities: '8',
-    image: '/images/city-dublin.png',
-    slug: 'dublin',
-    description: 'A warm, welcoming capital with world-class universities and a vibrant culture.',
-    avgRent: '€900–€1,400 / mo',
-  },
-  {
-    name: 'Cork',
-    country: 'Ireland',
-    countryCode: 'IE',
-    universities: '3',
-    image: '/images/city-cork.png',
-    slug: 'cork',
-    description: 'Ireland\'s second city — lively, affordable, and a growing student destination.',
-    avgRent: '€700–€1,000 / mo',
-  },
-  {
-    name: 'Sydney',
-    country: 'Australia',
-    countryCode: 'AU',
-    universities: '6',
-    image: '/images/city-sydney.png',
-    slug: 'sydney',
-    description: 'Iconic, international, and home to some of Australia\'s top universities.',
-    avgRent: 'A$1,200–1,800 / mo',
-  },
-  {
-    name: 'Melbourne',
-    country: 'Australia',
-    countryCode: 'AU',
-    universities: '8',
-    image: '/images/city-melbourne.png',
-    slug: 'melbourne',
-    description: 'Consistently ranked the world\'s most liveable city. A favourite for students.',
-    avgRent: 'A$1,100–1,600 / mo',
-  },
-  {
-    name: 'Brisbane',
-    country: 'Australia',
-    countryCode: 'AU',
-    universities: '4',
-    image: '/images/city-brisbane.png',
-    slug: 'brisbane',
-    description: 'Sunny, affordable, and rapidly growing as a student destination.',
-    avgRent: 'A$900–1,300 / mo',
-  },
-]
-
-const grouped = {
-  'United Kingdom': cities.filter((c) => c.countryCode === 'UK'),
-  'Ireland': cities.filter((c) => c.countryCode === 'IE'),
-  'Australia': cities.filter((c) => c.countryCode === 'AU'),
-}
+import { groupedCities } from '@/lib/place-data'
 
 export default function CitiesPage() {
   return (
@@ -134,7 +27,7 @@ export default function CitiesPage() {
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
-            {Object.entries(grouped).map(([country, countryCities]) => (
+            {Object.entries(groupedCities).map(([country, countryCities]) => (
               <div key={country} className="mb-16">
                 <div className="flex items-center justify-between mb-7">
                   <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">{country}</h2>

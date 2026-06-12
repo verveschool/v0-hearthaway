@@ -3,24 +3,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
 
-const universities = [
-  { name: 'University of Manchester', city: 'Manchester', country: 'UK', students: '40,000+', slug: 'manchester' },
-  { name: 'University College London', city: 'London', country: 'UK', students: '42,000+', slug: 'ucl' },
-  { name: 'University of Edinburgh', city: 'Edinburgh', country: 'UK', students: '35,000+', slug: 'edinburgh' },
-  { name: 'University of Birmingham', city: 'Birmingham', country: 'UK', students: '38,000+', slug: 'birmingham' },
-  { name: 'University of Bristol', city: 'Bristol', country: 'UK', students: '25,000+', slug: 'bristol' },
-  { name: 'University of Leeds', city: 'Leeds', country: 'UK', students: '36,000+', slug: 'leeds' },
-  { name: 'University of Sheffield', city: 'Sheffield', country: 'UK', students: '29,000+', slug: 'sheffield' },
-  { name: "King's College London", city: 'London', country: 'UK', students: '31,000+', slug: 'kcl' },
-  { name: 'Trinity College Dublin', city: 'Dublin', country: 'Ireland', students: '18,000+', slug: 'tcd' },
-  { name: 'University College Dublin', city: 'Dublin', country: 'Ireland', students: '32,000+', slug: 'ucd' },
-  { name: 'University College Cork', city: 'Cork', country: 'Ireland', students: '21,000+', slug: 'ucc' },
-  { name: 'University of Galway', city: 'Galway', country: 'Ireland', students: '18,000+', slug: 'galway' },
-  { name: 'University of Melbourne', city: 'Melbourne', country: 'Australia', students: '52,000+', slug: 'melbourne' },
-  { name: 'University of Sydney', city: 'Sydney', country: 'Australia', students: '60,000+', slug: 'sydney' },
-  { name: 'Monash University', city: 'Melbourne', country: 'Australia', students: '86,000+', slug: 'monash' },
-  { name: 'University of Queensland', city: 'Brisbane', country: 'Australia', students: '54,000+', slug: 'uq' },
-]
+import { universities } from '@/lib/place-data'
 
 const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
 
