@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const brandWordmarkPath = '/brand/%20%20hearthaway-wordmark-light.png'
+const brandWordmarkPath = '/brand/hearthaway-wordmark-light.png'
 
 const navLinks = [
   {
@@ -35,7 +35,8 @@ const navLinks = [
     href: '/moving-abroad',
   },
   {
-    label: 'About',
+    // Visible label changed from "About" to "How it Works" per spec, routing unchanged
+    label: 'How it Works',
     href: '/about',
   },
 ]

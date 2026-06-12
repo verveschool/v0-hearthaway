@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const brandWordmarkPath = '/brand/%20%20hearthaway-wordmark-light.png'
+const brandWordmarkPath = '/brand/hearthaway-wordmark-light.png'
 
 const footerLinks = {
   Destinations: [
@@ -11,23 +11,12 @@ const footerLinks = {
     { label: 'All Cities', href: '/cities' },
   ],
   Universities: [
-    { label: 'University of Manchester', href: '/universities/manchester' },
-    { label: 'University College London', href: '/universities/ucl' },
-    { label: 'University College Dublin', href: '/universities/ucd' },
-    { label: 'University of Melbourne', href: '/universities/melbourne' },
     { label: 'All Universities', href: '/universities' },
   ],
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
     { label: 'Moving Abroad Guide', href: '/moving-abroad' },
-    { label: 'Accommodation Types', href: '/accommodation' },
-    { label: 'Budget Calculator', href: '/tools/budget' },
-  ],
-  Company: [
-    { label: 'About HearthAway', href: '/about' },
     { label: 'How it works', href: '/how-it-works' },
-    { label: 'Partner with us', href: '/partners' },
-    { label: 'Contact', href: '/contact' },
   ],
 }
 
@@ -78,6 +67,21 @@ export default function Footer() {
               </ul>
             </div>
           ))}
+
+          {/* Company / Contact block */}
+          <div>
+            <h3 className="text-xs font-bold tracking-widest uppercase text-[#FFCC00] mb-4">Company</h3>
+            <div className="text-sm text-white/70 space-y-3">
+              <p>HearthAway is a unit of Jiraiya Education LLP</p>
+              <p>
+                <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">faraz@hearthaway.com</a>
+              </p>
+              <p>
+                <a href="tel:+919999965742" className="hover:text-white underline">+91 99999 65742</a>
+              </p>
+              <p className="text-sm">1st Floor, H-20, Sector 63, Noida, UP 201301</p>
+            </div>
+          </div>
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
