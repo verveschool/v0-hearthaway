@@ -8,7 +8,7 @@ export default function TermsPage() {
       <main className="max-w-7xl mx-auto px-6 py-24">
         <section className="max-w-3xl mx-auto">
           <h1 className="font-heading text-3xl font-bold mb-4">Terms</h1>
-          <p className="text-[#6B6860] mb-6">Terms and conditions will be published here. This placeholder keeps footer links functional during development.</p>
+          <p className="text-muted-foreground mb-6">Terms and conditions will be published here. This placeholder keeps footer links functional during development.</p>
         </section>
       </main>
       <Footer />
