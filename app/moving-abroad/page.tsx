@@ -3,7 +3,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import {
   getCountryMovingAbroadLinks,
-  getFeaturedMovingAbroadGuides,
+  getFeaturedMovingAbroadArticles,
   getMovingAbroadArticleCard,
   getMovingAbroadCategoryGroups,
   type MovingAbroadArticleCard,
@@ -11,7 +11,7 @@ import {
 } from '@/lib/moving-abroad-data'
 
 const categories = getMovingAbroadCategoryGroups()
-const featuredGuides = getFeaturedMovingAbroadGuides()
+const featuredGuides = getFeaturedMovingAbroadArticles().map((article) => getMovingAbroadArticleCard(article.slug))
 const preArrivalChecklist = getMovingAbroadArticleCard('pre-arrival-checklist')
 const beforeYouGoGuides = getHubGuides(['before-you-go', 'student-visa', 'uk-bank-account', 'packing-list'])
 const accommodationGuides = getHubGuides(['choose-accommodation', 'accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement'])

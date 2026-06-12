@@ -18,6 +18,7 @@ export type MovingAbroadArticle = {
   countries: MovingAbroadCountrySlug[]
   sections: MovingAbroadArticleSection[]
   ctaVariant: MovingAbroadCtaVariant
+  image?: string
   featured?: boolean
   preview?: boolean
 }
@@ -52,6 +53,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
       { title: 'Prepare your first week', summary: 'Plan transport, banking, phone access, campus registration, and a small buffer budget for unexpected arrival costs.' },
     ],
     ctaVariant: 'housing',
+    image: '/images/acc-common.png',
     featured: true,
   },
   {
@@ -366,21 +368,25 @@ export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]>
   australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
 }
 
+const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'australia']
+
+function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
+  return movingAbroadCountrySlugs.some((validCountrySlug) => validCountrySlug === countrySlug)
+}
+
 export function getMovingAbroadArticleBySlug(slug: string): MovingAbroadArticle | undefined {
   return articleBySlug.get(slug)
 }
 
-export function getMovingAbroadHref(slug: string): string {
-  return `/moving-abroad/${slug}`
-}
-
-export function getMovingAbroadArticleCard(slug: string): MovingAbroadArticleCard {
-  const article = getMovingAbroadArticleBySlug(slug)
-
+function assertMovingAbroadArticle(article: MovingAbroadArticle | undefined, slug: string): MovingAbroadArticle {
   if (article === undefined) {
     throw new Error(`Unknown moving abroad article slug: ${slug}`)
   }
 
+  return article
+}
+
+function toMovingAbroadArticleCard(article: MovingAbroadArticle): MovingAbroadArticleCard {
   return {
     slug: article.slug,
     title: article.title,
@@ -391,6 +397,16 @@ export function getMovingAbroadArticleCard(slug: string): MovingAbroadArticleCar
   }
 }
 
+export function getMovingAbroadHref(slug: string): string {
+  const article = assertMovingAbroadArticle(getMovingAbroadArticleBySlug(slug), slug)
+
+  return `/moving-abroad/${article.slug}`
+}
+
+export function getMovingAbroadArticleCard(slug: string): MovingAbroadArticleCard {
+  return toMovingAbroadArticleCard(assertMovingAbroadArticle(getMovingAbroadArticleBySlug(slug), slug))
+}
+
 export function getMovingAbroadCategoryGroups(): MovingAbroadCategoryGroup[] {
   return movingAbroadCategoryOrder.map((name) => ({
     name,
@@ -399,8 +415,24 @@ export function getMovingAbroadCategoryGroups(): MovingAbroadCategoryGroup[] {
   }))
 }
 
+export function getMovingAbroadArticlesByCategory(category: string): MovingAbroadArticle[] {
+  return movingAbroadArticles.filter((article) => article.category === category)
+}
+
+export function getMovingAbroadArticlesByCountry(countrySlug: string): MovingAbroadArticle[] {
+  if (!isMovingAbroadCountrySlug(countrySlug)) {
+    return []
+  }
+
+  return movingAbroadArticles.filter((article) => article.countries.includes(countrySlug))
+}
+
+export function getFeaturedMovingAbroadArticles(): MovingAbroadArticle[] {
+  return featuredGuideSlugs.map((slug) => assertMovingAbroadArticle(getMovingAbroadArticleBySlug(slug), slug))
+}
+
 export function getFeaturedMovingAbroadGuides(): MovingAbroadArticleCard[] {
-  return featuredGuideSlugs.map(getMovingAbroadArticleCard)
+  return getFeaturedMovingAbroadArticles().map(toMovingAbroadArticleCard)
 }
 
 export function getHomeMovingAbroadGuides(): MovingAbroadArticleCard[] {
@@ -408,5 +440,14 @@ export function getHomeMovingAbroadGuides(): MovingAbroadArticleCard[] {
 }
 
 export function getCountryMovingAbroadLinks(countrySlug: MovingAbroadCountrySlug): MovingAbroadArticleCard[] {
-  return countryMovingAbroadSlugs[countrySlug].map(getMovingAbroadArticleCard)
+  const countryArticles = getMovingAbroadArticlesByCountry(countrySlug)
+
+  return countryMovingAbroadSlugs[countrySlug].map((slug) => {
+    const article = assertMovingAbroadArticle(
+      countryArticles.find((countryArticle) => countryArticle.slug === slug),
+      slug,
+    )
+
+    return toMovingAbroadArticleCard(article)
+  })
 }

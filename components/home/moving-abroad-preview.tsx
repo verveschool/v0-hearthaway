@@ -1,15 +1,21 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { getHomeMovingAbroadGuides } from '@/lib/moving-abroad-data'
+import {
+  getFeaturedMovingAbroadArticles,
+  getHomeMovingAbroadGuides,
+  getMovingAbroadHref,
+} from '@/lib/moving-abroad-data'
+
+const featuredArticle = getFeaturedMovingAbroadArticles()[0]
+
+if (featuredArticle === undefined) {
+  throw new Error('Moving abroad preview requires at least one featured article')
+}
 
 const featured = {
-  category: 'Essential reading',
-  title: 'The complete guide to finding student accommodation abroad',
-  description:
-    'Everything an international student needs to know — from understanding your options and setting a realistic budget, to avoiding scams and booking with confidence before you fly.',
-  readTime: '12 min read',
-  href: '/moving-abroad',
-  image: '/images/acc-common.png',
+  ...featuredArticle,
+  href: getMovingAbroadHref(featuredArticle.slug),
+  image: featuredArticle.image ?? '/images/acc-common.png',
 }
 
 const guides = getHomeMovingAbroadGuides()
