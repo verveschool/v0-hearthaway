@@ -9,6 +9,7 @@ import {
   type MovingAbroadArticleCard,
   type MovingAbroadCountrySlug,
 } from '@/lib/moving-abroad-data'
+import MatchedCTA from '@/components/matched-cta'
 
 const categories = getMovingAbroadCategoryGroups()
 const featuredGuides = getFeaturedMovingAbroadArticles().map((article) => getMovingAbroadArticleCard(article.slug))
@@ -119,7 +120,7 @@ export default function MovingAbroadPage() {
                 A practical guide architecture for your move abroad.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed">
-                Start with the essentials, then work through accommodation, budgeting, arrival, country-specific pathways, and campus next steps. No listings or booking flow — just guidance to help you prepare with confidence.
+                Start with the essentials, then work through accommodation, budgeting, arrival, country-specific pathways, and campus next steps. No listings or booking flow — just guidance to help you plan.
               </p>
             </div>
           </div>
@@ -211,7 +212,7 @@ export default function MovingAbroadPage() {
                         <span className="text-sm font-medium text-[#1A1A1A] group-hover:text-[#1B365D] transition-colors">
                           {guide.title}
                         </span>
-                        <span className="text-xs flex-shrink-0 text-[#6B6860]">{guide.readTime}</span>
+                        <span className="text-xs flex-shrink-0 ml-4 text-[#6B6860]">{guide.readTime}</span>
                       </Link>
                     ))}
                   </div>
@@ -258,9 +259,7 @@ export default function MovingAbroadPage() {
                           {article.title}
                         </span>
                         <span
-                          className={`text-xs flex-shrink-0 ml-4 ${
-                            category.color === 'bg-[#1B365D]' ? 'text-white/50' : 'text-[#6B6860]'
-                          }`}
+                          className={`text-xs flex-shrink-0 ml-4 ${category.color === 'bg-[#1B365D]' ? 'text-white/50' : 'text-[#6B6860]'}`}
                         >
                           {article.readTime}
                         </span>
@@ -343,23 +342,13 @@ export default function MovingAbroadPage() {
         {/* CTA */}
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="bg-[#1B365D] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-3">Matched support</div>
-                <h3 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-3 text-balance">
-                  Ready to turn your plan into an accommodation shortlist?
-                </h3>
-                <p className="text-white/70 text-base leading-relaxed">
-                  Tell us your university, budget, and move-in timeline. We&apos;ll help you compare suitable accommodation options before you arrive.
-                </p>
-              </div>
-              <Link
-                href="/get-matched"
-                className="flex-shrink-0 px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
-              >
-                Get Matched
-              </Link>
-            </div>
+            <MatchedCTA
+              variant="full"
+              title="Ready to turn your plan into an accommodation shortlist?"
+              description={"Tell us your university, budget, and move-in timeline. We'll help you compare suitable accommodation options before you arrive."}
+              buttonText="Get Matched"
+              buttonHref="/get-matched"
+            />
           </div>
         </section>
       </main>

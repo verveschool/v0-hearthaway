@@ -1,23 +1,24 @@
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
+import MatchedCTA from '@/components/matched-cta'
 
 const values = [
   {
     title: 'The student is the hero.',
-    description: 'Every decision we make starts with the student. Not the landlord, not the property, not the platform. The student moving abroad, making one of the biggest decisions of their life so far.',
+    description: 'Every decision we make starts with the student. Not the landlord, not the property, not the platform. The student moving abroad, making one of the biggest decisions of their life.'
   },
   {
     title: 'Guidance, not just inventory.',
-    description: "Anyone can show you a list of properties. We help you decide which one is right for you. That's a different job, and it's the one we care about.",
+    description: "Anyone can show you a list of properties. We help you decide which one is right for you. That's a different job, and it's the one we care about."
   },
   {
     title: 'Confidence before you fly.',
-    description: "Our goal is simple: have your accommodation confirmed before you board the plane. Arriving with housing sorted changes everything about how a student starts their experience abroad.",
+    description: "Our goal is simple: have your accommodation confirmed before you board the plane. Arriving with housing sorted changes everything about how a student starts their experience abroad."
   },
   {
     title: 'Verified. Always.',
-    description: 'Every property in our network has been reviewed. We will never show you a listing we have not assessed. No scams. No surprises. No exceptions.',
+    description: 'Every property in our network has been reviewed. We will never show you a listing we have not assessed. No scams. No surprises. No exceptions.'
   },
 ]
 
@@ -71,7 +72,7 @@ export default function AboutPage() {
                 </h2>
                 <div className="flex flex-col gap-5 text-[#6B6860] leading-relaxed">
                   <p>
-                    Every year, hundreds of thousands of students move abroad to study. For most of them, finding accommodation is one of the most stressful parts of the whole process — made harder by the fact that they are doing it remotely, from another country, often without ever having visited.
+                    Every year, hundreds of thousands of students move abroad to study. For most of them, finding accommodation is one of the most stressful parts of the whole process — made harder by inconsistent listing information, unverified landlords, and confusing platform flows.
                   </p>
                   <p>
                     The market is full of platforms that show you listings. They compete on inventory size, bed counts, city counts. They lead with scale and expect you to search your way to a decision.
@@ -150,21 +151,14 @@ export default function AboutPage() {
               ))}
             </div>
 
-            <div className="bg-[#1B365D] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-              <div className="max-w-xl">
-                <h3 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-3">
-                  Ready to find your home?
-                </h3>
-                <p className="text-white/70 text-base">
-                  {"Tell us where you're studying and we'll match you with verified accommodation before you arrive."}
-                </p>
-              </div>
-              <Link
-                href="/get-matched"
-                className="flex-shrink-0 px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
-              >
-                Get Matched
-              </Link>
+            <div className="mt-8">
+              <MatchedCTA
+                variant="full"
+                title="Ready to find your home?"
+                description={"Tell us where you're studying and we'll match you with verified accommodation before you arrive."}
+                buttonText="Get Matched"
+                buttonHref="/get-matched"
+              />
             </div>
           </div>
         </section>

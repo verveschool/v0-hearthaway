@@ -6,6 +6,7 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import { Search } from 'lucide-react'
+import MatchedCTA from '@/components/matched-cta'
 
 import { universities } from '@/lib/place-data'
 
@@ -31,8 +32,6 @@ export default function UniversitiesPage() {
     }, 260)
 
     return () => clearTimeout(t)
-    // We intentionally only depend on `search` here; reading initialCountry from searchParams
-    // means when country changes the component will re-run with a new initialCountry value.
   }, [search, router, initialCountry])
 
   const handleCountryFilter = (country: string) => {
@@ -143,17 +142,14 @@ export default function UniversitiesPage() {
             </div>
 
             {/* CTA */}
-            <div className="bg-[#1B365D] rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-              <div>
-                <h3 className="font-heading font-bold text-xl text-white mb-2">{"Can't find your university?"}</h3>
-                <p className="text-white/70 text-sm">Tell us where you&apos;re studying and we&apos;ll find the right options for you.</p>
-              </div>
-              <Link
-                href="/get-matched"
-                className="flex-shrink-0 px-7 py-3.5 bg-[#FFCC00] text-[#1B365D] font-bold rounded-xl hover:bg-[#E6B800] transition-colors text-sm"
-              >
-                Get Matched
-              </Link>
+            <div>
+              <MatchedCTA
+                variant="full"
+                title={"Can't find your university?"}
+                description={"Tell us where you're studying and we'll find the right options for you."}
+                buttonText="Get Matched"
+                buttonHref="/get-matched"
+              />
             </div>
           </div>
         </section>

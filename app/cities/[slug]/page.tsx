@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { cities, getCityBySlug, getUniversitiesByCity } from '@/lib/place-data'
+import MatchedCTA from '@/components/matched-cta'
 
 export function generateStaticParams() {
   return cities.map((city) => ({ slug: city.slug }))
@@ -56,7 +57,7 @@ export default async function CityPage({ params }: CityPageProps) {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/get-matched"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl shadow-[#FFCC00]/20"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl"
                 >
                   Get matched in {city.name}
                 </Link>
@@ -132,7 +133,7 @@ export default async function CityPage({ params }: CityPageProps) {
                   <div className="font-heading font-extrabold text-3xl text-[#1B365D]">{city.avgRent}</div>
                 </div>
                 <p className="text-[#6B6860] text-base leading-relaxed mb-5">
-                  Use this as an early planning range, then add utilities, deposits, transport, groceries, bedding, and arrival costs. Your actual monthly budget will depend on room type, contract length, commute, and how early you start the search.
+                  Use this as an early planning range, then add utilities, deposits, transport, groceries, bedding, and arrival costs. Your actual monthly budget will depend on room type, contract length, and included bills.
                 </p>
                 <div className="bg-white rounded-2xl border border-[#E8E6E1] p-5">
                   <h3 className="font-heading font-bold text-[#1A1A1A] text-sm mb-3">
@@ -208,19 +209,14 @@ export default async function CityPage({ params }: CityPageProps) {
             </div>
 
             <aside className="lg:col-span-1">
-              <div className="sticky top-24 rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-6">
-                <h2 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">
-                  Planning for {city.name}?
-                </h2>
-                <p className="text-[#6B6860] text-sm leading-relaxed mb-5">
-                  Tell us where you will study and we will help match your budget, commute, and arrival plans.
-                </p>
-                <Link
-                  href="/get-matched"
-                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
-                >
-                  Get Matched
-                </Link>
+              <div className="sticky top-24">
+                <MatchedCTA
+                  variant="compact"
+                  title={`Planning for ${city.name}?`}
+                  description={"Tell us where you will study and we will help match your budget, commute, and arrival plans."}
+                  buttonText="Get Matched"
+                  buttonHref="/get-matched"
+                />
               </div>
             </aside>
           </div>
@@ -228,26 +224,13 @@ export default async function CityPage({ params }: CityPageProps) {
 
         <section className="bg-[#F7F6F3] py-24 lg:py-32 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="rounded-3xl bg-[#0F2240] p-10 lg:p-16">
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 mb-7">
-                  <div className="w-2 h-2 rounded-full bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-white/70 text-sm font-semibold">Free to use &mdash; no commitment required</span>
-                </div>
-                <h2 className="font-heading text-4xl lg:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6">
-                  Ready to plan your move to <span className="text-[#FFCC00]">{city.name}</span>?
-                </h2>
-                <p className="text-white/65 text-lg leading-relaxed mb-10">
-                  Tell us your university, move-in date, and budget. An accommodation advisor will help you understand your next best steps.
-                </p>
-                <Link
-                  href="/get-matched"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl shadow-[#FFCC00]/20"
-                >
-                  Get matched for {city.name}
-                </Link>
-              </div>
-            </div>
+            <MatchedCTA
+              variant="full"
+              title={<span>Ready to plan your move to <span className="text-[#FFCC00]">{city.name}</span>?</span>}
+              description={"Tell us your university, move-in date, and budget. An accommodation advisor will help you understand your next best steps."}
+              buttonText={`Get matched for ${city.name}`}
+              buttonHref="/get-matched"
+            />
           </div>
         </section>
       </main>

@@ -2,6 +2,7 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Image from 'next/image'
+import MatchedCTA from '@/components/matched-cta'
 
 import { countries } from '@/lib/country-data'
 import { groupedCities } from '@/lib/place-data'
@@ -76,17 +77,14 @@ export default function CitiesPage() {
             })}
 
             {/* CTA */}
-            <div className="bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border border-[#E8E6E1]">
-              <div>
-                <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-2">Not sure which city is right for you?</h3>
-                <p className="text-[#6B6860] text-sm">{"Tell us your university and we'll take care of the rest."}</p>
-              </div>
-              <Link
-                href="/get-matched"
-                className="flex-shrink-0 px-7 py-3.5 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm"
-              >
-                Get Matched
-              </Link>
+            <div className="mt-6">
+              <MatchedCTA
+                variant="compact"
+                title="Not sure which city is right for you?"
+                description={"Tell us your university and we'll take care of the rest."}
+                buttonText="Get Matched"
+                buttonHref="/get-matched"
+              />
             </div>
           </div>
         </section>
