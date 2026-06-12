@@ -1,35 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-const countries = [
-  {
-    name: 'United Kingdom',
-    slug: 'uk',
-    image: '/images/dest-uk.png',
-    cities: ['London', 'Manchester', 'Edinburgh', 'Birmingham', 'Bristol', 'Leeds'],
-    universities: '140+',
-    badge: 'Most popular',
-    description: 'Home to some of the world\'s most respected universities, from the Russell Group to specialist institutions across every major city.',
-  },
-  {
-    name: 'Ireland',
-    slug: 'ireland',
-    image: '/images/dest-ireland.png',
-    cities: ['Dublin', 'Cork', 'Galway', 'Limerick'],
-    universities: '30+',
-    badge: 'Rising in popularity',
-    description: 'A welcoming English-speaking destination with world-class universities and a close-knit, thriving international student community.',
-  },
-  {
-    name: 'Australia',
-    slug: 'australia',
-    image: '/images/dest-australia.png',
-    cities: ['Sydney', 'Melbourne', 'Brisbane', 'Perth'],
-    universities: '40+',
-    badge: 'Excellent quality of life',
-    description: 'Globally recognised qualifications, outstanding weather, diverse culture, and some of the world\'s best university campuses.',
-  },
-]
+import { countries } from '@/lib/country-data'
+import { cities } from '@/lib/place-data'
 
 const popularCities = [
   { name: 'London', country: 'UK', slug: 'london', image: '/images/city-london.png', rent: 'from £180/wk' },
@@ -67,7 +40,7 @@ export default function DestinationsSection() {
               className="group relative overflow-hidden rounded-2xl h-[420px] flex flex-col justify-end hover:shadow-2xl transition-all duration-300"
             >
               <Image
-                src={country.image}
+                src={country.heroImage}
                 alt={`Student accommodation in ${country.name}`}
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
@@ -81,20 +54,28 @@ export default function DestinationsSection() {
                     {country.badge}
                   </span>
                   <span className="text-white/60 text-xs font-medium bg-white/10 px-3 py-1.5 rounded-full">
-                    {country.universities} universities
+                    {country.universityCount} universities
                   </span>
                 </div>
                 <h3 className="font-heading font-extrabold text-2xl text-white mb-2">{country.name}</h3>
-                <p className="text-white/65 text-sm leading-relaxed mb-5 line-clamp-2">{country.description}</p>
+                <p className="text-white/65 text-sm leading-relaxed mb-5 line-clamp-2">{country.summary}</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {country.cities.slice(0, 4).map((city) => (
-                    <span key={city} className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/80 text-xs font-medium">
-                      {city}
-                    </span>
-                  ))}
-                  {country.cities.length > 4 && (
+                  {country.citySlugs.slice(0, 4).map((citySlug) => {
+                    const city = cities.find((place) => place.slug === citySlug)
+
+                    if (!city) {
+                      return null
+                    }
+
+                    return (
+                      <span key={city.slug} className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/80 text-xs font-medium">
+                        {city.name}
+                      </span>
+                    )
+                  })}
+                  {country.citySlugs.length > 4 && (
                     <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs">
-                      +{country.cities.length - 4} more
+                      +{country.citySlugs.length - 4} more
                     </span>
                   )}
                 </div>
