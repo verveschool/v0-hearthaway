@@ -61,12 +61,6 @@ export default async function CityPage({ params }: CityPageProps) {
                 >
                   Get matched in {city.name}
                 </Link>
-                <Link
-                  href="/cities"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-white/8 border border-white/15 text-white font-bold text-base rounded-xl hover:bg-white/15 transition-colors"
-                >
-                  Browse all cities
-                </Link>
               </div>
             </div>
           </div>

@@ -26,15 +26,9 @@ export default function CtaSection() {
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl shadow-[#FFCC00]/20"
+                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl"
               >
                 Talk to an Accommodation Advisor
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-white/8 border border-white/15 text-white font-bold text-base rounded-xl hover:bg-white/15 transition-colors"
-              >
-                How it works
               </Link>
             </div>
 
