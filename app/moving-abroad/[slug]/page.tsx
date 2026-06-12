@@ -55,12 +55,12 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="bg-[#1B365D] pt-28 pb-16 px-6">
+        <section className="bg-primary pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-5">
-                <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                <span className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase">
+                <div className="w-8 h-px bg-accent" aria-hidden="true" />
+                <span className="text-accent text-sm font-bold tracking-widest uppercase">
                   {article.category} &middot; {article.stage}
                 </span>
               </div>
@@ -71,7 +71,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 {article.description}
               </p>
               <div className="flex flex-wrap gap-3">
-                <span className="px-3 py-1.5 rounded-full bg-[#FFCC00] text-[#1B365D] text-xs font-extrabold">
+                <span className="px-3 py-1.5 rounded-full bg-accent text-primary text-xs font-extrabold">
                   {article.readTime}
                 </span>
                 {article.countries.map((countrySlug) => (
@@ -91,41 +91,41 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <article className="lg:col-span-2 space-y-5">
-              <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
-                <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-4">
+              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-8 lg:p-10">
+                <div className="text-primary text-sm font-bold tracking-widest uppercase mb-4">
                   Placeholder guide
                 </div>
-                <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
+                <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
                   Full guide content is being prepared
                 </h2>
-                <p className="text-[#6B6860] text-base leading-relaxed">
-                  This page exists so every linked moving-abroad guide has a real destination while detailed editorial content is completed. Use the outline below to plan the decisions this guide will cover.
+                <p className="text-muted-foreground text-base leading-relaxed">
+                  This page exists so every linked moving-abroad guide has a real destination while detailed editorial content is completed. Use the outline below to plan the decisions this guide[...]
                 </p>
               </section>
 
               {article.sections.map((section) => (
                 <section
                   key={section.title}
-                  className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10"
+                  className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-8 lg:p-10"
                 >
                   <div className="inline-flex items-center gap-2 mb-5">
-                    <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                    <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                    <div className="w-8 h-px bg-accent" aria-hidden="true" />
+                    <span className="text-primary text-sm font-bold tracking-widest uppercase">
                       Guide section
                     </span>
                   </div>
-                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
+                  <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
                     {section.title}
                   </h2>
-                  <p className="text-[#6B6860] text-base leading-relaxed">
+                  <p className="text-muted-foreground text-base leading-relaxed">
                     {section.summary}
                   </p>
                 </section>
               ))}
 
               {usesHousingCta ? (
-                <section className="rounded-2xl bg-[#1B365D] p-8 lg:p-10">
-                  <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">
+                <section className="rounded-2xl bg-primary p-8 lg:p-10">
+                  <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
                     Student-housing match
                   </div>
                   <h2 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-4 text-balance">
@@ -136,7 +136,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                   </p>
                   <Link
                     href="/get-matched"
-                    className="inline-flex px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
+                    className="inline-flex px-8 py-4 bg-accent text-primary font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
                   >
                     Get matched
                   </Link>
@@ -145,8 +145,8 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
             </article>
 
             <aside className="space-y-5">
-              <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-6">
-                <h2 className="font-heading font-bold text-xl text-[#1A1A1A] mb-4">
+              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-6">
+                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-4">
                   Keep planning
                 </h2>
                 <div className="space-y-2">
@@ -154,7 +154,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                     <Link
                       key={link.href}
                       href={link.href}
-                      className="group flex items-center justify-between rounded-xl bg-white border border-[#E8E6E1] px-4 py-3 text-sm font-semibold text-[#1B365D] hover:border-[#1B365D]/30 transition-colors"
+                      className="group flex items-center justify-between rounded-xl bg-white border border-[var(--color-mid-gray)] px-4 py-3 text-sm font-semibold text-primary hover:border-primary/30 transition-colors"
                     >
                       <span>{link.label}</span>
                       <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">
@@ -165,8 +165,8 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </div>
               </section>
 
-              <section className="rounded-2xl border border-[#E8E6E1] bg-white p-6">
-                <h2 className="font-heading font-bold text-xl text-[#1A1A1A] mb-4">
+              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
+                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-4">
                   Relevant country hubs
                 </h2>
                 <div className="space-y-2">
@@ -174,12 +174,12 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                     <Link
                       key={country.slug}
                       href={`/${country.slug}`}
-                      className="block rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] px-4 py-3 hover:border-[#1B365D]/30 transition-colors"
+                      className="block rounded-xl bg-[var(--color-warm-gray)] border border-[var(--color-mid-gray)] px-4 py-3 hover:border-primary/30 transition-colors"
                     >
-                      <span className="block text-sm font-bold text-[#1A1A1A] mb-1">
+                      <span className="block text-sm font-bold text-charcoal-ink mb-1">
                         Study in {country.name}
                       </span>
-                      <span className="text-xs text-[#6B6860]">
+                      <span className="text-xs text-muted-foreground">
                         {country.universityCount} universities &middot; {country.currency}
                       </span>
                     </Link>
@@ -187,11 +187,11 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </div>
               </section>
 
-              <section className="rounded-2xl border border-[#E8E6E1] bg-white p-6">
-                <h2 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">
+              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
+                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-3">
                   Guide status
                 </h2>
-                <p className="text-[#6B6860] text-sm leading-relaxed">
+                <p className="text-muted-foreground text-sm leading-relaxed">
                   Category: {article.category}. Stage: {article.stage}. This article shell is ready for expanded editorial copy when final content is available.
                 </p>
               </section>
