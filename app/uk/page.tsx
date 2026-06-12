@@ -1,6 +1,6 @@
-import CountryHubPage from '@/app/country-hub-page'
-import { getCountryBySlug } from '@/lib/country-data'
+import { redirect } from 'next/navigation'
 
-export default function UkPage() {
-  return <CountryHubPage country={getCountryBySlug('uk')} />
+export default function UKIndex() {
+  // Redirect country hub to the universities page with preselected country
+  redirect('/universities?country=UK')
 }

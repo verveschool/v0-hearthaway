@@ -1,5 +1,5 @@
 import { redirect } from 'next/navigation'
 
-export default function AUIndex() {
+export default function AUUniversities() {
   redirect('/universities?country=Australia')
 }
