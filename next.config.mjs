@@ -1,14 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ✅ Isse saare TypeScript errors bypass honge
+  // Bypasses all strict TypeScript compilation and type errors during build
   typescript: {
     ignoreBuildErrors: true,
   },
-  // ✅ Sabse Zaroori Fix: Isse saare logo path, key, aur format error bypass honge
+  // Bypasses all ESLint checks (ignores unescaped characters, keys, and path formatting errors)
   eslint: {
     ignoreDuringBuilds: true,
   },
-  // ✅ Isse image optimization crash nahi karega
+  // Disables Next.js image optimization processing to prevent asset crash loops
   images: {
     unoptimized: true,
   },
