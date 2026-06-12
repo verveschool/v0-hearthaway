@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
+import { getHomeMovingAbroadGuides } from '@/lib/moving-abroad-data'
 
 const featured = {
   category: 'Essential reading',
@@ -11,36 +12,7 @@ const featured = {
   image: '/images/acc-common.png',
 }
 
-const guides = [
-  {
-    category: 'Before you go',
-    title: 'What to sort before you leave home',
-    description: 'A clear checklist of everything you need to arrange before you travel.',
-    readTime: '6 min read',
-    href: '/moving-abroad/before-you-go',
-  },
-  {
-    category: 'Budgeting',
-    title: 'How much does student accommodation actually cost?',
-    description: 'Real costs, broken down by city and type, so you can plan with confidence.',
-    readTime: '8 min read',
-    href: '/moving-abroad/accommodation-costs',
-  },
-  {
-    category: 'Safety',
-    title: 'How to avoid accommodation scams',
-    description: 'The warning signs every international student should know.',
-    readTime: '5 min read',
-    href: '/moving-abroad/avoid-scams',
-  },
-  {
-    category: 'Arriving',
-    title: 'Your first week: what to expect',
-    description: 'The practical reality of arriving in a new country as a student.',
-    readTime: '7 min read',
-    href: '/moving-abroad/first-week',
-  },
-]
+const guides = getHomeMovingAbroadGuides()
 
 export default function MovingAbroadPreview() {
   return (
