@@ -9,18 +9,40 @@ const manrope = Manrope({
   weight: ['300', '400', '500', '600', '700', '800'],
 })
 
+const brandIconPath = '/brand/%20%20hearthaway-icon-dark.png'
+const brandBannerPath = '/brand/%20%20hearthaway-banner-dark.png'
+
 export const metadata: Metadata = {
   title: 'HearthAway — Find the right accommodation before you arrive',
   description:
     'HearthAway helps international students find verified student accommodation near their university in the UK, Ireland, and Australia — before they fly.',
   keywords:
     'student accommodation, international students, UK student housing, university accommodation, student housing abroad',
+  icons: {
+    icon: brandIconPath,
+    apple: brandIconPath,
+  },
   openGraph: {
     title: 'HearthAway — Find the right accommodation before you arrive',
     description:
       'Guided accommodation for international students. Find your home near your university before you arrive.',
     type: 'website',
     locale: 'en_GB',
+    images: [
+      {
+        url: brandBannerPath,
+        width: 1869,
+        height: 484,
+        alt: 'HearthAway',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'HearthAway — Find the right accommodation before you arrive',
+    description:
+      'Guided accommodation for international students. Find your home near your university before you arrive.',
+    images: [brandBannerPath],
   },
 }
 

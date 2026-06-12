@@ -1,4 +1,7 @@
+import Image from 'next/image'
 import Link from 'next/link'
+
+const brandWordmarkPath = '/brand/%20%20hearthaway-wordmark-light.png'
 
 const footerLinks = {
   Destinations: [
@@ -78,14 +81,15 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-[#FFCC00] flex items-center justify-center flex-shrink-0">
-              <svg width="15" height="15" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M9 2L2 8V16H7V12H11V16H16V8L9 2Z" fill="#1B365D" />
-              </svg>
-            </div>
-            <span className="font-heading font-bold text-lg">HearthAway</span>
-          </div>
+          <Link href="/" aria-label="HearthAway home" className="flex items-center">
+            <Image
+              src={brandWordmarkPath}
+              alt="HearthAway"
+              width={128}
+              height={57}
+              className="h-9 w-auto"
+            />
+          </Link>
 
           <p className="text-white/50 text-sm">
             &copy; {new Date().getFullYear()} HearthAway. Helping students find home, before they arrive.

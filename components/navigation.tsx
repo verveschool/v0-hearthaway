@@ -1,8 +1,11 @@
 'use client'
 
+import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
+
+const brandWordmarkPath = '/brand/%20%20hearthaway-wordmark-light.png'
 
 const navLinks = [
   {
@@ -63,15 +66,15 @@ export default function Navigation() {
       <nav className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="flex items-center justify-between h-18 py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group" aria-label="HearthAway home">
-            <div className="w-8 h-8 rounded-lg bg-[#FFCC00] flex items-center justify-center flex-shrink-0">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M9 2L2 8V16H7V12H11V16H16V8L9 2Z" fill="#1B365D" strokeLinejoin="round" />
-              </svg>
-            </div>
-            <span className="font-heading font-bold text-xl text-white tracking-tight">
-              HearthAway
-            </span>
+          <Link href="/" className="flex items-center group" aria-label="HearthAway home">
+            <Image
+              src={brandWordmarkPath}
+              alt="HearthAway"
+              width={150}
+              height={67}
+              priority
+              className="h-10 w-auto"
+            />
           </Link>
 
           {/* Desktop Nav */}
