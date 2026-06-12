@@ -1,77 +1,10 @@
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
+import { getFeaturedMovingAbroadGuides, getMovingAbroadCategoryGroups } from '@/lib/moving-abroad-data'
 
-const categories = [
-  {
-    name: 'Before you go',
-    color: 'bg-[#1B365D]',
-    textColor: 'text-white',
-    articles: [
-      { title: 'What to sort before you leave home', readTime: '6 min', href: '/moving-abroad/before-you-go' },
-      { title: 'Understanding your student visa requirements', readTime: '8 min', href: '/moving-abroad/student-visa' },
-      { title: 'How to open a UK bank account before you arrive', readTime: '5 min', href: '/moving-abroad/uk-bank-account' },
-      { title: 'Packing list for international students', readTime: '4 min', href: '/moving-abroad/packing-list' },
-    ],
-  },
-  {
-    name: 'Accommodation',
-    color: 'bg-[#FFCC00]',
-    textColor: 'text-[#1B365D]',
-    articles: [
-      { title: 'How much does student accommodation really cost?', readTime: '8 min', href: '/moving-abroad/accommodation-costs' },
-      { title: 'Student halls vs private accommodation', readTime: '6 min', href: '/moving-abroad/halls-vs-private' },
-      { title: 'How to avoid accommodation scams', readTime: '5 min', href: '/moving-abroad/avoid-scams' },
-      { title: 'Understanding your tenancy agreement', readTime: '9 min', href: '/moving-abroad/tenancy-agreement' },
-    ],
-  },
-  {
-    name: 'Budgeting',
-    color: 'bg-[#F7F6F3]',
-    textColor: 'text-[#1B365D]',
-    articles: [
-      { title: 'Monthly cost of living: UK, Ireland & Australia', readTime: '7 min', href: '/moving-abroad/cost-of-living' },
-      { title: 'How to budget as an international student', readTime: '6 min', href: '/moving-abroad/student-budget' },
-      { title: 'Hidden costs new students don\'t expect', readTime: '5 min', href: '/moving-abroad/hidden-costs' },
-      { title: 'Student discounts and how to find them', readTime: '4 min', href: '/moving-abroad/student-discounts' },
-    ],
-  },
-  {
-    name: 'Arriving',
-    color: 'bg-[#1B365D]',
-    textColor: 'text-white',
-    articles: [
-      { title: 'Your first week: what to expect', readTime: '7 min', href: '/moving-abroad/first-week' },
-      { title: 'Getting from the airport to your accommodation', readTime: '5 min', href: '/moving-abroad/airport-to-home' },
-      { title: 'Registering with a doctor and NHS', readTime: '4 min', href: '/moving-abroad/healthcare' },
-      { title: 'Making friends in a new country', readTime: '6 min', href: '/moving-abroad/making-friends' },
-    ],
-  },
-]
-
-const featuredGuides = [
-  {
-    category: 'Before you go',
-    title: 'The complete pre-arrival checklist for international students',
-    description: 'Everything you need to sort before you travel — from accommodation and visas to bank accounts and packing. A practical guide from students who have done it.',
-    readTime: '12 min read',
-    href: '/moving-abroad/pre-arrival-checklist',
-  },
-  {
-    category: 'Accommodation',
-    title: 'How to choose the right accommodation before you arrive',
-    description: 'Walking through the real decisions you face: halls vs private, location tradeoffs, what to ask before signing, and how to avoid the biggest mistakes.',
-    readTime: '10 min read',
-    href: '/moving-abroad/choose-accommodation',
-  },
-  {
-    category: 'Budgeting',
-    title: 'The real cost of studying abroad: a country-by-country breakdown',
-    description: 'Rent, transport, food, tuition, and extras — broken down honestly for students planning their move to the UK, Ireland, or Australia.',
-    readTime: '14 min read',
-    href: '/moving-abroad/real-cost-abroad',
-  },
-]
+const categories = getMovingAbroadCategoryGroups()
+const featuredGuides = getFeaturedMovingAbroadGuides()
 
 export default function MovingAbroadPage() {
   return (
