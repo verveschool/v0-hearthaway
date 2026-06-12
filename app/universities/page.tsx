@@ -1,13 +1,31 @@
+'use client'
+
+import { useSearchParams, useRouter } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
-import { Search } from 'lucide-react'
 
 import { universities } from '@/lib/place-data'
 
 const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
 
 export default function UniversitiesPage() {
+  const searchParams = useSearchParams()
+  const router = useRouter()
+  const selectedCountry = searchParams.get('country') || 'All'
+
+  const handleCountryFilter = (country: string) => {
+    if (country === 'All') {
+      router.push('/universities')
+    } else {
+      router.push(`/universities?country=${encodeURIComponent(country)}`)
+    }
+  }
+
+  const filteredUniversities = selectedCountry === 'All'
+    ? universities
+    : universities.filter((uni) => uni.country === selectedCountry)
+
   return (
     <>
       <Navigation />
@@ -27,58 +45,55 @@ export default function UniversitiesPage() {
           </div>
         </section>
 
-        {/* Search + List */}
+        {/* Filters + List */}
         <section className="bg-[#F7F6F3] py-12 px-6">
           <div className="max-w-7xl mx-auto">
-            {/* Search */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <div className="relative flex-1 max-w-lg">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#6B6860]" aria-hidden="true" />
-                <input
-                  type="text"
-                  placeholder="Search universities..."
-                  className="w-full pl-10 pr-4 py-3 rounded-xl border border-[#E8E6E1] bg-white text-sm text-[#1A1A1A] focus:outline-none focus:border-[#1B365D] transition-colors"
-                  aria-label="Search universities"
-                />
-              </div>
-              <div className="flex gap-2">
-                {countryFilters.map((f) => (
-                  <button
-                    key={f}
-                    className={`px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${
-                      f === 'All'
-                        ? 'bg-[#1B365D] border-[#1B365D] text-white'
-                        : 'bg-white border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
-                    }`}
-                  >
-                    {f}
-                  </button>
-                ))}
-              </div>
+            {/* Country Filters */}
+            <div className="flex flex-wrap gap-2 mb-8">
+              {countryFilters.map((f) => (
+                <button
+                  key={f}
+                  onClick={() => handleCountryFilter(f)}
+                  className={`px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${
+                    f === selectedCountry
+                      ? 'bg-[#1B365D] border-[#1B365D] text-white'
+                      : 'bg-white border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
+                  }`}
+                  aria-current={f === selectedCountry ? 'page' : undefined}
+                >
+                  {f}
+                </button>
+              ))}
             </div>
 
             {/* University grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-              {universities.map((uni) => (
-                <Link
-                  key={uni.slug}
-                  href={`/universities/${uni.slug}`}
-                  className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#1B365D]/30 hover:shadow-lg transition-all duration-200"
-                >
-                  <div className="flex items-start justify-between mb-3">
-                    <span className="text-xs font-bold tracking-wider uppercase text-[#1B365D] bg-[#1B365D]/8 px-2.5 py-1 rounded-full">
-                      {uni.country}
-                    </span>
-                  </div>
-                  <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#1B365D] transition-colors">
-                    {uni.name}
-                  </h3>
-                  <p className="text-[#6B6860] text-xs">{uni.city} &middot; {uni.students} students</p>
-                  <div className="mt-4 text-xs font-semibold text-[#1B365D] group-hover:translate-x-1 transition-transform inline-block">
-                    View accommodation &rarr;
-                  </div>
-                </Link>
-              ))}
+              {filteredUniversities.length > 0 ? (
+                filteredUniversities.map((uni) => (
+                  <Link
+                    key={uni.slug}
+                    href={`/universities/${uni.slug}`}
+                    className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#1B365D]/30 hover:shadow-lg transition-all duration-200"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <span className="text-xs font-bold tracking-wider uppercase text-[#1B365D] bg-[#1B365D]/8 px-2.5 py-1 rounded-full">
+                        {uni.country}
+                      </span>
+                    </div>
+                    <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#1B365D] transition-colors">
+                      {uni.name}
+                    </h3>
+                    <p className="text-[#6B6860] text-xs">{uni.city} &middot; {uni.students} students</p>
+                    <div className="mt-4 text-xs font-semibold text-[#1B365D] group-hover:translate-x-1 transition-transform inline-block">
+                      View accommodation &rarr;
+                    </div>
+                  </Link>
+                ))
+              ) : (
+                <div className="col-span-full py-12 text-center text-[#6B6860]">
+                  No universities found.
+                </div>
+              )}
             </div>
 
             {/* CTA */}
