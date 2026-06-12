@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+// Paths are case-sensitive matching your public/brand/ folder structure perfectly
 const brandWordmarkPath = '/brand/hearthaway-wordmark-light.png'
 
 const footerLinks = {
@@ -45,7 +46,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Links */}
+      {/* Links Grid */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
           {Object.entries(footerLinks).map(([category, links]) => (
@@ -55,7 +56,7 @@ export default function Footer() {
               </h3>
               <ul className="flex flex-col gap-2.5">
                 {links.map((link, idx) => (
-                  /* Fix: Using a composite key guarantees Vercel will never complain about duplicate keys */
+                  // Using composite mapping keys ensures Next.js linter passes without duplication errors
                   <li key={`${category}-${link.href}-${idx}`}>
                     <Link
                       href={link.href}
@@ -69,22 +70,27 @@ export default function Footer() {
             </div>
           ))}
 
-          {/* Company / Contact block */}
+          {/* Company / Contact info Block */}
           <div>
             <h3 className="text-xs font-bold tracking-widest uppercase text-[#FFCC00] mb-4">Company</h3>
             <div className="text-sm text-white/70 space-y-3">
               <p>HearthAway is a unit of Jiraiya Education LLP</p>
               <p>
-                <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">faraz@hearthaway.com</a>
+                <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">
+                  faraz@hearthaway.com
+                </a>
               </p>
               <p>
-                <a href="tel:+919999965742" className="hover:text-white underline">+91 99999 65742</a>
+                <a href="tel:+919999965742" className="hover:text-white underline">
+                  +91 99999 65742
+                </a>
               </p>
               <p className="text-sm">1st Floor, H-20, Sector 63, Noida, UP 201301</p>
             </div>
           </div>
         </div>
 
+        {/* Bottom branding and metadata segment */}
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <Link href="/" aria-label="HearthAway home" className="flex items-center">
             <Image
