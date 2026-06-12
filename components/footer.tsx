@@ -54,8 +54,9 @@ export default function Footer() {
                 {category}
               </h3>
               <ul className="flex flex-col gap-2.5">
-                {links.map((link) => (
-                  <li key={link.href}>
+                {links.map((link, idx) => (
+                  /* Fix: Using a composite key guarantees Vercel will never complain about duplicate keys */
+                  <li key={`${category}-${link.href}-${idx}`}>
                     <Link
                       href={link.href}
                       className="text-white/70 hover:text-white text-sm transition-colors"
