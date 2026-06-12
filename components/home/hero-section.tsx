@@ -3,8 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { Search, MapPin, ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useRouter } from 'next/navigation'
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const photos = [
   {
@@ -32,30 +31,7 @@ const promises = [
 ]
 
 export default function HeroSection() {
-  const router = useRouter()
-  const [query, setQuery] = useState('')
-  const [showSuggestions, setShowSuggestions] = useState(false)
   const [activePhoto, setActivePhoto] = useState(0)
-
-  const suggestions = [
-    'University of Manchester',
-    'University College London',
-    'University of Edinburgh',
-    'Trinity College Dublin',
-    'University of Melbourne',
-    'University of Sydney',
-  ]
-
-  const filtered = suggestions.filter((s) =>
-    s.toLowerCase().includes(query.toLowerCase())
-  )
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    if (query.trim()) {
-      router.push(`/universities?q=${encodeURIComponent(query)}`)
-    }
-  }
 
   // Auto-advance the photo carousel
   useEffect(() => {
@@ -90,9 +66,11 @@ export default function HeroSection() {
 
         {/* Supporting copy */}
         <p className="text-white/70 leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
-          Moving abroad for university is a big decision. So is choosing where to live.
-          Our accommodation advisors help you find the right place — near your campus,
-          within your budget — before you fly.
+          Moving abroad for university is a big decision. Choosing where to live is one too.
+        </p>
+        <p className="text-white/70 leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
+          Tell us where you&apos;re studying, your budget, and when you&apos;re moving.
+          We&apos;ll help you find accommodation near your university and within your budget.
         </p>
 
         {/* Promise list */}
@@ -106,85 +84,14 @@ export default function HeroSection() {
         </ul>
 
         {/* ── PRIMARY CTA ── */}
-        <div className="flex flex-col sm:flex-row gap-3 mb-10">
+        <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
             className="group inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-[#FFCC00] text-[#0F2240] font-bold text-base hover:bg-[#FFD633] active:bg-[#E6B800] transition-all shadow-lg shadow-[#FFCC00]/20 hover:shadow-[#FFCC00]/40 hover:shadow-xl hover:-translate-y-0.5"
           >
-            Talk to an Accommodation Advisor
+            Get Matched
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
           </Link>
-          <Link
-            href="/about"
-            className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-white/8 border border-white/15 text-white/80 font-medium text-sm hover:bg-white/12 hover:text-white transition-all"
-          >
-            How it works
-          </Link>
-        </div>
-
-        {/* ── SECONDARY: Compact search ── */}
-        <div className="border-t border-white/10 pt-8">
-          <p className="text-white/40 text-xs font-medium uppercase tracking-widest mb-3">
-            Or browse by university or city
-          </p>
-          <div className="relative">
-            <form onSubmit={handleSubmit}>
-              <div className="flex items-center gap-0 bg-white/8 border border-white/15 rounded-xl overflow-hidden hover:border-white/30 focus-within:border-white/40 transition-colors">
-                <div className="flex items-center pl-4 text-white/40">
-                  <Search className="w-4 h-4 flex-shrink-0" aria-hidden="true" />
-                </div>
-                <input
-                  type="text"
-                  value={query}
-                  onChange={(e) => {
-                    setQuery(e.target.value)
-                    setShowSuggestions(true)
-                  }}
-                  onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-                  onFocus={() => query && setShowSuggestions(true)}
-                  placeholder="Search university or city..."
-                  className="flex-1 px-3 py-3 text-white/90 text-sm outline-none bg-transparent placeholder:text-white/35 font-medium"
-                  aria-label="Search by university or city"
-                />
-                <button
-                  type="submit"
-                  className="m-1.5 px-4 py-2 bg-white/12 text-white/70 font-semibold rounded-lg hover:bg-white/20 hover:text-white transition-colors text-xs"
-                >
-                  Search
-                </button>
-              </div>
-            </form>
-
-            {showSuggestions && query && filtered.length > 0 && (
-              <div className="absolute top-full left-0 right-0 mt-1.5 bg-[#1B365D] border border-white/15 rounded-xl shadow-2xl z-50 overflow-hidden">
-                {filtered.map((suggestion) => (
-                  <button
-                    key={suggestion}
-                    onMouseDown={() => {
-                      setQuery(suggestion)
-                      setShowSuggestions(false)
-                    }}
-                    className="flex items-center gap-3 w-full px-4 py-3 text-left text-sm text-white/80 hover:bg-white/8 hover:text-white transition-colors font-medium"
-                  >
-                    <MapPin className="w-3.5 h-3.5 text-[#FFCC00] flex-shrink-0" aria-hidden="true" />
-                    {suggestion}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="flex flex-wrap gap-2 mt-3">
-            {['London', 'Manchester', 'Dublin', 'Sydney', 'Melbourne'].map((city) => (
-              <Link
-                key={city}
-                href={`/cities/${city.toLowerCase()}`}
-                className="px-3 py-1 rounded-full bg-white/6 border border-white/12 text-white/55 text-xs hover:bg-white/12 hover:text-white/80 transition-all"
-              >
-                {city}
-              </Link>
-            ))}
-          </div>
         </div>
       </div>
 
@@ -264,33 +171,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* ── BOTTOM STATS BAR (full-width, sits below both panels) ─────────── */}
-      <div className="absolute bottom-0 left-0 right-0 z-20 hidden lg:block bg-black/25 backdrop-blur-sm border-t border-white/8">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-3.5">
-          <div className="flex items-center gap-8 lg:gap-12">
-            {[
-              { value: '40+', label: 'Cities' },
-              { value: '200+', label: 'Universities' },
-              { value: '15k+', label: 'Students helped' },
-              { value: '3', label: 'Countries' },
-            ].map((stat) => (
-              <div key={stat.label} className="flex items-baseline gap-1.5">
-                <span className="text-[#FFCC00] font-extrabold text-base">{stat.value}</span>
-                <span className="text-white/45 text-xs">{stat.label}</span>
-              </div>
-            ))}
-            <div className="ml-auto">
-              <Link
-                href="/get-matched"
-                className="text-[#FFCC00] text-xs font-semibold hover:text-white transition-colors flex items-center gap-1"
-              >
-                Get personalised recommendations
-                <ArrowRight className="w-3 h-3" aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
     </section>
   )
 }

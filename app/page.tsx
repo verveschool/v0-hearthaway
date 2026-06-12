@@ -1,6 +1,7 @@
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import HeroSection from '@/components/home/hero-section'
+import TrustStatsSection from '@/components/home/trust-stats-section'
 import HowItWorks from '@/components/home/how-it-works'
 import GuidanceSection from '@/components/home/guidance-section'
 import AccommodationTypes from '@/components/home/accommodation-types'
@@ -15,6 +16,7 @@ export default function HomePage() {
       <Navigation />
       <main>
         <HeroSection />
+        <TrustStatsSection />
         <HowItWorks />
         <GuidanceSection />
         <AccommodationTypes />
