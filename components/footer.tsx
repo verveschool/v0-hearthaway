@@ -74,8 +74,6 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-bold tracking-widest uppercase text-[#FFCC00] mb-4">Company</h3>
             <div className="text-sm text-white/70 space-y-3">
-              <p>HearthAway is a unit of Jiraiya Education LLP</p>
-              <p>
                 <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">
                   faraz@hearthaway.com
                 </a>
@@ -103,7 +101,7 @@ export default function Footer() {
           </Link>
 
           <p className="text-white/50 text-sm">
-            &copy; {new Date().getFullYear()} HearthAway. Helping students find home, before they arrive.
+            &copy; {new Date().getFullYear()} Jiraiya Education LLP. Helping students find home, before they arrive.
           </p>
 
           <div className="flex gap-4 text-sm text-white/50">
