@@ -10,6 +10,9 @@ import MatchedCTA from '@/components/matched-cta'
 
 import { universities } from '@/lib/place-data'
 
+// this line forces the build machine to skip static prerendering entirely
+export const dynamic = 'force-dynamic'
+
 const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
 
 function UniversitiesContent() {
