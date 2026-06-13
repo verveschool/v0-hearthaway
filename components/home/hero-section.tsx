@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const photos = [
   {
@@ -22,12 +22,6 @@ const photos = [
     src: '/images/hero-building.png',
     label: 'Purpose-built halls, London'
   }
-]
-
-const promises = [
-  'Near your university',
-  'Within your budget',
-  'Verified and trusted'
 ]
 
 export default function HeroSection() {
@@ -49,7 +43,7 @@ export default function HeroSection() {
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
-        {/* new clean trust label */}
+        {/* clean trust label */}
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8 self-start">
           <span className="px-3.5 py-1.5 rounded-full bg-[#F2B705] text-[#1B365D] text-xs font-extrabold tracking-widest uppercase shadow-sm">
             100% verified
@@ -59,7 +53,7 @@ export default function HeroSection() {
           </span>
         </div>
 
-        <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.3rem, 4.2vw, 3.6rem)' }}>
+        <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
           Find the right accommodation
           <span className="block mt-1 text-[#F2B705]">before you arrive.</span>
         </h1>
@@ -67,11 +61,12 @@ export default function HeroSection() {
         <p className="text-white/90 font-medium leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
           Moving abroad for university is a big decision. Choosing where to live is one too.
         </p>
-        <p className="text-white/90 font-medium leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
+        <p className="text-white/90 font-medium leading-relaxed mb-8 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
           Tell us where you&apos;re studying, your budget, and when you&apos;re moving.
           We&apos;ll help you find accommodation near your university and within your budget.
         </p>
 
+        {/* primary cta */}
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
