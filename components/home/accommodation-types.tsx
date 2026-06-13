@@ -8,7 +8,7 @@ const types = [
     description:
       'University-managed and private halls of residence. Social, central, and usually all-inclusive — the most popular first-year choice.',
     image: '/images/acc-halls.png',
-    href: '/accommodation/student-halls',
+    href: '/accommodation',
     tags: ['Bills included', 'Social atmosphere', 'Campus location'],
     size: 'large',
   },
@@ -18,7 +18,7 @@ const types = [
     description:
       'Rent a room in a shared house with other students. More independence, lower cost, and a real home feel.',
     image: '/images/acc-shared.png',
-    href: '/accommodation/shared-houses',
+    href: '/accommodation',
     tags: ['Lower cost', 'More independence', 'Local area'],
     size: 'small',
   },
@@ -28,7 +28,7 @@ const types = [
     description:
       'Your own self-contained space with a private kitchen and bathroom. Quiet, focused, and completely yours.',
     image: '/images/acc-studio.png',
-    href: '/accommodation/studios',
+    href: '/accommodation',
     tags: ['Privacy', 'Self-contained', 'Quiet study'],
     size: 'small',
   },
@@ -38,7 +38,7 @@ const types = [
     description:
       'Live with a local family. Build language skills, experience local culture, and have a warm, supportive home from day one.',
     image: '/images/acc-homestay.png',
-    href: '/accommodation/homestay',
+    href: '/accommodation',
     tags: ['Cultural immersion', 'Meals included', 'Family environment'],
     size: 'small',
   },
