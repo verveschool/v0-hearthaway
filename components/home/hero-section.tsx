@@ -72,7 +72,7 @@ export default function HeroSection() {
           We&apos;ll help you find accommodation near your university and within your budget.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex flex-col sm:flex-row gap-6">
           <Link
             href="/get-matched"
             className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#F2B705] text-[#111827] font-extrabold text-base hover:bg-[#D9A404] active:bg-[#B38703] transition-all shadow-lg shadow-[#F2B705]/20 hover:shadow-[#F2B705]/40 hover:shadow-xl hover:-translate-y-0.5"
