@@ -7,7 +7,7 @@ const stats = [
 
 export default function TrustStatsSection() {
   return (
-    <section className="bg-[#0F2240] border-t border-white/8" aria-labelledby="trust-stats-heading">
+    <section className="bg-[#1b365d] border-t border-white/8" aria-labelledby="trust-stats-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
         <p id="trust-stats-heading" className="text-white/40 text-xs font-bold tracking-widest uppercase text-center mb-10">
           Trusted by students moving abroad
