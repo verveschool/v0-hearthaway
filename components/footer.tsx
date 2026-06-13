@@ -83,7 +83,7 @@ export default function Footer() {
                   +91 99999 65742
                 </a>
               </p>
-              <p className="text-sm">1st Floor, H-20, Sector 63, Noida, UP 201301</p>
+              <p className="text-sm">H-20, Sector 63, Noida, UP 201301</p>
             </div>
           </div>
         </div>
