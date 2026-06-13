@@ -31,17 +31,17 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white mb-3 text-pretty">
-                Ready to find your home away from home?
+                {"Ready to find your home away from home?"}
               </h2>
               <p className="text-white/70 text-lg max-w-xl">
-                Tell us about your situation and we&apos;ll help you find the right accommodation near your university.
+                {"Tell us about your situation and we'll help you find the right accommodation near your university."}
               </p>
             </div>
             <Link
               href="/get-matched"
               className="flex-shrink-0 px-8 py-4 bg-[#F2B705] text-[#1B365D] font-bold text-lg rounded-xl hover:bg-[#D9A404] transition-colors shadow-lg"
             >
-              Get Matched
+              {"Get Matched"}
             </Link>
           </div>
         </div>
@@ -73,28 +73,28 @@ export default function Footer() {
 
           {/* Company / Contact info Block */}
           <div>
-            <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">Company</h3>
+            <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Company"}</h3>
             <div className="text-sm text-white/70 space-y-3 mb-8">
-              <p>HearthAway is a unit of Jiraiya Education LLP.</p>
+              <p>{"HearthAway is a unit of Jiraiya Education LLP."}</p>
               <p>
                 <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">
-                  faraz@hearthaway.com
+                  {"faraz@hearthaway.com"}
                 </a>
               </p>
               <p>
                 <a href="tel:+919999965742" className="hover:text-white underline">
-                  +91 99999 65742
+                  {"+91 99999 65742"}
                 </a>
               </p>
-              <p>1st Floor, H-20, Sector 63, Noida, UP 201301</p>
+              <p>{"1st Floor, H-20, Sector 63, Noida, UP 201301"}</p>
             </div>
 
             {/* Trustpilot Placeholder */}
             <a href="#" aria-label="View our reviews on Trustpilot" className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors px-4 py-3 rounded-xl border border-white/10">
               <Star className="w-6 h-6 fill-[#00B67A] text-[#00B67A]" />
               <div className="flex flex-col">
-                <span className="text-white font-extrabold text-sm leading-none mb-1">Excellent</span>
-                <span className="text-white/50 text-[10px] leading-none uppercase tracking-wider">Trustpilot</span>
+                <span className="text-white font-extrabold text-sm leading-none mb-1">{"Excellent"}</span>
+                <span className="text-white/50 text-[10px] leading-none uppercase tracking-wider">{"Trustpilot"}</span>
               </div>
             </a>
           </div>
@@ -125,13 +125,13 @@ export default function Footer() {
           </div>
 
           <p className="text-white/40 text-xs md:text-sm">
-            &copy; {new Date().getFullYear()} Jiraiya Education LLP. Helping students find home, before they arrive.
+            {"© 2026 Jiraiya Education LLP. Helping students find home, before they arrive."}
           </p>
 
           <div className="flex gap-5 text-xs md:text-sm text-white/40">
-            <Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <Link href="/cookies" className="hover:text-white transition-colors">Cookies</Link>
+            <Link href="/privacy" className="hover:text-white transition-colors">{"Privacy"}</Link>
+            <Link href="/terms" className="hover:text-white transition-colors">{"Terms"}</Link>
+            <Link href="/cookies" className="hover:text-white transition-colors">{"Cookies"}</Link>
           </div>
         </div>
       </div>
