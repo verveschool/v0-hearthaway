@@ -59,7 +59,7 @@ export default function HeroSection() {
           </span>
         </div>
 
-        <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
+        <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.3rem, 4.2vw, 3.6rem)' }}>
           Find the right accommodation
           <span className="block mt-1 text-[#F2B705]">before you arrive.</span>
         </h1>
