@@ -71,7 +71,7 @@ export default function GuidanceSection() {
                     Matched to a verified studio in Manchester
                   </p>
                   <p className="text-[#6B6860] text-xs leading-relaxed">
-                    &ldquo;I had three options reviewed for me within 24 hours. I chose without leaving India.&rdquo; — Priya, MSc Data Science
+                    &ldquo;I had three options reviewed for me within 24 hours. I chose without leaving India.&rdquo; — Kabir, MSc Data Science
                   </p>
                 </div>
               </div>
