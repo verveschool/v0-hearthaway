@@ -44,17 +44,17 @@ export default function HeroSection() {
   const nextPhoto = () => setActivePhoto((prev) => (prev + 1) % photos.length)
 
   return (
-    <section className="bg-[#1B365D] flex flex-col lg:flex-row items-center justify-between pt-20 lg:pt-24 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14 font-sans">
+    <section className="bg-[#1B365D] flex flex-col lg:flex-row items-center justify-between pt-10 lg:pt-12 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14 font-sans">
 
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
-        {/* combined trust pill */}
-        <div className="flex flex-col gap-1 mb-8 self-start px-4 py-2.5 rounded-2xl bg-[#F2B705]/15 border border-[#F2B705]/30 shadow-sm shadow-[#F2B705]/10">
-          <span className="text-[#F2B705] text-xs font-extrabold tracking-widest uppercase">
-            100% verified properties
+        {/* new clean trust label */}
+        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8 self-start">
+          <span className="px-3.5 py-1.5 rounded-full bg-[#F2B705] text-[#1B365D] text-xs font-extrabold tracking-widest uppercase shadow-sm">
+            100% verified
           </span>
-          <span className="text-[#F2B705]/90 text-[10px] font-bold tracking-wider uppercase">
+          <span className="text-[#F2B705] text-xs font-bold tracking-widest uppercase">
             UK &bull; Ireland &bull; Australia
           </span>
         </div>
@@ -72,11 +72,12 @@ export default function HeroSection() {
           We&apos;ll help you find accommodation near your university and within your budget.
         </p>
 
-        <ul className="flex flex-col gap-2 mb-10" role="list">
+        {/* updated uniform bullets */}
+        <ul className="flex flex-col gap-3 mb-10 mt-2" role="list">
           {promises.map((item) => (
-            <li key={item} className="flex items-center gap-2.5">
-              <CheckCircle2 className="w-5 h-5 text-[#F2B705] flex-shrink-0" aria-hidden="true" />
-              <span className="text-white text-sm font-semibold tracking-wide">{item}</span>
+            <li key={item} className="flex items-center gap-3">
+              <CheckCircle2 className="w-6 h-6 text-[#F2B705] flex-shrink-0" aria-hidden="true" />
+              <span className="text-white/90 font-medium" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>{item}</span>
             </li>
           ))}
         </ul>
