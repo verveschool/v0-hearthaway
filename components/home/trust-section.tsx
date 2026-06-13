@@ -3,27 +3,27 @@ import Link from 'next/link'
 
 const testimonials = [
   {
-    quote: "finding a flat in manchester from my bedroom in delhi was a total nightmare. landlords either ghosted me or asked for insane upfront deposits. hearthaway sorted a verified place in three days and i had the lease locked down before booking my flight.",
-    name: 'kabir malhotra',
-    origin: 'india',
-    university: 'university of manchester',
-    program: 'msc data science',
+    quote: "Finding a flat in Manchester from my bedroom in Delhi was a total nightmare. Landlords either ghosted me or asked for insane upfront deposits. HearthAway sorted a verified place in three days and I had the lease locked down before booking my flight.",
+    name: 'Kabir Malhotra',
+    origin: 'India',
+    university: 'University of Manchester',
+    program: 'MSc Data Science',
     image: '/images/dest-uk.png'
   },
   {
-    quote: "other student housing websites are pure garbage. just hundreds of fake listings with zero verification and brokers trying to scam you the second they hear you are international. hearthaway actually cuts the noise and gets you a real place.",
-    name: 'tanvi deshmukh',
-    origin: 'india',
-    university: 'university college dublin',
-    program: 'msc finance',
+    quote: "Other student housing websites are pure garbage. Just hundreds of fake listings with zero verification and brokers trying to scam you the second they hear you are international. HearthAway actually cuts the noise and gets you a real place.",
+    name: 'Tanvi Deshmukh',
+    origin: 'India',
+    university: 'University College Dublin',
+    program: 'MSc Finance',
     image: '/images/dest-ireland.png'
   },
   {
-    quote: "my parents were panicking about me moving to the uk alone and getting ripped off by some fake online landlord. showing them a verified property on hearthaway was the only thing that shut them up and let me pack my bags in peace.",
-    name: 'ishaan chatterjee',
-    origin: 'india',
-    university: 'university of edinburgh',
-    program: 'msc computer science',
+    quote: "My parents were panicking about me moving to the UK alone and getting ripped off by some fake online landlord. Showing them a verified property on HearthAway was the only thing that shut them up and let me pack my bags in peace.",
+    name: 'Ishaan Chatterjee',
+    origin: 'India',
+    university: 'University of Edinburgh',
+    program: 'MSc Computer Science',
     image: '/images/city-edinburgh.png'
   }
 ]
@@ -33,35 +33,35 @@ export default function TrustSection() {
     <section className="bg-[#1B365D] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* section header */}
+        {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-16">
           <div>
             <div className="inline-flex items-center gap-2 mb-6">
               <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
               <span className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase">
-                from students like you
+                From students like you
               </span>
             </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-white leading-[1.1] tracking-tight text-balance">
-              students chose with confidence.
+              Students chose with confidence.
               <br />
-              <span className="text-white/50">before they flew.</span>
+              <span className="text-white/50">Before they flew.</span>
             </h2>
           </div>
           <p className="text-white/60 text-lg leading-relaxed max-w-md">
-            every year, students from dozens of countries use hearthaway to find verified accommodation near their university before they leave home.
+            Every year, students from dozens of countries use HearthAway to find verified accommodation near their university before they leave home.
           </p>
         </div>
 
-        {/* testimonials grid */}
+        {/* Testimonials Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-20">
           {testimonials.map((t) => (
             <div key={t.name} className="flex flex-col bg-white rounded-2xl overflow-hidden">
-              {/* photo header */}
+              {/* Photo Header */}
               <div className="relative h-40 overflow-hidden flex-shrink-0">
                 <Image
                   src={t.image}
-                  alt={`student accommodation in ${t.university}`}
+                  alt={`Student accommodation in ${t.university}`}
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 33vw"
@@ -74,7 +74,7 @@ export default function TrustSection() {
               </div>
 
               <div className="flex flex-col flex-1 p-7">
-                {/* stars */}
+                {/* Stars */}
                 <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
                   {[...Array(5)].map((_, j) => (
                     <svg key={j} width="15" height="15" viewBox="0 0 16 16" fill="#FFCC00" aria-hidden="true">
@@ -90,7 +90,7 @@ export default function TrustSection() {
                 <div className="pt-5 border-t border-[#E8E6E1] flex items-center justify-between">
                   <div>
                     <div className="font-extrabold text-[#1A1A1A] text-sm">{t.name}</div>
-                    <div className="text-[#6B6860] text-xs mt-0.5">from {t.origin}</div>
+                    <div className="text-[#6B6860] text-xs mt-0.5">From {t.origin}</div>
                   </div>
                   <div className="w-8 h-8 rounded-full bg-[#1B365D]/8 flex items-center justify-center">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
@@ -103,17 +103,17 @@ export default function TrustSection() {
           ))}
         </div>
 
-        {/* trust strip */}
+        {/* Trust Strip */}
         <div className="border-t border-white/10 pt-12">
           <p className="text-white/40 text-xs font-bold tracking-widest uppercase text-center mb-10">
-            what every student gets with hearthaway
+            What every student gets with HearthAway
           </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { heading: 'verified properties only', body: 'every property is reviewed before it reaches you. no unverified listings.' },
-              { heading: 'near your campus', body: 'we only show options that make sense for your university location.' },
-              { heading: 'within your budget', body: 'your budget is a constraint we respect, not a filter we ignore.' },
-              { heading: 'confirmed before arrival', body: 'our goal is accommodation secured before you board the plane.' }
+              { heading: 'Verified Properties Only', body: 'Every property is reviewed before it reaches you. No unverified listings.' },
+              { heading: 'Near Your Campus', body: 'We only show options that make sense for your university location.' },
+              { heading: 'Within Your Budget', body: 'Your budget is a constraint we respect, not a filter we ignore.' },
+              { heading: 'Confirmed Before Arrival', body: 'Our goal is accommodation secured before you board the plane.' }
             ].map((item) => (
               <div key={item.heading} className="text-center lg:text-left">
                 <div className="w-8 h-8 rounded-lg bg-[#FFCC00]/15 border border-[#FFCC00]/25 flex items-center justify-center mb-4 mx-auto lg:mx-0">
