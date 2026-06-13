@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { useState, useEffect, Suspense } from 'react'
+import { useState, useEffect } from 'react'
 import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const photos = [
@@ -30,7 +30,7 @@ const promises = [
   'Verified and trusted'
 ]
 
-function HeroSectionContent() {
+export default function HeroSection() {
   const [activePhoto, setActivePhoto] = useState(0)
 
   useEffect(() => {
@@ -159,13 +159,5 @@ function HeroSectionContent() {
       </div>
 
     </section>
-  )
-}
-
-export default function HeroSection() {
-  return (
-    <Suspense fallback={<div className="min-h-screen bg-[#0F2240]" />}>
-      <HeroSectionContent />
-    </Suspense>
   )
 }
