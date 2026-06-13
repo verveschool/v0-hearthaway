@@ -44,28 +44,24 @@ export default function HeroSection() {
   const nextPhoto = () => setActivePhoto((prev) => (prev + 1) % photos.length)
 
   return (
-    <section className="min-h-screen bg-[#0F2240] flex flex-col lg:flex-row overflow-hidden">
+    <section className="bg-[#0F2240] flex flex-col lg:flex-row items-center justify-between pt-28 lg:pt-36 pb-12 lg:pb-20 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14">
 
       {/* left copy panel */}
-      <div className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] xl:w-[50%] px-6 sm:px-10 lg:px-14 xl:px-20 pt-32 pb-14 lg:pt-36 lg:pb-20">
+      <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
-        <div className="flex flex-col gap-3 mb-10 self-start">
-          <div className="flex items-center gap-2 px-1 text-white/50 text-xs font-semibold tracking-wider uppercase">
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-            <span>100% Verified Properties</span>
-          </div>
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFCC00]/15 border border-[#FFCC00]/30 max-w-max">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#FFCC00]" aria-hidden="true" />
-            <span className="text-[#FFCC00] text-xs font-semibold tracking-wide uppercase">
-              UK &bull; Ireland &bull; Australia
-            </span>
-          </div>
+        {/* combined trust pill */}
+        <div className="flex flex-col gap-1 mb-8 self-start px-4 py-2.5 rounded-2xl bg-[#FFCC00]/15 border border-[#FFCC00]/30 shadow-sm shadow-[#FFCC00]/10">
+          <span className="text-[#FFCC00] text-xs font-extrabold tracking-widest uppercase">
+            100% verified properties
+          </span>
+          <span className="text-[#FFCC00]/80 text-[10px] font-bold tracking-wider uppercase">
+            UK &bull; Ireland &bull; Australia
+          </span>
         </div>
 
         <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
           Find the right accommodation
-          <span className="block mt-1" style={{ color: '#FFCC00' }}>before you arrive.</span>
+          <span className="block mt-1 text-[#FFCC00]">before you arrive.</span>
         </h1>
 
         <p className="text-white/70 leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
@@ -97,7 +93,7 @@ export default function HeroSection() {
       </div>
 
       {/* right photography panel */}
-      <div className="relative w-full lg:w-[48%] xl:w-[50%] min-h-[55vw] lg:min-h-0 overflow-hidden">
+      <div className="relative w-full lg:w-[45%] aspect-[4/3] lg:aspect-[4/5] max-h-[550px] overflow-hidden rounded-3xl shadow-2xl">
         {photos.map((photo, i) => (
           <div
             key={photo.src}
@@ -111,21 +107,20 @@ export default function HeroSection() {
               fill
               className="object-cover object-center"
               priority={i === 0}
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              sizes="(max-width: 1024px) 100vw, 45vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0F2240]/60 via-[#0F2240]/10 to-transparent lg:bg-gradient-to-r" />
-            <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0F2240]/95 via-[#0F2240]/50 to-transparent" />
           </div>
         ))}
 
-        <div className="absolute bottom-16 left-5 right-5 lg:bottom-14 lg:left-6 lg:right-6 z-10 flex items-end justify-between">
-          <span className="text-white/70 text-xs font-medium tracking-wide">
+        <div className="absolute bottom-16 left-6 right-6 z-10 flex items-end justify-between">
+          <span className="text-white/90 text-sm font-medium tracking-wide drop-shadow-md">
             {photos[activePhoto].label}
           </span>
         </div>
 
-        <div className="absolute bottom-5 left-5 right-5 lg:bottom-6 lg:left-6 lg:right-6 z-10 flex items-center gap-3">
-          <div className="flex items-center gap-1.5 flex-1" role="tablist" aria-label="Accommodation photos">
+        <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center gap-4">
+          <div className="flex items-center gap-2 flex-1" role="tablist" aria-label="Accommodation photos">
             {photos.map((_, i) => (
               <button
                 key={i}
@@ -133,26 +128,26 @@ export default function HeroSection() {
                 role="tab"
                 aria-selected={i === activePhoto}
                 aria-label={`View photo ${i + 1}`}
-                className="relative h-1 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FFCC00]"
-                style={{ width: i === activePhoto ? '2rem' : '0.5rem', background: i === activePhoto ? '#FFCC00' : 'rgba(255,255,255,0.35)' }}
+                className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FFCC00]"
+                style={{ width: i === activePhoto ? '2.5rem' : '0.5rem', background: i === activePhoto ? '#FFCC00' : 'rgba(255,255,255,0.4)' }}
               />
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-2">
             <button
               onClick={prevPhoto}
               aria-label="Previous photo"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-white/15 border border-white/20 text-white/70 hover:bg-white/25 hover:text-white transition-all"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0F2240]/40 border border-white/20 text-white hover:bg-[#0F2240]/80 hover:scale-105 transition-all backdrop-blur-md"
             >
-              <ChevronLeft className="w-3.5 h-3.5" aria-hidden="true" />
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" />
             </button>
             <button
               onClick={nextPhoto}
               aria-label="Next photo"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-white/15 border border-white/20 text-white/70 hover:bg-white/25 hover:text-white transition-all"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0F2240]/40 border border-white/20 text-white hover:bg-[#0F2240]/80 hover:scale-105 transition-all backdrop-blur-md"
             >
-              <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </div>
         </div>
