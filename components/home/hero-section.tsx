@@ -72,16 +72,6 @@ export default function HeroSection() {
           We&apos;ll help you find accommodation near your university and within your budget.
         </p>
 
-        {/* updated uniform bullets */}
-        <ul className="flex flex-col gap-3 mb-10 mt-2" role="list">
-          {promises.map((item) => (
-            <li key={item} className="flex items-center gap-3">
-              <CheckCircle2 className="w-6 h-6 text-[#F2B705] flex-shrink-0" aria-hidden="true" />
-              <span className="text-white/90 font-medium" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>{item}</span>
-            </li>
-          ))}
-        </ul>
-
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
