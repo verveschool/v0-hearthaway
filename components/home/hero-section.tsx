@@ -50,12 +50,21 @@ export default function HeroSection() {
       {/* ── LEFT: Copy panel ───────────────────────────────────────────────── */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[52%] xl:w-[50%] px-6 sm:px-10 lg:px-14 xl:px-20 pt-32 pb-14 lg:pt-36 lg:pb-20">
 
-        {/* Eyebrow tag */}
-        <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 rounded-full bg-[#FFCC00]/15 border border-[#FFCC00]/30 mb-10">
-          <div className="w-1.5 h-1.5 rounded-full bg-[#FFCC00]" aria-hidden="true" />
-          <span className="text-[#FFCC00] text-xs font-semibold tracking-wide uppercase">
-            UK &bull; Ireland &bull; Australia
-          </span>
+        {/* Left-Aligned Information Stack */}
+        <div className="flex flex-col gap-3 mb-10 self-start">
+          {/* Row 1: Muted Trust Label (No background pill so it doesn't look like a button) */}
+          <div className="flex items-center gap-2 px-1 text-white/50 text-xs font-semibold tracking-wider uppercase">
+            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
+            <span>100% Verified Properties</span>
+          </div>
+
+          {/* Row 2: Your Original Eyebrow Tag */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFCC00]/15 border border-[#FFCC00]/30 max-w-max">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#FFCC00]" aria-hidden="true" />
+            <span className="text-[#FFCC00] text-xs font-semibold tracking-wide uppercase">
+              UK &bull; Ireland &bull; Australia
+            </span>
+          </div>
         </div>
 
         {/* Headline */}
@@ -97,7 +106,6 @@ export default function HeroSection() {
 
       {/* ── RIGHT: Photography panel ───────────────────────────────────────── */}
       <div className="relative w-full lg:w-[48%] xl:w-[50%] min-h-[55vw] lg:min-h-0 overflow-hidden">
-
         {/* Photos */}
         {photos.map((photo, i) => (
           <div
@@ -162,12 +170,6 @@ export default function HeroSection() {
               <ChevronRight className="w-3.5 h-3.5" aria-hidden="true" />
             </button>
           </div>
-        </div>
-
-        {/* Verified badge — floated over the photo */}
-        <div className="absolute top-6 right-6 z-10 hidden lg:flex items-center gap-2 px-3.5 py-2 rounded-full bg-white/12 border border-white/20 backdrop-blur-md">
-          <div className="w-2 h-2 rounded-full bg-[#FFCC00]" aria-hidden="true" />
-          <span className="text-white/85 text-xs font-semibold">Verified properties</span>
         </div>
       </div>
 
