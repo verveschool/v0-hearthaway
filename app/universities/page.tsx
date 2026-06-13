@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
@@ -12,7 +12,7 @@ import { universities } from '@/lib/place-data'
 
 const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
 
-export default function UniversitiesPage() {
+function UniversitiesContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
   const initialCountry = searchParams.get('country') || 'All'
@@ -20,14 +20,12 @@ export default function UniversitiesPage() {
 
   const [search, setSearch] = useState<string>(initialSearch)
 
-  // Keep search in URL in sync (debounced)
   useEffect(() => {
     const t = setTimeout(() => {
       const params = new URLSearchParams()
       if (initialCountry && initialCountry !== 'All') params.set('country', initialCountry)
       if (search.trim() !== '') params.set('search', search.trim())
       const href = `/universities${params.toString() ? `?${params.toString()}` : ''}`
-      // Use replace to avoid polluting history for every keystroke
       router.replace(href)
     }, 260)
 
@@ -156,5 +154,13 @@ export default function UniversitiesPage() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function UniversitiesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-[#1B365D]" />}>
+      <UniversitiesContent />
+    </Suspense>
   )
 }
