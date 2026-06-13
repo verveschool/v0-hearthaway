@@ -44,30 +44,30 @@ export default function HeroSection() {
   const nextPhoto = () => setActivePhoto((prev) => (prev + 1) % photos.length)
 
   return (
-    <section className="bg-[#0F2240] flex flex-col lg:flex-row items-center justify-between pt-28 lg:pt-36 pb-12 lg:pb-20 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14">
+    <section className="bg-[#3F6DB5] flex flex-col lg:flex-row items-center justify-between pt-20 lg:pt-24 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14 font-sans">
 
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
         {/* combined trust pill */}
-        <div className="flex flex-col gap-1 mb-8 self-start px-4 py-2.5 rounded-2xl bg-[#FFCC00]/15 border border-[#FFCC00]/30 shadow-sm shadow-[#FFCC00]/10">
-          <span className="text-[#FFCC00] text-xs font-extrabold tracking-widest uppercase">
+        <div className="flex flex-col gap-1 mb-8 self-start px-4 py-2.5 rounded-2xl bg-[#F2B705]/15 border border-[#F2B705]/30 shadow-sm shadow-[#F2B705]/10">
+          <span className="text-[#F2B705] text-xs font-extrabold tracking-widest uppercase">
             100% verified properties
           </span>
-          <span className="text-[#FFCC00]/80 text-[10px] font-bold tracking-wider uppercase">
+          <span className="text-[#F2B705]/90 text-[10px] font-bold tracking-wider uppercase">
             UK &bull; Ireland &bull; Australia
           </span>
         </div>
 
         <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
           Find the right accommodation
-          <span className="block mt-1 text-[#FFCC00]">before you arrive.</span>
+          <span className="block mt-1 text-[#F2B705]">before you arrive.</span>
         </h1>
 
-        <p className="text-white/70 leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
+        <p className="text-white/90 font-medium leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
           Moving abroad for university is a big decision. Choosing where to live is one too.
         </p>
-        <p className="text-white/70 leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
+        <p className="text-white/90 font-medium leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
           Tell us where you&apos;re studying, your budget, and when you&apos;re moving.
           We&apos;ll help you find accommodation near your university and within your budget.
         </p>
@@ -75,8 +75,8 @@ export default function HeroSection() {
         <ul className="flex flex-col gap-2 mb-10" role="list">
           {promises.map((item) => (
             <li key={item} className="flex items-center gap-2.5">
-              <CheckCircle2 className="w-4 h-4 text-[#FFCC00] flex-shrink-0" aria-hidden="true" />
-              <span className="text-white/80 text-sm font-medium">{item}</span>
+              <CheckCircle2 className="w-5 h-5 text-[#F2B705] flex-shrink-0" aria-hidden="true" />
+              <span className="text-white text-sm font-semibold tracking-wide">{item}</span>
             </li>
           ))}
         </ul>
@@ -84,16 +84,16 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
-            className="group inline-flex items-center justify-center gap-3 px-7 py-4 rounded-2xl bg-[#FFCC00] text-[#0F2240] font-bold text-base hover:bg-[#FFD633] active:bg-[#E6B800] transition-all shadow-lg shadow-[#FFCC00]/20 hover:shadow-[#FFCC00]/40 hover:shadow-xl hover:-translate-y-0.5"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#F2B705] text-[#111827] font-extrabold text-base hover:bg-[#D9A404] active:bg-[#B38703] transition-all shadow-lg shadow-[#F2B705]/20 hover:shadow-[#F2B705]/40 hover:shadow-xl hover:-translate-y-0.5"
           >
             Get Matched
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+            <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </Link>
         </div>
       </div>
 
       {/* right photography panel */}
-      <div className="relative w-full lg:w-[45%] aspect-[4/3] lg:aspect-[4/5] max-h-[550px] overflow-hidden rounded-3xl shadow-2xl">
+      <div className="relative w-full lg:w-[45%] aspect-[4/3] lg:aspect-[4/5] max-h-[500px] overflow-hidden rounded-3xl shadow-2xl border-4 border-white/10">
         {photos.map((photo, i) => (
           <div
             key={photo.src}
@@ -109,12 +109,12 @@ export default function HeroSection() {
               priority={i === 0}
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
-            <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#0F2240]/95 via-[#0F2240]/50 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#3F6DB5]/95 via-[#3F6DB5]/60 to-transparent" />
           </div>
         ))}
 
         <div className="absolute bottom-16 left-6 right-6 z-10 flex items-end justify-between">
-          <span className="text-white/90 text-sm font-medium tracking-wide drop-shadow-md">
+          <span className="text-white text-sm font-bold tracking-wide drop-shadow-md">
             {photos[activePhoto].label}
           </span>
         </div>
@@ -128,8 +128,8 @@ export default function HeroSection() {
                 role="tab"
                 aria-selected={i === activePhoto}
                 aria-label={`View photo ${i + 1}`}
-                className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FFCC00]"
-                style={{ width: i === activePhoto ? '2.5rem' : '0.5rem', background: i === activePhoto ? '#FFCC00' : 'rgba(255,255,255,0.4)' }}
+                className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F2B705]"
+                style={{ width: i === activePhoto ? '2.5rem' : '0.5rem', background: i === activePhoto ? '#F2B705' : 'rgba(255,255,255,0.4)' }}
               />
             ))}
           </div>
@@ -138,14 +138,14 @@ export default function HeroSection() {
             <button
               onClick={prevPhoto}
               aria-label="Previous photo"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0F2240]/40 border border-white/20 text-white hover:bg-[#0F2240]/80 hover:scale-105 transition-all backdrop-blur-md"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#3F6DB5]/60 border border-white/30 text-white hover:bg-[#3F6DB5] hover:scale-105 transition-all backdrop-blur-md"
             >
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
             </button>
             <button
               onClick={nextPhoto}
               aria-label="Next photo"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#0F2240]/40 border border-white/20 text-white hover:bg-[#0F2240]/80 hover:scale-105 transition-all backdrop-blur-md"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#3F6DB5]/60 border border-white/30 text-white hover:bg-[#3F6DB5] hover:scale-105 transition-all backdrop-blur-md"
             >
               <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </button>
