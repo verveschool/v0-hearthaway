@@ -142,11 +142,6 @@ export default function GetMatchedPage() {
                 ))}
               </div>
             </div>
-            {form.email && (
-              <p className="text-[#6B6860] text-sm">
-                {"Check your inbox at "}<strong>{form.email}</strong>{". We'll be in touch shortly."}
-              </p>
-            )}
           </div>
         </main>
         <Footer />
@@ -198,7 +193,9 @@ export default function GetMatchedPage() {
 
                   <div className="flex flex-col gap-5">
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Country (optional)"}</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
+                        {"Country "} <span className="text-[#1B365D] font-bold">*</span>
+                      </label>
                       <div className="grid grid-cols-3 gap-3">
                         {countries.map((c) => (
                           <button
@@ -219,7 +216,7 @@ export default function GetMatchedPage() {
 
                     {form.country && (
                       <div>
-                        <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"City (optional)"}</label>
+                        <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"City"}</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {cities.map((c) => (
                             <button
@@ -241,7 +238,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label htmlFor="university" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        {"University "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
+                        {"University"}
                       </label>
                       <input
                         id="university"
@@ -265,17 +262,17 @@ export default function GetMatchedPage() {
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="move-in" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Move-in date (optional)"}</label>
+                        <label htmlFor="move-in" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Move-in date"}</label>
                         <input
                           id="move-in"
-                          type="month"
+                          type="date"
                           value={form.moveIn}
                           onChange={(e) => setForm((f) => ({ ...f, moveIn: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-white cursor-pointer"
                         />
                       </div>
                       <div>
-                        <label htmlFor="duration" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Duration (optional)"}</label>
+                        <label htmlFor="duration" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Duration"}</label>
                         <select
                           id="duration"
                           value={form.duration}
@@ -293,7 +290,7 @@ export default function GetMatchedPage() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Monthly budget (optional)"}</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Monthly budget"}</label>
                       <div className="grid grid-cols-2 gap-3">
                         {budgetRanges.map((b) => (
                           <button
@@ -323,7 +320,7 @@ export default function GetMatchedPage() {
 
                   <div className="flex flex-col gap-5">
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">{"Type of accommodation (optional)"}</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">{"Type of accommodation"}</label>
                       <div className="flex flex-col gap-2">
                         {accommodationPrefs.map((a) => (
                           <button
@@ -356,7 +353,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">
-                        {"Key priorities "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
+                        {"Key priorities"}
                       </label>
                       <div className="flex flex-wrap gap-2">
                         {priorities.map((p) => (
@@ -383,12 +380,12 @@ export default function GetMatchedPage() {
               {step === 4 && (
                 <div>
                   <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"Last step, how do we reach you?"}</h2>
-                  <p className="text-[#6B6860] mb-7">{"Only your phone number is required to process instant accommodation options."}</p>
+                  <p className="text-[#6B6860] mb-7">{"Your contact details are used solely to send verified options directly to you."}</p>
 
                   <div className="flex flex-col gap-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="first-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"First name (optional)"}</label>
+                        <label htmlFor="first-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"First name"}</label>
                         <input
                           id="first-name"
                           type="text"
@@ -398,7 +395,7 @@ export default function GetMatchedPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="last-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Last name (optional)"}</label>
+                        <label htmlFor="last-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Last name"}</label>
                         <input
                           id="last-name"
                           type="text"
@@ -410,7 +407,7 @@ export default function GetMatchedPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Email address (optional)"}</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Email address"}</label>
                       <input
                         id="email"
                         type="email"
@@ -423,7 +420,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label htmlFor="phone" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        {"Phone / WhatsApp "} <span className="text-[#1B365D] font-bold">{"(required)"}</span>
+                        {"Phone / WhatsApp "} <span className="text-[#1B365D] font-bold">*</span>
                       </label>
                       <input
                         id="phone"
@@ -438,7 +435,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label htmlFor="message" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        {"Anything else we should know? "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
+                        {"Anything else we should know?"}
                       </label>
                       <textarea
                         id="message"
@@ -479,7 +476,8 @@ export default function GetMatchedPage() {
                   <button
                     type="button"
                     onClick={() => setStep((s) => s + 1)}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm"
+                    disabled={step === 1 && !form.country}
+                    className="flex items-center gap-2 px-7 py-3 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {"Continue"}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
