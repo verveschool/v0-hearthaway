@@ -6,10 +6,15 @@ import Footer from '@/components/footer'
 
 const countries = ['United Kingdom', 'Ireland', 'Australia']
 
-const ukCities = ['London', 'Manchester', 'Birmingham', 'Edinburgh', 'Bristol', 'Leeds', 'Sheffield', 'Newcastle', 'Nottingham', 'Liverpool']
-const irelandCities = ['Dublin', 'Cork', 'Galway', 'Limerick', 'Waterford']
-const australiaCities = ['Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide', 'Canberra']
+const ukCities = [
+  'London', 'Manchester', 'Birmingham', 'Edinburgh', 'Glasgow', 'Bristol', 
+  'Newcastle', 'Coventry', 'Nottingham', 'Leeds', 'Liverpool', 'Sheffield', 
+  'Southampton', 'Leicester'
+]
 
+const irelandCities = ['Dublin', 'Cork', 'Galway', 'Limerick']
+
+const australiaCities = ['Melbourne', 'Sydney', 'Brisbane', 'Perth', 'Adelaide', 'Canberra']
 const budgetRanges = [
   { label: 'Up to £500 / mo', value: 'under-500' },
   { label: '£500 - £800 / mo', value: '500-800' },
