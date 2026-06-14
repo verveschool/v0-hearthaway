@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
-import { ChevronRight, ChevronLeft } from 'lucide-react'
 
 const countries = ['United Kingdom', 'Ireland', 'Australia']
 
@@ -13,9 +12,9 @@ const australiaCities = ['Sydney', 'Melbourne', 'Brisbane', 'Perth', 'Adelaide',
 
 const budgetRanges = [
   { label: 'Up to £500 / mo', value: 'under-500' },
-  { label: '£500 – £800 / mo', value: '500-800' },
-  { label: '£800 – £1,200 / mo', value: '800-1200' },
-  { label: '£1,200+ / mo', value: 'over-1200' },
+  { label: '£500 - £800 / mo', value: '500-800' },
+  { label: '£800 - £1,200 / mo', value: '800-1200' },
+  { label: '£1,200+ / mo', value: 'over-1200' }
 ]
 
 const accommodationPrefs = [
@@ -23,12 +22,12 @@ const accommodationPrefs = [
   { label: 'Shared House', desc: 'Rooms in a shared house with other students', value: 'shared' },
   { label: 'Studio Apartment', desc: 'Private, self-contained space', value: 'studio' },
   { label: 'Homestay', desc: 'Live with a local family', value: 'homestay' },
-  { label: 'Not sure yet', desc: "Help me decide", value: 'unsure' },
+  { label: 'Not sure yet', desc: "Help me decide", value: 'unsure' }
 ]
 
 const priorities = [
   'Close to university', 'Bills included', 'Fast internet', 'Quiet / study-focused',
-  'Social environment', 'En-suite bathroom', 'Gym / facilities', 'Good transport links',
+  'Social environment', 'En-suite bathroom', 'Gym / facilities', 'Good transport links'
 ]
 
 type FormData = {
@@ -65,7 +64,7 @@ export default function GetMatchedPage() {
     lastName: '',
     email: '',
     phone: '',
-    message: '',
+    message: ''
   })
 
   const cities =
@@ -78,13 +77,31 @@ export default function GetMatchedPage() {
       ...f,
       priorities: f.priorities.includes(p)
         ? f.priorities.filter((x) => x !== p)
-        : [...f.priorities, p],
+        : [...f.priorities, p]
     }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    
+    try {
+      const response = await fetch('/api/get-matched', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(form)
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit operations data')
+      }
+
+      setSubmitted(true)
+    } catch (error) {
+      console.error('Submission tracking failure', error)
+      alert('System error. Please verify input and try again.')
+    }
   }
 
   const progress = ((step - 1) / (TOTAL_STEPS - 1)) * 100
@@ -95,17 +112,17 @@ export default function GetMatchedPage() {
         <Navigation />
         <main className="min-h-screen bg-[#F7F6F3] flex items-center justify-center pt-20 pb-20 px-6">
           <div className="max-w-lg w-full text-center">
-            <div className="w-16 h-16 rounded-full bg-[#FFCC00] flex items-center justify-center mx-auto mb-8">
+            <div className="w-16 h-16 rounded-full bg-[#F2B705] flex items-center justify-center mx-auto mb-8">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
                 <path d="M5 14L11 20L23 8" stroke="#1B365D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <h1 className="font-heading text-4xl font-bold text-[#1A1A1A] mb-4">
-              {"You're all set, "}{form.firstName}.
+              {"You're all set."}
             </h1>
             <p className="text-[#6B6860] text-lg leading-relaxed mb-8">
               {"We've received your details and one of our accommodation advisors will be in touch within 24 hours with personalised options near "}
-              {form.university || form.city}.
+              {form.university || form.city || "your destination"}.
             </p>
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E1] text-left mb-8">
               <h3 className="font-heading font-bold text-[#1A1A1A] mb-4">{"What happens next"}</h3>
@@ -114,7 +131,7 @@ export default function GetMatchedPage() {
                   { step: '1', text: 'Our team reviews your requirements' },
                   { step: '2', text: 'We shortlist verified properties that match your needs' },
                   { step: '3', text: "You'll receive a personalised selection within 24 hours" },
-                  { step: '4', text: "We're here to answer questions and help you decide" },
+                  { step: '4', text: "We're here to answer questions and help you decide" }
                 ].map((item) => (
                   <div key={item.step} className="flex items-start gap-3">
                     <div className="w-6 h-6 rounded-full bg-[#1B365D] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
@@ -125,9 +142,11 @@ export default function GetMatchedPage() {
                 ))}
               </div>
             </div>
-            <p className="text-[#6B6860] text-sm">
-              {"Check your inbox at "}<strong>{form.email}</strong>{". We'll be in touch shortly."}
-            </p>
+            {form.email && (
+              <p className="text-[#6B6860] text-sm">
+                {"Check your inbox at "}<strong>{form.email}</strong>{". We'll be in touch shortly."}
+              </p>
+            )}
           </div>
         </main>
         <Footer />
@@ -143,8 +162,8 @@ export default function GetMatchedPage() {
           {/* Header */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1B365D]/8 border border-[#1B365D]/15 mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#FFCC00]" aria-hidden="true" />
-              <span className="text-[#1B365D] text-sm font-medium">Free matching process</span>
+              <div className="w-2 h-2 rounded-full bg-[#F2B705]" aria-hidden="true" />
+              <span className="text-[#1B365D] text-sm font-medium">{"Free matching process"}</span>
             </div>
             <h1 className="font-heading text-4xl lg:text-5xl font-bold text-[#1A1A1A] text-balance mb-4">
               {"Let's find your home."}
@@ -157,12 +176,12 @@ export default function GetMatchedPage() {
           {/* Progress bar */}
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
-              <span className="text-xs font-medium text-[#6B6860]">Step {step} of {TOTAL_STEPS}</span>
-              <span className="text-xs font-medium text-[#1B365D]">{Math.round(progress)}% complete</span>
+              <span className="text-xs font-medium text-[#6B6860]">{"Step "}{step}{" of "}{TOTAL_STEPS}</span>
+              <span className="text-xs font-medium text-[#1B365D]">{Math.round(progress)}{"% complete"}</span>
             </div>
             <div className="h-1.5 bg-[#E8E6E1] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#FFCC00] rounded-full transition-all duration-500"
+                className="h-full bg-[#F2B705] rounded-full transition-all duration-500"
                 style={{ width: `${progress + (100 / (TOTAL_STEPS - 1))}%` }}
               />
             </div>
@@ -174,12 +193,12 @@ export default function GetMatchedPage() {
               {/* Step 1: Destination */}
               {step === 1 && (
                 <div>
-                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Where are you heading?</h2>
+                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"Where are you heading?"}</h2>
                   <p className="text-[#6B6860] mb-7">{"Tell us your destination and we'll focus on what's available there."}</p>
 
                   <div className="flex flex-col gap-5">
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">Country</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Country (optional)"}</label>
                       <div className="grid grid-cols-3 gap-3">
                         {countries.map((c) => (
                           <button
@@ -200,7 +219,7 @@ export default function GetMatchedPage() {
 
                     {form.country && (
                       <div>
-                        <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">City</label>
+                        <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"City (optional)"}</label>
                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {cities.map((c) => (
                             <button
@@ -222,7 +241,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label htmlFor="university" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        University <span className="text-[#6B6860] font-normal">(optional)</span>
+                        {"University "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
                       </label>
                       <input
                         id="university"
@@ -240,13 +259,13 @@ export default function GetMatchedPage() {
               {/* Step 2: Timing & Budget */}
               {step === 2 && (
                 <div>
-                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Timing and budget</h2>
-                  <p className="text-[#6B6860] mb-7">This helps us narrow down the right options for you.</p>
+                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"Timing and budget"}</h2>
+                  <p className="text-[#6B6860] mb-7">{"This helps us narrow down the right options for you."}</p>
 
                   <div className="flex flex-col gap-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="move-in" className="block text-sm font-semibold text-[#1A1A1A] mb-2">Move-in date</label>
+                        <label htmlFor="move-in" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Move-in date (optional)"}</label>
                         <input
                           id="move-in"
                           type="month"
@@ -256,25 +275,25 @@ export default function GetMatchedPage() {
                         />
                       </div>
                       <div>
-                        <label htmlFor="duration" className="block text-sm font-semibold text-[#1A1A1A] mb-2">Duration</label>
+                        <label htmlFor="duration" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Duration (optional)"}</label>
                         <select
                           id="duration"
                           value={form.duration}
                           onChange={(e) => setForm((f) => ({ ...f, duration: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-white"
                         >
-                          <option value="">Select duration</option>
-                          <option value="semester">One semester</option>
-                          <option value="year">One academic year</option>
-                          <option value="2-years">2 years</option>
-                          <option value="3-years">3+ years</option>
-                          <option value="unsure">Not sure yet</option>
+                          <option value="">{"Select duration"}</option>
+                          <option value="semester">{"One semester"}</option>
+                          <option value="year">{"One academic year"}</option>
+                          <option value="2-years">{"2 years"}</option>
+                          <option value="3-years">{"3+ years"}</option>
+                          <option value="unsure">{"Not sure yet"}</option>
                         </select>
                       </div>
                     </div>
 
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">Monthly budget</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Monthly budget (optional)"}</label>
                       <div className="grid grid-cols-2 gap-3">
                         {budgetRanges.map((b) => (
                           <button
@@ -299,12 +318,12 @@ export default function GetMatchedPage() {
               {/* Step 3: Preferences */}
               {step === 3 && (
                 <div>
-                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">What matters most to you?</h2>
+                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"What matters most to you?"}</h2>
                   <p className="text-[#6B6860] mb-7">{"We use this to match you with accommodation that fits your life, not just your budget."}</p>
 
                   <div className="flex flex-col gap-5">
                     <div>
-                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">Type of accommodation</label>
+                      <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">{"Type of accommodation (optional)"}</label>
                       <div className="flex flex-col gap-2">
                         {accommodationPrefs.map((a) => (
                           <button
@@ -337,7 +356,7 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">
-                        Key priorities <span className="text-[#6B6860] font-normal">(select all that apply)</span>
+                        {"Key priorities "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
                       </label>
                       <div className="flex flex-wrap gap-2">
                         {priorities.map((p) => (
@@ -347,7 +366,7 @@ export default function GetMatchedPage() {
                             onClick={() => togglePriority(p)}
                             className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
                               form.priorities.includes(p)
-                                ? 'border-[#FFCC00] bg-[#FFCC00] text-[#1B365D]'
+                                ? 'border-[#F2B705] bg-[#F2B705] text-[#1B365D]'
                                 : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
                             }`}
                           >
@@ -363,28 +382,26 @@ export default function GetMatchedPage() {
               {/* Step 4: Contact */}
               {step === 4 && (
                 <div>
-                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"Last step — how do we reach you?"}</h2>
-                  <p className="text-[#6B6860] mb-7">{"We'll send your personalised accommodation matches directly to your inbox within 24 hours."}</p>
+                  <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">{"Last step, how do we reach you?"}</h2>
+                  <p className="text-[#6B6860] mb-7">{"Only your phone number is required to process instant accommodation options."}</p>
 
                   <div className="flex flex-col gap-4">
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label htmlFor="first-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">First name</label>
+                        <label htmlFor="first-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"First name (optional)"}</label>
                         <input
                           id="first-name"
                           type="text"
-                          required
                           value={form.firstName}
                           onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
                         />
                       </div>
                       <div>
-                        <label htmlFor="last-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">Last name</label>
+                        <label htmlFor="last-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Last name (optional)"}</label>
                         <input
                           id="last-name"
                           type="text"
-                          required
                           value={form.lastName}
                           onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
                           className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
@@ -393,11 +410,10 @@ export default function GetMatchedPage() {
                     </div>
 
                     <div>
-                      <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">Email address</label>
+                      <label htmlFor="email" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Email address (optional)"}</label>
                       <input
                         id="email"
                         type="email"
-                        required
                         value={form.email}
                         onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                         placeholder="you@example.com"
@@ -407,35 +423,36 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label htmlFor="phone" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        Phone / WhatsApp <span className="text-[#6B6860] font-normal">(optional)</span>
+                        {"Phone / WhatsApp "} <span className="text-[#1B365D] font-bold">{"(required)"}</span>
                       </label>
                       <input
                         id="phone"
                         type="tel"
+                        required
                         value={form.phone}
                         onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                         placeholder="+1 234 567 8901"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#1B365D]/30 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-[#1B365D]/5"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="message" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        Anything else we should know? <span className="text-[#6B6860] font-normal">(optional)</span>
+                        {"Anything else we should know? "} <span className="text-[#6B6860] font-normal">{"(optional)"}</span>
                       </label>
                       <textarea
                         id="message"
                         rows={3}
                         value={form.message}
                         onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
-                        placeholder="e.g. I'm bringing my partner, I need parking, I'm arriving in late September..."
+                        placeholder="e.g. I am bringing my partner, I need parking, I am arriving in late September..."
                         className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors resize-none"
                       />
                     </div>
 
                     <p className="text-xs text-[#6B6860]">
-                      By submitting, you agree to our{' '}
-                      <a href="/privacy" className="underline hover:text-[#1B365D]">privacy policy</a>. We will never share your details without your permission.
+                      {"By submitting, you agree to our "}
+                      <a href="/privacy" className="underline hover:text-[#1B365D]">{"privacy policy"}</a>{". We will never share your details without your permission."}
                     </p>
                   </div>
                 </div>
@@ -449,8 +466,10 @@ export default function GetMatchedPage() {
                     onClick={() => setStep((s) => s - 1)}
                     className="flex items-center gap-2 px-5 py-3 rounded-xl border border-[#E8E6E1] text-[#6B6860] font-medium text-sm hover:border-[#1B365D]/40 hover:text-[#1A1A1A] transition-all"
                   >
-                    <ChevronLeft className="w-4 h-4" />
-                    Back
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M15 18l-6-6 6-6"/>
+                    </svg>
+                    {"Back"}
                   </button>
                 ) : (
                   <div />
@@ -460,20 +479,23 @@ export default function GetMatchedPage() {
                   <button
                     type="button"
                     onClick={() => setStep((s) => s + 1)}
-                    disabled={step === 1 && !form.country}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                    className="flex items-center gap-2 px-7 py-3 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm"
                   >
-                    Continue
-                    <ChevronRight className="w-4 h-4" />
+                    {"Continue"}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
                   </button>
                 ) : (
                   <button
                     type="submit"
-                    disabled={!form.firstName || !form.email}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#FFCC00] text-[#1B365D] font-bold rounded-xl hover:bg-[#E6B800] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                    disabled={!form.phone}
+                    className="flex items-center gap-2 px-7 py-3 bg-[#F2B705] text-[#1B365D] font-bold rounded-xl hover:bg-[#D9A404] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
                   >
-                    Get my matches
-                    <ChevronRight className="w-4 h-4" />
+                    {"Get my matches"}
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M9 18l6-6-6-6"/>
+                    </svg>
                   </button>
                 )}
               </div>
