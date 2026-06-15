@@ -30,14 +30,9 @@ const navLinks = [
       { label: 'All Cities', href: '/cities' }
     ]
   },
-  {
-    label: 'How it Works',
-    href: '/about'
-  },
-  {
-    label: 'Resources',
-    href: '/moving-abroad'
-  } 
+  { label: 'Get Matched', href: '/get-matched' },
+  { label: 'How it works', href: '/about' },
+  { label: 'Resources', href: '/moving-abroad' }
 ]
 
 export default function Navbar() {
