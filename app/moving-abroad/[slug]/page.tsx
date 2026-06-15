@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation'
 
 import { countries } from '@/lib/country-data'
 import {
-  getCountryMovingAbroadLinks,
   getMovingAbroadArticleBySlug,
   movingAbroadArticles,
   type MovingAbroadCountrySlug,
@@ -18,21 +17,14 @@ const countryLabels: Record<MovingAbroadCountrySlug, string> = {
   australia: 'Australia',
 }
 
-const nextStepLinks = [
-  { href: '/moving-abroad', label: 'Browse all moving abroad guides' },
-  { href: '/cities', label: 'Explore student cities' },
-  { href: '/universities', label: 'Find your university' },
-  { href: '/get-matched', label: 'Get matched with accommodation' },
-]
-
-export function generateStaticParams() {
-  return movingAbroadArticles.map((article) => ({ slug: article.slug }))
-}
-
 type MovingAbroadArticlePageProps = {
   params: Promise<{
     slug: string
   }>
+}
+
+export function generateStaticParams() {
+  return movingAbroadArticles.map((article) => ({ slug: article.slug }))
 }
 
 function getRelevantCountries(countrySlugs: MovingAbroadCountrySlug[]) {
@@ -41,11 +33,29 @@ function getRelevantCountries(countrySlugs: MovingAbroadCountrySlug[]) {
     .filter((country): country is NonNullable<(typeof countries)[number]> => country !== undefined)
 }
 
-function getRelatedGuides(slug: string, countrySlugs: MovingAbroadCountrySlug[], category: string) {
+function titleCase(text: string) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word) => {
+      if (!word) return word
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    .join(' ')
+}
+
+function relatedGuidesForArticle(articleSlug: string, countrySlugs: MovingAbroadCountrySlug[], category: string) {
+  const seen = new Set<string>()
+
   return movingAbroadArticles
-    .filter((article) => article.slug !== slug)
+    .filter((article) => article.slug !== articleSlug)
     .filter((article) => article.category === category || article.countries.some((country) => countrySlugs.includes(country)))
-    .slice(0, 6)
+    .filter((article) => {
+      if (seen.has(article.slug)) return false
+      seen.add(article.slug)
+      return true
+    })
+    .slice(0, 4)
 }
 
 export async function generateMetadata({ params }: MovingAbroadArticlePageProps): Promise<Metadata> {
@@ -68,14 +78,14 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
   const { slug } = await params
   const article = getMovingAbroadArticleBySlug(slug)
 
-  if (article === undefined) {
+  if (!article) {
     notFound()
   }
 
   const relevantCountries = getRelevantCountries(article.countries)
-  const usesHousingCta = article.ctaVariant === 'housing'
-  const relatedGuides = getRelatedGuides(article.slug, article.countries, article.category)
-  const countryGuides = article.countries.flatMap((countrySlug) => getCountryMovingAbroadLinks(countrySlug))
+  const relatedGuides = relatedGuidesForArticle(article.slug, article.countries, article.category)
+
+  const keyTakeaways = article.sections.slice(0, 3)
 
   return (
     <>
@@ -121,23 +131,23 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
             <article className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-8 lg:p-10">
                 <div className="text-primary text-sm font-bold tracking-widest uppercase mb-4">
-                  What this guide covers
+                  Key takeaways
                 </div>
                 <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
-                  The decision this guide helps you make
+                  The main decisions in this guide
                 </h2>
                 <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                  This guide is built to help you move from broad uncertainty to a specific next step. It gives you the core tradeoffs, the common mistakes, and the practical order of work.
+                  Use these points to get the shape of the decision before reading the full sections below.
                 </p>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  {article.sections.map((section, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {keyTakeaways.map((section, index) => (
                     <div key={section.title} className="rounded-2xl bg-white border border-[var(--color-mid-gray)] p-5">
                       <div className="text-xs font-bold tracking-widest uppercase text-primary mb-2">
-                        Section {index + 1}
+                        Point {index + 1}
                       </div>
                       <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2">
-                        {section.title}
+                        {titleCase(section.title)}
                       </h3>
                       <p className="text-muted-foreground text-sm leading-relaxed">
                         {section.summary}
@@ -150,16 +160,17 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
               {article.sections.map((section, index) => (
                 <section
                   key={section.title}
+                  id={`section-${index + 1}`}
                   className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-8 lg:p-10"
                 >
                   <div className="inline-flex items-center gap-2 mb-5">
                     <div className="w-8 h-px bg-accent" aria-hidden="true" />
                     <span className="text-primary text-sm font-bold tracking-widest uppercase">
-                      Guide section {index + 1}
+                      {`Section ${index + 1}`}
                     </span>
                   </div>
                   <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
-                    {section.title}
+                    {titleCase(section.title)}
                   </h2>
                   <p className="text-muted-foreground text-base leading-relaxed">
                     {section.summary}
@@ -176,7 +187,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                     </span>
                   </div>
                   <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-5">
-                    Keep going from here
+                    Keep moving in the right order
                   </h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {relatedGuides.map((guide) => (
@@ -208,76 +219,36 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </section>
               )}
 
-              {usesHousingCta ? (
-                <section className="rounded-2xl bg-primary p-8 lg:p-10">
-                  <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
-                    Student housing match
-                  </div>
-                  <h2 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-4 text-balance">
-                    Want help matching your accommodation to this plan?
-                  </h2>
-                  <p className="text-white/70 text-base leading-relaxed mb-7">
-                    Tell us your university, budget, room preference, and move-in timeline. HearthAway can help you compare suitable student accommodation before you fly.
-                  </p>
-                  <Link
-                    href="/get-matched"
-                    className="inline-flex px-8 py-4 bg-accent text-primary font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
-                  >
-                    Get matched
-                  </Link>
-                </section>
-              ) : (
-                <section className="rounded-2xl bg-primary p-8 lg:p-10">
-                  <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
-                    Planning support
-                  </div>
-                  <h2 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-4 text-balance">
-                    Turn this guide into a clean next step.
-                  </h2>
-                  <p className="text-white/70 text-base leading-relaxed mb-7">
-                    Use this guide to narrow your decision, then move into city, university, and housing pages with a sharper brief.
-                  </p>
-                  <Link
-                    href="/get-matched"
-                    className="inline-flex px-8 py-4 bg-accent text-primary font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
-                  >
-                    Get matched
-                  </Link>
-                </section>
-              )}
+              <section className="rounded-2xl bg-primary p-8 lg:p-10">
+                <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
+                  Next step
+                </div>
+                <h2 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-4 text-balance">
+                  Turn this into a housing plan.
+                </h2>
+                <p className="text-white/70 text-base leading-relaxed mb-7">
+                  Use this guide to narrow your move, then compare city and university pages with a sharper brief.
+                </p>
+                <Link
+                  href="/get-matched"
+                  className="inline-flex px-8 py-4 bg-accent text-primary font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
+                >
+                  Get matched
+                </Link>
+              </section>
             </article>
 
             <aside className="space-y-5">
               <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-6">
                 <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-4">
-                  On this page
-                </h2>
-                <div className="space-y-2">
-                  {article.sections.map((section, index) => (
-                    <a
-                      key={section.title}
-                      href={`#section-${index + 1}`}
-                      className="group flex items-center justify-between rounded-xl bg-white border border-[var(--color-mid-gray)] px-4 py-3 text-sm font-semibold text-primary hover:border-primary/30 transition-colors"
-                    >
-                      <span>{section.title}</span>
-                      <span className="group-hover:translate-x-1 transition-transform" aria-hidden="true">
-                        &rarr;
-                      </span>
-                    </a>
-                  ))}
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
-                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-4">
-                  Relevant country hubs
+                  Country links
                 </h2>
                 <div className="space-y-2">
                   {relevantCountries.map((country) => (
                     <Link
                       key={country.slug}
                       href={`/${country.slug}`}
-                      className="block rounded-xl bg-[var(--color-warm-gray)] border border-[var(--color-mid-gray)] px-4 py-3 hover:border-primary/30 transition-colors"
+                      className="block rounded-xl bg-white border border-[var(--color-mid-gray)] px-4 py-3 hover:border-primary/30 transition-colors"
                     >
                       <span className="block text-sm font-bold text-charcoal-ink mb-1">
                         Study in {country.name}
@@ -292,69 +263,13 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
 
               <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
                 <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-3">
-                  Country specific guides
-                </h2>
-                <div className="space-y-2">
-                  {countryGuides.map((guide) => (
-                    <Link
-                      key={guide.href}
-                      href={guide.href}
-                      className="block rounded-xl bg-[var(--color-warm-gray)] border border-[var(--color-mid-gray)] px-4 py-3 hover:border-primary/30 transition-colors"
-                    >
-                      <span className="block text-sm font-bold text-charcoal-ink mb-1">
-                        {guide.title}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {guide.category} &middot; {guide.readTime}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-
-              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
-                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-3">
-                  Guide status
+                  Guide details
                 </h2>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {article.stage} guide for {article.category}. Use the sections above as the main reading path, then move to the matching country or housing page.
+                  Category: {article.category}. Stage: {article.stage}. This guide is built to help you move from broad planning into a specific decision.
                 </p>
               </section>
             </aside>
-          </div>
-        </section>
-
-        <section className="bg-[var(--color-warm-gray)] py-14 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-              <div className="lg:col-span-1">
-                <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                  Next steps
-                </div>
-                <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
-                  Move from guidance to local planning
-                </h2>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Once the broad move is clear, use city and university pages to narrow the housing search.
-                </p>
-              </div>
-              <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4">
-                {nextStepLinks.map((step) => (
-                  <Link
-                    key={step.href}
-                    href={step.href}
-                    className="group bg-white rounded-2xl p-6 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200"
-                  >
-                    <h3 className="font-heading font-bold text-lg text-charcoal-ink mb-3 group-hover:text-primary transition-colors">
-                      {step.label}
-                    </h3>
-                    <div className="text-sm font-semibold text-primary group-hover:translate-x-1 transition-transform inline-block">
-                      Continue &rarr;
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
       </main>
