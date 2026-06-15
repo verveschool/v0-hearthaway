@@ -3,8 +3,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import {
   getCountryMovingAbroadLinks,
-  getFeaturedMovingAbroadArticles,
-  getMovingAbroadArticleCard,
+  getFeaturedMovingAbroadGuides,
   getMovingAbroadCategoryGroups,
   type MovingAbroadArticleCard,
   type MovingAbroadCountrySlug,
@@ -12,41 +11,13 @@ import {
 import MatchedCTA from '@/components/matched-cta'
 
 const categories = getMovingAbroadCategoryGroups()
-const featuredGuides = getFeaturedMovingAbroadArticles().map((article) => getMovingAbroadArticleCard(article.slug))
-const preArrivalChecklist = getMovingAbroadArticleCard('pre-arrival-checklist')
-
-const beforeYouGoGuides = getHubGuides(['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list'])
-const accommodationGuides = getHubGuides(['choose-accommodation', 'accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement'])
-const budgetingGuides = getHubGuides(['real-cost-abroad', 'cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts'])
-const arrivalGuides = getHubGuides(['first-week', 'airport-to-home', 'healthcare', 'making-friends'])
+const featuredGuides = getFeaturedMovingAbroadGuides()
+const preArrivalChecklist = featuredGuides.find((g) => g.slug === 'pre-arrival-checklist')
 
 const preArrivalSteps = [
   'Confirm your offer, passport, visa timeline, and travel dates before booking anything irreversible.',
   'Lock accommodation with clear rent, deposit, contract, and move-in terms before you fly.',
   'Plan airport transport, payment access, mobile data, documents, and first-week essentials.',
-]
-
-const planningPillars = [
-  {
-    title: 'Before You Go',
-    description: 'Documents, visas, banking, packing, and the admin you need to finish at home.',
-    guides: beforeYouGoGuides,
-  },
-  {
-    title: 'Accommodation Decisions',
-    description: 'How to compare halls, private rooms, costs, scams, contracts, and move-in terms.',
-    guides: accommodationGuides,
-  },
-  {
-    title: 'Budgeting And Cost Of Living',
-    description: 'Build a realistic student budget around rent, deposits, bills, transport, and setup costs.',
-    guides: budgetingGuides,
-  },
-  {
-    title: 'Arrival And First Week',
-    description: 'Know what to do after landing, from key collection to campus admin and daily routines.',
-    guides: arrivalGuides,
-  },
 ]
 
 const countryPathways: { country: string; slug: MovingAbroadCountrySlug; description: string }[] = [
@@ -80,15 +51,26 @@ const nextSteps = [
   },
 ]
 
-function getHubGuides(slugs: string[]): MovingAbroadArticleCard[] {
-  return slugs.map(getMovingAbroadArticleCard)
+function titleCase(text: string) {
+  return text
+    .trim()
+    .split(/\s+/)
+    .map((word) => {
+      if (!word) return word
+      return word.charAt(0).toUpperCase() + word.slice(1)
+    })
+    .join(' ')
 }
 
 function GuideLink({ guide }: { guide: MovingAbroadArticleCard }) {
+  const displayCountries = guide.countries
+    .map((c) => (c === 'uk' ? 'UK' : c.charAt(0).toUpperCase() + c.slice(1)))
+    .join(' • ')
+
   return (
     <Link
       href={guide.href}
-      className="group bg-white rounded-2xl p-5 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200 flex flex-col"
+      className="group bg-white rounded-2xl p-5 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200 flex flex-col h-full"
     >
       <div className="flex items-center justify-between gap-4 mb-4">
         <span className="text-xs font-bold text-primary tracking-wider uppercase px-2.5 py-1 bg-accent rounded-full">
@@ -97,11 +79,17 @@ function GuideLink({ guide }: { guide: MovingAbroadArticleCard }) {
         <span className="text-xs text-muted-foreground flex-shrink-0">{guide.readTime}</span>
       </div>
       <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2 group-hover:text-primary transition-colors">
-        {guide.title}
+        {titleCase(guide.title)}
       </h3>
       <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">{guide.description}</p>
-      <div className="text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform inline-block">
-        Read guide &rarr;
+      
+      <div className="mt-auto pt-4 border-t border-[var(--color-mid-gray)] flex items-center justify-between">
+        <span className="text-xs font-medium text-muted-foreground">
+          {displayCountries}
+        </span>
+        <span className="text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform inline-block">
+          Read guide &rarr;
+        </span>
       </div>
     </Link>
   )
@@ -131,26 +119,28 @@ export default function MovingAbroadPage() {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
-              <Link
-                href={preArrivalChecklist.href}
-                className="group lg:col-span-2 bg-[var(--color-warm-gray)] rounded-2xl p-7 lg:p-8 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-xl transition-all duration-300 flex flex-col"
-              >
-                <span className="text-xs font-bold text-primary tracking-wider uppercase px-3 py-1.5 bg-accent rounded-full self-start mb-5">
-                  Start here
-                </span>
-                <h2 className="font-heading font-bold text-3xl text-charcoal-ink leading-tight mb-4 group-hover:text-primary transition-colors text-balance">
-                  {preArrivalChecklist.title}
-                </h2>
-                <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-2xl">
-                  {preArrivalChecklist.description}
-                </p>
-                <div className="flex items-center justify-between text-sm mt-auto">
-                  <span className="text-muted-foreground text-xs">{preArrivalChecklist.readTime}</span>
-                  <span className="text-primary font-semibold group-hover:translate-x-1 transition-transform inline-block">
-                    Open checklist &rarr;
+              {preArrivalChecklist && (
+                <Link
+                  href={preArrivalChecklist.href}
+                  className="group lg:col-span-2 bg-[var(--color-warm-gray)] rounded-2xl p-7 lg:p-8 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-xl transition-all duration-300 flex flex-col"
+                >
+                  <span className="text-xs font-bold text-primary tracking-wider uppercase px-3 py-1.5 bg-accent rounded-full self-start mb-5">
+                    Start here
                   </span>
-                </div>
-              </Link>
+                  <h2 className="font-heading font-bold text-3xl text-charcoal-ink leading-tight mb-4 group-hover:text-primary transition-colors text-balance">
+                    {titleCase(preArrivalChecklist.title)}
+                  </h2>
+                  <p className="text-muted-foreground text-base leading-relaxed mb-6 max-w-2xl">
+                    {preArrivalChecklist.description}
+                  </p>
+                  <div className="flex items-center justify-between text-sm mt-auto">
+                    <span className="text-muted-foreground text-xs">{preArrivalChecklist.readTime}</span>
+                    <span className="text-primary font-semibold group-hover:translate-x-1 transition-transform inline-block">
+                      Open checklist &rarr;
+                    </span>
+                  </div>
+                </Link>
+              )}
 
               <div className="bg-primary rounded-2xl p-7">
                 <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
@@ -185,7 +175,7 @@ export default function MovingAbroadPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              {featuredGuides.map((guide) => (
+              {featuredGuides.filter(g => g.slug !== 'pre-arrival-checklist').map((guide) => (
                 <GuideLink key={guide.href} guide={guide} />
               ))}
             </div>
@@ -193,45 +183,6 @@ export default function MovingAbroadPage() {
         </section>
 
         <section className="bg-white py-14 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-2xl mb-7">
-              <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                Guide routes
-              </div>
-              <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
-                Move through the journey in order
-              </h2>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                Work through the move in four layers. First admin. Then housing. Then budget. Then arrival.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {planningPillars.map((pillar) => (
-                <section key={pillar.title} className="bg-[var(--color-warm-gray)] rounded-2xl p-7 border border-[var(--color-mid-gray)]">
-                  <h3 className="font-heading font-bold text-xl text-charcoal-ink mb-3">{pillar.title}</h3>
-                  <p className="text-muted-foreground text-sm leading-relaxed mb-5">{pillar.description}</p>
-                  <div className="grid grid-cols-1 gap-3">
-                    {pillar.guides.map((guide) => (
-                      <Link
-                        key={guide.href}
-                        href={guide.href}
-                        className="group flex items-center justify-between gap-4 bg-white px-4 py-3 rounded-xl border border-[var(--color-mid-gray)] hover:border-primary/30 hover:bg-primary/5 transition-colors"
-                      >
-                        <span className="text-sm font-medium text-charcoal-ink group-hover:text-primary transition-colors">
-                          {guide.title}
-                        </span>
-                        <span className="text-xs flex-shrink-0 ml-4 text-muted-foreground">{guide.readTime}</span>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="bg-[var(--color-warm-gray)] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
               <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
@@ -244,51 +195,60 @@ export default function MovingAbroadPage() {
                 Use the topic groups to jump straight into the stage you are at now.
               </p>
             </div>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {categories.map((category) => (
-                <div key={category.name} className={`${category.color} rounded-2xl p-7`}>
-                  <h3 className={`font-heading font-bold text-xl ${category.textColor} mb-5`}>
-                    {category.name}
-                  </h3>
-                  <div className="flex flex-col gap-1">
-                    {category.articles.map((article) => (
-                      <Link
-                        key={article.href}
-                        href={article.href}
-                        className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
-                          category.color === 'bg-[#1B365D]'
-                            ? 'hover:bg-white/10'
-                            : category.color === 'bg-[#FFCC00]'
-                              ? 'hover:bg-primary/10'
-                              : 'bg-white hover:bg-primary/5 border border-[var(--color-mid-gray)]'
-                        }`}
-                      >
-                        <span
-                          className={`text-sm font-medium ${
+              {categories.map((category) => {
+                const uniqueArticles = category.articles.filter(
+                  article => !featuredGuides.some(featured => featured.slug === article.slug)
+                )
+
+                if (uniqueArticles.length === 0) return null
+
+                return (
+                  <div key={category.name} className={`${category.color} rounded-2xl p-7`}>
+                    <h3 className={`font-heading font-bold text-xl ${category.textColor} mb-5`}>
+                      {category.name}
+                    </h3>
+                    <div className="flex flex-col gap-1">
+                      {uniqueArticles.map((article) => (
+                        <Link
+                          key={article.href}
+                          href={article.href}
+                          className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
                             category.color === 'bg-[#1B365D]'
-                              ? 'text-white/90 group-hover:text-white'
-                              : 'text-charcoal-ink group-hover:text-primary'
-                          } transition-colors`}
-                        >
-                          {article.title}
-                        </span>
-                        <span
-                          className={`text-xs flex-shrink-0 ml-4 ${
-                            category.color === 'bg-[#1B365D]' ? 'text-white/50' : 'text-muted-foreground'
+                              ? 'hover:bg-white/10'
+                              : category.color === 'bg-[#FFCC00]'
+                                ? 'hover:bg-primary/10'
+                                : 'bg-white hover:bg-primary/5 border border-[var(--color-mid-gray)]'
                           }`}
                         >
-                          {article.readTime}
-                        </span>
-                      </Link>
-                    ))}
+                          <span
+                            className={`text-sm font-medium ${
+                              category.color === 'bg-[#1B365D]'
+                                ? 'text-white/90 group-hover:text-white'
+                                : 'text-charcoal-ink group-hover:text-primary'
+                            } transition-colors`}
+                          >
+                            {titleCase(article.title)}
+                          </span>
+                          <span
+                            className={`text-xs flex-shrink-0 ml-4 ${
+                              category.color === 'bg-[#1B365D]' ? 'text-white/50' : 'text-muted-foreground'
+                            }`}
+                          >
+                            {article.readTime}
+                          </span>
+                        </Link>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
         </section>
 
-        <section className="bg-white py-14 px-6">
+        <section className="bg-[var(--color-warm-gray)] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
               <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
@@ -303,7 +263,7 @@ export default function MovingAbroadPage() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               {countryPathways.map((pathway) => (
-                <div key={pathway.slug} className="bg-[var(--color-warm-gray)] rounded-2xl p-7 border border-[var(--color-mid-gray)]">
+                <div key={pathway.slug} className="bg-white rounded-2xl p-7 border border-[var(--color-mid-gray)]">
                   <h3 className="font-heading font-bold text-xl text-charcoal-ink mb-3">
                     {pathway.country}
                   </h3>
@@ -315,10 +275,10 @@ export default function MovingAbroadPage() {
                       <Link
                         key={guide.href}
                         href={guide.href}
-                        className="group flex items-center justify-between gap-4 bg-white px-4 py-3 rounded-xl border border-[var(--color-mid-gray)] hover:border-primary/30 hover:bg-primary/5 transition-colors"
+                        className="group flex items-center justify-between gap-4 bg-[var(--color-warm-gray)] px-4 py-3 rounded-xl border border-[var(--color-mid-gray)] hover:border-primary/30 hover:bg-white transition-colors"
                       >
                         <span className="text-sm font-medium text-charcoal-ink group-hover:text-primary transition-colors">
-                          {guide.title}
+                          {titleCase(guide.title)}
                         </span>
                         <span className="text-xs flex-shrink-0 text-muted-foreground">{guide.readTime}</span>
                       </Link>
@@ -330,7 +290,7 @@ export default function MovingAbroadPage() {
           </div>
         </section>
 
-        <section className="bg-[var(--color-warm-gray)] py-14 px-6">
+        <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               <div className="lg:col-span-1">
@@ -349,7 +309,7 @@ export default function MovingAbroadPage() {
                   <Link
                     key={step.href}
                     href={step.href}
-                    className="group bg-white rounded-2xl p-6 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200"
+                    className="group bg-[var(--color-warm-gray)] rounded-2xl p-6 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg hover:bg-white transition-all duration-200"
                   >
                     <h3 className="font-heading font-bold text-lg text-charcoal-ink mb-3 group-hover:text-primary transition-colors">
                       {step.title}
@@ -365,7 +325,7 @@ export default function MovingAbroadPage() {
           </div>
         </section>
 
-        <section className="bg-white py-14 px-6">
+        <section className="bg-[var(--color-warm-gray)] py-14 px-6 border-t border-[var(--color-mid-gray)]">
           <div className="max-w-7xl mx-auto">
             <MatchedCTA
               variant="full"
