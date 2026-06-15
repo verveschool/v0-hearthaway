@@ -31,14 +31,14 @@ const navLinks = [
     ],
   },
   {
-    label: 'Moving Abroad',
-    href: '/moving-abroad',
-  },
-  {
     /* Refactored from "About" to "How it Works" to match the layout direction */
     label: 'How it Works',
     href: '/about',
-  }
+  },
+  {
+    label: 'Resources',
+    href: '/moving-abroad',
+  } 
 ]
 
 export default function Navbar() {
