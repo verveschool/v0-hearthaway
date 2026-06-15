@@ -28,7 +28,7 @@ export type MovingAbroadArticle = {
 
 export type MovingAbroadArticleCard = Pick<
   MovingAbroadArticle,
-  'slug' | 'title' | 'category' | 'description' | 'readTime'
+  'slug' | 'title' | 'category' | 'description' | 'readTime' | 'countries'
 > & {
   href: string
 }
@@ -545,6 +545,7 @@ function toMovingAbroadArticleCard(article: MovingAbroadArticle): MovingAbroadAr
     category: article.category,
     description: article.description,
     readTime: article.readTime,
+    countries: article.countries,
     href: getMovingAbroadHref(article.slug),
   }
 }
