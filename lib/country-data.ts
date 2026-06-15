@@ -2,19 +2,19 @@ import type { MovingAbroadArticleCard, MovingAbroadCountrySlug } from '@/lib/mov
 import {
   countryMovingAbroadSlugs,
   getMovingAbroadArticleCard,
-  getMovingAbroadArticlesByCountry,
+  getMovingAbroadArticlesByCountry
 } from '@/lib/moving-abroad-data'
 
 export type MovingAbroadLink = MovingAbroadArticleCard
 
 function getMovingAbroadLinksForCountry(countrySlug: MovingAbroadCountrySlug): MovingAbroadLink[] {
   const countryArticleSlugs = new Set(
-    getMovingAbroadArticlesByCountry(countrySlug).map((article) => article.slug),
+    getMovingAbroadArticlesByCountry(countrySlug).map((article) => article.slug)
   )
 
   return countryMovingAbroadSlugs[countrySlug].map((articleSlug) => {
     if (!countryArticleSlugs.has(articleSlug)) {
-      throw new Error(`Moving abroad article ${articleSlug} is not valid for ${countrySlug}`)
+      throw new Error(`moving abroad article ${articleSlug} is not valid for ${countrySlug}`)
     }
 
     return getMovingAbroadArticleCard(articleSlug)
@@ -44,12 +44,23 @@ export const countries: CountryPlace[] = [
     heroImage: '/images/dest-uk.png',
     badge: 'Most popular',
     universityCount: '140+',
-    citySlugs: ['london', 'manchester', 'edinburgh', 'birmingham', 'bristol', 'leeds'],
-    universitySlugs: ['manchester', 'ucl', 'edinburgh', 'birmingham', 'bristol', 'leeds'],
-    summary: 'A globally recognised study destination with historic universities, diverse student cities, and a broad range of accommodation options for every stage of your move.',
-    overview: 'Studying in the UK gives international students access to compact academic terms, strong transport links, and city choices that range from London scale to smaller, campus-led communities. Housing demand can move quickly around major intakes, so it helps to compare location, commute, contract length, and bills before you arrive.',
-    studentHousingNotes: 'Placeholder housing guidance: prioritise verified accommodation close to your campus or a direct transport route, and check whether bills, tenancy length, deposits, and guarantor requirements match your visa timeline.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('uk'),
+    citySlugs: [
+      'london', 'manchester', 'edinburgh', 'birmingham', 'bristol', 
+      'leeds', 'sheffield', 'nottingham', 'newcastle', 'liverpool', 
+      'glasgow', 'cardiff', 'belfast', 'coventry'
+    ],
+    universitySlugs: [
+      'ucl', 'kcl', 'imperial', 'lse', 'qmul', 'manchester', 'mmu', 
+      'edinburgh', 'heriot-watt', 'birmingham', 'aston', 'bristol', 
+      'uwe-bristol', 'leeds', 'leeds-beckett', 'sheffield', 'sheffield-hallam', 
+      'nottingham', 'nottingham-trent', 'newcastle', 'northumbria', 'liverpool', 
+      'ljmu', 'glasgow', 'strathclyde', 'cardiff', 'cardiff-met', 'queens-belfast', 
+      'ulster', 'coventry', 'warwick'
+    ],
+    summary: 'a globally recognised study destination with historic universities, diverse student cities, and a broad range of accommodation options for every stage of your move.',
+    overview: 'studying in the uk gives international students access to compact academic terms, strong transport links, and city choices that range from london scale to smaller campus led communities. housing demand moves rapidly around major intakes, so it is critical to compare location, commute, contract length, and bills before you arrive.',
+    studentHousingNotes: 'the 2026 visa regulations now require proving £1,529 per month for london living costs or £1,171 outside the capital. with the complete shift to digital e-visas and strict 28 day financial holding rules, securing verified tenancy agreements early prevents visa application delays and protects your capital from unregulated landlord scams.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('uk')
   },
   {
     name: 'Ireland',
@@ -58,12 +69,12 @@ export const countries: CountryPlace[] = [
     heroImage: '/images/dest-ireland.png',
     badge: 'Rising in popularity',
     universityCount: '30+',
-    citySlugs: ['dublin', 'cork'],
-    universitySlugs: ['tcd', 'ucd', 'ucc', 'galway'],
-    summary: 'A welcoming English-speaking destination with respected universities, a close-knit international student community, and strong city-centre student life.',
-    overview: 'Ireland is popular with students who want an English-speaking study experience, friendly campus communities, and access to technology, business, culture, and research networks. Housing is often competitive in Dublin and other student cities, so start with campus location and realistic commute options before narrowing your search.',
-    studentHousingNotes: 'Placeholder housing guidance: focus on verified listings, commute reliability, utility inclusions, and whether the neighbourhood gives you convenient access to campus, groceries, and late-evening transport.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('ireland'),
+    citySlugs: ['dublin', 'cork', 'galway'],
+    universitySlugs: ['tcd', 'ucd', 'dcu', 'tud', 'ucc', 'mtu', 'galway', 'atu'],
+    summary: 'a welcoming english speaking destination with respected universities, a close knit international student community, and strong city centre student life.',
+    overview: 'ireland is popular with students who want an english speaking study experience, friendly campus communities, and access to technology, business, culture, and research networks. housing is intensely competitive in dublin and other student cities, so start with campus location and realistic commute options before narrowing your search.',
+    studentHousingNotes: 'ireland faces a structural housing supply squeeze. international students must secure housing before arrival. rely entirely on verified operators and public transit lines to avoid extreme commute times and sophisticated rental fraud. never send private wire transfers for unseen rooms.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('ireland')
   },
   {
     name: 'Australia',
@@ -72,13 +83,17 @@ export const countries: CountryPlace[] = [
     heroImage: '/images/dest-australia.png',
     badge: 'Excellent quality of life',
     universityCount: '40+',
-    citySlugs: ['sydney', 'melbourne', 'brisbane'],
-    universitySlugs: ['melbourne', 'sydney', 'monash', 'uq'],
-    summary: 'A high-quality study destination known for major research universities, outdoor lifestyles, multicultural cities, and flexible accommodation choices.',
-    overview: 'Australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large university networks. Because distances can be bigger than they look, housing decisions should weigh commute routes, weekly rent, bills, and how close you want to be to campus life.',
-    studentHousingNotes: 'Placeholder housing guidance: compare weekly rent with transport time, check bond and contract terms, and confirm whether utilities, furnishing, and student support are included before committing.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('australia'),
-  },
+    citySlugs: ['sydney', 'melbourne', 'brisbane', 'perth', 'adelaide', 'canberra', 'gold-coast'],
+    universitySlugs: [
+      'sydney', 'unsw', 'uts', 'macquarie', 'melbourne', 'monash', 'rmit', 'deakin', 
+      'uq', 'qut', 'griffith', 'uwa', 'curtin', 'ecu', 'adelaide', 'unisa', 'flinders', 
+      'anu', 'uc', 'bond', 'griffith-gc'
+    ],
+    summary: 'a high quality study destination known for major research universities, outdoor lifestyles, multicultural cities, and flexible accommodation choices.',
+    overview: 'australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large university networks. because distances can be massive, housing decisions must weigh commute routes, weekly rent, bills, and proximity to campus life.',
+    studentHousingNotes: 'the 2026 national cap of 295,000 international students heavily favors universities that provide guaranteed housing. competition for private rentals in major hubs is fierce. anchor your search directly to train lines, expect strict bond requirements, and factor in up to a$1,650 per month for prime real estate in sydney or melbourne.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('australia')
+  }
 ]
 
 export function getCountryBySlug(slug: CountryPlace['slug']): CountryPlace {
