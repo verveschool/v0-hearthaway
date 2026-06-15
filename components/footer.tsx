@@ -9,9 +9,7 @@ const footerLinks = {
     { label: 'United Kingdom', href: '/uk' },
     { label: 'Ireland', href: '/ireland' },
     { label: 'Australia', href: '/australia' },
-    { label: 'All Cities', href: '/cities' }
-  ],
-  Universities: [
+    { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' }
   ],
   Students: [
@@ -48,7 +46,7 @@ export default function Footer() {
 
       {/* Links Grid */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">
@@ -137,6 +135,7 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-5 text-xs md:text-sm text-white/40">
+            <Link href="/partners" className="hover:text-white font-medium transition-colors">{"For Partners"}</Link>
             <Link href="/privacy" className="hover:text-white transition-colors">{"Privacy"}</Link>
             <Link href="/terms" className="hover:text-white transition-colors">{"Terms"}</Link>
             <Link href="/cookies" className="hover:text-white transition-colors">{"Cookies"}</Link>
