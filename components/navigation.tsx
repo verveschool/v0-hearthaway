@@ -15,8 +15,8 @@ const navLinks = [
       { label: 'All Universities', href: '/universities' },
       { label: 'United Kingdom', href: '/uk/universities' },
       { label: 'Ireland', href: '/ireland/universities' },
-      { label: 'Australia', href: '/australia/universities' },
-    ],
+      { label: 'Australia', href: '/australia/universities' }
+    ]
   },
   {
     label: 'Cities',
@@ -27,17 +27,16 @@ const navLinks = [
       { label: 'Dublin', href: '/cities/dublin' },
       { label: 'Sydney', href: '/cities/sydney' },
       { label: 'Melbourne', href: '/cities/melbourne' },
-      { label: 'All Cities', href: '/cities' },
-    ],
+      { label: 'All Cities', href: '/cities' }
+    ]
   },
   {
-    /* Refactored from "About" to "How it Works" to match the layout direction */
     label: 'How it Works',
-    href: '/about',
+    href: '/about'
   },
   {
     label: 'Resources',
-    href: '/moving-abroad',
+    href: '/moving-abroad'
   } 
 ]
 
@@ -45,7 +44,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
 
-  // Close menus when resizing to desktop screens
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -62,7 +60,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
-          {/* Logo Brand Segment */}
+          {/* logo brand segment */}
           <div className="flex-shrink-0">
             <Link href="/" aria-label="HearthAway Home" className="flex items-center">
               <Image
@@ -76,7 +74,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* Desktop Navigation Links */}
+          {/* desktop navigation links */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link, idx) => (
               <div 
@@ -96,7 +94,7 @@ export default function Navbar() {
                   </Link>
                 )}
 
-                {/* Submenu Dropdown Rendering */}
+                {/* submenu dropdown rendering */}
                 {link.dropdown && activeDropdown === idx && (
                   <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 z-50 border border-slate-100">
                     {link.dropdown.map((subLink, subIdx) => (
@@ -115,13 +113,13 @@ export default function Navbar() {
             
             <Link
               href="/get-matched"
-              className="px-5 py-2.5 bg-[#FFCC00] text-[#1B365D] font-bold text-sm rounded-lg hover:bg-[#E6B800] transition-colors shadow-sm"
+              className="px-5 py-2.5 bg-[#F2B705] text-[#1B365D] font-bold text-sm rounded-lg hover:bg-[#D9A404] transition-colors shadow-sm"
             >
               Get Matched
             </Link>
           </div>
 
-          {/* Mobile Hamburguer Action Trigger */}
+          {/* mobile hamburger action trigger */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
@@ -134,14 +132,14 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer Panel */}
+      {/* mobile drawer panel */}
       {isOpen && (
         <div className="md:hidden bg-[#162e50] border-t border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-inner">
           {navLinks.map((link, idx) => (
             <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
               {link.dropdown ? (
                 <div>
-                  <div className="text-xs font-bold text-[#FFCC00] tracking-wider uppercase px-3 py-2">
+                  <div className="text-xs font-bold text-[#F2B705] tracking-wider uppercase px-3 py-2">
                     {link.label}
                   </div>
                   <div className="pl-4 space-y-1">
@@ -172,7 +170,7 @@ export default function Navbar() {
             <Link
               href="/get-matched"
               onClick={() => setIsOpen(false)}
-              className="block w-full text-center px-4 py-3 bg-[#FFCC00] text-[#1B365D] font-bold rounded-xl hover:bg-[#E6B800] transition-colors shadow-md"
+              className="block w-full text-center px-4 py-3 bg-[#F2B705] text-[#1B365D] font-bold rounded-xl hover:bg-[#D9A404] transition-colors shadow-md"
             >
               Get Matched
             </Link>
