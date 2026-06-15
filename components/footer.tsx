@@ -74,7 +74,6 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Company"}</h3>
             <div className="text-sm text-white/70 space-y-3 mb-8">
-              <p>{"HearthAway is a unit of Jiraiya Education LLP."}</p>
               <p>
                 <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline">
                   {"faraz@hearthaway.com"}
@@ -85,7 +84,7 @@ export default function Footer() {
                   {"+91 99999 65742"}
                 </a>
               </p>
-              <p>{"1st Floor, H-20, Sector 63, Noida, UP 201301"}</p>
+              <p>{"H-20, Sector 63, Noida, UP 201301"}</p>
             </div>
 
             {/* Trustpilot Native SVG Placeholder */}
