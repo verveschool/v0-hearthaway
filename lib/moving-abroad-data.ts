@@ -1,3 +1,10 @@
+import type { MovingAbroadArticleCard, MovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
+import {
+  countryMovingAbroadSlugs,
+  getMovingAbroadArticleCard,
+  getMovingAbroadArticlesByCountry
+} from '@/lib/moving-abroad-data'
+
 export type MovingAbroadArticleCategory = 'Before you go' | 'Accommodation' | 'Budgeting' | 'Arriving'
 export type MovingAbroadArticleStage = 'Planning' | 'Booking' | 'Budgeting' | 'Arrival' | 'Settling in'
 export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'australia'
@@ -40,17 +47,16 @@ export type MovingAbroadCategoryGroup = {
 export const movingAbroadArticles: MovingAbroadArticle[] = [
   {
     slug: 'pre-arrival-checklist',
-    title: 'The complete pre-arrival checklist for international students',
+    title: 'the complete 2026 pre-arrival checklist for international students',
     category: 'Before you go',
-    description:
-      'Everything you need to sort before you travel — from accommodation and visas to bank accounts and packing. A practical guide from students who have done it.',
+    description: 'everything you need to sort before you travel. a tactical guide covering 2026 visa financial rules, accommodation locks and arrival prep.',
     readTime: '12 min read',
     stage: 'Planning',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Confirm your essentials', summary: 'Line up your offer documents, passport, visa steps, insurance, and arrival dates before booking anything irreversible.' },
-      { title: 'Secure accommodation early', summary: 'Compare verified student housing options around your campus, then check contract length, deposits, and move-in rules.' },
-      { title: 'Prepare your first week', summary: 'Plan transport, banking, phone access, campus registration, and a small buffer budget for unexpected arrival costs.' },
+      { title: 'secure the 28 day financial holding', summary: 'before applying for any uk visa you must hold the exact maintenance funds for 28 consecutive days. do not touch this money or you will be rejected.' },
+      { title: 'lock your housing before the cap hits', summary: 'with the 295,000 australian student cap and the dublin supply squeeze, booking verified housing early is the only way to protect your admission.' },
+      { title: 'plan for digital visa access', summary: 'uk visas are fully digital in 2026. keep your share codes ready and prepare to use an international card until you get your physical campus enrollment letters.' }
     ],
     ctaVariant: 'housing',
     image: '/images/acc-common.png',
@@ -58,282 +64,264 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'choose-accommodation',
-    title: 'How to choose the right accommodation before you arrive',
+    title: 'how to choose the right accommodation and avoid the commute trap',
     category: 'Accommodation',
-    description:
-      'Walking through the real decisions you face: halls vs private, location tradeoffs, what to ask before signing, and how to avoid the biggest mistakes.',
+    description: 'walking through the real decisions you face. purpose built versus private rentals, transport line tradeoffs and how to read the contract.',
     readTime: '10 min read',
     stage: 'Booking',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Start with your campus routine', summary: 'Map likely lecture locations, transport routes, grocery access, and how often you expect to be on campus.' },
-      { title: 'Compare room types honestly', summary: 'Balance privacy, budget, included bills, social life, and support when deciding between halls, studios, and shared homes.' },
-      { title: 'Ask before you sign', summary: 'Confirm deposit terms, guarantor expectations, cancellation rules, furnishings, and what happens if your visa timing changes.' },
+      { title: 'anchor to rail and tram lines', summary: 'do not just look at distance on a map. check the exact walking time to the nearest tube station, luas tram stop or train line. commutes destroy budgets.' },
+      { title: 'purpose built versus private rentals', summary: 'purpose built student blocks offer fixed utility bills which protects you from energy price spikes. private rentals seem cheaper until winter heating bills arrive.' },
+      { title: 'ask about deposit protection', summary: 'in the uk your deposit must legally sit in a government backed protection scheme. if a private landlord asks for cash directly walk away immediately.' }
     ],
     ctaVariant: 'housing',
     featured: true,
   },
   {
     slug: 'real-cost-abroad',
-    title: 'The real cost of studying abroad: a country-by-country breakdown',
+    title: 'the real cost of studying abroad. exact 2026 capital requirements',
     category: 'Budgeting',
-    description:
-      'Rent, transport, food, tuition, and extras — broken down honestly for students planning their move to the UK, Ireland, or Australia.',
+    description: 'rent and tuition are just the baseline. here are the exact government financial proofs required for the uk, ireland and australia.',
     readTime: '14 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Rent is only the baseline', summary: 'Compare weekly or monthly rent alongside bills, deposits, bedding, laundry, transport, and move-in purchases.' },
-      { title: 'Country-by-country planning', summary: 'Use local currency, payment frequency, and city demand to create a realistic first-term cash-flow plan.' },
-      { title: 'Build a safety buffer', summary: 'Keep room for exchange-rate changes, delayed payments, emergency travel, and one-off setup costs.' },
+      { title: 'the uk maintenance rule', summary: 'london requires £1,529 per month and regional uk requires £1,171. this must sit completely untouched in your account before you can even file the visa.' },
+      { title: 'the australian baseline', summary: 'australian immigration requires proof of aud 29,710 for basic living costs plus a non refundable aud 2,000 visa application fee paid upfront.' },
+      { title: 'the irish inis minimum', summary: 'irish immigration demands liquid proof of €10,000 for living costs and a minimum €6,000 first year tuition receipt before they look at your file.' }
     ],
     ctaVariant: 'housing',
     featured: true,
   },
   {
-    slug: 'before-you-go',
-    title: 'What to sort before you leave home',
-    category: 'Before you go',
-    description: 'A clear checklist of everything you need to arrange before you travel.',
-    readTime: '6 min read',
-    stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia'],
-    sections: [
-      { title: 'Documents and deadlines', summary: 'Keep offer letters, passport details, visa evidence, accommodation confirmations, and emergency contacts together.' },
-      { title: 'Money and arrival basics', summary: 'Plan payment methods, first-month funds, transport from the airport, and temporary access to mobile data.' },
-      { title: 'Accommodation readiness', summary: 'Check move-in times, bedding needs, inventory lists, and who to contact if your flight is delayed.' },
-    ],
-    ctaVariant: 'housing',
-    preview: true,
-  },
-  {
     slug: 'student-visa',
-    title: 'Understanding your student visa requirements',
+    title: 'understanding your 2026 student visa financial mechanics',
     category: 'Before you go',
-    description: 'Plan documents, timing, and arrival expectations before you travel.',
+    description: 'plan your document trail, financial seasoning periods and biometric appointments perfectly so you do not miss your intake date.',
     readTime: '8 min read',
     stage: 'Planning',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Check the official route', summary: 'Use your destination country and institution guidance to confirm the correct visa route and application timing.' },
-      { title: 'Prepare supporting evidence', summary: 'Gather offer letters, finances, identity documents, accommodation details, and any health or insurance evidence required.' },
-      { title: 'Align visa and housing dates', summary: 'Make sure your arrival window, move-in date, and cancellation terms work together before you commit.' },
+      { title: 'season your funds early', summary: 'governments want to see clean money. sudden large deposits from family will trigger fraud checks. move your funds at least three months before you file.' },
+      { title: 'use the right bank accounts', summary: 'only standard savings and current accounts count. property valuations, mutual funds and credit cards will cause an instant visa refusal.' },
+      { title: 'align housing and arrival dates', summary: 'do not book unrefundable flights until your visa is granted. ensure your tenancy agreement allows date adjustments if immigration processing is delayed.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'uk-bank-account',
-    title: 'How to open a UK bank account before you arrive',
+    title: 'how to open a uk bank account and bridge the gap',
     category: 'Before you go',
-    description: 'Understand what banks may ask for and how to plan payments before your UK account is ready.',
+    description: 'traditional banks will reject you without the right paperwork. here is the exact playbook to get your local sort code and account number fast.',
     readTime: '5 min read',
     stage: 'Planning',
     countries: ['uk'],
     sections: [
-      { title: 'Know what proof you may need', summary: 'Banks commonly ask for identity, student status, and an address, so keep digital and printed copies ready.' },
-      { title: 'Bridge the first few weeks', summary: 'Have an international card or alternative payment plan until your local account is fully active.' },
-      { title: 'Connect rent payments', summary: 'Ask your accommodation provider when rent is due and which payment methods are accepted.' },
+      { title: 'the enrollment letter bottleneck', summary: 'high street banks require a physical bank letter from your university. you cannot get this until you physically arrive and register on campus.' },
+      { title: 'bridge the gap with a neo bank', summary: 'operations like monzo or revolut allow you to open an account faster but require you to have a uk sim card and physically be in the country.' },
+      { title: 'plan your first rent payment', summary: 'your first month of rent and deposit usually needs to be paid before your uk account is open. use an international transfer service to clear this hurdle.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'packing-list',
-    title: 'Packing list for international students',
+    title: 'the tactical packing list for international students',
     category: 'Before you go',
-    description: 'Pack for climate, classes, housing, and your first few weeks.',
+    description: 'pack for climate, classes, housing and your first few weeks of survival before your local bank accounts clear.',
     readTime: '4 min read',
     stage: 'Planning',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Carry-on essentials', summary: 'Keep documents, medication, chargers, valuables, and one change of clothes with you while travelling.' },
-      { title: 'Pack for your accommodation', summary: 'Check what is already provided before bringing bedding, kitchen items, adapters, or bulky homeware.' },
-      { title: 'Buy some items locally', summary: 'Save luggage space by planning to buy toiletries, cleaning supplies, and low-cost room basics after arrival.' },
+      { title: 'carry on essentials', summary: 'keep your passport, visa grant notices, university offer letters and two weeks of any prescription medication strictly in your cabin bag.' },
+      { title: 'pack for your accommodation', summary: 'check what is already provided before bringing bedding, kitchen items or bulky homeware. most student beds are irregular sizes anyway.' },
+      { title: 'buy heavy items locally', summary: 'save luggage weight by planning to buy thick winter coats, toiletries and cleaning supplies after you land.' }
     ],
     ctaVariant: 'housing',
   },
   {
     slug: 'accommodation-costs',
-    title: 'How much does student accommodation really cost?',
+    title: 'how much purpose built student housing actually costs',
     category: 'Accommodation',
-    description: 'Real costs, broken down by city and type, so you can plan with confidence.',
+    description: 'real costs broken down by asset type so you can plan your capital deployment with absolute confidence.',
     readTime: '8 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Compare the full price', summary: 'Look beyond headline rent to bills, deposits, booking fees, laundry, commute costs, and contract length.' },
-      { title: 'City demand changes budgets', summary: 'Popular cities and intake dates can move fast, so compare options early and keep a realistic backup plan.' },
-      { title: 'Match cost to lifestyle', summary: 'Choose the room that supports your routine, not just the cheapest option on the first search page.' },
+      { title: 'compare the total run rate', summary: 'look beyond headline rent to internet speeds, utility caps, gym inclusions and commute costs. a slightly more expensive room near campus is often cheaper overall.' },
+      { title: 'city demand changes budgets', summary: 'popular cities like dublin or sydney move extremely fast. if you wait for clearance you will be forced into premium luxury studios because the mid tier sells out first.' },
+      { title: 'match cost to lifestyle', summary: 'choose the room that supports your academic routine. if you spend twelve hours a day in the library you do not need to pay a premium for a large studio kitchen.' }
     ],
     ctaVariant: 'housing',
     preview: true,
   },
   {
     slug: 'halls-vs-private',
-    title: 'Student halls vs private accommodation',
+    title: 'purpose built student blocks versus private rentals',
     category: 'Accommodation',
-    description: 'Compare housing styles before choosing where to live.',
+    description: 'compare the two major housing formats before locking up your cash for an entire academic year.',
     readTime: '6 min read',
     stage: 'Booking',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Student halls', summary: 'Halls can offer convenience, social opportunities, included bills, and a clearer support structure for new arrivals.' },
-      { title: 'Private accommodation', summary: 'Private rentals may offer flexibility and independence, but can require more checks around bills, deposits, and location.' },
-      { title: 'Choose by support needs', summary: 'Think about your first semester confidence, commute, budget, and how much help you want nearby.' },
+      { title: 'purpose built blocks', summary: 'these offer absolute convenience, fixed bills and built in social networks. you pay a slight premium for security and zero utility headaches.' },
+      { title: 'private accommodation', summary: 'renting a house with friends offers independence and often cheaper base rent but leaves you completely exposed to internet setups and heating bill spikes.' },
+      { title: 'choose by support needs', summary: 'if it is your first year abroad the built in support of a managed block is invaluable. save the private house share for your second year.' }
     ],
     ctaVariant: 'housing',
   },
   {
     slug: 'avoid-scams',
-    title: 'How to avoid accommodation scams',
+    title: 'how to identify and avoid rental fraud syndicates',
     category: 'Accommodation',
-    description: 'The warning signs every international student should know.',
+    description: 'the rental market is full of sophisticated operators preying on international students. learn the warning signs.',
     readTime: '5 min read',
     stage: 'Booking',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Watch for pressure tactics', summary: 'Be cautious if someone pushes urgent payment, avoids written terms, or refuses basic verification.' },
-      { title: 'Verify before paying', summary: 'Check provider details, contract terms, payment routes, images, reviews, and whether the room actually exists.' },
-      { title: 'Use trusted support', summary: 'When in doubt, ask your university or a trusted accommodation service before sending money.' },
+      { title: 'watch for pressure tactics', summary: 'be extremely cautious if a landlord pushes for an urgent western union transfer or avoids providing a written contract before taking your money.' },
+      { title: 'never wire cash before viewing', summary: 'scammers use stolen photos of premium apartments. if you cannot view it physically use a verified booking platform that holds funds in escrow.' },
+      { title: 'cross check the registry', summary: 'in ireland verify the landlord on the rtb. in the uk ensure they are using a certified deposit protection scheme. verify everything.' }
     ],
     ctaVariant: 'housing',
     preview: true,
   },
   {
     slug: 'tenancy-agreement',
-    title: 'Understanding your tenancy agreement',
+    title: 'how to read your tenancy agreement without getting trapped',
     category: 'Accommodation',
-    description: 'Review the key terms before signing for student housing.',
+    description: 'review the hard legal terms before signing a binding contract for student housing abroad.',
     readTime: '9 min read',
     stage: 'Booking',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Read the dates first', summary: 'Confirm start date, end date, move-in rules, rent schedule, and whether the contract fits your academic calendar.' },
-      { title: 'Understand deposits and bills', summary: 'Check what is included, how deposits are protected or returned, and who handles utilities.' },
-      { title: 'Know your responsibilities', summary: 'Look for guest rules, maintenance reporting, inspections, cancellation terms, and shared-space expectations.' },
+      { title: 'read the dates first', summary: 'confirm the exact start date, end date and move in rules. ensure the contract perfectly overlaps your academic term so you are not homeless during exams.' },
+      { title: 'understand deposits and guarantors', summary: 'if you do not have a local guarantor many private landlords demand six to twelve months of rent paid upfront in cash.' },
+      { title: 'know your exit clauses', summary: 'look for break clauses. if you need to return home for an emergency you need to know exactly how much it will cost to terminate the lease.' }
     ],
     ctaVariant: 'housing',
   },
   {
     slug: 'cost-of-living',
-    title: 'Monthly cost of living: UK, Ireland & Australia',
+    title: 'the exact weekly cost of living in major student hubs',
     category: 'Budgeting',
-    description: 'Compare rent, transport, groceries, and everyday student costs.',
+    description: 'compare the hard costs of transport, groceries and everyday survival across the uk, ireland and australia.',
     readTime: '7 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Build a monthly baseline', summary: 'Estimate rent, food, transport, study supplies, phone bills, subscriptions, and personal spending.' },
-      { title: 'Account for local differences', summary: 'Currency, payment frequency, city size, and transport networks can change what a realistic budget looks like.' },
-      { title: 'Review after arrival', summary: 'Track the first month closely and adjust your habits before small overspends become a term-long problem.' },
+      { title: 'the transport tax', summary: 'living far from campus looks cheap until you factor in £150 a month on train tickets and lost hours of productivity.' },
+      { title: 'supermarket tiering', summary: 'where you buy food dictates your budget. shopping at aldi or lidl instead of premium central city supermarkets saves hundreds a term.' },
+      { title: 'utility bill spikes', summary: 'if you rent privately prepare for brutal winter heating bills. purpose built student housing fixes this cost upfront so your budget never breaks.' }
     ],
     ctaVariant: 'housing',
   },
   {
     slug: 'student-budget',
-    title: 'How to budget as an international student',
+    title: 'how to structure your cash flow as an international student',
     category: 'Budgeting',
-    description: 'Build a monthly plan for rent, food, transport, and essentials.',
+    description: 'build an ironclad monthly plan for rent, food, transport and emergencies.',
     readTime: '6 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Separate fixed and flexible costs', summary: 'Rent, bills, insurance, and transport passes come first; eating out and shopping can flex around them.' },
-      { title: 'Plan around payment dates', summary: 'Understand when rent, tuition, scholarships, or family transfers arrive so you avoid cash-flow surprises.' },
-      { title: 'Keep a small emergency fund', summary: 'Even a modest buffer helps with delayed flights, replacement items, or unexpected health and travel costs.' },
+      { title: 'separate fixed and flexible costs', summary: 'rent, bills, insurance and transport passes come first. eating out and retail shopping must flex strictly around your fixed baseline.' },
+      { title: 'plan around payment dates', summary: 'understand exactly when rent is deducted and when family transfers arrive so you avoid overdraft penalties or cash flow bottlenecks.' },
+      { title: 'keep a liquid emergency fund', summary: 'keep a modest buffer of at least 500 dollars or pounds completely untouched to handle delayed flights or unexpected medical costs.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'hidden-costs',
-    title: "Hidden costs new students don't expect",
+    title: 'hidden capital drains new students never expect',
     category: 'Budgeting',
-    description: 'Spot extra expenses beyond rent and tuition before you arrive.',
+    description: 'spot the extra expenses beyond rent and tuition before you land and burn through your savings.',
     readTime: '5 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Move-in purchases', summary: 'Bedding, kitchen items, adapters, cleaning products, and laundry can add up in the first week.' },
-      { title: 'Admin and setup costs', summary: 'Budget for transport cards, SIM plans, printing, societies, healthcare-related costs, and ID photos.' },
-      { title: 'Social settling-in spend', summary: 'The first month often includes meals, events, and trips that help you settle but need a realistic limit.' },
+      { title: 'move in purchases', summary: 'bedding, kitchen pots, adapters, cleaning products and laundry tokens can easily drain your first week budget instantly.' },
+      { title: 'admin and setup costs', summary: 'budget heavily for transit cards, local sim plans, university society fees and mandatory study materials in your first month.' },
+      { title: 'social settling in spend', summary: 'the first month involves heavy social spending to build your network. set a strict limit so you do not burn your term budget in october.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'student-discounts',
-    title: 'Student discounts and how to find them',
+    title: 'how to leverage student status for structural savings',
     category: 'Budgeting',
-    description: 'Find savings on transport, food, software, study supplies, and everyday student essentials.',
+    description: 'find the high leverage savings on transport, software and everyday essentials that actually move the needle.',
     readTime: '4 min read',
     stage: 'Budgeting',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Use your student status', summary: 'Check university emails, student cards, and recognised discount platforms for current offers.' },
-      { title: 'Prioritise recurring savings', summary: 'Transport, groceries, software, and phone plans usually matter more than one-off retail discounts.' },
-      { title: 'Avoid false savings', summary: 'A discount only helps if the purchase already fits your budget and your actual needs.' },
+      { title: 'use your institutional status', summary: 'register for unidays or student beans immediately. your university email address is a golden ticket for major tech and retail discounts.' },
+      { title: 'prioritise recurring savings', summary: 'securing a student discount on your monthly phone plan or local rail card matters infinitely more than a one off retail coupon.' },
+      { title: 'avoid false savings', summary: 'a discount only helps if the purchase already fits your budget. spending money just to save twenty percent is a trap.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'first-week',
-    title: 'Your first week: what to expect',
+    title: 'your first week playbook. registration and survival',
     category: 'Arriving',
-    description: 'Know what to do after landing and how to settle into your new city.',
+    description: 'know exactly what to do after landing to clear your admin backlog and settle into your new city.',
     readTime: '7 min read',
     stage: 'Arrival',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Move in and document everything', summary: 'Check your room, report issues quickly, save inventory photos, and learn how maintenance requests work.' },
-      { title: 'Handle campus admin', summary: 'Complete registration, collect student ID, attend orientation, and learn where to ask for support.' },
-      { title: 'Set up daily life', summary: 'Find groceries, transport routes, healthcare options, banking steps, and a few places that feel familiar.' },
+      { title: 'collect your biometric permits', summary: 'in the uk your biometric data is digital but you may need to collect your brp if issued. in ireland you must book your gnib appointment immediately.' },
+      { title: 'secure your tax file number', summary: 'if you want to work part time in australia you need a tfn immediately to avoid emergency tax rates. in the uk apply for your national insurance number on day one.' },
+      { title: 'move in and document everything', summary: 'check your room, take photos of any existing damage and submit your inventory list quickly to protect your deposit.' }
     ],
     ctaVariant: 'housing',
     preview: true,
   },
   {
     slug: 'airport-to-home',
-    title: 'Getting from the airport to your accommodation',
+    title: 'getting from the arrival terminal to your room safely',
     category: 'Arriving',
-    description: 'Make your arrival smoother with a practical first-journey plan.',
+    description: 'make your arrival seamless with a tactical first journey plan straight from the baggage claim.',
     readTime: '5 min read',
     stage: 'Arrival',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Plan before takeoff', summary: 'Save your address, check transport options, and know what to do if your flight is delayed.' },
-      { title: 'Keep essentials accessible', summary: 'Have documents, phone battery, local cash or card options, and accommodation contact details ready.' },
-      { title: 'Arrive safely', summary: 'Choose reliable transport, share your route with someone you trust, and confirm key collection instructions.' },
+      { title: 'plan before takeoff', summary: 'download offline maps of your destination city, check the airport express train options and know exactly what to do if your flight is delayed.' },
+      { title: 'keep essentials accessible', summary: 'have your housing contract, university welcome letter, phone battery pack and a small amount of local currency ready before you land.' },
+      { title: 'confirm key collection instructions', summary: 'many student blocks close reception at night. if your flight lands late ensure you have the out of hours emergency contact number.' }
     ],
     ctaVariant: 'housing',
   },
   {
     slug: 'healthcare',
-    title: 'Registering with a doctor and NHS',
+    title: 'how to navigate local healthcare and register with a doctor',
     category: 'Arriving',
-    description: 'Understand how to find healthcare support after arriving as an international student.',
+    description: 'understand how to find medical support and lock down your health insurance after arriving.',
     readTime: '4 min read',
     stage: 'Settling in',
-    countries: ['uk'],
+    countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Understand local healthcare access', summary: 'Check your university guidance and destination rules for registration, insurance, and emergency care.' },
-      { title: 'Register early where possible', summary: 'Do not wait until you are unwell to learn which local clinic, doctor, or student health service to contact.' },
-      { title: 'Keep health documents handy', summary: 'Bring vaccination records, prescriptions, and key medical notes in case you need support quickly.' },
+      { title: 'pay the immigration health surcharge', summary: 'in the uk you pay this upfront during the visa phase but you must still manually register with a local general practitioner to access the nhs.' },
+      { title: 'find your campus clinic', summary: 'most major universities have a dedicated health centre. register there on day one so you are in the system before winter flu season hits.' },
+      { title: 'dental and optical are private', summary: 'understand that public health systems cover medical emergencies and doctor visits but dental work will cost you out of pocket. get checkups before you fly.' }
     ],
     ctaVariant: 'planning',
   },
   {
     slug: 'making-friends',
-    title: 'Making friends in a new country',
+    title: 'building a high value network in a foreign country',
     category: 'Arriving',
-    description: 'Practical ways to build a support network during your first term abroad.',
+    description: 'practical tactics to build a support network and break out of isolation during your first term.',
     readTime: '6 min read',
     stage: 'Settling in',
     countries: ['uk', 'ireland', 'australia'],
     sections: [
-      { title: 'Start with structured moments', summary: 'Orientation events, societies, study groups, and accommodation socials make first conversations easier.' },
-      { title: 'Create repeat routines', summary: 'Friendships often grow from repeated classes, gym times, cooking routines, or weekly campus events.' },
-      { title: 'Ask for support early', summary: 'If loneliness feels heavy, contact university support services or trusted people before it becomes isolating.' },
+      { title: 'start with structured moments', summary: 'orientation events, university societies and accommodation welcome parties are the highest leverage places to make first conversations.' },
+      { title: 'create repeat routines', summary: 'friendships grow from repeated exposure. attending the same gym classes, library hours or cooking routines builds bonds faster than random events.' },
+      { title: 'ask for support early', summary: 'if loneliness feels heavy contact your university support services or residential advisors immediately. everyone struggles in the first month.' }
     ],
     ctaVariant: 'planning',
-  },
+  }
 ]
 
 const articleBySlug = new Map(movingAbroadArticles.map((article) => [article.slug, article]))
@@ -353,14 +341,14 @@ export const movingAbroadCategoryOrder: MovingAbroadArticleCategory[] = [
 ]
 
 export const movingAbroadCategorySlugs: Record<MovingAbroadArticleCategory, string[]> = {
-  'Before you go': ['before-you-go', 'student-visa', 'uk-bank-account', 'packing-list'],
+  'Before you go': ['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list'],
   Accommodation: ['accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement'],
   Budgeting: ['cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts'],
   Arriving: ['first-week', 'airport-to-home', 'healthcare', 'making-friends'],
 }
 
 export const featuredGuideSlugs = ['pre-arrival-checklist', 'choose-accommodation', 'real-cost-abroad'] as const
-export const homePreviewGuideSlugs = ['before-you-go', 'accommodation-costs', 'avoid-scams', 'first-week'] as const
+export const homePreviewGuideSlugs = ['pre-arrival-checklist', 'accommodation-costs', 'avoid-scams', 'first-week'] as const
 
 export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]> = {
   uk: ['student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
@@ -380,7 +368,7 @@ export function getMovingAbroadArticleBySlug(slug: string): MovingAbroadArticle 
 
 function assertMovingAbroadArticle(article: MovingAbroadArticle | undefined, slug: string): MovingAbroadArticle {
   if (article === undefined) {
-    throw new Error(`Unknown moving abroad article slug: ${slug}`)
+    throw new Error(`unknown moving abroad article slug: ${slug}`)
   }
 
   return article
