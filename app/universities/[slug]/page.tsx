@@ -5,13 +5,13 @@ import { notFound } from 'next/navigation'
 
 import { getCityBySlug, getUniversityBySlug, universities } from '@/lib/place-data'
 
-const planningPlaceholders = [
-  'Campus locations and the buildings used by your course',
-  'Neighbourhood names commonly chosen by students',
-  'Walking, cycling, and public transport commute times',
-  'Average rents by room type, contract length, and bills inclusion',
-  'University-specific intake dates and recommended booking windows',
-  'Local safety notes, late-night transport options, and arrival guidance',
+const locationConsiderations = [
+  'Confirm which campus or teaching building your course uses most before choosing an area to live.',
+  'Check walking and cycling times, not just map distance — commutes compound across a full academic year.',
+  'Public transport coverage, cost, and late-night availability vary significantly by city and neighbourhood.',
+  'Purpose-built student blocks near campus often include bills and provide faster move-in timelines.',
+  'Private rentals can offer more independence but expose you to utility spikes, guarantor requirements, and less predictable move-in dates.',
+  'Booking earlier in the cycle gives you more options across price points — mid-tier stock fills first.',
 ]
 
 const bookingConsiderations = [
@@ -79,7 +79,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 Student accommodation near {university.name}.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed mb-8">
-                {university.city}, {university.country} &middot; content-only guidance for planning your student move before comparing accommodation options.
+                {university.city}, {university.country} &middot; practical guidance for planning your student move before comparing accommodation options.
               </p>
               <Link
                 href="/get-matched"
@@ -94,6 +94,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 space-y-5">
+
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
                   <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
@@ -102,10 +103,10 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   </span>
                 </div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
-                  Student accommodation near {university.name}
+                  Planning your accommodation near {university.name}
                 </h2>
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  Use this guide to plan location, timing, commute, and budget questions before booking student accommodation near {university.name}. This page is guidance only and does not list live inventory, room availability, or provider stock.
+                  Use this guide to think through location, commute, timing, and budget before booking student accommodation near {university.name}. This page covers practical planning guidance and does not list live inventory or available rooms.
                 </p>
               </section>
 
@@ -113,27 +114,22 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 <div className="inline-flex items-center gap-2 mb-6">
                   <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
                   <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
-                    Placeholder guidance
+                    Location planning
                   </span>
                 </div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
-                  Where students usually live
+                  Choosing where to live
                 </h2>
-                <p className="text-[#6B6860] text-base leading-relaxed mb-5">
-                  Placeholder guidance: add university-specific neighbourhood names after confirming campus locations, student demand patterns, transport links, and locally relevant safety or arrival notes.
+                <p className="text-[#6B6860] text-base leading-relaxed mb-6">
+                  Location decisions near {university.name} involve more than distance. Commute time, transport reliability, budget fit, and contract type all affect how well your housing supports your academic routine.
                 </p>
-                <div className="bg-white rounded-2xl border border-[#E8E6E1] p-5">
-                  <h3 className="font-heading font-bold text-[#1A1A1A] text-sm mb-3">
-                    Missing inputs before publishing exact local guidance
-                  </h3>
-                  <ul className="space-y-2">
-                    {planningPlaceholders.map((input) => (
-                      <li key={input} className="flex items-start gap-2 text-[#6B6860] text-sm leading-relaxed">
-                        <span className="mt-2 w-2 h-2 rounded-full bg-[#FFCC00] flex-shrink-0" aria-hidden="true" />
-                        {input}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="grid grid-cols-1 gap-3">
+                  {locationConsiderations.map((item) => (
+                    <div key={item} className="flex items-start gap-3 bg-white rounded-2xl border border-[#E8E6E1] p-4">
+                      <span className="mt-1.5 w-2 h-2 rounded-full bg-[#FFCC00] flex-shrink-0" aria-hidden="true" />
+                      <p className="text-[#6B6860] text-sm leading-relaxed">{item}</p>
+                    </div>
+                  ))}
                 </div>
               </section>
 
@@ -212,7 +208,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   href="/get-matched"
                   className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
                 >
-                  Get Matched
+                  Get matched
                 </Link>
               </div>
             </aside>
