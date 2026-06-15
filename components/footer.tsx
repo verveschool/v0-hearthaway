@@ -14,8 +14,9 @@ const footerLinks = {
   ],
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
-    { label: 'Moving Abroad Guide', href: '/moving-abroad' },
     { label: 'How it works', href: '/about' }
+    { label: 'Resources', href: '/moving-abroad' },
+
   ]
 }
 
@@ -28,7 +29,7 @@ export default function Footer() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div>
               <h2 className="font-heading text-3xl lg:text-4xl font-bold text-white mb-3 text-pretty">
-                {"Ready to find your home away from home?"}
+                {"Finding home, wherever you go."}
               </h2>
               <p className="text-white/70 text-lg max-w-xl">
                 {"Tell us about your situation and we'll help you find the right accommodation near your university."}
