@@ -14,7 +14,7 @@ import MatchedCTA from '@/components/matched-cta'
 const categories = getMovingAbroadCategoryGroups()
 const featuredGuides = getFeaturedMovingAbroadArticles().map((article) => getMovingAbroadArticleCard(article.slug))
 const preArrivalChecklist = getMovingAbroadArticleCard('pre-arrival-checklist')
-const beforeYouGoGuides = getHubGuides(['before-you-go', 'student-visa', 'uk-bank-account', 'packing-list'])
+const beforeYouGoGuides = getHubGuides(['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list'])
 const accommodationGuides = getHubGuides(['choose-accommodation', 'accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement'])
 const budgetingGuides = getHubGuides(['real-cost-abroad', 'cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts'])
 const arrivalGuides = getHubGuides(['first-week', 'airport-to-home', 'healthcare', 'making-friends'])
@@ -120,7 +120,7 @@ export default function MovingAbroadPage() {
                 A practical guide architecture for your move abroad.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed">
-                Start with the essentials, then work through accommodation, budgeting, arrival, country-specific pathways, and campus next steps. No listings or booking flow — just guidance to [...]
+                Start with the essentials, then work through accommodation, budgeting, arrival, country-specific pathways, and campus next steps. No listings or booking flow — just guidance to help you plan the move clearly.
               </p>
             </div>
           </div>
