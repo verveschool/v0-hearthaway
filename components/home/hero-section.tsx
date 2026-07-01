@@ -49,7 +49,7 @@ export default function HeroSection() {
             100% verified
           </span>
           <span className="text-[#F2B705] text-xs font-bold tracking-widest uppercase">
-            UK &bull; Ireland &bull; Australia
+            UK &bull; Ireland &bull; France &bull; Australia
           </span>
         </div>
 
