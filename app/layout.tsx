@@ -16,7 +16,7 @@ const brandBannerPath = '/brand/  hearthaway-banner-dark.png'
 export const metadata: Metadata = {
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation near your university in the UK, Ireland, and Australia. HearthAway helps international students find the right place before they arrive.',
+    'Find student accommodation near your university in the UK, Ireland, France, Australia. HearthAway helps international students find the right place before they arrive.',
   keywords:
     'student accommodation, international students, UK student housing, university accommodation, student housing abroad',
   icons: {
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   openGraph: {
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation near your university in the UK, Ireland, and Australia. HearthAway helps international students choose the right place before they arrive.',
+    'Find student accommodation near your university in the UK, Ireland, France, Australia. HearthAway helps international students choose the right place before they arrive.',
   type: 'website',
   locale: 'en_GB',
   images: [
@@ -44,7 +44,7 @@ twitter: {
   card: 'summary_large_image',
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation near your university in the UK, Ireland, and Australia. HearthAway helps international students choose the right place before they arrive.',
+    'Find student accommodation near your university in the UK, Ireland, France, Australia. HearthAway helps international students choose the right place before they arrive.',
   images: [brandBannerPath],
 },
 }
