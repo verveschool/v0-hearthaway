@@ -13,12 +13,26 @@ import { universities } from '@/lib/place-data'
 // this line forces the build machine to skip static prerendering entirely
 export const dynamic = 'force-dynamic'
 
-const countryFilters = ['All', 'UK', 'Ireland', 'Australia']
+const countryFilters = [
+  { value: 'All', label: 'All' },
+  { value: 'UK', label: 'United Kingdom' },
+  { value: 'Ireland', label: 'Ireland' },
+  { value: 'FR', label: 'France' },
+  { value: 'Australia', label: 'Australia' },
+]
+
+function normalizeCountry(raw: string | null) {
+  if (!raw) return 'All'
+  if (raw === 'France') return 'FR'
+  if (raw === 'United Kingdom') return 'UK'
+  return raw
+}
 
 function UniversitiesContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const initialCountry = searchParams.get('country') || 'All'
+  const initialCountryRaw = searchParams.get('country') || 'All'
+  const initialCountry = normalizeCountry(initialCountryRaw)
   const initialSearch = searchParams.get('search') || ''
 
   const [search, setSearch] = useState<string>(initialSearch)
@@ -97,16 +111,16 @@ function UniversitiesContent() {
               <div className="flex gap-2">
                 {countryFilters.map((f) => (
                   <button
-                    key={f}
-                    onClick={() => handleCountryFilter(f)}
+                    key={f.value}
+                    onClick={() => handleCountryFilter(f.value)}
                     className={`px-4 py-2.5 rounded-xl border text-sm font-medium transition-all ${
-                      f === selectedCountry
+                      f.value === selectedCountry
                         ? 'bg-[#1B365D] border-[#1B365D] text-white'
                         : 'bg-white border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
                     }`}
-                    aria-current={f === selectedCountry ? 'page' : undefined}
+                    aria-current={f.value === selectedCountry ? 'page' : undefined}
                   >
-                    {f}
+                    {f.label}
                   </button>
                 ))}
               </div>
