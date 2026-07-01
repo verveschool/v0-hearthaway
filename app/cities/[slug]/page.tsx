@@ -38,6 +38,7 @@ function countryLabel(code: string) {
   if (code === 'UK') return 'United Kingdom'
   if (code === 'IE') return 'Ireland'
   if (code === 'AU') return 'Australia'
+  if (code === 'FR') return 'France'
   return code
 }
 
