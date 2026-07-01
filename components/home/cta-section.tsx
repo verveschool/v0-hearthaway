@@ -64,7 +64,7 @@ export default function CtaSection() {
             {/* Floating stat */}
             <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[200px]">
               <div className="font-extrabold text-3xl text-[#1B365D] mb-0.5">40+</div>
-              <div className="text-[#6B6860] text-sm leading-snug">cities across UK, Ireland & Australia</div>
+              <div className="text-[#6B6860] text-sm leading-snug">cities across UK, Ireland, France, Australia</div>
             </div>
 
             <div className="absolute bottom-6 right-6 bg-white/95 rounded-xl px-4 py-3 shadow-lg">
