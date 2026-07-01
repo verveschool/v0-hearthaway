@@ -20,7 +20,9 @@ export const metadata: Metadata = {
   keywords:
     'student accommodation, international students, UK student housing, university accommodation, student housing abroad',
   icons: {
-    icon: brandIconPath,
+    icon: [
+      { url: brandIconPath, type: 'image/png', sizes: '96x96' },
+    ],
     apple: brandIconPath,
   },
   openGraph: {
