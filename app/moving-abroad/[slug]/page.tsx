@@ -15,6 +15,7 @@ const countryLabels: Record<MovingAbroadCountrySlug, string> = {
   uk: 'United Kingdom',
   ireland: 'Ireland',
   australia: 'Australia',
+  france: 'France',
 }
 
 type MovingAbroadArticlePageProps = {

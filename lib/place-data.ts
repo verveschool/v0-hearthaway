@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'AU'
+export type CountryCode = 'UK' | 'IE' | 'AU' | 'FR'
 
 export type CityPlace = {
   name: string
@@ -354,6 +354,63 @@ export const cities: CityPlace[] = [
     }
   },
   {
+    name: 'Paris',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '15+',
+    image: '/images/hero-building.png',
+    slug: 'paris',
+    description: 'a dense global capital for arts sciences business and public policy with campuses spread across metro connected districts',
+    avgRent: '€900 to €1500 / mo',
+    studentPositioning: 'the metro and rer network define the real housing map so prioritize direct lines to campus over central postcode prestige',
+    bestAreasForStudents: {
+      summary: 'the latin quarter and cité universitaire anchor traditional student life while the 13th and 14th arrondissements offer practical transit access',
+      topNeighbourhoods: ['latin quarter', 'cité universitaire', '13th arrondissement', '14th arrondissement', 'bastille']
+    },
+    rentBudgeting: {
+      summary: 'private studios command premium rates while managed residences and shared flats can control costs if applications start before peak intake pressure',
+      averageMonthlyRent: '€1200'
+    }
+  },
+  {
+    name: 'Lyon',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '8+',
+    image: '/images/hero-building.png',
+    slug: 'lyon',
+    description: 'a major french student city combining research universities business schools and an efficient metro tram and river corridor layout',
+    avgRent: '€650 to €1000 / mo',
+    studentPositioning: 'the city rewards students who anchor to metro and tram interchanges serving campus clusters in villeurbanne and the city core',
+    bestAreasForStudents: {
+      summary: 'guillotière and part dieu provide central connectivity while villeurbanne gives direct access to major science and engineering campuses',
+      topNeighbourhoods: ['guillotière', 'villeurbanne', 'part dieu', 'croix rousse', 'gerland']
+    },
+    rentBudgeting: {
+      summary: 'lyon is more approachable than paris but early searches still matter for modern residences near the metro and university corridors',
+      averageMonthlyRent: '€825'
+    }
+  },
+  {
+    name: 'Toulouse',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '6+',
+    image: '/images/hero-building.png',
+    slug: 'toulouse',
+    description: 'a high growth aerospace and engineering hub with large student populations warm southern culture and practical tram and metro links',
+    avgRent: '€550 to €850 / mo',
+    studentPositioning: 'students should map housing around metro line access to the city centre and campus routes toward rangueil and the aerospace districts',
+    bestAreasForStudents: {
+      summary: 'saint cyprien and compans provide central student living while rangueil and saint michel suit science and engineering campus access',
+      topNeighbourhoods: ['saint cyprien', 'compans', 'rangueil', 'saint michel', 'carmes']
+    },
+    rentBudgeting: {
+      summary: 'toulouse offers strong value by french city standards with shared flats and student residences keeping monthly costs comparatively manageable',
+      averageMonthlyRent: '€700'
+    }
+  },
+  {
     name: 'Sydney',
     country: 'Australia',
     countryCode: 'AU',
@@ -528,6 +585,11 @@ export const universities: UniversityPlace[] = [
   { name: 'Munster Technological University', city: 'Cork', country: 'Ireland', students: '18,000+', slug: 'mtu', citySlug: 'cork' },
   { name: 'University of Galway', city: 'Galway', country: 'Ireland', students: '18,000+', slug: 'galway', citySlug: 'galway' },
   { name: 'Atlantic Technological University', city: 'Galway', country: 'Ireland', students: '16,000+', slug: 'atu', citySlug: 'galway' },
+  { name: 'Sorbonne University', city: 'Paris', country: 'France', students: '55,000+', slug: 'sorbonne', citySlug: 'paris' },
+  { name: 'Sciences Po', city: 'Paris', country: 'France', students: '15,000+', slug: 'sciences-po', citySlug: 'paris' },
+  { name: 'PSL University', city: 'Paris', country: 'France', students: '17,000+', slug: 'psl', citySlug: 'paris' },
+  { name: 'University of Lyon', city: 'Lyon', country: 'France', students: '50,000+', slug: 'lyon', citySlug: 'lyon' },
+  { name: 'University of Toulouse', city: 'Toulouse', country: 'France', students: '40,000+', slug: 'toulouse', citySlug: 'toulouse' },
   { name: 'University of Sydney', city: 'Sydney', country: 'Australia', students: '60,000+', slug: 'sydney', citySlug: 'sydney' },
   { name: 'University of New South Wales', city: 'Sydney', country: 'Australia', students: '59,000+', slug: 'unsw', citySlug: 'sydney' },
   { name: 'University of Technology Sydney', city: 'Sydney', country: 'Australia', students: '44,000+', slug: 'uts', citySlug: 'sydney' },
@@ -554,6 +616,7 @@ export const universities: UniversityPlace[] = [
 export const groupedCities: Record<string, CityPlace[]> = {
   'United Kingdom': cities.filter((city) => city.countryCode === 'UK'),
   Ireland: cities.filter((city) => city.countryCode === 'IE'),
+  France: cities.filter((city) => city.countryCode === 'FR'),
   Australia: cities.filter((city) => city.countryCode === 'AU')
 }
 

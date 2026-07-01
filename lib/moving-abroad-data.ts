@@ -1,6 +1,6 @@
 export type MovingAbroadArticleCategory = 'Before you go' | 'Accommodation' | 'Budgeting' | 'Arriving'
 export type MovingAbroadArticleStage = 'Planning' | 'Booking' | 'Budgeting' | 'Arrival' | 'Settling in'
-export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'australia'
+export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'australia' | 'france'
 export type MovingAbroadCtaVariant = 'housing' | 'planning'
 
 export type MovingAbroadArticleSection = {
@@ -188,7 +188,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Plan your document trail, financial seasoning periods and biometric appointments perfectly so you do not miss your intake date.',
     readTime: '8 min read',
     stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia'],
+    countries: ['uk', 'ireland', 'australia', 'france'],
     sections: [
       {
         title: 'Season Your Funds Early',
@@ -305,7 +305,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Review the hard legal terms before signing a binding contract for student housing abroad.',
     readTime: '9 min read',
     stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia'],
+    countries: ['uk', 'ireland', 'australia', 'france'],
     sections: [
       { title: 'Read The Dates First', summary: 'Confirm the exact start date, end date and move in rules. Ensure the contract perfectly overlaps your academic term so you are not homeless during exams.' },
       { title: 'Understand Deposits And Guarantors', summary: 'If you do not have a local guarantor many private landlords demand six to twelve months of rent paid upfront in cash.' },
@@ -363,7 +363,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Build an ironclad monthly plan for rent, food, transport and emergencies.',
     readTime: '6 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia'],
+    countries: ['uk', 'ireland', 'australia', 'france'],
     sections: [
       { title: 'Separate Fixed And Flexible Costs', summary: 'Rent, bills, insurance and transport passes come first. Eating out and retail shopping must flex strictly around your fixed baseline.' },
       { title: 'Plan Around Payment Dates', summary: 'Understand exactly when rent is deducted and when family transfers arrive so you avoid overdraft penalties or cash flow bottlenecks.' },
@@ -449,7 +449,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Make your arrival seamless with a tactical first journey plan straight from the baggage claim.',
     readTime: '5 min read',
     stage: 'Arrival',
-    countries: ['uk', 'ireland', 'australia'],
+    countries: ['uk', 'ireland', 'australia', 'france'],
     sections: [
       { title: 'Plan Before Takeoff', summary: 'Download offline maps of your destination city, check the airport express train options and know exactly what to do if your flight is delayed.' },
       { title: 'Keep Essentials Accessible', summary: 'Have your housing contract, university welcome letter, phone battery pack and a small amount of local currency ready before you land.' },
@@ -519,9 +519,10 @@ export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]>
   uk: ['student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
   ireland: ['student-visa', 'student-budget', 'airport-to-home', 'avoid-scams'],
   australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
+  france: ['student-visa', 'student-budget', 'airport-to-home', 'tenancy-agreement'],
 }
 
-const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'australia']
+const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'australia', 'france']
 
 function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
   return movingAbroadCountrySlugs.some((validCountrySlug) => validCountrySlug === countrySlug)

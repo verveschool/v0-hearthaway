@@ -77,6 +77,20 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('ireland')
   },
   {
+    name: 'France',
+    slug: 'france',
+    currency: 'EUR (€)',
+    heroImage: '/images/hero-building.png',
+    badge: 'Continental Europe hub',
+    universityCount: '70+',
+    citySlugs: ['paris', 'lyon', 'toulouse'],
+    universitySlugs: ['sorbonne', 'sciences-po', 'psl', 'lyon', 'toulouse'],
+    summary: 'a globally respected european study destination with historic universities, specialist grandes ecoles, and strong public transport links across major student cities.',
+    overview: 'studying in france gives international students access to research led public universities, specialist business and engineering schools, and student life shaped by dense urban transit. housing decisions should start with campus location, commute reliability, CAF eligibility, and whether a managed residence or private rental better matches your arrival timeline.',
+    studentHousingNotes: 'france offers a mix of CROUS residences, private student residences, shared apartments, and homestays. demand is especially intense in paris, lyon, and toulouse before the autumn intake, so international students should prepare guarantor documentation early, compare metro or tram access carefully, and avoid sending deposits before receiving a formal contract.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('france')
+  },
+  {
     name: 'Australia',
     slug: 'australia',
     currency: 'AUD (A$)',
