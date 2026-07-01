@@ -10,8 +10,8 @@ const manrope = Manrope({
   weight: ['300', '400', '500', '600', '700', '800'],
 })
 
-const brandIconPath = '/brand/hearthaway-icon-dark.png'
-const brandBannerPath = '/brand/hearthaway-banner-dark.png'
+const brandIconPath = '/brand/  hearthaway-icon-dark.png'
+const brandBannerPath = '/brand/  hearthaway-banner-dark.png'
 
 export const metadata: Metadata = {
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
