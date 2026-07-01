@@ -7,8 +7,8 @@ import { cities } from '@/lib/place-data'
 const popularCities = [
   { name: 'London', country: 'UK', slug: 'london', image: '/images/city-london.png', rent: 'from £180/wk' },
   { name: 'Manchester', country: 'UK', slug: 'manchester', image: '/images/city-manchester.png', rent: 'from £120/wk' },
-  { name: 'Edinburgh', country: 'UK', slug: 'edinburgh', image: '/images/city-edinburgh.png', rent: 'from £130/wk' },
   { name: 'Dublin', country: 'Ireland', slug: 'dublin', image: '/images/city-dublin.png', rent: 'from €160/wk' },
+  { name: 'Paris', country: 'France', slug: 'paris', image: '/images/hero-building.png', rent: 'from €215/wk' },
   { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.png', rent: 'from A$280/wk' },
   { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.png', rent: 'from A$250/wk' },
 ]
@@ -27,12 +27,12 @@ export default function DestinationsSection() {
             </span>
           </div>
           <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-            Three countries. One trusted guide.
+            Four countries. One trusted guide.
           </h2>
         </div>
 
         {/* Country cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 mb-5">
           {countries.map((country) => (
             <Link
               key={country.slug}
@@ -44,7 +44,7 @@ export default function DestinationsSection() {
                 alt={`Student accommodation in ${country.name}`}
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                sizes="(max-width: 1024px) 100vw, 33vw"
+                sizes="(max-width: 1024px) 100vw, 25vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0F2240]/95 via-[#0F2240]/40 to-transparent" />
 
@@ -60,7 +60,7 @@ export default function DestinationsSection() {
                 <h3 className="font-heading font-extrabold text-2xl text-white mb-2">{country.name}</h3>
                 <p className="text-white/65 text-sm leading-relaxed mb-5 line-clamp-2">{country.summary}</p>
                 <div className="flex flex-wrap gap-1.5">
-                  {country.citySlugs.slice(0, 4).map((citySlug) => {
+                  {country.citySlugs.slice(0, 3).map((citySlug) => {
                     const city = cities.find((place) => place.slug === citySlug)
 
                     if (!city) {
@@ -73,9 +73,9 @@ export default function DestinationsSection() {
                       </span>
                     )
                   })}
-                  {country.citySlugs.length > 4 && (
+                  {country.citySlugs.length > 3 && (
                     <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs">
-                      +{country.citySlugs.length - 4} more
+                      +{country.citySlugs.length - 3} more
                     </span>
                   )}
                 </div>
