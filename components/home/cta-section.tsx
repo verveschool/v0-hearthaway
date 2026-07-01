@@ -37,7 +37,6 @@ export default function CtaSection() {
                 'Takes 3 minutes',
                 'No commitment',
                 'Verified properties',
-                'UK, Ireland & Australia'
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2">
                   <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
