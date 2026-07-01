@@ -411,6 +411,139 @@ export const cities: CityPlace[] = [
     }
   },
   {
+    name: 'Marseille',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '5+',
+    image: '/images/hero-building.png',
+    slug: 'marseille',
+    description: 'a vibrant mediterranean port city and frances second largest metropolis blending historic architecture with modern research infrastructure',
+    avgRent: '€550 to €900 / mo',
+    studentPositioning: 'marseille rewards students who anchor to the metro and metro tramway network connecting to campuses spread across the wider urban basin',
+    bestAreasForStudents: {
+      summary: 'the vieux port and centre ville provide atmospheric walkable student quarters while les caillols and saint jerome sit adjacent to major science campuses',
+      topNeighbourhoods: ['vieux port', 'centre ville', 'les caillols', 'saint jerome', 'prefecture']
+    },
+    rentBudgeting: {
+      summary: 'marseille offers lower baseline costs than paris or lyon while maintaining strong transport connections and a thriving student culture',
+      averageMonthlyRent: '€700'
+    }
+  },
+  {
+    name: 'Montpellier',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '4+',
+    image: '/images/hero-building.png',
+    slug: 'montpellier',
+    description: 'a dynamic southern university city known for medicine life sciences research and a youthful energetic student centered urban environment',
+    avgRent: '€500 to €800 / mo',
+    studentPositioning: 'montpellier is highly student focused with compact city layout where most accommodation sits within easy walking or tram distance to major campuses',
+    bestAreasForStudents: {
+      summary: 'centre ville and antigone provide walkable central options while the northern campuses in sainte croix and millenaire offer suburban proximity',
+      topNeighbourhoods: ['centre ville', 'antigone', 'sainte croix', 'millenaire', 'port marianne']
+    },
+    rentBudgeting: {
+      summary: 'montpellier delivers excellent value with rising student population bringing new residence options and sharing competitive pricing across neighborhoods',
+      averageMonthlyRent: '€650'
+    }
+  },
+  {
+    name: 'Bordeaux',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '3+',
+    image: '/images/hero-building.png',
+    slug: 'bordeaux',
+    description: 'a historic atlantic port city renowned for wine business education and elegant urban design with strong public transport infrastructure',
+    avgRent: '€550 to €850 / mo',
+    studentPositioning: 'bordeaux student housing anchors to tram lines serving business schools and university campuses in the talence suburban clusters',
+    bestAreasForStudents: {
+      summary: 'the centre ville quarters host walkable traditional student zones while talence and pessac provide easy tram links to major engineering and research sites',
+      topNeighbourhoods: ['centre ville', 'talence', 'pessac', 'chartrons', 'quais']
+    },
+    rentBudgeting: {
+      summary: 'bordeaux combines regional affordability with strong urban amenities and wine culture making student budgets stretch considerably',
+      averageMonthlyRent: '€700'
+    }
+  },
+  {
+    name: 'Lille',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '4+',
+    image: '/images/hero-building.png',
+    slug: 'lille',
+    description: 'a northern gateway city connecting france to belgium and the uk via rail with respected business schools and technical universities',
+    avgRent: '€500 to €800 / mo',
+    studentPositioning: 'lille students anchor to the metro network linking vieux lille historic quarters to suburban engineering and science campuses',
+    bestAreasForStudents: {
+      summary: 'vieux lille offers charming walkable bohemian student life while wazemmes and fives provide excellent metro connections to wider campus sites',
+      topNeighbourhoods: ['vieux lille', 'wazemmes', 'fives', 'centre', 'moulins']
+    },
+    rentBudgeting: {
+      summary: 'lille delivers strong rent value positioning northern france as an affordable alternative to southern and central city hubs',
+      averageMonthlyRent: '€625'
+    }
+  },
+  {
+    name: 'Nice',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '2+',
+    image: '/images/hero-building.png',
+    slug: 'nice',
+    description: 'a glamorous côte d azur resort city and academic hub famous for coastal living research institutions and mediterranean climate',
+    avgRent: '€600 to €950 / mo',
+    studentPositioning: 'nice student housing trades between central promenade des anglais prestige and suburban campuses requiring bus or tram connections',
+    bestAreasForStudents: {
+      summary: 'vieux nice and the quartier des musiciens anchor walkable student quarters while saint barthelemy provides easier access to university campuses',
+      topNeighbourhoods: ['vieux nice', 'quartier des musiciens', 'saint barthelemy', 'libération', 'promenade des anglais']
+    },
+    rentBudgeting: {
+      summary: 'nice maintains mediterranean lifestyle prestige while offering student residences and shared housing that control costs relative to private market',
+      averageMonthlyRent: '€750'
+    }
+  },
+  {
+    name: 'Strasbourg',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '3+',
+    image: '/images/hero-building.png',
+    slug: 'strasbourg',
+    description: 'a historic border city and european hub with renowned universities bike culture and strong franco german cultural integration',
+    avgRent: '€500 to €800 / mo',
+    studentPositioning: 'strasbourg is uniquely bike and tram oriented where most student housing clusters within direct access to university districts without transit cost',
+    bestAreasForStudents: {
+      summary: 'centre ville and the petite france quarters provide walkable historic charm while the northern neudorf and koenigshoffen campuses sit on tram lines',
+      topNeighbourhoods: ['centre ville', 'petite france', 'neudorf', 'koenigshoffen', 'montagne verte']
+    },
+    rentBudgeting: {
+      summary: 'strasbourg offers exceptional value with strong bike infrastructure reducing transport costs and excellent student residence options from crous',
+      averageMonthlyRent: '€600'
+    }
+  },
+  {
+    name: 'Grenoble',
+    country: 'France',
+    countryCode: 'FR',
+    universities: '3+',
+    image: '/images/hero-building.png',
+    slug: 'grenoble',
+    description: 'a mountain gateway city and major research hub for engineering and science with excellent cable car tram and bus networks',
+    avgRent: '€500 to €800 / mo',
+    studentPositioning: 'grenoble campus geography requires students to anchor to tram and bus routes serving dispersed technology and research institutes in foothills',
+    bestAreasForStudents: {
+      summary: 'the centre ville provides walkable accommodation while the southern campuses in gières and saint martin d hères require tram line planning',
+      topNeighbourhoods: ['centre ville', 'gières', 'saint martin d hères', 'south']
+    },
+    rentBudgeting: {
+      summary: 'grenoble delivers strong student value with mountain culture appeal and solid crous and private residence options across suburbs',
+      averageMonthlyRent: '€625'
+    }
+  },
+  {
     name: 'Sydney',
     country: 'Australia',
     countryCode: 'AU',
