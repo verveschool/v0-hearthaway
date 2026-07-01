@@ -24,7 +24,7 @@ const steps = [
     number: '03',
     title: 'Review and ask questions',
     description:
-      'We present your matched options with honest, detailed information. Ask anything. We help you understand the differences so you can decide with confidence.',
+      'We present your matched options with specific and detailed information. Ask anything. We help you understand the differences so you can decide with confidence.',
     detail: 'No pressure, no rush',
     accent: 'Every question is a good question.',
   },
@@ -53,7 +53,7 @@ export default function HowItWorks() {
               </span>
             </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-              You should not have to navigate this alone.
+              Most students find accommodation. We help them find the right one.
             </h2>
           </div>
           <div>
@@ -111,7 +111,7 @@ export default function HowItWorks() {
         {/* Bottom nudge */}
         <div className="mt-12 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5 pt-10 border-t border-[#E8E6E1]">
           <div className="flex flex-wrap items-center gap-x-8 gap-y-2 text-sm text-[#6B6860]">
-            {['Free to use', 'No commitment required', 'UK, Ireland & Australia', 'Real team. Real guidance.'].map((item) => (
+            {['Free to use', 'No commitment required', 'UK, Ireland, France, Australia', 'Guided by people, not algorithms.'].map((item) => (
               <span key={item} className="flex items-center gap-2">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2 7L5.5 10.5L12 4" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
