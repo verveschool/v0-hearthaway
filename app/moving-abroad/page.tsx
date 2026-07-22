@@ -32,6 +32,11 @@ const countryPathways: { country: string; slug: MovingAbroadCountrySlug; descrip
     description: 'Budget planning, arrival routes, accommodation checks, and practical student setup.',
   },
   {
+    country: 'France',
+    slug: 'france',
+    description: 'Visa requirements, living costs, accommodation search, and student life essentials.',
+  },
+  {
     country: 'Australia',
     slug: 'australia',
     description: 'Student visa planning, setup costs, packing, and accommodation choices.',
