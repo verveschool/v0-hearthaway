@@ -91,6 +91,40 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('france')
   },
   {
+    name: 'United Arab Emirates',
+    slug: 'uae',
+    currency: 'AED (د.إ)',
+    heroImage: '/images/dest-uae.png',
+    badge: 'Emerging tech hub',
+    universityCount: '50+',
+    citySlugs: ['dubai', 'abu-dhabi', 'sharjah'],
+    universitySlugs: [
+      'heriot-watt-dubai', 'birmingham-dubai', 'middlesex-dubai', 'aiu-dubai', 'uow-dubai', 
+      'uae-univ', 'khalifa-univ', 'zayed-univ', 'nyu-abu-dhabi', 'sharjah-univ'
+    ],
+    summary: 'a rapidly growing global education hub with international branch campuses, tax-free income, and a fast-track post-study runway for ambitious students.',
+    overview: 'the uae attracts international students seeking quality western education brands, modern infrastructure, safety, and career opportunities in the middle east. dubai and abu dhabi host ma[...]',
+    studentHousingNotes: 'uae student housing spans luxury apartment compounds, university residences, and shared villas. furnished accommodation with utilities is standard. note: uae visa sponsorship[...]',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('uae')
+  },
+  {
+    name: 'Germany',
+    slug: 'germany',
+    currency: 'EUR (€)',
+    heroImage: '/images/dest-germany.png',
+    badge: 'Tuition-free education',
+    universityCount: '300+',
+    citySlugs: ['munich', 'berlin', 'frankfurt', 'hamburg', 'cologne', 'aachen', 'heidelberg', 'leipzig', 'dresden', 'stuttgart'],
+    universitySlugs: [
+      'tum-munich', 'lmu-munich', 'humboldt-berlin', 'heidelberg-univ', 'rwth-aachen', 
+      'hamburg-univ', 'goethe-frankfurt', 'gottingen-univ', 'tubingen-univ', 'stuttgart-univ'
+    ],
+    summary: 'world-class tuition-free public universities, leading engineering programs, and one of europe&apos;s largest international student populations.',
+    overview: 'germany attracts international students with essentially free higher education at public universities, world-leading research, and strong industry partnerships. housing through student[...]',
+    studentHousingNotes: 'germany&apos;s housing model differs from uk/australia: public studentenwerk dorms dominate with lengthy waitlists, shared wgs (flats) are cultural norm, and rent quoted monthl[...]',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('germany')
+  },
+  {
     name: 'Australia',
     slug: 'australia',
     currency: 'AUD (A$)',

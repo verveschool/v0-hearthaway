@@ -1,8 +1,8 @@
 const stats = [
-  { value: '40+', label: 'Cities' },
+  { value: '50+', label: 'Cities' },
   { value: '200+', label: 'Universities' },
   { value: '15k+', label: 'Students helped' },
-  { value: '4', label: 'Countries' },
+  { value: '6', label: 'Countries' },
 ]
 
 export default function TrustStatsSection() {

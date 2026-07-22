@@ -14,8 +14,10 @@ import {
 const countryLabels: Record<MovingAbroadCountrySlug, string> = {
   uk: 'United Kingdom',
   ireland: 'Ireland',
-  australia: 'Australia',
   france: 'France',
+  uae: 'United Arab Emirates',
+  germany: 'Germany',
+  australia: 'Australia',
 }
 
 type MovingAbroadArticlePageProps = {

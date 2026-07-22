@@ -34,6 +34,21 @@ const markets = [
     description: 'A welcoming, English-speaking country with world-class universities and a thriving international student community.',
   },
   {
+    abbr: 'FR',
+    name: 'France',
+    description: 'Historic universities, specialist grandes écoles, and strong public transport across major European student cities.',
+  },
+  {
+    abbr: 'UAE',
+    name: 'United Arab Emirates',
+    description: 'International branch campuses, modern infrastructure, tax-free income, and rapid career growth in the Middle East.',
+  },
+  {
+    abbr: 'DE',
+    name: 'Germany',
+    description: 'Tuition-free public universities, world-class engineering programs, and Europe\'s largest international student population.',
+  },
+  {
     abbr: 'AU',
     name: 'Australia',
     description: "Globally recognised qualifications, outstanding quality of life, and some of the world's best universities.",
@@ -137,9 +152,9 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-4">Where we operate</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
-              Three countries. Hundreds of universities. One platform.
+              Six countries. Hundreds of universities. One platform.
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (
                 <div key={market.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#1B365D] text-white font-heading font-bold text-sm mb-5">

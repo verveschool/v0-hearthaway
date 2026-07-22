@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 
-const countries = ['United Kingdom', 'Ireland', 'France', 'Australia']
+const countries = ['United Kingdom', 'Ireland', 'France', 'United Arab Emirates', 'Germany', 'Australia']
 
 const ukCities = [
   'London', 'Manchester', 'Birmingham', 'Edinburgh', 'Glasgow', 'Bristol', 
@@ -15,6 +15,10 @@ const ukCities = [
 const irelandCities = ['Dublin', 'Cork', 'Galway', 'Limerick']
 
 const franceCities = ['Paris', 'Lyon', 'Toulouse', 'Marseille', 'Montpellier', 'Bordeaux', 'Lille', 'Nice', 'Strasbourg', 'Grenoble']
+
+const uaeCities = ['Dubai', 'Abu Dhabi', 'Sharjah']
+
+const germanyCities = ['Munich', 'Berlin', 'Frankfurt', 'Hamburg', 'Cologne', 'Aachen', 'Heidelberg', 'Leipzig', 'Dresden', 'Stuttgart']
 
 const australiaCities = ['Melbourne', 'Sydney', 'Brisbane', 'Perth', 'Adelaide', 'Canberra']
 const budgetRanges = [
@@ -78,6 +82,8 @@ export default function GetMatchedPage() {
     form.country === 'United Kingdom' ? ukCities :
     form.country === 'Ireland' ? irelandCities :
     form.country === 'France' ? franceCities :
+    form.country === 'United Arab Emirates' ? uaeCities :
+    form.country === 'Germany' ? germanyCities :
     form.country === 'Australia' ? australiaCities : []
 
   const togglePriority = (p: string) => {

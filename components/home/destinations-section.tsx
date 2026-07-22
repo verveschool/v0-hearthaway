@@ -8,7 +8,9 @@ const popularCities = [
   { name: 'London', country: 'UK', slug: 'london', image: '/images/city-london.png', rent: 'from £180/wk' },
   { name: 'Manchester', country: 'UK', slug: 'manchester', image: '/images/city-manchester.png', rent: 'from £120/wk' },
   { name: 'Dublin', country: 'Ireland', slug: 'dublin', image: '/images/city-dublin.png', rent: 'from €160/wk' },
-  { name: 'Paris', country: 'France', slug: 'paris', image: '/images/hero-building.png', rent: 'from €215/wk' },
+  { name: 'Paris', country: 'France', slug: 'paris', image: '/images/city-paris.png', rent: 'from €215/wk' },
+  { name: 'Dubai', country: 'UAE', slug: 'dubai', image: '/images/city-dubai.png', rent: 'from AED 2,500/mo' },
+  { name: 'Munich', country: 'Germany', slug: 'munich', image: '/images/city-munich.png', rent: 'from €500/mo' },
   { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.png', rent: 'from A$280/wk' },
   { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.png', rent: 'from A$250/wk' },
 ]
@@ -27,12 +29,12 @@ export default function DestinationsSection() {
             </span>
           </div>
           <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-            Four countries. One trusted guide.
+            Six countries. One trusted guide.
           </h2>
         </div>
 
         {/* Country cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 mb-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-5 mb-5">
           {countries.map((country) => (
             <Link
               key={country.slug}
@@ -85,7 +87,7 @@ export default function DestinationsSection() {
         </div>
 
         {/* Popular cities grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 mb-10">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-3 mb-10">
           {popularCities.map((city) => (
             <Link
               key={city.slug}

@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'AU' | 'FR'
+export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU'
 
 export type CityPlace = {
   name: string
@@ -675,6 +675,253 @@ export const cities: CityPlace[] = [
       summary: 'beachside apartments command high holiday seasonal premiums while inland student complexes maintain stable structural baseline costs',
       averageMonthlyRent: 'A$1100'
     }
+  },
+  {
+    name: 'Dubai',
+    country: 'United Arab Emirates',
+    countryCode: 'UAE',
+    universities: '15+',
+    image: '/images/city-dubai.png',
+    slug: 'dubai',
+    description: 'the middle east&apos;s global education hub with modern branch campuses, tax free income, and world class infrastructure for international students',
+    avgRent: 'AED 2500 to 4500 / mo',
+    studentPositioning: 'metro linked marina and jbr offer beachside student accommodation with easy access to major universities across emirates hills and downtown',
+    bestAreasForStudents: {
+      summary: 'marina and jbr provide walkable beachfront lifestyle while emirates hills and downtown offer proximity to major international branch campuses',
+      topNeighbourhoods: ['marina', 'jbr', 'emirates hills', 'downtown dubai', 'business bay']
+    },
+    rentBudgeting: {
+      summary: 'furnished studios and shared villas dominate the student market with utilities typically included in quoted rent making budgeting predictable',
+      averageMonthlyRent: 'AED 3500'
+    }
+  },
+  {
+    name: 'Abu Dhabi',
+    country: 'United Arab Emirates',
+    countryCode: 'UAE',
+    universities: '8+',
+    image: '/images/city-abu-dhabi.png',
+    slug: 'abu-dhabi',
+    description: 'the capital city combining nyu branch campus prestige with government university strength and a more relaxed pace than dubai',
+    avgRent: 'AED 2000 to 3500 / mo',
+    studentPositioning: 'nyu abu dhabi dominates the international student landscape while uae university appeals to regional and international cohorts',
+    bestAreasForStudents: {
+      summary: 'yas island hosts nyu with modern accommodation while zanzibar and electra offer accessible housing near khalifa and zayed universities',
+      topNeighbourhoods: ['yas island', 'zanzibar', 'electra', 'al mina', 'corniche']
+    },
+    rentBudgeting: {
+      summary: 'government sponsored housing and university residences keep baseline costs significantly lower than dubai with quality comparable to premium international standards',
+      averageMonthlyRent: 'AED 2750'
+    }
+  },
+  {
+    name: 'Sharjah',
+    country: 'United Arab Emirates',
+    countryCode: 'UAE',
+    universities: '5+',
+    image: '/images/city-sharjah.png',
+    slug: 'sharjah',
+    description: 'the cultural heart of the emirates with the university of sharjah as its anchor and significantly lower accommodation costs than dubai',
+    avgRent: 'AED 1500 to 2800 / mo',
+    studentPositioning: 'university of sharjah provides strong regional reputation while metro bus links connect to job opportunities and social life in dubai and ajman',
+    bestAreasForStudents: {
+      summary: 'al qasba and university city deliver walking accessible student life while al majaz offers metro bus connectivity to broader emirates employment',
+      topNeighbourhoods: ['al qasba', 'university city', 'al majaz', 'rolla', 'al furjan']
+    },
+    rentBudgeting: {
+      summary: 'sharjah delivers the lowest accommodation cost of the three emirates with shared villas and furnished studios under aed 2000 per month making it ideal for budget conscious students',
+      averageMonthlyRent: 'AED 2000'
+    }
+  },
+  {
+    name: 'Munich',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '6',
+    image: '/images/city-munich.png',
+    slug: 'munich',
+    description: 'the powerhouse of german engineering and technology with tum as a global leader and exceptional quality of life offset by higher bavarian accommodation costs',
+    avgRent: 'EUR 500 to 900 / mo',
+    studentPositioning: 'tum and lmu campuses spread across the city with s bahn and u bahn networks anchoring student neighborhoods far from expensive city centre',
+    bestAreasForStudents: {
+      summary: 'schwabing and neuhausen offer walkable student quarters with bohemian culture while moosach and feldmoching provide affordable u bahn access to tum',
+      topNeighbourhoods: ['schwabing', 'neuhausen', 'moosach', 'feldmoching', 'bogenhausen']
+    },
+    rentBudgeting: {
+      summary: 'studentenwerk dorms offer foundational EUR 300 400 options though waitlists stretch beyond one year meaning private wg shares at EUR 600 800 dominate actual student housing',
+      averageMonthlyRent: 'EUR 700'
+    }
+  },
+  {
+    name: 'Berlin',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '5',
+    image: '/images/city-berlin.png',
+    slug: 'berlin',
+    description: 'the vibrant capital with world class research universities and an explosion of cultural life offset by ongoing student housing shortages',
+    avgRent: 'EUR 400 to 700 / mo',
+    studentPositioning: 'humboldt university fu and tu berlin spread across the city with u bahn and s bahn providing fast connections to student neighborhoods',
+    bestAreasForStudents: {
+      summary: 'kreuzberg prenzlauer berg and friedrichshain deliver the highest concentration of student communities while spandau and rummelsburg offer budget alternatives',
+      topNeighbourhoods: ['kreuzberg', 'prenzlauer berg', 'friedrichshain', 'charlottenburg', 'neukölln']
+    },
+    rentBudgeting: {
+      summary: 'berlin&apos;s reputation for affordability is eroding as new students flood the market meaning wg rooms increasingly stretch toward EUR 700 800 in central districts',
+      averageMonthlyRent: 'EUR 600'
+    }
+  },
+  {
+    name: 'Frankfurt',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '4',
+    image: '/images/city-frankfurt.png',
+    slug: 'frankfurt',
+    description: 'a global financial hub with goethe university as its anchor offering strong business and international programs amid high accommodation costs',
+    avgRent: 'EUR 450 to 800 / mo',
+    studentPositioning: 'goethe university spreads across westend sachsenhausen and bockenheim with u bahn connections anchoring student housing decisions',
+    bestAreasForStudents: {
+      summary: 'sachsenhausen and westend provide bohemian and academic vibes while bockenheim and bornheim offer better value with quick u bahn access to campus',
+      topNeighbourhoods: ['sachsenhausen', 'westend', 'bockenheim', 'bornheim', 'höchst']
+    },
+    rentBudgeting: {
+      summary: 'frankfurt studentenwerk provides foundational options but private wg shares in walkable areas command premium due to geographic remoteness from other major cities',
+      averageMonthlyRent: 'EUR 650'
+    }
+  },
+  {
+    name: 'Hamburg',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '3',
+    image: '/images/city-hamburg.png',
+    slug: 'hamburg',
+    description: 'germany&apos;s northern port city with hamburg university and haw hamburg offering maritime research strength and cosmopolitan student culture',
+    avgRent: 'EUR 400 to 750 / mo',
+    studentPositioning: 'university of hamburg and haw campuses connect via s bahn with student housing concentrated in areas anchoring the ring around the inner lakes',
+    bestAreasForStudents: {
+      summary: 'san pauli and ottensen deliver bohemian energy while altona and eppendorf offer quieter academic atmospheres with s bahn connections',
+      topNeighbourhoods: ['san pauli', 'ottensen', 'altona', 'eppendorf', 'winter huder']
+    },
+    rentBudgeting: {
+      summary: 'hamburg&apos;s studentenwerk maintains strong inventory of EUR 300 500 dorms offsetting private market pressure on wg shares in central districts',
+      averageMonthlyRent: 'EUR 580'
+    }
+  },
+  {
+    name: 'Cologne',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '4',
+    image: '/images/city-cologne.png',
+    slug: 'cologne',
+    description: 'the cathedral city on the rhine with university of cologne delivering humanities strength and excellent nightlife offsetting accommodation pressures',
+    avgRent: 'EUR 400 to 700 / mo',
+    studentPositioning: 'university of cologne campuses spread across the city with u bahn and s bahn providing efficient connections to residential quarters',
+    bestAreasForStudents: {
+      summary: 'south city cologne deliver student neighborhoods on the rhine with ehrenfeld and nippes offering cheaper alternatives with quick u bahn access',
+      topNeighbourhoods: ['south city', 'ehrenfeld', 'nippes', 'poll', 'junkersdorf']
+    },
+    rentBudgeting: {
+      summary: 'cologne maintains middle tier accommodation costs with solid studentenwerk coverage though wg shares increasingly compete for younger international students',
+      averageMonthlyRent: 'EUR 600'
+    }
+  },
+  {
+    name: 'Aachen',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '3',
+    image: '/images/city-aachen.png',
+    slug: 'aachen',
+    description: 'the engineering capital with rwth aachen university as one of europe&apos;s top technical institutions attracting strong international student cohorts',
+    avgRent: 'EUR 350 to 600 / mo',
+    studentPositioning: 'rwth aachen dominates the city with student accommodation concentrated around the main campus connected by tram network',
+    bestAreasForStudents: {
+      summary: 'aachen city centre and west offer walking access to rwth while eilendorf and brand provide affordable tram linked alternatives',
+      topNeighbourhoods: ['city centre', 'west', 'eilendorf', 'brand', 'laurensberg']
+    },
+    rentBudgeting: {
+      summary: 'aachen offers the best value of major german university cities with strong studentenwerk presence and competitive wg market keeping monthly costs under EUR 600',
+      averageMonthlyRent: 'EUR 500'
+    }
+  },
+  {
+    name: 'Heidelberg',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '2',
+    image: '/images/city-heidelberg.png',
+    slug: 'heidelberg',
+    description: 'germany&apos;s oldest university town nestled on the neckar river with exceptional student culture and walkable intimacy versus big city competition',
+    avgRent: 'EUR 400 to 700 / mo',
+    studentPositioning: 'heidelberg university dominates the city with most student accommodation within walking or short tram distance of historic old town campuses',
+    bestAreasForStudents: {
+      summary: 'old town delivers romantic walkable student life while neuenheim rohrbach and baiertal provide quieter residential alternatives minutes from lectures',
+      topNeighbourhoods: ['old town', 'neuenheim', 'rohrbach', 'baiertal', 'handschuhsheim']
+    },
+    rentBudgeting: {
+      summary: 'heidelberg&apos;s smaller scale keeps rent competitive with strong studentenwerk provision meaning wg shares anchor around EUR 550 per person',
+      averageMonthlyRent: 'EUR 550'
+    }
+  },
+  {
+    name: 'Leipzig',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '3',
+    image: '/images/city-leipzig.png',
+    slug: 'leipzig',
+    description: 'the eastern renaissance with leipzig university as a historic institution and a thriving cultural scene with exceptional affordability',
+    avgRent: 'EUR 300 to 550 / mo',
+    studentPositioning: 'leipzig university campuses spread across the city with tram network delivering fast connections to residential student quarters',
+    bestAreasForStudents: {
+      summary: 'schleußig plagwitz and reudnitz deliver the highest concentration of student culture and bars while zentrum west offer classic apartment stock',
+      topNeighbourhoods: ['schleußig', 'plagwitz', 'reudnitz', 'zentrum west', 'connewitz']
+    },
+    rentBudgeting: {
+      summary: 'leipzig remains germany&apos;s affordable sanctuary with wg shares regularly under EUR 450 and studentenwerk dorms below EUR 350 per month',
+      averageMonthlyRent: 'EUR 425'
+    }
+  },
+  {
+    name: 'Dresden',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '2',
+    image: '/images/city-dresden.png',
+    slug: 'dresden',
+    description: 'the baroque jewel of eastern germany with tu dresden delivering engineering and science research excellence amid cultural recovery',
+    avgRent: 'EUR 350 to 600 / mo',
+    studentPositioning: 'tu dresden campuses spread across the city with straßenbahn network providing extensive connections to student residential areas',
+    bestAreasForStudents: {
+      summary: 'prager straße altstadt and neustadt deliver student atmosphere with walkable access while südvorstadt and striesen offer value with tram connections',
+      topNeighbourhoods: ['prager straße', 'altstadt', 'neustadt', 'südvorstadt', 'striesen']
+    },
+    rentBudgeting: {
+      summary: 'dresden maintains excellent value with strong studentenwerk presence keeping monthly costs competitive while cultural attractions remain globally priced',
+      averageMonthlyRent: 'EUR 500'
+    }
+  },
+  {
+    name: 'Stuttgart',
+    country: 'Germany',
+    countryCode: 'DE',
+    universities: '3',
+    image: '/images/city-stuttgart.png',
+    slug: 'stuttgart',
+    description: 'the engineering and automotive capital with u stuttgart delivering technical excellence amid higher swabian accommodation costs',
+    avgRent: 'EUR 450 to 800 / mo',
+    studentPositioning: 'u stuttgart campuses spread across multiple zones with s bahn providing fast connections to student neighborhoods in surrounding valleys',
+    bestAreasForStudents: {
+      summary: 'west end and south deliver walkable student neighborhoods while neugereut and cannstatt offer value with s bahn access to main campus',
+      topNeighbourhoods: ['west end', 'south', 'neugereut', 'cannstatt', 'freiberg']
+    },
+    rentBudgeting: {
+      summary: 'stuttgart maintains higher accommodation costs reflecting regional prosperity with wg shares typically EUR 650 800 and studentenwerk providing foundational options',
+      averageMonthlyRent: 'EUR 700'
+    }
   }
 ]
 
@@ -750,13 +997,35 @@ export const universities: UniversityPlace[] = [
   { name: 'Australian National University', city: 'Canberra', country: 'Australia', students: '21,000+', slug: 'anu', citySlug: 'canberra' },
   { name: 'University of Canberra', city: 'Canberra', country: 'Australia', students: '16,000+', slug: 'uc', citySlug: 'canberra' },
   { name: 'Bond University', city: 'Gold Coast', country: 'Australia', students: '4,000+', slug: 'bond', citySlug: 'gold-coast' },
-  { name: 'Griffith University Gold Coast', city: 'Gold Coast', country: 'Australia', students: '18,000+', slug: 'griffith-gc', citySlug: 'gold-coast' }
+  { name: 'Griffith University Gold Coast', city: 'Gold Coast', country: 'Australia', students: '18,000+', slug: 'griffith-gc', citySlug: 'gold-coast' },
+  { name: 'Heriot-Watt University Dubai', city: 'Dubai', country: 'UAE', students: '6,000+', slug: 'heriot-watt-dubai', citySlug: 'dubai' },
+  { name: 'University of Birmingham Dubai', city: 'Dubai', country: 'UAE', students: '2,500+', slug: 'birmingham-dubai', citySlug: 'dubai' },
+  { name: 'Middlesex University Dubai', city: 'Dubai', country: 'UAE', students: '4,500+', slug: 'middlesex-dubai', citySlug: 'dubai' },
+  { name: 'American University in Dubai', city: 'Dubai', country: 'UAE', students: '1,200+', slug: 'aiu-dubai', citySlug: 'dubai' },
+  { name: 'University of Wollongong Dubai', city: 'Dubai', country: 'UAE', students: '3,000+', slug: 'uow-dubai', citySlug: 'dubai' },
+  { name: 'NYU Abu Dhabi', city: 'Abu Dhabi', country: 'UAE', students: '1,600+', slug: 'nyu-abu-dhabi', citySlug: 'abu-dhabi' },
+  { name: 'UAE University', city: 'Abu Dhabi', country: 'UAE', students: '16,000+', slug: 'uae-univ', citySlug: 'abu-dhabi' },
+  { name: 'Khalifa University', city: 'Abu Dhabi', country: 'UAE', students: '3,500+', slug: 'khalifa-univ', citySlug: 'abu-dhabi' },
+  { name: 'Zayed University', city: 'Abu Dhabi', country: 'UAE', students: '4,000+', slug: 'zayed-univ', citySlug: 'abu-dhabi' },
+  { name: 'University of Sharjah', city: 'Sharjah', country: 'UAE', students: '14,000+', slug: 'sharjah-univ', citySlug: 'sharjah' },
+  { name: 'Technical University of Munich', city: 'Munich', country: 'DE', students: '47,000+', slug: 'tum-munich', citySlug: 'munich' },
+  { name: 'Ludwig Maximilian University Munich', city: 'Munich', country: 'DE', students: '52,000+', slug: 'lmu-munich', citySlug: 'munich' },
+  { name: 'Humboldt University Berlin', city: 'Berlin', country: 'DE', students: '36,000+', slug: 'humboldt-berlin', citySlug: 'berlin' },
+  { name: 'University of Heidelberg', city: 'Heidelberg', country: 'DE', students: '30,000+', slug: 'heidelberg-univ', citySlug: 'heidelberg' },
+  { name: 'RWTH Aachen University', city: 'Aachen', country: 'DE', students: '47,000+', slug: 'rwth-aachen', citySlug: 'aachen' },
+  { name: 'University of Hamburg', city: 'Hamburg', country: 'DE', students: '43,000+', slug: 'hamburg-univ', citySlug: 'hamburg' },
+  { name: 'Goethe University Frankfurt', city: 'Frankfurt', country: 'DE', students: '45,000+', slug: 'goethe-frankfurt', citySlug: 'frankfurt' },
+  { name: 'University of Göttingen', city: 'Hamburg', country: 'DE', students: '36,000+', slug: 'gottingen-univ', citySlug: 'hamburg' },
+  { name: 'University of Tübingen', city: 'Stuttgart', country: 'DE', students: '28,000+', slug: 'tubingen-univ', citySlug: 'stuttgart' },
+  { name: 'University of Stuttgart', city: 'Stuttgart', country: 'DE', students: '65,000+', slug: 'stuttgart-univ', citySlug: 'stuttgart' }
 ]
 
 export const groupedCities: Record<string, CityPlace[]> = {
   'United Kingdom': cities.filter((city) => city.countryCode === 'UK'),
   Ireland: cities.filter((city) => city.countryCode === 'IE'),
   France: cities.filter((city) => city.countryCode === 'FR'),
+  'United Arab Emirates': cities.filter((city) => city.countryCode === 'UAE'),
+  Germany: cities.filter((city) => city.countryCode === 'DE'),
   Australia: cities.filter((city) => city.countryCode === 'AU')
 }
 
