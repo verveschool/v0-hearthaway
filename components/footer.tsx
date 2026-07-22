@@ -92,7 +92,7 @@ export default function Footer() {
                   {"+91 99999 65742"}
                 </a>
               </p>
-              <p className="text-xs max-w-[220px]">{"H-20, Sector 63, Noida, UP 201301"}</p>
+              <p className="text-xs max-w-[220px]">{"20, H-1/A, Sector 63, Noida, UP 201301"}</p>
             </div>
 
             {/* Trustpilot Native SVG Placeholder */}
