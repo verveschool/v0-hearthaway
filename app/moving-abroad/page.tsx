@@ -37,6 +37,16 @@ const countryPathways: { country: string; slug: MovingAbroadCountrySlug; descrip
     description: 'Visa requirements, living costs, accommodation search, and student life essentials.',
   },
   {
+    country: 'United Arab Emirates',
+    slug: 'uae',
+    description: 'Visa sponsorship, tax-free income planning, furnished housing, and settlement essentials.',
+  },
+  {
+    country: 'Germany',
+    slug: 'germany',
+    description: 'Studentenwerk application, housing WG culture, monthly rent planning, and student life.',
+  },
+  {
     country: 'Australia',
     slug: 'australia',
     description: 'Student visa planning, setup costs, packing, and accommodation choices.',

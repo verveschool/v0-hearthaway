@@ -1,6 +1,6 @@
 export type MovingAbroadArticleCategory = 'Before you go' | 'Accommodation' | 'Budgeting' | 'Arriving'
 export type MovingAbroadArticleStage = 'Planning' | 'Booking' | 'Budgeting' | 'Arrival' | 'Settling in'
-export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'australia' | 'france'
+export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'france' | 'uae' | 'germany' | 'australia'
 export type MovingAbroadCtaVariant = 'housing' | 'planning'
 
 export type MovingAbroadArticleSection = {
@@ -518,11 +518,13 @@ export const homePreviewGuideSlugs = ['pre-arrival-checklist', 'accommodation-co
 export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]> = {
   uk: ['student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
   ireland: ['student-visa', 'student-budget', 'airport-to-home', 'avoid-scams'],
-  australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
   france: ['student-visa', 'student-budget', 'airport-to-home', 'tenancy-agreement'],
+  uae: [],
+  germany: [],
+  australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
 }
 
-const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'australia', 'france']
+const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'france', 'uae', 'germany', 'australia']
 
 function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
   return movingAbroadCountrySlugs.some((validCountrySlug) => validCountrySlug === countrySlug)
