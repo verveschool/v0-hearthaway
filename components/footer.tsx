@@ -55,7 +55,7 @@ export default function Footer() {
 
       {/* Links Grid */}
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-10">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category}>
               <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">
@@ -78,7 +78,7 @@ export default function Footer() {
           ))}
 
           {/* Company / Contact info Block */}
-          <div>
+          <div className="col-span-1 sm:col-span-2 md:col-span-1">
             <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Company"}</h3>
             <div className="text-sm text-white/70 space-y-3 mb-8">
               <p>
@@ -91,7 +91,7 @@ export default function Footer() {
                   {"+91 99999 65742"}
                 </a>
               </p>
-              <p>{"H-20, Sector 63, Noida, UP 201301"}</p>
+              <p className="text-xs">{"H-20, Sector 63, Noida, UP 201301"}</p>
             </div>
 
             {/* Trustpilot Native SVG Placeholder */}
