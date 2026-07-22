@@ -13,10 +13,10 @@ const navLinks = [
     href: '/universities',
     dropdown: [
       { label: 'All Universities', href: '/universities' },
-      { label: 'United Kingdom', href: '/uk/universities' },
+      { label: 'UK', href: '/uk/universities' },
       { label: 'Ireland', href: '/ireland/universities' },
       { label: 'France', href: '/france/universities' },
-      { label: 'United Arab Emirates', href: '/uae/universities' },
+      { label: 'UAE', href: '/uae/universities' },
       { label: 'Germany', href: '/germany/universities' },
       { label: 'Australia', href: '/australia/universities' }
     ]

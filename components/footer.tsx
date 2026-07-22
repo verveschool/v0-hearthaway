@@ -6,20 +6,19 @@ const brandWordmarkPath = '/brand/hearthaway-wordmark-light.png'
 
 const footerLinks = {
   Destinations: [
-    { label: 'United Kingdom', href: '/uk' },
+    { label: 'UK', href: '/uk' },
     { label: 'Ireland', href: '/ireland' },
     { label: 'France', href: '/france' },
-    { label: 'United Arab Emirates', href: '/uae' },
+    { label: 'UAE', href: '/uae' },
     { label: 'Germany', href: '/germany' },
-    { label: 'Australia', href: '/australia' },
-    { label: 'All Cities', href: '/cities' },
-    { label: 'All Universities', href: '/universities' }
+    { label: 'Australia', href: '/australia' }
   ],
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
     { label: 'How it works', href: '/about' },
     { label: 'Resources', href: '/moving-abroad' },
-
+    { label: 'All Cities', href: '/cities' },
+    { label: 'All Universities', href: '/universities' }
   ]
 }
 
