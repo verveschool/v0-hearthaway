@@ -16,9 +16,15 @@ const footerLinks = {
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
     { label: 'How it works', href: '/about' },
-    { label: 'Resources', href: '/moving-abroad' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' }
+  ],
+  Resources: [
+    { label: 'Moving Abroad Guide', href: '/moving-abroad' },
+    { label: 'Pre-Arrival Checklist', href: '/moving-abroad/pre-arrival-checklist' },
+    { label: 'Student Visa', href: '/moving-abroad/student-visa' },
+    { label: 'Accommodation Guide', href: '/moving-abroad/choose-accommodation' },
+    { label: 'Budget Planning', href: '/moving-abroad/real-cost-abroad' }
   ]
 }
 

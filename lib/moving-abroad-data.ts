@@ -486,6 +486,303 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
       { title: 'Ask For Support Early', summary: 'If loneliness feels heavy contact your university support services or residential advisors immediately. Everyone struggles in the first month.' }
     ],
     ctaVariant: 'planning',
+  },
+  {
+    slug: 'uae-visa-sponsorship',
+    title: 'UAE Student Visa And Visa Sponsorship: Understanding Your Pathway',
+    category: 'Before you go',
+    description: 'Comprehensive guide to UAE student visas, employer sponsorship models, and visa-to-residency transitions unique to the emirates.',
+    readTime: '8 min read',
+    stage: 'Planning',
+    countries: ['uae'],
+    sections: [
+      {
+        title: 'University Visa Sponsorship Model',
+        summary: 'In the UAE, universities directly sponsor your visa rather than the government issuing student visas independently. Your university becomes your legal sponsor.',
+        keyPoints: [
+          'Your university manages your visa application through their Immigration department',
+          'Sponsorship requires direct admission to their accredited program',
+          'Processing typically takes 2-4 weeks after admission confirmation',
+          'Your visa is tied to your enrollment status at that specific institution'
+        ],
+        numbers: [
+          'Typical processing time: 14-28 days after document submission',
+          'Visa validity: Usually aligned with your academic year (1-4 years)'
+        ]
+      },
+      {
+        title: 'Employer Sponsorship For Post-Study Work',
+        summary: 'The UAE fast-tracks post-study work opportunities through direct employer sponsorship, a significant advantage for international students.',
+        keyPoints: [
+          'Employers can sponsor your visa immediately upon graduation',
+          'No separate work permit system required in most Emirates',
+          'Salary minimums typically apply (check current regulations)',
+          'Sponsorship transfers between employers require approval but are routine'
+        ],
+        warning: 'Never accept informal employment without official visa sponsorship. All work must be registered with your sponsoring employer in immigration records.'
+      },
+      {
+        title: 'Visa Documentation Checklist',
+        summary: 'Prepare all required documents early to avoid delays during the sponsorship application window.',
+        keyPoints: [
+          'Valid passport with minimum 6 months validity',
+          'Official university admission letter from your sponsoring institution',
+          'Medical clearance certificate (must be obtained in UAE after visa approval)',
+          'Police clearance from your home country',
+          'Proof of accommodation (your university may provide initial housing)'
+        ]
+      }
+    ],
+    ctaVariant: 'planning',
+  },
+  {
+    slug: 'uae-housing-furnished',
+    title: 'Understanding Furnished Housing And Utilities In The UAE',
+    category: 'Accommodation',
+    description: 'Navigate UAE student housing culture where furnished apartments with included utilities are the norm, not the exception.',
+    readTime: '7 min read',
+    stage: 'Booking',
+    countries: ['uae'],
+    sections: [
+      {
+        title: 'Furnished Apartments Are Standard',
+        summary: 'Nearly all student accommodation in the UAE comes fully furnished with appliances, furniture, and often utilities included in the quoted rent.',
+        keyPoints: [
+          'Furnished means: beds, sofa, kitchen appliances, basic furnishings included',
+          'Utilities (water, electricity, A/C) often included in monthly rent or minimal additional charge',
+          'Monthly rent is standard billing period (not weekly like UK/Australia)',
+          'Deposits typically equal 1-2 months rent, refundable at lease end'
+        ]
+      },
+      {
+        title: 'Types Of Student Housing',
+        summary: 'UAE offers diverse accommodation options from university residences to private student compounds and shared villas.',
+        keyPoints: [
+          'University accommodation: Fastest to arrange, often guaranteed for Year 1',
+          'Student compounds: Modern buildings designed specifically for international students',
+          'Shared villas: Multiple students renting different bedrooms in private homes',
+          'Private apartments: Studios or one-bedrooms rented independently'
+        ],
+        numbers: [
+          'Average furnished studio: AED 2,500-3,500 per month in Dubai, AED 1,800-2,500 in Abu Dhabi',
+          'University residence: Often AED 2,000-3,000 with meals potentially included'
+        ]
+      },
+      {
+        title: 'Lease Agreements And Tenant Rights',
+        summary: 'UAE tenancy law protects both landlords and tenants. Understand your obligations before signing.',
+        keyPoints: [
+          'Written lease agreements required by law',
+          'One-year minimum lease terms standard in Dubai and Abu Dhabi',
+          'Rent increases limited by law (typically maximum 5% annually for renewals)',
+          'Deposits held in designated escrow accounts for protection'
+        ],
+        warning: 'Always sign official contracts before making payment. Verbal agreements are not enforceable. Never transfer money to private accounts for deposits.'
+      }
+    ],
+    ctaVariant: 'housing',
+  },
+  {
+    slug: 'uae-tax-free-income-planning',
+    title: 'Tax-Free Income And Student Work: Financial Planning For UAE Study',
+    category: 'Budgeting',
+    description: 'The UAE has no personal income tax. Understand how this affects your earnings, savings strategy, and post-graduation financial planning.',
+    readTime: '6 min read',
+    stage: 'Planning',
+    countries: ['uae'],
+    sections: [
+      {
+        title: 'No Personal Income Tax Advantage',
+        summary: 'The UAE imposes no income tax on individuals, a unique advantage that significantly increases your take-home pay versus other study destinations.',
+        keyPoints: [
+          'Zero personal income tax on wages and salaries',
+          'Investment income and interest also tax-free',
+          'Your full gross salary becomes your net income',
+          'Part-time work earnings are entirely yours (after employer deductions if any)'
+        ],
+        numbers: [
+          'Income advantage vs UK: 20% higher take-home earnings (no income tax)',
+          'Income advantage vs Australia: 25-45% higher depending on tax bracket'
+        ]
+      },
+      {
+        title: 'Student Work Permissions And Earnings',
+        summary: 'Most international students are permitted part-time work as long as it does not interfere with study commitment.',
+        keyPoints: [
+          'Check with your university about part-time work permissions (typically 15-20 hours weekly allowed)',
+          'Employer must register you officially (informal work voids your visa protection)',
+          'Campus jobs typically offer AED 100-200 per hour',
+          'Off-campus roles in retail, hospitality range AED 80-150 per hour'
+        ]
+      },
+      {
+        title: 'Building Savings And Post-Study Finance',
+        summary: 'Use your tax-free years strategically to build financial position before returning home.',
+        keyPoints: [
+          'Open a UAE bank account with tax residency benefits',
+          'No obligations to report savings to home country tax authorities (check local rules)',
+          'Transfer savings home via official banking channels',
+          'Post-study employer sponsorship can continue accumulating tax-free income'
+        ]
+      }
+    ],
+    ctaVariant: 'planning',
+  },
+  {
+    slug: 'germany-studentenwerk-housing',
+    title: 'Studentenwerk Dorms, WG Flats, And Finding Affordable Student Housing In Germany',
+    category: 'Accommodation',
+    description: 'Germany&apos;s unique student housing model: public Studentenwerk dorms with waitlists, shared WG flats, and the cultural norms you need to navigate successfully.',
+    readTime: '9 min read',
+    stage: 'Booking',
+    countries: ['germany'],
+    sections: [
+      {
+        title: 'Studentenwerk: The Public Student Housing Authority',
+        summary: 'Most German students live in Studentenwerk dorms—subsidized public housing run by student service organizations. These offer the lowest prices but have substantial waitlists.',
+        keyPoints: [
+          'Studentenwerk dorms cost EUR 200-400 monthly (significantly cheaper than private market)',
+          'Apply immediately upon university acceptance (waitlists often 6-12 months)',
+          'Dorms vary widely: some are modern, others modest',
+          'Typically include basic furniture, utilities included in rent',
+          'Shared kitchen and living facilities foster community'
+        ],
+        numbers: [
+          'Studentenwerk dorm average cost: EUR 300 per month',
+          'Average waitlist duration: 6-12 months depending on city and university'
+        ],
+        warning: 'Do NOT assume you will get a Studentenwerk dorm immediately. Apply on day one but plan parallel housing for your first semester.'
+      },
+      {
+        title: 'WG Flats: The German Shared Housing Culture',
+        summary: 'WG (Wohngemeinschaft) shared flats are cultural staple in Germany. Multiple students rent separate bedrooms in one apartment, sharing kitchen and common areas.',
+        keyPoints: [
+          'WG is primary housing option for students in major cities',
+          'Individual bedroom rent: EUR 400-800 per month (varies by city)',
+          'You pay for your room; shared costs split equally (utilities, internet)',
+          'Landlord is often a private person, not an organization',
+          'Roommate selection happens organically through viewings and interviews'
+        ],
+        numbers: [
+          'Munich WG room: EUR 500-900 per month',
+          'Berlin WG room: EUR 400-700 per month',
+          'Leipzig WG room: EUR 300-500 per month'
+        ]
+      },
+      {
+        title: 'Finding Housing: Online Platforms And Timing',
+        summary: 'Germans rely heavily on specific online platforms. Start searching 3-6 months before your move-in date.',
+        keyPoints: [
+          'WG-Gesucht.de: Primary platform for WG ads and shared flats',
+          'ImmoScout24: Broader market but also used for student housing',
+          'Immobilienscout24: Large property portal with private landlords',
+          'University housing office may have local listings and contacts',
+          'Always arrange viewings in person or with verified video calls'
+        ],
+        warning: 'Be cautious of rental scams. Never wire money without viewing the property and meeting the landlord in person. Common scams: properties being double-rented or photos from different apartments.'
+      }
+    ],
+    ctaVariant: 'housing',
+  },
+  {
+    slug: 'germany-monthly-budgeting',
+    title: 'Monthly Budget Planning For German University Cities: Rent, Food, And Student Life',
+    category: 'Budgeting',
+    description: 'Germany offers exceptional value for international students. Break down realistic monthly budgets by city and housing type.',
+    readTime: '8 min read',
+    stage: 'Booking',
+    countries: ['germany'],
+    sections: [
+      {
+        title: 'Breaking Down Your Monthly Budget',
+        summary: 'German student budgets vary significantly by city and housing choice. Plan realistically around housing (your largest expense).',
+        keyPoints: [
+          'Accommodation: EUR 300-800 depending on housing type and city',
+          'Food: EUR 150-250 (significantly cheaper than UK/Australia)',
+          'Transport: EUR 50-100 (student monthly pass for entire city)',
+          'Utilities (if not included): EUR 60-120',
+          'Social/leisure: EUR 100-150'
+        ],
+        numbers: [
+          'Total budget (Studentenwerk + thrifty eating): EUR 700-1,000 per month',
+          'Total budget (WG + comfortable living): EUR 1,100-1,500 per month',
+          'Monthly income needed (no income tax): EUR 700-1,500 depending on lifestyle'
+        ]
+      },
+      {
+        title: 'Student Discounts And Savings Tactics',
+        summary: 'Germany offers exceptional student discounts across nearly all sectors. Take full advantage.',
+        keyPoints: [
+          'Student ticket (Semesterticket): EUR 150-280 for unlimited monthly transport',
+          'University cafeteria meals: EUR 3-5 (heavily subsidized)',
+          'Cinema, museums, cultural events: Often 50% student discount',
+          'Software and hardware: Microsoft, Adobe student pricing available',
+          'Local businesses: Many offer 5-10% with valid student ID'
+        ]
+      },
+      {
+        title: 'Part-Time Work And Study Rules',
+        summary: 'International students typically allowed 120 hours annually of part-time work. Plan accordingly.',
+        keyPoints: [
+          'Part-time work allowed: Up to 20 hours per week during semester (120 days full-time annually)',
+          'Minimum wage (Mindestlohn): EUR 12-14 per hour',
+          'Campus jobs: EUR 12-15 per hour, flexible around classes',
+          'Tuition is free or extremely low (EUR 0-300 per semester depending on state)',
+          'Student hiwi jobs (research assistant): EUR 12-14 hourly rates'
+        ]
+      }
+    ],
+    ctaVariant: 'planning',
+  },
+  {
+    slug: 'germany-tenancy-law-deposits',
+    title: 'German Tenancy Agreements, Deposits, And Landlord-Tenant Rights You Must Know',
+    category: 'Accommodation',
+    description: 'Germany has strong tenant protection laws. Understand your rights, deposit regulations, and what makes a valid lease agreement.',
+    readTime: '7 min read',
+    stage: 'Booking',
+    countries: ['germany'],
+    sections: [
+      {
+        title: 'Valid Lease Agreements And Required Terms',
+        summary: 'German rental contracts must include specific terms. Ensure yours covers all essential protections.',
+        keyPoints: [
+          'Written contract required by law (verbal agreements unenforceable)',
+          'Must specify: rent amount, utilities included/excluded, deposit, move-in date',
+          'Cold rent (Kaltmiete): Rent without utilities',
+          'Warm rent (Warmmiete): Rent including heating (increasingly common)',
+          'Termination period typically 3 months to end of calendar month'
+        ],
+        warning: 'Never sign a contract in a language you don\'t understand. Get a German-speaking friend or professional to review it first. Contracts are legally binding.'
+      },
+      {
+        title: 'Security Deposits And Protection Rules',
+        summary: 'German law strictly regulates how deposits are handled and must be held in a special account.',
+        keyPoints: [
+          'Maximum deposit: 3 months cold rent (cannot exceed this)',
+          'Deposit must be held in separate, interest-bearing escrow account',
+          'Landlord must provide escrow account details in writing',
+          'Deposit refund within 30 days of move-out (minus legitimate deductions)',
+          'Landlord can only deduct for damage beyond normal wear and tear'
+        ],
+        numbers: [
+          'Standard deposit amount: Equivalent to 2-3 months rent',
+          'Damage to normal wear and tear distinction: Key legal protection'
+        ]
+      },
+      {
+        title: 'Your Rights As A Tenant',
+        summary: 'Germany offers exceptional tenant protections. Landlords cannot simply evict without legal process.',
+        keyPoints: [
+          'Landlord cannot raise rent more than 10% over 3 years (Mietpreisbremse)',
+          'Eviction requires serious legal breach and court proceedings',
+          'You have right to repairs: Landlord must fix major issues within days',
+          'Right to quiet enjoyment of property',
+          'Landlord cannot withhold utilities or services for rent disputes'
+        ]
+      }
+    ],
+    ctaVariant: 'planning',
   }
 ]
 
@@ -506,9 +803,9 @@ export const movingAbroadCategoryOrder: MovingAbroadArticleCategory[] = [
 ]
 
 export const movingAbroadCategorySlugs: Record<MovingAbroadArticleCategory, string[]> = {
-  'Before you go': ['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list'],
-  Accommodation: ['accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement'],
-  Budgeting: ['cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts'],
+  'Before you go': ['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list', 'uae-visa-sponsorship'],
+  Accommodation: ['accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement', 'uae-housing-furnished', 'germany-studentenwerk-housing', 'germany-tenancy-law-deposits'],
+  Budgeting: ['cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts', 'uae-tax-free-income-planning', 'germany-monthly-budgeting'],
   Arriving: ['first-week', 'airport-to-home', 'healthcare', 'making-friends'],
 }
 
@@ -519,8 +816,8 @@ export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]>
   uk: ['student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
   ireland: ['student-visa', 'student-budget', 'airport-to-home', 'avoid-scams'],
   france: ['student-visa', 'student-budget', 'airport-to-home', 'tenancy-agreement'],
-  uae: [],
-  germany: [],
+  uae: ['uae-visa-sponsorship', 'uae-housing-furnished', 'uae-tax-free-income-planning'],
+  germany: ['germany-studentenwerk-housing', 'germany-monthly-budgeting', 'germany-tenancy-law-deposits'],
   australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
 }
 
