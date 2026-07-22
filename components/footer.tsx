@@ -16,11 +16,11 @@ const footerLinks = {
   Students: [
     { label: 'Get Matched', href: '/get-matched' },
     { label: 'How it works', href: '/about' },
+    { label: 'Resources', href: '/moving-abroad' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' }
   ],
-  Resources: [
-    { label: 'Moving Abroad Guide', href: '/moving-abroad' },
+  Guides: [
     { label: 'Pre-Arrival Checklist', href: '/moving-abroad/pre-arrival-checklist' },
     { label: 'Student Visa', href: '/moving-abroad/student-visa' },
     { label: 'Accommodation Guide', href: '/moving-abroad/choose-accommodation' },
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Company / Contact info Block — always the last column, pinned right */}
           <div className="sm:flex-shrink-0">
-            <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Company"}</h3>
+            <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Contact"}</h3>
             <div className="text-sm text-white/70 space-y-3 mb-6">
               <p>
                 <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline whitespace-nowrap">
@@ -92,7 +92,7 @@ export default function Footer() {
                   {"+91 99999 65742"}
                 </a>
               </p>
-              <p className="text-xs max-w-[220px]">{"20, H-1/A, Sector 63, Noida, UP 201301"}</p>
+              <p className="text-xs max-w-[220px]">{"H-20, Sector 63, Noida, UP 201301"}</p>
             </div>
 
             {/* Trustpilot Native SVG Placeholder */}
