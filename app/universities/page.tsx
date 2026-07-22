@@ -18,6 +18,8 @@ const countryFilters = [
   { value: 'UK', label: 'United Kingdom' },
   { value: 'Ireland', label: 'Ireland' },
   { value: 'FR', label: 'France' },
+  { value: 'UAE', label: 'United Arab Emirates' },
+  { value: 'DE', label: 'Germany' },
   { value: 'Australia', label: 'Australia' },
 ]
 
@@ -25,6 +27,8 @@ function normalizeCountry(raw: string | null) {
   if (!raw) return 'All'
   if (raw === 'France') return 'FR'
   if (raw === 'United Kingdom') return 'UK'
+  if (raw === 'United Arab Emirates') return 'UAE'
+  if (raw === 'Germany') return 'DE'
   return raw
 }
 

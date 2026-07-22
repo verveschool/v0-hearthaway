@@ -16,6 +16,8 @@ const navLinks = [
       { label: 'United Kingdom', href: '/uk/universities' },
       { label: 'Ireland', href: '/ireland/universities' },
       { label: 'France', href: '/france/universities' },
+      { label: 'United Arab Emirates', href: '/uae/universities' },
+      { label: 'Germany', href: '/germany/universities' },
       { label: 'Australia', href: '/australia/universities' }
     ]
   },
@@ -27,6 +29,8 @@ const navLinks = [
       { label: 'Manchester', href: '/cities/manchester' },
       { label: 'Dublin', href: '/cities/dublin' },
       { label: 'Paris', href: '/cities/paris' },
+      { label: 'Dubai', href: '/cities/dubai' },
+      { label: 'Munich', href: '/cities/munich' },
       { label: 'Sydney', href: '/cities/sydney' },
       { label: 'All Cities', href: '/cities' }
     ]

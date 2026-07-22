@@ -9,6 +9,8 @@ const footerLinks = {
     { label: 'United Kingdom', href: '/uk' },
     { label: 'Ireland', href: '/ireland' },
     { label: 'France', href: '/france' },
+    { label: 'United Arab Emirates', href: '/uae' },
+    { label: 'Germany', href: '/germany' },
     { label: 'Australia', href: '/australia' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' }
