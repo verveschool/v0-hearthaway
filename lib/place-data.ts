@@ -94,7 +94,7 @@ export const cities: CityPlace[] = [
     universities: '5',
     image: '/images/city-birmingham.png',
     slug: 'birmingham',
-    description: 'englands second largest city offering an affordable central tech hub with rapid national rail connections',
+    description: 'England&apos;s second largest city offering an affordable central tech hub with rapid national rail connections',
     avgRent: '£550 to £800 / mo',
     studentPositioning: 'a highly practical and well connected city where international students can live adjacent to campus without sacrificing urban access',
     bestAreasForStudents: {
@@ -227,7 +227,7 @@ export const cities: CityPlace[] = [
     universities: '5',
     image: '/images/city-glasgow.png',
     slug: 'glasgow',
-    description: 'scotlands massive cultural capital containing world beating red brick campuses and elite creative arts academies',
+    description: 'Scotland&apos;s massive cultural capital containing world beating red brick campuses and elite creative arts academies',
     avgRent: '£600 to £850 / mo',
     studentPositioning: 'the west end is beautiful but commands intense premiums look to adjacent transport lines to find real margin',
     bestAreasForStudents: {
@@ -246,15 +246,15 @@ export const cities: CityPlace[] = [
     universities: '3',
     image: '/images/city-cardiff.png',
     slug: 'cardiff',
-    description: 'the welcoming capital of wales offering a compact urban footprint castle grounds and approachable coastal living',
+    description: 'the welcoming capital of Wales offering a compact urban footprint castle grounds and approachable coastal living',
     avgRent: '£500 to £750 / mo',
-    studentPositioning: 'cathays is the engine rooms of cardiff student life where you trade premium silence for absolute walking convenience to lecture halls',
+    studentPositioning: 'cathays is the engine room of Cardiff student life where you trade premium silence for absolute walking convenience to lecture halls',
     bestAreasForStudents: {
       summary: 'cathays hosts the vast majority of shared properties while roath brings quiet green parks and enhanced room sizes to postgraduates',
       topNeighbourhoods: ['cathays', 'roath', 'heath', 'canton', 'city centre']
     },
     rentBudgeting: {
-      summary: 'one of the most financially efficient capital cities in western europe for international student accommodation deployment',
+      summary: 'one of the most financially efficient capital cities in Western Europe for international student accommodation deployment',
       averageMonthlyRent: '£625'
     }
   },
@@ -303,7 +303,7 @@ export const cities: CityPlace[] = [
     universities: '8',
     image: '/images/city-dublin.png',
     slug: 'dublin',
-    description: 'the thriving tech capital of ireland hosting the european headquarters of the worlds greatest internet giants',
+    description: 'the thriving tech capital of Ireland hosting the European headquarters of the world&apos;s greatest internet giants',
     avgRent: '€900 to €1400 / mo',
     studentPositioning: 'an extreme supply squeeze dictates terms here focus entirely on transport routing reliability to maintain sanity',
     bestAreasForStudents: {
@@ -322,7 +322,7 @@ export const cities: CityPlace[] = [
     universities: '3',
     image: '/images/city-cork.png',
     slug: 'cork',
-    description: 'irelands southern maritime capital boasting an independent global pharmaceutical and food science presence',
+    description: 'Ireland&apos;s southern maritime capital boasting an independent global pharmaceutical and food science presence',
     avgRent: '€700 to €1000 / mo',
     studentPositioning: 'a compact river delta layout where college road functions as an immediate structural extension of the academic campus',
     bestAreasForStudents: {
@@ -358,7 +358,7 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '15+',
-    image: '/images/hero-building.png',
+    image: '/images/city-paris.png',
     slug: 'paris',
     description: 'a dense global capital for arts sciences business and public policy with campuses spread across metro connected districts',
     avgRent: '€900 to €1500 / mo',
@@ -377,9 +377,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '8+',
-    image: '/images/hero-building.png',
+    image: '/images/city-lyon.png',
     slug: 'lyon',
-    description: 'a major french student city combining research universities business schools and an efficient metro tram and river corridor layout',
+    description: 'a major French student city combining research universities business schools and an efficient metro tram and river corridor layout',
     avgRent: '€650 to €1000 / mo',
     studentPositioning: 'the city rewards students who anchor to metro and tram interchanges serving campus clusters in villeurbanne and the city core',
     bestAreasForStudents: {
@@ -396,7 +396,7 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '6+',
-    image: '/images/hero-building.png',
+    image: '/images/city-toulouse.png',
     slug: 'toulouse',
     description: 'a high growth aerospace and engineering hub with large student populations warm southern culture and practical tram and metro links',
     avgRent: '€550 to €850 / mo',
@@ -415,9 +415,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '5+',
-    image: '/images/hero-building.png',
+    image: '/images/city-marseille.png',
     slug: 'marseille',
-    description: 'a vibrant mediterranean port city and frances second largest metropolis blending historic architecture with modern research infrastructure',
+    description: 'a vibrant Mediterranean port city and France&apos;s second largest metropolis blending historic architecture with modern research infrastructure',
     avgRent: '€550 to €900 / mo',
     studentPositioning: 'marseille rewards students who anchor to the metro and metro tramway network connecting to campuses spread across the wider urban basin',
     bestAreasForStudents: {
@@ -434,7 +434,7 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '4+',
-    image: '/images/hero-building.png',
+    image: '/images/city-montpellier.png',
     slug: 'montpellier',
     description: 'a dynamic southern university city known for medicine life sciences research and a youthful energetic student centered urban environment',
     avgRent: '€500 to €800 / mo',
@@ -453,9 +453,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '3+',
-    image: '/images/hero-building.png',
+    image: '/images/city-bordeaux.png',
     slug: 'bordeaux',
-    description: 'a historic atlantic port city renowned for wine business education and elegant urban design with strong public transport infrastructure',
+    description: 'a historic Atlantic port city renowned for wine business education and elegant urban design with strong public transport infrastructure',
     avgRent: '€550 to €850 / mo',
     studentPositioning: 'bordeaux student housing anchors to tram lines serving business schools and university campuses in the talence suburban clusters',
     bestAreasForStudents: {
@@ -472,9 +472,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '4+',
-    image: '/images/hero-building.png',
+    image: '/images/city-lille.png',
     slug: 'lille',
-    description: 'a northern gateway city connecting france to belgium and the uk via rail with respected business schools and technical universities',
+    description: 'a northern gateway city connecting France to Belgium and the UK via rail with respected business schools and technical universities',
     avgRent: '€500 to €800 / mo',
     studentPositioning: 'lille students anchor to the metro network linking vieux lille historic quarters to suburban engineering and science campuses',
     bestAreasForStudents: {
@@ -491,9 +491,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '2+',
-    image: '/images/hero-building.png',
+    image: '/images/city-nice.png',
     slug: 'nice',
-    description: 'a glamorous côte d azur resort city and academic hub famous for coastal living research institutions and mediterranean climate',
+    description: 'a glamorous Côte d&apos;Azur resort city and academic hub famous for coastal living research institutions and Mediterranean climate',
     avgRent: '€600 to €950 / mo',
     studentPositioning: 'nice student housing trades between central promenade des anglais prestige and suburban campuses requiring bus or tram connections',
     bestAreasForStudents: {
@@ -510,9 +510,9 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '3+',
-    image: '/images/hero-building.png',
+    image: '/images/city-strasbourg.png',
     slug: 'strasbourg',
-    description: 'a historic border city and european hub with renowned universities bike culture and strong franco german cultural integration',
+    description: 'a historic border city and European hub with renowned universities bike culture and strong Franco-German cultural integration',
     avgRent: '€500 to €800 / mo',
     studentPositioning: 'strasbourg is uniquely bike and tram oriented where most student housing clusters within direct access to university districts without transit cost',
     bestAreasForStudents: {
@@ -529,14 +529,14 @@ export const cities: CityPlace[] = [
     country: 'France',
     countryCode: 'FR',
     universities: '3+',
-    image: '/images/hero-building.png',
+    image: '/images/city-grenoble.png',
     slug: 'grenoble',
     description: 'a mountain gateway city and major research hub for engineering and science with excellent cable car tram and bus networks',
     avgRent: '€500 to €800 / mo',
     studentPositioning: 'grenoble campus geography requires students to anchor to tram and bus routes serving dispersed technology and research institutes in foothills',
     bestAreasForStudents: {
-      summary: 'the centre ville provides walkable accommodation while the southern campuses in gières and saint martin d hères require tram line planning',
-      topNeighbourhoods: ['centre ville', 'gières', 'saint martin d hères', 'south']
+      summary: 'the centre ville provides walkable accommodation while the southern campuses in Gières and Saint-Martin-d&apos;Hères require tram line planning',
+      topNeighbourhoods: ['centre ville', 'Gières', 'Saint-Martin-d&apos;Hères', 'South']
     },
     rentBudgeting: {
       summary: 'grenoble delivers strong student value with mountain culture appeal and solid crous and private residence options across suburbs',
@@ -569,7 +569,7 @@ export const cities: CityPlace[] = [
     universities: '8',
     image: '/images/city-melbourne.png',
     slug: 'melbourne',
-    description: 'the cultural arts and dining champion of australia designed around a highly structured city tram grid',
+    description: 'the cultural arts and dining champion of Australia designed around a highly structured city tram grid',
     avgRent: 'A$1100 to A$1600 / mo',
     studentPositioning: 'carlton is the academic heartland but the real creative energy lives out along the northern tram links',
     bestAreasForStudents: {
@@ -592,8 +592,8 @@ export const cities: CityPlace[] = [
     avgRent: 'A$900 to A$1300 / mo',
     studentPositioning: 'the winding lines of the brisbane river dictate transport options prioritize citycat ferry routes or direct green bridge access',
     bestAreasForStudents: {
-      summary: 'st lucia is the classic dedicated uq university bubble while toowong delivers the essential rail and commercial retail links',
-      topNeighbourhoods: ['st lucia', 'kelvin grove', 'toowong', 'south bank', 'indooroopilly']
+      summary: 'St Lucia is the classic dedicated UQ university bubble while Toowong delivers the essential rail and commercial retail links',
+      topNeighbourhoods: ['St Lucia', 'Kelvin Grove', 'Toowong', 'South Bank', 'Indooroopilly']
     },
     rentBudgeting: {
       summary: 'brisbane delivers premium modern purpose built student assets at a structurally better entry margin than sydney or melbourne',
@@ -628,7 +628,7 @@ export const cities: CityPlace[] = [
     slug: 'adelaide',
     description: 'a parkland ringed festival city highly celebrated for medical sciences wine research and exceptional walkability',
     avgRent: 'A$800 to A$1150 / mo',
-    studentPositioning: 'unlike other major australian cities city centre living is highly practical affordable and integrated with campus gates here',
+    studentPositioning: 'unlike other major Australian cities city centre living is highly practical affordable and integrated with campus gates here',
     bestAreasForStudents: {
       summary: 'north adelaide and the central business district dominate the group layout while marion provides tailored access to the flinders hospital grid',
       topNeighbourhoods: ['north adelaide', 'city centre', 'norwood', 'prospect', 'marion']
