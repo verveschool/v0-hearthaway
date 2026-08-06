@@ -19,16 +19,16 @@ export default function MatchedCTA({
 }: MatchedCTAProps) {
   if (variant === 'compact') {
     return (
-      <div className={`bg-[#F7F6F3] rounded-2xl p-6 border border-[#E8E6E1] flex items-start justify-between gap-4 ${className}`}>
+      <div className={`bg-[#F7F6F3] rounded-2xl p-6 border border-[#E8E6E1] flex flex-col sm:flex-row items-start justify-between gap-4 ${className}`}>
         <div>
           <h3 className="font-heading font-bold text-lg text-[#1A1A1A] mb-1">{title}</h3>
           {description && <p className="text-[#6B6860] text-sm">{description}</p>}
         </div>
 
-        <div className="flex-shrink-0">
+        <div className="w-full flex-shrink-0 sm:w-auto">
           <Link
             href={buttonHref}
-            className="px-6 py-2.5 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm"
+            className="block w-full px-6 py-2.5 bg-[#1B365D] text-center text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm sm:w-auto"
           >
             {buttonText}
           </Link>
@@ -46,7 +46,7 @@ export default function MatchedCTA({
 
       <Link
         href={buttonHref}
-        className="flex-shrink-0 px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
+        className="w-full flex-shrink-0 px-6 py-3 bg-[#FFCC00] text-center text-[#1B365D] font-bold text-sm rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg sm:w-auto lg:px-8 lg:py-4 lg:text-base"
       >
         {buttonText}
       </Link>
