@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
             <Link
               href="/get-matched"
-              className="flex-shrink-0 px-8 py-4 bg-[#F2B705] text-[#1B365D] font-bold text-lg rounded-xl hover:bg-[#D9A404] transition-colors shadow-lg"
+              className="flex-shrink-0 w-full sm:w-auto px-8 py-4 bg-[#F2B705] text-[#1B365D] font-bold text-lg text-center rounded-xl hover:bg-[#D9A404] transition-colors shadow-lg"
             >
               {"Get Matched"}
             </Link>
