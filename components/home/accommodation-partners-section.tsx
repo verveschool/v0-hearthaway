@@ -41,7 +41,7 @@ export default function AccommodationPartnersSection() {
           {accommodationPartnerLogos.map((logo) => (
             <div
               key={logo.src}
-              className="flex aspect-[4/3] items-center justify-center rounded-none border border-[#E8E6E1] bg-white p-0"
+              className="flex aspect-[4/3] items-center justify-center rounded-none bg-white p-0"
             >
               <Image
                 src={logo.src}
