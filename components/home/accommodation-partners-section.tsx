@@ -37,19 +37,21 @@ export default function AccommodationPartnersSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 lg:gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6 lg:gap-4">
           {accommodationPartnerLogos.map((logo) => (
             <div
               key={logo.src}
-              className="bg-white border border-[#E8E6E1] rounded-2xl aspect-[3/2] flex items-center justify-center p-4"
+              className="flex aspect-[4/3] items-center justify-center rounded-2xl border border-[#E8E6E1] bg-white p-3 sm:p-4"
             >
               <Image
                 src={logo.src}
                 alt={`${logo.name} accommodation partner logo`}
-                width={160}
-                height={96}
-                className="h-12 w-full object-contain"
-                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 12.5vw"
+                width={192}
+                height={128}
+                className="h-16 w-full object-contain sm:h-20"
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16.666vw"
+                quality={70}
+                loading="lazy"
               />
             </div>
           ))}
