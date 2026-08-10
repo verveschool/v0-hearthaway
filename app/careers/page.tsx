@@ -2,13 +2,19 @@ import Footer from '@/components/footer'
 import Navigation from '@/components/navigation'
 import Link from 'next/link'
 
-const roleHighlights = ['Full-time', 'Student housing', 'Founder-led team'] as const
+const roleHighlights = [
+  'Full-time',
+  'Remote',
+  'Flexible hours',
+  'Student housing',
+  '₹3,000 per successful booking',
+] as const
 
 const roleSections = [
   {
     title: 'About the role',
     description:
-      'As an Accommodation Specialist at HearthAway, you will help international students find suitable accommodation before they arrive. You will understand their needs, recommend suitable options, and guide them through the booking process.',
+      'Help international students find suitable accommodation before they arrive. Understand their needs, recommend options, and guide them through the booking process.',
   },
   {
     title: 'What you will do',
@@ -31,14 +37,19 @@ const roleSections = [
     ],
   },
   {
+    title: 'Compensation',
+    description:
+      'Your compensation is performance-based. You will receive ₹3,000 for each successful accommodation booking you secure. The commission becomes payable once payment for the booking is received by HearthAway.',
+  },
+  {
     title: 'The opportunity',
     description:
-      'HearthAway is building a student-first accommodation company for the study abroad journey. You will join early, help shape the student experience, and grow with the company.',
+      'Join HearthAway early and help shape how international students find and book accommodation. Your work will directly influence the student experience as we grow.',
   },
   {
     title: 'Work directly with the founders',
     description:
-      'You will work closely with the founders on student experience, partner coordination, and operating standards. Your feedback from student conversations will directly influence how HearthAway builds and improves its service.',
+      'Work closely with the founders on student experience, partner coordination, and operating standards. Your feedback from student conversations will directly influence how HearthAway builds its service.',
   },
 ] as const
 
