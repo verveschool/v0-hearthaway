@@ -98,6 +98,11 @@ export default function Footer() {
                   {"For Partners"}
                 </Link>
               </p>
+              <p>
+                <Link href="/careers" className="hover:text-white font-medium transition-colors whitespace-nowrap">
+                  {"Careers"}
+                </Link>
+              </p>
             </div>
           </div>
         </div>
