@@ -3,7 +3,7 @@ import Navigation from '@/components/navigation'
 import Link from 'next/link'
 
 const roleHighlights = [
-  'Full-time',
+  'No fixed pay',
   'Remote',
   'Flexible hours',
   'Student housing',
@@ -37,9 +37,9 @@ const roleSections = [
     ],
   },
   {
-    title: 'Compensation',
-    description:
-      'Your compensation is performance-based. You will receive ₹3,000 for each successful accommodation booking you secure. The commission becomes payable once payment for the booking is received by HearthAway.',
+  title: 'Compensation',
+  description:
+    'This is a performance-based role with no fixed pay. You will receive ₹3,000 for each successful accommodation booking you secure. The commission becomes payable once payment for the booking is received by HearthAway.' 
   },
   {
     title: 'The opportunity',
