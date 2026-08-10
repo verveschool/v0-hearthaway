@@ -93,6 +93,11 @@ export default function Footer() {
                 </a>
               </p>
               <p className="text-xs max-w-[220px]">{"20, H-1/A, Sector 63, Noida, UP 201301"}</p>
+              <p>
+                <Link href="/partners" className="hover:text-white font-medium transition-colors whitespace-nowrap">
+                  {"For Partners"}
+                </Link>
+              </p>
             </div>
           </div>
         </div>
@@ -162,9 +167,6 @@ export default function Footer() {
           </p>
 
           <div className="flex gap-5 text-xs md:text-sm text-white/40">
-            <Link href="/partners" className="hover:text-white font-medium transition-colors">
-              {"For Partners"}
-            </Link>
             <Link href="/privacy" className="hover:text-white transition-colors">
               {"Privacy"}
             </Link>
