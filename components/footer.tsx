@@ -94,21 +94,6 @@ export default function Footer() {
               </p>
               <p className="text-xs max-w-[220px]">{"20, H-1/A, Sector 63, Noida, UP 201301"}</p>
             </div>
-
-            {/* Trustpilot Native SVG Placeholder */}
-            <a
-              href="#"
-              aria-label="View our reviews on Trustpilot"
-              className="inline-flex items-center gap-3 bg-white/5 hover:bg-white/10 transition-colors px-4 py-3 rounded-xl border border-white/10"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="#00B67A" className="w-6 h-6 flex-shrink-0">
-                <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-              </svg>
-              <div className="flex flex-col">
-                <span className="text-white font-extrabold text-sm leading-none mb-1">{"Excellent"}</span>
-                <span className="text-white/50 text-[10px] leading-none uppercase tracking-wider">{"Trustpilot"}</span>
-              </div>
-            </a>
           </div>
         </div>
 
