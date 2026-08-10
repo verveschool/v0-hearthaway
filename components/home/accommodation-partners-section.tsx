@@ -48,7 +48,7 @@ export default function AccommodationPartnersSection() {
                 alt={`${logo.name} accommodation partner logo`}
                 width={192}
                 height={128}
-                className="h-16 w-full object-contain sm:h-20"
+                className="h-full w-full object-contain"
                 sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16.666vw"
                 quality={70}
                 loading="lazy"
