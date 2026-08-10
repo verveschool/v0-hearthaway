@@ -22,7 +22,7 @@ const accommodationPartnerLogos: readonly AccommodationPartnerLogo[] = [
   { name: 'Nexity Studea', src: '/accommodation-partners/Nexity_Studea.png' },
   { name: 'KSK Homes', src: '/accommodation-partners/KSK_Homes.png' },
   { name: 'Lota Heights', src: '/accommodation-partners/Lota_Heights.png' },
-  { name: 'Endsleigh Park ', src: '/accommodation-partners/Endsleigh_Park.png' },
+  { name: 'Endsleigh Park', src: '/accommodation-partners/Endsleigh_Park.png' },
   { name: 'Studapart', src: '/accommodation-partners/Studapart.png' },
 ] as const
 
