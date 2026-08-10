@@ -44,11 +44,11 @@ export default function HeroSection() {
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
         {/* clean trust label */}
-        <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-8 self-start">
-          <span className="px-3.5 py-1.5 rounded-full bg-[#F2B705] text-[#1B365D] text-xs font-extrabold tracking-widest uppercase shadow-sm">
+        <div className="mb-8 flex w-full max-w-xl flex-col items-start gap-3 sm:flex-row sm:items-center">
+          <span className="shrink-0 rounded-full bg-[#F2B705] px-3.5 py-1.5 text-center text-xs font-extrabold uppercase tracking-widest text-[#1B365D] shadow-sm">
             100% verified
           </span>
-          <span className="text-[#F2B705] text-xs font-bold tracking-widest uppercase">
+          <span className="max-w-full text-xs font-bold uppercase leading-relaxed tracking-[0.14em] text-[#F2B705] sm:leading-normal sm:tracking-widest">
             UK &bull; Ireland &bull; France &bull; UAE &bull; Germany &bull; Australia
           </span>
         </div>
