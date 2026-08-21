@@ -15,15 +15,14 @@ export default function CtaSection() {
                 aria-hidden="true"
               />
               <span className="text-white/70 text-sm font-semibold">
-                free to use, no commitment required
+                Expert guidance. No commitment required.
               </span>
             </div>
 
-            <h2 className="font-heading text-4xl lg:text-[3rem] xl:text-[3.5rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6 max-w-xl">
+            <h2 className="font-heading text-3xl lg:text-[2.5rem] xl:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6 max-w-xl">
               You&apos;ve got your place.{' '}
               <span className="text-[#FCC20A]">Now get your home.</span>
             </h2>
-
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
               Tell us your university, move-in date, and budget. An accommodation
               advisor will match you with verified options near your campus
@@ -35,7 +34,7 @@ export default function CtaSection() {
                 href="/get-matched"
                 className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
               >
-                Talk to an Accommodation Advisor
+                Get Matched
               </Link>
             </div>
 
