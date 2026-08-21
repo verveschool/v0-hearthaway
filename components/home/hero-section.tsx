@@ -70,7 +70,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#FCC20A] text-[#111827] font-extrabold text-base hover:bg-[#FCC20A] active:bg-[#FCC20A] transition-all shadow-lg shadow-[#FCC20A]/20 hover:shadow-[#FCC20A]/40 hover:shadow-xl hover:-translate-y-0.5"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#FCC20A] text-[#00319D] font-extrabold text-base hover:bg-[#FCC20A] active:bg-[#FCC20A] transition-all shadow-lg shadow-[#FCC20A]/20 hover:shadow-[#FCC20A]/40 hover:shadow-xl hover:-translate-y-0.5"
           >
             Get Matched
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
