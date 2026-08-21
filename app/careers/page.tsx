@@ -62,7 +62,7 @@ export default function CareersPage() {
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:gap-20">
               <div>
-                <div className="mb-5 text-sm font-bold uppercase tracking-widest text-[#1B365D]">
+                <div className="mb-5 text-sm font-bold uppercase tracking-widest text-[#00319D]">
                   Open role
                 </div>
 
@@ -116,7 +116,7 @@ export default function CareersPage() {
 
               <aside className="sticky rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:top-28">
                 <div
-                  className="mb-5 h-1 w-10 rounded-full bg-[#FFCC00]"
+                  className="mb-5 h-1 w-10 rounded-full bg-[#FCC20A]"
                   aria-hidden="true"
                 />
 
@@ -131,7 +131,7 @@ export default function CareersPage() {
 
                 <Link
                   href="mailto:faraz@hearthaway.com?subject=Accommodation%20Specialist%20Application"
-                  className="inline-flex w-full items-center justify-center rounded-xl bg-[#1B365D] px-6 py-3 text-center text-sm font-bold text-white shadow-lg transition-colors hover:bg-[#24497D]"
+                  className="inline-flex w-full items-center justify-center rounded-xl bg-[#00319D] px-6 py-3 text-center text-sm font-bold text-white shadow-lg transition-colors hover:bg-[#00319D]"
                 >
                   Apply for this role
                 </Link>

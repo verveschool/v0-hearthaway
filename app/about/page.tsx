@@ -61,10 +61,10 @@ export default function AboutPage() {
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="bg-[#1B365D] pt-28 pb-20 px-6">
+        <section className="bg-[#00319D] pt-28 pb-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-5">About HearthAway</div>
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-5">About HearthAway</div>
               <h1 className="font-heading text-5xl lg:text-6xl font-bold text-white text-balance leading-[1.05] mb-8">
                 We help students find home, before they arrive.
               </h1>
@@ -80,10 +80,10 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div>
-                <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-5">Why HearthAway exists</div>
+                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-5">Why HearthAway exists</div>
                 <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-6">
                   The category focuses on inventory.
-                  <span className="text-[#1B365D]"> We focus on helping students choose.</span>
+                  <span className="text-[#00319D]"> We focus on helping students choose.</span>
                 </h2>
                 <div className="flex flex-col gap-5 text-[#6B6860] leading-relaxed">
                   <p>
@@ -102,7 +102,7 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 border border-[#E8E6E1]">
-                <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-6">Our core promise</div>
+                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-6">Our core promise</div>
                 <blockquote className="font-heading text-3xl font-bold text-[#1A1A1A] leading-snug mb-8">
                   &ldquo;Find the right accommodation before you arrive.&rdquo;
                 </blockquote>
@@ -114,9 +114,9 @@ export default function AboutPage() {
                     'Sorted before you fly',
                   ].map((promise) => (
                     <div key={promise} className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#FFCC00] flex items-center justify-center flex-shrink-0" aria-hidden="true">
+                      <div className="w-6 h-6 rounded-full bg-[#FCC20A] flex items-center justify-center flex-shrink-0" aria-hidden="true">
                         <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-                          <path d="M2 6L4.5 8.5L10 3" stroke="#1B365D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M2 6L4.5 8.5L10 3" stroke="#00319D" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
                       </div>
                       <span className="text-[#1A1A1A] font-medium text-sm">{promise}</span>
@@ -131,14 +131,14 @@ export default function AboutPage() {
         {/* Values */}
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-4">What we believe</div>
+            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">What we believe</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-12 max-w-xl">
               The principles that guide everything we do.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {values.map((value) => (
                 <div key={value.title} className="bg-white rounded-2xl p-7 border border-[#E8E6E1]">
-                  <div className="w-10 h-1 bg-[#FFCC00] rounded-full mb-5" aria-hidden="true" />
+                  <div className="w-10 h-1 bg-[#FCC20A] rounded-full mb-5" aria-hidden="true" />
                   <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">{value.title}</h3>
                   <p className="text-[#6B6860] leading-relaxed text-sm">{value.description}</p>
                 </div>
@@ -150,14 +150,14 @@ export default function AboutPage() {
         {/* Markets */}
         <section className="bg-white py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-4">Where we operate</div>
+            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Where we operate</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
               Six countries. Hundreds of universities. One platform.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (
                 <div key={market.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#1B365D] text-white font-heading font-bold text-sm mb-5">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#00319D] text-white font-heading font-bold text-sm mb-5">
                     {market.abbr}
                   </div>
                   <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">{market.name}</h3>

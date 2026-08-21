@@ -79,10 +79,10 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     <>
       <Navigation />
       <main>
-        <section className="bg-[#1B365D] pt-28 pb-16 px-6">
+        <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
                 University housing guide
               </div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
@@ -106,7 +106,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl shadow-[#FFCC00]/20"
+                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
               >
                 Get matched
               </Link>
@@ -119,8 +119,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <div className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     University Overview
                   </span>
                 </div>
@@ -149,8 +149,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               {city && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
                   <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                    <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                       Housing Costs
                     </span>
                   </div>
@@ -164,7 +164,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       <div className="text-sm text-[#6B6860] mb-2">
                         Typical Rent Range
                       </div>
-                      <div className="text-2xl font-bold text-[#1B365D]">
+                      <div className="text-2xl font-bold text-[#00319D]">
                         {city.avgRent}
                       </div>
                     </div>
@@ -173,7 +173,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       <div className="text-sm text-[#6B6860] mb-2">
                         Average Monthly Rent
                       </div>
-                      <div className="text-2xl font-bold text-[#1B365D]">
+                      <div className="text-2xl font-bold text-[#00319D]">
                         {city.rentBudgeting.averageMonthlyRent}
                       </div>
                     </div>
@@ -188,8 +188,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               {city && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                   <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                    <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                       Best Areas For Students
                     </span>
                   </div>
@@ -206,7 +206,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                     {city.bestAreasForStudents.topNeighbourhoods.map((area) => (
                       <div
                         key={area}
-                        className="px-4 py-3 rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] text-[#1B365D] font-medium"
+                        className="px-4 py-3 rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] text-[#00319D] font-medium"
                       >
                         {toTitleCase(area)}
                       </div>
@@ -218,8 +218,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               {relatedUniversities.length > 0 && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                   <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                    <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                       Other Universities
                     </span>
                   </div>
@@ -233,7 +233,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       <Link
                         key={u.slug}
                         href={`/universities/${u.slug}`}
-                        className="rounded-2xl border border-[#E8E6E1] p-5 hover:border-[#FFCC00] transition-colors"
+                        className="rounded-2xl border border-[#E8E6E1] p-5 hover:border-[#FCC20A] transition-colors"
                       >
                         <div className="font-bold text-[#1A1A1A] mb-1">
                           {u.name}
@@ -249,8 +249,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     Student Housing FAQ
                   </span>
                 </div>
@@ -309,7 +309,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {cityHref && (
                   <Link
                     href={cityHref}
-                    className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-white text-[#1B365D] border border-[#E8E6E1] font-bold text-base rounded-xl hover:border-[#1B365D]/30 transition-colors shadow-sm mb-3"
+                    className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-white text-[#00319D] border border-[#E8E6E1] font-bold text-base rounded-xl hover:border-[#00319D]/30 transition-colors shadow-sm mb-3"
                   >
                     View the {university.city} city guide
                   </Link>
@@ -317,7 +317,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
                 <Link
                   href="/get-matched"
-                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
+                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
                 >
                   Get matched
                 </Link>
@@ -328,23 +328,23 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
         <section className="bg-[#F7F6F3] py-24 lg:py-32 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="rounded-3xl bg-[#0F2240] p-10 lg:p-16">
+            <div className="rounded-3xl bg-[#00319D] p-10 lg:p-16">
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 mb-7">
-                  <div className="w-2 h-2 rounded-full bg-[#FFCC00]" aria-hidden="true" />
+                  <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
                   <span className="text-white/70 text-sm font-semibold">
                     Free to use and no commitment required
                   </span>
                 </div>
                 <h2 className="font-heading text-4xl lg:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6">
-                  Get matched near <span className="text-[#FFCC00]">{university.name}</span>.
+                  Get matched near <span className="text-[#FCC20A]">{university.name}</span>.
                 </h2>
                 <p className="text-white/65 text-lg leading-relaxed mb-10">
                   Tell us your course, budget, and move-in date. An accommodation advisor will help you understand your next best steps.
                 </p>
                 <Link
                   href="/get-matched"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl shadow-[#FFCC00]/20"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
                 >
                   Start matching
                 </Link>

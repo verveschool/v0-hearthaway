@@ -126,9 +126,9 @@ export default function GetMatchedPage() {
         <Navigation />
         <main className="min-h-screen bg-[#F7F6F3] flex items-center justify-center pt-20 pb-20 px-6">
           <div className="max-w-lg w-full text-center">
-            <div className="w-16 h-16 rounded-full bg-[#F2B705] flex items-center justify-center mx-auto mb-8">
+            <div className="w-16 h-16 rounded-full bg-[#FCC20A] flex items-center justify-center mx-auto mb-8">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-                <path d="M5 14L11 20L23 8" stroke="#1B365D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M5 14L11 20L23 8" stroke="#00319D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <h1 className="font-heading text-4xl font-bold text-[#1A1A1A] mb-4">
@@ -148,7 +148,7 @@ export default function GetMatchedPage() {
                   { step: '4', text: "We're here to answer questions and help you decide" }
                 ].map((item) => (
                   <div key={item.step} className="flex items-start gap-3">
-                    <div className="w-6 h-6 rounded-full bg-[#1B365D] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <div className="w-6 h-6 rounded-full bg-[#00319D] text-white text-xs font-bold flex items-center justify-center flex-shrink-0 mt-0.5">
                       {item.step}
                     </div>
                     <p className="text-[#1A1A1A] text-sm">{item.text}</p>
@@ -170,9 +170,9 @@ export default function GetMatchedPage() {
         <div className="max-w-2xl mx-auto">
           {/* Header */}
           <div className="text-center mb-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#1B365D]/8 border border-[#1B365D]/15 mb-5">
-              <div className="w-2 h-2 rounded-full bg-[#F2B705]" aria-hidden="true" />
-              <span className="text-[#1B365D] text-sm font-medium">{"Free matching process"}</span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00319D]/8 border border-[#00319D]/15 mb-5">
+              <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
+              <span className="text-[#00319D] text-sm font-medium">{"Free matching process"}</span>
             </div>
             <h1 className="font-heading text-4xl lg:text-5xl font-bold text-[#1A1A1A] text-balance mb-4">
               {"Let's find your home."}
@@ -186,11 +186,11 @@ export default function GetMatchedPage() {
           <div className="mb-8">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs font-medium text-[#6B6860]">{"Step "}{step}{" of "}{TOTAL_STEPS}</span>
-              <span className="text-xs font-medium text-[#1B365D]">{Math.round(progress)}{"% complete"}</span>
+              <span className="text-xs font-medium text-[#00319D]">{Math.round(progress)}{"% complete"}</span>
             </div>
             <div className="h-1.5 bg-[#E8E6E1] rounded-full overflow-hidden">
               <div
-                className="h-full bg-[#F2B705] rounded-full transition-all duration-500"
+                className="h-full bg-[#FCC20A] rounded-full transition-all duration-500"
                 style={{ width: `${progress + (100 / (TOTAL_STEPS - 1))}%` }}
               />
             </div>
@@ -208,7 +208,7 @@ export default function GetMatchedPage() {
                   <div className="flex flex-col gap-5">
                     <div>
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        {"Country "} <span className="text-[#1B365D] font-bold">*</span>
+                        {"Country "} <span className="text-[#00319D] font-bold">*</span>
                       </label>
                       <div className="grid grid-cols-3 gap-3">
                         {countries.map((c) => (
@@ -218,8 +218,8 @@ export default function GetMatchedPage() {
                             onClick={() => setForm((f) => ({ ...f, country: c, city: '' }))}
                             className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all ${
                               form.country === c
-                                ? 'border-[#1B365D] bg-[#1B365D] text-white'
-                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
+                                ? 'border-[#00319D] bg-[#00319D] text-white'
+                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
                             }`}
                           >
                             {c}
@@ -239,8 +239,8 @@ export default function GetMatchedPage() {
                               onClick={() => setForm((f) => ({ ...f, city: c }))}
                               className={`py-2.5 px-3 rounded-xl border text-sm font-medium transition-all ${
                                 form.city === c
-                                  ? 'border-[#1B365D] bg-[#1B365D]/8 text-[#1B365D]'
-                                  : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
+                                  ? 'border-[#00319D] bg-[#00319D]/8 text-[#00319D]'
+                                  : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
                               }`}
                             >
                               {c}
@@ -260,7 +260,7 @@ export default function GetMatchedPage() {
                         value={form.university}
                         onChange={(e) => setForm((f) => ({ ...f, university: e.target.value }))}
                         placeholder="e.g. University of Manchester"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
                       />
                     </div>
                   </div>
@@ -282,7 +282,7 @@ export default function GetMatchedPage() {
                           type="date"
                           value={form.moveIn}
                           onChange={(e) => setForm((f) => ({ ...f, moveIn: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-white cursor-pointer"
+                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors bg-white cursor-pointer"
                         />
                       </div>
                       <div>
@@ -291,7 +291,7 @@ export default function GetMatchedPage() {
                           id="duration"
                           value={form.duration}
                           onChange={(e) => setForm((f) => ({ ...f, duration: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-white"
+                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors bg-white"
                         >
                           <option value="">{"Select duration"}</option>
                           <option value="semester">{"One semester"}</option>
@@ -313,8 +313,8 @@ export default function GetMatchedPage() {
                             onClick={() => setForm((f) => ({ ...f, budget: b.value }))}
                             className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all ${
                               form.budget === b.value
-                                ? 'border-[#1B365D] bg-[#1B365D] text-white'
-                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
+                                ? 'border-[#00319D] bg-[#00319D] text-white'
+                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
                             }`}
                           >
                             {b.label}
@@ -343,18 +343,18 @@ export default function GetMatchedPage() {
                             onClick={() => setForm((f) => ({ ...f, accommodation: a.value }))}
                             className={`flex items-center justify-between px-5 py-4 rounded-xl border-2 text-left transition-all ${
                               form.accommodation === a.value
-                                ? 'border-[#1B365D] bg-[#1B365D]/5'
-                                : 'border-[#E8E6E1] hover:border-[#1B365D]/40'
+                                ? 'border-[#00319D] bg-[#00319D]/5'
+                                : 'border-[#E8E6E1] hover:border-[#00319D]/40'
                             }`}
                           >
                             <div>
-                              <div className={`text-sm font-semibold ${form.accommodation === a.value ? 'text-[#1B365D]' : 'text-[#1A1A1A]'}`}>
+                              <div className={`text-sm font-semibold ${form.accommodation === a.value ? 'text-[#00319D]' : 'text-[#1A1A1A]'}`}>
                                 {a.label}
                               </div>
                               <div className="text-xs text-[#6B6860] mt-0.5">{a.desc}</div>
                             </div>
                             {form.accommodation === a.value && (
-                              <div className="w-5 h-5 rounded-full bg-[#1B365D] flex items-center justify-center flex-shrink-0">
+                              <div className="w-5 h-5 rounded-full bg-[#00319D] flex items-center justify-center flex-shrink-0">
                                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
                                   <path d="M2 5L4 7L8 3" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
@@ -377,8 +377,8 @@ export default function GetMatchedPage() {
                             onClick={() => togglePriority(p)}
                             className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
                               form.priorities.includes(p)
-                                ? 'border-[#F2B705] bg-[#F2B705] text-[#1B365D]'
-                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#1B365D]/40'
+                                ? 'border-[#FCC20A] bg-[#FCC20A] text-[#00319D]'
+                                : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
                             }`}
                           >
                             {p}
@@ -405,7 +405,7 @@ export default function GetMatchedPage() {
                           type="text"
                           value={form.firstName}
                           onChange={(e) => setForm((f) => ({ ...f, firstName: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
                         />
                       </div>
                       <div>
@@ -415,7 +415,7 @@ export default function GetMatchedPage() {
                           type="text"
                           value={form.lastName}
                           onChange={(e) => setForm((f) => ({ ...f, lastName: e.target.value }))}
-                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                          className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
                         />
                       </div>
                     </div>
@@ -428,13 +428,13 @@ export default function GetMatchedPage() {
                         value={form.email}
                         onChange={(e) => setForm((f) => ({ ...f, email: e.target.value }))}
                         placeholder="you@example.com"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors"
+                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
                       />
                     </div>
 
                     <div>
                       <label htmlFor="phone" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
-                        {"Phone / WhatsApp "} <span className="text-[#1B365D] font-bold">*</span>
+                        {"Phone / WhatsApp "} <span className="text-[#00319D] font-bold">*</span>
                       </label>
                       <input
                         id="phone"
@@ -443,7 +443,7 @@ export default function GetMatchedPage() {
                         value={form.phone}
                         onChange={(e) => setForm((f) => ({ ...f, phone: e.target.value }))}
                         placeholder="+1 234 567 8901"
-                        className="w-full px-4 py-3 rounded-xl border-2 border-[#1B365D]/30 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors bg-[#1B365D]/5"
+                        className="w-full px-4 py-3 rounded-xl border-2 border-[#00319D]/30 text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors bg-[#00319D]/5"
                       />
                     </div>
 
@@ -457,13 +457,13 @@ export default function GetMatchedPage() {
                         value={form.message}
                         onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                         placeholder="e.g. I am bringing my partner, I need parking, I am arriving in late September..."
-                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#1B365D] transition-colors resize-none"
+                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors resize-none"
                       />
                     </div>
 
                     <p className="text-xs text-[#6B6860]">
                       {"By submitting, you agree to our "}
-                      <a href="/privacy" className="underline hover:text-[#1B365D]">{"privacy policy"}</a>{". We will never share your details without your permission."}
+                      <a href="/privacy" className="underline hover:text-[#00319D]">{"privacy policy"}</a>{". We will never share your details without your permission."}
                     </p>
                   </div>
                 </div>
@@ -475,7 +475,7 @@ export default function GetMatchedPage() {
                   <button
                     type="button"
                     onClick={() => setStep((s) => s - 1)}
-                    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-[#E8E6E1] text-[#6B6860] font-medium text-sm hover:border-[#1B365D]/40 hover:text-[#1A1A1A] transition-all"
+                    className="flex items-center gap-2 px-5 py-3 rounded-xl border border-[#E8E6E1] text-[#6B6860] font-medium text-sm hover:border-[#00319D]/40 hover:text-[#1A1A1A] transition-all"
                   >
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                       <path d="M15 18l-6-6 6-6"/>
@@ -491,7 +491,7 @@ export default function GetMatchedPage() {
                     type="button"
                     onClick={() => setStep((s) => s + 1)}
                     disabled={step === 1 && !form.country}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#1B365D] text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="flex items-center gap-2 px-7 py-3 bg-[#00319D] text-white font-bold rounded-xl hover:bg-[#00319D] transition-colors text-sm disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     {"Continue"}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -502,7 +502,7 @@ export default function GetMatchedPage() {
                   <button
                     type="submit"
                     disabled={!form.phone}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#F2B705] text-[#1B365D] font-bold rounded-xl hover:bg-[#D9A404] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                    className="flex items-center gap-2 px-7 py-3 bg-[#FCC20A] text-[#00319D] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
                   >
                     {"Get my matches"}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -519,7 +519,7 @@ export default function GetMatchedPage() {
             {['Free to use', 'No commitment required', 'Response within 24 hours', 'Verified properties only'].map((item) => (
               <div key={item} className="flex items-center gap-1.5">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M2 6L4.5 8.5L10 3" stroke="#1B365D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 6L4.5 8.5L10 3" stroke="#00319D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {item}
               </div>

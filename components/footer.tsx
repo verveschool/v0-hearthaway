@@ -30,7 +30,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#1B365D] text-white">
+    <footer className="bg-[#00319D] text-white">
       {/* Top CTA Banner */}
       <div className="border-b border-white/10">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
@@ -45,7 +45,7 @@ export default function Footer() {
             </div>
             <Link
               href="/get-matched"
-              className="flex-shrink-0 w-full sm:w-auto px-8 py-4 bg-[#F2B705] text-[#1B365D] font-bold text-lg text-center rounded-xl hover:bg-[#D9A404] transition-colors shadow-lg"
+              className="flex-shrink-0 w-full sm:w-auto px-8 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-lg text-center rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
             >
               {"Get Matched"}
             </Link>
@@ -60,7 +60,7 @@ export default function Footer() {
         <div className="flex flex-col sm:flex-row sm:flex-nowrap sm:items-start sm:justify-between gap-10 sm:gap-8 w-full">
           {Object.entries(footerLinks).map(([category, links]) => (
             <div key={category} className="sm:flex-shrink-0">
-              <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">
+              <h3 className="text-xs font-bold tracking-widest uppercase text-[#FCC20A] mb-4">
                 {category}
               </h3>
               <ul className="flex flex-col gap-2.5">
@@ -80,7 +80,7 @@ export default function Footer() {
 
           {/* Company / Contact info Block — always the last column, pinned right */}
           <div className="sm:flex-shrink-0">
-            <h3 className="text-xs font-bold tracking-widest uppercase text-[#F2B705] mb-4">{"Contact"}</h3>
+            <h3 className="text-xs font-bold tracking-widest uppercase text-[#FCC20A] mb-4">{"Contact"}</h3>
             <div className="text-sm text-white/70 space-y-3 mb-6">
               <p>
                 <a href="mailto:faraz@hearthaway.com" className="hover:text-white underline whitespace-nowrap">

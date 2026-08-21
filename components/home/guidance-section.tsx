@@ -32,8 +32,8 @@ export default function GuidanceSection() {
         {/* Top editorial statement */}
         <div className="max-w-3xl mb-20">
           <div className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-            <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+            <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+            <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
               Why HearthAway exists
             </span>
           </div>
@@ -42,7 +42,7 @@ export default function GuidanceSection() {
             <span className="italic text-[#6B6860]">search.</span>
             <br />
             HearthAway helps students{' '}
-            <span className="text-[#1B365D]">choose.</span>
+            <span className="text-[#00319D]">choose.</span>
           </h2>
         </div>
 
@@ -61,9 +61,9 @@ export default function GuidanceSection() {
             {/* Floating callout */}
             <div className="absolute bottom-6 left-6 right-6 bg-white rounded-xl p-5 shadow-lg">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#1B365D] flex items-center justify-center">
+                <div className="flex-shrink-0 w-10 h-10 rounded-full bg-[#00319D] flex items-center justify-center">
                   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                    <path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 8c-1.75 0-3.29-.9-4.2-2.26.02-.65 2.8-1.01 4.2-1.01 1.41 0 4.18.36 4.2 1.01C12.29 12.1 10.75 13 9 13z" fill="#FFCC00"/>
+                    <path d="M9 2C5.13 2 2 5.13 2 9s3.13 7 7 7 7-3.13 7-7-3.13-7-7-7zm0 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm0 8c-1.75 0-3.29-.9-4.2-2.26.02-.65 2.8-1.01 4.2-1.01 1.41 0 4.18.36 4.2 1.01C12.29 12.1 10.75 13 9 13z" fill="#FCC20A"/>
                   </svg>
                 </div>
                 <div>
@@ -85,9 +85,9 @@ export default function GuidanceSection() {
                 key={pillar.title}
                 className="flex gap-5 items-start group"
               >
-                <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-lg bg-[#1B365D] flex items-center justify-center">
+                <div className="flex-shrink-0 mt-1 w-8 h-8 rounded-lg bg-[#00319D] flex items-center justify-center">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 7L5.5 10.5L12 4" stroke="#FFCC00" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M2 7L5.5 10.5L12 4" stroke="#FCC20A" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </div>
                 <div>
@@ -104,7 +104,7 @@ export default function GuidanceSection() {
             <div className="pt-4">
               <Link
                 href="/get-matched"
-                className="inline-flex items-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
+                className="inline-flex items-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
               >
                 Talk to an Accommodation Advisor
               </Link>
@@ -121,7 +121,7 @@ export default function GuidanceSection() {
             className="object-cover object-center"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#12243E]/80 via-[#12243E]/40 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/80 via-[#00319D]/40 to-transparent" />
           <div className="absolute inset-0 flex items-center px-8 lg:px-14">
             <div className="max-w-lg">
               <p className="font-heading font-extrabold text-2xl lg:text-3xl text-white leading-snug mb-4 text-balance">
@@ -129,7 +129,7 @@ export default function GuidanceSection() {
               </p>
               <Link
                 href="/cities"
-                className="inline-flex items-center gap-2 text-[#FFCC00] font-bold text-sm hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-[#FCC20A] font-bold text-sm hover:gap-3 transition-all"
               >
                 Explore student cities &rarr;
               </Link>

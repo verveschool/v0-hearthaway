@@ -35,8 +35,8 @@ export type MovingAbroadArticleCard = Pick<
 
 export type MovingAbroadCategoryGroup = {
   name: MovingAbroadArticleCategory
-  color: 'bg-[#1B365D]' | 'bg-[#FFCC00]' | 'bg-[#F7F6F3]'
-  textColor: 'text-white' | 'text-[#1B365D]'
+  color: 'bg-[#00319D]' | 'bg-[#FCC20A]' | 'bg-[#F7F6F3]'
+  textColor: 'text-white' | 'text-[#00319D]'
   articles: MovingAbroadArticleCard[]
 }
 
@@ -789,10 +789,10 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
 const articleBySlug = new Map(movingAbroadArticles.map((article) => [article.slug, article]))
 
 const categoryStyles: Record<MovingAbroadArticleCategory, Pick<MovingAbroadCategoryGroup, 'color' | 'textColor'>> = {
-  'Before you go': { color: 'bg-[#1B365D]', textColor: 'text-white' },
-  Accommodation: { color: 'bg-[#FFCC00]', textColor: 'text-[#1B365D]' },
-  Budgeting: { color: 'bg-[#F7F6F3]', textColor: 'text-[#1B365D]' },
-  Arriving: { color: 'bg-[#1B365D]', textColor: 'text-white' },
+  'Before you go': { color: 'bg-[#00319D]', textColor: 'text-white' },
+  Accommodation: { color: 'bg-[#FCC20A]', textColor: 'text-[#00319D]' },
+  Budgeting: { color: 'bg-[#F7F6F3]', textColor: 'text-[#00319D]' },
+  Arriving: { color: 'bg-[#00319D]', textColor: 'text-white' },
 }
 
 export const movingAbroadCategoryOrder: MovingAbroadArticleCategory[] = [

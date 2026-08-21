@@ -38,24 +38,24 @@ export default function HeroSection() {
   const nextPhoto = () => setActivePhoto((prev) => (prev + 1) % photos.length)
 
   return (
-    <section className="bg-[#1B365D] flex flex-col lg:flex-row items-center justify-between pt-10 lg:pt-12 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14 font-sans">
+    <section className="bg-[#00319D] flex flex-col lg:flex-row items-center justify-between pt-10 lg:pt-12 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14 font-sans">
 
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
         {/* clean trust label */}
         <div className="mb-8 flex w-full max-w-xl flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <span className="shrink-0 rounded-full bg-[#F2B705] px-3.5 py-1.5 text-center text-xs font-extrabold uppercase tracking-widest text-[#1B365D] shadow-sm">
+          <span className="shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-xs font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm">
             100% verified
           </span>
-          <span className="max-w-full text-xs font-bold uppercase leading-relaxed tracking-[0.14em] text-[#F2B705] sm:leading-normal sm:tracking-widest">
+          <span className="max-w-full text-xs font-bold uppercase leading-relaxed tracking-[0.14em] text-[#FCC20A] sm:leading-normal sm:tracking-widest">
             UK &bull; Ireland &bull; France &bull; UAE &bull; Germany &bull; Australia
           </span>
         </div>
 
         <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
           Find the right accommodation
-          <span className="block mt-1 text-[#F2B705]">before you arrive.</span>
+          <span className="block mt-1 text-[#FCC20A]">before you arrive.</span>
         </h1>
 
         <p className="text-white/90 font-medium leading-relaxed mb-4 max-w-lg" style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}>
@@ -70,7 +70,7 @@ export default function HeroSection() {
         <div className="flex flex-col sm:flex-row gap-3">
           <Link
             href="/get-matched"
-            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#F2B705] text-[#111827] font-extrabold text-base hover:bg-[#D9A404] active:bg-[#B38703] transition-all shadow-lg shadow-[#F2B705]/20 hover:shadow-[#F2B705]/40 hover:shadow-xl hover:-translate-y-0.5"
+            className="group inline-flex items-center justify-center gap-3 px-8 py-4 rounded-2xl bg-[#FCC20A] text-[#00319D] font-extrabold text-base hover:bg-[#FCC20A] active:bg-[#FCC20A] transition-all shadow-lg shadow-[#FCC20A]/20 hover:shadow-[#FCC20A]/40 hover:shadow-xl hover:-translate-y-0.5"
           >
             Get Matched
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
@@ -95,7 +95,7 @@ export default function HeroSection() {
               priority={i === 0}
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
-            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#1B365D]/95 via-[#1B365D]/60 to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-48 bg-gradient-to-t from-[#00319D]/95 via-[#00319D]/60 to-transparent" />
           </div>
         ))}
 
@@ -114,8 +114,8 @@ export default function HeroSection() {
                 role="tab"
                 aria-selected={i === activePhoto}
                 aria-label={`View photo ${i + 1}`}
-                className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#F2B705]"
-                style={{ width: i === activePhoto ? '2.5rem' : '0.5rem', background: i === activePhoto ? '#F2B705' : 'rgba(255,255,255,0.4)' }}
+                className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FCC20A]"
+                style={{ width: i === activePhoto ? '2.5rem' : '0.5rem', background: i === activePhoto ? '#FCC20A' : 'rgba(255,255,255,0.4)' }}
               />
             ))}
           </div>
@@ -124,14 +124,14 @@ export default function HeroSection() {
             <button
               onClick={prevPhoto}
               aria-label="Previous photo"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#1B365D]/60 border border-white/30 text-white hover:bg-[#1B365D] hover:scale-105 transition-all backdrop-blur-md"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#00319D]/60 border border-white/30 text-white hover:bg-[#00319D] hover:scale-105 transition-all backdrop-blur-md"
             >
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
             </button>
             <button
               onClick={nextPhoto}
               aria-label="Next photo"
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#1B365D]/60 border border-white/30 text-white hover:bg-[#1B365D] hover:scale-105 transition-all backdrop-blur-md"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-[#00319D]/60 border border-white/30 text-white hover:bg-[#00319D] hover:scale-105 transition-all backdrop-blur-md"
             >
               <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </button>

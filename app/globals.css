@@ -9,11 +9,11 @@
   --font-serif: var(--font-manrope), 'Manrope Fallback', system-ui, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
 
-  --color-brand-blue: #1B365D;
-  --color-brand-blue-light: #24497D;
-  --color-brand-blue-dark: #12243E;
-  --color-hearth-gold: #FFCC00;
-  --color-hearth-gold-dark: #E6B800;
+  --color-brand-blue: #00319D;
+  --color-brand-blue-light: #00319D;
+  --color-brand-blue-dark: #00319D;
+  --color-hearth-gold: #FCC20A;
+  --color-hearth-gold-dark: #FCC20A;
   --color-canvas-white: #FFFFFF;
   --color-charcoal-ink: #1A1A1A;
   --color-warm-gray: #F7F6F3;
@@ -54,18 +54,18 @@
   --card-foreground: #1A1A1A;
   --popover: #FFFFFF;
   --popover-foreground: #1A1A1A;
-  --primary: #1B365D;
+  --primary: #00319D;
   --primary-foreground: #FFFFFF;
   --secondary: #F7F6F3;
   --secondary-foreground: #1A1A1A;
   --muted: #F7F6F3;
   --muted-foreground: #6B6860;
-  --accent: #FFCC00;
+  --accent: #FCC20A;
   --accent-foreground: #1A1A1A;
   --destructive: oklch(0.577 0.245 27.325);
   --border: #E8E6E1;
   --input: #E8E6E1;
-  --ring: #1B365D;
+  --ring: #00319D;
   --radius: 0.75rem;
 }
 

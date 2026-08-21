@@ -24,7 +24,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="relative bg-[#1B365D] pt-28 pb-16 px-6 overflow-hidden">
+        <section className="relative bg-[#00319D] pt-28 pb-16 px-6 overflow-hidden">
           <div className="absolute inset-0 opacity-25" aria-hidden="true">
             <Image
               src={country.heroImage}
@@ -34,13 +34,13 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0F2240]/95 via-[#0F2240]/80 to-[#0F2240]/50" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/95 via-[#00319D]/80 to-[#00319D]/50" />
           </div>
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl">
               <div className="inline-flex items-center gap-2 mb-5">
-                <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                <span className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase">
+                <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                <span className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase">
                   Study in {country.name}
                 </span>
               </div>
@@ -51,7 +51,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                 {country.summary}
               </p>
               <div className="flex flex-wrap gap-3 mb-8">
-                <span className="px-3 py-1.5 rounded-full bg-[#FFCC00] text-[#1B365D] text-xs font-extrabold">
+                <span className="px-3 py-1.5 rounded-full bg-[#FCC20A] text-[#00319D] text-xs font-extrabold">
                   {country.badge}
                 </span>
                 <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 text-xs font-medium">
@@ -63,7 +63,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="inline-flex px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
+                className="inline-flex px-8 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
               >
                 Get Matched
               </Link>
@@ -75,7 +75,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
-              <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-4">Country overview</div>
+              <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Country overview</div>
               <h2 className="font-heading font-bold text-2xl lg:text-3xl text-[#1A1A1A] mb-4 text-balance">
                 Studying and finding housing in {country.name}
               </h2>
@@ -83,8 +83,8 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                 {country.overview}
               </p>
             </div>
-            <div className="bg-[#1B365D] rounded-2xl p-7">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">Housing notes</div>
+            <div className="bg-[#00319D] rounded-2xl p-7">
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">Housing notes</div>
               <p className="text-white/75 text-sm leading-relaxed">
                 {country.studentHousingNotes}
               </p>
@@ -97,12 +97,12 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-7">
               <div>
-                <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-3">Featured cities</div>
+                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Featured cities</div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">Explore student cities</h2>
               </div>
               <Link
                 href="/cities"
-                className="text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-0.5 hover:text-[#24497D] transition-colors"
+                className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-0.5 hover:text-[#00319D] transition-colors"
               >
                 View all cities
               </Link>
@@ -125,13 +125,13 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                   </div>
                   <div className="p-5">
                     <div className="flex items-start justify-between mb-1">
-                      <h3 className="font-heading font-bold text-[#1A1A1A] text-lg group-hover:text-[#1B365D] transition-colors">
+                      <h3 className="font-heading font-bold text-[#1A1A1A] text-lg group-hover:text-[#00319D] transition-colors">
                         {city.name}
                       </h3>
                       <span className="text-xs text-[#6B6860] ml-2 mt-1">{city.universities} unis</span>
                     </div>
                     <p className="text-[#6B6860] text-sm leading-relaxed mb-3 line-clamp-2">{city.description}</p>
-                    <div className="text-xs text-[#1B365D] font-semibold">{city.avgRent}</div>
+                    <div className="text-xs text-[#00319D] font-semibold">{city.avgRent}</div>
                   </div>
                 </Link>
               ))}
@@ -144,12 +144,12 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-7">
               <div>
-                <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-3">Featured universities</div>
+                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Featured universities</div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">Start near your campus</h2>
               </div>
               <Link
                 href="/universities"
-                className="text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-0.5 hover:text-[#24497D] transition-colors"
+                className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-0.5 hover:text-[#00319D] transition-colors"
               >
                 View all universities
               </Link>
@@ -159,16 +159,16 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                 <Link
                   key={university.slug}
                   href={`/universities/${university.slug}`}
-                  className="group bg-[#F7F6F3] rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#1B365D]/30 hover:shadow-lg transition-all duration-200"
+                  className="group bg-[#F7F6F3] rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#00319D]/30 hover:shadow-lg transition-all duration-200"
                 >
-                  <span className="text-xs font-bold tracking-wider uppercase text-[#1B365D] bg-[#1B365D]/8 px-2.5 py-1 rounded-full inline-block mb-3">
+                  <span className="text-xs font-bold tracking-wider uppercase text-[#00319D] bg-[#00319D]/8 px-2.5 py-1 rounded-full inline-block mb-3">
                     {university.city}
                   </span>
-                  <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#1B365D] transition-colors">
+                  <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#00319D] transition-colors">
                     {university.name}
                   </h3>
                   <p className="text-[#6B6860] text-xs">{university.students} students</p>
-                  <div className="mt-4 text-xs font-semibold text-[#1B365D] group-hover:translate-x-1 transition-transform inline-block">
+                  <div className="mt-4 text-xs font-semibold text-[#00319D] group-hover:translate-x-1 transition-transform inline-block">
                     View accommodation &rarr;
                   </div>
                 </Link>
@@ -181,7 +181,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         <section className="bg-[#F7F6F3] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
-              <div className="text-[#1B365D] text-sm font-bold tracking-widest uppercase mb-3">Moving abroad</div>
+              <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Moving abroad</div>
               <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-3">Plan the move, not just the room</h2>
               <p className="text-[#6B6860] text-sm leading-relaxed">
                 Use these guides to prepare for visas, budgeting, arrival, and accommodation decisions before you fly to {country.name}.
@@ -192,16 +192,16 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                 <Link
                   key={guide.href}
                   href={guide.href}
-                  className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#1B365D]/30 hover:shadow-lg transition-all duration-200"
+                  className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#00319D]/30 hover:shadow-lg transition-all duration-200"
                 >
-                  <span className="text-xs font-bold text-[#1B365D] tracking-wider uppercase px-2.5 py-1 bg-[#FFCC00] rounded-full inline-block mb-4">
+                  <span className="text-xs font-bold text-[#00319D] tracking-wider uppercase px-2.5 py-1 bg-[#FCC20A] rounded-full inline-block mb-4">
                     {guide.category}
                   </span>
-                  <h3 className="font-heading font-bold text-[#1A1A1A] text-base leading-snug mb-2 group-hover:text-[#1B365D] transition-colors">
+                  <h3 className="font-heading font-bold text-[#1A1A1A] text-base leading-snug mb-2 group-hover:text-[#00319D] transition-colors">
                     {guide.title}
                   </h3>
                   <p className="text-[#6B6860] text-sm leading-relaxed mb-4">{guide.description}</p>
-                  <div className="text-xs font-semibold text-[#1B365D] group-hover:translate-x-1 transition-transform inline-block">
+                  <div className="text-xs font-semibold text-[#00319D] group-hover:translate-x-1 transition-transform inline-block">
                     Read guide &rarr;
                   </div>
                 </Link>
@@ -213,7 +213,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         {/* CTA */}
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="bg-[#1B365D] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            <div className="bg-[#00319D] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
               <div className="max-w-xl">
                 <h3 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-3 text-balance">
                   Ready to find student accommodation in {country.name}?
@@ -224,7 +224,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="flex-shrink-0 px-8 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg"
+                className="flex-shrink-0 px-8 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
               >
                 Get Matched
               </Link>

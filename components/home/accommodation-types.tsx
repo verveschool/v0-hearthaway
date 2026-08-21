@@ -55,15 +55,15 @@ export default function AccommodationTypes() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-              <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+              <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                 Types of accommodation
               </span>
             </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
               Every student is different.{' '}
               <br className="hidden lg:block" />
-              <span className="text-[#1B365D]">Your accommodation should match.</span>
+              <span className="text-[#00319D]">Your accommodation should match.</span>
             </h2>
           </div>
           <p className="max-w-sm text-[#6B6860] text-base leading-relaxed lg:text-right">
@@ -86,9 +86,9 @@ export default function AccommodationTypes() {
               className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 100vw, 67vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#12243E]/90 via-[#12243E]/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/90 via-[#00319D]/40 to-transparent" />
             <div className="relative z-10 p-8">
-              <span className="inline-block text-xs font-bold text-[#1B365D] bg-[#FFCC00] px-3 py-1.5 rounded-full mb-4">
+              <span className="inline-block text-xs font-bold text-[#00319D] bg-[#FCC20A] px-3 py-1.5 rounded-full mb-4">
                 {large.bestFor}
               </span>
               <h3 className="font-heading font-extrabold text-3xl text-white mb-2">
@@ -121,7 +121,7 @@ export default function AccommodationTypes() {
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#12243E]/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/80 via-transparent to-transparent" />
               <div className="relative z-10 p-5">
                 <p className="font-heading font-extrabold text-lg text-white leading-snug">
                   See how students actually live
@@ -143,7 +143,7 @@ export default function AccommodationTypes() {
                   className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#12243E]/85 via-[#12243E]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
                 <div className="relative z-10 p-5">
                   <h3 className="font-heading font-extrabold text-lg text-white">{type.name}</h3>
                   <p className="text-white/70 text-xs mt-0.5">{type.bestFor}</p>
@@ -157,13 +157,13 @@ export default function AccommodationTypes() {
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <Link
             href="/get-matched"
-            className="inline-flex items-center gap-3 px-7 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-sm"
+            className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
           >
             Get matched to the right type for you
           </Link>
           <Link
             href="/accommodation"
-            className="text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-px hover:text-[#24497D] transition-colors"
+            className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-px hover:text-[#00319D] transition-colors"
           >
             Explore all accommodation types
           </Link>

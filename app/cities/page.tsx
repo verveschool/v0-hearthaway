@@ -13,10 +13,10 @@ export default function CitiesPage() {
       <Navigation />
       <main>
         {/* Header */}
-        <section className="bg-[#1B365D] pt-28 pb-16 px-6">
+        <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">Student Cities</div>
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">Student Cities</div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
                 Find accommodation in your city.
               </h1>
@@ -38,7 +38,7 @@ export default function CitiesPage() {
                     <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">{country}</h2>
                     <Link
                       href={`/${countrySlug}`}
-                      className="text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-0.5 hover:text-[#24497D] transition-colors"
+                      className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-0.5 hover:text-[#00319D] transition-colors"
                     >
                       Explore {country}
                     </Link>
@@ -61,13 +61,13 @@ export default function CitiesPage() {
                         </div>
                         <div className="p-5">
                           <div className="flex items-start justify-between mb-1">
-                            <h3 className="font-heading font-bold text-[#1A1A1A] text-lg group-hover:text-[#1B365D] transition-colors">
+                            <h3 className="font-heading font-bold text-[#1A1A1A] text-lg group-hover:text-[#00319D] transition-colors">
                               {city.name}
                             </h3>
                             <span className="text-xs text-[#6B6860] ml-2 mt-1">{city.universities} unis</span>
                           </div>
                           <p className="text-[#6B6860] text-sm leading-relaxed mb-3 line-clamp-2">{city.description}</p>
-                          <div className="text-xs text-[#1B365D] font-semibold">{city.avgRent}</div>
+                          <div className="text-xs text-[#00319D] font-semibold">{city.avgRent}</div>
                         </div>
                       </Link>
                     ))}
