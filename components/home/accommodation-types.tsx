@@ -77,29 +77,28 @@ export default function AccommodationTypes() {
           {/* Large featured card */}
           <Link
             href={large.href}
-            className="group relative lg:col-span-2 h-96 lg:h-[480px] rounded-2xl overflow-hidden flex flex-col justify-end"
+            className="group lg:col-span-2 overflow-hidden rounded-2xl bg-white border border-[#E8E6E1] hover:shadow-xl transition-all duration-300"
           >
             <Image
               src={large.image}
               alt={large.name}
               fill
-              className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              className="h-64 lg:h-72 w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 100vw, 67vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/90 via-[#00319D]/40 to-transparent" />
-            <div className="relative z-10 p-8">
+            <div className="p-8">
               <span className="inline-block text-xs font-bold text-[#00319D] bg-[#FCC20A] px-3 py-1.5 rounded-full mb-4">
                 {large.bestFor}
               </span>
-              <h3 className="font-heading font-extrabold text-3xl text-white mb-2">
+              <h3 className="font-heading font-extrabold text-3xl text-[#1A1A1A] mb-2 group-hover:text-[#00319D] transition-colors">
                 {large.name}
               </h3>
-              <p className="text-white/75 text-base leading-relaxed mb-5 max-w-md">
+              <p className="text-[#6B6860] text-base leading-relaxed mb-5 max-w-md">
                 {large.description}
               </p>
               <div className="flex flex-wrap gap-2">
                 {large.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1.5 rounded-full bg-white/15 border border-white/20 text-white/90 text-xs font-medium">
+                  <span key={tag} className="px-3 py-1.5 rounded-full bg-[#F7F6F3] border border-[#E8E6E1] text-[#6B6860] text-xs font-medium">
                     {tag}
                   </span>
                 ))}
@@ -112,21 +111,20 @@ export default function AccommodationTypes() {
             {/* Kitchen highlight card */}
             <Link
               href="/accommodation"
-              className="group relative h-56 lg:h-auto rounded-2xl overflow-hidden flex flex-col justify-end"
+              className="group overflow-hidden rounded-2xl bg-white border border-[#E8E6E1] hover:shadow-xl transition-all duration-300"
             >
               <Image
                 src="/images/acc-kitchen.png"
                 alt="Modern student kitchen and dining area"
                 fill
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                className="h-40 w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/80 via-transparent to-transparent" />
-              <div className="relative z-10 p-5">
-                <p className="font-heading font-extrabold text-lg text-white leading-snug">
+              <div className="p-5">
+                <p className="font-heading font-extrabold text-lg text-[#1A1A1A] leading-snug group-hover:text-[#00319D] transition-colors">
                   See how students actually live
                 </p>
-                <p className="text-white/70 text-sm mt-1">Photo tours for every property type</p>
+                <p className="text-[#6B6860] text-sm mt-1">Photo tours for every property type</p>
               </div>
             </Link>
 
@@ -134,19 +132,18 @@ export default function AccommodationTypes() {
               <Link
                 key={type.name}
                 href={type.href}
-                className="group relative h-56 lg:h-auto rounded-2xl overflow-hidden flex flex-col justify-end"
+                className="group overflow-hidden rounded-2xl bg-white border border-[#E8E6E1] hover:shadow-xl transition-all duration-300"
               >
                 <Image
                   src={type.image}
                   alt={type.name}
                   fill
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  className="h-40 w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
-                <div className="relative z-10 p-5">
-                  <h3 className="font-heading font-extrabold text-lg text-white">{type.name}</h3>
-                  <p className="text-white/70 text-xs mt-0.5">{type.bestFor}</p>
+                <div className="p-5">
+                  <h3 className="font-heading font-extrabold text-lg text-[#1A1A1A] group-hover:text-[#00319D] transition-colors">{type.name}</h3>
+                  <p className="text-[#6B6860] text-xs mt-0.5">{type.bestFor}</p>
                 </div>
               </Link>
             ))}
