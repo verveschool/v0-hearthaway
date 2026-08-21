@@ -61,7 +61,7 @@ export default function Navbar() {
   }, [closeMobileDrawer])
 
   return (
-    <nav className="bg-[#1B365D] text-white sticky top-0 z-50 shadow-md">
+    <nav className="bg-[#00319D] text-white sticky top-0 z-50 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           
@@ -106,7 +106,7 @@ export default function Navbar() {
                       <Link
                         key={`desktop-sub-${subLink.label}-${subIdx}`}
                         href={subLink.href}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#1B365D] transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#00319D] transition-colors"
                       >
                         {subLink.label}
                       </Link>
@@ -118,7 +118,7 @@ export default function Navbar() {
             
             <Link
               href="/get-matched"
-              className="px-5 py-2.5 bg-[#F2B705] text-[#1B365D] font-bold text-sm rounded-lg hover:bg-[#D9A404] transition-colors shadow-sm"
+              className="px-5 py-2.5 bg-[#FCC20A] text-[#00319D] font-bold text-sm rounded-lg hover:bg-[#FCC20A] transition-colors shadow-sm"
             >
               Get Matched
             </Link>
@@ -147,7 +147,7 @@ export default function Navbar() {
 
       {/* mobile drawer panel */}
       {isOpen && (
-        <div className="md:hidden bg-[#162e50] border-t border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-inner">
+        <div className="md:hidden bg-[#00319D] border-t border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-inner">
           {navLinks.map((link, idx) => (
             <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
               {link.dropdown ? (
@@ -157,7 +157,7 @@ export default function Navbar() {
                     onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="flex w-full items-center justify-between text-xs font-bold text-[#F2B705] tracking-wider uppercase px-3 py-2"
+                    className="flex w-full items-center justify-between text-xs font-bold text-[#FCC20A] tracking-wider uppercase px-3 py-2"
                   >
                     {link.label}
                     <ChevronDown className="h-4 w-4" />
@@ -192,7 +192,7 @@ export default function Navbar() {
             <Link
               href="/get-matched"
               onClick={closeMobileDrawer}
-              className="block w-full text-center px-4 py-3 bg-[#F2B705] text-[#1B365D] font-bold rounded-xl hover:bg-[#D9A404] transition-colors shadow-md"
+              className="block w-full text-center px-4 py-3 bg-[#FCC20A] text-[#00319D] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors shadow-md"
             >
               Get Matched
             </Link>

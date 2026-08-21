@@ -73,7 +73,7 @@ export default async function CityPage({ params }: CityPageProps) {
     <>
       <Navigation />
       <main>
-        <section className="relative bg-[#1B365D] pt-28 pb-16 px-6 overflow-hidden">
+        <section className="relative bg-[#00319D] pt-28 pb-16 px-6 overflow-hidden">
           <div className="absolute inset-0 opacity-20" aria-hidden="true">
             <Image
               src={city.image}
@@ -83,12 +83,12 @@ export default async function CityPage({ params }: CityPageProps) {
               sizes="100vw"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#0F2240]/95 via-[#0F2240]/80 to-[#0F2240]/30" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/95 via-[#00319D]/80 to-[#00319D]/30" />
           </div>
 
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
                 {countryName} student housing guide
               </div>
 
@@ -114,7 +114,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FFCC00] text-[#1B365D] font-extrabold text-lg rounded-xl hover:bg-[#E6B800] transition-colors shadow-xl"
+                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
               >
                 Get matched in {city.name}
               </Link>
@@ -127,8 +127,8 @@ export default async function CityPage({ params }: CityPageProps) {
             <div className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     City Overview
                   </span>
                 </div>
@@ -148,8 +148,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     Budget Planning
                   </span>
                 </div>
@@ -163,7 +163,7 @@ export default async function CityPage({ params }: CityPageProps) {
                     <div className="text-xs text-[#6B6860] font-bold tracking-widest uppercase mb-2">
                       Average rent range
                     </div>
-                    <div className="font-heading font-extrabold text-3xl text-[#1B365D]">
+                    <div className="font-heading font-extrabold text-3xl text-[#00319D]">
                       {city.avgRent}
                     </div>
                   </div>
@@ -172,7 +172,7 @@ export default async function CityPage({ params }: CityPageProps) {
                     <div className="text-xs text-[#6B6860] font-bold tracking-widest uppercase mb-2">
                       Monthly budget anchor
                     </div>
-                    <div className="font-heading font-extrabold text-3xl text-[#1B365D]">
+                    <div className="font-heading font-extrabold text-3xl text-[#00319D]">
                       {city.rentBudgeting.averageMonthlyRent}
                     </div>
                   </div>
@@ -185,8 +185,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     Best Areas For Students
                   </span>
                 </div>
@@ -203,7 +203,7 @@ export default async function CityPage({ params }: CityPageProps) {
                   {city.bestAreasForStudents.topNeighbourhoods.map((area) => (
                     <div
                       key={area}
-                      className="px-4 py-3 rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] text-[#1B365D] font-medium"
+                      className="px-4 py-3 rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] text-[#00319D] font-medium"
                     >
                       {toTitleCase(area)}
                     </div>
@@ -213,8 +213,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     Universities
                   </span>
                 </div>
@@ -229,9 +229,9 @@ export default async function CityPage({ params }: CityPageProps) {
                       <Link
                         key={university.slug}
                         href={`/universities/${university.slug}`}
-                        className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-5 hover:border-[#FFCC00] transition-colors"
+                        className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-5 hover:border-[#FCC20A] transition-colors"
                       >
-                        <div className="text-xs font-bold tracking-wider uppercase text-[#1B365D] bg-[#1B365D]/10 px-2.5 py-1 rounded-full inline-block mb-3">
+                        <div className="text-xs font-bold tracking-wider uppercase text-[#00319D] bg-[#00319D]/10 px-2.5 py-1 rounded-full inline-block mb-3">
                           {university.country}
                         </div>
                         <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1">
@@ -252,8 +252,8 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-                  <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                     Advisor Support
                   </span>
                 </div>
@@ -272,7 +272,7 @@ export default async function CityPage({ params }: CityPageProps) {
                       key={`support-step-${index}`}
                       className="rounded-2xl bg-[#F7F6F3] border border-[#E8E6E1] p-5"
                     >
-                      <div className="w-8 h-8 rounded-full bg-[#FFCC00] text-[#1B365D] font-extrabold flex items-center justify-center mb-4">
+                      <div className="w-8 h-8 rounded-full bg-[#FCC20A] text-[#00319D] font-extrabold flex items-center justify-center mb-4">
                         {index + 1}
                       </div>
                       <p className="text-[#6B6860] text-sm leading-relaxed">
@@ -305,7 +305,7 @@ export default async function CityPage({ params }: CityPageProps) {
               title={
                 <span>
                   Ready to plan your move to{' '}
-                  <span className="text-[#FFCC00]">{city.name}</span>?
+                  <span className="text-[#FCC20A]">{city.name}</span>?
                 </span>
               }
               description="Tell us your university, move-in date, and budget. An accommodation advisor will help you understand your next best steps."

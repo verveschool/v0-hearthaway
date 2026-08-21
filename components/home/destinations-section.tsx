@@ -23,8 +23,8 @@ export default function DestinationsSection() {
         {/* Header */}
         <div className="max-w-2xl mb-14">
           <div className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-            <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+            <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+            <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
               Where are you heading?
             </span>
           </div>
@@ -48,11 +48,11 @@ export default function DestinationsSection() {
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 25vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F2240]/95 via-[#0F2240]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/95 via-[#00319D]/40 to-transparent" />
 
               <div className="relative z-10 p-7">
                 <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className="inline-block px-3 py-1.5 rounded-full bg-[#FFCC00] text-[#1B365D] text-xs font-extrabold">
+                  <span className="inline-block px-3 py-1.5 rounded-full bg-[#FCC20A] text-[#00319D] text-xs font-extrabold">
                     {country.badge}
                   </span>
                   <span className="text-white/60 text-xs font-medium bg-white/10 px-3 py-1.5 rounded-full">
@@ -101,7 +101,7 @@ export default function DestinationsSection() {
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0F2240]/85 via-[#0F2240]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
               <div className="relative z-10 p-3.5">
                 <div className="font-extrabold text-sm text-white leading-none mb-1">{city.name}</div>
                 <div className="text-white/60 text-xs">{city.rent}</div>
@@ -113,13 +113,13 @@ export default function DestinationsSection() {
         <div className="flex flex-col sm:flex-row gap-5 items-start sm:items-center">
           <Link
             href="/get-matched"
-            className="inline-flex items-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
+            className="inline-flex items-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
           >
             Find accommodation near my university
           </Link>
           <Link
             href="/cities"
-            className="text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-px hover:text-[#24497D] transition-colors"
+            className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-px hover:text-[#00319D] transition-colors"
           >
             Browse all cities
           </Link>

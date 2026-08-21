@@ -47,8 +47,8 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20">
           <div>
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-              <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+              <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                 How HearthAway works
               </span>
             </div>
@@ -62,7 +62,7 @@ export default function HowItWorks() {
             </p>
             <Link
               href="/get-matched"
-              className="inline-flex items-center gap-3 px-7 py-4 bg-[#FFCC00] text-[#1B365D] font-bold text-base rounded-xl hover:bg-[#E6B800] transition-colors shadow-sm"
+              className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
             >
               Talk to an Accommodation Advisor
             </Link>
@@ -74,11 +74,11 @@ export default function HowItWorks() {
           {steps.map((step, index) => (
             <div
               key={step.number}
-              className="group relative bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 border border-[#E8E6E1] hover:border-[#1B365D]/20 hover:shadow-lg transition-all duration-300 overflow-hidden"
+              className="group relative bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 border border-[#E8E6E1] hover:border-[#00319D]/20 hover:shadow-lg transition-all duration-300 overflow-hidden"
             >
               {/* Large background number */}
               <div
-                className="absolute top-4 right-6 font-extrabold text-[7rem] leading-none text-[#1B365D]/5 select-none pointer-events-none group-hover:text-[#1B365D]/8 transition-colors"
+                className="absolute top-4 right-6 font-extrabold text-[7rem] leading-none text-[#00319D]/5 select-none pointer-events-none group-hover:text-[#00319D]/8 transition-colors"
                 aria-hidden="true"
               >
                 {step.number}
@@ -86,7 +86,7 @@ export default function HowItWorks() {
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#1B365D] text-white font-extrabold text-sm">
+                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#00319D] text-white font-extrabold text-sm">
                     {parseInt(step.number)}
                   </span>
                   <span className="text-xs font-semibold text-[#6B6860] bg-white px-3 py-1.5 rounded-full border border-[#E8E6E1]">
@@ -100,7 +100,7 @@ export default function HowItWorks() {
                 <p className="text-[#6B6860] text-base leading-relaxed mb-5">
                   {step.description}
                 </p>
-                <p className="text-[#1B365D] text-sm font-bold">
+                <p className="text-[#00319D] text-sm font-bold">
                   {step.accent}
                 </p>
               </div>
@@ -114,7 +114,7 @@ export default function HowItWorks() {
             {['Free to use', 'No commitment required', 'UK, Ireland, France, Australia', 'Guided by people, not algorithms.'].map((item) => (
               <span key={item} className="flex items-center gap-2">
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                  <path d="M2 7L5.5 10.5L12 4" stroke="#1B365D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 7L5.5 10.5L12 4" stroke="#00319D" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {item}
               </span>
@@ -122,7 +122,7 @@ export default function HowItWorks() {
           </div>
           <Link
             href="/get-matched"
-            className="flex-shrink-0 text-[#1B365D] font-bold text-sm border-b-2 border-[#FFCC00] pb-px hover:text-[#24497D] transition-colors"
+            className="flex-shrink-0 text-[#00319D] font-bold text-sm border-b-2 border-[#FCC20A] pb-px hover:text-[#00319D] transition-colors"
           >
             Start the process &rarr;
           </Link>

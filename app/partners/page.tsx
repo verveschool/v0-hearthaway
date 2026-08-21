@@ -45,7 +45,7 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-[#1B365D] p-8 text-white">
+          <div className="rounded-2xl bg-[#00319D] p-8 text-white">
             <h2 className="mb-3 font-heading text-2xl font-bold">
               Looking for a housing partner for your students?
             </h2>
@@ -54,7 +54,7 @@ export default function PartnershipsPage() {
             </p>
             <a
               href="https://wa.me/919999965742"
-              className="inline-flex rounded-xl bg-white px-8 py-4 font-bold text-[#1B365D] transition hover:bg-[#F2F2F2]"
+              className="inline-flex rounded-xl bg-white px-8 py-4 font-bold text-[#00319D] transition hover:bg-[#F2F2F2]"
             >
               Let’s Talk
             </a>
@@ -65,7 +65,7 @@ export default function PartnershipsPage() {
             <p>Co-Founder, HearthAway</p>
             <a
               href="mailto:faraz@hearthaway.com"
-              className="font-bold text-[#1B365D] underline"
+              className="font-bold text-[#00319D] underline"
             >
               faraz@hearthaway.com
             </a>

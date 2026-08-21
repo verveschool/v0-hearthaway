@@ -230,16 +230,16 @@ export default function MovingAbroadPage() {
                           key={article.href}
                           href={article.href}
                           className={`group flex items-center justify-between px-4 py-3 rounded-xl transition-colors ${
-                            category.color === 'bg-[#1B365D]'
+                            category.color === 'bg-[#00319D]'
                               ? 'hover:bg-white/10'
-                              : category.color === 'bg-[#FFCC00]'
+                              : category.color === 'bg-[#FCC20A]'
                                 ? 'hover:bg-primary/10'
                                 : 'bg-white hover:bg-primary/5 border border-[var(--color-mid-gray)]'
                           }`}
                         >
                           <span
                             className={`text-sm font-medium ${
-                              category.color === 'bg-[#1B365D]'
+                              category.color === 'bg-[#00319D]'
                                 ? 'text-white/90 group-hover:text-white'
                                 : 'text-charcoal-ink group-hover:text-primary'
                             } transition-colors`}
@@ -248,7 +248,7 @@ export default function MovingAbroadPage() {
                           </span>
                           <span
                             className={`text-xs flex-shrink-0 ml-4 ${
-                              category.color === 'bg-[#1B365D]' ? 'text-white/50' : 'text-muted-foreground'
+                              category.color === 'bg-[#00319D]' ? 'text-white/50' : 'text-muted-foreground'
                             }`}
                           >
                             {article.readTime}

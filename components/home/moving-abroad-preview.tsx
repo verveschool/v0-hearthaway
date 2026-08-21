@@ -29,8 +29,8 @@ export default function MovingAbroadPreview() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <div>
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FFCC00]" aria-hidden="true" />
-              <span className="text-[#1B365D] text-sm font-bold tracking-widest uppercase">
+              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+              <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
                 Moving Abroad Guide
               </span>
             </div>
@@ -40,7 +40,7 @@ export default function MovingAbroadPreview() {
           </div>
           <Link
             href="/moving-abroad"
-            className="flex-shrink-0 text-[#1B365D] font-semibold text-sm border-b-2 border-[#FFCC00] pb-px hover:text-[#24497D] transition-colors"
+            className="flex-shrink-0 text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-px hover:text-[#00319D] transition-colors"
           >
             Browse all guides &rarr;
           </Link>
@@ -61,9 +61,9 @@ export default function MovingAbroadPreview() {
               className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
               sizes="(max-width: 1024px) 100vw, 40vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0F2240]/95 via-[#0F2240]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/95 via-[#00319D]/50 to-transparent" />
             <div className="relative z-10 p-7">
-              <span className="inline-block text-xs font-extrabold text-[#1B365D] bg-[#FFCC00] px-3 py-1.5 rounded-full mb-4">
+              <span className="inline-block text-xs font-extrabold text-[#00319D] bg-[#FCC20A] px-3 py-1.5 rounded-full mb-4">
                 {featured.category}
               </span>
               <h3 className="font-heading font-extrabold text-2xl text-white leading-snug mb-3 text-balance">
@@ -72,7 +72,7 @@ export default function MovingAbroadPreview() {
               <p className="text-white/65 text-sm leading-relaxed mb-4 line-clamp-2">
                 {featured.description}
               </p>
-              <span className="text-[#FFCC00] text-sm font-bold group-hover:gap-3 transition-all inline-flex items-center gap-2">
+              <span className="text-[#FCC20A] text-sm font-bold group-hover:gap-3 transition-all inline-flex items-center gap-2">
                 Read the guide &rarr;
               </span>
             </div>
@@ -84,14 +84,14 @@ export default function MovingAbroadPreview() {
               <Link
                 key={guide.href}
                 href={guide.href}
-                className="group flex flex-col bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1] hover:border-[#1B365D]/25 hover:shadow-lg transition-all duration-300"
+                className="group flex flex-col bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1] hover:border-[#00319D]/25 hover:shadow-lg transition-all duration-300"
               >
                 <div className="mb-4">
-                  <span className="text-xs font-extrabold text-[#1B365D] tracking-wider uppercase px-3 py-1.5 bg-[#1B365D]/8 rounded-full">
+                  <span className="text-xs font-extrabold text-[#00319D] tracking-wider uppercase px-3 py-1.5 bg-[#00319D]/8 rounded-full">
                     {guide.category}
                   </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-lg text-[#1A1A1A] leading-snug mb-3 group-hover:text-[#1B365D] transition-colors flex-1">
+                <h3 className="font-heading font-extrabold text-lg text-[#1A1A1A] leading-snug mb-3 group-hover:text-[#00319D] transition-colors flex-1">
                   {guide.title}
                 </h3>
                 <p className="text-[#6B6860] text-sm leading-relaxed mb-5">
@@ -99,7 +99,7 @@ export default function MovingAbroadPreview() {
                 </p>
                 <div className="flex items-center justify-between text-xs">
                   <span className="text-[#6B6860]">{guide.readTime}</span>
-                  <span className="text-[#1B365D] font-bold group-hover:translate-x-1 transition-transform inline-block">
+                  <span className="text-[#00319D] font-bold group-hover:translate-x-1 transition-transform inline-block">
                     Read &rarr;
                   </span>
                 </div>

@@ -14,10 +14,10 @@ export default function TermsPage() {
       <Navigation />
 
       <main>
-        <section className="bg-[#1B365D] pt-28 pb-16 px-6">
+        <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FFCC00] text-sm font-bold tracking-widest uppercase mb-4">
+              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
                 Terms of Service
               </div>
 
@@ -163,7 +163,7 @@ export default function TermsPage() {
                     Email:{' '}
                     <Link
                       href="mailto:faraz@hearthaway.com"
-                      className="text-[#1B365D] font-semibold underline"
+                      className="text-[#00319D] font-semibold underline"
                     >
                       faraz@hearthaway.com
                     </Link>
@@ -173,7 +173,7 @@ export default function TermsPage() {
                     Phone:{' '}
                     <Link
                       href="tel:+919999965742"
-                      className="text-[#1B365D] font-semibold underline"
+                      className="text-[#00319D] font-semibold underline"
                     >
                       +91 99999 65742
                     </Link>
@@ -199,7 +199,7 @@ export default function TermsPage() {
 
                 <Link
                   href="mailto:faraz@hearthaway.com"
-                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#1B365D] text-white font-bold text-base rounded-xl hover:bg-[#24497D] transition-colors shadow-md"
+                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
                 >
                   Contact us
                 </Link>

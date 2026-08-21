@@ -28,7 +28,7 @@ export default function MatchedCTA({
         <div className="w-full flex-shrink-0 sm:w-auto">
           <Link
             href={buttonHref}
-            className="block w-full px-6 py-2.5 bg-[#1B365D] text-center text-white font-bold rounded-xl hover:bg-[#24497D] transition-colors text-sm sm:w-auto"
+            className="block w-full px-6 py-2.5 bg-[#00319D] text-center text-white font-bold rounded-xl hover:bg-[#00319D] transition-colors text-sm sm:w-auto"
           >
             {buttonText}
           </Link>
@@ -38,7 +38,7 @@ export default function MatchedCTA({
   }
 
   return (
-    <div className={`bg-[#1B365D] rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 ${className}`}>
+    <div className={`bg-[#00319D] rounded-2xl p-8 lg:p-10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 ${className}`}>
       <div className="max-w-xl">
         <h3 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-2">{title}</h3>
         {description && <p className="text-white/70 text-base">{description}</p>}
@@ -46,7 +46,7 @@ export default function MatchedCTA({
 
       <Link
         href={buttonHref}
-        className="w-full flex-shrink-0 px-6 py-3 bg-[#FFCC00] text-center text-[#1B365D] font-bold text-sm rounded-xl hover:bg-[#E6B800] transition-colors shadow-lg sm:w-auto lg:px-8 lg:py-4 lg:text-base"
+        className="w-full flex-shrink-0 px-6 py-3 bg-[#FCC20A] text-center text-[#00319D] font-bold text-sm rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg sm:w-auto lg:px-8 lg:py-4 lg:text-base"
       >
         {buttonText}
       </Link>
