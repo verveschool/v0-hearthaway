@@ -39,26 +39,28 @@ export default function DestinationsSection() {
             <Link
               key={country.slug}
               href={`/${country.slug}`}
-              className="group overflow-hidden rounded-2xl bg-white border border-[#E8E6E1] hover:shadow-2xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-2xl h-[420px] flex flex-col justify-end hover:shadow-2xl transition-all duration-300"
             >
               <Image
                 src={country.heroImage}
                 alt={`Student accommodation in ${country.name}`}
                 fill
-                className="h-56 w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 1024px) 100vw, 25vw"
               />
-              <div className="p-5">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/95 via-[#00319D]/40 to-transparent" />
+
+              <div className="relative z-10 p-7">
                 <div className="flex items-start justify-between gap-3 mb-3">
                   <span className="inline-block px-3 py-1.5 rounded-full bg-[#FCC20A] text-[#00319D] text-xs font-extrabold">
                     {country.badge}
                   </span>
-                  <span className="text-[#6B6860] text-xs font-medium bg-[#F7F6F3] px-3 py-1.5 rounded-full">
+                  <span className="text-white/60 text-xs font-medium bg-white/10 px-3 py-1.5 rounded-full">
                     {country.universityCount} universities
                   </span>
                 </div>
-                <h3 className="font-heading font-extrabold text-2xl text-[#1A1A1A] mb-2 group-hover:text-[#00319D] transition-colors">{country.name}</h3>
-                <p className="text-[#6B6860] text-sm leading-relaxed mb-5 line-clamp-2">{country.summary}</p>
+                <h3 className="font-heading font-extrabold text-2xl text-white mb-2">{country.name}</h3>
+                <p className="text-white/65 text-sm leading-relaxed mb-5 line-clamp-2">{country.summary}</p>
                 <div className="flex flex-wrap gap-1.5">
                   {country.citySlugs.slice(0, 3).map((citySlug) => {
                     const city = cities.find((place) => place.slug === citySlug)
@@ -68,13 +70,13 @@ export default function DestinationsSection() {
                     }
 
                     return (
-                      <span key={city.slug} className="px-2.5 py-1 rounded-full bg-[#F7F6F3] border border-[#E8E6E1] text-[#6B6860] text-xs font-medium">
+                      <span key={city.slug} className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/80 text-xs font-medium">
                         {city.name}
                       </span>
                     )
                   })}
                   {country.citySlugs.length > 3 && (
-                    <span className="px-2.5 py-1 rounded-full bg-[#F7F6F3] border border-[#E8E6E1] text-[#6B6860] text-xs">
+                    <span className="px-2.5 py-1 rounded-full bg-white/10 border border-white/15 text-white/60 text-xs">
                       +{country.citySlugs.length - 3} more
                     </span>
                   )}
@@ -90,18 +92,19 @@ export default function DestinationsSection() {
             <Link
               key={city.slug}
               href={`/cities/${city.slug}`}
-              className="group overflow-hidden rounded-xl bg-white border border-[#E8E6E1] hover:shadow-xl transition-all duration-300"
+              className="group relative overflow-hidden rounded-xl h-48 flex flex-col justify-end hover:shadow-xl transition-all duration-300"
             >
               <Image
                 src={city.image}
                 alt={`Student accommodation in ${city.name}`}
                 fill
-                className="h-32 w-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
               />
-              <div className="p-3.5">
-                <div className="font-extrabold text-sm text-[#1A1A1A] leading-none mb-1 group-hover:text-[#00319D] transition-colors">{city.name}</div>
-                <div className="text-[#6B6860] text-xs">{city.rent}</div>
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
+              <div className="relative z-10 p-3.5">
+                <div className="font-extrabold text-sm text-white leading-none mb-1">{city.name}</div>
+                <div className="text-white/60 text-xs">{city.rent}</div>
               </div>
             </Link>
           ))}
