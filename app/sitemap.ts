@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://v0-hearthaway.vercel.app'
+  const baseUrl = 'https://hearthaway.com'
 
   // Define static routes
   const staticRoutes = [
