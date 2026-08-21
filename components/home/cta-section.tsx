@@ -5,13 +5,18 @@ export default function CtaSection() {
   return (
     <section className="bg-[#F7F6F3] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#00319D] via-[#00319D] to-[#00319D] min-h-[480px] flex flex-col lg:flex-row">
+        <div className="relative overflow-hidden rounded-3xl bg-[#00319D] min-h-[480px] flex flex-col lg:flex-row">
 
           {/* Text side */}
           <div className="relative z-10 flex-1 flex flex-col justify-center p-10 lg:p-16 xl:p-20">
             <div className="inline-flex items-center gap-2 mb-7">
-              <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
-              <span className="text-white/70 text-sm font-semibold">free to use, no commitment required</span>
+              <div
+                className="w-2 h-2 rounded-full bg-[#FCC20A]"
+                aria-hidden="true"
+              />
+              <span className="text-white/70 text-sm font-semibold">
+                free to use, no commitment required
+              </span>
             </div>
 
             <h2 className="font-heading text-4xl lg:text-[3rem] xl:text-[3.5rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6 max-w-xl">
@@ -20,7 +25,9 @@ export default function CtaSection() {
             </h2>
 
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
-              Tell us your university, move-in date, and budget. An accommodation advisor will match you with verified options near your campus before you fly.
+              Tell us your university, move-in date, and budget. An accommodation
+              advisor will match you with verified options near your campus
+              before you fly.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -39,8 +46,20 @@ export default function CtaSection() {
                 'Verified properties',
               ].map((item) => (
                 <span key={item} className="flex items-center gap-2">
-                  <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2 7L5.5 10.5L12 4" stroke="#FCC20A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 7L5.5 10.5L12 4"
+                      stroke="#FCC20A"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
                   </svg>
                   {item}
                 </span>
@@ -57,19 +76,30 @@ export default function CtaSection() {
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/90 via-[#00319D]/40 to-transparent lg:block hidden" />
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/90 via-[#00319D]/40 to-transparent hidden lg:block" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/70 via-[#00319D]/30 to-transparent lg:hidden" />
 
             {/* Floating stat */}
-            <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[200px]">
-              <div className="font-extrabold text-3xl text-[#00319D] mb-0.5">40+</div>
-              <div className="text-[#6B6860] text-sm leading-snug">cities across UK, Ireland, France, Australia</div>
+            <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[210px]">
+              <div className="font-extrabold text-3xl text-[#00319D] mb-0.5">
+                6
+              </div>
+              <div className="text-[#6B6860] text-sm leading-snug">
+                countries across UK, Ireland, France, UAE, Germany, Australia
+              </div>
             </div>
 
+            {/* Availability */}
             <div className="absolute bottom-6 right-6 bg-white/95 rounded-xl px-4 py-3 shadow-lg">
               <div className="flex items-center gap-2.5">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" aria-hidden="true" />
-                <span className="text-[#1A1A1A] text-sm font-bold">Advisors available now</span>
+                <div
+                  className="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                  aria-hidden="true"
+                />
+                <span className="text-[#1A1A1A] text-sm font-bold">
+                  Advisors available now
+                </span>
               </div>
             </div>
           </div>
