@@ -25,6 +25,7 @@ const navLinks = [
     label: 'Cities',
     href: '/cities',
     dropdown: [
+      { label: 'All Cities', href: '/cities' }
       { label: 'London', href: '/cities/london' },
       { label: 'Manchester', href: '/cities/manchester' },
       { label: 'Dublin', href: '/cities/dublin' },
@@ -32,11 +33,10 @@ const navLinks = [
       { label: 'Dubai', href: '/cities/dubai' },
       { label: 'Munich', href: '/cities/munich' },
       { label: 'Sydney', href: '/cities/sydney' },
-      { label: 'All Cities', href: '/cities' }
     ]
   },
-  { label: 'How it works', href: '/about' },
   { label: 'Resources', href: '/moving-abroad' }
+  { label: 'About', href: '/about' },
 ]
 
 export default function Navbar() {
