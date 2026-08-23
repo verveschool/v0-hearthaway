@@ -1,6 +1,7 @@
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import Link from 'next/link'
+import Image from 'next/image'
 import MatchedCTA from '@/components/matched-cta'
 
 const values = [
@@ -24,55 +25,73 @@ const values = [
 
 const team = [
   {
-    initials: 'FA',
+    photo: '/faraz-arif.jpeg',
     name: 'Faraz Arif',
     role: 'Co-Founder & CEO',
-    description: "Four years in partnerships at UniAcco and network management at University Living, two of the largest names in global student housing. Now applies that same network to source and vet HearthAway's supply.",
+    linkedin: 'https://www.linkedin.com/in/arif-faraz/',
+    description: "4 years in partnerships at UniAcco and network management at University Living, two of the largest names in global student housing. Now applies that same network to source and vet HearthAway's supply.",
   },
   {
-    initials: 'AD',
+    photo: '/a-duggal.jpeg',
     name: 'Ayush Duggal',
     role: 'Co-Founder & CPO',
-    description: 'Built product and operational systems at VerveSchool from the ground up. Leads product and technology here, from payments to confirmations, so nothing depends on a message thread.',
+    linkedin: 'https://www.linkedin.com/in/okduggal/',
+    description: 'Designed the product and built it: the way students find a place, the system the company runs on, how it works, how it feels, how people move through it. Built the same kind of infrastructure at VerveSchool first.',
   },
   {
-    initials: 'ZS',
+    photo: '/zubia-shah.jpeg',
     name: 'Zubia Shah',
     role: 'Chief of Staff',
-    description: 'Three and a half years across UniScholars and Study Smart, working admissions, visas, and student logistics directly with thousands of students. Runs the operations that keep supply, product, and student experience moving together.',
+    linkedin: 'https://www.linkedin.com/in/zubia-shah-11332a228/',
+    description: '3.5 years across UniScholars and Study Smart, working admissions, visas, and student logistics directly with thousands of students. Runs the operations that keep supply, product, and student experience moving together.',
   },
 ]
 
 const markets = [
   {
-    abbr: 'UK',
+    flag: '🇬🇧',
     name: 'United Kingdom',
     description: "140+ universities. Dozens of cities. The world's most popular study destination for international students.",
   },
   {
-    abbr: 'IE',
+    flag: '🇮🇪',
     name: 'Ireland',
     description: 'A welcoming, English-speaking country with world-class universities and a thriving international student community.',
   },
   {
-    abbr: 'FR',
+    flag: '🇫🇷',
     name: 'France',
     description: 'Historic universities, specialist grandes écoles, and strong public transport across major European student cities.',
   },
   {
-    abbr: 'UAE',
+    flag: '🇦🇪',
     name: 'United Arab Emirates',
     description: 'International branch campuses, modern infrastructure, tax-free income, and rapid career growth in the Middle East.',
   },
   {
-    abbr: 'DE',
+    flag: '🇩🇪',
     name: 'Germany',
     description: 'Tuition-free public universities, world-class engineering programs, and Europe\'s largest international student population.',
   },
   {
-    abbr: 'AU',
+    flag: '🇦🇺',
     name: 'Australia',
     description: "Globally recognised qualifications, outstanding quality of life, and some of the world's best universities.",
+  },
+  {
+    flag: '🇸🇬',
+    name: 'Singapore',
+    description: 'World-ranked universities, a multicultural student population, and one of the safest, most connected cities in Asia.',
+  },
+  {
+    flag: '🇮🇹',
+    name: 'Italy',
+    description: "Historic universities, low-cost public tuition, and a student life built around some of Europe's most iconic cities.",
+  },
+  {
+    flag: '🇲🇹',
+    name: 'Malta',
+    description: 'English-taught degrees, an English-speaking population, and one of the most affordable island destinations in the EU.',
   },
 ]
 
@@ -85,7 +104,6 @@ export default function AboutPage() {
         <section className="bg-[#00319D] pt-28 pb-20 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-5">About HearthAway</div>
               <h1 className="font-heading text-5xl lg:text-6xl font-bold text-white text-balance leading-[1.05] mb-8">
                 We help students find home, before they arrive.
               </h1>
@@ -101,7 +119,6 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
               <div>
-                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-5">Why HearthAway exists</div>
                 <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-6">
                   The category focuses on inventory.
                   <span className="text-[#00319D]"> We focus on helping students choose.</span>
@@ -152,7 +169,6 @@ export default function AboutPage() {
         {/* Values */}
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">What we believe</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-12 max-w-xl">
               The principles that guide everything we do.
             </h2>
@@ -178,14 +194,22 @@ export default function AboutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {team.map((member) => (
-                <div key={member.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#00319D] text-white font-heading font-bold text-sm mb-5">
-                    {member.initials}
+                <Link
+                  key={member.name}
+                  href={member.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1] hover:border-[#00319D] transition-colors"
+                >
+                  <div className="relative w-20 h-20 rounded-full overflow-hidden mb-5">
+                    <Image src={member.photo} alt={member.name} fill className="object-cover" />
                   </div>
-                  <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-1">{member.name}</h3>
+                  <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-1 group-hover:text-[#00319D] transition-colors">
+                    {member.name}
+                  </h3>
                   <div className="text-[#00319D] text-xs font-bold tracking-widest uppercase mb-4">{member.role}</div>
                   <p className="text-[#6B6860] leading-relaxed text-sm">{member.description}</p>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
@@ -194,15 +218,18 @@ export default function AboutPage() {
         {/* Markets */}
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Where we operate</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
-              Six countries. Hundreds of universities. One platform.
+              Nine countries. Hundreds of universities. One platform.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (
                 <div key={market.name} className="bg-white rounded-2xl p-7 border border-[#E8E6E1]">
-                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#00319D] text-white font-heading font-bold text-sm mb-5">
-                    {market.abbr}
+                  <div
+                    className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#F7F6F3] border border-[#E8E6E1] text-2xl mb-5"
+                    role="img"
+                    aria-label={`${market.name} flag`}
+                  >
+                    {market.flag}
                   </div>
                   <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-3">{market.name}</h3>
                   <p className="text-[#6B6860] text-sm leading-relaxed">{market.description}</p>
