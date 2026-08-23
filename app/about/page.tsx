@@ -22,6 +22,27 @@ const values = [
   },
 ]
 
+const team = [
+  {
+    initials: 'FA',
+    name: 'Faraz Arif',
+    role: 'Co-Founder & CEO',
+    description: "Four years in partnerships at UniAcco and network management at University Living, two of the largest names in global student housing. Now applies that same network to source and vet HearthAway's supply.",
+  },
+  {
+    initials: 'AD',
+    name: 'Ayush Duggal',
+    role: 'Co-Founder & CPO',
+    description: 'Built product and operational systems at VerveSchool from the ground up. Leads product and technology here, from payments to confirmations, so nothing depends on a message thread.',
+  },
+  {
+    initials: 'ZS',
+    name: 'Zubia Shah',
+    role: 'Chief of Staff',
+    description: 'Three and a half years across UniScholars and Study Smart, working admissions, visas, and student logistics directly with thousands of students. Runs the operations that keep supply, product, and student experience moving together.',
+  },
+]
+
 const markets = [
   {
     abbr: 'UK',
@@ -147,8 +168,31 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Markets */}
+        {/* Team */}
         <section className="bg-white py-16 lg:py-24 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Who&apos;s building it</div>
+            <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
+              Built by people who&apos;ve lived this problem.
+              <span className="text-[#00319D]"> Not just studied it.</span>
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {team.map((member) => (
+                <div key={member.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
+                  <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#00319D] text-white font-heading font-bold text-sm mb-5">
+                    {member.initials}
+                  </div>
+                  <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-1">{member.name}</h3>
+                  <div className="text-[#00319D] text-xs font-bold tracking-widest uppercase mb-4">{member.role}</div>
+                  <p className="text-[#6B6860] leading-relaxed text-sm">{member.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Markets */}
+        <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Where we operate</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
@@ -156,7 +200,7 @@ export default function AboutPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (
-                <div key={market.name} className="bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
+                <div key={market.name} className="bg-white rounded-2xl p-7 border border-[#E8E6E1]">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#00319D] text-white font-heading font-bold text-sm mb-5">
                     {market.abbr}
                   </div>
