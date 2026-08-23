@@ -31,9 +31,6 @@ export default function AccommodationPartnersSection() {
     <section className="bg-[#ffffff] py-12 lg:py-16" aria-labelledby="accommodation-partners-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-8 lg:mb-10">
-          <p className="text-[#6B6860] text-xs font-bold tracking-widest uppercase mb-3">
-            Accommodation partners
-          </p>
           <h2 id="accommodation-partners-heading" className="font-heading text-[#1A1A1A] text-2xl lg:text-3xl font-extrabold tracking-tight text-balance">
             Trusted homes from verified providers
           </h2>
