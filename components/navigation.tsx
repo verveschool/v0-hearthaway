@@ -25,7 +25,7 @@ const navLinks = [
     label: 'Cities',
     href: '/cities',
     dropdown: [
-      { label: 'All Cities', href: '/cities' }
+      { label: 'All Cities', href: '/cities' },
       { label: 'London', href: '/cities/london' },
       { label: 'Manchester', href: '/cities/manchester' },
       { label: 'Dublin', href: '/cities/dublin' },
@@ -35,7 +35,7 @@ const navLinks = [
       { label: 'Sydney', href: '/cities/sydney' },
     ]
   },
-  { label: 'Resources', href: '/moving-abroad' }
+  { label: 'Resources', href: '/moving-abroad' },
   { label: 'About', href: '/about' },
 ]
 
