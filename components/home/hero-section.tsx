@@ -24,6 +24,11 @@ const photos = [
   }
 ]
 
+const countries = [
+  'UK', 'Ireland', 'France', 'Germany', 'Italy', 'Malta',
+  'UAE', 'Singapore', 'Australia',
+]
+
 export default function HeroSection() {
   const [activePhoto, setActivePhoto] = useState(0)
 
@@ -43,14 +48,21 @@ export default function HeroSection() {
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
-        {/* clean trust label */}
-        <div className="mb-8 flex w-full max-w-xl flex-col items-start gap-3 sm:flex-row sm:items-center">
-          <span className="shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-xs font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm">
+        {/* trust badge + country chips */}
+        <div className="mb-6 sm:mb-8 flex max-w-xl flex-col gap-3">
+          <span className="w-fit shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm sm:text-xs">
             100% verified
           </span>
-          <span className="max-w-full text-xs font-bold uppercase leading-relaxed tracking-[0.14em] text-[#FCC20A] sm:leading-normal sm:tracking-widest">
-            UK &bull; Ireland &bull; France &bull; UAE &bull; Germany &bull; Australia
-          </span>
+          <div className="flex flex-wrap gap-1.5">
+            {countries.map((country) => (
+              <span
+                key={country}
+                className="rounded-full border border-[#FCC20A]/50 bg-[#FCC20A]/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#FCC20A] sm:text-xs"
+              >
+                {country}
+              </span>
+            ))}
+          </div>
         </div>
 
         <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
