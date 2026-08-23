@@ -48,21 +48,19 @@ export default function HeroSection() {
       {/* left copy panel */}
       <div className="relative z-10 flex flex-col justify-center w-full lg:w-[50%] max-w-2xl">
 
-        {/* trust badge + country chips */}
-        <div className="mb-6 sm:mb-8 flex max-w-xl flex-col gap-3">
-          <span className="w-fit shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm sm:text-xs">
+        {/* trust badge + country chips, single wrapping row */}
+        <div className="mb-6 sm:mb-8 flex max-w-xl flex-wrap items-center gap-1.5 sm:gap-2">
+          <span className="shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm sm:text-xs">
             100% verified
           </span>
-          <div className="flex flex-wrap gap-1.5">
-            {countries.map((country) => (
-              <span
-                key={country}
-                className="rounded-full border border-[#FCC20A]/50 bg-[#FCC20A]/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#FCC20A] sm:text-xs"
-              >
-                {country}
-              </span>
-            ))}
-          </div>
+          {countries.map((country) => (
+            <span
+              key={country}
+              className="shrink-0 rounded-full border border-[#FCC20A]/50 bg-[#FCC20A]/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#FCC20A] sm:text-xs"
+            >
+              {country}
+            </span>
+          ))}
         </div>
 
         <h1 className="font-heading font-extrabold text-white leading-[1.08] tracking-tight mb-6 text-balance" style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}>
