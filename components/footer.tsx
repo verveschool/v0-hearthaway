@@ -13,13 +13,15 @@ const footerLinks = {
     { label: 'Germany', href: '/germany' },
     { label: 'Australia', href: '/australia' }
   ],
+  
   Students: [
-    { label: 'Get Matched', href: '/get-matched' },
-    { label: 'How it works', href: '/about' },
-    { label: 'Resources', href: '/moving-abroad' },
     { label: 'All Cities', href: '/cities' },
-    { label: 'All Universities', href: '/universities' }
+    { label: 'All Universities', href: '/universities' },
+    { label: 'Resources', href: '/moving-abroad' },
+    { label: 'About', href: '/about' },
+    { label: 'Get Matched', href: '/get-matched' }
   ],
+  
   Guides: [
     { label: 'Pre-Arrival Checklist', href: '/moving-abroad/pre-arrival-checklist' },
     { label: 'Student Visa', href: '/moving-abroad/student-visa' },
