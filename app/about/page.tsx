@@ -7,7 +7,7 @@ import MatchedCTA from '@/components/matched-cta'
 const values = [
   {
     title: 'The student is the hero.',
-    description: 'Every decision we make starts with the student. Not the landlord, not the property, not the platform. The student moving abroad, making one of the biggest decisions of their life.'
+    description: 'Every decision we make starts with the student. Not the landlord, not the property, not the platform. The student moving abroad, making one of the biggest decisions of their life...'
   },
   {
     title: 'Guidance, not just inventory.',
@@ -15,7 +15,7 @@ const values = [
   },
   {
     title: 'Confidence before you fly.',
-    description: "Our goal is simple: have your accommodation confirmed before you board the plane. Arriving with housing sorted changes everything about how a student starts their experience abroad."
+    description: "Our goal is simple: have your accommodation confirmed before you board the plane. Arriving with housing sorted changes everything about how a student starts their experience abroad..."
   },
   {
     title: 'Verified. Always.',
@@ -29,21 +29,21 @@ const team = [
     name: 'Faraz Arif',
     role: 'Co-Founder & CEO',
     linkedin: 'https://www.linkedin.com/in/arif-faraz/',
-    description: "4 years in partnerships at UniAcco and network management at University Living, two of the largest names in global student housing. Now applies that same network to source and vet HearthAway's supply.",
+    description: "4 years in partnerships at UniAcco and network management at University Living, two of the largest names in global student housing. Now applies that same network to source and ve..."
   },
   {
     photo: '/a-duggal.jpeg',
     name: 'A. Duggal',
     role: 'Co-Founder & CPO',
     linkedin: 'https://www.linkedin.com/in/okduggal/',
-    description: 'Designed the product and built it: the way students find a place, the system the company runs on, how it works, how it feels, how people move through it. Built the same kind of infrastructure at VerveSchool first.',
+    description: 'Designed the product and built it: the way students find a place, the system the company runs on, how it works, how it feels, how people move through it. Built the same kind of i...'
   },
   {
     photo: '/zubia-shah.jpeg',
     name: 'Zubia Shah',
     role: 'Chief of Staff',
     linkedin: 'https://www.linkedin.com/in/zubia-shah-11332a228/',
-    description: '3.5 years across UniScholars and Study Smart, working admissions, visas, and student logistics directly with thousands of students. Runs the operations that keep supply, product, and student experience moving together.',
+    description: '3.5 years across UniScholars and Study Smart, working admissions, visas, and student logistics directly with thousands of students. Runs the operations that keep supply, product,..
   },
 ]
 
@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
               <h1 className="font-heading text-5xl lg:text-6xl font-bold text-white text-balance leading-[1.05] mb-8">
-                Finding <span style="color: #FCC20A;">home,</span> wherever you go.
+                Finding <span style={{ color: '#FCC20A' }}>home,</span> wherever you go.
               </h1>
               <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
                 Finding accommodation abroad is one of the most important decisions a student makes before moving. Students should not have to navigate that decision alone.
@@ -131,7 +131,7 @@ export default function AboutPage() {
                     Inconsistent listings, unverified landlords, and confusing platform flows make finding the right place harder than it needs to be.
                   </p>
                   <p>
-                    The market is full of platforms that show you listings. They compete on inventory size, bed counts, city counts. They lead with scale and expect you to search your way to a decision.
+                    The market is full of platforms that show you listings. They compete on inventory size, bed counts, city counts. They lead with scale and expect you to search your way to a de...
                   </p>
                   <p>
                     HearthAway exists because that is not good enough. Finding accommodation before you move abroad is a deeply personal decision.
