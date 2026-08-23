@@ -33,7 +33,7 @@ const team = [
   },
   {
     photo: '/a-duggal.jpeg',
-    name: 'Ayush Duggal',
+    name: 'A. Duggal',
     role: 'Co-Founder & CPO',
     linkedin: 'https://www.linkedin.com/in/okduggal/',
     description: 'Designed the product and built it: the way students find a place, the system the company runs on, how it works, how it feels, how people move through it. Built the same kind of infrastructure at VerveSchool first.',
