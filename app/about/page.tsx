@@ -105,7 +105,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
               <h1 className="font-heading text-5xl lg:text-6xl font-bold text-white text-balance leading-[1.05] mb-8">
-                We help students find home, before they arrive.
+                Finding <span style="color: #FCC20A;">home,</span> wherever you go.
               </h1>
               <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
                 Finding accommodation abroad is one of the most important decisions a student makes before moving. Students should not have to navigate that decision alone.
@@ -143,9 +143,8 @@ export default function AboutPage() {
               </div>
 
               <div className="bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 border border-[#E8E6E1]">
-                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-6">Our core promise</div>
                 <blockquote className="font-heading text-3xl font-bold text-[#1A1A1A] leading-snug mb-8">
-                  &ldquo;Find the right accommodation before you arrive.&rdquo;
+                  Find the right accommodation before you arrive.
                 </blockquote>
                 <div className="flex flex-col gap-3">
                   {[
@@ -190,7 +189,6 @@ export default function AboutPage() {
         {/* Team */}
         <section className="bg-white py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Who&apos;s building it</div>
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
               Built by people who&apos;ve lived this problem.
               <span className="text-[#00319D]"> Not just studied it.</span>
