@@ -125,13 +125,16 @@ export default function AboutPage() {
                 </h2>
                 <div className="flex flex-col gap-5 text-[#6B6860] leading-relaxed">
                   <p>
-                    Every year, hundreds of thousands of students move abroad to study. For most of them, finding accommodation is one of the most stressful parts of the whole process — made harder by inconsistent listing information, unverified landlords, and confusing platform flows.
+                    Every year, hundreds of thousands of students move abroad to study. For most, finding accommodation is one of the most stressful parts of the process.
+                  </p>
+                  <p>
+                    Inconsistent listings, unverified landlords, and confusing platform flows make finding the right place harder than it needs to be.
                   </p>
                   <p>
                     The market is full of platforms that show you listings. They compete on inventory size, bed counts, city counts. They lead with scale and expect you to search your way to a decision.
                   </p>
                   <p>
-                    HearthAway exists because that is not good enough. Finding accommodation before you move abroad is a major decision. It deserves proper guidance — not just a search bar.
+                    HearthAway exists because that is not good enough. Finding accommodation before you move abroad is a deeply personal decision.
                   </p>
                   <p>
                     We lead with judgment. With context. With help. Our job is not to show students the most options. Our job is to help them choose the right one.
