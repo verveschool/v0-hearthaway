@@ -45,7 +45,8 @@ export default function HowItWorks() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20">
           <div>
             <div className="inline-flex items-center gap-2 mb-6">
-
+              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+            </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
               Most students find accommodation. We help them find the right one.
             </h2>
