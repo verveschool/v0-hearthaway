@@ -24,6 +24,13 @@ const accommodationPartnerLogos: readonly AccommodationPartnerLogo[] = [
   { name: 'Lota Heights', src: '/accommodation-partners/Lota_Heights.png' },
   { name: 'Endsleigh Park', src: '/accommodation-partners/Endsleigh_Park.png' },
   { name: 'Studapart', src: '/accommodation-partners/Studapart.png' },
+  { name: 'Vita Student', src: '/accommodation-partners/Vita-Student.png' },
+  { name: 'The Myriad', src: '/accommodation-partners/The-Myriad.png' },
+  { name: 'The Social Hub', src: '/accommodation-partners/The-Social-Hub.png' },
+  { name: 'University of Malta', src: '/accommodation-partners/University-of-Malta.png' },
+  { name: 'The Haven Student Living', src: '/accommodation-partners/The-Haven-Student-Living.png' },
+  { name: 'Autumn Rooms', src: '/accommodation-partners/Autumn-Rooms.png' },
+  { name: 'Milchel Student Hostel', src: '/accommodation-partners/Milchel-Student-Hostel.png' },
 ] as const
 
 export default function AccommodationPartnersSection() {
