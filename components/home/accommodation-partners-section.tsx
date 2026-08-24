@@ -7,7 +7,6 @@ type AccommodationPartnerLogo = {
 
 const accommodationPartnerLogos: readonly AccommodationPartnerLogo[] = [
   { name: 'ESAW', src: '/accommodation-partners/ESAW.png' },
-  { name: 'Vivo Living', src: '/accommodation-partners/Vivo_Living.png' },
   { name: 'Strategic Housing Group', src: '/accommodation-partners/Strategic_Housing_Group.png' },
   { name: 'Neon Wood', src: '/accommodation-partners/Neon_Wood.png' },
   { name: 'Study Inn', src: '/accommodation-partners/Study_Inn.png' },
