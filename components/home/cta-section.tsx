@@ -23,6 +23,7 @@ export default function CtaSection() {
               You&apos;ve got your place.{' '}
               <span className="text-[#FCC20A]">Now get your home.</span>
             </h2>
+
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
               Tell us your university, move-in date, and budget. An accommodation
               advisor will match you with verified options near your campus
@@ -75,9 +76,6 @@ export default function CtaSection() {
               className="object-cover object-center"
               sizes="(max-width: 1024px) 100vw, 45vw"
             />
-
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/90 via-[#00319D]/40 to-transparent hidden lg:block" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/70 via-[#00319D]/30 to-transparent lg:hidden" />
 
             {/* Floating stat */}
             <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[210px]">
