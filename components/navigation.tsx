@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const brandWordmarkPath = '/brand/hearthaway-wordmark-light.png'
+const brandWordmarkPath = '/brand/hearthaway_icon_light.png'
 
 const navLinks = [
   {
@@ -56,16 +56,17 @@ export default function Navbar() {
         setActiveDropdown(null)
       }
     }
+
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [closeMobileDrawer])
 
   return (
-    <nav className="bg-[#00319D] text-white sticky top-0 z-50 shadow-md">
+    <nav className="bg-white text-[#00319D] sticky top-0 z-50 shadow-sm border-b border-slate-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          
-          {/* logo brand segment */}
+
+          {/* logo */}
           <div className="flex-shrink-0">
             <Link href="/" aria-label="HearthAway Home" className="flex items-center">
               <Image
@@ -79,27 +80,29 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* desktop navigation links */}
+          {/* desktop navigation */}
           <div className="hidden md:flex items-center gap-6">
             {navLinks.map((link, idx) => (
-              <div 
-                key={`desktop-main-${link.label}-${idx}`} 
+              <div
+                key={`desktop-main-${link.label}-${idx}`}
                 className="relative group py-2"
                 onMouseEnter={() => link.dropdown && setActiveDropdown(idx)}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {link.dropdown ? (
-                  <button className="flex items-center gap-1 text-white/80 hover:text-white text-sm font-medium transition-colors">
+                  <button className="flex items-center gap-1 text-[#00319D]/80 hover:text-[#00319D] text-sm font-medium transition-colors">
                     {link.label}
                     <ChevronDown className="h-4 w-4" />
                   </button>
                 ) : (
-                  <Link href={link.href} className="text-white/80 hover:text-white text-sm font-medium transition-colors">
+                  <Link
+                    href={link.href}
+                    className="text-[#00319D]/80 hover:text-[#00319D] text-sm font-medium transition-colors"
+                  >
                     {link.label}
                   </Link>
                 )}
 
-                {/* submenu dropdown rendering */}
                 {link.dropdown && activeDropdown === idx && (
                   <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 z-50 border border-slate-100">
                     {link.dropdown.map((subLink, subIdx) => (
@@ -115,7 +118,7 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-            
+
             <Link
               href="/get-matched"
               className="px-5 py-2.5 bg-[#FCC20A] text-[#00319D] font-bold text-sm rounded-lg hover:bg-[#FCC20A] transition-colors shadow-sm"
@@ -124,7 +127,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* mobile hamburger action trigger */}
+          {/* mobile menu */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => {
@@ -137,7 +140,7 @@ export default function Navbar() {
                 })
               }}
               aria-label="Toggle Menu"
-              className="inline-flex items-center justify-center p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 transition-colors"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#00319D]/80 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-colors"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -145,23 +148,28 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* mobile drawer panel */}
+      {/* mobile drawer */}
       {isOpen && (
-        <div className="md:hidden bg-[#00319D] border-t border-white/5 px-4 pt-2 pb-6 space-y-3 shadow-inner">
+        <div className="md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 space-y-3 shadow-inner">
           {navLinks.map((link, idx) => (
             <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
               {link.dropdown ? (
                 <div>
                   <button
                     type="button"
-                    onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === idx ? null : idx
+                      )
+                    }
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="flex w-full items-center justify-between text-xs font-bold text-[#FCC20A] tracking-wider uppercase px-3 py-2"
+                    className="flex w-full items-center justify-between text-xs font-bold text-[#00319D] tracking-wider uppercase px-3 py-2"
                   >
                     {link.label}
                     <ChevronDown className="h-4 w-4" />
                   </button>
+
                   {openMobileDropdown === idx && (
                     <div id={`mobile-dropdown-${idx}`} className="pl-4 space-y-1">
                       {link.dropdown.map((subLink, subIdx) => (
@@ -169,7 +177,7 @@ export default function Navbar() {
                           key={`mobile-sub-${subLink.label}-${subIdx}`}
                           href={subLink.href}
                           onClick={closeMobileDrawer}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all"
+                          className="block px-3 py-2 rounded-md text-base font-medium text-[#00319D]/70 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-all"
                         >
                           {subLink.label}
                         </Link>
@@ -181,13 +189,14 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={closeMobileDrawer}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-white/80 hover:text-white hover:bg-white/5 transition-all"
+                  className="block px-3 py-2 rounded-md text-base font-medium text-[#00319D]/80 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-all"
                 >
                   {link.label}
                 </Link>
               )}
             </div>
           ))}
+
           <div className="pt-4 px-3">
             <Link
               href="/get-matched"
