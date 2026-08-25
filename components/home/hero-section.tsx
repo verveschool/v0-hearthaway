@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
-import { ArrowRight, ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react'
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const photos = [
   {
@@ -56,90 +56,22 @@ export default function HeroSection() {
   }
 
   return (
-    <div className="font-sans">
+    <section className="bg-[#F7F6F3] px-6 py-10 sm:px-10 lg:px-14 lg:py-12 xl:px-20 xl:py-14 font-sans">
+      <div className="mx-auto flex max-w-[1500px] flex-col items-center justify-between gap-10 lg:flex-row lg:gap-14">
 
-      {/* HEADER */}
-      <header className="bg-white border-b border-black/5">
-        <div className="mx-auto flex h-20 items-center justify-between px-6 sm:px-10 lg:px-14 xl:px-20">
-
-          {/* Logo */}
-          <Link href="/" className="shrink-0">
-            <Image
-              src="/images/logo.png"
-              alt="HearthAway"
-              width={170}
-              height={42}
-              priority
-              className="h-auto w-[150px] sm:w-[165px]"
-            />
-          </Link>
-
-          {/* Navigation */}
-          <nav className="hidden items-center gap-8 lg:flex">
-            <Link
-              href="/universities"
-              className="inline-flex items-center gap-1 text-[#00319D] text-[15px] font-bold transition-opacity hover:opacity-70"
-            >
-              Universities
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </Link>
-
-            <Link
-              href="/cities"
-              className="inline-flex items-center gap-1 text-[#00319D] text-[15px] font-bold transition-opacity hover:opacity-70"
-            >
-              Cities
-              <ChevronDown className="h-4 w-4" aria-hidden="true" />
-            </Link>
-
-            <Link
-              href="/resources"
-              className="text-[#00319D] text-[15px] font-bold transition-opacity hover:opacity-70"
-            >
-              Resources
-            </Link>
-
-            <Link
-              href="/about"
-              className="text-[#00319D] text-[15px] font-bold transition-opacity hover:opacity-70"
-            >
-              About
-            </Link>
-
-            <Link
-              href="/get-matched"
-              className="inline-flex items-center justify-center rounded-2xl bg-[#FCC20A] px-7 py-3.5 text-[15px] font-extrabold text-white shadow-md transition-transform hover:-translate-y-0.5"
-            >
-              Get Matched
-            </Link>
-          </nav>
-
-          {/* Mobile CTA */}
-          <Link
-            href="/get-matched"
-            className="lg:hidden inline-flex items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-extrabold text-white"
-          >
-            Get Matched
-          </Link>
-        </div>
-      </header>
-
-      {/* HERO */}
-      <section className="bg-[#00319D] flex flex-col lg:flex-row items-center justify-between pt-10 lg:pt-12 pb-12 lg:pb-16 px-6 sm:px-10 lg:px-14 xl:px-20 gap-10 lg:gap-14">
-
-        {/* LEFT COPY */}
+        {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
 
-          {/* Trust + countries */}
-          <div className="mb-6 sm:mb-8 flex max-w-xl flex-wrap items-center gap-1.5 sm:gap-2">
-            <span className="shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-[#00319D] shadow-sm sm:text-xs">
+          {/* Trust badge + countries */}
+          <div className="mb-6 flex max-w-xl flex-wrap items-center gap-1.5 sm:mb-8 sm:gap-2">
+            <span className="shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
               100% verified
             </span>
 
             {countries.map((country) => (
               <span
                 key={country}
-                className="shrink-0 rounded-full border border-[#FCC20A]/50 bg-[#FCC20A]/15 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#FCC20A] sm:text-xs"
+                className="shrink-0 rounded-full border border-[#00319D]/20 bg-[#00319D]/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] sm:text-xs"
               >
                 {country}
               </span>
@@ -148,29 +80,29 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1
-            className="font-heading font-extrabold leading-[1.06] tracking-tight text-white text-balance mb-6"
+            className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-[#00319D] text-balance"
             style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}
           >
             Find the right accommodation
-            <span className="mt-1 block text-[#FCC20A]">
+            <span className="mt-1 block">
               before you arrive.
             </span>
           </h1>
 
-          {/* Shortened copy */}
+          {/* Supporting copy */}
           <p
-            className="mb-8 max-w-xl font-medium leading-relaxed text-white/90"
+            className="mb-8 max-w-xl font-medium leading-relaxed text-[#171717]"
             style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}
           >
             Moving abroad for university is a big decision. We&apos;ll help you
-            find verified accommodation near your university and within your budget.
+            find verified accommodation near your university, within your budget.
           </p>
 
-          {/* Primary CTA */}
+          {/* CTA */}
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
-              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-[#00319D] shadow-lg shadow-[#FCC20A]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#FCC20A]/40 active:bg-[#FCC20A]"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#00319D] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30"
             >
               Get Matched
               <ArrowRight
@@ -181,8 +113,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT PHOTO */}
-        <div className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border-4 border-white/10 shadow-2xl lg:w-[45%] lg:aspect-[4/5]">
+        {/* Right photography panel */}
+        <div className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:w-[45%] lg:aspect-[4/5]">
 
           {photos.map((photo, i) => (
             <div
@@ -203,7 +135,7 @@ export default function HeroSection() {
           ))}
 
           {/* Photo label */}
-          <div className="absolute bottom-16 left-6 right-6 z-10 flex items-end justify-between">
+          <div className="absolute bottom-16 left-6 right-6 z-10">
             <span className="text-sm font-bold tracking-wide text-white drop-shadow-md">
               {photos[activePhoto].label}
             </span>
@@ -211,7 +143,6 @@ export default function HeroSection() {
 
           {/* Controls */}
           <div className="absolute bottom-6 left-6 right-6 z-10 flex items-center gap-4">
-
             <div
               className="flex flex-1 items-center gap-2"
               role="tablist"
@@ -224,13 +155,13 @@ export default function HeroSection() {
                   role="tab"
                   aria-selected={i === activePhoto}
                   aria-label={`View photo ${i + 1}`}
-                  className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#FCC20A]"
+                  className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00319D]"
                   style={{
                     width: i === activePhoto ? '2.5rem' : '0.5rem',
                     background:
                       i === activePhoto
-                        ? '#FCC20A'
-                        : 'rgba(255,255,255,0.4)',
+                        ? '#FFFFFF'
+                        : 'rgba(255,255,255,0.55)',
                   }}
                 />
               ))}
@@ -240,7 +171,7 @@ export default function HeroSection() {
               <button
                 onClick={prevPhoto}
                 aria-label="Previous photo"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/60 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -248,15 +179,14 @@ export default function HeroSection() {
               <button
                 onClick={nextPhoto}
                 aria-label="Next photo"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/60 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
               >
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </button>
             </div>
-
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   )
 }
