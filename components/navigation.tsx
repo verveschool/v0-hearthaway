@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback } from 'react'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const brandWordmarkPath = '/brand/hearthaway_icon_light.png'
+const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
 
 const navLinks = [
   {
