@@ -1,3 +1,4 @@
+```tsx
 'use client'
 
 import Link from 'next/link'
@@ -56,7 +57,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="bg-[#F7F6F3] px-6 py-10 sm:px-10 lg:px-14 lg:py-12 xl:px-20 xl:py-14 font-sans">
+    <section className="bg-[#F7F6F3] px-6 py-10 font-sans sm:px-10 lg:px-14 lg:py-12 xl:px-20 xl:py-14">
       <div className="mx-auto flex max-w-[1500px] flex-col items-center justify-between gap-10 lg:flex-row lg:gap-14">
 
         {/* Left copy panel */}
@@ -80,25 +81,34 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1
-            className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-[#00319D] text-balance"
-            style={{ fontSize: 'clamp(2.6rem, 4.8vw, 4rem)' }}
+            className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-balance"
+            style={{ fontSize: 'clamp(3rem, 4.2vw, 3.5rem)' }}
           >
-            Find the right accommodation
-            <span className="mt-1 block">
+            <span className="block text-[#171717]">
+              Find the right accommodation
+            </span>
+            <span className="block text-[#00319D]">
               before you arrive.
             </span>
           </h1>
 
           {/* Supporting copy */}
-          <p
-            className="mb-8 max-w-xl font-medium leading-relaxed text-[#171717]"
+          <div
+            className="mb-8 max-w-xl space-y-3 font-medium leading-relaxed text-[#171717]"
             style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}
           >
-            Moving abroad for university is a big decision. We&apos;ll help you
-            find verified accommodation near your university, within your budget.
-          </p>
+            <p>
+              Moving abroad for university is a big decision. Choosing where to
+              live is one too.
+            </p>
 
-          {/* CTA */}
+            <p>
+              We&apos;ll help you find verified accommodation near your
+              university, within your budget.
+            </p>
+          </div>
+
+          {/* Primary CTA */}
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
@@ -151,11 +161,12 @@ export default function HeroSection() {
               {photos.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => setActivePhoto(i)}
                   role="tab"
                   aria-selected={i === activePhoto}
                   aria-label={`View photo ${i + 1}`}
-                  className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#00319D]"
+                  className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
                   style={{
                     width: i === activePhoto ? '2.5rem' : '0.5rem',
                     background:
@@ -169,6 +180,7 @@ export default function HeroSection() {
 
             <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={prevPhoto}
                 aria-label="Previous photo"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
@@ -177,6 +189,7 @@ export default function HeroSection() {
               </button>
 
               <button
+                type="button"
                 onClick={nextPhoto}
                 aria-label="Next photo"
                 className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
@@ -190,3 +203,4 @@ export default function HeroSection() {
     </section>
   )
 }
+```
