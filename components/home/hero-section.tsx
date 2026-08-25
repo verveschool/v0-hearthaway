@@ -1,4 +1,3 @@
-```tsx
 'use client'
 
 import Link from 'next/link'
@@ -72,7 +71,7 @@ export default function HeroSection() {
             {countries.map((country) => (
               <span
                 key={country}
-                className="shrink-0 rounded-full border border-[#00319D]/20 bg-[#00319D]/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] sm:text-xs"
+                className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] sm:text-xs"
               >
                 {country}
               </span>
@@ -82,7 +81,7 @@ export default function HeroSection() {
           {/* Headline */}
           <h1
             className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-balance"
-            style={{ fontSize: 'clamp(3rem, 4.2vw, 3.5rem)' }}
+            style={{ fontSize: 'clamp(2.7rem, 3.8vw, 3.25rem)' }}
           >
             <span className="block text-[#171717]">
               Find the right accommodation
@@ -95,7 +94,7 @@ export default function HeroSection() {
           {/* Supporting copy */}
           <div
             className="mb-8 max-w-xl space-y-3 font-medium leading-relaxed text-[#171717]"
-            style={{ fontSize: 'clamp(1rem, 1.6vw, 1.15rem)' }}
+            style={{ fontSize: 'clamp(0.98rem, 1.45vw, 1.08rem)' }}
           >
             <p>
               Moving abroad for university is a big decision. Choosing where to
@@ -124,7 +123,7 @@ export default function HeroSection() {
         </div>
 
         {/* Right photography panel */}
-        <div className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:w-[45%] lg:aspect-[4/5]">
+        <div className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:w-[45%] lg:aspect-[1/1.15]">
 
           {photos.map((photo, i) => (
             <div
@@ -203,4 +202,3 @@ export default function HeroSection() {
     </section>
   )
 }
-```
