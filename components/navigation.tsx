@@ -144,7 +144,7 @@ export default function Navbar() {
           {/* Desktop CTA */}
           <Link
             href="/get-matched"
-            className="hidden rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-[#00319D] shadow-sm transition-colors hover:bg-[#FCC20A] md:inline-flex"
+            className="hidden rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#FCC20A] md:inline-flex"
           >
             Get Matched
           </Link>
@@ -240,7 +240,7 @@ export default function Navbar() {
             <Link
               href="/get-matched"
               onClick={closeMobileDrawer}
-              className="block w-full rounded-xl bg-[#FCC20A] px-4 py-3 text-center font-bold text-[#00319D] shadow-md transition-colors hover:bg-[#FCC20A]"
+              className="block w-full rounded-xl bg-[#FCC20A] px-4 py-3 text-center font-bold text-white shadow-md transition-colors hover:bg-[#FCC20A]"
             >
               Get Matched
             </Link>
