@@ -50,7 +50,7 @@ export default function Footer() {
 
             <Link
               href="/get-matched"
-              className="inline-flex w-full flex-shrink-0 items-center justify-center rounded-xl bg-[#FCC20A] px-8 py-4 text-center text-base font-bold text-white shadow-lg transition-colors hover:bg-[#FCC20A] sm:w-auto"
+              className="inline-flex w-full flex-shrink-0 items-center justify-center rounded-xl bg-[#FCC20A] px-8 py-4 text-center text-base font-bold text-[#00319D] shadow-lg transition-colors hover:bg-[#FCC20A] sm:w-auto"
             >
               Get Matched
             </Link>
