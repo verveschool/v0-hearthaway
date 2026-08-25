@@ -125,7 +125,7 @@ export default function Navbar() {
 
                 {/* Desktop dropdown */}
                 {link.dropdown && activeDropdown === idx && (
-                  <div className="absolute left-0 top-full mt-1.5 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl">
+                  <div className="absolute left-0 top-full mt-0 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl">
                     {link.dropdown.map((subLink, subIdx) => (
                       <Link
                         key={`desktop-sub-${subLink.label}-${subIdx}`}
