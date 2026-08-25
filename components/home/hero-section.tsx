@@ -82,15 +82,17 @@ export default function HeroSection() {
           <h1
             className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-balance"
             style={{ fontSize: 'clamp(2.7rem, 3.8vw, 3.25rem)' }}
-          >
+            >
             <span className="block text-[#171717]">
-              Find the right accommodation
+              Find the right
             </span>
             <span className="block text-[#00319D]">
+              accommodation
+            </span>
+            <span className="block text-[#171717]">
               before you arrive.
             </span>
           </h1>
-
           {/* Supporting copy */}
           <div
             className="mb-8 max-w-xl space-y-3 font-medium leading-relaxed text-[#171717]"
