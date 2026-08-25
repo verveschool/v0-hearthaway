@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-const brandWordmarkPath = '/brand/hearthaway_icon_light.png'
+const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
 
 const footerLinks = {
   Destinations: [
@@ -112,7 +112,7 @@ export default function Footer() {
                 </p>
 
                 <p className="max-w-[220px] text-sm font-medium leading-relaxed">
-                  20, H-1/A, Sector 63, Noida, UP 201301
+                  20, H-1/A, Sec 63, Noida 201301
                 </p>
 
                 <p>
