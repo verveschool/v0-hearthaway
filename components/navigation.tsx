@@ -18,8 +18,8 @@ const navLinks = [
       { label: 'France', href: '/france/universities' },
       { label: 'UAE', href: '/uae/universities' },
       { label: 'Germany', href: '/germany/universities' },
-      { label: 'Australia', href: '/australia/universities' }
-    ]
+      { label: 'Australia', href: '/australia/universities' },
+    ],
   },
   {
     label: 'Cities',
@@ -33,10 +33,16 @@ const navLinks = [
       { label: 'Dubai', href: '/cities/dubai' },
       { label: 'Munich', href: '/cities/munich' },
       { label: 'Sydney', href: '/cities/sydney' },
-    ]
+    ],
   },
-  { label: 'Resources', href: '/moving-abroad' },
-  { label: 'About', href: '/about' },
+  {
+    label: 'Resources',
+    href: '/moving-abroad',
+  },
+  {
+    label: 'About',
+    href: '/about',
+  },
 ]
 
 export default function Navbar() {
@@ -58,17 +64,22 @@ export default function Navbar() {
     }
 
     window.addEventListener('resize', handleResize)
+
     return () => window.removeEventListener('resize', handleResize)
   }, [closeMobileDrawer])
 
   return (
-    <nav className="bg-white text-[#00319D] sticky top-0 z-50 shadow-sm border-b border-slate-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+    <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white text-[#00319D] shadow-sm">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-20 items-center justify-between">
 
-          {/* logo */}
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" aria-label="HearthAway Home" className="flex items-center">
+            <Link
+              href="/"
+              aria-label="HearthAway Home"
+              className="flex items-center"
+            >
               <Image
                 src={brandWordmarkPath}
                 alt="HearthAway Logo"
@@ -80,36 +91,46 @@ export default function Navbar() {
             </Link>
           </div>
 
-          {/* desktop navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          {/* Desktop navigation - visually centered */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
             {navLinks.map((link, idx) => (
               <div
                 key={`desktop-main-${link.label}-${idx}`}
-                className="relative group py-2"
-                onMouseEnter={() => link.dropdown && setActiveDropdown(idx)}
+                className="group relative py-2"
+                onMouseEnter={() => {
+                  if (link.dropdown) {
+                    setActiveDropdown(idx)
+                  }
+                }}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 {link.dropdown ? (
-                  <button className="flex items-center gap-1 text-[#00319D]/80 hover:text-[#00319D] text-sm font-medium transition-colors">
+                  <button
+                    type="button"
+                    className="flex items-center gap-1 text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
+                    aria-haspopup="true"
+                    aria-expanded={activeDropdown === idx}
+                  >
                     {link.label}
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className="h-4 w-4" aria-hidden="true" />
                   </button>
                 ) : (
                   <Link
                     href={link.href}
-                    className="text-[#00319D]/80 hover:text-[#00319D] text-sm font-medium transition-colors"
+                    className="text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
                   >
                     {link.label}
                   </Link>
                 )}
 
+                {/* Desktop dropdown */}
                 {link.dropdown && activeDropdown === idx && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-xl py-2 z-50 border border-slate-100">
+                  <div className="absolute left-0 top-full mt-1.5 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl">
                     {link.dropdown.map((subLink, subIdx) => (
                       <Link
                         key={`desktop-sub-${subLink.label}-${subIdx}`}
                         href={subLink.href}
-                        className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[#00319D] transition-colors"
+                        className="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 hover:text-[#00319D]"
                       >
                         {subLink.label}
                       </Link>
@@ -118,18 +139,20 @@ export default function Navbar() {
                 )}
               </div>
             ))}
-
-            <Link
-              href="/get-matched"
-              className="px-5 py-2.5 bg-[#FCC20A] text-[#00319D] font-bold text-sm rounded-lg hover:bg-[#FCC20A] transition-colors shadow-sm"
-            >
-              Get Matched
-            </Link>
           </div>
 
-          {/* mobile menu */}
-          <div className="md:hidden flex items-center">
+          {/* Desktop CTA */}
+          <Link
+            href="/get-matched"
+            className="hidden rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-[#00319D] shadow-sm transition-colors hover:bg-[#FCC20A] md:inline-flex"
+          >
+            Get Matched
+          </Link>
+
+          {/* Mobile menu button */}
+          <div className="flex items-center md:hidden">
             <button
+              type="button"
               onClick={() => {
                 setIsOpen((currentIsOpen) => {
                   if (currentIsOpen) {
@@ -140,19 +163,27 @@ export default function Navbar() {
                 })
               }}
               aria-label="Toggle Menu"
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#00319D]/80 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-colors"
+              aria-expanded={isOpen}
+              className="inline-flex items-center justify-center rounded-md p-2 text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D]"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* mobile drawer */}
+      {/* Mobile drawer */}
       {isOpen && (
-        <div className="md:hidden bg-white border-t border-slate-100 px-4 pt-2 pb-6 space-y-3 shadow-inner">
+        <div className="space-y-3 border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-inner md:hidden">
           {navLinks.map((link, idx) => (
-            <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
+            <div
+              key={`mobile-group-${link.label}-${idx}`}
+              className="space-y-1"
+            >
               {link.dropdown ? (
                 <div>
                   <button
@@ -164,20 +195,28 @@ export default function Navbar() {
                     }
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="flex w-full items-center justify-between text-xs font-bold text-[#00319D] tracking-wider uppercase px-3 py-2"
+                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#00319D]"
                   >
                     {link.label}
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        openMobileDropdown === idx ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden="true"
+                    />
                   </button>
 
                   {openMobileDropdown === idx && (
-                    <div id={`mobile-dropdown-${idx}`} className="pl-4 space-y-1">
+                    <div
+                      id={`mobile-dropdown-${idx}`}
+                      className="space-y-1 pl-4"
+                    >
                       {link.dropdown.map((subLink, subIdx) => (
                         <Link
                           key={`mobile-sub-${subLink.label}-${subIdx}`}
                           href={subLink.href}
                           onClick={closeMobileDrawer}
-                          className="block px-3 py-2 rounded-md text-base font-medium text-[#00319D]/70 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-all"
+                          className="block rounded-md px-3 py-2 text-base font-medium text-[#00319D]/70 transition-all hover:bg-[#00319D]/5 hover:text-[#00319D]"
                         >
                           {subLink.label}
                         </Link>
@@ -189,7 +228,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={closeMobileDrawer}
-                  className="block px-3 py-2 rounded-md text-base font-medium text-[#00319D]/80 hover:text-[#00319D] hover:bg-[#00319D]/5 transition-all"
+                  className="block rounded-md px-3 py-2 text-base font-medium text-[#00319D]/80 transition-all hover:bg-[#00319D]/5 hover:text-[#00319D]"
                 >
                   {link.label}
                 </Link>
@@ -197,11 +236,11 @@ export default function Navbar() {
             </div>
           ))}
 
-          <div className="pt-4 px-3">
+          <div className="px-3 pt-4">
             <Link
               href="/get-matched"
               onClick={closeMobileDrawer}
-              className="block w-full text-center px-4 py-3 bg-[#FCC20A] text-[#00319D] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors shadow-md"
+              className="block w-full rounded-xl bg-[#FCC20A] px-4 py-3 text-center font-bold text-[#00319D] shadow-md transition-colors hover:bg-[#FCC20A]"
             >
               Get Matched
             </Link>
