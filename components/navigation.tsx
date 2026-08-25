@@ -103,17 +103,61 @@ export default function Navbar() {
                   }
                 }}
                 onMouseLeave={() => setActiveDropdown(null)}
+                onFocus={() => {
+                  if (link.dropdown) {
+                    setActiveDropdown(idx)
+                  }
+                }}
+                onBlur={(e: any) => {
+                  // Close the dropdown when focus leaves the whole group (button + menu)
+                  if (!e.currentTarget.contains(e.relatedTarget)) {
+                    setActiveDropdown(null)
+                  }
+                }}
+                onKeyDown={(e: any) => {
+                  if (e.key === 'Escape') setActiveDropdown(null)
+                }}
               >
                 {link.dropdown ? (
-                  <button
-                    type="button"
-                    className="flex items-center gap-1 text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
-                    aria-haspopup="true"
-                    aria-expanded={activeDropdown === idx}
-                  >
-                    {link.label}
-                    <ChevronDown className="h-4 w-4" aria-hidden="true" />
-                  </button>
+                  <>
+                    <button
+                      id={`desktop-button-${idx}`}
+                      type="button"
+                      onClick={() =>
+                        setActiveDropdown(activeDropdown === idx ? null : idx)
+                      }
+                      className="flex items-center gap-1 text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
+                      aria-haspopup="true"
+                      aria-expanded={activeDropdown === idx}
+                      aria-controls={`desktop-dropdown-${idx}`}
+                    >
+                      {link.label}
+                      <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                    </button>
+
+                    {/* Desktop dropdown */}
+                    {activeDropdown === idx && (
+                      <div
+                        id={`desktop-dropdown-${idx}`}
+                        role="menu"
+                        aria-labelledby={`desktop-button-${idx}`}
+                        className="absolute left-0 top-full mt-0 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl"
+                        onKeyDown={(e: any) => {
+                          if (e.key === 'Escape') setActiveDropdown(null)
+                        }}
+                      >
+                        {link.dropdown.map((subLink, subIdx) => (
+                          <Link
+                            key={`desktop-sub-${subLink.label}-${subIdx}`}
+                            href={subLink.href}
+                            className="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 hover:text-[#00319D]"
+                          >
+                            {subLink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
                 ) : (
                   <Link
                     href={link.href}
@@ -121,21 +165,6 @@ export default function Navbar() {
                   >
                     {link.label}
                   </Link>
-                )}
-
-                {/* Desktop dropdown */}
-                {link.dropdown && activeDropdown === idx && (
-                  <div className="absolute left-0 top-full mt-0 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl">
-                    {link.dropdown.map((subLink, subIdx) => (
-                      <Link
-                        key={`desktop-sub-${subLink.label}-${subIdx}`}
-                        href={subLink.href}
-                        className="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 hover:text-[#00319D]"
-                      >
-                        {subLink.label}
-                      </Link>
-                    ))}
-                  </div>
                 )}
               </div>
             ))}
