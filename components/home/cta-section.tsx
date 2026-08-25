@@ -80,10 +80,10 @@ export default function CtaSection() {
             {/* Floating stat */}
             <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[210px]">
               <div className="font-extrabold text-3xl text-[#00319D] mb-0.5">
-                6
+                10+
               </div>
               <div className="text-[#6B6860] text-sm leading-snug">
-                countries across UK, Ireland, France, UAE, Germany, Australia
+                countries across the UK, Ireland, Europe, the UAE, and APAC.
               </div>
             </div>
 
