@@ -25,7 +25,6 @@ export function CustomCursor() {
   const eyeRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
   const veinsRef = useRef<SVGGElement>(null)
-  const position = useRef({ x: 0, y: 0 })
   const target = useRef({ x: 0, y: 0 })
   const offset = useRef({ x: 0, y: 0 })
   const activeRef = useRef(false)
@@ -69,15 +68,12 @@ export function CustomCursor() {
     }
 
     const animate = () => {
-      position.current.x += (target.current.x - position.current.x) * 0.25
-      position.current.y += (target.current.y - position.current.y) * 0.25
-
       const desired = activeRef.current ? { x: 9, y: -11 } : { x: 0, y: 0 }
       offset.current.x += (desired.x - offset.current.x) * 0.35
       offset.current.y += (desired.y - offset.current.y) * 0.35
 
       if (eyeRef.current) {
-        eyeRef.current.style.transform = `translate3d(${position.current.x + offset.current.x - 15}px, ${position.current.y + offset.current.y - 15}px, 0)`
+        eyeRef.current.style.transform = `translate3d(${target.current.x + offset.current.x - 15}px, ${target.current.y + offset.current.y - 15}px, 0)`
       }
 
       frame.current = requestAnimationFrame(animate)
