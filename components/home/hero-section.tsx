@@ -70,11 +70,11 @@ export default function HeroSection() {
 
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
-          
-          {/* Trust + countries */}
-          <div className="mb-6 flex max-w-xl flex-wrap items-center gap-1.5 sm:mb-8 sm:gap-2">
-            <span className="mr-0.5 shrink-0 text-[10px] font-extrabold uppercase tracking-widest text-[#00319D] sm:text-xs">
-              100% verified ·
+
+          {/* Trust badge */}
+          <div className="mb-3 flex flex-wrap items-center gap-1.5 sm:gap-2">
+            <span className="inline-flex shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
+              100% verified
             </span>
             
             {countries.map((country) => (
