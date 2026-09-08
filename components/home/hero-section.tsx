@@ -5,9 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const countryLinks: Record<string, string> = {
-  {UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Malta: '/malta' };
-
+const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Malta: '/malta' };
 
 const photos = [
   {
@@ -71,28 +69,28 @@ export default function HeroSection() {
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
 
-          {/* Trust badge */}
-          <div className="mb-3 flex flex-wrap items-center gap-1.5 sm:gap-2">
+          {/* Trust badge & Country Links (Horizontal scroll on mobile, wrapped on desktop) */}
+          <div className="mb-3 flex w-full items-center gap-1.5 overflow-x-auto flex-nowrap pb-2 scrollbar-none sm:flex-wrap sm:overflow-visible sm:pb-0">
             <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
               100% verified
             </span>
             
             {countries.map((country) => (
-      <Link
-        key={country}
-        href={countryLinks[country] ?? '/universities'}
-        className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs"
-        >
-        {country}
-      </Link>
-    ))}
+              <Link
+                key={country}
+                href={countryLinks[country] ?? '/universities'}
+                className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
+              >
+                {country}
+              </Link>
+            ))}
           </div>
 
           {/* Headline */}
           <h1
             className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-balance"
             style={{ fontSize: 'clamp(2.7rem, 3.8vw, 3.25rem)' }}
-            >
+          >
             <span className="block text-[#171717]">
               Find the right
             </span>
@@ -103,6 +101,7 @@ export default function HeroSection() {
               before you arrive.
             </span>
           </h1>
+          
           {/* Supporting copy */}
           <div
             className="mb-8 max-w-xl space-y-3 font-medium leading-relaxed text-[#171717]"
@@ -114,7 +113,7 @@ export default function HeroSection() {
             </p>
 
             <p>
-              We&apos;ll help you compare verified accommodation near your university, across thirteen destinations and within your budget.
+              We&apos;ll help you compare verified accommodation near your university, across fourteen destinations and within your budget.
             </p>
           </div>
 
@@ -122,7 +121,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
-              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FCC20A]"
             >
               Get Matched
               <ArrowRight
@@ -133,8 +132,17 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* Right photography panel */}
-        <div className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:w-[45%] lg:aspect-[1/1.15]">
+        {/* Right photography panel (Carousel format with A11y enhancements) */}
+        <div 
+          className="relative aspect-[4/3] max-h-[500px] w-full overflow-hidden rounded-3xl border border-black/10 bg-white shadow-xl lg:w-[45%] lg:aspect-[1/1.15]"
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Student accommodation preview showcase"
+        >
+          {/* Screen reader live region announcements */}
+          <div className="sr-only" aria-live="polite" aria-atomic="true">
+            Showing slide {activePhoto + 1} of {photos.length}: {photos[activePhoto].label}
+          </div>
 
           {photos.map((photo, i) => (
             <div
@@ -142,6 +150,9 @@ export default function HeroSection() {
               className="absolute inset-0 transition-opacity duration-700"
               style={{ opacity: i === activePhoto ? 1 : 0 }}
               aria-hidden={i !== activePhoto}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${i + 1} of {photos.length}`}
             >
               <Image
                 src={photo.src}
@@ -166,7 +177,7 @@ export default function HeroSection() {
             <div
               className="flex flex-1 items-center gap-2"
               role="tablist"
-              aria-label="Accommodation photos"
+              aria-label="Accommodation preview navigation dots"
             >
               {photos.map((_, i) => (
                 <button
@@ -175,7 +186,7 @@ export default function HeroSection() {
                   onClick={() => setActivePhoto(i)}
                   role="tab"
                   aria-selected={i === activePhoto}
-                  aria-label={`View photo ${i + 1}`}
+                  aria-label={`Go to slide ${i + 1}`}
                   className="relative h-1.5 rounded-full transition-all duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
                   style={{
                     width: i === activePhoto ? '2.5rem' : '0.5rem',
@@ -192,8 +203,8 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={prevPhoto}
-                aria-label="Previous photo"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
+                aria-label="Previous image slide"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               >
                 <ChevronLeft className="h-4 w-4" aria-hidden="true" />
               </button>
@@ -201,8 +212,8 @@ export default function HeroSection() {
               <button
                 type="button"
                 onClick={nextPhoto}
-                aria-label="Next photo"
-                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D]"
+                aria-label="Next image slide"
+                className="flex h-8 w-8 items-center justify-center rounded-full border border-white/30 bg-[#00319D]/70 text-white backdrop-blur-md transition-all hover:scale-105 hover:bg-[#00319D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white"
               >
                 <ChevronRight className="h-4 w-4" aria-hidden="true" />
               </button>
