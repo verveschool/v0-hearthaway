@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const countryLinks: Record<string, string> = {
-  UK: '/uk', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', Ireland: '/ireland', France: '/france', Spain: '/spain', Italy: '/italy', Austria: '/austria', Singapore: '/singapore', Malta: '/malta', UAE: '/uae', Netherlands: '/netherlands',
+  UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', France: '/france', Spain: '/spain', Italy: '/italy', Austria: '/austria', Singapore: '/singapore', Malta: '/malta', UAE: '/uae', Netherlands: '/netherlands',
 }
 
 const photos = [
@@ -30,11 +30,11 @@ const photos = [
 
 const countries = [
   'UK',
+  'Ireland',
   'USA',
   'Canada',
   'Australia',
   'Germany',
-  'Ireland',
   'France',
   'Spain',
   'Italy',
