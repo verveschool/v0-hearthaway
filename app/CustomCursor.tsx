@@ -63,7 +63,7 @@ export function CustomCursor() {
     const move = (event: PointerEvent) => {
       target.current = { x: event.clientX, y: event.clientY }
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${event.clientX - 1.5 + offset.current.x - 15}px, ${event.clientY - 1.5 + offset.current.y - 15}px, 0)`
+        dotRef.current.style.transform = `translate3d(${event.clientX - 1.5 + offset.current.x}px, ${event.clientY - 1.5 + offset.current.y}px, 0)`
       }
     }
 
