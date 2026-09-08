@@ -25,7 +25,6 @@ export function CustomCursor() {
   const eyeRef = useRef<HTMLDivElement>(null)
   const dotRef = useRef<HTMLDivElement>(null)
   const veinsRef = useRef<SVGGElement>(null)
-  const position = useRef({ x: 0, y: 0 })
   const target = useRef({ x: 0, y: 0 })
   const offset = useRef({ x: 0, y: 0 })
   const activeRef = useRef(false)
@@ -69,15 +68,12 @@ export function CustomCursor() {
     }
 
     const animate = () => {
-      position.current.x += (target.current.x - position.current.x) * 0.25
-      position.current.y += (target.current.y - position.current.y) * 0.25
-
-      const desired = activeRef.current ? { x: 20, y: -24 } : { x: 0, y: 0 }
-      offset.current.x += (desired.x - offset.current.x) * 0.2
-      offset.current.y += (desired.y - offset.current.y) * 0.2
+      const desired = activeRef.current ? { x: 9, y: -11 } : { x: 0, y: 0 }
+      offset.current.x += (desired.x - offset.current.x) * 0.35
+      offset.current.y += (desired.y - offset.current.y) * 0.35
 
       if (eyeRef.current) {
-        eyeRef.current.style.transform = `translate3d(${position.current.x + offset.current.x - 13}px, ${position.current.y + offset.current.y - 13}px, 0)`
+        eyeRef.current.style.transform = `translate3d(${target.current.x + offset.current.x - 15}px, ${target.current.y + offset.current.y - 15}px, 0)`
       }
 
       frame.current = requestAnimationFrame(animate)
@@ -88,7 +84,7 @@ export function CustomCursor() {
       const isActive = Boolean(element?.closest(interactiveSelector))
       activeRef.current = isActive
       if (isActive !== wasActiveRef.current && veinsRef.current) {
-        veinsRef.current.style.opacity = isActive ? "0.45" : "0"
+        veinsRef.current.style.opacity = isActive ? "0.7" : "0"
       }
       wasActiveRef.current = isActive
     }
@@ -100,7 +96,7 @@ export function CustomCursor() {
       requestAnimationFrame(() => {
         if (!veinsRef.current) return
         veinsRef.current.style.transition = "opacity 420ms ease-out"
-        veinsRef.current.style.opacity = activeRef.current ? "0.45" : "0"
+        veinsRef.current.style.opacity = activeRef.current ? "0.7" : "0"
       })
     }
 
@@ -137,19 +133,19 @@ export function CustomCursor() {
     <div style={{ position: "fixed", inset: 0, pointerEvents: "none", zIndex: 9999 }} aria-hidden="true">
       <div
         ref={eyeRef}
-        style={{ position: "fixed", left: 0, top: 0, width: 26, height: 26, willChange: "transform" }}
+        style={{ position: "fixed", left: 0, top: 0, width: 30, height: 30, willChange: "transform" }}
       >
-        <svg width="26" height="26" viewBox="0 0 26 26" style={{ display: "block" }}>
-          <circle cx="13" cy="13" r="11.5" fill="#F8F7FF" stroke="#8F87E0" strokeWidth="1.3" />
-          <g ref={veinsRef} stroke="#8F87E0" strokeWidth="0.8" opacity={0}>
-            <line x1="13" y1="13" x2="13" y2="0" />
-            <line x1="13" y1="13" x2="24" y2="4" />
-            <line x1="13" y1="13" x2="26" y2="13" />
-            <line x1="13" y1="13" x2="24" y2="22" />
-            <line x1="13" y1="13" x2="13" y2="26" />
-            <line x1="13" y1="13" x2="2" y2="22" />
-            <line x1="13" y1="13" x2="0" y2="13" />
-            <line x1="13" y1="13" x2="2" y2="4" />
+        <svg width="30" height="30" viewBox="0 0 30 30" style={{ display: "block" }}>
+          <circle cx="15" cy="15" r="12.5" fill="#E3DFFF" stroke="#4C43C4" strokeWidth="2" />
+          <g ref={veinsRef} stroke="#4C43C4" strokeWidth="1.1" opacity={0}>
+            <line x1="15" y1="15" x2="15" y2="1" />
+            <line x1="15" y1="15" x2="27" y2="5" />
+            <line x1="15" y1="15" x2="29" y2="15" />
+            <line x1="15" y1="15" x2="27" y2="25" />
+            <line x1="15" y1="15" x2="15" y2="29" />
+            <line x1="15" y1="15" x2="3" y2="25" />
+            <line x1="15" y1="15" x2="1" y2="15" />
+            <line x1="15" y1="15" x2="3" y2="5" />
           </g>
         </svg>
       </div>
@@ -162,7 +158,7 @@ export function CustomCursor() {
           width: 3,
           height: 3,
           borderRadius: "50%",
-          background: "#8F87E0",
+          background: "#4C43C4",
           willChange: "transform",
         }}
       />

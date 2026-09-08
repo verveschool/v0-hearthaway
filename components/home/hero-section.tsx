@@ -71,12 +71,15 @@ export default function HeroSection() {
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
 
-          {/* Trust badge + countries */}
-          <div className="mb-6 flex max-w-xl flex-wrap items-center gap-1.5 sm:mb-8 sm:gap-2">
-            <span className="shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
+          {/* Trust badge */}
+          <div className="mb-3">
+            <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
               100% verified
             </span>
-
+          </div>
+          
+          {/* Countries */}
+          <div className="mb-6 flex max-w-xl flex-wrap gap-1.5 sm:mb-8 sm:gap-2">
             {countries.map((country) => (
               <Link
                 key={country}
@@ -122,7 +125,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
-              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#00319D] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30"
             >
               Get Matched
               <ArrowRight
