@@ -26,14 +26,18 @@ const photos = [
 
 const countries = [
   'UK',
+  'USA',
+  'Canada',
+  'Australia',
+  'Germany',
   'Ireland',
   'France',
-  'Germany',
+  'Spain',
   'Italy',
+  'Austria',
+  'Singapore',
   'Malta',
   'UAE',
-  'Singapore',
-  'Australia',
 ]
 
 export default function HeroSection() {
@@ -104,8 +108,7 @@ export default function HeroSection() {
             </p>
 
             <p>
-              We&apos;ll help you find verified accommodation near your
-              university, within your budget.
+              We&apos;ll help you compare verified accommodation near your university, across thirteen destinations and within your budget.
             </p>
           </div>
 
