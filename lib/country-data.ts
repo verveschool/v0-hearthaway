@@ -141,6 +141,62 @@ export const countries: CountryPlace[] = [
     overview: 'australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large uni[...]',
     studentHousingNotes: 'the 2026 national cap of 295,000 international students heavily favors universities that provide guaranteed housing. competition for private rentals in major hubs is fie[...]',
     movingAbroadLinks: getMovingAbroadLinksForCountry('australia')
+  },
+  {
+    name: 'United States', slug: 'usa', currency: 'USD ($)', heroImage: '/images/dest-australia.png', badge: 'Global opportunity', universityCount: '500+',
+    citySlugs: ['new-york', 'boston', 'chicago'], universitySlugs: [],
+    summary: 'a globally influential study destination with leading universities, diverse cities, and extensive career opportunities.',
+    overview: 'the united states offers international students an enormous choice of institutions, campus cultures, and regional lifestyles.',
+    studentHousingNotes: 'compare university housing, verified student residences, and private rentals carefully; always budget for deposits, utilities, and health insurance.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('usa')
+  },
+  {
+    name: 'Canada', slug: 'canada', currency: 'CAD (C$)', heroImage: '/images/dest-australia.png', badge: 'Welcoming campuses', universityCount: '100+',
+    citySlugs: ['toronto', 'vancouver', 'montreal'], universitySlugs: [],
+    summary: 'a welcoming, multicultural destination with respected universities, safe cities, and strong student support.',
+    overview: 'canada combines high-quality education with practical city living and clear pathways for international graduates.',
+    studentHousingNotes: 'housing demand is high in Toronto and Vancouver, so secure verified accommodation early and plan for winter utilities and transport.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('canada')
+  },
+  {
+    name: 'Spain', slug: 'spain', currency: 'EUR (€)', heroImage: '/images/hero-building.png', badge: 'Mediterranean lifestyle', universityCount: '80+',
+    citySlugs: ['madrid', 'barcelona', 'valencia'], universitySlugs: [],
+    summary: 'a vibrant European destination combining respected universities, warm city life, and comparatively accessible living costs.',
+    overview: 'spain gives international students a choice of major research universities, specialist schools, and lively regional campuses.',
+    studentHousingNotes: 'shared flats are common and affordable, but demand rises sharply before September; confirm registration, deposits, and utility terms in writing.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('spain')
+  },
+  {
+    name: 'Austria', slug: 'austria', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'Central Europe', universityCount: '40+',
+    citySlugs: ['vienna', 'graz', 'innsbruck'], universitySlugs: [],
+    summary: 'a polished Central European study destination with strong public universities, excellent transport, and rich cultural life.',
+    overview: 'austria suits students who value compact, well-connected cities and a high quality of life close to the wider European network.',
+    studentHousingNotes: 'student residences and shared apartments are popular; apply early, check registration requirements, and include heating in winter budgets.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('austria')
+  },
+  {
+    name: 'Singapore', slug: 'singapore', currency: 'SGD (S$)', heroImage: '/images/dest-uae.png', badge: 'Asia-Pacific hub', universityCount: '20+',
+    citySlugs: ['singapore-city'], universitySlugs: [],
+    summary: 'a highly connected Asia-Pacific education hub known for leading universities, safety, and strong graduate employment networks.',
+    overview: 'singapore offers globally recognised institutions in a compact, efficient city with excellent public transport.',
+    studentHousingNotes: 'university halls, private residences, and shared flats all fill quickly; check lease length, air conditioning, and included utilities.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('singapore')
+  },
+  {
+    name: 'Malta', slug: 'malta', currency: 'EUR (€)', heroImage: '/images/dest-ireland.png', badge: 'English-speaking Europe', universityCount: '10+',
+    citySlugs: ['valletta', 'msida'], universitySlugs: [],
+    summary: 'an English-speaking Mediterranean destination with accessible city living, international campuses, and a close-knit student community.',
+    overview: 'malta is a practical choice for students seeking an English-speaking European base with a warm climate and island lifestyle.',
+    studentHousingNotes: 'shared apartments are the usual route; inspect ventilation, transport connections, and summer pricing before paying a deposit.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('malta')
+  },
+  {
+    name: 'Italy', slug: 'italy', currency: 'EUR (€)', heroImage: '/images/hero-building.png', badge: 'Historic universities', universityCount: '90+',
+    citySlugs: ['milan', 'rome', 'bologna'], universitySlugs: [],
+    summary: 'a historic study destination with respected public universities, specialist schools, and distinctive student cities.',
+    overview: 'italy combines centuries of academic tradition with strong design, engineering, business, arts, and research programmes.',
+    studentHousingNotes: 'university residences and shared apartments vary by city; plan for codice fiscale, deposits, and local registration before arrival.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('italy')
   }
 ]
 

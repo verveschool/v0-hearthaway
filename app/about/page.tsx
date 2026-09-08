@@ -93,6 +93,26 @@ const markets = [
     name: 'Malta',
     description: 'English-taught degrees, an English-speaking population, and one of the most affordable island destinations in the EU.',
   },
+  {
+    flag: '🇪🇸',
+    name: 'Spain',
+    description: 'Vibrant student cities, respected universities, and comparatively accessible living costs across Europe.',
+  },
+  {
+    flag: '🇦🇹',
+    name: 'Austria',
+    description: 'Central European universities, excellent transport, and a high quality of life in compact student cities.',
+  },
+  {
+    flag: '🇺🇸',
+    name: 'United States',
+    description: 'A huge choice of universities, campus cultures, and career opportunities across diverse regions.',
+  },
+  {
+    flag: '🇨🇦',
+    name: 'Canada',
+    description: 'Welcoming campuses, multicultural cities, and strong support for international students.',
+  },
 ]
 
 export default function AboutPage() {
@@ -220,7 +240,7 @@ export default function AboutPage() {
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
-              Nine countries. Hundreds of universities. One platform.
+              Thirteen countries. Hundreds of universities. One platform.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (

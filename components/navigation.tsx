@@ -19,6 +19,13 @@ const navLinks = [
       { label: 'UAE', href: '/uae/universities' },
       { label: 'Germany', href: '/germany/universities' },
       { label: 'Australia', href: '/australia/universities' },
+      { label: 'USA', href: '/usa/universities' },
+      { label: 'Canada', href: '/canada/universities' },
+      { label: 'Spain', href: '/spain/universities' },
+      { label: 'Italy', href: '/italy/universities' },
+      { label: 'Singapore', href: '/singapore/universities' },
+      { label: 'Austria', href: '/austria/universities' },
+      { label: 'Malta', href: '/malta/universities' },
     ],
   },
   {
