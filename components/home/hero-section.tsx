@@ -73,7 +73,7 @@ export default function HeroSection() {
 
           {/* Trust badge */}
           <div className="mb-3 flex flex-wrap items-center gap-1.5 sm:gap-2">
-            <span className="inline-flex shrink-0 rounded-full bg-[#FCC20A] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
+            <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
               100% verified
             </span>
             
