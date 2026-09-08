@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'SG' | 'MT' | 'IT'
+export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'SG' | 'MT' | 'IT' | 'NL'
 
 export type CityPlace = {
   name: string
@@ -954,7 +954,12 @@ export const cities: CityPlace[] = [
     ['Msida', 'Malta', 'MT', 'msida', 'EUR 450 to 800 / mo', 'a practical student base near the University of Malta, ferries, buses, and shared apartments.', 'gżira', 'ta’ xbiex', 'swatar'],
     ['Milan', 'Italy', 'IT', 'milan', 'EUR 650 to 1200 / mo', 'Italy’s leading business and design city with a deep international student community.', 'città studi', 'lambrate', 'navigli'],
     ['Rome', 'Italy', 'IT', 'rome', 'EUR 500 to 950 / mo', 'a vast historic capital with multiple universities and distinct neighbourhood-based student life.', 'san lorenzo', 'trastevere', 'tiburtina'],
-    ['Bologna', 'Italy', 'IT', 'bologna', 'EUR 450 to 800 / mo', 'a classic university city where porticoes, cycling, and a dense student community shape daily life.', 'san donato', 'santo stefano', 'saragozza']
+    ['Bologna', 'Italy', 'IT', 'bologna', 'EUR 450 to 800 / mo', 'a classic university city where porticoes, cycling, and a dense student community shape daily life.', 'san donato', 'santo stefano', 'saragozza'],
+    ['Amsterdam', 'Netherlands', 'NL', 'amsterdam', 'EUR 850 to 1400 / mo', 'a highly international canal city with leading research universities, creative industries, and excellent cycling infrastructure', 'de pijp', 'oud-west', 'oost'],
+    ['Rotterdam', 'Netherlands', 'NL', 'rotterdam', 'EUR 700 to 1100 / mo', 'a modern port city with strong business, economics, and applied sciences programmes', 'kralingen', 'noord', 'delfshaven'],
+    ['Delft', 'Netherlands', 'NL', 'delft', 'EUR 650 to 1050 / mo', 'a compact technology and engineering city built around one of Europe&apos;s leading technical universities', 'city centre', 'wippolder', 'tanthof'],
+    ['Utrecht', 'Netherlands', 'NL', 'utrecht', 'EUR 750 to 1250 / mo', 'a central, bike-friendly university city with excellent national rail connections', 'oost', 'lombok', 'wittevrouwen'],
+    ['Groningen', 'Netherlands', 'NL', 'groningen', 'EUR 550 to 900 / mo', 'a dedicated student city with a youthful centre, strong research community, and excellent cycling culture', 'centrum', 'helpman', 'korrewegwijk'],
   ].map(([name, country, countryCode, slug, avgRent, description, ...areas]) => ({
     name, country, countryCode: countryCode as CountryCode, universities: '3+', image: '/images/city-london.png', slug, description,
     avgRent, studentPositioning: description,
@@ -1086,6 +1091,11 @@ export const universities: UniversityPlace[] = [
   { name: 'University of Padua', city: 'Padua', country: 'IT', students: '60,000+', slug: 'padua', citySlug: 'padua' },
   { name: 'University of Turin', city: 'Turin', country: 'IT', students: '80,000+', slug: 'turin-university', citySlug: 'turin' },
   { name: 'University of Naples Federico II', city: 'Naples', country: 'IT', students: '80,000+', slug: 'naples-federico', citySlug: 'naples' },
+  { name: 'University of Amsterdam', city: 'Amsterdam', country: 'NL', students: '42,000+', slug: 'uva', citySlug: 'amsterdam' },
+  { name: 'Erasmus University Rotterdam', city: 'Rotterdam', country: 'NL', students: '33,000+', slug: 'erasmus-rotterdam', citySlug: 'rotterdam' },
+  { name: 'Delft University of Technology', city: 'Delft', country: 'NL', students: '27,000+', slug: 'tu-delft', citySlug: 'delft' },
+  { name: 'Utrecht University', city: 'Utrecht', country: 'NL', students: '38,000+', slug: 'utrecht-university', citySlug: 'utrecht' },
+  { name: 'University of Groningen', city: 'Groningen', country: 'NL', students: '36,000+', slug: 'rug', citySlug: 'groningen' },
   { name: 'University of Toronto', city: 'Toronto', country: 'CA', students: '97,000+', slug: 'toronto-university', citySlug: 'toronto' },
   { name: 'York University', city: 'Toronto', country: 'CA', students: '55,000+', slug: 'york-university', citySlug: 'toronto' },
   { name: 'University of British Columbia', city: 'Vancouver', country: 'CA', students: '70,000+', slug: 'ubc', citySlug: 'vancouver' },
@@ -1118,7 +1128,8 @@ export const groupedCities: Record<string, CityPlace[]> = {
   Austria: cities.filter((city) => city.countryCode === 'AT'),
   Singapore: cities.filter((city) => city.countryCode === 'SG'),
   Malta: cities.filter((city) => city.countryCode === 'MT'),
-  Italy: cities.filter((city) => city.countryCode === 'IT')
+  Italy: cities.filter((city) => city.countryCode === 'IT'),
+  Netherlands: cities.filter((city) => city.countryCode === 'NL')
 }
 
 export function getCityBySlug(slug: string): CityPlace | undefined {

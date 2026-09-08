@@ -28,6 +28,7 @@ const countryFilters = [
   { value: 'SG', label: 'Singapore' },
   { value: 'MT', label: 'Malta' },
   { value: 'IT', label: 'Italy' },
+  { value: 'NL', label: 'Netherlands' },
 ]
 
 function normalizeCountry(raw: string | null) {
@@ -43,6 +44,7 @@ function normalizeCountry(raw: string | null) {
   if (raw === 'Singapore') return 'SG'
   if (raw === 'Malta') return 'MT'
   if (raw === 'Italy') return 'IT'
+  if (raw === 'Netherlands') return 'NL'
   return raw
 }
 
@@ -126,7 +128,7 @@ function UniversitiesContent() {
                 />
               </div>
 
-              <div className="flex gap-2">
+              <div className="flex min-w-0 flex-1 flex-wrap gap-2">
                 {countryFilters.map((f) => (
                   <button
                     key={f.value}

@@ -18,6 +18,7 @@ const footerLinks = {
     { label: 'Singapore', href: '/singapore' },
     { label: 'Austria', href: '/austria' },
     { label: 'Malta', href: '/malta' },
+    { label: 'Netherlands', href: '/netherlands' },
   ],
 
   Students: [
@@ -72,26 +73,58 @@ export default function Footer() {
           {/* Navigation + contact */}
           <div className="flex flex-col gap-10 sm:flex-row sm:flex-nowrap sm:items-start sm:justify-between sm:gap-8">
 
-            {Object.entries(footerLinks).map(([category, links]) => (
-              <div key={category} className="sm:flex-shrink-0">
-                <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
-                  {category}
-                </h3>
+            {Object.entries(footerLinks).map(([category, links]) => {
+              if (category === 'Destinations') {
+                const midpoint = Math.ceil(links.length / 2)
+                const columns = [links.slice(0, midpoint), links.slice(midpoint)]
 
-                <ul className="flex flex-col gap-2.5">
-                  {links.map((link) => (
-                    <li key={`${category}-${link.href}`}>
-                      <Link
-                        href={link.href}
-                        className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+                return (
+                  <div key={category} className="min-w-0 sm:flex-shrink-0">
+                    <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
+                      {category}
+                    </h3>
+
+                    <div className="grid grid-cols-2 gap-x-8 sm:gap-x-10">
+                      {columns.map((column, columnIndex) => (
+                        <ul key={`${category}-column-${columnIndex}`} className="flex min-w-0 flex-col gap-2.5">
+                          {column.map((link) => (
+                            <li key={`${category}-${link.href}`}>
+                              <Link
+                                href={link.href}
+                                className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                              >
+                                {link.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      ))}
+                    </div>
+                  </div>
+                )
+              }
+
+              return (
+                <div key={category} className="sm:flex-shrink-0">
+                  <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
+                    {category}
+                  </h3>
+
+                  <ul className="flex flex-col gap-2.5">
+                    {links.map((link) => (
+                      <li key={`${category}-${link.href}`}>
+                        <Link
+                          href={link.href}
+                          className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )
+            })}
 
             {/* Contact */}
             <div className="sm:flex-shrink-0">

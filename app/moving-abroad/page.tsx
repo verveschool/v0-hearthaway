@@ -6,8 +6,8 @@ import {
   getFeaturedMovingAbroadGuides,
   getMovingAbroadCategoryGroups,
   type MovingAbroadArticleCard,
-  type MovingAbroadCountrySlug,
 } from '@/lib/moving-abroad-data'
+import { countries } from '@/lib/country-data'
 import MatchedCTA from '@/components/matched-cta'
 
 const categories = getMovingAbroadCategoryGroups()
@@ -20,38 +20,11 @@ const preArrivalSteps = [
   'Plan airport transport, payment access, mobile data, documents, and first-week essentials.',
 ]
 
-const countryPathways: { country: string; slug: MovingAbroadCountrySlug; description: string }[] = [
-  {
-    country: 'United Kingdom',
-    slug: 'uk',
-    description: 'Visa timing, UK living costs, tenancy checks, and the first week around campus.',
-  },
-  {
-    country: 'Ireland',
-    slug: 'ireland',
-    description: 'Budget planning, arrival routes, accommodation checks, and practical student setup.',
-  },
-  {
-    country: 'France',
-    slug: 'france',
-    description: 'Visa requirements, living costs, accommodation search, and student life essentials.',
-  },
-  {
-    country: 'United Arab Emirates',
-    slug: 'uae',
-    description: 'Visa sponsorship, tax-free income planning, furnished housing, and settlement essentials.',
-  },
-  {
-    country: 'Germany',
-    slug: 'germany',
-    description: 'Studentenwerk application, housing WG culture, monthly rent planning, and student life.',
-  },
-  {
-    country: 'Australia',
-    slug: 'australia',
-    description: 'Student visa planning, setup costs, packing, and accommodation choices.',
-  },
-]
+const countryPathways = countries.map((country) => ({
+  country: country.name,
+  slug: country.slug,
+  description: country.summary,
+}))
 
 const nextSteps = [
   {
