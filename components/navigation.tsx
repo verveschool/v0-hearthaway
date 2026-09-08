@@ -14,18 +14,19 @@ const navLinks = [
     dropdown: [
       { label: 'All Universities', href: '/universities' },
       { label: 'UK', href: '/uk/universities' },
-      { label: 'Ireland', href: '/ireland/universities' },
-      { label: 'France', href: '/france/universities' },
-      { label: 'UAE', href: '/uae/universities' },
-      { label: 'Germany', href: '/germany/universities' },
-      { label: 'Australia', href: '/australia/universities' },
       { label: 'USA', href: '/usa/universities' },
+      { label: 'UAE', href: '/uae/universities' },
+      { label: 'Australia', href: '/australia/universities' },
+      { label: 'Germany', href: '/germany/universities' },
+      { label: 'Ireland', href: '/ireland/universities' },
       { label: 'Canada', href: '/canada/universities' },
-      { label: 'Spain', href: '/spain/universities' },
+      { label: 'France', href: '/france/universities' },
       { label: 'Italy', href: '/italy/universities' },
       { label: 'Singapore', href: '/singapore/universities' },
-      { label: 'Austria', href: '/austria/universities' },
+      { label: 'Netherlands', href: '/netherlands/universities' },
       { label: 'Malta', href: '/malta/universities' },
+      { label: 'Spain', href: '/spain/universities' },
+      { label: 'Austria', href: '/austria/universities' },
     ],
   },
   {
@@ -35,11 +36,17 @@ const navLinks = [
       { label: 'All Cities', href: '/cities' },
       { label: 'London', href: '/cities/london' },
       { label: 'Manchester', href: '/cities/manchester' },
+      { label: 'New York', href: '/cities/new-york' }, // Added for USA
+      { label: 'Sydney', href: '/cities/sydney' },
+      { label: 'Melbourne', href: '/cities/melbourne' }, // Added high-volume Aus hub
+      { label: 'Toronto', href: '/cities/toronto' }, // Added for Canada
       { label: 'Dublin', href: '/cities/dublin' },
-      { label: 'Paris', href: '/cities/paris' },
       { label: 'Dubai', href: '/cities/dubai' },
       { label: 'Munich', href: '/cities/munich' },
-      { label: 'Sydney', href: '/cities/sydney' },
+      { label: 'Paris', href: '/cities/paris' },
+      { label: 'Milan', href: '/cities/milan' }, // Added for Italy
+      { label: 'Singapore', href: '/cities/singapore' }, // Added for Singapore
+      { label: 'Amsterdam', href: '/cities/amsterdam' }, // Added for Netherlands
     ],
   },
   {
