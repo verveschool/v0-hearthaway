@@ -1,6 +1,6 @@
 export type MovingAbroadArticleCategory = 'Before you go' | 'Accommodation' | 'Budgeting' | 'Arriving'
 export type MovingAbroadArticleStage = 'Planning' | 'Booking' | 'Budgeting' | 'Arrival' | 'Settling in'
-export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'france' | 'uae' | 'germany' | 'australia' | 'usa' | 'canada' | 'spain' | 'austria' | 'singapore' | 'malta' | 'italy'
+export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'france' | 'uae' | 'germany' | 'australia' | 'usa' | 'canada' | 'spain' | 'austria' | 'singapore' | 'malta' | 'italy' | 'netherlands'
 export type MovingAbroadCtaVariant = 'housing' | 'planning'
 
 export type MovingAbroadArticleSection = {
@@ -48,7 +48,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Everything you need to sort before you travel. A tactical guide covering 2026 visa financial rules, accommodation locks and arrival prep.',
     readTime: '12 min read',
     stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'Secure The Financial Holding Period',
@@ -94,7 +94,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Walking through the real decisions you face. Purpose built versus private rentals, transport line tradeoffs and how to read the contract.',
     readTime: '10 min read',
     stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'Anchor To Rail And Tram Lines',
@@ -136,7 +136,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Rent and tuition are just the baseline. Here are the exact government financial proofs required for the UK, Ireland and Australia.',
     readTime: '14 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'The UK Maintenance Rule',
@@ -188,7 +188,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Plan your document trail, financial seasoning periods and biometric appointments perfectly so you do not miss your intake date.',
     readTime: '8 min read',
     stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'Season Your Funds Early',
@@ -243,7 +243,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Pack for climate, classes, housing and your first few weeks of survival before your local bank accounts clear.',
     readTime: '4 min read',
     stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Carry On Essentials', summary: 'Keep your passport, visa grant notices, university offer letters and two weeks of any prescription medication strictly in your cabin bag.' },
       { title: 'Pack For Your Accommodation', summary: 'Check what is already provided before bringing bedding, kitchen items or bulky homeware. Most student beds are irregular sizes anyway.' },
@@ -258,7 +258,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Real costs broken down by asset type so you can plan your capital deployment with absolute confidence.',
     readTime: '8 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Compare The Total Run Rate', summary: 'Look beyond headline rent to internet speeds, utility caps, gym inclusions and commute costs. A slightly more expensive room near campus is often cheaper overall.' },
       { title: 'City Demand Changes Budgets', summary: 'Popular cities like Dublin or Sydney move extremely fast. If you wait for clearance you will be forced into premium luxury studios because the mid tier sells out first.' },
@@ -274,7 +274,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Compare the two major housing formats before locking up your cash for an entire academic year.',
     readTime: '6 min read',
     stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Purpose Built Blocks', summary: 'These offer absolute convenience, fixed bills and built in social networks. You pay a slight premium for security and zero utility headaches.' },
       { title: 'Private Accommodation', summary: 'Renting a house with friends offers independence and often cheaper base rent but leaves you completely exposed to internet setups and heating bill spikes.' },
@@ -289,7 +289,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'The rental market is full of sophisticated operators preying on international students. Learn the warning signs.',
     readTime: '5 min read',
     stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Watch For Pressure Tactics', summary: 'Be extremely cautious if a landlord pushes for an urgent Western Union transfer or avoids providing a written contract before taking your money.' },
       { title: 'Never Wire Cash Before Viewing', summary: 'Scammers use stolen photos of premium apartments. If you cannot view it physically use a verified booking platform that holds funds in escrow.' },
@@ -320,7 +320,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Compare the hard costs of transport, groceries and everyday survival across the UK, Ireland and Australia.',
     readTime: '7 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'The Transport Tax',
@@ -363,7 +363,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Build an ironclad monthly plan for rent, food, transport and emergencies.',
     readTime: '6 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Separate Fixed And Flexible Costs', summary: 'Rent, bills, insurance and transport passes come first. Eating out and retail shopping must flex strictly around your fixed baseline.' },
       { title: 'Plan Around Payment Dates', summary: 'Understand exactly when rent is deducted and when family transfers arrive so you avoid overdraft penalties or cash flow bottlenecks.' },
@@ -378,7 +378,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Spot the extra expenses beyond rent and tuition before you land and burn through your savings.',
     readTime: '5 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Move In Purchases', summary: 'Bedding, kitchen pots, adapters, cleaning products and laundry tokens can easily drain your first week budget instantly.' },
       { title: 'Admin And Setup Costs', summary: 'Budget heavily for transit cards, local sim plans, university society fees and mandatory study materials in your first month.' },
@@ -393,7 +393,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Find the high leverage savings on transport, software and everyday essentials that actually move the needle.',
     readTime: '4 min read',
     stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Use Your Institutional Status', summary: 'Register for UNiDAYS or Student Beans immediately. Your university email address is a golden ticket for major tech and retail discounts.' },
       { title: 'Prioritise Recurring Savings', summary: 'Securing a student discount on your monthly phone plan or local rail card matters infinitely more than a one off retail coupon.' },
@@ -408,7 +408,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Know exactly what to do after landing to clear your admin backlog and settle into your new city.',
     readTime: '7 min read',
     stage: 'Arrival',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       {
         title: 'Collect Your Biometric Permits',
@@ -464,7 +464,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Understand how to find medical support and lock down your health insurance after arriving.',
     readTime: '4 min read',
     stage: 'Settling in',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Pay The Immigration Health Surcharge', summary: 'In the UK you pay this upfront during the visa phase but you must still manually register with a local general practitioner to access the NHS.' },
       { title: 'Find Your Campus Clinic', summary: 'Most major universities have a dedicated health centre. Register there on day one so you are in the system before winter flu season hits.' },
@@ -479,7 +479,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     description: 'Practical tactics to build a support network and break out of isolation during your first term.',
     readTime: '6 min read',
     stage: 'Settling in',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy'],
+    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands'],
     sections: [
       { title: 'Start With Structured Moments', summary: 'Orientation events, university societies and accommodation welcome parties are the highest leverage places to make first conversations.' },
       { title: 'Create Repeat Routines', summary: 'Friendships grow from repeated exposure. Attending the same gym classes, library hours or cooking routines builds bonds faster than random events.' },
@@ -826,9 +826,10 @@ export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]>
   singapore: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   malta: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   italy: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
+  netherlands: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
 }
 
-  const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'france', 'uae', 'germany', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy']
+  const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'france', 'uae', 'germany', 'australia', 'usa', 'canada', 'spain', 'austria', 'singapore', 'malta', 'italy', 'netherlands']
 
 function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
   return movingAbroadCountrySlugs.some((validCountrySlug) => validCountrySlug === countrySlug)

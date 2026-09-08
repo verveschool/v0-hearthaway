@@ -5,6 +5,10 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
+const countryLinks: Record<string, string> = {
+  UK: '/uk', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', Ireland: '/ireland', France: '/france', Spain: '/spain', Italy: '/italy', Austria: '/austria', Singapore: '/singapore', Malta: '/malta', UAE: '/uae', Netherlands: '/netherlands',
+}
+
 const photos = [
   {
     src: '/images/hero-room-1.png',
@@ -38,6 +42,7 @@ const countries = [
   'Singapore',
   'Malta',
   'UAE',
+  'Netherlands',
 ]
 
 export default function HeroSection() {
@@ -73,12 +78,13 @@ export default function HeroSection() {
             </span>
 
             {countries.map((country) => (
-              <span
+              <Link
                 key={country}
-                className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] sm:text-xs"
+                href={countryLinks[country] ?? '/universities'}
+                className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs"
               >
                 {country}
-              </span>
+              </Link>
             ))}
           </div>
 

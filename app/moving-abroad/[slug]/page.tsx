@@ -18,6 +18,7 @@ const countryLabels: Record<MovingAbroadCountrySlug, string> = {
   uae: 'United Arab Emirates',
   germany: 'Germany',
   australia: 'Australia',
+  netherlands: 'Netherlands',
 }
 
 type MovingAbroadArticlePageProps = {

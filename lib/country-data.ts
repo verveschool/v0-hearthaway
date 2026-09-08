@@ -197,6 +197,14 @@ export const countries: CountryPlace[] = [
     overview: 'italy combines centuries of academic tradition with strong design, engineering, business, arts, and research programmes.',
     studentHousingNotes: 'university residences and shared apartments vary by city; plan for codice fiscale, deposits, and local registration before arrival.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('italy')
+  },
+  {
+    name: 'Netherlands', slug: 'netherlands', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'English-taught excellence', universityCount: '50+',
+    citySlugs: ['amsterdam', 'rotterdam', 'delft', 'utrecht', 'groningen'], universitySlugs: ['uva', 'erasmus-rotterdam', 'tu-delft', 'utrecht-university', 'rug'],
+    summary: 'a highly international study destination with English-taught programmes, bike-friendly cities, and practical student support.',
+    overview: 'the Netherlands is a strong fit for students seeking globally connected universities, applied learning, and compact cities that are easy to navigate without a car.',
+    studentHousingNotes: 'the housing shortage is real, especially in Amsterdam, Delft, and Utrecht. Start early, verify every listing, and budget for deposits and cycling costs.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('netherlands')
   }
 ]
 
