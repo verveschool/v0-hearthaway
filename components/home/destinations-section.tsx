@@ -29,7 +29,7 @@ export default function DestinationsSection() {
             </span>
           </div>
           <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-            Six countries. One trusted guide.
+            Thirteen countries. One trusted guide.
           </h2>
         </div>
 

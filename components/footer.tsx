@@ -11,6 +11,13 @@ const footerLinks = {
     { label: 'UAE', href: '/uae' },
     { label: 'Germany', href: '/germany' },
     { label: 'Australia', href: '/australia' },
+    { label: 'USA', href: '/usa' },
+    { label: 'Canada', href: '/canada' },
+    { label: 'Spain', href: '/spain' },
+    { label: 'Italy', href: '/italy' },
+    { label: 'Singapore', href: '/singapore' },
+    { label: 'Austria', href: '/austria' },
+    { label: 'Malta', href: '/malta' },
   ],
 
   Students: [

@@ -14,13 +14,20 @@ import { universities } from '@/lib/place-data'
 export const dynamic = 'force-dynamic'
 
 const countryFilters = [
-  { value: 'All', label: 'All' },
+  { value: 'All', label: 'All countries' },
   { value: 'UK', label: 'United Kingdom' },
   { value: 'Ireland', label: 'Ireland' },
   { value: 'FR', label: 'France' },
   { value: 'UAE', label: 'United Arab Emirates' },
   { value: 'DE', label: 'Germany' },
   { value: 'Australia', label: 'Australia' },
+  { value: 'USA', label: 'United States' },
+  { value: 'CA', label: 'Canada' },
+  { value: 'ES', label: 'Spain' },
+  { value: 'AT', label: 'Austria' },
+  { value: 'SG', label: 'Singapore' },
+  { value: 'MT', label: 'Malta' },
+  { value: 'IT', label: 'Italy' },
 ]
 
 function normalizeCountry(raw: string | null) {
@@ -29,6 +36,13 @@ function normalizeCountry(raw: string | null) {
   if (raw === 'United Kingdom') return 'UK'
   if (raw === 'United Arab Emirates') return 'UAE'
   if (raw === 'Germany') return 'DE'
+  if (raw === 'United States') return 'USA'
+  if (raw === 'Canada') return 'CA'
+  if (raw === 'Spain') return 'ES'
+  if (raw === 'Austria') return 'AT'
+  if (raw === 'Singapore') return 'SG'
+  if (raw === 'Malta') return 'MT'
+  if (raw === 'Italy') return 'IT'
   return raw
 }
 

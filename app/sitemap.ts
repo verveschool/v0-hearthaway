@@ -23,6 +23,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/france',
     '/germany',
     '/australia',
+    '/usa',
+    '/canada',
+    '/spain',
+    '/italy',
+    '/singapore',
+    '/austria',
+    '/malta',
     '/uae',
   ]
 

@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU'
+export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'SG' | 'MT' | 'IT'
 
 export type CityPlace = {
   name: string
@@ -922,7 +922,45 @@ export const cities: CityPlace[] = [
       summary: 'stuttgart maintains higher accommodation costs reflecting regional prosperity with wg shares typically EUR 650 800 and studentenwerk providing foundational options',
       averageMonthlyRent: 'EUR 700'
     }
-  }
+  },
+  ...[
+    ['New York', 'United States', 'USA', 'new-york', 'USD 1200 to 2200 / mo', 'NYU, Columbia, and a deep network of specialist schools make the city a global student destination.', 'manhattan', 'brooklyn', 'queens'],
+    ['Boston', 'United States', 'USA', 'boston', 'USD 1000 to 1800 / mo', 'a compact academic capital with exceptional university density and reliable transit.', 'fenway', 'cambridge', 'allston'],
+    ['Chicago', 'United States', 'USA', 'chicago', 'USD 850 to 1500 / mo', 'a major research city with strong value outside the downtown core.', 'hyde park', 'lincoln park', 'lakeview'],
+    ['Los Angeles', 'United States', 'USA', 'los-angeles', 'USD 1100 to 2200 / mo', 'a sprawling creative and research hub where choosing the right neighbourhood matters as much as choosing a campus.', 'westwood', 'koreatown', 'silver lake'],
+    ['Austin', 'United States', 'USA', 'austin', 'USD 800 to 1500 / mo', 'a lively tech and music city with a strong university anchor and a more relaxed pace.', 'west campus', 'north loop', 'east austin'],
+    ['Seattle', 'United States', 'USA', 'seattle', 'USD 1100 to 2100 / mo', 'a Pacific Northwest research and technology hub with excellent transit corridors.', 'udistrict', 'capitol hill', 'fremont'],
+    ['Hamilton', 'Canada', 'CA', 'hamilton', 'CAD 750 to 1300 / mo', 'a growing university city within easy reach of Toronto and Niagara.', 'westdale', 'durand', 'downtown'],
+    ['Edmonton', 'Canada', 'CA', 'edmonton', 'CAD 700 to 1200 / mo', 'a spacious, affordable student city with a major research campus and clear seasonal rhythms.', 'garneau', 'old strathcona', 'downtown'],
+    ['Waterloo', 'Canada', 'CA', 'waterloo', 'CAD 750 to 1300 / mo', 'a focused student and technology cluster where campus access is unusually convenient.', 'uptown', 'northdale', 'village one'],
+    ['London', 'Canada', 'CA', 'london-ontario', 'CAD 700 to 1200 / mo', 'a practical Ontario study destination with established campuses and lower rents than Toronto.', 'masonville', 'downtown', 'wortley village'],
+    ['Ottawa', 'Canada', 'CA', 'ottawa', 'CAD 800 to 1400 / mo', 'a bilingual capital with strong public institutions and a calm, highly liveable student environment.', 'sandy hill', 'centretown', 'the glebe'],
+    ['Padua', 'Italy', 'IT', 'padua', 'EUR 400 to 750 / mo', 'a historic university city with a strong cycling culture and a student-first centre.', 'portello', 'arcella', 'city centre'],
+    ['Turin', 'Italy', 'IT', 'turin', 'EUR 400 to 750 / mo', 'a generous, elegant northern city with engineering, design, and research strengths.', 'san salvario', 'crocetta', 'vanchiglia'],
+    ['Naples', 'Italy', 'IT', 'naples', 'EUR 400 to 800 / mo', 'a lively southern city with a deep academic tradition and characterful neighbourhoods.', 'vomero', 'chiaia', 'historic centre'],
+    ['Paola', 'Malta', 'MT', 'paola', 'EUR 400 to 750 / mo', 'a connected Maltese town with practical access to vocational study and Valletta.', 'paola centre', 'tarxien', 'fgura'],
+    ['Cospicua', 'Malta', 'MT', 'cospicua', 'EUR 400 to 750 / mo', 'a historic harbour town with a quieter base and quick connections across the island.', 'cospicua centre', 'senglea', 'birgu'],
+    ['Toronto', 'Canada', 'CA', 'toronto', 'CAD 1000 to 1800 / mo', 'Canada’s largest student city, anchored by research universities and a diverse job market.', 'downtown', 'the annex', 'north york'],
+    ['Vancouver', 'Canada', 'CA', 'vancouver', 'CAD 1100 to 1900 / mo', 'a Pacific campus city with exceptional outdoor access and a highly competitive rental market.', 'kitsilano', 'point grey', 'mount pleasant'],
+    ['Montreal', 'Canada', 'CA', 'montreal', 'CAD 700 to 1300 / mo', 'a bilingual university city with a strong cultural scene and comparatively accessible housing.', 'mile end', 'plateau', 'downtown'],
+    ['Madrid', 'Spain', 'ES', 'madrid', 'EUR 500 to 900 / mo', 'a lively capital with broad university choice, excellent transit, and year-round student life.', 'moncloa', 'malasaña', 'lavapiés'],
+    ['Barcelona', 'Spain', 'ES', 'barcelona', 'EUR 550 to 1000 / mo', 'a creative Mediterranean hub combining international campuses with dense urban living.', 'gràcia', 'eixample', 'poblenou'],
+    ['Valencia', 'Spain', 'ES', 'valencia', 'EUR 400 to 750 / mo', 'a coastal student city offering strong universities, cycling, and lower costs than Madrid or Barcelona.', 'benimaclet', 'algirós', 'ruzafa'],
+    ['Vienna', 'Austria', 'AT', 'vienna', 'EUR 450 to 850 / mo', 'a safe, highly connected capital with major public universities and dependable student transport.', 'währing', 'neubau', 'favoriten'],
+    ['Graz', 'Austria', 'AT', 'graz', 'EUR 350 to 650 / mo', 'a compact university city known for technical education, cycling, and approachable living costs.', 'geidorf', 'lend', 'st. leonhard'],
+    ['Innsbruck', 'Austria', 'AT', 'innsbruck', 'EUR 450 to 800 / mo', 'an alpine university city where outdoor access is balanced by a tight housing market.', 'wilten', 'hötting', 'pradl'],
+    ['Singapore', 'Singapore', 'SG', 'singapore-city', 'SGD 900 to 1800 / mo', 'a compact Asia-Pacific hub with efficient transport, leading universities, and high housing demand.', 'queenstown', 'clementi', 'kent ridge'],
+    ['Valletta', 'Malta', 'MT', 'valletta', 'EUR 500 to 900 / mo', 'a historic capital close to Malta’s English-speaking academic and professional networks.', 'floriana', 'sliema', 'gżira'],
+    ['Msida', 'Malta', 'MT', 'msida', 'EUR 450 to 800 / mo', 'a practical student base near the University of Malta, ferries, buses, and shared apartments.', 'gżira', 'ta’ xbiex', 'swatar'],
+    ['Milan', 'Italy', 'IT', 'milan', 'EUR 650 to 1200 / mo', 'Italy’s leading business and design city with a deep international student community.', 'città studi', 'lambrate', 'navigli'],
+    ['Rome', 'Italy', 'IT', 'rome', 'EUR 500 to 950 / mo', 'a vast historic capital with multiple universities and distinct neighbourhood-based student life.', 'san lorenzo', 'trastevere', 'tiburtina'],
+    ['Bologna', 'Italy', 'IT', 'bologna', 'EUR 450 to 800 / mo', 'a classic university city where porticoes, cycling, and a dense student community shape daily life.', 'san donato', 'santo stefano', 'saragozza']
+  ].map(([name, country, countryCode, slug, avgRent, description, ...areas]) => ({
+    name, country, countryCode: countryCode as CountryCode, universities: '3+', image: '/images/city-london.png', slug, description,
+    avgRent, studentPositioning: description,
+    bestAreasForStudents: { summary: `Students commonly choose ${areas.join(', ')} for access to campuses, transport, and everyday amenities.`, topNeighbourhoods: areas },
+    rentBudgeting: { summary: `Plan beyond rent for utilities, transport, deposits, and seasonal demand in ${name}.`, averageMonthlyRent: avgRent.split(' to ')[0] }
+  }))
 ]
 
 export const universities: UniversityPlace[] = [
@@ -1017,7 +1055,54 @@ export const universities: UniversityPlace[] = [
   { name: 'Goethe University Frankfurt', city: 'Frankfurt', country: 'DE', students: '45,000+', slug: 'goethe-frankfurt', citySlug: 'frankfurt' },
   { name: 'University of Göttingen', city: 'Hamburg', country: 'DE', students: '36,000+', slug: 'gottingen-univ', citySlug: 'hamburg' },
   { name: 'University of Tübingen', city: 'Stuttgart', country: 'DE', students: '28,000+', slug: 'tubingen-univ', citySlug: 'stuttgart' },
-  { name: 'University of Stuttgart', city: 'Stuttgart', country: 'DE', students: '65,000+', slug: 'stuttgart-univ', citySlug: 'stuttgart' }
+  { name: 'University of Stuttgart', city: 'Stuttgart', country: 'DE', students: '65,000+', slug: 'stuttgart-univ', citySlug: 'stuttgart' },
+  { name: 'Columbia University', city: 'New York', country: 'USA', students: '34,000+', slug: 'columbia', citySlug: 'new-york' },
+  { name: 'New York University', city: 'New York', country: 'USA', students: '59,000+', slug: 'nyu', citySlug: 'new-york' },
+  { name: 'Harvard University', city: 'Boston', country: 'USA', students: '24,000+', slug: 'harvard', citySlug: 'boston' },
+  { name: 'Boston University', city: 'Boston', country: 'USA', students: '36,000+', slug: 'boston-university', citySlug: 'boston' },
+  { name: 'University of Chicago', city: 'Chicago', country: 'USA', students: '18,000+', slug: 'chicago-university', citySlug: 'chicago' },
+  { name: 'University of California, Los Angeles', city: 'Los Angeles', country: 'USA', students: '48,000+', slug: 'ucla', citySlug: 'los-angeles' },
+  { name: 'University of Southern California', city: 'Los Angeles', country: 'USA', students: '49,000+', slug: 'usc', citySlug: 'los-angeles' },
+  { name: 'University of Texas at Austin', city: 'Austin', country: 'USA', students: '52,000+', slug: 'ut-austin', citySlug: 'austin' },
+  { name: 'University of Washington', city: 'Seattle', country: 'USA', students: '52,000+', slug: 'uw-seattle', citySlug: 'seattle' },
+  { name: 'Northeastern University', city: 'Boston', country: 'USA', students: '36,000+', slug: 'northeastern', citySlug: 'boston' },
+  { name: 'McMaster University', city: 'Hamilton', country: 'CA', students: '37,000+', slug: 'mcmaster', citySlug: 'hamilton' },
+  { name: 'University of Alberta', city: 'Edmonton', country: 'CA', students: '40,000+', slug: 'ualberta', citySlug: 'edmonton' },
+  { name: 'University of Waterloo', city: 'Waterloo', country: 'CA', students: '42,000+', slug: 'waterloo', citySlug: 'waterloo' },
+  { name: 'Western University', city: 'London', country: 'CA', students: '43,000+', slug: 'western-ontario', citySlug: 'london-ontario' },
+  { name: 'University of Ottawa', city: 'Ottawa', country: 'CA', students: '45,000+', slug: 'uottawa', citySlug: 'ottawa' },
+  { name: 'Autonomous University of Madrid', city: 'Madrid', country: 'ES', students: '30,000+', slug: 'uam', citySlug: 'madrid' },
+  { name: 'University of Barcelona', city: 'Barcelona', country: 'ES', students: '64,000+', slug: 'ub-barcelona', citySlug: 'barcelona' },
+  { name: 'Polytechnic University of Catalonia', city: 'Barcelona', country: 'ES', students: '30,000+', slug: 'upc', citySlug: 'barcelona' },
+  { name: 'Polytechnic University of Valencia', city: 'Valencia', country: 'ES', students: '30,000+', slug: 'upv', citySlug: 'valencia' },
+  { name: 'Vienna University of Economics and Business', city: 'Vienna', country: 'AT', students: '23,000+', slug: 'wu-vienna', citySlug: 'vienna' },
+  { name: 'Medical University of Vienna', city: 'Vienna', country: 'AT', students: '8,000+', slug: 'meduni-vienna', citySlug: 'vienna' },
+  { name: 'Graz University of Technology', city: 'Graz', country: 'AT', students: '14,000+', slug: 'tu-graz', citySlug: 'graz' },
+  { name: 'Singapore Management University', city: 'Singapore', country: 'SG', students: '13,000+', slug: 'smu', citySlug: 'singapore-city' },
+  { name: 'Singapore University of Technology and Design', city: 'Singapore', country: 'SG', students: '2,500+', slug: 'sutd', citySlug: 'singapore-city' },
+  { name: 'MCAST', city: 'Paola', country: 'MT', students: '6,000+', slug: 'mcast', citySlug: 'paola' },
+  { name: 'American University of Malta', city: 'Cospicua', country: 'MT', students: '1,000+', slug: 'aum', citySlug: 'cospicua' },
+  { name: 'Politecnico di Milano', city: 'Milan', country: 'IT', students: '48,000+', slug: 'politecnico-milano', citySlug: 'milan' },
+  { name: 'University of Padua', city: 'Padua', country: 'IT', students: '60,000+', slug: 'padua', citySlug: 'padua' },
+  { name: 'University of Turin', city: 'Turin', country: 'IT', students: '80,000+', slug: 'turin-university', citySlug: 'turin' },
+  { name: 'University of Naples Federico II', city: 'Naples', country: 'IT', students: '80,000+', slug: 'naples-federico', citySlug: 'naples' },
+  { name: 'University of Toronto', city: 'Toronto', country: 'CA', students: '97,000+', slug: 'toronto-university', citySlug: 'toronto' },
+  { name: 'York University', city: 'Toronto', country: 'CA', students: '55,000+', slug: 'york-university', citySlug: 'toronto' },
+  { name: 'University of British Columbia', city: 'Vancouver', country: 'CA', students: '70,000+', slug: 'ubc', citySlug: 'vancouver' },
+  { name: 'McGill University', city: 'Montreal', country: 'CA', students: '40,000+', slug: 'mcgill', citySlug: 'montreal' },
+  { name: 'Complutense University of Madrid', city: 'Madrid', country: 'ES', students: '75,000+', slug: 'complutense-madrid', citySlug: 'madrid' },
+  { name: 'Universitat Autònoma de Barcelona', city: 'Barcelona', country: 'ES', students: '37,000+', slug: 'uab', citySlug: 'barcelona' },
+  { name: 'University of Valencia', city: 'Valencia', country: 'ES', students: '50,000+', slug: 'valencia-university', citySlug: 'valencia' },
+  { name: 'University of Vienna', city: 'Vienna', country: 'AT', students: '94,000+', slug: 'vienna-university', citySlug: 'vienna' },
+  { name: 'TU Wien', city: 'Vienna', country: 'AT', students: '26,000+', slug: 'tu-wien', citySlug: 'vienna' },
+  { name: 'University of Graz', city: 'Graz', country: 'AT', students: '30,000+', slug: 'graz-university', citySlug: 'graz' },
+  { name: 'University of Innsbruck', city: 'Innsbruck', country: 'AT', students: '28,000+', slug: 'innsbruck-university', citySlug: 'innsbruck' },
+  { name: 'National University of Singapore', city: 'Singapore', country: 'SG', students: '40,000+', slug: 'nus', citySlug: 'singapore-city' },
+  { name: 'Nanyang Technological University', city: 'Singapore', country: 'SG', students: '35,000+', slug: 'ntu', citySlug: 'singapore-city' },
+  { name: 'University of Malta', city: 'Msida', country: 'MT', students: '11,000+', slug: 'malta-university', citySlug: 'msida' },
+  { name: 'University of Milan', city: 'Milan', country: 'IT', students: '65,000+', slug: 'milan-university', citySlug: 'milan' },
+  { name: 'Sapienza University of Rome', city: 'Rome', country: 'IT', students: '112,000+', slug: 'sapienza', citySlug: 'rome' },
+  { name: 'University of Bologna', city: 'Bologna', country: 'IT', students: '90,000+', slug: 'bologna-university', citySlug: 'bologna' }
 ]
 
 export const groupedCities: Record<string, CityPlace[]> = {
@@ -1026,7 +1111,14 @@ export const groupedCities: Record<string, CityPlace[]> = {
   France: cities.filter((city) => city.countryCode === 'FR'),
   'United Arab Emirates': cities.filter((city) => city.countryCode === 'UAE'),
   Germany: cities.filter((city) => city.countryCode === 'DE'),
-  Australia: cities.filter((city) => city.countryCode === 'AU')
+  Australia: cities.filter((city) => city.countryCode === 'AU'),
+  'United States': cities.filter((city) => city.countryCode === 'USA'),
+  Canada: cities.filter((city) => city.countryCode === 'CA'),
+  Spain: cities.filter((city) => city.countryCode === 'ES'),
+  Austria: cities.filter((city) => city.countryCode === 'AT'),
+  Singapore: cities.filter((city) => city.countryCode === 'SG'),
+  Malta: cities.filter((city) => city.countryCode === 'MT'),
+  Italy: cities.filter((city) => city.countryCode === 'IT')
 }
 
 export function getCityBySlug(slug: string): CityPlace | undefined {

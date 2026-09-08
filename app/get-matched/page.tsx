@@ -3,24 +3,28 @@
 import { useState } from 'react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import { countries as countryRecords } from '@/lib/country-data'
+import { cities, universities } from '@/lib/place-data'
 
-const countries = ['United Kingdom', 'Ireland', 'France', 'United Arab Emirates', 'Germany', 'Australia']
+const countries = countryRecords.map((country) => country.name)
 
-const ukCities = [
-  'London', 'Manchester', 'Birmingham', 'Edinburgh', 'Glasgow', 'Bristol', 
-  'Newcastle', 'Coventry', 'Nottingham', 'Leeds', 'Liverpool', 'Sheffield', 
-  'Southampton', 'Leicester'
-]
+const citiesByCountry = new Map(
+  countryRecords.map((country) => [
+    country.name,
+    country.citySlugs
+      .map((slug) => cities.find((city) => city.slug === slug)?.name)
+      .filter((city): city is string => Boolean(city)),
+  ])
+)
 
-const irelandCities = ['Dublin', 'Cork', 'Galway', 'Limerick']
-
-const franceCities = ['Paris', 'Lyon', 'Toulouse', 'Marseille', 'Montpellier', 'Bordeaux', 'Lille', 'Nice', 'Strasbourg', 'Grenoble']
-
-const uaeCities = ['Dubai', 'Abu Dhabi', 'Sharjah']
-
-const germanyCities = ['Munich', 'Berlin', 'Frankfurt', 'Hamburg', 'Cologne', 'Aachen', 'Heidelberg', 'Leipzig', 'Dresden', 'Stuttgart']
-
-const australiaCities = ['Melbourne', 'Sydney', 'Brisbane', 'Perth', 'Adelaide', 'Canberra']
+const universitiesByCountry = new Map(
+  countryRecords.map((country) => [
+    country.name,
+    country.universitySlugs
+      .map((slug) => universities.find((university) => university.slug === slug))
+      .filter((university): university is (typeof universities)[number] => Boolean(university)),
+  ])
+)
 const budgetRanges = [
   { label: 'Up to £500 / mo', value: 'under-500' },
   { label: '£500 - £800 / mo', value: '500-800' },
@@ -78,13 +82,8 @@ export default function GetMatchedPage() {
     message: ''
   })
 
-  const cities =
-    form.country === 'United Kingdom' ? ukCities :
-    form.country === 'Ireland' ? irelandCities :
-    form.country === 'France' ? franceCities :
-    form.country === 'United Arab Emirates' ? uaeCities :
-    form.country === 'Germany' ? germanyCities :
-    form.country === 'Australia' ? australiaCities : []
+  const cities = citiesByCountry.get(form.country) ?? []
+  const matchingUniversities = universitiesByCountry.get(form.country) ?? []
 
   const togglePriority = (p: string) => {
     setForm((f) => ({
@@ -254,14 +253,20 @@ export default function GetMatchedPage() {
                       <label htmlFor="university" className="block text-sm font-semibold text-[#1A1A1A] mb-2">
                         {"University"}
                       </label>
-                      <input
+                      <select
                         id="university"
-                        type="text"
                         value={form.university}
                         onChange={(e) => setForm((f) => ({ ...f, university: e.target.value }))}
-                        placeholder="e.g. University of Manchester"
-                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
-                      />
+                        className="w-full px-4 py-3 rounded-xl border border-[#E8E6E1] bg-white text-[#1A1A1A] text-sm focus:outline-none focus:border-[#00319D] transition-colors"
+                      >
+                        <option value="">{"Choose your university, or tell us later"}</option>
+                        {matchingUniversities.map((university) => (
+                          <option key={university.slug} value={university.name}>
+                            {university.name} — {university.city}
+                          </option>
+                        ))}
+                      </select>
+                      <p className="mt-2 text-xs text-[#6B6860]">{"Showing universities with accommodation guides in this country."}</p>
                     </div>
                   </div>
                 </div>
