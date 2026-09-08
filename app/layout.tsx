@@ -68,6 +68,7 @@ export default function RootLayout({
     >
       <body className="font-sans antialiased">
         {children}
+        <CustomCursor />
         {process.env.NODE_ENV === 'production' && <Analytics />}
         <SpeedInsights />
       </body>
