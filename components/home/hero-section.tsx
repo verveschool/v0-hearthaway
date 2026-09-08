@@ -6,8 +6,8 @@ import { useState, useEffect } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
 const countryLinks: Record<string, string> = {
-  UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', France: '/france', Spain: '/spain', Italy: '/italy', Austria: '/austria', Singapore: '/singapore', Malta: '/malta', UAE: '/uae', Netherlands: '/netherlands',
-}
+  {UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Malta: '/malta' };
+
 
 const photos = [
   {
@@ -35,15 +35,15 @@ const countries = [
   'Canada',
   'Australia',
   'Germany',
-  'France',
-  'Spain',
-  'Italy',
-  'Austria',
-  'Singapore',
-  'Malta',
   'UAE',
+  'Singapore',
   'Netherlands',
-]
+  'France',
+  'Italy',
+  'Spain',
+  'Austria',
+  'Malta',
+];
 
 export default function HeroSection() {
   const [activePhoto, setActivePhoto] = useState(0)
