@@ -63,7 +63,7 @@ export function CustomCursor() {
     const move = (event: PointerEvent) => {
       target.current = { x: event.clientX, y: event.clientY }
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${event.clientX - 1.5 + offset.current.x}px, ${event.clientY - 1.5 + offset.current.y}px, 0)`
+        dotRef.current.style.transform = `translate3d(${event.clientX - 1.5}px, ${event.clientY - 1.5}px, 0)`
       }
     }
 
@@ -84,7 +84,7 @@ export function CustomCursor() {
       const isActive = Boolean(element?.closest(interactiveSelector))
       activeRef.current = isActive
       if (isActive !== wasActiveRef.current && veinsRef.current) {
-        veinsRef.current.style.opacity = isActive ? "0.7" : "0"
+        veinsRef.current.style.opacity = isActive ? "0.9" : "0.35"
       }
       wasActiveRef.current = isActive
     }
@@ -96,7 +96,7 @@ export function CustomCursor() {
       requestAnimationFrame(() => {
         if (!veinsRef.current) return
         veinsRef.current.style.transition = "opacity 420ms ease-out"
-        veinsRef.current.style.opacity = activeRef.current ? "0.7" : "0"
+        veinsRef.current.style.opacity = activeRef.current ? "0.9" : "0.35"
       })
     }
 
@@ -137,15 +137,28 @@ export function CustomCursor() {
       >
         <svg width="30" height="30" viewBox="0 0 30 30" style={{ display: "block" }}>
           <circle cx="15" cy="15" r="12.5" fill="#E3DFFF" stroke="#4C43C4" strokeWidth="2" />
-          <g ref={veinsRef} stroke="#4C43C4" strokeWidth="1.1" opacity={0}>
-            <line x1="15" y1="15" x2="15" y2="1" />
-            <line x1="15" y1="15" x2="27" y2="5" />
-            <line x1="15" y1="15" x2="29" y2="15" />
-            <line x1="15" y1="15" x2="27" y2="25" />
-            <line x1="15" y1="15" x2="15" y2="29" />
-            <line x1="15" y1="15" x2="3" y2="25" />
-            <line x1="15" y1="15" x2="1" y2="15" />
-            <line x1="15" y1="15" x2="3" y2="5" />
+          <circle cx="15" cy="15" r="5" fill="none" stroke="#4C43C4" strokeWidth="1" opacity="0.5" />
+          <g ref={veinsRef} stroke="#4C43C4" strokeWidth="0.6" opacity={0.35}>
+            <line x1="22.00" y1="15.00" x2="26.50" y2="15.00" />
+            <line x1="21.66" y1="17.16" x2="25.94" y2="18.55" />
+            <line x1="20.66" y1="19.11" x2="24.30" y2="21.76" />
+            <line x1="19.11" y1="20.66" x2="21.76" y2="24.30" />
+            <line x1="17.16" y1="21.66" x2="18.55" y2="25.94" />
+            <line x1="15.00" y1="22.00" x2="15.00" y2="26.50" />
+            <line x1="12.84" y1="21.66" x2="11.45" y2="25.94" />
+            <line x1="10.89" y1="20.66" x2="8.24" y2="24.30" />
+            <line x1="9.34" y1="19.11" x2="5.70" y2="21.76" />
+            <line x1="8.34" y1="17.16" x2="4.06" y2="18.55" />
+            <line x1="8.00" y1="15.00" x2="3.50" y2="15.00" />
+            <line x1="8.34" y1="12.84" x2="4.06" y2="11.45" />
+            <line x1="9.34" y1="10.89" x2="5.70" y2="8.24" />
+            <line x1="10.89" y1="9.34" x2="8.24" y2="5.70" />
+            <line x1="12.84" y1="8.34" x2="11.45" y2="4.06" />
+            <line x1="15.00" y1="8.00" x2="15.00" y2="3.50" />
+            <line x1="17.16" y1="8.34" x2="18.55" y2="4.06" />
+            <line x1="19.11" y1="9.34" x2="21.76" y2="5.70" />
+            <line x1="20.66" y1="10.89" x2="24.30" y2="8.24" />
+            <line x1="21.66" y1="12.84" x2="25.94" y2="11.45" />
           </g>
         </svg>
       </div>
