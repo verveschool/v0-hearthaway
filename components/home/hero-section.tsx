@@ -70,37 +70,53 @@ export default function HeroSection() {
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
 
-          {/* Trust badge & Country Links (Horizontal scroll on mobile, wrapped on desktop) */}
-          <div className="mb-3 flex w-full items-center gap-1.5 overflow-x-auto flex-nowrap pb-2 scrollbar-none sm:flex-wrap sm:overflow-visible sm:pb-0">
-            <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
-              100% verified
-            </span>
-            
-            {countries.map((country) => (
-              <Link
-                key={country}
-                href={countryLinks[country] ?? '/universities'}
-                className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
-              >
-                {country}
+          {/* Trust badge and destination links */}
+          <div className="mb-4 w-full">
+            <div className="flex items-center gap-2 sm:hidden">
+              <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm">
+                100% verified
+              </span>
+              <span className="text-[11px] font-semibold text-[#6B6860]">Student homes abroad</span>
+            </div>
+
+            <div className="hidden flex-wrap items-center gap-1.5 sm:flex">
+              <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
+                100% verified
+              </span>
+              {countries.map((country) => (
+                <Link
+                  key={country}
+                  href={countryLinks[country] ?? '/universities'}
+                  className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
+                >
+                  {country}
+                </Link>
+              ))}
+            </div>
+
+            <div className="mt-2 flex items-center gap-1.5 overflow-hidden sm:hidden" aria-label="Popular destinations">
+              {countries.slice(0, 4).map((country) => (
+                <Link
+                  key={country}
+                  href={countryLinks[country] ?? '/universities'}
+                  className="shrink-0 rounded-full border border-[#00319D]/15 bg-white/70 px-2.5 py-1 text-[10px] font-bold text-[#00319D] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
+                >
+                  {country}
+                </Link>
+              ))}
+              <Link href="/universities" className="shrink-0 px-1 text-[10px] font-extrabold text-[#00319D] underline underline-offset-2">
+                + more
               </Link>
-            ))}
+            </div>
           </div>
 
           {/* Headline */}
-          <h1
-            className="mb-6 font-heading font-extrabold leading-[1.06] tracking-tight text-balance"
-            style={{ fontSize: 'clamp(2.7rem, 3.8vw, 3.25rem)' }}
-          >
-            <span className="block text-[#171717]">
-              Find the right
-            </span>
-            <span className="block text-[#00319D]">
-              accommodation
-            </span>
-            <span className="block text-[#171717]">
-              before you arrive.
-            </span>
+          <h1 className="mb-5 font-heading font-extrabold leading-[1.04] tracking-tight text-balance sm:mb-6" style={{ fontSize: 'clamp(2.35rem, 3.8vw, 3.25rem)' }}>
+            <span className="block text-[#171717] sm:hidden">Find your place</span>
+            <span className="block text-[#00319D] sm:hidden">abroad.</span>
+            <span className="hidden text-[#171717] sm:block">Find the right</span>
+            <span className="hidden text-[#00319D] sm:block">accommodation</span>
+            <span className="hidden text-[#171717] sm:block">before you arrive.</span>
           </h1>
           
           {/* Supporting copy */}
