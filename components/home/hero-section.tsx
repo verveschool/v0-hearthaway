@@ -111,12 +111,10 @@ export default function HeroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="mb-5 font-heading font-extrabold leading-[1.04] tracking-tight text-balance sm:mb-6" style={{ fontSize: 'clamp(2.35rem, 3.8vw, 3.25rem)' }}>
-            <span className="block text-[#171717] sm:hidden">Find your place</span>
-            <span className="block text-[#00319D] sm:hidden">abroad.</span>
-            <span className="hidden text-[#171717] sm:block">Find the right</span>
-            <span className="hidden text-[#00319D] sm:block">accommodation</span>
-            <span className="hidden text-[#171717] sm:block">before you arrive.</span>
+          <h1 className="mb-5 font-heading text-[2.15rem] font-extrabold leading-[1.06] tracking-tight text-balance sm:mb-6 sm:text-[clamp(2.35rem,3.8vw,3.25rem)] sm:leading-[1.04]">
+            <span className="block text-[#171717]">Find the right</span>
+            <span className="block text-[#00319D]">accommodation</span>
+            <span className="block text-[#171717]">before you arrive.</span>
           </h1>
           
           {/* Supporting copy */}
