@@ -34,7 +34,7 @@ const accommodationPartnerLogos: readonly AccommodationPartnerLogo[] = [
   { name: 'Vivo Living', src: '/accommodation-partners/Vivo_Living.png' },
   { name: 'Leevin Stay', src: '/accommodation-partners/Leevin-Stay.png' },
   { name: 'Acomodo', src: '/accommodation-partners/Acomodo.png' },
-  { name: 'Milchel Student Hostel', src: '/accommodation-partners/Michel-Student-Hostel.png' },
+  { name: 'Michel Student Hostel', src: '/accommodation-partners/Michel-Student-Hostel.png' },
   { name: 'The Haven Student Living', src: '/accommodation-partners/The-Haven-Student-Living.png' },
 ] as const;
 
