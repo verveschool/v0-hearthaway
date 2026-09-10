@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'SG' | 'MT' | 'IT' | 'NL'
+export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'SG' | 'MT' | 'IT' | 'NL' | 'MY'
 
 export type CityPlace = {
   name: string
@@ -950,6 +950,8 @@ export const cities: CityPlace[] = [
     ['Graz', 'Austria', 'AT', 'graz', 'EUR 350 to 650 / mo', 'a compact university city known for technical education, cycling, and approachable living costs.', 'geidorf', 'lend', 'st. leonhard'],
     ['Innsbruck', 'Austria', 'AT', 'innsbruck', 'EUR 450 to 800 / mo', 'an alpine university city where outdoor access is balanced by a tight housing market.', 'wilten', 'hötting', 'pradl'],
     ['Singapore', 'Singapore', 'SG', 'singapore-city', 'SGD 900 to 1800 / mo', 'a compact Asia-Pacific hub with efficient transport, leading universities, and high housing demand.', 'queenstown', 'clementi', 'kent ridge'],
+    ['Kuala Lumpur', 'Malaysia', 'MY', 'kuala-lumpur', 'MYR 900 to 1800 / mo', 'a connected Southeast Asian capital with international universities, strong transit, and practical student living.', 'bangsar south', 'kl sentral', 'bukit bintang'],
+    ['Penang', 'Malaysia', 'MY', 'penang', 'MYR 700 to 1400 / mo', 'a lively island study destination combining established universities, food culture, and comparatively accessible rents.', 'gelugor', 'tanjung tokong', 'georgetown'],
     ['Valletta', 'Malta', 'MT', 'valletta', 'EUR 500 to 900 / mo', 'a historic capital close to Malta’s English-speaking academic and professional networks.', 'floriana', 'sliema', 'gżira'],
     ['Msida', 'Malta', 'MT', 'msida', 'EUR 450 to 800 / mo', 'a practical student base near the University of Malta, ferries, buses, and shared apartments.', 'gżira', 'ta’ xbiex', 'swatar'],
     ['Milan', 'Italy', 'IT', 'milan', 'EUR 650 to 1200 / mo', 'Italy’s leading business and design city with a deep international student community.', 'città studi', 'lambrate', 'navigli'],
@@ -1084,6 +1086,9 @@ export const universities: UniversityPlace[] = [
   { name: 'Medical University of Vienna', city: 'Vienna', country: 'AT', students: '8,000+', slug: 'meduni-vienna', citySlug: 'vienna' },
   { name: 'Graz University of Technology', city: 'Graz', country: 'AT', students: '14,000+', slug: 'tu-graz', citySlug: 'graz' },
   { name: 'Singapore Management University', city: 'Singapore', country: 'SG', students: '13,000+', slug: 'smu', citySlug: 'singapore-city' },
+  { name: 'University of Malaya', city: 'Kuala Lumpur', country: 'MY', students: '30,000+', slug: 'university-malaysia', citySlug: 'kuala-lumpur' },
+  { name: 'Taylor\'s University', city: 'Kuala Lumpur', country: 'MY', students: '12,000+', slug: 'taylors-university', citySlug: 'kuala-lumpur' },
+  { name: 'Universiti Sains Malaysia', city: 'Penang', country: 'MY', students: '30,000+', slug: 'usm', citySlug: 'penang' },
   { name: 'Singapore University of Technology and Design', city: 'Singapore', country: 'SG', students: '2,500+', slug: 'sutd', citySlug: 'singapore-city' },
   { name: 'MCAST', city: 'Paola', country: 'MT', students: '6,000+', slug: 'mcast', citySlug: 'paola' },
   { name: 'American University of Malta', city: 'Cospicua', country: 'MT', students: '1,000+', slug: 'aum', citySlug: 'cospicua' },

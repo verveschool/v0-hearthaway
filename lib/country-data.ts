@@ -183,7 +183,15 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('singapore')
   },
   {
-    name: 'Malta', slug: 'malta', currency: 'EUR (€)', heroImage: '/images/dest-ireland.png', badge: 'English-speaking Europe', universityCount: '10+',
+  name: 'Malaysia', slug: 'malaysia', currency: 'MYR (RM)', heroImage: '/images/dest-uae.png', badge: 'Southeast Asia hub', universityCount: '20+',
+  citySlugs: ['kuala-lumpur', 'penang'], universitySlugs: ['university-malaysia', 'taylors-university', 'usm'],
+  summary: 'a multicultural Southeast Asian study destination with respected universities, modern cities, and accessible student living costs.',
+  overview: 'malaysia offers international students English-taught programmes, a welcoming multicultural environment, and well-connected city campuses.',
+  studentHousingNotes: 'student residences and shared apartments are common; compare furnished rooms, transport access, deposits, and included utilities before booking.',
+  movingAbroadLinks: getMovingAbroadLinksForCountry('malaysia')
+  },
+  {
+  name: 'Malta', slug: 'malta', currency: 'EUR (€)', heroImage: '/images/dest-ireland.png', badge: 'English-speaking Europe', universityCount: '10+',
     citySlugs: ['valletta', 'msida', 'paola', 'cospicua'], universitySlugs: ['malta-university', 'mcast', 'aum'],
     summary: 'an English-speaking Mediterranean destination with accessible city living, international campuses, and a close-knit student community.',
     overview: 'malta is a practical choice for students seeking an English-speaking European base with a warm climate and island lifestyle.',

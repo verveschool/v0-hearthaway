@@ -84,6 +84,11 @@ const markets = [
     description: 'World-ranked universities, a multicultural student population, and one of the safest, most connected cities in Asia.',
   },
   {
+    flag: '🇲🇾',
+    name: 'Malaysia',
+    description: 'A practical Southeast Asian study destination with respected universities, multicultural city life, and accessible student budgets.',
+  },
+  {
     flag: '🇮🇹',
     name: 'Italy',
     description: "Historic universities, low-cost public tuition, and a student life built around some of Europe's most iconic cities.",
@@ -240,7 +245,7 @@ export default function AboutPage() {
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
-              Thirteen countries. Hundreds of universities. One platform.
+              Fifteen countries. Hundreds of universities. One platform.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (

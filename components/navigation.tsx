@@ -26,6 +26,7 @@ const navLinks = [
       { label: 'Spain', href: '/spain' },
       { label: 'Austria', href: '/austria' },
       { label: 'Malta', href: '/malta' },
+      { label: 'Malaysia', href: '/malaysia' },
     ],
   },
   {
