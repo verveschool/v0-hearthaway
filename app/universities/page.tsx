@@ -29,6 +29,7 @@ const countryFilters = [
   { value: 'MT', label: 'Malta' },
   { value: 'IT', label: 'Italy' },
   { value: 'NL', label: 'Netherlands' },
+  { value: 'MY', label: 'Malaysia' },
 ]
 
 function normalizeCountry(raw: string | null) {
@@ -45,6 +46,7 @@ function normalizeCountry(raw: string | null) {
   if (raw === 'Malta') return 'MT'
   if (raw === 'Italy') return 'IT'
   if (raw === 'Netherlands') return 'NL'
+  if (raw === 'Malaysia') return 'MY'
   return raw
 }
 

@@ -13,6 +13,7 @@ const popularCities = [
   { name: 'Munich', country: 'Germany', slug: 'munich', image: '/images/city-munich.png', rent: 'from €500/mo' },
   { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.png', rent: 'from A$280/wk' },
   { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.png', rent: 'from A$250/wk' },
+  { name: 'Kuala Lumpur', country: 'Malaysia', slug: 'kuala-lumpur', image: '/images/city-london.png', rent: 'from RM 900/mo' },
 ]
 
 export default function DestinationsSection() {
@@ -29,7 +30,7 @@ export default function DestinationsSection() {
             </span>
           </div>
           <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-            Thirteen countries. One trusted guide.
+            Fifteen countries. One trusted guide.
           </h2>
         </div>
 
