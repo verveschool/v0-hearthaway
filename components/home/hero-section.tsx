@@ -72,26 +72,27 @@ export default function HeroSection() {
 
           {/* Trust badge and destination links */}
           <div className="mb-4 w-full">
-            <div className="flex items-center gap-2 sm:hidden">
+            <div className="flex items-center sm:hidden">
               <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm">
                 100% verified
               </span>
-              <span className="text-[11px] font-semibold text-[#6B6860]">Student homes abroad</span>
             </div>
 
-            <div className="hidden flex-wrap items-center gap-1.5 sm:flex">
+            <div className="hidden flex-col items-start gap-2 sm:flex">
               <span className="inline-flex shrink-0 rounded-full bg-[#00319D] px-3.5 py-1.5 text-center text-[10px] font-extrabold uppercase tracking-widest text-white shadow-sm sm:text-xs">
                 100% verified
               </span>
-              {countries.map((country) => (
-                <Link
-                  key={country}
-                  href={countryLinks[country] ?? '/universities'}
-                  className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
-                >
-                  {country}
-                </Link>
-              ))}
+              <div className="flex flex-wrap items-center gap-1.5">
+                {countries.map((country) => (
+                  <Link
+                    key={country}
+                    href={countryLinks[country] ?? '/universities'}
+                    className="shrink-0 rounded-full border border-[#00319D]/15 bg-[#00319D]/[0.035] px-3 py-1.5 text-[10px] font-bold uppercase tracking-wide text-[#00319D] transition-colors hover:bg-[#00319D] hover:text-white sm:text-xs focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#00319D]"
+                  >
+                    {country}
+                  </Link>
+                ))}
+              </div>
             </div>
 
             <div className="mt-2 flex items-center gap-1.5 overflow-hidden sm:hidden" aria-label="Popular destinations">
