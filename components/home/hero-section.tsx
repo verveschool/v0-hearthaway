@@ -111,7 +111,7 @@ export default function HeroSection() {
           </div>
 
           {/* Headline */}
-          <h1 className="mb-5 font-heading text-[2.15rem] font-extrabold leading-[1.06] tracking-tight text-balance sm:mb-6 sm:text-[clamp(2.35rem,3.8vw,3.25rem)] sm:leading-[1.04]">
+          <h1 className="mb-5 font-heading text-[1.9rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:mb-6 sm:text-[clamp(2.35rem,3.8vw,3.25rem)] sm:leading-[1.04]">
             <span className="block text-[#171717]">Find the right</span>
             <span className="block text-[#00319D]">accommodation</span>
             <span className="block text-[#171717]">before you arrive.</span>
