@@ -39,7 +39,7 @@ const roleSections = [
   {
   title: 'Compensation',
   description:
-    'This is a performance-based role with no fixed pay. You will receive ₹3,000 for each successful accommodation booking you secure. The commission becomes payable once payment for the booking is received by HearthAway.' 
+    'This is a performance-based opportunity with no fixed salary, with the potential to earn up to ₹30,000 per month based on the bookings you bring in.' 
   },
   {
     title: 'The opportunity',
@@ -125,8 +125,7 @@ export default function CareersPage() {
                 </h2>
 
                 <p className="mb-6 leading-relaxed text-[#6B6860]">
-                  Send us your CV and a short note on why you want to help
-                  students find accommodation.
+                  Send us your CV and tell us what makes you want to help students find a place they can call home.
                 </p>
 
                 <Link
