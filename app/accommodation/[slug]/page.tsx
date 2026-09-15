@@ -2,7 +2,8 @@ import Link from 'next/link'
 import { ArrowLeft, ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
-import { accommodationProperties, getAccommodationBySlug } from '../accommodation-data'
+import { getAccommodationPartner } from '../partner-directory'
+import { accommodationProperties, getAccommodationBySlug } from '../catalog'
 
 export function generateStaticParams() {
   return accommodationProperties.map((property) => ({ slug: property.slug }))
@@ -15,6 +16,7 @@ type PropertyPageProps = {
 export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
   const { slug } = await params
   const property = getAccommodationBySlug(slug)
+  const partner = property ? getAccommodationPartner(property.partnerSlug ?? property.source) : undefined
 
   if (!property) {
     return (
@@ -37,7 +39,6 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
   return (
     <>
       <Navigation />
-
       <main className="bg-[#F7F6F3]">
         <section className="bg-[#00319D] px-6 py-8 text-white lg:px-8 lg:py-10">
           <div className="mx-auto max-w-7xl">
@@ -56,17 +57,33 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
                   <img src={property.image} alt={property.name} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
                   <div className="absolute bottom-7 left-7 right-7 text-white sm:bottom-9 sm:left-9 sm:right-9">
-                    <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">{property.city}, {property.country}</p>
+                    <div className="flex flex-wrap items-center gap-2 text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">
+                      <span>{property.city}, {property.country}</span>
+                      {partner && <span className="rounded-full bg-white/10 px-3 py-1 text-[10px] tracking-wider text-white">{partner.name}</span>}
+                    </div>
                     <h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{property.name}</h1>
                   </div>
                 </div>
               </div>
 
+              <div className="mt-4 grid grid-cols-3 gap-3">
+                {property.gallery.map((image, index) => (
+                  <div key={`${image}-${index}`} className="overflow-hidden rounded-xl border border-[#E8E6E1] bg-white">
+                    <img src={image} alt={`${property.name} gallery image ${index + 1}`} className="h-28 w-full object-cover sm:h-36" loading="lazy" />
+                  </div>
+                ))}
+              </div>
+              <a href={property.gallerySourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">View the full photo set on the partner site</a>
+
               <div className="mt-6 grid gap-6 sm:grid-cols-2">
                 <div className="rounded-2xl border border-[#E8E6E1] bg-white p-6">
-                  <p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">From</p>
-                  <p className="mt-2 font-heading text-3xl font-extrabold text-[#00319D]">£{property.priceFrom}<span className="text-sm font-semibold text-[#6B6860]">/week</span></p>
-                  <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">Reference starting price from the seed listing. Confirm current pricing before booking.</p>
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Starting price</p>
+                  {property.priceFrom > 0 ? (
+                    <p className="mt-2 font-heading text-3xl font-extrabold text-[#00319D]">£{property.priceFrom}<span className="text-sm font-semibold text-[#6B6860]">/week</span></p>
+                  ) : (
+                    <p className="mt-2 font-heading text-2xl font-extrabold text-[#00319D]">Check current price</p>
+                  )}
+                  <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">Prices, room availability and contract terms change. Confirm current details before booking.</p>
                 </div>
                 <div className="rounded-2xl border border-[#E8E6E1] bg-white p-6">
                   <p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Location</p>
@@ -91,10 +108,24 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
               </div>
 
               <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-                <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2>
+                <div className="flex items-end justify-between gap-5">
+                  <div>
+                    <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2>
+                    <p className="mt-1 text-sm text-[#6B6860]">The categories students compare most often.</p>
+                  </div>
+                </div>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {property.roomTypes.map((type) => (
                     <span key={type} className="rounded-full bg-[#F7F6F3] px-4 py-2 text-sm font-semibold text-[#1A1A1A]">{type}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+                <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Categories</h2>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {(property.categories ?? []).map((category) => (
+                    <span key={category} className="rounded-full border border-[#E8E6E1] bg-white px-4 py-2 text-sm font-semibold text-[#00319D]">{category}</span>
                   ))}
                 </div>
               </div>
@@ -134,15 +165,21 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
                 </div>
               </div>
 
+              {property.availabilityNote && (
+                <div className="mt-4 rounded-2xl border border-[#FCC20A]/40 bg-[#FCC20A]/10 p-5">
+                  <p className="text-xs font-bold uppercase tracking-wider text-[#00319D]">Availability note</p>
+                  <p className="mt-2 text-sm leading-relaxed text-[#1A1A1A]">{property.availabilityNote}</p>
+                </div>
+              )}
+
               <div className="mt-4 rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-5">
-                <p className="text-xs leading-relaxed text-[#6B6860]">Catalogue source: {property.source}. This is a reference listing, not a representation of a commercial partnership. See the source listing for the latest inventory and confirm all details before booking.</p>
+                <p className="text-xs leading-relaxed text-[#6B6860]">Catalogue source: {partner?.name ?? property.source}. This listing uses publicly discoverable inventory as a reference and does not imply additional commercial rights beyond HearthAway's existing relationship. Confirm availability, pricing, room details and photo usage rights before booking or publishing final assets.</p>
                 <a href={property.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">View source listing</a>
               </div>
             </aside>
           </div>
         </section>
       </main>
-
       <Footer />
     </>
   )
