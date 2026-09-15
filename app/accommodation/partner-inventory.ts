@@ -10,6 +10,26 @@ type CatalogMeta = {
 
 export type CatalogProperty = AccommodationProperty & CatalogMeta
 
+type PropertySeed = {
+  slug: string
+  name: string
+  city: string
+  country: string
+  address: string
+  universities: string[]
+  distance: string
+  partnerSlug: string
+  sourceUrl?: string
+  priceFrom?: number
+  roomTypes?: string[]
+  categories?: string[]
+  amenities?: string[]
+  highlights?: string[]
+  image?: string
+  gallery?: string[]
+  availabilityNote?: string
+}
+
 const images = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png']
 
 const cityUniversities: Record<string, string[]> = {
@@ -50,37 +70,31 @@ const sourceByPartner: Record<string, string> = {
   iglu: 'https://iglu.com.au/compare-iglus/',
 }
 
-function makeProperty(
-  property: Omit<CatalogProperty, 'currency' | 'propertyType' | 'amenities' | 'highlights' | 'image' | 'source' | 'sourceUrl' | 'gallery' | 'gallerySourceUrl'> & {
-    partnerSlug: string
-    sourceUrl?: string
-    priceFrom?: number
-    roomTypes?: string[]
-    categories?: string[]
-    amenities?: string[]
-    highlights?: string[]
-    image?: string
-    gallery?: string[]
-    availabilityNote?: string
-  },
-): CatalogProperty {
-  const sourceUrl = property.sourceUrl ?? sourceByPartner[property.partnerSlug] ?? '#'
-  const gallery = property.gallery ?? images
+function makeProperty(seed: PropertySeed): CatalogProperty {
+  const sourceUrl = seed.sourceUrl ?? sourceByPartner[seed.partnerSlug] ?? '#'
+  const gallery = seed.gallery ?? images
   return {
-    ...property,
-    priceFrom: property.priceFrom ?? 0,
+    slug: seed.slug,
+    name: seed.name,
+    city: seed.city,
+    country: seed.country,
+    address: seed.address,
+    priceFrom: seed.priceFrom ?? 0,
     currency: 'GBP',
-    roomTypes: property.roomTypes ?? ['Ensuite', 'Studio'],
+    roomTypes: seed.roomTypes ?? ['Ensuite', 'Studio'],
     propertyType: 'Student residence',
-    amenities: property.amenities ?? ['Wi-Fi', 'Study spaces', 'Social spaces', 'On-site support'],
-    highlights: property.highlights ?? ['Student-focused location', 'Multiple room options', 'On-site support'],
-    image: property.image ?? gallery[0],
-    source: property.partnerSlug,
+    universities: seed.universities,
+    distance: seed.distance,
+    amenities: seed.amenities ?? ['Wi-Fi', 'Study spaces', 'Social spaces', 'On-site support'],
+    highlights: seed.highlights ?? ['Student-focused location', 'Multiple room options', 'On-site support'],
+    image: seed.image ?? gallery[0],
+    source: seed.partnerSlug,
     sourceUrl,
-    gallery,
+    availabilityNote: seed.availabilityNote,
+    partnerSlug: seed.partnerSlug,
+    categories: seed.categories ?? ['Student residence'],
     gallerySourceUrl: sourceUrl,
-    categories: property.categories ?? ['Student residence'],
-    availabilityNote: property.availabilityNote,
+    gallery,
   }
 }
 
@@ -141,7 +155,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     amenities: ['All bills included', 'Housekeeping', 'Superfast Wi-Fi', 'Gym', 'Wellness spaces', 'Study rooms', '24/7 security'],
     highlights: ['All-inclusive living', 'Strong wellbeing offering', 'Central university access'],
     availabilityNote: name === 'Frederick Road' || name === 'James Street' ? 'Opening 2027; availability to be confirmed.' : undefined,
-    gallery: images,
   })),
   ...neonWood.map(([name, city, sourceUrl], index) => makeProperty({
     slug: `neon-wood-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
@@ -150,7 +163,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     country: 'Germany',
     address: city,
     priceFrom: index === 0 ? 975 : 0,
-    currency: 'GBP',
     roomTypes: ['Single room', 'Studio', 'Double room'],
     universities: cityUniversities[city] ?? [],
     distance: `Well connected to universities in ${city}`,
@@ -159,7 +171,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     categories: ['Private apartment', 'All-inclusive', 'Furnished'],
     amenities: ['Furnished apartment', 'Private bathroom', 'Kitchenette', 'High-speed Wi-Fi', 'Gym', 'Lounge', 'Study rooms', 'Cinema room'],
     highlights: ['All-inclusive pricing', 'Private kitchenette and bathroom', 'International student community'],
-    gallery: images,
   })),
   ...vitaStudent.map(([name, city]) => makeProperty({
     slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
@@ -167,7 +178,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     city,
     country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK',
     address: `${name}, ${city}`,
-    priceFrom: 0,
     roomTypes: ['Ensuite', 'Studio'],
     universities: cityUniversities[city] ?? [],
     distance: `Central student location in ${city}`,
@@ -176,7 +186,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     categories: ['Premium student residence', 'All-inclusive', 'Private room'],
     amenities: ['Bills included', '24/7 gym', 'Study spaces', 'Housekeeping', 'Events', 'High-speed Wi-Fi', '24/7 support'],
     highlights: ['All-in living', 'Central locations', 'Strong resident experience'],
-    gallery: images,
   })),
   ...iglu.map(([name, city]) => makeProperty({
     slug: `iglu-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
@@ -184,7 +193,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     city,
     country: 'Australia',
     address: `${name}, ${city}`,
-    priceFrom: 0,
     roomTypes: ['Studio', 'Ensuite', 'Shared apartment'],
     universities: cityUniversities[city] ?? [],
     distance: `Close to major universities and transport in ${city}`,
@@ -193,7 +201,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     categories: ['Student residence', 'Furnished', 'Purpose-built'],
     amenities: ['24/7 support', 'Study areas', 'Gym', 'Social spaces', 'Laundry', 'Bike storage', 'High-security access'],
     highlights: ['University-focused locations', 'Strong communal facilities', 'Public transport access'],
-    gallery: images,
     availabilityNote: name === 'Mascot Duo' ? 'Opening January 2027; availability to be confirmed.' : undefined,
   })),
 ]
