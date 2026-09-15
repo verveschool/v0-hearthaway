@@ -7,10 +7,6 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import { accommodationCities, accommodationProperties } from './accommodation-data'
 
-const imageByType: Record<string, string> = {
-  'Student residence': 'Student accommodation',
-}
-
 export default function AccommodationPage() {
   const [query, setQuery] = useState('')
   const [city, setCity] = useState('All cities')
@@ -49,9 +45,7 @@ export default function AccommodationPage() {
             <div className="max-w-3xl">
               <div className="mb-5 inline-flex items-center gap-2">
                 <div className="h-px w-8 bg-[#FCC20A]" aria-hidden="true" />
-                <span className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">
-                  Student accommodation
-                </span>
+                <span className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">Student accommodation</span>
               </div>
               <h1 className="font-heading text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl lg:text-6xl">
                 Find a place that makes sense for where you&apos;re going.
@@ -74,44 +68,26 @@ export default function AccommodationPage() {
                   />
                 </label>
 
-                <select
-                  value={city}
-                  onChange={(event) => setCity(event.target.value)}
-                  className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]"
-                  aria-label="Filter by city"
-                >
+                <select value={city} onChange={(event) => setCity(event.target.value)} className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]" aria-label="Filter by city">
                   <option>All cities</option>
                   {accommodationCities.map((item) => <option key={item}>{item}</option>)}
                 </select>
 
-                <select
-                  value={roomType}
-                  onChange={(event) => setRoomType(event.target.value)}
-                  className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]"
-                  aria-label="Filter by room type"
-                >
+                <select value={roomType} onChange={(event) => setRoomType(event.target.value)} className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]" aria-label="Filter by room type">
                   <option>Any room type</option>
                   <option>Ensuite</option>
                   <option>Private Room</option>
                   <option>Studio</option>
                 </select>
 
-                <select
-                  value={maxBudget}
-                  onChange={(event) => setMaxBudget(event.target.value)}
-                  className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]"
-                  aria-label="Filter by weekly budget"
-                >
+                <select value={maxBudget} onChange={(event) => setMaxBudget(event.target.value)} className="rounded-xl border border-[#E8E6E1] px-4 py-3 text-sm font-medium text-[#1A1A1A] outline-none focus:border-[#00319D]" aria-label="Filter by weekly budget">
                   <option>Any budget</option>
                   <option>Under £200</option>
                   <option>Under £250</option>
                   <option>Under £300</option>
                 </select>
 
-                <Link
-                  href="/get-matched"
-                  className="inline-flex items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-bold text-[#00319D] transition-transform hover:-translate-y-0.5"
-                >
+                <Link href="/get-matched" className="inline-flex items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-bold text-[#00319D] transition-transform hover:-translate-y-0.5">
                   Get Matched
                 </Link>
               </div>
@@ -127,12 +103,8 @@ export default function AccommodationPage() {
                   <SlidersHorizontal className="h-4 w-4 text-[#00319D]" aria-hidden="true" />
                   <span className="text-sm font-bold uppercase tracking-wider text-[#00319D]">Explore</span>
                 </div>
-                <h2 className="font-heading text-3xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-4xl">
-                  Places to start with
-                </h2>
-                <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">
-                  {filteredProperties.length} properties in our first UK catalogue.
-                </p>
+                <h2 className="font-heading text-3xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-4xl">Places to start with</h2>
+                <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">{filteredProperties.length} properties in our first UK catalogue.</p>
               </div>
               <Link href="/get-matched" className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
                 Prefer a recommendation? Get matched <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -147,17 +119,9 @@ export default function AccommodationPage() {
             ) : (
               <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 {filteredProperties.map((property) => (
-                  <Link
-                    key={property.slug}
-                    href={`/accommodation/${property.slug}`}
-                    className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
-                  >
+                  <Link key={property.slug} href={`/accommodation/${property.slug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                     <div className="relative h-56 overflow-hidden bg-[#00319D]">
-                      <img
-                        src={property.image}
-                        alt={property.name}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      />
+                      <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/80 via-[#00319D]/10 to-transparent" />
                       <div className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#00319D]">
                         <CheckCircle2 className="h-3.5 w-3.5" aria-hidden="true" />
@@ -180,15 +144,11 @@ export default function AccommodationPage() {
                         <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#00319D]" aria-hidden="true" />
                         <span>{property.address}</span>
                       </div>
-
                       <div className="mt-4 flex flex-wrap gap-2">
                         {property.roomTypes.slice(0, 3).map((type) => (
-                          <span key={type} className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-semibold text-[#1A1A1A]">
-                            {type}
-                          </span>
+                          <span key={type} className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-semibold text-[#1A1A1A]">{type}</span>
                         ))}
                       </div>
-
                       <div className="mt-5 border-t border-[#E8E6E1] pt-4">
                         <p className="text-xs font-semibold uppercase tracking-wider text-[#6B6860]">Nearby</p>
                         <p className="mt-1 text-sm font-semibold text-[#1A1A1A]">{property.distance}</p>
@@ -208,9 +168,7 @@ export default function AccommodationPage() {
                 <div className="h-px w-8 bg-[#FCC20A]" aria-hidden="true" />
                 <span className="text-sm font-bold uppercase tracking-widest text-[#00319D]">How HearthAway fits in</span>
               </div>
-              <h2 className="font-heading text-3xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-4xl">
-                Browse the market. Then get human help where it matters.
-              </h2>
+              <h2 className="font-heading text-3xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-4xl">Browse the market. Then get human help where it matters.</h2>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-[#6B6860]">
                 This catalogue gives students a place to compare options before the conversation starts. Our advisors can then help narrow the list, check fit with the university, and guide the booking process.
               </p>
@@ -219,10 +177,7 @@ export default function AccommodationPage() {
               <p className="text-xs font-bold uppercase tracking-widest text-[#FCC20A]">Need a shortlist?</p>
               <h3 className="mt-3 font-heading text-2xl font-extrabold">Tell us where you&apos;re going and what matters to you.</h3>
               <p className="mt-3 text-sm leading-relaxed text-white/70">We can help turn a broad catalogue into a small set of options worth considering.</p>
-              <Link
-                href="/get-matched"
-                className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-bold text-[#00319D]"
-              >
+              <Link href="/get-matched" className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-bold text-[#00319D]">
                 Get Matched <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </Link>
             </div>
