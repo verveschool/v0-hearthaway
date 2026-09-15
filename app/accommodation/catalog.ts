@@ -2,8 +2,19 @@ import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
 import { accommodationPartners as partnerDirectory } from './partner-directory'
 
+const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property) => {
+  const partnerSlug = property.source.toLowerCase().replace(/\s+/g, '-')
+  return {
+    ...property,
+    partnerSlug,
+    categories: [property.propertyType, ...property.roomTypes].filter(Boolean),
+    gallery: [property.image],
+    gallerySourceUrl: property.sourceUrl,
+  }
+})
+
 export const accommodationProperties: CatalogProperty[] = [
-  ...(seedProperties as CatalogProperty[]),
+  ...normalizedSeedProperties,
   ...additionalAccommodationProperties,
 ]
 
