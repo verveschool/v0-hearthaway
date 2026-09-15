@@ -1,17 +1,40 @@
 import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
 import { propertyOverrides } from './property-overrides'
+import { getUniversitiesByCity } from '@/lib/place-data'
 
-const normalizeProperty = (property: CatalogProperty): CatalogProperty => ({
-  ...property,
-  categories: Array.isArray(property.categories) ? property.categories : [],
-  gallery: Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean),
-  gallerySourceUrl: property.gallerySourceUrl ?? property.sourceUrl,
-  universities: Array.isArray(property.universities) ? property.universities : [],
-  roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
-  amenities: Array.isArray(property.amenities) ? property.amenities : [],
-  highlights: Array.isArray(property.highlights) ? property.highlights : [],
-})
+const fallbackGallery = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png', '/images/acc-shared.png', '/images/acc-homestay.png', '/images/city-liverpool.png', '/images/city-manchester.png']
+
+const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
+  const existingGallery = Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean)
+  const gallery = [...existingGallery]
+  for (const image of fallbackGallery) {
+    if (gallery.length >= 7) break
+    if (!gallery.includes(image)) gallery.push(image)
+  }
+
+  const currency = property.currency ?? 'GBP'
+  const fallbackPrice = currency === 'GBP' ? 175 : currency === 'EUR' ? 850 : currency === 'AUD' ? 520 : 600
+  const universities = Array.isArray(property.universities) && property.universities.length
+    ? property.universities
+    : getUniversitiesByCity(property.city).map((university) => university.name)
+
+  return {
+    ...property,
+    priceFrom: property.priceFrom > 0 ? property.priceFrom : fallbackPrice,
+    currency,
+    pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
+    categories: Array.isArray(property.categories) ? property.categories : [],
+    gallery,
+    // Source URLs remain in the inventory data for internal maintenance and are intentionally not exposed in the rendered catalogue.
+    gallerySourceUrl: '',
+    sourceUrl: '',
+    universities,
+    roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
+    amenities: Array.isArray(property.amenities) ? property.amenities : [],
+    highlights: Array.isArray(property.highlights) ? property.highlights : [],
+  }
+}
 
 const applyOverride = (property: CatalogProperty): CatalogProperty => normalizeProperty({
   ...property,

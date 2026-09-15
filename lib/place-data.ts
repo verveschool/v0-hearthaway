@@ -1148,3 +1148,19 @@ export function getUniversitiesByCity(cityName: string): UniversityPlace[] {
 export function getUniversityBySlug(slug: string): UniversityPlace | undefined {
   return universities.find((university) => university.slug === slug)
 }
+
+export function getUniversityByName(name: string, cityName?: string): UniversityPlace | undefined {
+  const normalizedName = name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+  const normalizedCity = cityName?.toLowerCase().trim()
+  const candidates = normalizedCity
+    ? universities.filter((university) => university.city.toLowerCase() === normalizedCity)
+    : universities
+
+  return candidates.find((university) => {
+    const normalizedUniversityName = university.name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    return normalizedUniversityName === normalizedName
+  }) ?? candidates.find((university) => {
+    const normalizedUniversityName = university.name.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+    return normalizedName.includes(normalizedUniversityName) || normalizedUniversityName.includes(normalizedName)
+  })
+}
