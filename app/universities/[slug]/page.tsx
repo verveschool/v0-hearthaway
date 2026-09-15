@@ -4,7 +4,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getCityBySlug, getUniversityBySlug, universities } from '@/lib/place-data'
+import { getCityBySlug, getUniversityByName, getUniversityBySlug, universities } from '@/lib/place-data'
 import { accommodationProperties } from '@/app/accommodation/catalog'
 
 export function generateStaticParams() {
@@ -73,7 +73,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const relatedUniversities = universities.filter(
     (u) => u.city === university.city && u.slug !== university.slug,
   )
-  const universityProperties = accommodationProperties.filter((property) => property.universities.some((name) => name.toLowerCase() === university.name.toLowerCase()))
+  const universityProperties = accommodationProperties.filter((property) => property.universities.some((name) => getUniversityByName(name, property.city)?.slug === university.slug))
 
   const countryName = city?.country ?? countryLabel(university.country)
 
