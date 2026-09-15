@@ -15,7 +15,7 @@ const pillars = [
   {
     title: 'Sorted before you fly',
     description:
-      'Our goal is simple: have your accommodation confirmed before you board the plane. No searching on arrival. No temporary fixes.',
+      'Our goal is simple: have your accommodation confirmed before you board the plane, with clear guidance from the start.',
   },
   {
     title: 'Support throughout',

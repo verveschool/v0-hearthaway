@@ -26,7 +26,9 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
     categories: Array.isArray(property.categories) ? property.categories : [],
     gallery,
-    gallerySourceUrl: property.gallerySourceUrl ?? property.sourceUrl,
+    // Source URLs remain in the inventory data for internal maintenance and are intentionally not exposed in the rendered catalogue.
+    gallerySourceUrl: '',
+    sourceUrl: '',
     universities,
     roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
