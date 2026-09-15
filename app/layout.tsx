@@ -12,7 +12,7 @@ const manrope = Manrope({
 })
 
 const brandIconPath = '/brand/  hearthaway-icon-dark.png'
-const brandBannerPath = '/brand/  hearthaway-banner-dark.png'
+const brandBannerPath = '/All_Students.png'
 
 export const metadata: Metadata = {
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
