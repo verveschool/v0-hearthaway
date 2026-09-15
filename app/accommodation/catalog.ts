@@ -1,5 +1,6 @@
 import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
+import { propertyOverrides } from './property-overrides'
 
 const normalizeProperty = (property: CatalogProperty): CatalogProperty => ({
   ...property,
@@ -12,16 +13,21 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => ({
   highlights: Array.isArray(property.highlights) ? property.highlights : [],
 })
 
-const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property) => normalizeProperty({
+const applyOverride = (property: CatalogProperty): CatalogProperty => normalizeProperty({
+  ...property,
+  ...(propertyOverrides[property.slug] ?? {}),
+})
+
+const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property) => applyOverride(normalizeProperty({
   ...property,
   partnerSlug: property.source.toLowerCase().replace(/\s+/g, '-'),
   categories: [property.propertyType, ...property.roomTypes].filter(Boolean),
   gallery: [property.image],
   gallerySourceUrl: property.sourceUrl,
   verifiedAt: '2026-09-15',
-}))
+})))
 
-const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(normalizeProperty)
+const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(applyOverride)
 
 export const accommodationProperties: CatalogProperty[] = [
   ...normalizedSeedProperties,
