@@ -156,13 +156,13 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     highlights: ['All-inclusive living', 'Strong wellbeing offering', 'Central university access'],
     availabilityNote: name === 'Frederick Road' || name === 'James Street' ? 'Opening 2027; availability to be confirmed.' : undefined,
   })),
-  ...neonWood.map(([name, city, sourceUrl], index) => makeProperty({
+  ...neonWood.map(([name, city, sourceUrl]) => makeProperty({
     slug: `neon-wood-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
     name,
     city,
     country: 'Germany',
     address: city,
-    priceFrom: index === 0 ? 975 : 0,
+    priceFrom: 0,
     roomTypes: ['Single room', 'Studio', 'Double room'],
     universities: cityUniversities[city] ?? [],
     distance: `Well connected to universities in ${city}`,
