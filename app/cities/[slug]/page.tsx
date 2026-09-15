@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { cities, getCityBySlug, getUniversitiesByCity } from '@/lib/place-data'
+import { accommodationProperties } from '@/app/accommodation/catalog'
 import MatchedCTA from '@/components/matched-cta'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
@@ -74,6 +75,7 @@ export default async function CityPage({ params }: CityPageProps) {
   }
 
   const cityUniversities = getUniversitiesByCity(city.name)
+  const cityProperties = accommodationProperties.filter((property) => property.city.toLowerCase() === city.name.toLowerCase())
   const countryName = countryLabel(city.countryCode)
 
   return (
@@ -255,6 +257,23 @@ export default async function CityPage({ params }: CityPageProps) {
                     No university entries are linked to {city.name} yet.
                   </p>
                 )}
+              </section>
+
+              <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
+                    Accommodation
+                  </span>
+                </div>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Student accommodation in {city.name}</h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Browse {cityProperties.length} linked accommodation {cityProperties.length === 1 ? 'option' : 'options'} with images, room types and current property details.</p>
+                  </div>
+                  <Link href={`/accommodation?city=${encodeURIComponent(city.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">View all in {city.name}</Link>
+                </div>
+                {cityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{cityProperties.slice(0, 4).map((property) => <Link key={property.slug} href={`/accommodation/${property.slug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]"><img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No accommodation entries are linked to {city.name} yet.</p>}
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">

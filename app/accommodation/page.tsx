@@ -1,7 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { Suspense, useMemo, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { ArrowRight, CheckCircle2, MapPin, Search, SlidersHorizontal } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
@@ -9,9 +10,10 @@ import { accommodationCategories, accommodationCities, accommodationProperties, 
 
 const currencySymbol: Record<string, string> = { GBP: '£', EUR: '€', AUD: '$', USD: '$', CAD: 'CA$', AED: 'AED ', SGD: 'S$', MYR: 'RM' }
 
-export default function AccommodationPage() {
-  const [query, setQuery] = useState('')
-  const [city, setCity] = useState('All cities')
+function AccommodationContent() {
+  const searchParams = useSearchParams()
+  const [query, setQuery] = useState(() => searchParams.get('query') ?? '')
+  const [city, setCity] = useState(() => searchParams.get('city') ?? 'All cities')
   const [roomType, setRoomType] = useState('Any room type')
   const [category, setCategory] = useState('Any category')
   const [maxBudget, setMaxBudget] = useState('Any budget')
@@ -35,4 +37,12 @@ export default function AccommodationPage() {
     </main>
     <Footer />
   </>
+}
+
+export default function AccommodationPage() {
+  return (
+    <Suspense fallback={null}>
+      <AccommodationContent />
+    </Suspense>
+  )
 }

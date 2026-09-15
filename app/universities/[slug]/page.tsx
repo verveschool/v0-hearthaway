@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
 import { getCityBySlug, getUniversityBySlug, universities } from '@/lib/place-data'
+import { accommodationProperties } from '@/app/accommodation/catalog'
 
 export function generateStaticParams() {
   return universities.map((university) => ({ slug: university.slug }))
@@ -72,6 +73,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const relatedUniversities = universities.filter(
     (u) => u.city === university.city && u.slug !== university.slug,
   )
+  const universityProperties = accommodationProperties.filter((property) => property.universities.some((name) => name.toLowerCase() === university.name.toLowerCase()))
 
   const countryName = city?.country ?? countryLabel(university.country)
 
@@ -214,6 +216,21 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   </div>
                 </section>
               )}
+
+              <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
+                <div className="inline-flex items-center gap-2 mb-6">
+                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">Accommodation</span>
+                </div>
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Properties linked to {university.name}</h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">See accommodation entries connected to this university, including images, room options and property details.</p>
+                  </div>
+                  <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse accommodation</Link>
+                </div>
+                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.slice(0, 4).map((property) => <Link key={property.slug} href={`/accommodation/${property.slug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]"><img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No catalogue entries are directly linked to this university yet. Browse nearby options in {university.city} instead.</p>}
+              </section>
 
               {relatedUniversities.length > 0 && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
