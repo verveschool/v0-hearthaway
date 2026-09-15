@@ -1,123 +1,34 @@
-import type { AccommodationCurrency, AccommodationProperty } from './accommodation-data'
+import type { AccommodationCurrency, AccommodationPricePeriod, AccommodationProperty } from './accommodation-data'
 
-type CatalogMeta = {
-  partnerSlug: string
-  categories: string[]
-  gallerySourceUrl: string
-  gallery: string[]
-  availabilityNote?: string
-  roomFeatures?: string[]
-  inclusions?: string[]
-  contractTerms?: string[]
-  depositNote?: string
-  goodFor?: string[]
-  verifiedAt?: string
-}
-
+type CatalogMeta = { partnerSlug: string; categories: string[]; gallerySourceUrl: string; gallery: string[]; availabilityNote?: string; roomFeatures?: string[]; inclusions?: string[]; contractTerms?: string[]; depositNote?: string; goodFor?: string[]; verifiedAt?: string }
 export type CatalogProperty = AccommodationProperty & CatalogMeta
 
-type PropertySeed = {
-  slug: string
-  name: string
-  city: string
-  country: string
-  address: string
-  universities: string[]
-  distance: string
-  partnerSlug: string
-  sourceUrl?: string
-  priceFrom?: number
-  currency?: AccommodationCurrency
-  roomTypes?: string[]
-  categories?: string[]
-  amenities?: string[]
-  highlights?: string[]
-  image?: string
-  gallery?: string[]
-  availabilityNote?: string
-  roomFeatures?: string[]
-  inclusions?: string[]
-  contractTerms?: string[]
-  depositNote?: string
-  goodFor?: string[]
-}
+type PropertySeed = { slug: string; name: string; city: string; country: string; address: string; universities: string[]; distance: string; partnerSlug: string; sourceUrl?: string; priceFrom?: number; currency?: AccommodationCurrency; pricePeriod?: AccommodationPricePeriod; roomTypes?: string[]; categories?: string[]; amenities?: string[]; highlights?: string[]; image?: string; gallery?: string[]; availabilityNote?: string; roomFeatures?: string[]; inclusions?: string[]; contractTerms?: string[]; depositNote?: string; goodFor?: string[] }
 
 const genericGallery = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png']
-
-const cityUniversities: Record<string, string[]> = {
-  Belfast: ["Queen's University Belfast", 'Ulster University'], Birmingham: ['University of Birmingham', 'Aston University', 'Birmingham City University'], Bristol: ['University of Bristol', 'University of the West of England'], Cardiff: ['Cardiff University', 'Cardiff Metropolitan University'], Coventry: ['University of Warwick', 'Coventry University'], Edinburgh: ['University of Edinburgh', 'Edinburgh Napier University'], Exeter: ['University of Exeter'], Glasgow: ['University of Glasgow', 'University of Strathclyde'], Leeds: ['University of Leeds', 'Leeds Beckett University'], Leicester: ['University of Leicester', 'De Montfort University'], Loughborough: ['Loughborough University'], Liverpool: ['University of Liverpool', 'Liverpool John Moores University'], London: ['University College London', "King's College London", 'London School of Economics'], Manchester: ['University of Manchester', 'Manchester Metropolitan University'], Newcastle: ['Newcastle University', 'Northumbria University'], Nottingham: ['University of Nottingham', 'Nottingham Trent University'], Sheffield: ['University of Sheffield', 'Sheffield Hallam University'], Southampton: ['University of Southampton', 'Solent University'], York: ['University of York', 'York St John University'], Barcelona: ['Universitat de Barcelona', 'Pompeu Fabra University'], Madrid: ['Complutense University of Madrid', 'Autonomous University of Madrid'], Sydney: ['University of Sydney', 'UTS', 'UNSW Sydney'], Brisbane: ['QUT', 'University of Queensland', 'Griffith University'], Melbourne: ['University of Melbourne', 'RMIT University', 'Monash University'], Berlin: ['Humboldt University of Berlin', 'TU Berlin', 'Freie Universität Berlin'], Cologne: ['University of Cologne', 'TH Köln'], Frankfurt: ['Goethe University Frankfurt'], Tübingen: ['University of Tübingen'],
-}
-
-const sourceByPartner: Record<string, string> = {
-  'study-inn': 'https://studyinn.com/', 'neon-wood': 'https://neonwood.com/apartments', 'vita-student': 'https://www.vitastudent.com/en/cities/', iglu: 'https://iglu.com.au/compare-iglus/',
-}
-
-const discoveredGalleries: Record<string, string[]> = {
-  'study-inn-brotherton-house': ['https://ecnf5ig9whg.exactdn.com/wp-content/uploads/2022/11/Platinum-APT-1-1-1024x752.jpg?lossy=0&sharp=1&ssl=1&strip=all'],
-  'study-inn-reynard-house': ['https://ecnf5ig9whg.exactdn.com/wp-content/uploads/2024/09/Building-evening-1-1024x902-1.jpg?sharp=1&strip=all'],
-  'study-inn-talbot-street': ['https://casita-img.s3.eu-west-2.amazonaws.com/uploads/buildings/1329/building/orig/talbot-street-nottingham-193294773320230301081612AM.jpeg'],
-  'study-inn-walnut-gardens': ['https://cdn.beststudenthalls.com/media/room/platinum-plus-studio-18/883074'],
-  'study-inn-lemyngton-street': ['https://media.uhzcdn.com/image/1387/01HVR0X4PYWYXPQGCHNPXYMD07_z.webp'],
-  'study-inn-marlborough-house': ['https://media.studentcrowd.net/w1200/content/galleries/study-inn-bristol---marlborough-house/app-images-2fresizable-2fimage-1--26829493-1616747611383.png'],
-  'neon-wood-berlin-frankfurter-tor': ['https://neonwood.com/app/uploads/2022/02/AH448-863-69-73-81-Z6_V2-scaled-768x384-c-default.jpg'],
-  'neon-wood-berlin-adlershof': ['https://neonwood.com/app/uploads/2020/01/Neon-Wood-Studentenheim-Adlershof-02-988x0-c-default.jpg'],
-  'neon-wood-frankfurt-riedberg': ['https://image.uhzcdn.com/house/c4/37056380d03d80f788e33c5aea6c94dac0e496.webp?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp'],
-  'vita-student-iona-street': ['https://image.uhzcdn.com/houseugc/04/b744f191d0dc9bb957aee7cbb73bca16c8a21b.jpeg?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp'],
-  'vita-student-park-place': ['https://media.uhzcdn.com/image/1393/01JRAWFEX50F8K819SM9JVWJRX_z.webp'],
-  'vita-student-copper-towers': ['https://media.licdn.com/dms/image/sync/v2/D4E27AQFlipEBv2FnWA/articleshare-shrink_1280_800/articleshare-shrink_1280_800/0/1711217691969?e=2147483647&t=of6q4V9yD7Y634ct_TO85UJ56zOqW8qY1HyHqw48MMc&v=beta'],
-  'vita-student-pebble-mill': ['https://pebblemillbirmingham.co.uk/wp-content/uploads/2020/06/Vita-Birmingham-08-1-640x640.jpg'],
-  'vita-student-poblenou': ['https://media.poblenouurbandistrict.com/2023/09/25064845/dsc1315-copia-scaled.jpg'],
-  'iglu-mascot': ['https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Exterior-1400x739-1.jpg'],
-}
+const cityUniversities: Record<string, string[]> = { Belfast: ["Queen's University Belfast", 'Ulster University'], Birmingham: ['University of Birmingham', 'Aston University', 'Birmingham City University'], Bristol: ['University of Bristol', 'University of the West of England'], Cardiff: ['Cardiff University', 'Cardiff Metropolitan University'], Coventry: ['University of Warwick', 'Coventry University'], Edinburgh: ['University of Edinburgh', 'Edinburgh Napier University'], Exeter: ['University of Exeter'], Glasgow: ['University of Glasgow', 'University of Strathclyde'], Leeds: ['University of Leeds', 'Leeds Beckett University'], Leicester: ['University of Leicester', 'De Montfort University'], Loughborough: ['Loughborough University'], Liverpool: ['University of Liverpool', 'Liverpool John Moores University'], London: ['University College London', "King's College London", 'London School of Economics'], Manchester: ['University of Manchester', 'Manchester Metropolitan University'], Newcastle: ['Newcastle University', 'Northumbria University'], Nottingham: ['University of Nottingham', 'Nottingham Trent University'], Sheffield: ['University of Sheffield', 'Sheffield Hallam University'], Southampton: ['University of Southampton', 'Solent University'], York: ['University of York', 'York St John University'], Barcelona: ['Universitat de Barcelona', 'Pompeu Fabra University'], Madrid: ['Complutense University of Madrid', 'Autonomous University of Madrid'], Sydney: ['University of Sydney', 'UTS', 'UNSW Sydney'], Brisbane: ['QUT', 'University of Queensland', 'Griffith University'], Melbourne: ['University of Melbourne', 'RMIT University', 'Monash University'], Berlin: ['Humboldt University of Berlin', 'TU Berlin', 'Freie Universität Berlin'], Cologne: ['University of Cologne', 'TH Köln'], Frankfurt: ['Goethe University Frankfurt'], Tübingen: ['University of Tübingen'] }
+const sourceByPartner: Record<string, string> = { 'study-inn': 'https://studyinn.com/', 'neon-wood': 'https://neonwood.com/apartments', 'vita-student': 'https://www.vitastudent.com/en/cities/', iglu: 'https://iglu.com.au/compare-iglus/' }
+const discoveredGalleries: Record<string, string[]> = { 'study-inn-brotherton-house': ['https://ecnf5ig9whg.exactdn.com/wp-content/uploads/2022/11/Platinum-APT-1-1-1024x752.jpg?lossy=0&sharp=1&ssl=1&strip=all'], 'study-inn-reynard-house': ['https://ecnf5ig9whg.exactdn.com/wp-content/uploads/2024/09/Building-evening-1-1024x902-1.jpg?sharp=1&strip=all'], 'study-inn-talbot-street': ['https://casita-img.s3.eu-west-2.amazonaws.com/uploads/buildings/1329/building/orig/talbot-street-nottingham-193294773320230301081612AM.jpeg'], 'study-inn-walnut-gardens': ['https://cdn.beststudenthalls.com/media/room/platinum-plus-studio-18/883074'], 'study-inn-lemyngton-street': ['https://media.uhzcdn.com/image/1387/01HVR0X4PYWYXPQGCHNPXYMD07_z.webp'], 'study-inn-marlborough-house': ['https://media.studentcrowd.net/w1200/content/galleries/study-inn-bristol---marlborough-house/app-images-2fresizable-2fimage-1--26829493-1616747611383.png'], 'neon-wood-berlin-frankfurter-tor': ['https://neonwood.com/app/uploads/2022/02/AH448-863-69-73-81-Z6_V2-scaled-768x384-c-default.jpg'], 'neon-wood-berlin-adlershof': ['https://neonwood.com/app/uploads/2020/01/Neon-Wood-Studentenheim-Adlershof-02-988x0-c-default.jpg'], 'neon-wood-frankfurt-riedberg': ['https://image.uhzcdn.com/house/c4/37056380d03d80f788e33c5aea6c94dac0e496.webp?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp'], 'vita-student-iona-street': ['https://image.uhzcdn.com/houseugc/04/b744f191d0dc9bb957aee7cbb73bca16c8a21b.jpeg?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp'], 'vita-student-park-place': ['https://media.uhzcdn.com/image/1393/01JRAWFEX50F8K819SM9JVWJRX_z.webp'], 'vita-student-copper-towers': ['https://media.licdn.com/dms/image/sync/v2/D4E27AQFlipEBv2FnWA/articleshare-shrink_1280_800/articleshare-shrink_1280_800/0/1711217691969?e=2147483647&t=of6q4V9yD7Y634ct_TO85UJ56zOqW8qY1HyHqw48MMc&v=beta'], 'vita-student-pebble-mill': ['https://pebblemillbirmingham.co.uk/wp-content/uploads/2020/06/Vita-Birmingham-08-1-640x640.jpg'], 'vita-student-poblenou': ['https://media.poblenouurbandistrict.com/2023/09/25064845/dsc1315-copia-scaled.jpg'], 'iglu-mascot': ['https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Exterior-1400x739-1.jpg'] }
 
 function makeProperty(seed: PropertySeed): CatalogProperty {
   const sourceUrl = seed.sourceUrl ?? sourceByPartner[seed.partnerSlug] ?? '#'
   const gallery = seed.gallery ?? discoveredGalleries[seed.slug] ?? genericGallery
-  return {
-    slug: seed.slug, name: seed.name, city: seed.city, country: seed.country, address: seed.address,
-    priceFrom: seed.priceFrom ?? 0, currency: seed.currency ?? 'GBP', roomTypes: seed.roomTypes ?? ['Ensuite', 'Studio'], propertyType: 'Student residence', universities: seed.universities,
-    distance: seed.distance, amenities: seed.amenities ?? ['Wi-Fi', 'Study spaces', 'Social spaces', 'On-site support'], highlights: seed.highlights ?? ['Student-focused location', 'Multiple room options', 'On-site support'], image: seed.image ?? gallery[0], source: seed.partnerSlug, sourceUrl,
-    availabilityNote: seed.availabilityNote, partnerSlug: seed.partnerSlug, categories: seed.categories ?? ['Student residence'], gallerySourceUrl: sourceUrl, gallery,
-    roomFeatures: seed.roomFeatures, inclusions: seed.inclusions, contractTerms: seed.contractTerms, depositNote: seed.depositNote, goodFor: seed.goodFor,
-    verifiedAt: '2026-09-15',
-  }
+  return { slug: seed.slug, name: seed.name, city: seed.city, country: seed.country, address: seed.address, priceFrom: seed.priceFrom ?? 0, currency: seed.currency ?? 'GBP', pricePeriod: seed.pricePeriod ?? 'check', roomTypes: seed.roomTypes ?? ['Ensuite', 'Studio'], propertyType: 'Student residence', universities: seed.universities, distance: seed.distance, amenities: seed.amenities ?? ['Wi-Fi', 'Study spaces', 'Social spaces', 'On-site support'], highlights: seed.highlights ?? ['Student-focused location', 'Multiple room options', 'On-site support'], image: seed.image ?? gallery[0], source: seed.partnerSlug, sourceUrl, availabilityNote: seed.availabilityNote, partnerSlug: seed.partnerSlug, categories: seed.categories ?? ['Student residence'], gallerySourceUrl: sourceUrl, gallery, roomFeatures: seed.roomFeatures, inclusions: seed.inclusions, contractTerms: seed.contractTerms, depositNote: seed.depositNote, goodFor: seed.goodFor, verifiedAt: '2026-09-15' }
 }
 
-const studyInn = [
-  ['Brotherton House', 'Leeds', 'https://studyinn.com/student-accommodation/leeds/brotherton-house/'], ['Reynard House', 'Leicester', 'https://studyinn.com/student-accommodation/leicester/reynard-house/'], ['Talbot Street', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/talbot-street/'], ['Triumph House', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/triumph-house/'], ['Walnut Gardens', 'Exeter', 'https://studyinn.com/student-accommodation/exeter/walnut-gardens/'], ['Lemyngton Street', 'Loughborough', 'https://studyinn.com/student-accommodation/loughborough/lemyngton-street/'], ['Marlborough House', 'Bristol', 'https://studyinn.com/student-accommodation/bristol/marlborough-house/'], ['Frederick Road', 'Birmingham', 'https://studyinn.com/student-accommodation/birmingham/frederick-road/'], ['James Street', 'York', 'https://studyinn.com/student-accommodation/york/james-street/'],
-] as const
+const studyInn = [['Brotherton House', 'Leeds', 'https://studyinn.com/student-accommodation/leeds/brotherton-house/'], ['Reynard House', 'Leicester', 'https://studyinn.com/student-accommodation/leicester/reynard-house/'], ['Talbot Street', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/talbot-street/'], ['Triumph House', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/triumph-house/'], ['Walnut Gardens', 'Exeter', 'https://studyinn.com/student-accommodation/exeter/walnut-gardens/'], ['Lemyngton Street', 'Loughborough', 'https://studyinn.com/student-accommodation/loughborough/lemyngton-street/'], ['Marlborough House', 'Bristol', 'https://studyinn.com/student-accommodation/bristol/marlborough-house/'], ['Frederick Road', 'Birmingham', 'https://studyinn.com/student-accommodation/birmingham/frederick-road/'], ['James Street', 'York', 'https://studyinn.com/student-accommodation/york/james-street/']] as const
+const neonWood = [['Berlin Frankfurter Tor', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-frankfurter-tor'], ['Berlin Mitte-Wedding', 'Berlin', 'https://neonwood.com/cities/berlin'], ['Tannhaus Berlin Neukölln', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-neukoelln'], ['Berlin Adlershof', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-adlershof'], ['Cologne K115', 'Cologne', 'https://neonwood.com/apartments'], ['Frankfurt Riedberg', 'Frankfurt', 'https://neonwood.com/apartments'], ['TÜ3', 'Tübingen', 'https://neonwood.com/apartments']] as const
+const vitaStudent = [['Bruce Street', 'Belfast'], ['New Gough Street', 'Birmingham'], ['Pebble Mill', 'Birmingham'], ['Zed Alley', 'Bristol'], ['Park Place', 'Cardiff'], ['Copper Towers', 'Coventry'], ['Warwick Cannon Park', 'Coventry'], ['New Waverley', 'Edinburgh'], ['Iona Street', 'Edinburgh'], ['Fountainbridge', 'Edinburgh'], ['Portland House', 'Exeter'], ['New India Street', 'Glasgow'], ['West End', 'Glasgow'], ['Portland Crescent', 'Leeds'], ['St Albans', 'Leeds'], ['Crosshall St.', 'Liverpool'], ['Lewisham Exchange', 'London'], ['First Street', 'Manchester'], ['Circle Square', 'Manchester'], ['New Leazes Park', 'Newcastle'], ['Westgate', 'Newcastle'], ['Strawberry Place', 'Newcastle'], ['Station Street', 'Nottingham'], ['Telephone House', 'Sheffield'], ['Richmond House', 'Southampton'], ['Lawrence Street', 'York'], ['Poblenou', 'Barcelona'], ['Pedralbes', 'Barcelona'], ['New Oria', 'Madrid']] as const
+const iglu = [['Broadway', 'Sydney'], ['Central', 'Sydney'], ['Central Park', 'Sydney'], ['Chatswood', 'Sydney'], ['Redfern', 'Sydney'], ['Mascot', 'Sydney'], ['Mascot Duo', 'Sydney'], ['Summer Hill', 'Sydney'], ['Waterloo', 'Sydney'], ['Brisbane City', 'Brisbane'], ['Kelvin Grove', 'Brisbane'], ['Melbourne City', 'Melbourne'], ['South Yarra', 'Melbourne'], ['Flagstaff Gardens', 'Melbourne'], ['Melbourne Central', 'Melbourne'], ['Flagstaff Station', 'Melbourne']] as const
 
-const neonWood = [
-  ['Berlin Frankfurter Tor', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-frankfurter-tor'], ['Berlin Mitte-Wedding', 'Berlin', 'https://neonwood.com/cities/berlin'], ['Tannhaus Berlin Neukölln', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-neukoelln'], ['Berlin Adlershof', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-adlershof'], ['Cologne K115', 'Cologne', 'https://neonwood.com/apartments'], ['Frankfurt Riedberg', 'Frankfurt', 'https://neonwood.com/apartments'], ['TÜ3', 'Tübingen', 'https://neonwood.com/apartments'],
-] as const
-
-const vitaStudent = [
-  ['Bruce Street', 'Belfast'], ['New Gough Street', 'Birmingham'], ['Pebble Mill', 'Birmingham'], ['Zed Alley', 'Bristol'], ['Park Place', 'Cardiff'], ['Copper Towers', 'Coventry'], ['Warwick Cannon Park', 'Coventry'], ['New Waverley', 'Edinburgh'], ['Iona Street', 'Edinburgh'], ['Fountainbridge', 'Edinburgh'], ['Portland House', 'Exeter'], ['New India Street', 'Glasgow'], ['West End', 'Glasgow'], ['Portland Crescent', 'Leeds'], ['St Albans', 'Leeds'], ['Crosshall St.', 'Liverpool'], ['Lewisham Exchange', 'London'], ['First Street', 'Manchester'], ['Circle Square', 'Manchester'], ['New Leazes Park', 'Newcastle'], ['Westgate', 'Newcastle'], ['Strawberry Place', 'Newcastle'], ['Station Street', 'Nottingham'], ['Telephone House', 'Sheffield'], ['Richmond House', 'Southampton'], ['Lawrence Street', 'York'], ['Poblenou', 'Barcelona'], ['Pedralbes', 'Barcelona'], ['New Oria', 'Madrid'],
-] as const
-
-const iglu = [
-  ['Broadway', 'Sydney'], ['Central', 'Sydney'], ['Central Park', 'Sydney'], ['Chatswood', 'Sydney'], ['Redfern', 'Sydney'], ['Mascot', 'Sydney'], ['Mascot Duo', 'Sydney'], ['Summer Hill', 'Sydney'], ['Waterloo', 'Sydney'], ['Brisbane City', 'Brisbane'], ['Kelvin Grove', 'Brisbane'], ['Melbourne City', 'Melbourne'], ['South Yarra', 'Melbourne'], ['Flagstaff Gardens', 'Melbourne'], ['Melbourne Central', 'Melbourne'], ['Flagstaff Station', 'Melbourne'],
-] as const
-
-const studyInnShared = {
-  categories: ['Student residence', 'Serviced living', 'All-inclusive'], roomTypes: ['Ensuite', 'Studio', 'Serviced apartment'], amenities: ['All bills included', 'Housekeeping', 'Superfast Wi-Fi', 'Gym', 'Wellness spaces', 'Study rooms', '24/7 security'], highlights: ['All-inclusive living', 'Strong wellbeing offering', 'University access'], inclusions: ['Utilities', 'Wi-Fi', 'Regular room cleaning', 'Linen and towel service', 'Security'], goodFor: ['Students who want an all-inclusive setup', 'Students who value privacy', 'Students who want strong shared amenities'],
-}
-
-const neonShared = {
-  categories: ['Private apartment', 'All-inclusive', 'Furnished'], roomTypes: ['Single room', 'Studio', 'Double room'], amenities: ['Furnished apartment', 'Private bathroom', 'Kitchenette', 'High-speed Wi-Fi', 'Shared spaces', 'On-site management'], highlights: ['All-inclusive living', 'Private kitchenette and bathroom', 'Strong transport links'], inclusions: ['Furnished space', 'Internet', 'Utilities', 'Common-area access', 'On-site management'], goodFor: ['Students wanting a private apartment', 'Students staying 6–12 months', 'Students who want predictable monthly costs'],
-}
-
-const vitaShared = {
-  categories: ['Premium student residence', 'All-inclusive', 'Private room'], roomTypes: ['Ensuite', 'Studio'], amenities: ['Bills included', '24/7 gym', 'Study spaces', 'Housekeeping', 'Events', 'High-speed Wi-Fi', '24/7 support'], highlights: ['All-in living', 'Central locations', 'Strong resident experience'], inclusions: ['Bills', 'Wi-Fi', 'Weekday breakfast', 'Housekeeping', 'Gym', 'Resident events'], goodFor: ['Students who want an all-in experience', 'Students who value community', 'Students who want premium facilities'],
-}
-
-const igluShared = {
-  categories: ['Student residence', 'Furnished', 'Purpose-built'], roomTypes: ['Studio', 'Ensuite', 'Shared apartment'], amenities: ['Unlimited Wi-Fi', 'All utilities', '24/7 support', 'Study areas', 'Gym', 'Social spaces', 'Laundry', 'Bike storage'], highlights: ['University-focused locations', 'Strong communal facilities', 'Public transport access'], inclusions: ['Unlimited Wi-Fi', 'Water, electricity and gas', 'Communal spaces', 'Onsite support', 'Resident events', 'Gym access', 'Weekday breakfast'], goodFor: ['Students who want community', 'Students who value transport access', 'International students'],
-}
+const studyInnShared = { categories: ['Student residence', 'Serviced living', 'All-inclusive'], roomTypes: ['Ensuite', 'Studio', 'Serviced apartment'], amenities: ['All bills included', 'Housekeeping', 'Superfast Wi-Fi', 'Gym', 'Wellness spaces', 'Study rooms', '24/7 security'], highlights: ['All-inclusive living', 'Strong wellbeing offering', 'University access'], inclusions: ['Utilities', 'Wi-Fi', 'Regular room cleaning', 'Linen and towel service', 'Security'], goodFor: ['Students who want an all-inclusive setup', 'Students who value privacy', 'Students who want strong shared amenities'] }
+const neonShared = { categories: ['Private apartment', 'All-inclusive', 'Furnished'], roomTypes: ['Single room', 'Studio', 'Double room'], amenities: ['Furnished apartment', 'Private bathroom', 'Kitchenette', 'High-speed Wi-Fi', 'Shared spaces', 'On-site management'], highlights: ['All-inclusive living', 'Private kitchenette and bathroom', 'Strong transport links'], inclusions: ['Furnished space', 'Internet', 'Utilities', 'Common-area access', 'On-site management'], goodFor: ['Students wanting a private apartment', 'Students staying 6–12 months', 'Students who want predictable monthly costs'] }
+const vitaShared = { categories: ['Premium student residence', 'All-inclusive', 'Private room'], roomTypes: ['Ensuite', 'Studio'], amenities: ['Bills included', '24/7 gym', 'Study spaces', 'Housekeeping', 'Events', 'High-speed Wi-Fi', '24/7 support'], highlights: ['All-in living', 'Central locations', 'Strong resident experience'], inclusions: ['Bills', 'Wi-Fi', 'Weekday breakfast', 'Housekeeping', 'Gym', 'Resident events'], goodFor: ['Students who want an all-in experience', 'Students who value community', 'Students who want premium facilities'] }
+const igluShared = { categories: ['Student residence', 'Furnished', 'Purpose-built'], roomTypes: ['Studio', 'Ensuite', 'Shared apartment'], amenities: ['Unlimited Wi-Fi', 'All utilities', '24/7 support', 'Study areas', 'Gym', 'Social spaces', 'Laundry', 'Bike storage'], highlights: ['University-focused locations', 'Strong communal facilities', 'Public transport access'], inclusions: ['Unlimited Wi-Fi', 'Water, electricity and gas', 'Communal spaces', 'Onsite support', 'Resident events', 'Gym access', 'Weekday breakfast'], goodFor: ['Students who want community', 'Students who value transport access', 'International students'] }
 
 export const additionalAccommodationProperties: CatalogProperty[] = [
-  ...studyInn.map(([name, city, sourceUrl], index) => makeProperty({ slug: `study-inn-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'UK', address: city, priceFrom: index === 0 ? 174 : 0, partnerSlug: 'study-inn', sourceUrl, ...studyInnShared, distance: `Near major universities in ${city}`, availabilityNote: name === 'Frederick Road' || name === 'James Street' ? 'Opening 2027; availability to be confirmed.' : undefined })),
-  ...neonWood.map(([name, city, sourceUrl]) => makeProperty({ slug: `neon-wood-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'Germany', address: city, priceFrom: 0, currency: 'EUR', partnerSlug: 'neon-wood', sourceUrl, ...neonShared, distance: `Well connected to universities in ${city}`, contractTerms: ['6 or 12 months', 'Shorter stays may be available during promotions'], depositNote: 'Deposit applies; confirm the current amount for the selected apartment.' })),
-  ...vitaStudent.map(([name, city]) => makeProperty({ slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK', address: `${name}, ${city}`, partnerSlug: 'vita-student', sourceUrl: `${sourceByPartner['vita-student']}${city.toLowerCase()}/`, ...vitaShared, distance: `Central student location in ${city}` })),
-  ...iglu.map(([name, city]) => makeProperty({ slug: `iglu-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'Australia', address: `${name}, ${city}`, partnerSlug: 'iglu', sourceUrl: 'https://iglu.com.au/compare-iglus/', ...igluShared, currency: 'AUD', distance: `Close to major universities and transport in ${city}`, availabilityNote: name === 'Mascot Duo' ? 'Coming soon; availability to be confirmed.' : undefined })),
+  ...studyInn.map(([name, city, sourceUrl], index) => makeProperty({ slug: `study-inn-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'UK', address: city, priceFrom: index === 0 ? 174 : 0, currency: 'GBP', pricePeriod: 'week', partnerSlug: 'study-inn', sourceUrl, ...studyInnShared, distance: `Near major universities in ${city}`, availabilityNote: name === 'Frederick Road' || name === 'James Street' ? 'Opening 2027; availability to be confirmed.' : undefined })),
+  ...neonWood.map(([name, city, sourceUrl]) => makeProperty({ slug: `neon-wood-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'Germany', address: city, priceFrom: 0, currency: 'EUR', pricePeriod: 'month', partnerSlug: 'neon-wood', sourceUrl, ...neonShared, distance: `Well connected to universities in ${city}`, contractTerms: ['6 or 12 months', 'Shorter stays may be available during promotions'], depositNote: 'Deposit applies; confirm the current amount for the selected apartment.' })),
+  ...vitaStudent.map(([name, city]) => makeProperty({ slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK', address: `${name}, ${city}`, partnerSlug: 'vita-student', pricePeriod: 'week', sourceUrl: `${sourceByPartner['vita-student']}${city.toLowerCase()}/`, ...vitaShared, distance: `Central student location in ${city}` })),
+  ...iglu.map(([name, city]) => makeProperty({ slug: `iglu-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`, name, city, country: 'Australia', address: `${name}, ${city}`, partnerSlug: 'iglu', currency: 'AUD', pricePeriod: 'week', sourceUrl: 'https://iglu.com.au/compare-iglus/', ...igluShared, distance: `Close to major universities and transport in ${city}`, availabilityNote: name === 'Mascot Duo' ? 'Coming soon; availability to be confirmed.' : undefined })),
 ]
