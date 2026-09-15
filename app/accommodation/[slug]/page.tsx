@@ -5,17 +5,17 @@ import Footer from '@/components/footer'
 import { accommodationProperties, getAccommodationBySlug } from '../catalog'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import WhatsAppLink from '@/components/accommodation/whatsapp-link'
+import { formatAccommodationPrice, formatAccommodationPricePeriod } from '../formatters'
 
 export function generateStaticParams() { return accommodationProperties.map((property) => ({ slug: property.slug })) }
 type PropertyPageProps = { params: Promise<{ slug: string }> }
-const currencySymbol: Record<string, string> = { GBP: '£', EUR: '€', AUD: '$', USD: '$', CAD: 'CA$', AED: 'AED ', SGD: 'S$', MYR: 'RM' }
 
 export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
   const { slug } = await params
   const property = getAccommodationBySlug(slug)
   if (!property) return <><Navigation /><main className="min-h-[60vh] bg-[#F7F6F3] px-6 py-24"><div className="mx-auto max-w-3xl text-center"><h1 className="font-heading text-4xl font-extrabold text-[#1A1A1A]">Property not found</h1><p className="mt-4 text-[#6B6860]">Explore other student accommodation options and request help finding the right fit.</p><Link href="/accommodation" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#FCC20A] px-6 py-3 font-bold text-[#00319D]">Back to accommodation <ArrowRight className="h-4 w-4" /></Link></div></main><Footer /></>
-  const price = property.priceFrom > 0 ? `${currencySymbol[property.currency] ?? `${property.currency} `}${property.priceFrom}` : 'Contact us'
-  const periodLabel = property.priceFrom > 0 && property.pricePeriod && property.pricePeriod !== 'check' ? `/${property.pricePeriod}` : ''
+  const price = property.priceFrom > 0 ? formatAccommodationPrice(property.currency, property.priceFrom) : 'Contact us'
+  const periodLabel = property.priceFrom > 0 && property.pricePeriod ? formatAccommodationPricePeriod(property.pricePeriod) : ''
   const gallery = property.gallery.length ? property.gallery : [property.image]
   const cityUniversities = getUniversitiesByCity(property.city)
   const nearbyUniversities = property.universities.map((name) => cityUniversities.find((university) => university.name.toLowerCase() === name.toLowerCase()) ?? cityUniversities.find((university) => university.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(university.name.toLowerCase()))).filter((university, index, universities): university is NonNullable<typeof university> => Boolean(university) && universities.findIndex((candidate) => candidate?.slug === university?.slug) === index)
