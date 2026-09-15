@@ -58,6 +58,19 @@ export const accommodationProperties: CatalogProperty[] = [
 ]
 
 export const accommodationCities = [...new Set(accommodationProperties.map((property) => property.city))].sort()
+export const accommodationCountries = [...new Set(accommodationProperties.map((property) => property.country))].sort()
+
+export const accommodationCitiesByCountry: ReadonlyMap<string, readonly string[]> = new Map(
+  accommodationCountries.map((country) => [
+    country,
+    [...new Set(accommodationProperties.filter((property) => property.country === country).map((property) => property.city))].sort(),
+  ]),
+)
+
+export function getAccommodationCitiesByCountry(country: string): readonly string[] {
+  return accommodationCitiesByCountry.get(country) ?? []
+}
+
 export const accommodationCategories = [...new Set(accommodationProperties.flatMap((property) => property.categories))].sort()
 export const accommodationRoomTypes = [...new Set(accommodationProperties.flatMap((property) => property.roomTypes))].sort()
 
