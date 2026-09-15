@@ -2,6 +2,8 @@ import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
 import { propertyOverrides } from './property-overrides'
 import { getUniversitiesByCity } from '@/lib/place-data'
+import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
+import type { AccommodationCurrency, AccommodationPricePeriod } from './accommodation-data'
 
 const fallbackGallery = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png', '/images/acc-shared.png', '/images/acc-homestay.png', '/images/city-liverpool.png', '/images/city-manchester.png']
 
@@ -14,14 +16,14 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
   }
 
   const currency = property.currency ?? 'GBP'
-  const fallbackPrice = currency === 'GBP' ? 175 : currency === 'EUR' ? 850 : currency === 'AUD' ? 520 : 600
   const universities = Array.isArray(property.universities) && property.universities.length
     ? property.universities
     : getUniversitiesByCity(property.city).map((university) => university.name)
 
   return {
     ...property,
-    priceFrom: property.priceFrom > 0 ? property.priceFrom : fallbackPrice,
+    // A missing price remains unconfirmed rather than being represented by an invented fallback amount.
+    priceFrom: Number.isFinite(property.priceFrom) && property.priceFrom > 0 ? property.priceFrom : 0,
     currency,
     pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
     categories: Array.isArray(property.categories) ? property.categories : [],
@@ -73,6 +75,48 @@ export function getAccommodationCitiesByCountry(country: string): readonly strin
 
 export const accommodationCategories = [...new Set(accommodationProperties.flatMap((property) => property.categories))].sort()
 export const accommodationRoomTypes = [...new Set(accommodationProperties.flatMap((property) => property.roomTypes))].sort()
+
+type ConfirmedAccommodationPricePeriod = Exclude<AccommodationPricePeriod, 'check'>
+
+export type AccommodationBudgetRange = Readonly<{
+  value: string
+  currency: AccommodationCurrency
+  upperBound: number
+  pricePeriod: ConfirmedAccommodationPricePeriod
+  label: string
+}>
+
+function getBudgetIncrement(amount: number): number {
+  if (amount < 1_000) return 50
+  if (amount < 5_000) return 100
+  return 500
+}
+
+/**
+ * Produces comparable price ceilings from confirmed catalogue prices only. Prices
+ * are kept separate by currency and billing period so weekly and monthly amounts
+ * are never treated as equivalent.
+ */
+export function getAccommodationBudgetRanges(properties: readonly CatalogProperty[]): AccommodationBudgetRange[] {
+  const ranges = new Map<string, AccommodationBudgetRange>()
+
+  for (const property of properties) {
+    if (!Number.isFinite(property.priceFrom) || property.priceFrom <= 0 || !property.pricePeriod || property.pricePeriod === 'check') continue
+
+    const upperBound = Math.ceil(property.priceFrom / getBudgetIncrement(property.priceFrom)) * getBudgetIncrement(property.priceFrom)
+    const key = `${property.currency}:${property.pricePeriod}:${upperBound}`
+
+    ranges.set(key, {
+      value: key,
+      currency: property.currency,
+      upperBound,
+      pricePeriod: property.pricePeriod,
+      label: `Up to ${formatAccommodationPrice(property.currency, upperBound)}${formatAccommodationPricePeriod(property.pricePeriod)}`,
+    })
+  }
+
+  return [...ranges.values()].sort((first, second) => first.currency.localeCompare(second.currency) || first.pricePeriod.localeCompare(second.pricePeriod) || first.upperBound - second.upperBound)
+}
 
 export function getAccommodationBySlug(slug: string) {
   return accommodationProperties.find((property) => property.slug === slug)
