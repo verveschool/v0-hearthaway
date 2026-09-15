@@ -1,6 +1,7 @@
 import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
 import { propertyOverrides } from './property-overrides'
+import { getUniversitiesByCity } from '@/lib/place-data'
 
 const fallbackGallery = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png', '/images/acc-shared.png', '/images/acc-homestay.png', '/images/city-liverpool.png', '/images/city-manchester.png']
 
@@ -12,12 +13,21 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     if (!gallery.includes(image)) gallery.push(image)
   }
 
+  const currency = property.currency ?? 'GBP'
+  const fallbackPrice = currency === 'GBP' ? 175 : currency === 'EUR' ? 850 : currency === 'AUD' ? 520 : 600
+  const universities = Array.isArray(property.universities) && property.universities.length
+    ? property.universities
+    : getUniversitiesByCity(property.city).map((university) => university.name)
+
   return {
     ...property,
+    priceFrom: property.priceFrom > 0 ? property.priceFrom : fallbackPrice,
+    currency,
+    pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
     categories: Array.isArray(property.categories) ? property.categories : [],
     gallery,
     gallerySourceUrl: property.gallerySourceUrl ?? property.sourceUrl,
-    universities: Array.isArray(property.universities) ? property.universities : [],
+    universities,
     roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
