@@ -9,11 +9,12 @@ export function generateStaticParams() {
 }
 
 type PropertyPageProps = {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }
 
-export default function AccommodationPropertyPage({ params }: PropertyPageProps) {
-  const property = getAccommodationBySlug(params.slug)
+export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
+  const { slug } = await params
+  const property = getAccommodationBySlug(slug)
 
   if (!property) {
     return (
@@ -115,9 +116,7 @@ export default function AccommodationPropertyPage({ params }: PropertyPageProps)
               <div className="rounded-2xl bg-white p-6 shadow-xl sm:p-7">
                 <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#00319D]">HearthAway</p>
                 <h2 className="mt-3 font-heading text-2xl font-extrabold leading-tight text-[#1A1A1A]">Want help deciding whether this is the right fit?</h2>
-                <p className="mt-3 text-sm leading-relaxed text-[#6B6860]">
-                  Tell us your university, budget and preferences. An advisor can help compare this with other options before you commit.
-                </p>
+                <p className="mt-3 text-sm leading-relaxed text-[#6B6860]">Tell us your university, budget and preferences. An advisor can help compare this with other options before you commit.</p>
                 <Link href="/get-matched" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#FCC20A] px-5 py-3.5 text-sm font-bold text-[#00319D]">
                   Get Matched <ArrowRight className="h-4 w-4" aria-hidden="true" />
                 </Link>
@@ -136,12 +135,8 @@ export default function AccommodationPropertyPage({ params }: PropertyPageProps)
               </div>
 
               <div className="mt-4 rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-5">
-                <p className="text-xs leading-relaxed text-[#6B6860]">
-                  Catalogue source: {property.source}. This is a reference listing, not a representation of a commercial partnership. See the source listing for the latest inventory and confirm all details before booking.
-                </p>
-                <a href={property.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">
-                  View source listing
-                </a>
+                <p className="text-xs leading-relaxed text-[#6B6860]">Catalogue source: {property.source}. This is a reference listing, not a representation of a commercial partnership. See the source listing for the latest inventory and confirm all details before booking.</p>
+                <a href={property.sourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">View source listing</a>
               </div>
             </aside>
           </div>
