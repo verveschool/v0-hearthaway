@@ -5,15 +5,8 @@ import { getUniversitiesByCity } from '@/lib/place-data'
 import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
 import type { AccommodationCurrency, AccommodationPricePeriod } from './accommodation-data'
 
-const fallbackGallery = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png', '/images/acc-shared.png', '/images/acc-homestay.png', '/images/city-liverpool.png', '/images/city-manchester.png']
-
 const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
-  const existingGallery = Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean)
-  const gallery = [...existingGallery]
-  for (const image of fallbackGallery) {
-    if (gallery.length >= 7) break
-    if (!gallery.includes(image)) gallery.push(image)
-  }
+  const gallery = Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean)
 
   const currency = property.currency ?? 'GBP'
   const universities = Array.isArray(property.universities) && property.universities.length
