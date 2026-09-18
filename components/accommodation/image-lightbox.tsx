@@ -34,13 +34,17 @@ export default function ImageLightbox({ images, name }: ImageLightboxProps) {
       <div className="overflow-hidden rounded-2xl bg-[#00319D] shadow-xl">
         <button type="button" onClick={() => setActiveIndex(0)} className="group relative block h-[360px] w-full text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:h-[500px]" aria-label={`Open ${name} main photo`}>
           <img src={images[0]} alt={name} className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-7 pb-7 pt-16 text-left text-white sm:px-9 sm:pb-9">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">Hatfield, UK</p>
+            <h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{name}</h1>
+          </div>
           <span className="absolute right-5 top-5 rounded-full bg-black/60 px-4 py-2 text-xs font-bold text-white">View photos</span>
         </button>
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {images.slice(1, 9).map((image, index) => (
           <button key={`${image}-${index}`} type="button" onClick={() => setActiveIndex(index + 1)} className="group overflow-hidden rounded-xl border border-[#E8E6E1] bg-white text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A]" aria-label={`Open ${name} photo ${index + 2}`}>
-            <img src={image} alt={`${name} photo ${index + 2}`} className="h-32 w-full object-cover transition duration-300 group-hover:scale-105 sm:h-36" loading="lazy" />
+            <img src={image} alt={`${name} photo ${index + 2}`} className="aspect-[4/3] w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
           </button>
         ))}
       </div>
