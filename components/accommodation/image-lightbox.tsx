@@ -63,8 +63,8 @@ export default function ImageLightbox({ images, name }: ImageLightboxProps) {
             </header>
             <div className="relative flex min-h-0 flex-1 items-center justify-center px-12 py-6 sm:px-24 sm:py-8">
               <button type="button" onClick={() => setActiveIndex((activeIndex - 1 + images.length) % images.length)} className="absolute left-3 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:left-8" aria-label="Previous photo"><ChevronLeft className="h-7 w-7" /></button>
-              <div className="flex h-[min(72vh,760px)] w-[min(88vw,1280px)] items-center justify-center px-2 sm:px-4">
-                <img src={images[activeIndex]} alt={`${name} photo ${activeIndex + 1}`} className="max-h-full max-w-full rounded-lg object-contain shadow-2xl" />
+              <div className="h-[min(72vh,760px)] w-[min(88vw,1280px)] px-2 sm:px-4">
+                <img src={images[activeIndex]} alt={`${name} photo ${activeIndex + 1}`} className="h-full w-full rounded-lg object-contain shadow-2xl" />
               </div>
               <button type="button" onClick={() => setActiveIndex((activeIndex + 1) % images.length)} className="absolute right-3 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:right-8" aria-label="Next photo"><ChevronRight className="h-7 w-7" /></button>
             </div>
