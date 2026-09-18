@@ -143,7 +143,6 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
       'https://www.crm-students.com/resource/image/875226/landscape_ratio16x9/1140/641/648399f1e06f02de97378985dfa27ab3/FA0A97320DA5A26C7D289B2BAE28B24E/luna-hatfield-1-.webp',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/luna-18042-gtNAQNLxiiLCMBIbBQxrzKeK6wkEbw.webp',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/luna-18053-aQTdIDwNFhFV3yYLISHD2bBHAXyU4s.webp',
-      'https://www.crm-students.com/resource/image/773302/landscape_ratio16x9/1140/641/fb99396951708b14662f57de638360e0/DE475FC879D4CECDE3A986903115F73A/luna-3.webp',
       'https://www.crm-students.com/resource/image/773300/landscape_ratio16x9/1140/641/a3b698c449123c6c15bbe23c113fb289/E42D4D56C1AEA1B203C421572B97F682/luna-4.webp',
       'https://www.crm-students.com/resource/image/773298/landscape_ratio16x9/1140/641/ff48542fc4a7853850e5b58e9e16632c/6E361FD7E1C1C6A8838082584D386EA7/luna-5.webp',
       'https://www.crm-students.com/resource/image/773392/landscape_ratio16x9/1140/641/39dbcb25f78b63c24eaeefe562a8ae30/C68AD0613B8327CC1153F30D24FB6F84/ktv-room.webp',
