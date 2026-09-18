@@ -49,12 +49,29 @@ export default function ImageLightbox({ images, name }: ImageLightboxProps) {
         ))}
       </div>
       {isOpen && activeIndex !== null ? (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true" aria-label={`${name} photo viewer`} onMouseDown={(event) => { if (event.target === event.currentTarget) setActiveIndex(null) }}>
-          <button type="button" onClick={() => setActiveIndex(null)} className="absolute right-4 top-4 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A]" aria-label="Close photo viewer"><X className="h-6 w-6" /></button>
-          <button type="button" onClick={() => setActiveIndex((activeIndex - 1 + images.length) % images.length)} className="absolute left-3 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:left-8" aria-label="Previous photo"><ChevronLeft className="h-7 w-7" /></button>
-          <img src={images[activeIndex]} alt={`${name} photo ${activeIndex + 1}`} className="max-h-[88vh] max-w-[90vw] object-contain" />
-          <button type="button" onClick={() => setActiveIndex((activeIndex + 1) % images.length)} className="absolute right-3 rounded-full bg-white/10 p-3 text-white hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:right-8" aria-label="Next photo"><ChevronRight className="h-7 w-7" /></button>
-          <p className="absolute bottom-4 left-1/2 -translate-x-1/2 text-sm font-semibold text-white">{activeIndex + 1} / {images.length}</p>
+        <div className="fixed inset-0 z-50 bg-[#111]" role="dialog" aria-modal="true" aria-label={`${name} photo viewer`}>
+          <div className="flex h-full flex-col">
+            <header className="flex shrink-0 items-center justify-between border-b border-white/10 px-5 py-4 text-white sm:px-8">
+              <div>
+                <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-[#FCC20A]">Property gallery</p>
+                <p className="mt-1 text-sm font-semibold text-white/80">{name}</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <span className="text-sm font-medium text-white/60">{activeIndex + 1} / {images.length}</span>
+                <button type="button" onClick={() => setActiveIndex(null)} className="rounded-full border border-white/15 bg-white/10 p-2.5 text-white transition hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A]" aria-label="Close photo viewer"><X className="h-5 w-5" /></button>
+              </div>
+            </header>
+            <div className="relative flex min-h-0 flex-1 items-center justify-center px-12 py-6 sm:px-24 sm:py-8">
+              <button type="button" onClick={() => setActiveIndex((activeIndex - 1 + images.length) % images.length)} className="absolute left-3 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:left-8" aria-label="Previous photo"><ChevronLeft className="h-7 w-7" /></button>
+              <img src={images[activeIndex]} alt={`${name} photo ${activeIndex + 1}`} className="max-h-full max-w-full rounded-lg object-contain shadow-2xl" />
+              <button type="button" onClick={() => setActiveIndex((activeIndex + 1) % images.length)} className="absolute right-3 z-10 rounded-full border border-white/15 bg-white/10 p-3 text-white backdrop-blur transition hover:bg-white/20 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:right-8" aria-label="Next photo"><ChevronRight className="h-7 w-7" /></button>
+            </div>
+            <div className="shrink-0 border-t border-white/10 bg-black/20 px-4 py-4 sm:px-8">
+              <div className="mx-auto flex max-w-5xl gap-2 overflow-x-auto pb-1" aria-label="Photo thumbnails">
+                {images.map((image, index) => <button key={`${image}-${index}`} type="button" onClick={() => setActiveIndex(index)} className={`h-14 w-20 shrink-0 overflow-hidden rounded-md border-2 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A] ${index === activeIndex ? 'border-[#FCC20A]' : 'border-transparent opacity-60 hover:opacity-100'}`} aria-label={`View photo ${index + 1}`} aria-current={index === activeIndex ? 'true' : undefined}><img src={image} alt="" className="h-full w-full object-cover" /></button>)}
+              </div>
+            </div>
+          </div>
         </div>
       ) : null}
     </>
