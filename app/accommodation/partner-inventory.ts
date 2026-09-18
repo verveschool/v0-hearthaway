@@ -1,65 +1,198 @@
-import type { Metadata } from 'next'
-import Link from 'next/link'
-import { ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
-import { accommodationProperties, getAccommodationBySlug } from '../catalog'
-import { getUniversitiesByCity } from '@/lib/place-data'
-import WhatsAppLink from '@/components/accommodation/whatsapp-link'
-import { formatAccommodationPrice, formatAccommodationPricePeriod } from '../formatters'
+import type { AccommodationProperty } from './accommodation-data'
 
-export function generateStaticParams() { return accommodationProperties.map((property) => ({ slug: property.slug })) }
-type PropertyPageProps = { params: Promise<{ slug: string }> }
-
-export async function generateMetadata({ params }: PropertyPageProps): Promise<Metadata> {
-  const { slug } = await params
-  const property = getAccommodationBySlug(slug)
-  if (!property) return { title: 'Accommodation | HearthAway' }
-
-  return {
-    title: `${property.name} | ${property.city} accommodation | HearthAway`,
-    description: `${property.name} student accommodation in ${property.city}. Explore rooms, facilities, location and nearby universities.`,
-    openGraph: {
-      title: `${property.name} | ${property.city} accommodation`,
-      description: `Explore ${property.name} student accommodation in ${property.city}.`,
-      type: 'website',
-      images: [{ url: property.image, alt: `${property.name} student accommodation` }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${property.name} | ${property.city} accommodation`,
-      description: `Explore ${property.name} student accommodation in ${property.city}.`,
-      images: [property.image],
-    },
-  }
+type CatalogMeta = {
+  partnerSlug: string
+  categories: string[]
+  gallerySourceUrl: string
+  gallery: string[]
+  availabilityNote?: string
 }
 
-export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
-  const { slug } = await params
-  const property = getAccommodationBySlug(slug)
-  if (!property) return <><Navigation /><main className="min-h-[60vh] bg-[#F7F6F3] px-6 py-24"><div className="mx-auto max-w-3xl text-center"><h1 className="font-heading text-4xl font-extrabold text-[#1A1A1A]">Property not found</h1><p className="mt-4 text-[#6B6860]">Explore other student accommodation options and request help finding the right fit.</p><Link href="/accommodation" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#FCC20A] px-6 py-3 font-bold text-[#00319D]">Back to accommodation <ArrowRight className="h-4 w-4" /></Link></div></main><Footer /></>
-  const price = property.priceFrom > 0 ? formatAccommodationPrice(property.currency, property.priceFrom) : 'Not published'
-  const periodLabel = property.priceFrom > 0 && property.pricePeriod ? formatAccommodationPricePeriod(property.pricePeriod) : ''
-  const gallery = property.gallery.length ? property.gallery : [property.image]
-  const cityUniversities = getUniversitiesByCity(property.city)
-  const nearbyUniversities = property.universities.map((name) => cityUniversities.find((university) => university.name.toLowerCase() === name.toLowerCase()) ?? cityUniversities.find((university) => university.name.toLowerCase().includes(name.toLowerCase()) || name.toLowerCase().includes(university.name.toLowerCase()))).filter((university, index, universities): university is NonNullable<typeof university> => Boolean(university) && universities.findIndex((candidate) => candidate?.slug === university?.slug) === index)
+export type CatalogProperty = AccommodationProperty & CatalogMeta
 
-  return <>
-    <Navigation /><main className="bg-[#F7F6F3]">
-      <section className="px-6 py-8 lg:px-8 lg:py-12"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.4fr_0.6fr]">
-        <div>
-          <div className="overflow-hidden rounded-2xl bg-[#00319D] shadow-xl"><div className="relative h-[360px] sm:h-[500px]"><img src={gallery[0]} alt={property.name} className="h-full w-full object-cover" /><div className="absolute bottom-7 left-7 right-7 text-white sm:bottom-9 sm:left-9 sm:right-9"><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]"><Link href={`/cities/${property.city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="hover:underline">{property.city}</Link>, {property.country}</p><h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{property.name}</h1></div></div></div>
-          <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">{gallery.slice(1, 9).map((image, index) => <div key={`${image}-${index}`} className="overflow-hidden rounded-xl border border-[#E8E6E1] bg-white"><img src={image} alt={`${property.name} photo ${index + 2}`} className="h-32 w-full object-cover sm:h-36" loading="lazy" /></div>)}</div>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2"><div className="rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Tentative starting price</p><p className="mt-2 font-heading text-3xl font-extrabold text-[#00319D]">{price}{periodLabel && <span className="text-sm font-semibold text-[#6B6860]">{periodLabel}</span>}</p><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">Use this as a starting point, then request a consultation for guidance on the right option.</p></div><div className="rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Location</p><div className="mt-2 flex items-start gap-2 text-sm font-semibold text-[#1A1A1A]"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#00319D]" />{property.address}</div><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{property.distance}</p></div></div>
-          {property.goodFor?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Good for</h2><div className="mt-5 flex flex-wrap gap-2">{property.goodFor.map((item) => <span key={item} className="rounded-full bg-[#F7F6F3] px-4 py-2 text-sm font-semibold text-[#1A1A1A]">{item}</span>)}</div></div> : null}
-          <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2><div className="mt-5 flex flex-wrap gap-2">{property.roomTypes.map((type) => <span key={type} className="rounded-full bg-[#F7F6F3] px-4 py-2 text-sm font-semibold text-[#1A1A1A]">{type}</span>)}</div></div>
-          {property.roomFeatures?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room details</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{property.roomFeatures.map((item) => <div key={item} className="flex items-center gap-3 text-sm text-[#1A1A1A]"><span className="h-1.5 w-1.5 rounded-full bg-[#FCC20A]" />{item}</div>)}</div></div> : null}
-          {property.inclusions?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">What is included</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{property.inclusions.map((item) => <div key={item} className="flex items-start gap-3 text-sm text-[#1A1A1A]"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00319D]" />{item}</div>)}</div></div> : null}
-          <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Categories</h2><div className="mt-5 flex flex-wrap gap-2">{(property.categories ?? []).map((category) => <span key={category} className="rounded-full border border-[#E8E6E1] bg-white px-4 py-2 text-sm font-semibold text-[#00319D]">{category}</span>)}</div></div>
-          <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Amenities</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{property.amenities.map((item) => <div key={item} className="flex items-center gap-3 text-sm text-[#1A1A1A]"><span className="h-1.5 w-1.5 rounded-full bg-[#FCC20A]" />{item}</div>)}</div></div>
-        </div>
-        <aside className="lg:sticky lg:top-28 lg:h-fit"><div className="rounded-2xl bg-white p-6 shadow-xl sm:p-7"><h2 className="mt-3 font-heading text-2xl font-extrabold leading-tight text-[#1A1A1A]">Want help deciding whether this is the right fit?</h2><p className="mt-3 text-sm leading-relaxed text-[#6B6860]">Tell us your university, budget and preferences. An advisor can help compare this with other options before you commit.</p><Link href="/get-matched" className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#FCC20A] px-5 py-3.5 text-sm font-bold text-white">Get Matched <ArrowRight className="h-4 w-4" /></Link><WhatsAppLink className="mt-3 inline-flex w-full items-center justify-center rounded-xl border border-[#00319D] px-5 py-3.5 text-sm font-bold text-[#00319D]">WhatsApp Us</WhatsAppLink></div><div className="mt-4 rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Nearby universities</p><div className="mt-4 space-y-3">{nearbyUniversities.length ? nearbyUniversities.map((university) => <Link key={university.slug} href={`/universities/${university.slug}`} className="block text-sm font-semibold leading-relaxed text-[#00319D] underline-offset-4 hover:underline">{university.name}</Link>) : <p className="text-sm leading-relaxed text-[#6B6860]">Nearby university links will be added as this city guide expands.</p>}</div></div>{property.contractTerms?.length ? <div className="mt-4 rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Contract</p><div className="mt-4 space-y-2">{property.contractTerms.map((item) => <p key={item} className="text-sm leading-relaxed text-[#1A1A1A]">{item}</p>)}</div></div> : null}{property.depositNote ? <div className="mt-4 rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Deposit</p><p className="mt-2 text-sm leading-relaxed text-[#1A1A1A]">{property.depositNote}</p></div> : null}{property.availabilityNote ? <div className="mt-4 rounded-2xl border border-[#FCC20A]/40 bg-[#FCC20A]/10 p-5"><p className="text-xs font-bold uppercase tracking-wider text-[#00319D]">Availability note</p><p className="mt-2 text-sm leading-relaxed text-[#1A1A1A]">{property.availabilityNote}</p></div> : null}</aside>
-      </div></section>
-    </main><Footer />
-  </>
+const images = ['/images/acc-halls.png', '/images/acc-studio.png', '/images/acc-kitchen.png']
+
+const cityUniversities: Record<string, string[]> = {
+  Belfast: ["Queen's University Belfast", 'Ulster University'],
+  Birmingham: ['University of Birmingham', 'Aston University', 'Birmingham City University'],
+  Bristol: ['University of Bristol', 'University of the West of England'],
+  Cardiff: ['Cardiff University', 'Cardiff Metropolitan University'],
+  Coventry: ['University of Warwick', 'Coventry University'],
+  Edinburgh: ['University of Edinburgh', 'Edinburgh Napier University'],
+  Exeter: ['University of Exeter'],
+  Glasgow: ['University of Glasgow', 'University of Strathclyde'],
+  Leeds: ['University of Leeds', 'Leeds Beckett University'],
+  Leicester: ['University of Leicester', 'De Montfort University'],
+  Loughborough: ['Loughborough University'],
+  Liverpool: ['University of Liverpool', 'Liverpool John Moores University'],
+  London: ['University College London', "King's College London", 'London School of Economics'],
+  Manchester: ['University of Manchester', 'Manchester Metropolitan University'],
+  Newcastle: ['Newcastle University', 'Northumbria University'],
+  Nottingham: ['University of Nottingham', 'Nottingham Trent University'],
+  Sheffield: ['University of Sheffield', 'Sheffield Hallam University'],
+  Southampton: ['University of Southampton', 'Solent University'],
+  York: ['University of York', 'York St John University'],
+  Barcelona: ['Universitat de Barcelona', 'Pompeu Fabra University'],
+  Madrid: ['Complutense University of Madrid', 'Autonomous University of Madrid'],
+  Sydney: ['University of Sydney', 'UTS', 'UNSW Sydney'],
+  Brisbane: ['QUT', 'University of Queensland', 'Griffith University'],
+  Melbourne: ['University of Melbourne', 'RMIT University', 'Monash University'],
+  Berlin: ['Humboldt University of Berlin', 'TU Berlin', 'Freie Universität Berlin'],
+  Cologne: ['University of Cologne', 'TH Köln'],
+  Frankfurt: ['Goethe University Frankfurt'],
+  Tübingen: ['University of Tübingen'],
 }
+
+const sourceByPartner: Record<string, string> = {
+  'study-inn': 'https://studyinn.com/',
+  'neon-wood': 'https://neonwood.com/apartments',
+  'vita-student': 'https://www.vitastudent.com/en/cities/',
+  iglu: 'https://iglu.com.au/compare-iglus/',
+}
+
+function makeProperty(
+  property: Omit<CatalogProperty, 'currency' | 'propertyType' | 'amenities' | 'highlights' | 'image' | 'source' | 'sourceUrl' | 'gallery' | 'gallerySourceUrl'> & {
+    partnerSlug: string
+    sourceUrl?: string
+    priceFrom?: number
+    roomTypes?: string[]
+    categories?: string[]
+    amenities?: string[]
+    highlights?: string[]
+    image?: string
+    gallery?: string[]
+    availabilityNote?: string
+  },
+): CatalogProperty {
+  const sourceUrl = property.sourceUrl ?? sourceByPartner[property.partnerSlug] ?? '#'
+  const gallery = property.gallery ?? images
+  return {
+    ...property,
+    priceFrom: property.priceFrom ?? 0,
+    currency: 'GBP',
+    roomTypes: property.roomTypes ?? ['Ensuite', 'Studio'],
+    propertyType: 'Student residence',
+    amenities: property.amenities ?? ['Wi-Fi', 'Study spaces', 'Social spaces', 'On-site support'],
+    highlights: property.highlights ?? ['Student-focused location', 'Multiple room options', 'On-site support'],
+    image: property.image ?? gallery[0],
+    source: property.partnerSlug,
+    sourceUrl,
+    gallery,
+    gallerySourceUrl: sourceUrl,
+    categories: property.categories ?? ['Student residence'],
+    availabilityNote: property.availabilityNote,
+  }
+}
+
+const studyInn = [
+  ['Brotherton House', 'Leeds', 'https://studyinn.com/student-accommodation/leeds/brotherton-house/'],
+  ['Reynard House', 'Leicester', 'https://studyinn.com/student-accommodation/leicester/reynard-house/'],
+  ['Talbot Street', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/talbot-street/'],
+  ['Triumph House', 'Nottingham', 'https://studyinn.com/student-accommodation/nottingham/triumph-house/'],
+  ['Walnut Gardens', 'Exeter', 'https://studyinn.com/student-accommodation/exeter/walnut-gardens/'],
+  ['Lemyngton Street', 'Loughborough', 'https://studyinn.com/student-accommodation/loughborough/lemyngton-street/'],
+  ['Marlborough House', 'Bristol', 'https://studyinn.com/student-accommodation/bristol/marlborough-house/'],
+  ['Frederick Road', 'Birmingham', 'https://studyinn.com/student-accommodation/birmingham/frederick-road/'],
+  ['James Street', 'York', 'https://studyinn.com/student-accommodation/york/james-street/'],
+] as const
+
+const neonWood = [
+  ['Berlin Frankfurter Tor', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-frankfurter-tor'],
+  ['Berlin Mitte-Wedding', 'Berlin', 'https://neonwood.com/cities/berlin'],
+  ['Tannhaus Berlin Neukölln', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-neukoelln'],
+  ['Berlin Adlershof', 'Berlin', 'https://neonwood.com/cities/berlin/berlin-adlershof'],
+  ['Cologne K115', 'Cologne', 'https://neonwood.com/apartments'],
+  ['Frankfurt Riedberg', 'Frankfurt', 'https://neonwood.com/apartments'],
+  ['TÜ3', 'Tübingen', 'https://neonwood.com/apartments'],
+] as const
+
+const vitaStudent = [
+  ['Bruce Street', 'Belfast'], ['New Gough Street', 'Birmingham'], ['Pebble Mill', 'Birmingham'],
+  ['Zed Alley', 'Bristol'], ['Park Place', 'Cardiff'], ['Copper Towers', 'Coventry'], ['Warwick Cannon Park', 'Coventry'],
+  ['New Waverley', 'Edinburgh'], ['Iona Street', 'Edinburgh'], ['Fountainbridge', 'Edinburgh'], ['Portland House', 'Exeter'],
+  ['New India Street', 'Glasgow'], ['West End', 'Glasgow'], ['Portland Crescent', 'Leeds'], ['St Albans', 'Leeds'],
+  ['Crosshall St.', 'Liverpool'], ['Lewisham Exchange', 'London'], ['First Street', 'Manchester'], ['Circle Square', 'Manchester'],
+  ['New Leazes Park', 'Newcastle'], ['Westgate', 'Newcastle'], ['Strawberry Place', 'Newcastle'], ['Station Street', 'Nottingham'],
+  ['Telephone House', 'Sheffield'], ['Richmond House', 'Southampton'], ['Lawrence Street', 'York'],
+  ['Poblenou', 'Barcelona'], ['Pedralbes', 'Barcelona'], ['New Oria', 'Madrid'],
+] as const
+
+const iglu = [
+  ['Broadway', 'Sydney'], ['Central', 'Sydney'], ['Central Park', 'Sydney'], ['Chatswood', 'Sydney'], ['Redfern', 'Sydney'],
+  ['Mascot', 'Sydney'], ['Mascot Duo', 'Sydney'], ['Summer Hill', 'Sydney'], ['Waterloo', 'Sydney'],
+  ['Brisbane City', 'Brisbane'], ['Kelvin Grove', 'Brisbane'], ['Melbourne City', 'Melbourne'], ['South Yarra', 'Melbourne'],
+  ['Flagstaff Gardens', 'Melbourne'], ['Melbourne Central', 'Melbourne'], ['Flagstaff Station', 'Melbourne'],
+] as const
+
+export const additionalAccommodationProperties: CatalogProperty[] = [
+  ...studyInn.map(([name, city, sourceUrl], index) => makeProperty({
+    slug: `study-inn-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    name,
+    city,
+    country: 'UK',
+    address: city,
+    priceFrom: index === 0 ? 174 : 0,
+    roomTypes: ['Ensuite', 'Studio', 'Serviced apartment'],
+    universities: cityUniversities[city] ?? [],
+    distance: `Near major universities in ${city}`,
+    partnerSlug: 'study-inn',
+    sourceUrl,
+    categories: ['Student residence', 'Serviced living', 'All-inclusive'],
+    amenities: ['All bills included', 'Housekeeping', 'Superfast Wi-Fi', 'Gym', 'Wellness spaces', 'Study rooms', '24/7 security'],
+    highlights: ['All-inclusive living', 'Strong wellbeing offering', 'Central university access'],
+    availabilityNote: name === 'Frederick Road' || name === 'James Street' ? 'Opening 2027; availability to be confirmed.' : undefined,
+    gallery: images,
+  })),
+  ...neonWood.map(([name, city, sourceUrl], index) => makeProperty({
+    slug: `neon-wood-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    name,
+    city,
+    country: 'Germany',
+    address: city,
+    priceFrom: index === 0 ? 975 : 0,
+    roomTypes: ['Single room', 'Studio', 'Double room'],
+    universities: cityUniversities[city] ?? [],
+    distance: `Well connected to universities in ${city}`,
+    partnerSlug: 'neon-wood',
+    sourceUrl,
+    categories: ['Private apartment', 'All-inclusive', 'Furnished'],
+    amenities: ['Furnished apartment', 'Private bathroom', 'Kitchenette', 'High-speed Wi-Fi', 'Gym', 'Lounge', 'Study rooms', 'Cinema room'],
+    highlights: ['All-inclusive pricing', 'Private kitchenette and bathroom', 'International student community'],
+    gallery: images,
+  })),
+  ...vitaStudent.map(([name, city]) => makeProperty({
+    slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    name,
+    city,
+    country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK',
+    address: `${name}, ${city}`,
+    priceFrom: 0,
+    roomTypes: ['Ensuite', 'Studio'],
+    universities: cityUniversities[city] ?? [],
+    distance: `Central student location in ${city}`,
+    partnerSlug: 'vita-student',
+    sourceUrl: `${sourceByPartner['vita-student']}${city.toLowerCase()}/`,
+    categories: ['Premium student residence', 'All-inclusive', 'Private room'],
+    amenities: ['Bills included', '24/7 gym', 'Study spaces', 'Housekeeping', 'Events', 'High-speed Wi-Fi', '24/7 support'],
+    highlights: ['All-in living', 'Central locations', 'Strong resident experience'],
+    gallery: images,
+  })),
+  ...iglu.map(([name, city]) => makeProperty({
+    slug: `iglu-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    name,
+    city,
+    country: 'Australia',
+    address: `${name}, ${city}`,
+    priceFrom: 0,
+    roomTypes: ['Studio', 'Ensuite', 'Shared apartment'],
+    universities: cityUniversities[city] ?? [],
+    distance: `Close to major universities and transport in ${city}`,
+    partnerSlug: 'iglu',
+    sourceUrl: 'https://iglu.com.au/compare-iglus/',
+    categories: ['Student residence', 'Furnished', 'Purpose-built'],
+    amenities: ['24/7 support', 'Study areas', 'Gym', 'Social spaces', 'Laundry', 'Bike storage', 'High-security access'],
+    highlights: ['University-focused locations', 'Strong communal facilities', 'Public transport access'],
+    gallery: images,
+    availabilityNote: name === 'Mascot Duo' ? 'Opening January 2027; availability to be confirmed.' : undefined,
+  })),
+]
