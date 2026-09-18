@@ -10,7 +10,8 @@ const nextConfig = {
   },
   // Disables Next.js image optimization processing to prevent asset crash loops
   images: {
-    unoptimized: true
+    unoptimized: true,
+    qualities: [70, 75]
   }
 }
 
