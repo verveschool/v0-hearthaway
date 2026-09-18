@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import { accommodationProperties, getAccommodationBySlug } from '../catalog'
@@ -22,7 +22,6 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
 
   return <>
     <Navigation /><main className="bg-[#F7F6F3]">
-      <section className="bg-[#00319D] px-6 py-8 text-white lg:px-8 lg:py-10"><div className="mx-auto max-w-7xl"><Link href="/accommodation" className="inline-flex items-center gap-2 text-sm font-semibold text-white/75 hover:text-white"><ArrowLeft className="h-4 w-4" />All accommodation</Link></div></section>
       <section className="px-6 py-8 lg:px-8 lg:py-12"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.4fr_0.6fr]">
         <div>
           <div className="overflow-hidden rounded-2xl bg-[#00319D] shadow-xl"><div className="relative h-[360px] sm:h-[500px]"><img src={gallery[0]} alt={property.name} className="h-full w-full object-cover" /><div className="absolute bottom-7 left-7 right-7 text-white sm:bottom-9 sm:left-9 sm:right-9"><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]"><Link href={`/cities/${property.city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="hover:underline">{property.city}</Link>, {property.country}</p><h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{property.name}</h1></div></div></div>
