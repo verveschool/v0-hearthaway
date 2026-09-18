@@ -1,5 +1,6 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowLeft, ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
+import { ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import { accommodationProperties, getAccommodationBySlug } from '../catalog'
@@ -10,11 +11,34 @@ import { formatAccommodationPrice, formatAccommodationPricePeriod } from '../for
 export function generateStaticParams() { return accommodationProperties.map((property) => ({ slug: property.slug })) }
 type PropertyPageProps = { params: Promise<{ slug: string }> }
 
+export async function generateMetadata({ params }: PropertyPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const property = getAccommodationBySlug(slug)
+  if (!property) return { title: 'Accommodation | HearthAway' }
+
+  return {
+    title: `${property.name} | ${property.city} accommodation | HearthAway`,
+    description: `${property.name} student accommodation in ${property.city}. Explore rooms, facilities, location and nearby universities.`,
+    openGraph: {
+      title: `${property.name} | ${property.city} accommodation`,
+      description: `Explore ${property.name} student accommodation in ${property.city}.`,
+      type: 'website',
+      images: [{ url: property.image, alt: `${property.name} student accommodation` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${property.name} | ${property.city} accommodation`,
+      description: `Explore ${property.name} student accommodation in ${property.city}.`,
+      images: [property.image],
+    },
+  }
+}
+
 export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
   const { slug } = await params
   const property = getAccommodationBySlug(slug)
   if (!property) return <><Navigation /><main className="min-h-[60vh] bg-[#F7F6F3] px-6 py-24"><div className="mx-auto max-w-3xl text-center"><h1 className="font-heading text-4xl font-extrabold text-[#1A1A1A]">Property not found</h1><p className="mt-4 text-[#6B6860]">Explore other student accommodation options and request help finding the right fit.</p><Link href="/accommodation" className="mt-8 inline-flex items-center gap-2 rounded-xl bg-[#FCC20A] px-6 py-3 font-bold text-[#00319D]">Back to accommodation <ArrowRight className="h-4 w-4" /></Link></div></main><Footer /></>
-  const price = property.priceFrom > 0 ? formatAccommodationPrice(property.currency, property.priceFrom) : 'Contact us'
+  const price = property.priceFrom > 0 ? formatAccommodationPrice(property.currency, property.priceFrom) : 'Not published'
   const periodLabel = property.priceFrom > 0 && property.pricePeriod ? formatAccommodationPricePeriod(property.pricePeriod) : ''
   const gallery = property.gallery.length ? property.gallery : [property.image]
   const cityUniversities = getUniversitiesByCity(property.city)
@@ -22,7 +46,6 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
 
   return <>
     <Navigation /><main className="bg-[#F7F6F3]">
-      <section className="bg-[#00319D] px-6 py-8 text-white lg:px-8 lg:py-10"><div className="mx-auto max-w-7xl"><Link href="/accommodation" className="inline-flex items-center gap-2 text-sm font-semibold text-white/75 hover:text-white"><ArrowLeft className="h-4 w-4" />All accommodation</Link></div></section>
       <section className="px-6 py-8 lg:px-8 lg:py-12"><div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.4fr_0.6fr]">
         <div>
           <div className="overflow-hidden rounded-2xl bg-[#00319D] shadow-xl"><div className="relative h-[360px] sm:h-[500px]"><img src={gallery[0]} alt={property.name} className="h-full w-full object-cover" /><div className="absolute bottom-7 left-7 right-7 text-white sm:bottom-9 sm:left-9 sm:right-9"><p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]"><Link href={`/cities/${property.city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="hover:underline">{property.city}</Link>, {property.country}</p><h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{property.name}</h1></div></div></div>

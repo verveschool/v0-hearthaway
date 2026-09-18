@@ -970,7 +970,9 @@ export const cities: CityPlace[] = [
   }))
 ]
 
-export const universities: UniversityPlace[] = [
+  export const universities: UniversityPlace[] = [
+  { name: 'University of Hertfordshire', city: 'Hatfield', country: 'UK', students: '30,000+', slug: 'hertfordshire', citySlug: 'hatfield' },
+
   { name: 'University College London', city: 'London', country: 'UK', students: '42,000+', slug: 'ucl', citySlug: 'london' },
   { name: 'Kings College London', city: 'London', country: 'UK', students: '31,000+', slug: 'kcl', citySlug: 'london' },
   { name: 'Imperial College London', city: 'London', country: 'UK', students: '22,000+', slug: 'imperial', citySlug: 'london' },
