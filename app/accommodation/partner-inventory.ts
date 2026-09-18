@@ -141,7 +141,7 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     distance: 'Opposite the University of Hertfordshire De Havilland campus; approximately 15 minutes on foot to the College Lane campus.',
     gallery: [
       'https://www.crm-students.com/resource/image/875226/landscape_ratio16x9/1140/641/648399f1e06f02de97378985dfa27ab3/FA0A97320DA5A26C7D289B2BAE28B24E/luna-hatfield-1-.webp',
-      '/accommodation/luna-photo-2.png',
+      'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-I1APFCUsbd1zk6N02a3LsynlhDAG1G.png',
       'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/luna-18053-aQTdIDwNFhFV3yYLISHD2bBHAXyU4s.webp',
       'https://www.crm-students.com/resource/image/773300/landscape_ratio16x9/1140/641/a3b698c449123c6c15bbe23c113fb289/E42D4D56C1AEA1B203C421572B97F682/luna-4.webp',
       'https://www.crm-students.com/resource/image/773298/landscape_ratio16x9/1140/641/ff48542fc4a7853850e5b58e9e16632c/6E361FD7E1C1C6A8838082584D386EA7/luna-5.webp',
