@@ -22,19 +22,19 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
 
   return {
     ...property,
-    // A missing price remains unconfirmed rather than being represented by an invented fallback amount.
     priceFrom: Number.isFinite(property.priceFrom) && property.priceFrom > 0 ? property.priceFrom : 0,
     currency,
     pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
     categories: Array.isArray(property.categories) ? property.categories : [],
     gallery,
-    // Source URLs remain in the inventory data for internal maintenance and are intentionally not exposed in the rendered catalogue.
     gallerySourceUrl: '',
     sourceUrl: '',
     universities,
     roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
+    // Keep the customer-facing Luna listing focused on the available Standard Studio.
+    availabilityNote: property.slug === 'luna-hatfield' ? 'Standard Studio available. Contact us to check the latest price and booking details.' : property.availabilityNote,
   }
 }
 
