@@ -1,3 +1,4 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, CheckCircle2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
@@ -9,6 +10,33 @@ import { formatAccommodationPrice, formatAccommodationPricePeriod } from '../for
 
 export function generateStaticParams() { return accommodationProperties.map((property) => ({ slug: property.slug })) }
 type PropertyPageProps = { params: Promise<{ slug: string }> }
+
+export async function generateMetadata({ params }: PropertyPageProps): Promise<Metadata> {
+  const { slug } = await params
+  const property = getAccommodationBySlug(slug)
+  if (!property) return { title: 'Accommodation | HearthAway' }
+
+  const mainImage = property.gallery[0] ?? property.image
+  const title = `${property.name} | ${property.city} accommodation | HearthAway`
+  const description = `Explore ${property.name} student accommodation in ${property.city}, including rooms, facilities, location and nearby universities.`
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: 'website',
+      images: [{ url: mainImage, alt: `${property.name} student accommodation` }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [mainImage],
+    },
+  }
+}
 
 export default async function AccommodationPropertyPage({ params }: PropertyPageProps) {
   const { slug } = await params
