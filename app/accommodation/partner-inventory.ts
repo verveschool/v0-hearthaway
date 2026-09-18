@@ -72,7 +72,7 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     inclusions: ['All utility bills', 'High-speed Wi-Fi', 'Access to gym and communal spaces', 'On-site maintenance and management'],
     contractTerms: ['No Visa/Place, No Pay policy applies subject to the provider terms.', '2026–2027 tenant fees document available from the provider.'],
     goodFor: ['University of Hertfordshire students', 'Students wanting a studio', 'Students who value extensive communal facilities'],
-    availabilityNote: 'Prices and availability are not published on the listing; confirm the current room offer directly with CRM Students.',
+    availabilityNote: 'The source listing does not publish a tentative price or current room rates. Confirm the current studio or two-bed apartment price and availability directly with CRM Students.',
   }),
   makeProperty({
     slug: 'iq-fiveways-house-manchester',
