@@ -57,12 +57,11 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     image: '/images/acc-studio.png',
     gallery: [
       '/images/acc-studio.png',
-      '/images/hero-room-1.png',
-      '/images/hero-room-2.png',
       '/images/acc-kitchen.png',
       '/images/acc-shared.png',
       '/images/acc-halls.png',
       '/images/acc-homestay.png',
+      '/images/acc-studio.png',
     ],
     amenities: ['All utilities included', 'CCTV', 'On-site maintenance', 'Bike storage', 'High-speed Wi-Fi', 'Laundry services', 'Keycard access', 'Parcel service', 'On-site management', 'Cinema room', 'Gym and sports centre', 'Study spaces', 'Social spaces'],
     highlights: ['Opposite De Havilland campus', '15-minute walk to College Lane campus', 'Standard studio only', 'Free on-site sports centre', 'Extensive resident social spaces'],
