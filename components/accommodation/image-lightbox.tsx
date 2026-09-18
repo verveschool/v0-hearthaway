@@ -1,14 +1,18 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 type ImageLightboxProps = {
   images: string[]
   name: string
+  city: string
+  country: string
+  cityHref: string
 }
 
-export default function ImageLightbox({ images, name }: ImageLightboxProps) {
+export default function ImageLightbox({ images, name, city, country, cityHref }: ImageLightboxProps) {
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
   const isOpen = activeIndex !== null
 
@@ -31,15 +35,16 @@ export default function ImageLightbox({ images, name }: ImageLightboxProps) {
 
   return (
     <>
-      <div className="overflow-hidden rounded-2xl bg-[#00319D] shadow-xl">
+      <div className="relative overflow-hidden rounded-2xl bg-[#00319D] shadow-xl">
         <button type="button" onClick={() => setActiveIndex(0)} className="group relative block h-[360px] w-full text-left focus:outline-none focus-visible:ring-4 focus-visible:ring-[#FCC20A] sm:h-[500px]" aria-label={`Open ${name} main photo`}>
           <img src={images[0]} alt={name} className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.02]" />
-          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-7 pb-7 pt-16 text-left text-white sm:px-9 sm:pb-9">
-            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]">Hatfield, UK</p>
-            <h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{name}</h1>
-          </div>
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent pt-16" aria-hidden="true" />
           <span className="absolute right-5 top-5 rounded-full bg-black/60 px-4 py-2 text-xs font-bold text-white">View photos</span>
         </button>
+        <div className="pointer-events-none absolute bottom-7 left-7 right-7 text-white sm:bottom-9 sm:left-9 sm:right-9">
+          <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#FCC20A]"><Link href={cityHref} className="pointer-events-auto hover:underline">{city}</Link>, {country}</p>
+          <h1 className="mt-2 font-heading text-4xl font-extrabold leading-tight sm:text-5xl">{name}</h1>
+        </div>
       </div>
       <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {images.slice(1, 9).map((image, index) => (

@@ -4,15 +4,13 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
-  // Bypasses all ESLint checks (ignores unescaped characters, keys, and path formatting errors)
-  eslint: {
-    ignoreDuringBuilds: true
-  },
   // Disables Next.js image optimization processing to prevent asset crash loops
   images: {
     unoptimized: true,
     qualities: [70, 75]
-  }
+  },
+  // Next 16.3+ rewrites AGENTS.md on every `next dev`; this repo maintains its own
+  agentRules: false
 }
 
 export default nextConfig
