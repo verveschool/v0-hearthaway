@@ -35,6 +35,8 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
+
+
   }
 }
 
