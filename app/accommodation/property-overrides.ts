@@ -1,6 +1,9 @@
 import type { CatalogProperty } from './partner-inventory'
+import type { AccommodationRoomType } from './accommodation-data'
 
 type PropertyOverride = Partial<CatalogProperty>
+
+const startingPriceConditions = 'Starting price for this property; confirm the exact rate for this room type, dates and contract length with the provider.'
 
 export const propertyOverrides: Record<string, PropertyOverride> = {
   'atlantic-point-liverpool': {
@@ -12,6 +15,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/45e6c3ef-8706-4d62-b636-ea9dbadef4e6/liverpool_atlanticpoint_sharedkitchen_22_0291_G1_T1.jpg.preview.webp',
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/528fadc9-57a9-4320-86dc-95f59aa000ae/liverpool_atlanticpoint_classicensuite_0149_G1_T1.jpg.preview.webp',
     ],
+    rooms: [
+      { name: 'Ensuite', image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/528fadc9-57a9-4320-86dc-95f59aa000ae/liverpool_atlanticpoint_classicensuite_0149_G1_T1.jpg.preview.webp', price: { value: 123, currency: 'GBP', period: 'week', indicative: true, conditions: startingPriceConditions } },
+      { name: 'Private Room', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+      { name: 'Studio', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+    ] satisfies AccommodationRoomType[],
   },
   'emily-bowes-court-london': {
     image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/e2b25049-cf39-40c7-bc18-21bea1c2c871/London_EmilyBowes_Exterior_02.jpg.preview.webp',
@@ -24,6 +32,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/c9ab1758-1244-496e-8d82-ccae27dea9b4/London_EmilyBowes_Premium1Ensuite_01.jpg.webp',
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/ff3146d0-a034-4268-9b92-839cfc9e2567/London_EmilyBowes_Bathroom.jpg.webp',
     ],
+    rooms: [
+      { name: 'Ensuite', image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/c227cde1-fe38-47ba-85d4-c270fff57e24/London_EmilyBowes_BasicEnsuite_01.jpg.webp', price: { value: 287, currency: 'GBP', period: 'week', indicative: true, conditions: startingPriceConditions } },
+      { name: 'Private Room', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+      { name: 'Studio', image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/f7c2e4b4-4fa5-481a-9455-6af144b6cfbc/London_EmilyBowes_ClassicStudio_02.jpg.preview.webp', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+    ] satisfies AccommodationRoomType[],
   },
   'pacific-court-london': {
     image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/fd2ba219-77bc-4cfa-84df-f2c82de00b42/London_PacificCourt_Exterior_03.jpg.preview.png',
@@ -36,6 +49,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/0ae05a56-d26a-410b-a71e-67b6303c68f7/London_PacificCourt_PR1Studio_01.jpg.png',
       'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/21884f3a-b0c7-47bc-b2f9-447204cab612/London_PacificCourt_Reception_2.jpg_preview',
     ],
+    rooms: [
+      { name: 'Ensuite', image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/88e2ba85-72de-495a-b1c5-eec2d3a73623/London_PacificCourt_ClassicEnsuite_01.jpg.png', price: { value: 352, currency: 'GBP', period: 'week', indicative: true, conditions: startingPriceConditions } },
+      { name: 'Private Room', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+      { name: 'Studio', image: 'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/0ae05a56-d26a-410b-a71e-67b6303c68f7/London_PacificCourt_PR1Studio_01.jpg.png', price: { currency: 'GBP', period: 'week', priceOnEnquiry: true } },
+    ] satisfies AccommodationRoomType[],
   },
   'iq-chandos-house-manchester': {
     image: 'https://www.iqstudentaccommodation.com/sites/default/files/styles/ratio_4x3_lg/public/2026-08/Externals%20w00.jpg?itok=K28dBtqP',

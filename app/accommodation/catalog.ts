@@ -3,7 +3,37 @@ import { additionalAccommodationProperties, type CatalogProperty } from './partn
 import { propertyOverrides } from './property-overrides'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
-import type { AccommodationCurrency, AccommodationPricePeriod } from './accommodation-data'
+import type { AccommodationCurrency, AccommodationPricePeriod, AccommodationRoomType } from './accommodation-data'
+
+/**
+ * Inventory ("this property offers this room type") is derived from every name
+ * in `roomTypes` and must never be filtered by availability, stock or booking
+ * status. When a property doesn't yet have a curated `rooms` entry for a given
+ * name, this synthesizes one WITHOUT inventing a price: only the property's own
+ * confirmed starting price — attached to the first/entry-level room type, which
+ * is what a source's "from" price describes — is reused, and every other room
+ * type is marked "price on enquiry" rather than hidden or given a copied price.
+ */
+function buildRooms(property: CatalogProperty, currency: AccommodationCurrency, pricePeriod: AccommodationPricePeriod): AccommodationRoomType[] {
+  if (Array.isArray(property.rooms) && property.rooms.length) return property.rooms
+
+  const roomTypeNames = Array.isArray(property.roomTypes) ? property.roomTypes : []
+  const hasConfirmedStartingPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
+
+  return roomTypeNames.map((name, index) => ({
+    name,
+    availabilityNote: property.availabilityNote,
+    price: index === 0 && hasConfirmedStartingPrice
+      ? {
+          value: property.priceFrom,
+          currency,
+          period: pricePeriod,
+          indicative: true,
+          conditions: 'Starting price for this property; confirm the exact rate for this room type, dates and contract length with the provider.',
+        }
+      : { currency, period: pricePeriod, priceOnEnquiry: true },
+  }))
+}
 
 const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
   const gallery = Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean)
@@ -13,18 +43,20 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
   const image = gallery[0] ?? property.image
 
   const currency = property.currency ?? 'GBP'
+  const pricePeriod = property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month'
   const pricingSourceUrl = property.pricingSourceUrl || property.sourceUrl
   const locationMapUrl = property.locationMapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${property.address}, ${property.city}, ${property.country}`)}`
   const universities = Array.isArray(property.universities) && property.universities.length
     ? property.universities
     : getUniversitiesByCity(property.city).map((university) => university.name)
+  const roomTypes = Array.isArray(property.roomTypes) ? property.roomTypes : []
 
   return {
     ...property,
     // A missing price remains unconfirmed rather than being represented by an invented fallback amount.
     priceFrom: Number.isFinite(property.priceFrom) && property.priceFrom > 0 ? property.priceFrom : 0,
     currency,
-    pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
+    pricePeriod,
     categories: Array.isArray(property.categories) ? property.categories : [],
     image,
     gallery,
@@ -32,7 +64,9 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     gallerySourceUrl: '',
     sourceUrl: '',
     universities,
-    roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
+    // Every room type the source lists stays in the catalogue regardless of current availability, stock or booking status.
+    roomTypes,
+    rooms: buildRooms(property, currency, pricePeriod),
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
     // Every displayed price is a tentative starting point sourced from the partner or listing page.
