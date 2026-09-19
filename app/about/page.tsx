@@ -115,6 +115,11 @@ const markets = [
     description: 'A multilingual EU capital hub with historic universities and compact, well-connected student cities.',
   },
   {
+    flag: '🇭🇺',
+    name: 'Hungary',
+    description: 'An affordable Central European destination with strong medical and technical universities and a low cost of living.',
+  },
+  {
     flag: '🇳🇱',
     name: 'Netherlands',
     description: 'English-taught programmes, bike-friendly cities, and practical support for international students.',

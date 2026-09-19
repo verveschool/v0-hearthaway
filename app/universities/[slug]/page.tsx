@@ -42,6 +42,7 @@ function countryLabel(code: string) {
   if (code === 'ES') return 'Spain'
   if (code === 'AT') return 'Austria'
   if (code === 'BE') return 'Belgium'
+  if (code === 'HU') return 'Hungary'
   if (code === 'SG') return 'Singapore'
   if (code === 'MT') return 'Malta'
   if (code === 'IT') return 'Italy'

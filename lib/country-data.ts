@@ -183,6 +183,14 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('belgium')
   },
   {
+    name: 'Hungary', slug: 'hungary', currency: 'HUF (Ft)', heroImage: '/images/dest-germany.png', badge: 'Affordable Central Europe', universityCount: '20+',
+    citySlugs: ['budapest', 'debrecen', 'szeged'], universitySlugs: ['elte-budapest', 'semmelweis-budapest', 'bme-budapest', 'debrecen-university', 'szeged-university'],
+    summary: 'an affordable Central European destination with strong medical and technical universities and a low cost of living relative to Western Europe.',
+    overview: 'hungary suits students who want a highly ranked, English-taught education (particularly in medicine and engineering) at a lower cost, with easy rail access across the rest of the continent.',
+    studentHousingNotes: 'university dormitories are the cheapest option and fill up quickly; private shared flats are widely available in Budapest, Debrecen, and Szeged at a fraction of Western European rents.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('hungary')
+  },
+  {
     name: 'Singapore', slug: 'singapore', currency: 'SGD (S$)', heroImage: '/images/dest-uae.png', badge: 'Asia-Pacific hub', universityCount: '20+',
     citySlugs: ['singapore-city'], universitySlugs: ['nus', 'ntu', 'smu', 'sutd'],
     summary: 'a highly connected Asia-Pacific education hub known for leading universities, safety, and strong graduate employment networks.',

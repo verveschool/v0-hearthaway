@@ -30,6 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/singapore',
     '/austria',
     '/belgium',
+    '/hungary',
     '/malta',
     '/uae',
     '/netherlands',

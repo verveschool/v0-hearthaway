@@ -1,4 +1,4 @@
-export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'BE' | 'SG' | 'MT' | 'IT' | 'NL' | 'MY'
+export type CountryCode = 'UK' | 'IE' | 'FR' | 'UAE' | 'DE' | 'AU' | 'USA' | 'CA' | 'ES' | 'AT' | 'BE' | 'HU' | 'SG' | 'MT' | 'IT' | 'NL' | 'MY'
 
 export type CityPlace = {
   name: string
@@ -952,6 +952,9 @@ export const cities: CityPlace[] = [
     ['Brussels', 'Belgium', 'BE', 'brussels', 'EUR 550 to 950 / mo', 'a multilingual EU capital with major universities, excellent international transport links, and a diverse student population.', 'ixelles', 'etterbeek', 'saint-gilles'],
     ['Antwerp', 'Belgium', 'BE', 'antwerp', 'EUR 500 to 850 / mo', 'a compact port city known for design, fashion, and a growing international student community.', 'zuid', 'het eilandje', 'city centre'],
     ['Leuven', 'Belgium', 'BE', 'leuven', 'EUR 450 to 750 / mo', 'a classic university town built around one of Europe&apos;s oldest institutions, with a dense, walkable student core.', 'city centre', 'heverlee', 'kessel-lo'],
+    ['Budapest', 'Hungary', 'HU', 'budapest', 'EUR 350 to 700 / mo', 'a low-cost European capital with strong medical and technical universities and an easy tram-and-metro commute.', 'district vii', 'district ix', 'buda side'],
+    ['Debrecen', 'Hungary', 'HU', 'debrecen', 'EUR 280 to 500 / mo', 'a compact university city known for medicine and life sciences, with some of the region&apos;s lowest living costs.', 'city centre', 'university quarter', 'nagyerdő'],
+    ['Szeged', 'Hungary', 'HU', 'szeged', 'EUR 280 to 500 / mo', 'a riverside university city with a strong research reputation and an easy, walkable student core.', 'belváros', 'újszeged', 'university area'],
     ['Singapore', 'Singapore', 'SG', 'singapore-city', 'SGD 900 to 1800 / mo', 'a compact Asia-Pacific hub with efficient transport, leading universities, and high housing demand.', 'queenstown', 'clementi', 'kent ridge'],
     ['Kuala Lumpur', 'Malaysia', 'MY', 'kuala-lumpur', 'MYR 900 to 1800 / mo', 'a connected Southeast Asian capital with international universities, strong transit, and practical student living.', 'bangsar south', 'kl sentral', 'bukit bintang'],
     ['Penang', 'Malaysia', 'MY', 'penang', 'MYR 700 to 1400 / mo', 'a lively island study destination combining established universities, food culture, and comparatively accessible rents.', 'gelugor', 'tanjung tokong', 'georgetown'],
@@ -1120,6 +1123,11 @@ export const universities: UniversityPlace[] = [
   { name: 'Vrije Universiteit Brussel', city: 'Brussels', country: 'BE', students: '18,000+', slug: 'vub-brussels', citySlug: 'brussels' },
   { name: 'KU Leuven', city: 'Leuven', country: 'BE', students: '60,000+', slug: 'ku-leuven', citySlug: 'leuven' },
   { name: 'University of Antwerp', city: 'Antwerp', country: 'BE', students: '21,000+', slug: 'antwerp-university', citySlug: 'antwerp' },
+  { name: 'Eötvös Loránd University', city: 'Budapest', country: 'HU', students: '28,000+', slug: 'elte-budapest', citySlug: 'budapest' },
+  { name: 'Semmelweis University', city: 'Budapest', country: 'HU', students: '11,000+', slug: 'semmelweis-budapest', citySlug: 'budapest' },
+  { name: 'Budapest University of Technology and Economics', city: 'Budapest', country: 'HU', students: '20,000+', slug: 'bme-budapest', citySlug: 'budapest' },
+  { name: 'University of Debrecen', city: 'Debrecen', country: 'HU', students: '27,000+', slug: 'debrecen-university', citySlug: 'debrecen' },
+  { name: 'University of Szeged', city: 'Szeged', country: 'HU', students: '21,000+', slug: 'szeged-university', citySlug: 'szeged' },
   { name: 'National University of Singapore', city: 'Singapore', country: 'SG', students: '40,000+', slug: 'nus', citySlug: 'singapore-city' },
   { name: 'Nanyang Technological University', city: 'Singapore', country: 'SG', students: '35,000+', slug: 'ntu', citySlug: 'singapore-city' },
   { name: 'University of Malta', city: 'Msida', country: 'MT', students: '11,000+', slug: 'malta-university', citySlug: 'msida' },
@@ -1140,6 +1148,7 @@ export const groupedCities: Record<string, CityPlace[]> = {
   Spain: cities.filter((city) => city.countryCode === 'ES'),
   Austria: cities.filter((city) => city.countryCode === 'AT'),
   Belgium: cities.filter((city) => city.countryCode === 'BE'),
+  Hungary: cities.filter((city) => city.countryCode === 'HU'),
   Singapore: cities.filter((city) => city.countryCode === 'SG'),
   Malta: cities.filter((city) => city.countryCode === 'MT'),
   Italy: cities.filter((city) => city.countryCode === 'IT'),

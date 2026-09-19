@@ -23,6 +23,7 @@ const countryLabels: Record<MovingAbroadCountrySlug, string> = {
   spain: 'Spain',
   austria: 'Austria',
   belgium: 'Belgium',
+  hungary: 'Hungary',
   singapore: 'Singapore',
   malta: 'Malta',
   italy: 'Italy',
