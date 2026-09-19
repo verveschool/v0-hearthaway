@@ -93,10 +93,21 @@ const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property
 
 const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(applyOverride)
 
-export const accommodationProperties: CatalogProperty[] = [
+const allAccommodationProperties: CatalogProperty[] = [
   ...normalizedSeedProperties,
   ...normalizedAdditionalProperties,
 ]
+
+/**
+ * The public catalogue is intentionally strict: a property must have at least
+ * one room-specific image and a usable starting price. A generic building photo
+ * or a property-wide price is not enough to present a room as bookable.
+ */
+export const accommodationProperties: CatalogProperty[] = allAccommodationProperties.filter((property) => {
+  const hasRoomPhoto = property.rooms?.some((room) => Boolean(room.image)) ?? false
+  const hasPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
+  return hasRoomPhoto && hasPrice
+})
 
 export const accommodationCities = [...new Set(accommodationProperties.map((property) => property.city))].sort()
 export const accommodationCountries = [...new Set(accommodationProperties.map((property) => property.country))].sort()
