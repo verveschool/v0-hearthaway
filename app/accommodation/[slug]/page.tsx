@@ -7,7 +7,7 @@ import { accommodationProperties, getAccommodationBySlug } from '../catalog'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import WhatsAppLink from '@/components/accommodation/whatsapp-link'
 import ImageLightbox from '@/components/accommodation/image-lightbox'
-import { formatAccommodationPrice, formatAccommodationPricePeriod } from '../formatters'
+import { formatAccommodationPrice, formatAccommodationPricePeriod, formatRoomPrice } from '../formatters'
 
 export function generateStaticParams() { return accommodationProperties.map((property) => ({ slug: property.slug })) }
 type PropertyPageProps = { params: Promise<{ slug: string }> }
@@ -58,7 +58,40 @@ export default async function AccommodationPropertyPage({ params }: PropertyPage
           <ImageLightbox images={gallery} name={property.name} city={property.city} country={property.country} cityHref={`/cities/${property.city.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} />
           <div className="mt-6 grid gap-6 sm:grid-cols-2"><div className="rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Tentative starting price</p><p className="mt-2 font-heading text-3xl font-extrabold text-[#00319D]">{price}{periodLabel && <span className="text-sm font-semibold text-[#6B6860]">{periodLabel}</span>}</p><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{property.pricingNote}</p>{property.pricingSourceUrl ? <a href={property.pricingSourceUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">View pricing source</a> : null}</div><div className="rounded-2xl border border-[#E8E6E1] bg-white p-6"><p className="text-xs font-bold uppercase tracking-wider text-[#6B6860]">Location & mapping</p><div className="mt-2 flex items-start gap-2 text-sm font-semibold text-[#1A1A1A]"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-[#00319D]" />{property.address}</div><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{property.distance}</p>{property.locationMapUrl ? <a href={property.locationMapUrl} target="_blank" rel="noreferrer" className="mt-3 inline-flex text-xs font-bold text-[#00319D] underline underline-offset-4">Open map</a> : null}</div></div>
           {property.goodFor?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Good for</h2><div className="mt-5 flex flex-wrap gap-2">{property.goodFor.map((item) => <span key={item} className="rounded-full bg-[#F7F6F3] px-4 py-2 text-sm font-semibold text-[#1A1A1A]">{item}</span>)}</div></div> : null}
-          <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2><div className="mt-5 flex flex-wrap gap-2">{property.roomTypes.map((type) => <span key={type} className="rounded-full bg-[#F7F6F3] px-4 py-2 text-sm font-semibold text-[#1A1A1A]">{type}</span>)}</div></div>
+          <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+            <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2>
+            <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">Every room type offered at this property, as listed by the source. A room type stays listed here even when it currently has no availability.</p>
+            <div className="mt-5 grid gap-5 sm:grid-cols-2">
+              {(property.rooms ?? []).map((room) => (
+                <div key={room.name} className="overflow-hidden rounded-2xl border border-[#E8E6E1]">
+                  {room.image ? (
+                    <div className="relative h-40 w-full overflow-hidden bg-[#F7F6F3]">
+                      <img src={room.image} alt={`${room.name} at ${property.name}`} className="h-full w-full object-cover" />
+                    </div>
+                  ) : null}
+                  <div className="p-5">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">{room.name}</h3>
+                      {room.availabilityNote ? <span className="max-w-full rounded-full bg-[#F7F6F3] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#6B6860]">{room.availabilityNote}</span> : null}
+                    </div>
+                    <p className={`mt-2 font-heading text-xl font-extrabold ${room.price.priceOnEnquiry ? 'text-[#6B6860]' : 'text-[#00319D]'}`}>{formatRoomPrice(room.price)}</p>
+                    {room.price.conditions ? <p className="mt-1 text-xs leading-relaxed text-[#6B6860]">{room.price.conditions}</p> : null}
+                    {room.tenancy ? <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-[#6B6860]">{room.tenancy}</p> : null}
+                    {room.features?.length ? (
+                      <ul className="mt-3 space-y-1.5">
+                        {room.features.map((feature) => (
+                          <li key={feature} className="flex items-start gap-2 text-sm text-[#1A1A1A]">
+                            <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FCC20A]" />
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : null}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           {property.roomFeatures?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room details</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{property.roomFeatures.map((item) => <div key={item} className="flex items-center gap-3 text-sm text-[#1A1A1A]"><span className="h-1.5 w-1.5 rounded-full bg-[#FCC20A]" />{item}</div>)}</div></div> : null}
           {property.inclusions?.length ? <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">What is included</h2><div className="mt-5 grid gap-3 sm:grid-cols-2">{property.inclusions.map((item) => <div key={item} className="flex items-start gap-3 text-sm text-[#1A1A1A]"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-[#00319D]" />{item}</div>)}</div></div> : null}
           <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Categories</h2><div className="mt-5 flex flex-wrap gap-2">{(property.categories ?? []).map((category) => <span key={category} className="rounded-full border border-[#E8E6E1] bg-white px-4 py-2 text-sm font-semibold text-[#00319D]">{category}</span>)}</div></div>
