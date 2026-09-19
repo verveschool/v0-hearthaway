@@ -382,7 +382,7 @@ export default function GetMatchedPage() {
                             onClick={() => togglePriority(p)}
                             className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
                               form.priorities.includes(p)
-                                ? 'border-[#FCC20A] bg-[#FCC20A] text-black'
+                                ? 'border-[#FCC20A] bg-[#FCC20A] text-[#333333]'
                                 : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
                             }`}
                           >
@@ -507,7 +507,7 @@ export default function GetMatchedPage() {
                   <button
                     type="submit"
                     disabled={!form.phone}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#FCC20A] text-black font-bold rounded-xl hover:bg-[#FCC20A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                    className="flex items-center gap-2 px-7 py-3 bg-[#FCC20A] text-[#333333] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
                   >
                     {"Get my matches"}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
@@ -524,7 +524,7 @@ export default function GetMatchedPage() {
             {['Free to use', 'No commitment required', 'Response within 24 hours', 'Verified properties only'].map((item) => (
               <div key={item} className="flex items-center gap-1.5">
                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-                  <path d="M2 6L4.5 8.5L10 3" stroke="#00319D" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M2 6L4.5 8.5L10 3" stroke="#333333" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {item}
               </div>

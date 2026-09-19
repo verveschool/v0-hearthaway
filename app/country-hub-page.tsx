@@ -63,7 +63,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="inline-flex px-8 py-4 bg-[#FCC20A] text-black font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
+                className="inline-flex px-8 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
               >
                 Get Matched
               </Link>
@@ -224,7 +224,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="flex-shrink-0 px-8 py-4 bg-[#FCC20A] text-black font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
+                className="flex-shrink-0 px-8 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
               >
                 Get Matched
               </Link>
