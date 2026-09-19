@@ -46,7 +46,7 @@ export default function MatchedCTA({
 
       <Link
         href={buttonHref}
-        className="w-full flex-shrink-0 px-6 py-3 bg-[#FCC20A] text-center text-[#00319D] font-bold text-sm rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg sm:w-auto lg:px-8 lg:py-4 lg:text-base"
+        className="w-full flex-shrink-0 px-6 py-3 bg-[#FCC20A] text-center text-black font-bold text-sm rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg sm:w-auto lg:px-8 lg:py-4 lg:text-base"
       >
         {buttonText}
       </Link>

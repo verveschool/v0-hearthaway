@@ -137,7 +137,7 @@ export default function HeroSection() {
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
-              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-white shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FCC20A]"
+              className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-[#FCC20A] px-8 py-4 text-base font-extrabold text-black shadow-lg shadow-[#00319D]/20 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-[#00319D]/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FCC20A]"
             >
               Get Matched
               <ArrowRight

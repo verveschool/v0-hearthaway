@@ -123,7 +123,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
+                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-black font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
               >
                 Get matched in {city.name}
               </Link>
@@ -298,7 +298,7 @@ export default async function CityPage({ params }: CityPageProps) {
                       key={`support-step-${index}`}
                       className="rounded-2xl bg-[#F7F6F3] border border-[#E8E6E1] p-5"
                     >
-                      <div className="w-8 h-8 rounded-full bg-[#FCC20A] text-[#00319D] font-extrabold flex items-center justify-center mb-4">
+                      <div className="w-8 h-8 rounded-full bg-[#FCC20A] text-black font-extrabold flex items-center justify-center mb-4">
                         {index + 1}
                       </div>
                       <p className="text-[#6B6860] text-sm leading-relaxed">

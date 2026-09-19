@@ -108,7 +108,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
+                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-black font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
               >
                 Get matched
               </Link>
@@ -361,7 +361,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 </p>
                 <Link
                   href="/get-matched"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#00319D] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
+                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-black font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
                 >
                   Start matching
                 </Link>

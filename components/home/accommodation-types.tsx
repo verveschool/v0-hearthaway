@@ -157,7 +157,7 @@ export default function AccommodationTypes() {
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <Link
             href="/get-matched"
-            className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-[#00319D] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
+            className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-black font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
           >
             Get matched to the right type for you
           </Link>
