@@ -7,6 +7,10 @@ import type { AccommodationCurrency, AccommodationPricePeriod } from './accommod
 
 const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
   const gallery = Array.isArray(property.gallery) && property.gallery.length ? property.gallery : [property.image].filter(Boolean)
+  // The cover image is always derived from the first gallery photo so the listing
+  // card, the property page banner, and the social sharing preview can never
+  // diverge — a property's cover photo is defined in exactly one place: gallery[0].
+  const image = gallery[0] ?? property.image
 
   const currency = property.currency ?? 'GBP'
   const universities = Array.isArray(property.universities) && property.universities.length
@@ -20,6 +24,7 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     currency,
     pricePeriod: property.pricePeriod && property.pricePeriod !== 'check' ? property.pricePeriod : currency === 'GBP' || currency === 'AUD' ? 'week' : 'month',
     categories: Array.isArray(property.categories) ? property.categories : [],
+    image,
     gallery,
     // Source URLs remain in the inventory data for internal maintenance and are intentionally not exposed in the rendered catalogue.
     gallerySourceUrl: '',
