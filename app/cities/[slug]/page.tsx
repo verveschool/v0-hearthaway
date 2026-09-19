@@ -35,21 +35,6 @@ function toTitleCase(text: string) {
     .join(' ')
 }
 
-function countryLabel(code: string) {
-  if (code === 'UK') return 'United Kingdom'
-  if (code === 'IE') return 'Ireland'
-  if (code === 'AU') return 'Australia'
-  if (code === 'FR') return 'France'
-  if (code === 'USA') return 'United States'
-  if (code === 'CA') return 'Canada'
-  if (code === 'ES') return 'Spain'
-  if (code === 'AT') return 'Austria'
-  if (code === 'SG') return 'Singapore'
-  if (code === 'MT') return 'Malta'
-  if (code === 'IT') return 'Italy'
-  return code
-}
-
 export async function generateMetadata({ params }: CityPageProps): Promise<Metadata> {
   const { slug } = await params
   const city = getCityBySlug(slug)
@@ -76,7 +61,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
   const cityUniversities = getUniversitiesByCity(city.name)
   const cityProperties = accommodationProperties.filter((property) => property.city.toLowerCase() === city.name.toLowerCase())
-  const countryName = countryLabel(city.countryCode)
+  const countryName = city.country
 
   return (
     <>

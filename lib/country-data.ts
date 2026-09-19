@@ -175,6 +175,14 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('austria')
   },
   {
+    name: 'Belgium', slug: 'belgium', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'EU capital hub', universityCount: '20+',
+    citySlugs: ['brussels', 'antwerp', 'leuven'], universitySlugs: ['ulb-brussels', 'vub-brussels', 'ku-leuven', 'antwerp-university'],
+    summary: 'a multilingual heart of the European Union with historic universities, compact well-connected cities, and easy access to the rest of Europe.',
+    overview: 'belgium suits students who want a central european base close to major EU institutions, strong research universities, and cities that are easy to navigate on foot, by bike, or by rail.',
+    studentHousingNotes: 'student housing ranges from university kots (single rooms) to shared flats; registration with the local commune is required soon after arrival, and demand peaks before the September intake.',
+    movingAbroadLinks: getMovingAbroadLinksForCountry('belgium')
+  },
+  {
     name: 'Singapore', slug: 'singapore', currency: 'SGD (S$)', heroImage: '/images/dest-uae.png', badge: 'Asia-Pacific hub', universityCount: '20+',
     citySlugs: ['singapore-city'], universitySlugs: ['nus', 'ntu', 'smu', 'sutd'],
     summary: 'a highly connected Asia-Pacific education hub known for leading universities, safety, and strong graduate employment networks.',

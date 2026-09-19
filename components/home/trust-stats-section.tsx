@@ -1,8 +1,10 @@
+import { countries } from '@/lib/country-data'
+
 const stats = [
   { value: '210', label: 'Cities' },
   { value: '590', label: 'Universities' },
   { value: '18K', label: 'Students helped' },
-  { value: '14', label: 'Countries' },
+  { value: String(countries.length), label: 'Countries' },
 ]
 
 export default function TrustStatsSection() {

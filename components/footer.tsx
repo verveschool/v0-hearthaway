@@ -18,6 +18,7 @@ const footerLinks = {
   { label: 'Italy', href: '/italy' },
   { label: 'Spain', href: '/spain' },
   { label: 'Austria', href: '/austria' },
+  { label: 'Belgium', href: '/belgium' },
   { label: 'Malta', href: '/malta' },
   { label: 'Malaysia', href: '/malaysia' },
   ],
