@@ -20,6 +20,9 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/93c27672-474b-484d-b038-fbdaaafba29b/London_EmilyBowesCourt_Lounge_Area_1.jpg_preview',
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/f7c2e4b4-4fa5-481a-9455-6af144b6cfbc/London_EmilyBowes_ClassicStudio_02.jpg.preview.webp',
       'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/73154600-8b43-4263-9bc0-8448f03f5097/London_EmilyBowesCourt_Games_Area_2.jpg_preview',
+      'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/c227cde1-fe38-47ba-85d4-c270fff57e24/London_EmilyBowes_BasicEnsuite_01.jpg.webp',
+      'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/c9ab1758-1244-496e-8d82-ccae27dea9b4/London_EmilyBowes_Premium1Ensuite_01.jpg.webp',
+      'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/ff3146d0-a034-4268-9b92-839cfc9e2567/London_EmilyBowes_Bathroom.jpg.webp',
     ],
   },
   'pacific-court-london': {
@@ -29,6 +32,9 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/f48085b1-d794-47f9-9d19-8cff580ff3d0/London_PacificCourt_Lounge_Area.jpg_preview',
       'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/4440b660-353c-4674-bdba-af8c86b76c63/London_PacificCourt_Courtyard_2.jpg_preview',
       'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/c34438f2-b059-4ddc-9dbd-126faec5cc2d/London_PacificCourt_SharedKitchen.jpg.preview.png',
+      'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/88e2ba85-72de-495a-b1c5-eec2d3a73623/London_PacificCourt_ClassicEnsuite_01.jpg.png',
+      'https://dxp.plus/cdn-cgi/image/w=3840,q=90,f=webp,fit=contain/https://us-cdn.dxp.plus/0ae05a56-d26a-410b-a71e-67b6303c68f7/London_PacificCourt_PR1Studio_01.jpg.png',
+      'https://www.storylink.us/cdn-cgi/image/w=3840,q=90,f=webp/https://us-cdn.storylink.us/21884f3a-b0c7-47bc-b2f9-447204cab612/London_PacificCourt_Reception_2.jpg_preview',
     ],
   },
   'iq-chandos-house-manchester': {
@@ -44,7 +50,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
   'study-inn-brotherton-house': {
     gallery: [
       'https://studyinn.com/wp-content/uploads/2022/11/11-1.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2024/10/Brotherton-House-Building-3.jpg.webp',
       'https://media.studentcrowd.net/w1200/content/galleries/study-inn-leeds/n8a0780-social-space-close.jpg',
+      'https://studyinn.com/wp-content/uploads/2022/11/Shared-kitchen-3.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2024/10/Sapphire-Plus-Apt-4.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Leeds-3.jpg.webp',
     ],
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Study desk', 'Smart TV', 'Kitchenette', 'Wardrobe'],
     inclusions: ['Utilities', 'Superfast Wi-Fi', 'Bed linen and towels', 'Regular cleaning', 'On-site facilities'],
@@ -53,7 +63,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
   'study-inn-reynard-house': {
     gallery: [
       'https://studyinn.com/wp-content/uploads/2022/11/10.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Building-evening-1.jpg.webp',
       'https://assets.amberstudent.com/inventories/200441/f3795852.jpg?auto=format&fit=crop&h=480&q=80&trim=auto&w=720',
+      'https://studyinn.com/wp-content/uploads/2022/11/N8A6228-Shared-Kitchen.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/N8A5966-Platinum-Apt.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Leicester.jpg.webp',
     ],
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Study area', 'Smart TV', 'Kitchenette', 'Wardrobe'],
     inclusions: ['All utility bills', 'Regular room cleaning', 'Towel and linen replacement', 'Wi-Fi', 'Gym and wellbeing facilities'],
@@ -64,6 +78,9 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://casita-img.s3.eu-west-2.amazonaws.com/uploads/buildings/1329/building/orig/talbot-street-nottingham-193294773320230301081612AM.jpeg',
       'https://casita-img.s3.eu-west-2.amazonaws.com/uploads/buildings/1329/building/orig/talbot-street-nottingham-157124791520230301081613AM.jpeg',
       'https://media.mystudenthalls.com/app/uploads/2019/11/Talbot-Street-Gold-En-suite1-812x562.png',
+      'https://studyinn.com/wp-content/uploads/2022/11/Talbot-St-Outside-4-Final.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Small-kitchen-E5I6913-Final.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Gold-Apt-E5I7030-Final.jpg.webp',
     ],
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Study desk', 'Wardrobe', 'Smart TV', 'Kitchenette'],
     inclusions: ['Bills', 'Superfast Wi-Fi', 'Regular cleaning', 'Bed linen and towels', 'Gym and wellbeing facilities'],
@@ -71,6 +88,11 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
   'study-inn-triumph-house': {
     gallery: [
       'https://cdn.universityliving.com/cms/fpJzKZ0gP5SQluF3qFoaPZRsjtaMFO.jpg?w=640',
+      'https://studyinn.com/wp-content/uploads/2023/07/Triumph-House-80-1.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Triumph-House.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Triumph-House-2.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Shared-kitchen-1.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Platinum-apt.jpg.webp',
     ],
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Study area', 'Large wardrobe', 'Smart TV', 'Fully fitted kitchen'],
     inclusions: ['All-inclusive bills', 'Wi-Fi', 'Housekeeping', 'Gym', 'Wellness spa', 'Study rooms', '24/7 security'],
@@ -80,6 +102,10 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     gallery: [
       'https://cdn.beststudenthalls.com/media/room/platinum-plus-studio-18/883074',
       'https://cdn.beststudenthalls.com/media/listing/walnut-gardens-exeter/542977',
+      'https://studyinn.com/wp-content/uploads/2023/07/Walnut-Gardens1-1.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/Exeter-2.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/N8A0469-APT-diamond-plus.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/N8A0625-shared-kitchen-1.jpg.webp',
     ],
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Study area', 'Smart TV', 'Private fridge/freezer', 'Kitchen appliances'],
     inclusions: ['Utility bills', 'Room and kitchen cleaning', 'Bed linen and towels', 'Wi-Fi', 'Gym and yoga room', 'Study rooms'],
@@ -103,16 +129,23 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     gallery: [
       'https://media.studentcrowd.net/w852-h568-q90-cfill/index-data/20190605115217-gallery250ab.jpg',
       'https://media.studentcrowd.net/w1200/content/galleries/study-inn-bristol---marlborough-house/app-images-2fresizable-2fimage-1--26829493-1616747611383.png',
+      'https://studyinn.com/wp-content/uploads/2022/11/Bristol-Building-2.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/E5I1388-shared-kitchen-red-1.jpg.webp',
+      'https://studyinn.com/wp-content/uploads/2022/11/E5I1273-gold-apartment.jpg.webp',
     ],
     roomFeatures: ['Private en-suite', 'Double bed', 'Study desk', 'Smart TV', 'Shared kitchen', 'Private storage'],
     inclusions: ['Bills', 'Superfast Wi-Fi', 'Gym', 'Cinema room', 'Study rooms', 'Bike storage', '24/7 staff'],
     goodFor: ['Students at the University of Bristol', 'Students who want a social central location'],
   },
   'study-inn-frederick-road': {
+    image: 'https://studyinn.com/wp-content/uploads/2025/11/Study-Inn_Frederick-Road.jpg.webp',
+    gallery: ['https://studyinn.com/wp-content/uploads/2025/11/Study-Inn_Frederick-Road.jpg.webp'],
     roomFeatures: ['En-suite bathroom', 'Study desk', 'Wardrobe', 'Smart TV', 'Kitchenette'],
     inclusions: ['Bills', 'Wi-Fi', 'Housekeeping', 'On-site support'],
   },
   'study-inn-james-street': {
+    image: 'https://studyinn.com/wp-content/uploads/2026/02/Study-Inn-York.jpg.webp',
+    gallery: ['https://studyinn.com/wp-content/uploads/2026/02/Study-Inn-York.jpg.webp'],
     roomFeatures: ['En-suite bathroom', 'Study desk', 'Wardrobe', 'Smart TV', 'Kitchenette'],
     inclusions: ['Bills', 'Wi-Fi', 'Housekeeping', 'On-site support'],
   },
@@ -121,6 +154,9 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
       'https://assets.neonwood.com/uploads/berlin-frankfurter-tor.webp',
       'https://assets.neonwood.com/uploads/Amenitie_GYM2.webp',
       'https://assets.neonwood.com/uploads/Amenitie_Gaming_Area2.webp',
+      'https://assets.neonwood.com/uploads/NeonWood_GFT_Classic_A129_03_Deko.webp',
+      'https://assets.neonwood.com/uploads/Neonwood_Fft_Classic_Room.webp',
+      'https://assets.neonwood.com/uploads/Neonwood_Fft_Classic_Kitchen.jpg',
     ],
     currency: 'EUR',
     pricePeriod: 'month',
@@ -128,23 +164,54 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     inclusions: ['Internet', 'Utilities', 'Common-area access', 'On-site management'],
   },
   'neon-wood-berlin-mitte-wedding': {
-    gallery: ['https://assets.neonwood.com/uploads/Berlin-Mitte_wedding.webp'],
+    gallery: [
+      'https://assets.neonwood.com/uploads/Berlin-Mitte_wedding.webp',
+      'https://neonwood.com/media/locations/berlin-mitte-wedding/hero-background-fbea4d.png',
+      'https://assets.neonwood.com/uploads/Neonwood_Mw_Classic_Balcony_Room1.webp',
+      'https://assets.neonwood.com/uploads/Neonwood_Mw_Classic_Balcony_Room2.webp',
+      'https://assets.neonwood.com/uploads/Neonwood_Mw_Classic_Balcony_Room3.webp',
+    ],
     roomFeatures: ['Furnished apartment', 'Private bathroom', 'Kitchenette', 'Study space'],
   },
   'neon-wood-tannhaus-berlin-neuk-lln': {
-    gallery: ['https://tannhaus.com/app/uploads/2023/08/Image00006-2-1440x0-c-default.jpg'],
+    gallery: [
+      'https://tannhaus.com/app/uploads/2023/08/Image00006-2-1440x0-c-default.jpg',
+      'https://tannhaus.com/app/uploads/2017/10/20180731_1125_tannhaus_byDavidUlrich-1440x0-c-default.jpg',
+      'https://tannhaus.com/app/uploads/2023/02/Tannhaus-Rixdorf-Aussenbereich-01-1440x0-c-default.jpg',
+      'https://tannhaus.com/app/uploads/2023/08/Tannhaus-Rixdorf-A504-01-1440x600-c-default.jpg',
+      'https://tannhaus.com/app/uploads/2023/08/Tannhaus-Rixdorf-B403-01-1440x600-c-default.jpg',
+    ],
     currency: 'EUR',
     pricePeriod: 'month',
     roomFeatures: ['40 m² studio example', 'Full kitchen', 'Oven', 'Dishwasher', 'Private balcony', 'Living area'],
   },
   'neon-wood-berlin-adlershof': {
-    gallery: ['https://assets.neonwood.com/uploads/berlin-adlershof.webp'],
+    gallery: [
+      'https://assets.neonwood.com/uploads/berlin-adlershof.webp',
+      'https://assets.neonwood.com/uploads/CAB_Classic_Patio_Balcony_Horizontal1.webp',
+      'https://assets.neonwood.com/uploads/CAB_Classic_Patio_Balcony_Horizontal2.webp',
+      'https://assets.neonwood.com/uploads/CAB_Classic_Patio_Balcony_Horizontal3.webp',
+      'https://assets.neonwood.com/uploads/neonwood_cable_superiorbalcony_A316_2.webp',
+    ],
   },
   'neon-wood-frankfurt-riedberg': {
-    gallery: ['https://image.uhzcdn.com/house/c4/37056380d03d80f788e33c5aea6c94dac0e496.webp?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp'],
+    gallery: [
+      'https://image.uhzcdn.com/house/c4/37056380d03d80f788e33c5aea6c94dac0e496.webp?x-oss-process=image%2Fresize%2Cm_fill%2Cw_640%2Ch_400%2Climit_0%2Finterlace%2C1%2Fquality%2Cq_90%2Fformat%2Cwebp',
+      'https://assets.neonwood.com/uploads/frankfurt-riedberg-1200x630.webp',
+      'https://assets.neonwood.com/uploads/RIE_Deluxe_Patio_2.webp',
+      'https://assets.neonwood.com/uploads/RIE_Double_3.webp',
+      'https://assets.neonwood.com/uploads/wp-28f667358f3e-20180730_4639_neonwood_byDavidUlrich.jpg',
+    ],
   },
   'vita-student-new-gough-street': {
-    gallery: ['https://cdn.beststudenthalls.com/media/listing/gough-street/3_25tXhyS.webp'],
+    gallery: [
+      'https://cdn.beststudenthalls.com/media/listing/gough-street/3_25tXhyS.webp',
+      'https://www.vitastudent.com/wp-content/uploads/2026/09/19-VS_Birmingham-Gough-Street-External_RT-01-2400x1971-8bfba73.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2026/09/1-VS_Birmingham-Gough-Street-Hub-Spaces_RT-05-2401x1600-5397542.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2025/07/CLASSICF-706-VITA-GOUGH-STREET-AUG-20260096.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2025/07/DELUXE-740-VITA-GOUGH-STREET-AUG-20260017.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2025/07/PREMIUM-709-VITA-GOUGH-STREET-AUG-20260153.jpg',
+    ],
     distance: '10 min by train to the University of Birmingham; 1 min walk to Birmingham city centre',
     roomFeatures: ['En-suite bathroom', 'Double bed', 'Smart TV', 'Desk', 'Wardrobe', 'Kitchen with microwave, hob and fridge-freezer'],
     inclusions: ['Wi-Fi', 'Gym and fitness studio', 'Breakfast', 'Housekeeping', 'Study rooms', 'Events', 'Parcel collection'],
@@ -154,6 +221,9 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     gallery: [
       'https://pebblemillbirmingham.co.uk/wp-content/uploads/2020/06/Vita-Birmingham-08-1-640x640.jpg',
       'https://uniacco.imgix.net/inventory/classic_plus.jpg?auto=format&fit=max&w=828',
+      'https://www.vitastudent.com/wp-content/uploads/2022/11/Birmingham-Building-Thumbnail-684x1200-f5d90c5.jpeg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/CLASSIC-405-VITA-BIRMINGHAM-JULY-20223124_RT.jpeg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/PREMIUM-Room-420-VITA-BIRMINGHAM-JULY-20220207_RT.jpeg',
     ],
     distance: '25 min walk to the University of Birmingham',
     roomFeatures: ['Double bed', 'En-suite bathroom', 'Kitchen', 'Smart TV', 'Desk', 'Wardrobe'],
@@ -161,14 +231,26 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     goodFor: ['Students at the University of Birmingham', 'Students who want strong shared facilities'],
   },
   'vita-student-zed-alley': {
-    gallery: ['https://images.casita.com/uploads/buildings/502/room/2498/orig/zed-alley--3572905520260223110104AM.webp'],
+    gallery: [
+      'https://images.casita.com/uploads/buildings/502/room/2498/orig/zed-alley--3572905520260223110104AM.webp',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/VS_Bristol_Hub-Space_006-RT_WEB.jpeg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/VS_Bristol_Hub-Space_008-RT_WEB.jpeg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Bristol-Zed-Alley-Ultimate-1.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Bristol-Zed-Alley-Ultimate-2.jpg',
+    ],
     distance: 'Less than 10 min walk to the University of Bristol',
     roomFeatures: ['En-suite bathroom', 'Kitchen with microwave, hob and fridge-freezer', 'Three-quarter bed', 'Smart TV', 'Desk', 'Wardrobe'],
     inclusions: ['Breakfast', 'Superfast Wi-Fi', 'Gym', 'Study rooms', 'Housekeeping', 'Laundry', 'Events', '24/7 support'],
     goodFor: ['Students at the University of Bristol', 'Students who want central Bristol'],
   },
   'vita-student-park-place': {
-    gallery: ['https://cdn.beststudenthalls.com/media/room/deluxe-studio-150/181312'],
+    gallery: [
+      'https://cdn.beststudenthalls.com/media/room/deluxe-studio-150/181312',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Cardiff-Building-Thumbnail-685x1201-f7a4041.jpeg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Cardiff-Classic-1.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Cardiff-Classic-2.jpg',
+      'https://www.vitastudent.com/wp-content/uploads/2022/12/Cardiff-Classic-3.jpg',
+    ],
   },
   'iglu-broadway': {
     image: 'https://iglu.com.au/wp-content/uploads/2017/06/broadway-tile-397x297-1.png',
@@ -184,11 +266,25 @@ export const propertyOverrides: Record<string, PropertyOverride> = {
     goodFor: ['University of Sydney students', 'UTS students', 'Students who want inner-city Sydney'],
   },
   'iglu-central': {
-    gallery: ['https://images.casita.com/uploads/buildings/330929/room/9321913/orig/iglu-central--160466310020260428123130PM.jpg'],
+    gallery: [
+      'https://images.casita.com/uploads/buildings/330929/room/9321913/orig/iglu-central--160466310020260428123130PM.jpg',
+      'https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Central-Teaser-397x297-1.jpg',
+      'https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-1-2022.jpg',
+      'https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-2-2022.jpg',
+      'https://iglu.com.au/wp-content/uploads/2017/10/Iglu-Central-380x460-6-bed-share-1.jpg',
+      'https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Central-380x460-standard-studio.jpg',
+    ],
     roomFeatures: ['Single bed', 'Study desk', 'Storage', 'Bright private room'],
   },
   'iglu-mascot': {
-    gallery: ['https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Exterior-1400x739-1.jpg'],
+    gallery: [
+      'https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Exterior-1400x739-1.jpg',
+      'https://iglu.com.au/wp-content/uploads/2022/12/IgluMascot-Feature-397x297-2.jpg',
+      'https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-1-1400x739-1.jpg',
+      'https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-2-1400x739-1.jpg',
+      'https://iglu.com.au/wp-content/uploads/2023/01/Iglu-Mascot-380x460-6-Share-Ensuite.jpg',
+      'https://iglu.com.au/wp-content/uploads/2023/02/Iglu-Mascot-380x460-Standard-Studio.jpg',
+    ],
   },
   // --- Seed catalogue properties (Amber Student sources) ---
   'europa-liverpool': {
