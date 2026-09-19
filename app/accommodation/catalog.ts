@@ -93,10 +93,35 @@ const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property
 
 const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(applyOverride)
 
-export const accommodationProperties: CatalogProperty[] = [
+const allAccommodationProperties: CatalogProperty[] = [
   ...normalizedSeedProperties,
   ...normalizedAdditionalProperties,
 ]
+
+/**
+ * A listing is checked as a complete record, not just as a property card. Every
+ * room offered by the source must have its own image and a usable room price;
+ * a generic building image or property-wide "from" price is not sufficient.
+ */
+export function hasListingLevelEvidence(property: CatalogProperty): boolean {
+  const rooms = property.rooms ?? []
+  const hasSource = Boolean(property.pricingSourceUrl)
+  const hasPropertyPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
+  const hasRoomEvidence = rooms.length > 0 && rooms.every((room) => {
+    const price = room.price
+    const hasRoomPrice = Boolean(
+      price.label
+      || price.priceOnEnquiry
+      || (Number.isFinite(price.value) && price.value > 0)
+      || (Number.isFinite(price.minValue) && price.minValue > 0),
+    )
+    return Boolean(room.image) && hasRoomPrice
+  })
+
+  return hasSource && hasPropertyPrice && hasRoomEvidence
+}
+
+export const accommodationProperties: CatalogProperty[] = allAccommodationProperties.filter(hasListingLevelEvidence)
 
 export const accommodationCities = [...new Set(accommodationProperties.map((property) => property.city))].sort()
 export const accommodationCountries = [...new Set(accommodationProperties.map((property) => property.country))].sort()
