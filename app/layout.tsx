@@ -15,6 +15,11 @@ const brandIconPath = '/brand/  hearthaway-icon-dark.png'
 const brandBannerPath = '/All_Students.png'
 
 export const metadata: Metadata = {
+  // Without this, Next.js resolves relative OG/Twitter image URLs (like brandBannerPath
+  // below) against the current deployment's preview URL rather than the production
+  // domain. That mismatch is what lets social platforms cache a broken or stale
+  // preview image against the wrong host across deployments.
+  metadataBase: new URL('https://hearthaway.com'),
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
     'Find student accommodation near your university in the UK, Ireland, France, Australia. HearthAway helps international students find the right place before they arrive.',

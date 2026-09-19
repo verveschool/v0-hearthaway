@@ -17,7 +17,9 @@ export async function generateMetadata({ params }: PropertyPageProps): Promise<M
   const property = getAccommodationBySlug(slug)
   if (!property) return { title: 'Accommodation | HearthAway' }
 
-  const mainImage = property.gallery[0] ?? property.image
+  // property.image is always kept in sync with gallery[0] by the catalog, so this
+  // is the same cover photo shown on the listing card and the property banner.
+  const mainImage = property.image
   const title = `${property.name} | ${property.city} accommodation | HearthAway`
   const description = `Explore ${property.name} student accommodation in ${property.city}, including rooms, facilities, location and nearby universities.`
 
