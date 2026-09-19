@@ -969,15 +969,39 @@ export const cities: CityPlace[] = [
     ['Utrecht', 'Netherlands', 'NL', 'utrecht', 'EUR 750 to 1250 / mo', 'a central, bike-friendly university city with excellent national rail connections', 'oost', 'lombok', 'wittevrouwen'],
     ['Groningen', 'Netherlands', 'NL', 'groningen', 'EUR 550 to 900 / mo', 'a dedicated student city with a youthful centre, strong research community, and excellent cycling culture', 'centrum', 'helpman', 'korrewegwijk'],
   ].map(([name, country, countryCode, slug, avgRent, description, ...areas]) => ({
-    name, country, countryCode: countryCode as CountryCode, universities: '3+', image: '/images/city-london.png', slug, description,
-    avgRent, studentPositioning: description,
-    bestAreasForStudents: { summary: `Students commonly choose ${areas.join(', ')} for access to campuses, transport, and everyday amenities.`, topNeighbourhoods: areas },
-    rentBudgeting: { summary: `Plan beyond rent for utilities, transport, deposits, and seasonal demand in ${name}.`, averageMonthlyRent: avgRent.split(' to ')[0] }
+  name, country, countryCode: countryCode as CountryCode, universities: '3+', image: '/images/city-london.png', slug, description,
+  avgRent, studentPositioning: description,
+  bestAreasForStudents: { summary: `Students commonly choose ${areas.join(', ')} for access to campuses, transport, and everyday amenities.`, topNeighbourhoods: areas },
+  rentBudgeting: { summary: `Plan beyond rent for utilities, transport, deposits, and seasonal demand in ${name}.`, averageMonthlyRent: avgRent.split(' to ')[0] }
+  })),
+  ...[
+    ['Exeter', 'United Kingdom', 'UK', 'exeter', '/images/city-exeter.png', '£450 to £750 / mo', 'a compact Russell Group university city known for a green, research-led campus and a relaxed south-west England pace of life.', 'st james', 'newtown', 'city centre'],
+    ['Leicester', 'United Kingdom', 'UK', 'leicester', '/images/city-leicester.png', '£450 to £700 / mo', 'a diverse, affordable city split between two major universities and a strong food and culture scene.', 'clarendon park', 'city centre', 'north evington'],
+    ['Loughborough', 'United Kingdom', 'UK', 'loughborough', '/images/city-loughborough.png', '£450 to £700 / mo', 'a focused university town built around a large green campus with a strong sport and engineering reputation.', 'campus', 'ashby road', 'town centre'],
+    ['Southampton', 'United Kingdom', 'UK', 'southampton', '/images/city-southampton.png', '£500 to £800 / mo', 'a coastal port city with two universities, a working waterfront and good rail links to London.', 'portswood', 'city centre', 'highfield'],
+    ['York', 'United Kingdom', 'UK', 'york', '/images/city-york.png', '£500 to £800 / mo', 'a historic walled city with two universities and a compact, walkable centre.', 'city centre', 'heworth', 'fulford'],
+    ['Barcelona', 'Spain', 'ES', 'barcelona', '/images/city-barcelona.png', 'EUR 700 to 1200 / mo', 'a Mediterranean coastal capital with multiple large universities, strong transit and a vibrant creative scene.', 'gracia', 'eixample', 'poblenou'],
+    ['Madrid', 'Spain', 'ES', 'madrid', '/images/city-madrid.png', 'EUR 650 to 1150 / mo', 'Spain\u2019s capital, with several major universities, extensive metro coverage and a dense student social scene.', 'moncloa', 'chamberi', 'salamanca'],
+    ['Tübingen', 'Germany', 'DE', 'tuebingen', '/images/city-tuebingen.png', 'EUR 500 to 850 / mo', 'a small, historic university town on the Neckar river with one of Germany\u2019s oldest universities and a dense student population.', 'altstadt', 'westliche stadt', 'derendingen'],
+  ].map(([name, country, countryCode, slug, image, avgRent, description, ...areas]) => ({
+  name, country, countryCode: countryCode as CountryCode, universities: '1+', image, slug, description,
+  avgRent, studentPositioning: description,
+  bestAreasForStudents: { summary: `Students commonly choose ${areas.join(', ')} for access to campuses, transport, and everyday amenities.`, topNeighbourhoods: areas },
+  rentBudgeting: { summary: `Plan beyond rent for utilities, transport, deposits, and seasonal demand in ${name}.`, averageMonthlyRent: avgRent.split(' to ')[0] }
   }))
-]
+  ]
 
 export const universities: UniversityPlace[] = [
   { name: 'University of Hertfordshire', city: 'Hatfield', country: 'UK', students: '30,000+', slug: 'hertfordshire', citySlug: 'hatfield' },
+  { name: 'University of Exeter', city: 'Exeter', country: 'UK', students: '22,000+', slug: 'exeter', citySlug: 'exeter' },
+  { name: 'University of Leicester', city: 'Leicester', country: 'UK', students: '16,000+', slug: 'leicester', citySlug: 'leicester' },
+  { name: 'De Montfort University', city: 'Leicester', country: 'UK', students: '27,000+', slug: 'de-montfort', citySlug: 'leicester' },
+  { name: 'Loughborough University', city: 'Loughborough', country: 'UK', students: '18,000+', slug: 'loughborough', citySlug: 'loughborough' },
+  { name: 'University of Southampton', city: 'Southampton', country: 'UK', students: '25,000+', slug: 'southampton', citySlug: 'southampton' },
+  { name: 'Solent University', city: 'Southampton', country: 'UK', students: '10,000+', slug: 'solent', citySlug: 'southampton' },
+  { name: 'University of York', city: 'York', country: 'UK', students: '19,000+', slug: 'york', citySlug: 'york' },
+  { name: 'York St John University', city: 'York', country: 'UK', students: '6,500+', slug: 'york-st-john', citySlug: 'york' },
+  { name: 'University of Tübingen', city: 'Tübingen', country: 'DE', students: '28,000+', slug: 'tuebingen', citySlug: 'tuebingen' },
   { name: 'University College London', city: 'London', country: 'UK', students: '42,000+', slug: 'ucl', citySlug: 'london' },
   { name: 'Kings College London', city: 'London', country: 'UK', students: '31,000+', slug: 'kcl', citySlug: 'london' },
   { name: 'Imperial College London', city: 'London', country: 'UK', students: '22,000+', slug: 'imperial', citySlug: 'london' },
