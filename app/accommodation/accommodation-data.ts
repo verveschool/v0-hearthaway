@@ -26,6 +26,10 @@ export type AccommodationProperty = {
   depositNote?: string
   goodFor?: string[]
   verifiedAt?: string
+  /** Pricing is indicative only; confirm the live room offer, dates and contract with the provider. */
+  pricingNote?: string
+  pricingSourceUrl?: string
+  locationMapUrl?: string
 }
 
 export const accommodationProperties: AccommodationProperty[] = [

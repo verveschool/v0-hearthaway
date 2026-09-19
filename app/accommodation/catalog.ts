@@ -13,6 +13,8 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
   const image = gallery[0] ?? property.image
 
   const currency = property.currency ?? 'GBP'
+  const pricingSourceUrl = property.pricingSourceUrl || property.sourceUrl
+  const locationMapUrl = property.locationMapUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${property.address}, ${property.city}, ${property.country}`)}`
   const universities = Array.isArray(property.universities) && property.universities.length
     ? property.universities
     : getUniversitiesByCity(property.city).map((university) => university.name)
@@ -33,8 +35,11 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     roomTypes: Array.isArray(property.roomTypes) ? property.roomTypes : [],
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
-
-
+    // Every displayed price is a tentative starting point sourced from the partner or listing page.
+    // Keep the source in data for maintenance while the public page makes the uncertainty explicit.
+    pricingNote: property.pricingNote ?? 'Tentative starting price; confirm the current room offer, dates, contract length, bills and deposit before booking.',
+    pricingSourceUrl,
+    locationMapUrl,
   }
 }
 
