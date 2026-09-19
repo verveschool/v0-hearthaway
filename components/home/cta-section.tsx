@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
+import { countries } from '@/lib/country-data'
+
 export default function CtaSection() {
   return (
     <section className="bg-[#F7F6F3] py-24 lg:py-32">
@@ -80,7 +82,7 @@ export default function CtaSection() {
             {/* Floating stat */}
             <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[210px]">
               <div className="font-extrabold text-3xl text-[#00319D] mb-0.5">
-                14
+                {countries.length}
               </div>
               <div className="text-[#6B6860] text-sm leading-snug">
                 countries across Europe, North America, the UAE, and APAC.

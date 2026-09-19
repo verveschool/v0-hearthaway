@@ -29,9 +29,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/italy',
     '/singapore',
     '/austria',
+    '/belgium',
+    '/hungary',
     '/malta',
     '/uae',
     '/netherlands',
+    '/malaysia',
   ]
 
   // Combine all routes

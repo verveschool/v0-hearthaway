@@ -25,6 +25,8 @@ const countryFilters = [
   { value: 'CA', label: 'Canada' },
   { value: 'ES', label: 'Spain' },
   { value: 'AT', label: 'Austria' },
+  { value: 'BE', label: 'Belgium' },
+  { value: 'HU', label: 'Hungary' },
   { value: 'SG', label: 'Singapore' },
   { value: 'MT', label: 'Malta' },
   { value: 'IT', label: 'Italy' },
@@ -42,6 +44,8 @@ function normalizeCountry(raw: string | null) {
   if (raw === 'Canada') return 'CA'
   if (raw === 'Spain') return 'ES'
   if (raw === 'Austria') return 'AT'
+  if (raw === 'Belgium') return 'BE'
+  if (raw === 'Hungary') return 'HU'
   if (raw === 'Singapore') return 'SG'
   if (raw === 'Malta') return 'MT'
   if (raw === 'Italy') return 'IT'

@@ -3,6 +3,7 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import MatchedCTA from '@/components/matched-cta'
+import { countries } from '@/lib/country-data'
 
 const values = [
   {
@@ -107,6 +108,21 @@ const markets = [
     flag: '🇦🇹',
     name: 'Austria',
     description: 'Central European universities, excellent transport, and a high quality of life in compact student cities.',
+  },
+  {
+    flag: '🇧🇪',
+    name: 'Belgium',
+    description: 'A multilingual EU capital hub with historic universities and compact, well-connected student cities.',
+  },
+  {
+    flag: '🇭🇺',
+    name: 'Hungary',
+    description: 'An affordable Central European destination with strong medical and technical universities and a low cost of living.',
+  },
+  {
+    flag: '🇳🇱',
+    name: 'Netherlands',
+    description: 'English-taught programmes, bike-friendly cities, and practical support for international students.',
   },
   {
     flag: '🇺🇸',
@@ -245,7 +261,7 @@ export default function AboutPage() {
         <section className="bg-[#F7F6F3] py-16 lg:py-24 px-6">
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
-              Fifteen countries. Hundreds of universities. One platform.
+              {countries.length} countries. Hundreds of universities. One platform.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-14">
               {markets.map((market) => (

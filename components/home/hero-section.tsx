@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Malta: '/malta', Malaysia: '/malaysia' };
+const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Belgium: '/belgium', Hungary: '/hungary', Malta: '/malta', Malaysia: '/malaysia' };
 
 const photos = [
   {
@@ -40,6 +40,8 @@ const countries = [
   'Italy',
   'Spain',
   'Austria',
+  'Belgium',
+  'Hungary',
   'Malta',
   'Malaysia',
 ];
@@ -129,7 +131,7 @@ export default function HeroSection() {
             </p>
 
             <p>
-              We&apos;ll help you compare verified accommodation near your university, across fifteen destinations and within your budget.
+              We&apos;ll help you compare verified accommodation near your university, across {countries.length} destinations and within your budget.
             </p>
           </div>
 
