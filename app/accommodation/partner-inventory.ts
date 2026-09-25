@@ -295,6 +295,34 @@ const vitaStudentDetails: Record<string, VitaBuildingDetail> = {
   'Oria': { address: 'Vita Student Oria, C/ La Estrada, 3, Fuencarral-El Pardo, 28034 Madrid', floors: 15, rooms: 585, walkToUni: '5-minute shuttle bus to IE Tower', walkToCentre: '30-minute train to Madrid city centre' },
 }
 
+/**
+ * Vita Student's own building pages never publish a starting rate (booking is
+ * "enquire for live pricing" only). For buildings where a starting rate has
+ * been reported by independent third-party student-housing listing sites, that
+ * figure is used here as an ESTIMATE ONLY \u2014 not a rate confirmed by Vita
+ * Student \u2014 so the property can still show a starting price instead of being
+ * hidden. Buildings with no third-party rate found anywhere remain
+ * price-on-enquiry and are excluded from the public catalogue, consistent with
+ * every other partner.
+ */
+const vitaStudentThirdPartyPrice: Record<string, { value: number; currency: AccommodationCurrency; period: 'week' | 'month' }> = {
+  'Bruce Street': { value: 235, currency: 'GBP', period: 'week' },
+  'West End': { value: 264, currency: 'GBP', period: 'week' },
+  'Iona Street': { value: 259, currency: 'GBP', period: 'week' },
+  'New Waverley': { value: 391, currency: 'GBP', period: 'week' },
+  'Fountainbridge': { value: 422, currency: 'GBP', period: 'week' },
+  'Park Place': { value: 261, currency: 'GBP', period: 'week' },
+  'Zed Alley': { value: 412, currency: 'GBP', period: 'week' },
+  'Copper Towers': { value: 197, currency: 'GBP', period: 'week' },
+  'Warwick Cannon Park': { value: 250, currency: 'GBP', period: 'week' },
+  'Portland Crescent': { value: 320, currency: 'GBP', period: 'week' },
+  'St Albans': { value: 273, currency: 'GBP', period: 'week' },
+  'Strawberry Place': { value: 239, currency: 'GBP', period: 'week' },
+  Pedralbes: { value: 1429, currency: 'EUR', period: 'month' },
+}
+
+const vitaThirdPartyPriceConditions = 'Estimated starting price reported by independent third-party student-housing listing sites \u2014 Vita Student\u2019s own site does not publish a public rate for this building and quotes live pricing on enquiry only. Treat this figure as approximate and confirm the current rate directly with Vita Student before booking.'
+
 const iglu = [
   ['Broadway', 'Sydney'], ['Central', 'Sydney'], ['Central Park', 'Sydney'], ['Chatswood', 'Sydney'], ['Redfern', 'Sydney'],
   ['Mascot', 'Sydney'], ['Mascot Duo', 'Sydney'], ['Summer Hill', 'Sydney'], ['Waterloo', 'Sydney'],
@@ -540,17 +568,23 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
   }),
   ...vitaStudent.map(([name, city]) => {
     const detail = vitaStudentDetails[name]
+    const roomTypeNames = detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe']
+    const thirdPartyPrice = vitaStudentThirdPartyPrice[name]
     return makeProperty({
       slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       name,
       city,
       country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK',
       address: detail?.address ?? `${name}, ${city}`,
-      priceFrom: 0,
-      roomTypes: detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe'],
-      rooms: (detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe']).map((roomName) => ({
+      priceFrom: thirdPartyPrice?.value ?? 0,
+      currency: thirdPartyPrice?.currency ?? 'GBP',
+      pricePeriod: thirdPartyPrice?.period ?? 'week',
+      roomTypes: roomTypeNames,
+      rooms: roomTypeNames.map((roomName, index) => ({
         name: roomName,
-        price: { currency: 'GBP' as const, period: 'week' as const, priceOnEnquiry: true },
+        price: index === 0 && thirdPartyPrice
+          ? { value: thirdPartyPrice.value, currency: thirdPartyPrice.currency, period: thirdPartyPrice.period, indicative: true, conditions: vitaThirdPartyPriceConditions }
+          : { currency: thirdPartyPrice?.currency ?? 'GBP', period: thirdPartyPrice?.period ?? 'week', priceOnEnquiry: true },
       })),
       universities: cityUniversities[city] ?? [],
       distance: detail ? `${detail.walkToUni}; ${detail.walkToCentre}. ${detail.floors} floors, ${detail.rooms} rooms.` : `Central student location in ${city}`,
@@ -561,6 +595,7 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
       highlights: ['All-in living', 'Central locations', 'Strong resident experience'],
       gallery: images,
       availabilityNote: detail?.availabilityNote,
+      pricingNote: thirdPartyPrice ? vitaThirdPartyPriceConditions : undefined,
     })
   }),
   ...iglu.map(([name, city]) => {

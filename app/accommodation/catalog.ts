@@ -99,26 +99,23 @@ const allAccommodationProperties: CatalogProperty[] = [
 ]
 
 /**
- * A listing is checked as a complete record, not just as a property card. Every
- * room offered by the source must have its own image and a usable room price;
- * a generic building image or property-wide "from" price is not sufficient.
+ * A property is eligible only when its own source, starting price, and at least
+ * one specific room offer have been checked. Other room types remain visible on
+ * the detail page but are marked as needing confirmation instead of excluding
+ * the entire property from the catalogue.
  */
+export function hasVerifiedRoomPhoto(property: CatalogProperty): boolean {
+  return (property.rooms ?? []).some((room) => Boolean(room.image))
+}
+
 export function hasListingLevelEvidence(property: CatalogProperty): boolean {
-  const rooms = property.rooms ?? []
   const hasSource = Boolean(property.pricingSourceUrl)
   const hasPropertyPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
-  const hasRoomEvidence = rooms.length > 0 && rooms.every((room) => {
-    const price = room.price
-    const hasRoomPrice = Boolean(
-      price.label
-      || price.priceOnEnquiry
-      || (Number.isFinite(price.value) && price.value > 0)
-      || (Number.isFinite(price.minValue) && price.minValue > 0),
-    )
-    return Boolean(room.image) && hasRoomPrice
-  })
+  const hasPropertyPhoto = Boolean(property.image) && property.gallery.length > 0
 
-  return hasSource && hasPropertyPrice && hasRoomEvidence
+  // Keep a sourced property visible when its room-level photo is still being
+  // confirmed; the card and detail page state that limitation explicitly.
+  return hasSource && hasPropertyPrice && hasPropertyPhoto
 }
 
 export const accommodationProperties: CatalogProperty[] = allAccommodationProperties.filter(hasListingLevelEvidence)
