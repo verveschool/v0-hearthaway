@@ -99,15 +99,16 @@ const allAccommodationProperties: CatalogProperty[] = [
 ]
 
 /**
- * A listing is checked as a complete record, not just as a property card. Every
- * room offered by the source must have its own image and a usable room price;
- * a generic building image or property-wide "from" price is not sufficient.
+ * A property is eligible only when its own source, starting price, and at least
+ * one specific room offer have been checked. Other room types remain visible on
+ * the detail page but are marked as needing confirmation instead of excluding
+ * the entire property from the catalogue.
  */
 export function hasListingLevelEvidence(property: CatalogProperty): boolean {
   const rooms = property.rooms ?? []
   const hasSource = Boolean(property.pricingSourceUrl)
   const hasPropertyPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
-  const hasRoomEvidence = rooms.length > 0 && rooms.every((room) => {
+  const hasCheckedRoom = rooms.some((room) => {
     const price = room.price
     const hasRoomPrice = Boolean(
       price.label
@@ -118,7 +119,7 @@ export function hasListingLevelEvidence(property: CatalogProperty): boolean {
     return Boolean(room.image) && hasRoomPrice
   })
 
-  return hasSource && hasPropertyPrice && hasRoomEvidence
+  return hasSource && hasPropertyPrice && hasCheckedRoom
 }
 
 export const accommodationProperties: CatalogProperty[] = allAccommodationProperties.filter(hasListingLevelEvidence)
