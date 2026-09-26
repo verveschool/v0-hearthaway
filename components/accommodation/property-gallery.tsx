@@ -13,6 +13,8 @@ type PropertyGalleryProps = {
   city: string
   country: string
   cityHref: string
+  /** When viewing a specific room-type listing, opens the hero on that room's own photo and pre-selects its card. Falls back to the property's first photo when that room has none. */
+  activeRoomName?: string
 }
 
 /**
@@ -22,7 +24,7 @@ type PropertyGalleryProps = {
  * photos (the exterior, communal spaces) stay visually distinct from room
  * photos so the two are never confused with each other.
  */
-export default function PropertyGallery({ images, rooms, name, city, country, cityHref }: PropertyGalleryProps) {
+export default function PropertyGallery({ images, rooms, name, city, country, cityHref, activeRoomName }: PropertyGalleryProps) {
   const propertyImages = images.length ? images : ['/images/acc-halls.png']
   // Room photos that aren't already part of the property gallery are appended so every
   // source-provided room photo is reachable, without ever standing in for a room that has none.
@@ -32,9 +34,11 @@ export default function PropertyGallery({ images, rooms, name, city, country, ci
   )
   const combinedImages = useMemo(() => [...propertyImages, ...roomOnlyImages], [propertyImages, roomOnlyImages])
   const roomImageIndex = new Map(rooms.filter((room) => room.image).map((room) => [room.image as string, room.name]))
+  const activeRoom = activeRoomName ? rooms.find((room) => room.name === activeRoomName) : undefined
+  const initialIndex = activeRoom?.image ? Math.max(combinedImages.indexOf(activeRoom.image), 0) : 0
 
-  const [activeIndex, setActiveIndex] = useState(0)
-  const [selectedRoom, setSelectedRoom] = useState<string | null>(null)
+  const [activeIndex, setActiveIndex] = useState(initialIndex)
+  const [selectedRoom, setSelectedRoom] = useState<string | null>(activeRoomName ?? null)
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null)
   const isLightboxOpen = lightboxIndex !== null
 

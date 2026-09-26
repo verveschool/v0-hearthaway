@@ -6,6 +6,8 @@ type CatalogMeta = {
   gallerySourceUrl: string
   gallery: string[]
   availabilityNote?: string
+  /** The listing slug (`${propertySlug}--${roomSlug}`) for this property's first room type, used by any consumer that still needs to link at the property level. Always populated by `normalizeProperty` in catalog.ts; optional here so raw source records don't need to precompute it. */
+  primaryListingSlug?: string
 }
 
 export type CatalogProperty = AccommodationProperty & CatalogMeta
