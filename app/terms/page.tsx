@@ -1,13 +1,12 @@
-import type { Metadata } from "next";
-import Navigation from "@/components/navigation";
-import Footer from "@/components/footer";
-import Link from "next/link";
+import type { Metadata } from 'next'
+import Navigation from '@/components/navigation'
+import Footer from '@/components/footer'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: "Terms of Service | HearthAway",
-  description:
-    "Terms of Service for HearthAway, operated by Jiraiya Education LLP.",
-};
+  title: 'Terms of Service | HearthAway',
+  description: 'Terms of Service for HearthAway, operated by Jiraiya Education LLP.',
+}
 
 export default function TermsPage() {
   return (
@@ -27,8 +26,7 @@ export default function TermsPage() {
               </h1>
 
               <p className="text-white/70 text-lg leading-relaxed">
-                HearthAway is operated by Jiraiya Education LLP. By using our
-                website and services, you agree to these terms.
+                HearthAway is operated by Jiraiya Education LLP. By using our website and services, you agree to these terms.
               </p>
             </div>
           </div>
@@ -37,15 +35,14 @@ export default function TermsPage() {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <article className="lg:col-span-2 space-y-5">
+
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   1. Acceptance Of Terms
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  By accessing or using HearthAway, you agree to be bound by
-                  these Terms of Service. If you do not agree, please do not use
-                  the website or related services.
+                  By accessing or using HearthAway, you agree to be bound by these Terms of Service. If you do not agree, please do not use the website or related services.
                 </p>
               </section>
 
@@ -55,8 +52,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed mb-4">
-                  HearthAway helps students explore housing options and
-                  accommodation guidance before studying abroad.
+                  HearthAway helps students explore housing options and accommodation guidance before studying abroad.
                 </p>
 
                 <ul className="space-y-3 text-[#6B6860] text-base leading-relaxed">
@@ -73,9 +69,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  Submission of information through HearthAway does not
-                  guarantee accommodation, room placement, pricing, university
-                  admission, visa approval, or any specific outcome.
+                  Submission of information through HearthAway does not guarantee accommodation, room availability, pricing, university admission, visa approval, or any specific outcome.
                 </p>
               </section>
 
@@ -103,10 +97,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  HearthAway may introduce users to accommodation providers,
-                  property operators, booking platforms, and other partners. Any
-                  agreement entered into with a third party is solely between
-                  you and that third party.
+                  HearthAway may introduce users to accommodation providers, property operators, booking platforms, and other partners. Any agreement entered into with a third party is solely between you and that third party.
                 </p>
               </section>
 
@@ -116,10 +107,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  All content, branding, graphics, text, designs, logos, and
-                  materials on HearthAway are owned by or licensed to Jiraiya
-                  Education LLP unless stated otherwise. They may not be copied,
-                  reproduced, or distributed without permission.
+                  All content, branding, graphics, text, designs, logos, and materials on HearthAway are owned by or licensed to Jiraiya Education LLP unless stated otherwise. They may not be copied, reproduced, or distributed without permission.
                 </p>
               </section>
 
@@ -129,10 +117,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  Information provided on HearthAway is for general
-                  informational purposes. While we aim for accuracy, we do not
-                  guarantee that all information is complete, current, or error
-                  free.
+                  Information provided on HearthAway is for general informational purposes. While we aim for accuracy, we do not guarantee that all information is complete, current, or error free.
                 </p>
               </section>
 
@@ -142,10 +127,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  To the maximum extent permitted by law, Jiraiya Education LLP
-                  shall not be liable for any indirect, incidental,
-                  consequential, special, or punitive damages arising from your
-                  use of the website or related services.
+                  To the maximum extent permitted by law, Jiraiya Education LLP shall not be liable for any indirect, incidental, consequential, special, or punitive damages arising from your use of the website or related services.
                 </p>
               </section>
 
@@ -155,9 +137,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  We may update these terms from time to time. Updated versions
-                  will be published on this page and become effective upon
-                  publication.
+                  We may update these terms from time to time. Updated versions will be published on this page and become effective upon publication.
                 </p>
               </section>
 
@@ -167,9 +147,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed">
-                  These terms are governed by the laws of India. Any disputes
-                  arising from the use of HearthAway shall be subject to the
-                  jurisdiction of the courts located in Uttar Pradesh, India.
+                  These terms are governed by the laws of India. Any disputes arising from the use of HearthAway shall be subject to the jurisdiction of the courts located in Uttar Pradesh, India.
                 </p>
               </section>
 
@@ -182,7 +160,7 @@ export default function TermsPage() {
                   <p>Jiraiya Education LLP</p>
 
                   <p>
-                    Email:{" "}
+                    Email:{' '}
                     <Link
                       href="mailto:faraz@hearthaway.com"
                       className="text-[#00319D] font-semibold underline"
@@ -192,7 +170,7 @@ export default function TermsPage() {
                   </p>
 
                   <p>
-                    Phone:{" "}
+                    Phone:{' '}
                     <Link
                       href="tel:+919999965742"
                       className="text-[#00319D] font-semibold underline"
@@ -202,8 +180,8 @@ export default function TermsPage() {
                   </p>
 
                   <p>
-                    Plot No. 20, Block H-1/A, Sector 63, Noida, Gautam Buddha
-                    Nagar, Uttar Pradesh 201301
+                    Plot No. 20, Block H-1/A, Sector 63, Noida,
+                    Gautam Buddha Nagar, Uttar Pradesh 201301
                   </p>
                 </div>
               </section>
@@ -216,8 +194,7 @@ export default function TermsPage() {
                 </h2>
 
                 <p className="text-[#6B6860] text-sm leading-relaxed mb-5">
-                  Contact us if you have any questions regarding these terms or
-                  our services.
+                  Contact us if you have any questions regarding these terms or our services.
                 </p>
 
                 <Link
@@ -234,5 +211,5 @@ export default function TermsPage() {
 
       <Footer />
     </>
-  );
+  )
 }

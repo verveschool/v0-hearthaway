@@ -1,13 +1,14 @@
-import Link from "next/link";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
 
-import { countries } from "@/lib/country-data";
+import { countries } from '@/lib/country-data'
 
 export default function CtaSection() {
   return (
     <section className="bg-[#F7F6F3] py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-3xl bg-[#00319D] min-h-[480px] flex flex-col lg:flex-row">
+
           {/* Text side */}
           <div className="relative z-10 flex-1 flex flex-col justify-center p-10 lg:p-16 xl:p-20">
             <div className="inline-flex items-center gap-2 mb-7">
@@ -21,14 +22,14 @@ export default function CtaSection() {
             </div>
 
             <h2 className="font-heading text-3xl lg:text-[2.5rem] xl:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6 max-w-xl">
-              You&apos;ve got your place.{" "}
+              You&apos;ve got your place.{' '}
               <span className="text-[#FCC20A]">Now get your home.</span>
             </h2>
 
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
-              Tell us your university, move-in date, and budget. An
-              accommodation advisor will match you with verified options near
-              your campus before you fly.
+              Tell us your university, move-in date, and budget. An accommodation
+              advisor will match you with verified options near your campus
+              before you fly.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
@@ -41,28 +42,30 @@ export default function CtaSection() {
             </div>
 
             <div className="flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/50">
-              {["Takes 3 minutes", "No commitment", "Verified properties"].map(
-                (item) => (
-                  <span key={item} className="flex items-center gap-2">
-                    <svg
-                      width="13"
-                      height="13"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                      aria-hidden="true"
-                    >
-                      <path
-                        d="M2 7L5.5 10.5L12 4"
-                        stroke="#FCC20A"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    {item}
-                  </span>
-                ),
-              )}
+              {[
+                'Takes 3 minutes',
+                'No commitment',
+                'Verified properties',
+              ].map((item) => (
+                <span key={item} className="flex items-center gap-2">
+                  <svg
+                    width="13"
+                    height="13"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M2 7L5.5 10.5L12 4"
+                      stroke="#FCC20A"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                  {item}
+                </span>
+              ))}
             </div>
           </div>
 
@@ -86,7 +89,7 @@ export default function CtaSection() {
               </div>
             </div>
 
-            {/* Guidance */}
+            {/* Availability */}
             <div className="absolute bottom-6 right-6 bg-white/95 rounded-xl px-4 py-3 shadow-lg">
               <div className="flex items-center gap-2.5">
                 <div
@@ -99,8 +102,9 @@ export default function CtaSection() {
               </div>
             </div>
           </div>
+
         </div>
       </div>
     </section>
-  );
+  )
 }
