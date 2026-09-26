@@ -402,12 +402,79 @@ const vitaStudentRoomPrices: Record<string, VitaRoomPrice[]> = {
     { name: 'Accessible', value: 348 },
     { name: 'Cluster', value: 209 },
   ],
+  'Circle Square': [
+    { name: 'Premium', value: 344 },
+    { name: 'Deluxe', value: 429 },
+    { name: 'Ultimate' },
+    { name: 'Accessible', value: 495 },
+    { name: 'Shared', value: 324 },
+  ],
+  'First Street': [
+    { name: 'Classic', value: 315 },
+    { name: 'Accessible' },
+  ],
+  'Leazes Park': [
+    { name: 'Classic' },
+    { name: 'Premium' },
+    { name: 'Ultimate' },
+    { name: 'Accessible', value: 347 },
+  ],
+  Westgate: [
+    { name: 'Classic', value: 249 },
+    { name: 'Deluxe', value: 410 },
+    { name: 'Ultimate', value: 429 },
+    { name: 'Accessible', value: 343 },
+    { name: 'Shared' },
+  ],
+  'Station Street': [
+    { name: 'Lite', value: 229 },
+    { name: 'Classic', value: 249 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+  ],
+  'Telephone House': [
+    { name: 'Classic' },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+    { name: 'Shared', value: 474 },
+  ],
+  'Lawrence Street': [
+    { name: 'Classic', value: 259 },
+    { name: 'Premium', value: 339 },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Poblenou: [
+    { name: 'Classic', value: 1566 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Pedralbes: [
+    { name: 'Lite', value: 1435 },
+    { name: 'Classic' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Oria: [
+    { name: 'Classic', value: 1109 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
 }
 
 /** Fallback for Vita Student buildings not yet re-verified against the live per-room booking widget; treated as an approximate starting rate only. */
-const vitaStudentThirdPartyPrice: Record<string, { value: number; currency: AccommodationCurrency; period: 'week' | 'month' }> = {
-  Pedralbes: { value: 1429, currency: 'EUR', period: 'month' },
-}
+const vitaStudentThirdPartyPrice: Record<string, { value: number; currency: AccommodationCurrency; period: 'week' | 'month' }> = {}
+
+/** Barcelona and Madrid Vita Student buildings publish monthly (not weekly) rates on their live booking widget. */
+const vitaStudentMonthlyBuildings = new Set(['Poblenou', 'Pedralbes', 'Oria'])
 
 const vitaThirdPartyPriceConditions = 'Estimated starting price reported by independent third-party student-housing listing sites \u2014 not yet cross-checked against Vita Student\u2019s own live per-room booking widget for this building. Treat this figure as approximate and confirm the current rate directly with Vita Student before booking.'
 
@@ -661,6 +728,9 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
     const roomTypeNames = liveRoomPrices?.map((room) => room.name) ?? detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe']
     const availableLivePrices = liveRoomPrices?.filter((room) => !room.soldOut && typeof room.value === 'number').map((room) => room.value as number)
     const livePriceFrom = availableLivePrices?.length ? Math.min(...availableLivePrices) : undefined
+    const isMonthly = vitaStudentMonthlyBuildings.has(name)
+    const buildingCurrency: AccommodationCurrency = isMonthly ? 'EUR' : 'GBP'
+    const buildingPeriod: 'week' | 'month' = isMonthly ? 'month' : 'week'
     return makeProperty({
       slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       name,
@@ -668,22 +738,22 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
       country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK',
       address: detail?.address ?? `${name}, ${city}`,
       priceFrom: livePriceFrom ?? thirdPartyPrice?.value ?? 0,
-      currency: 'GBP',
-      pricePeriod: 'week',
+      currency: buildingCurrency,
+      pricePeriod: buildingPeriod,
       roomTypes: roomTypeNames,
       rooms: liveRoomPrices
         ? liveRoomPrices.map((room) => ({
             name: room.name,
             price: typeof room.value === 'number'
-              ? { value: room.value, currency: 'GBP', period: 'week', indicative: true, conditions: vitaStudentRoomPriceConditions }
-              : { currency: 'GBP', period: 'week', priceOnEnquiry: true },
+              ? { value: room.value, currency: buildingCurrency, period: buildingPeriod, indicative: true, conditions: vitaStudentRoomPriceConditions }
+              : { currency: buildingCurrency, period: buildingPeriod, priceOnEnquiry: true },
             availabilityNote: room.soldOut ? 'Sold out on Vita Student\u2019s site at time of review.' : undefined,
           }))
         : roomTypeNames.map((roomName, index) => ({
             name: roomName,
             price: index === 0 && thirdPartyPrice
               ? { value: thirdPartyPrice.value, currency: thirdPartyPrice.currency, period: thirdPartyPrice.period, indicative: true, conditions: vitaThirdPartyPriceConditions }
-              : { currency: thirdPartyPrice?.currency ?? 'GBP', period: thirdPartyPrice?.period ?? 'week', priceOnEnquiry: true },
+              : { currency: thirdPartyPrice?.currency ?? buildingCurrency, period: thirdPartyPrice?.period ?? buildingPeriod, priceOnEnquiry: true },
           })),
       universities: cityUniversities[city] ?? [],
       distance: detail ? `${detail.walkToUni}; ${detail.walkToCentre}. ${detail.floors} floors, ${detail.rooms} rooms.` : `Central student location in ${city}`,
