@@ -3,7 +3,17 @@ import { additionalAccommodationProperties, type CatalogProperty } from './partn
 import { propertyOverrides } from './property-overrides'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
-import type { AccommodationCurrency, AccommodationPricePeriod, AccommodationRoomType } from './accommodation-data'
+import type { AccommodationCurrency, AccommodationPricePeriod, AccommodationRoomPrice, AccommodationRoomType } from './accommodation-data'
+
+/**
+ * Stable, human-legible, collision-free slug for one room type at one property.
+ * Used as the public listing slug so `${property.slug}--${slugifyRoomName(name)}`
+ * never collides across properties and never changes as long as the room's own
+ * name doesn't change.
+ */
+function slugifyRoomName(name: string): string {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '') || 'room'
+}
 
 /**
  * Inventory ("this property offers this room type") is derived from every name
@@ -50,6 +60,11 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     ? property.universities
     : getUniversitiesByCity(property.city).map((university) => university.name)
   const roomTypes = Array.isArray(property.roomTypes) ? property.roomTypes : []
+  const rooms = buildRooms(property, currency, pricePeriod)
+  // The first room type's listing is the canonical destination for anything that
+  // still needs to link at the property level (old bookmarks, city/university
+  // pages grouping by property) now that `/accommodation/[slug]` is a listing page.
+  const primaryListingSlug = rooms.length ? `${property.slug}--${slugifyRoomName(rooms[0].name)}` : property.slug
 
   return {
     ...property,
@@ -66,7 +81,8 @@ const normalizeProperty = (property: CatalogProperty): CatalogProperty => {
     universities,
     // Every room type the source lists stays in the catalogue regardless of current availability, stock or booking status.
     roomTypes,
-    rooms: buildRooms(property, currency, pricePeriod),
+    rooms,
+    primaryListingSlug,
     amenities: Array.isArray(property.amenities) ? property.amenities : [],
     highlights: Array.isArray(property.highlights) ? property.highlights : [],
     // Every displayed price is a tentative starting point sourced from the partner or listing page.
@@ -106,6 +122,35 @@ const allAccommodationProperties: CatalogProperty[] = [
  */
 export function hasVerifiedRoomPhoto(property: CatalogProperty): boolean {
   return (property.rooms ?? []).some((room) => Boolean(room.image))
+}
+
+/**
+ * One distinct room type = one distinct listing. A listing is a `(property, room)`
+ * pair: everything room-specific (photo, price, features, tenancy, availability)
+ * comes from `room`; everything property-level (address, provider, amenities,
+ * universities, gallery, location map) is inherited by reference from `property`
+ * and never duplicated. Room- and property-level amenities are kept as two
+ * separate arrays on purpose so they're never conflated in the UI.
+ */
+export type AccommodationListingSibling = Readonly<{ slug: string; name: string; price: AccommodationRoomPrice }>
+
+export type AccommodationListing = Readonly<{
+  slug: string
+  propertySlug: string
+  property: CatalogProperty
+  room: AccommodationRoomType
+  /** Room-level amenities only, e.g. private bathroom, kitchenette. Never merged with property-level amenities. */
+  roomAmenities: string[]
+  /** Building-wide amenities only, e.g. gym, laundry, reception. Never merged with room-level amenities. */
+  propertyAmenities: string[]
+  /** The other room types at the same property, for a "other room types here" section. */
+  siblingListings: AccommodationListingSibling[]
+  /** True only when this specific room type has its own source photo, not just some room somewhere at the property. */
+  hasVerifiedRoomPhoto: boolean
+}>
+
+function buildListingSlug(propertySlug: string, roomName: string): string {
+  return `${propertySlug}--${slugifyRoomName(roomName)}`
 }
 
 export function hasListingLevelEvidence(property: CatalogProperty): boolean {
@@ -177,6 +222,32 @@ export function getAccommodationBudgetRanges(properties: readonly CatalogPropert
   }
 
   return [...ranges.values()].sort((first, second) => first.currency.localeCompare(second.currency) || first.pricePeriod.localeCompare(second.pricePeriod) || first.upperBound - second.upperBound)
+}
+
+/**
+ * One entry per room type per property, flattened from `property.rooms` (which is
+ * either curated data or, for uncurated room names, a price-on-enquiry entry
+ * synthesized by `buildRooms` above) &mdash; coverage is automatic for every
+ * property, current and future, with no re-entry of data required.
+ */
+export const accommodationListings: AccommodationListing[] = accommodationProperties.flatMap((property) => {
+  const rooms = property.rooms ?? []
+  return rooms.map((room, index): AccommodationListing => ({
+    slug: buildListingSlug(property.slug, room.name),
+    propertySlug: property.slug,
+    property,
+    room,
+    roomAmenities: room.features ?? [],
+    propertyAmenities: property.amenities,
+    siblingListings: rooms
+      .filter((_, siblingIndex) => siblingIndex !== index)
+      .map((sibling) => ({ slug: buildListingSlug(property.slug, sibling.name), name: sibling.name, price: sibling.price })),
+    hasVerifiedRoomPhoto: Boolean(room.image),
+  }))
+})
+
+export function getAccommodationListingBySlug(slug: string): AccommodationListing | undefined {
+  return accommodationListings.find((listing) => listing.slug === slug)
 }
 
 export function getAccommodationBySlug(slug: string) {

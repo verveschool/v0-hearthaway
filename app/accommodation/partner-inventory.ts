@@ -6,6 +6,8 @@ type CatalogMeta = {
   gallerySourceUrl: string
   gallery: string[]
   availabilityNote?: string
+  /** The listing slug (`${propertySlug}--${roomSlug}`) for this property's first room type, used by any consumer that still needs to link at the property level. Always populated by `normalizeProperty` in catalog.ts; optional here so raw source records don't need to precompute it. */
+  primaryListingSlug?: string
 }
 
 export type CatalogProperty = AccommodationProperty & CatalogMeta
@@ -270,11 +272,11 @@ const vitaStudentDetails: Record<string, VitaBuildingDetail> = {
   'Pebble Mill': { address: 'Pebble Mill Studios, Pershore Road, Birmingham, B29 7ES', floors: 5, rooms: 360, walkToUni: '25-minute walk to the University of Birmingham', walkToCentre: '15-minute train to Birmingham city centre', roomTypes: ['Classic', 'Classic Courtyard', 'Premium', 'Deluxe', 'Accessible'] },
   'Zed Alley': { address: 'Vita Student Zed Alley, 35 Colston Avenue, Bristol, BS1 4TT', floors: 6, rooms: 131, walkToUni: '13-minute walk to the University of Bristol', walkToCentre: '13-minute walk to Bristol city centre' },
   'Park Place': { address: 'Vita Student Park Place, Park Place, Cathays, Cardiff, CF10 3FH', floors: 18, rooms: 401, walkToUni: '5-minute walk to Cardiff University', walkToCentre: '9-minute walk to Cardiff city centre' },
-  'Copper Towers': { address: 'Vita Student Copper Towers, 25 Warwick Rd, Coventry, CV1 2EZ', floors: 13, rooms: 496, walkToUni: '10-minute Vita shuttle bus to the University of Warwick', walkToCentre: '5-minute walk to Coventry city centre', roomTypes: ['Lite', 'Classic', 'Premium', 'Deluxe', 'Ultimate'] },
-  'Warwick Cannon Park': { address: 'Vita Student Cannon Park, DeMontfort Way, Coventry, CV4 7FA', floors: 5, rooms: 764, walkToUni: '4-minute walk to the University of Warwick', walkToCentre: '20-minute bus to Coventry city centre', roomTypes: ['Lite', 'Classic', 'Premium', 'Deluxe', 'Ultimate', 'Shared'] },
-  'New Waverley': { address: 'Vita Student New Waverley, No 14 Sibbald Walk, Edinburgh, EH8 8GG', floors: 7, rooms: 275, walkToUni: '10-minute walk to the University of Edinburgh', walkToCentre: '5-minute walk to Edinburgh city centre' },
-  'Iona Street': { address: 'Vita Student Iona Street, 50 Iona Street, Edinburgh, EH6 8FN', floors: 4, rooms: 259, walkToUni: '20-minute bus to the University of Edinburgh', walkToCentre: '15-minute tram to Edinburgh city centre' },
-  'Fountainbridge': { address: 'Vita Student Fountainbridge, 125a Fountainbridge, Tollcross, Edinburgh, EH3 9QG', floors: 9, rooms: 250, walkToUni: '15-minute walk to the University of Edinburgh', walkToCentre: '15-minute walk to Edinburgh city centre' },
+  'Copper Towers': { address: 'Vita Student Copper Towers, 25 Warwick Rd, Coventry, CV1 2EZ', floors: 13, rooms: 496, walkToUni: '10-minute Vita shuttle bus to the University of Warwick', walkToCentre: '5-minute walk to Coventry city centre', roomTypes: ['Lite', 'Classic Plus', 'Premium', 'Deluxe', 'Ultimate'] },
+  'Warwick Cannon Park': { address: 'Vita Student Cannon Park, DeMontfort Way, Coventry, CV4 7FA', floors: 5, rooms: 764, walkToUni: '4-minute walk to the University of Warwick', walkToCentre: '20-minute bus to Coventry city centre', roomTypes: ['Lite', 'Classic', 'Premium', 'Deluxe', 'Ultimate', 'Cluster'] },
+  'New Waverley': { address: 'Vita Student New Waverley, No 14 Sibbald Walk, Edinburgh, EH8 8GG', floors: 7, rooms: 275, walkToUni: '10-minute walk to the University of Edinburgh', walkToCentre: '5-minute walk to Edinburgh city centre', roomTypes: ['Lite Plus', 'Classic Plus', 'Premium', 'Deluxe', 'Ultimate', 'Three Bedroom', 'Accessible'] },
+  'Iona Street': { address: 'Vita Student Iona Street, 50 Iona Street, Edinburgh, EH6 8FN', floors: 4, rooms: 259, walkToUni: '20-minute bus to the University of Edinburgh', walkToCentre: '15-minute tram to Edinburgh city centre', roomTypes: ['Lite', 'Classic', 'Premium', 'Deluxe', 'Ultimate', 'One Bedroom', 'Two Bedroom', 'Accessible'] },
+  'Fountainbridge': { address: 'Vita Student Fountainbridge, 125a Fountainbridge, Tollcross, Edinburgh, EH3 9QG', floors: 9, rooms: 250, walkToUni: '15-minute walk to the University of Edinburgh', walkToCentre: '15-minute walk to Edinburgh city centre', roomTypes: ['Classic', 'Premium', 'Deluxe', 'Ultimate', 'Accessible'] },
   'Portland House': { address: 'Vita Student Portland House, Longbrook St, Exeter, EX4 6AH', floors: 7, rooms: 156, walkToUni: '15-minute walk to the University of Exeter', walkToCentre: '1-minute walk to Exeter city centre', roomTypes: ['Classic', 'Premium', 'Deluxe', 'Ultimate', 'Accessible'] },
   'West End': { address: 'Vita Student West End, 21 Beith Street, Glasgow, G11 6BZ', floors: 11, rooms: 501, walkToUni: '11-minute walk to the University of Glasgow', walkToCentre: '8-minute train to Glasgow city centre', roomTypes: ['Classic', 'Premium', 'Deluxe', 'Accessible', 'Shared'] },
   'Portland Crescent': { address: 'Vita Student Leeds Portland Crescent, 93 Portland Crescent, Leeds, LS1 3AY', floors: 16, rooms: 308, walkToUni: '5-minute walk to the University of Leeds', walkToCentre: '6-minute walk to Leeds city centre' },
@@ -296,32 +298,185 @@ const vitaStudentDetails: Record<string, VitaBuildingDetail> = {
 }
 
 /**
- * Vita Student's own building pages never publish a starting rate (booking is
- * "enquire for live pricing" only). For buildings where a starting rate has
- * been reported by independent third-party student-housing listing sites, that
- * figure is used here as an ESTIMATE ONLY \u2014 not a rate confirmed by Vita
- * Student \u2014 so the property can still show a starting price instead of being
- * hidden. Buildings with no third-party rate found anywhere remain
- * price-on-enquiry and are excluded from the public catalogue, consistent with
- * every other partner.
+ * Vita Student's own building pages DO publish a real per-room-type weekly
+ * rate \u2014 it's rendered by a JS booking widget on each building's own page
+ * (vitastudent.com/en/cities/<city>/<building>/) rather than in static HTML,
+ * which is why an earlier pass here mistakenly assumed no public rate existed
+ * and fell back to third-party estimates. `vitaStudentRoomPrices` holds the
+ * real per-room rate (or `soldOut: true` when the widget shows "Sold Out"
+ * with no rate) read directly from that live widget for each room type, and
+ * is the primary source used below. `vitaStudentThirdPartyPrice` remains only
+ * as a fallback for buildings not yet re-verified against the live widget.
  */
-const vitaStudentThirdPartyPrice: Record<string, { value: number; currency: AccommodationCurrency; period: 'week' | 'month' }> = {
-  'Bruce Street': { value: 235, currency: 'GBP', period: 'week' },
-  'West End': { value: 264, currency: 'GBP', period: 'week' },
-  'Iona Street': { value: 259, currency: 'GBP', period: 'week' },
-  'New Waverley': { value: 391, currency: 'GBP', period: 'week' },
-  'Fountainbridge': { value: 422, currency: 'GBP', period: 'week' },
-  'Park Place': { value: 261, currency: 'GBP', period: 'week' },
-  'Zed Alley': { value: 412, currency: 'GBP', period: 'week' },
-  'Copper Towers': { value: 197, currency: 'GBP', period: 'week' },
-  'Warwick Cannon Park': { value: 250, currency: 'GBP', period: 'week' },
-  'Portland Crescent': { value: 320, currency: 'GBP', period: 'week' },
-  'St Albans': { value: 273, currency: 'GBP', period: 'week' },
-  'Strawberry Place': { value: 239, currency: 'GBP', period: 'week' },
-  Pedralbes: { value: 1429, currency: 'EUR', period: 'month' },
+const vitaStudentRoomPriceConditions = 'Weekly rate published live on Vita Student\u2019s own booking page for this exact room type (vitastudent.com); confirm current availability directly with Vita Student before booking.'
+
+type VitaRoomPrice = { name: string; value?: number; soldOut?: boolean }
+
+/** Per-room-type weekly GBP rates read directly from each building's own live Vita Student booking widget. */
+const vitaStudentRoomPrices: Record<string, VitaRoomPrice[]> = {
+  'Bruce Street': [
+    { name: 'Lite', value: 199 },
+    { name: 'Classic', value: 204 },
+    { name: 'Premium', value: 354 },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Accessible', soldOut: true },
+  ],
+  'West End': [
+    { name: 'Classic', soldOut: true },
+    { name: 'Premium', value: 259 },
+    { name: 'Deluxe', value: 392 },
+    { name: 'Accessible', value: 360 },
+    { name: 'Cluster', value: 219 },
+  ],
+  'Iona Street': [
+    { name: 'Lite', value: 259 },
+    { name: 'Classic', value: 279 },
+    { name: 'Premium', value: 481 },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', value: 481 },
+    { name: 'One Bedroom', value: 533 },
+    { name: 'Two Bedroom', value: 774 },
+    { name: 'Accessible', value: 431 },
+  ],
+  'New Waverley': [
+    { name: 'Lite Plus', value: 349 },
+    { name: 'Classic Plus', value: 399 },
+    { name: 'Premium', soldOut: true },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', soldOut: true },
+    { name: 'Three Bedroom', value: 1245 },
+    { name: 'Accessible', soldOut: true },
+  ],
+  Fountainbridge: [
+    { name: 'Classic', value: 339 },
+    { name: 'Premium', value: 379 },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', value: 577 },
+    { name: 'Accessible', value: 429 },
+  ],
+  'Park Place': [
+    { name: 'Classic', value: 224 },
+    { name: 'Premium', value: 398 },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', soldOut: true },
+  ],
+  'Zed Alley': [
+    { name: 'Classic', value: 369 },
+    { name: 'Premium', soldOut: true },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', soldOut: true },
+  ],
+  'Copper Towers': [
+    { name: 'Lite', value: 239 },
+    { name: 'Classic Plus', value: 224 },
+    { name: 'Premium', value: 305 },
+    { name: 'Deluxe', value: 349 },
+    { name: 'Ultimate', value: 399 },
+  ],
+  'Warwick Cannon Park': [
+    { name: 'Lite', value: 354 },
+    { name: 'Classic', value: 384 },
+    { name: 'Premium', soldOut: true },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Ultimate', soldOut: true },
+    { name: 'Cluster', soldOut: true },
+  ],
+  'Portland Crescent': [
+    { name: 'Classic Plus', value: 357 },
+    { name: 'Premium', value: 304 },
+    { name: 'Deluxe', value: 445 },
+    { name: 'Ultimate', value: 475 },
+    { name: 'Two Bedroom', soldOut: true },
+  ],
+  'St Albans': [
+    { name: 'Classic', value: 264 },
+    { name: 'Premium Plus', value: 336 },
+    { name: 'Deluxe', soldOut: true },
+    { name: 'Accessible', soldOut: true },
+  ],
+  'Strawberry Place': [
+    { name: 'Classic', value: 290 },
+    { name: 'Premium', value: 259 },
+    { name: 'Deluxe', value: 362 },
+    { name: 'Ultimate', value: 487 },
+    { name: 'Accessible', value: 348 },
+    { name: 'Cluster', value: 209 },
+  ],
+  'Circle Square': [
+    { name: 'Premium', value: 344 },
+    { name: 'Deluxe', value: 429 },
+    { name: 'Ultimate' },
+    { name: 'Accessible', value: 495 },
+    { name: 'Shared', value: 324 },
+  ],
+  'First Street': [
+    { name: 'Classic', value: 315 },
+    { name: 'Accessible' },
+  ],
+  'Leazes Park': [
+    { name: 'Classic' },
+    { name: 'Premium' },
+    { name: 'Ultimate' },
+    { name: 'Accessible', value: 347 },
+  ],
+  Westgate: [
+    { name: 'Classic', value: 249 },
+    { name: 'Deluxe', value: 410 },
+    { name: 'Ultimate', value: 429 },
+    { name: 'Accessible', value: 343 },
+    { name: 'Shared' },
+  ],
+  'Station Street': [
+    { name: 'Lite', value: 229 },
+    { name: 'Classic', value: 249 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+  ],
+  'Telephone House': [
+    { name: 'Classic' },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+    { name: 'Shared', value: 474 },
+  ],
+  'Lawrence Street': [
+    { name: 'Classic', value: 259 },
+    { name: 'Premium', value: 339 },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Poblenou: [
+    { name: 'Classic', value: 1566 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Pedralbes: [
+    { name: 'Lite', value: 1435 },
+    { name: 'Classic' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
+  Oria: [
+    { name: 'Classic', value: 1109 },
+    { name: 'Premium' },
+    { name: 'Deluxe' },
+    { name: 'Ultimate' },
+    { name: 'Accessible' },
+  ],
 }
 
-const vitaThirdPartyPriceConditions = 'Estimated starting price reported by independent third-party student-housing listing sites \u2014 Vita Student\u2019s own site does not publish a public rate for this building and quotes live pricing on enquiry only. Treat this figure as approximate and confirm the current rate directly with Vita Student before booking.'
+/** Fallback for Vita Student buildings not yet re-verified against the live per-room booking widget; treated as an approximate starting rate only. */
+const vitaStudentThirdPartyPrice: Record<string, { value: number; currency: AccommodationCurrency; period: 'week' | 'month' }> = {}
+
+/** Barcelona and Madrid Vita Student buildings publish monthly (not weekly) rates on their live booking widget. */
+const vitaStudentMonthlyBuildings = new Set(['Poblenou', 'Pedralbes', 'Oria'])
+
+const vitaThirdPartyPriceConditions = 'Estimated starting price reported by independent third-party student-housing listing sites \u2014 not yet cross-checked against Vita Student\u2019s own live per-room booking widget for this building. Treat this figure as approximate and confirm the current rate directly with Vita Student before booking.'
 
 const iglu = [
   ['Broadway', 'Sydney'], ['Central', 'Sydney'], ['Central Park', 'Sydney'], ['Chatswood', 'Sydney'], ['Redfern', 'Sydney'],
@@ -568,24 +723,38 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
   }),
   ...vitaStudent.map(([name, city]) => {
     const detail = vitaStudentDetails[name]
-    const roomTypeNames = detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe']
+    const liveRoomPrices = vitaStudentRoomPrices[name]
     const thirdPartyPrice = vitaStudentThirdPartyPrice[name]
+    const roomTypeNames = liveRoomPrices?.map((room) => room.name) ?? detail?.roomTypes ?? ['Classic', 'Premium', 'Deluxe']
+    const availableLivePrices = liveRoomPrices?.filter((room) => !room.soldOut && typeof room.value === 'number').map((room) => room.value as number)
+    const livePriceFrom = availableLivePrices?.length ? Math.min(...availableLivePrices) : undefined
+    const isMonthly = vitaStudentMonthlyBuildings.has(name)
+    const buildingCurrency: AccommodationCurrency = isMonthly ? 'EUR' : 'GBP'
+    const buildingPeriod: 'week' | 'month' = isMonthly ? 'month' : 'week'
     return makeProperty({
       slug: `vita-student-${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
       name,
       city,
       country: city === 'Barcelona' || city === 'Madrid' ? 'Spain' : 'UK',
       address: detail?.address ?? `${name}, ${city}`,
-      priceFrom: thirdPartyPrice?.value ?? 0,
-      currency: thirdPartyPrice?.currency ?? 'GBP',
-      pricePeriod: thirdPartyPrice?.period ?? 'week',
+      priceFrom: livePriceFrom ?? thirdPartyPrice?.value ?? 0,
+      currency: buildingCurrency,
+      pricePeriod: buildingPeriod,
       roomTypes: roomTypeNames,
-      rooms: roomTypeNames.map((roomName, index) => ({
-        name: roomName,
-        price: index === 0 && thirdPartyPrice
-          ? { value: thirdPartyPrice.value, currency: thirdPartyPrice.currency, period: thirdPartyPrice.period, indicative: true, conditions: vitaThirdPartyPriceConditions }
-          : { currency: thirdPartyPrice?.currency ?? 'GBP', period: thirdPartyPrice?.period ?? 'week', priceOnEnquiry: true },
-      })),
+      rooms: liveRoomPrices
+        ? liveRoomPrices.map((room) => ({
+            name: room.name,
+            price: typeof room.value === 'number'
+              ? { value: room.value, currency: buildingCurrency, period: buildingPeriod, indicative: true, conditions: vitaStudentRoomPriceConditions }
+              : { currency: buildingCurrency, period: buildingPeriod, priceOnEnquiry: true },
+            availabilityNote: room.soldOut ? 'Sold out on Vita Student\u2019s site at time of review.' : undefined,
+          }))
+        : roomTypeNames.map((roomName, index) => ({
+            name: roomName,
+            price: index === 0 && thirdPartyPrice
+              ? { value: thirdPartyPrice.value, currency: thirdPartyPrice.currency, period: thirdPartyPrice.period, indicative: true, conditions: vitaThirdPartyPriceConditions }
+              : { currency: thirdPartyPrice?.currency ?? buildingCurrency, period: thirdPartyPrice?.period ?? buildingPeriod, priceOnEnquiry: true },
+          })),
       universities: cityUniversities[city] ?? [],
       distance: detail ? `${detail.walkToUni}; ${detail.walkToCentre}. ${detail.floors} floors, ${detail.rooms} rooms.` : `Central student location in ${city}`,
       partnerSlug: 'vita-student',
@@ -595,7 +764,7 @@ export const additionalAccommodationProperties: CatalogProperty[] = [
       highlights: ['All-in living', 'Central locations', 'Strong resident experience'],
       gallery: images,
       availabilityNote: detail?.availabilityNote,
-      pricingNote: thirdPartyPrice ? vitaThirdPartyPriceConditions : undefined,
+      pricingNote: liveRoomPrices ? undefined : thirdPartyPrice ? vitaThirdPartyPriceConditions : undefined,
     })
   }),
   ...iglu.map(([name, city]) => {
