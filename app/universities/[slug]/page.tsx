@@ -1,26 +1,31 @@
-import type { Metadata } from 'next'
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
-import Link from 'next/link'
-import { notFound } from 'next/navigation'
+import type { Metadata } from "next";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-import { getCityBySlug, getUniversityByName, getUniversityBySlug, universities } from '@/lib/place-data'
-import { accommodationProperties } from '@/app/accommodation/catalog'
+import {
+  getCityBySlug,
+  getUniversityByName,
+  getUniversityBySlug,
+  universities,
+} from "@/lib/place-data";
+import { accommodationProperties } from "@/app/accommodation/catalog";
 
 export function generateStaticParams() {
-  return universities.map((university) => ({ slug: university.slug }))
+  return universities.map((university) => ({ slug: university.slug }));
 }
 
 type UniversityPageProps = {
   params: Promise<{
-    slug: string
-  }>
-}
+    slug: string;
+  }>;
+};
 
 function toSentenceCase(text: string) {
-  const trimmed = text.trim()
-  if (!trimmed) return trimmed
-  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1)
+  const trimmed = text.trim();
+  if (!trimmed) return trimmed;
+  return trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
 }
 
 function toTitleCase(text: string) {
@@ -28,67 +33,78 @@ function toTitleCase(text: string) {
     .trim()
     .split(/\s+/)
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ')
+    .join(" ");
 }
 
 function countryLabel(code: string) {
-  if (code === 'UK') return 'United Kingdom'
-  if (code === 'IE') return 'Ireland'
-  if (code === 'AU') return 'Australia'
-  if (code === 'FR') return 'France'
-  if (code === 'DE') return 'Germany'
-  if (code === 'USA') return 'United States'
-  if (code === 'CA') return 'Canada'
-  if (code === 'ES') return 'Spain'
-  if (code === 'AT') return 'Austria'
-  if (code === 'BE') return 'Belgium'
-  if (code === 'HU') return 'Hungary'
-  if (code === 'SG') return 'Singapore'
-  if (code === 'MT') return 'Malta'
-  if (code === 'IT') return 'Italy'
-  if (code === 'NL') return 'Netherlands'
-  if (code === 'MY') return 'Malaysia'
-  if (code === 'UAE') return 'United Arab Emirates'
-  return code
+  if (code === "UK") return "United Kingdom";
+  if (code === "IE") return "Ireland";
+  if (code === "AU") return "Australia";
+  if (code === "FR") return "France";
+  if (code === "DE") return "Germany";
+  if (code === "USA") return "United States";
+  if (code === "CA") return "Canada";
+  if (code === "ES") return "Spain";
+  if (code === "AT") return "Austria";
+  if (code === "BE") return "Belgium";
+  if (code === "HU") return "Hungary";
+  if (code === "SG") return "Singapore";
+  if (code === "MT") return "Malta";
+  if (code === "IT") return "Italy";
+  if (code === "NL") return "Netherlands";
+  if (code === "MY") return "Malaysia";
+  if (code === "UAE") return "United Arab Emirates";
+  return code;
 }
 
-export async function generateMetadata({ params }: UniversityPageProps): Promise<Metadata> {
-  const { slug } = await params
-  const university = getUniversityBySlug(slug)
+export async function generateMetadata({
+  params,
+}: UniversityPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const university = getUniversityBySlug(slug);
 
   if (!university) {
     return {
-      title: 'University not found',
-    }
+      title: "University not found",
+    };
   }
 
-  const city = university.citySlug ? getCityBySlug(university.citySlug) : undefined
-  const cityName = city?.name ?? university.city
-  const countryName = city?.country ?? countryLabel(university.country)
+  const city = university.citySlug
+    ? getCityBySlug(university.citySlug)
+    : undefined;
+  const cityName = city?.name ?? university.city;
+  const countryName = city?.country ?? countryLabel(university.country);
 
   return {
     title: `${university.name} Student Accommodation | HearthAway`,
     description: `Find student accommodation near ${university.name} in ${cityName}, ${countryName}. Explore housing costs, best student areas, and related universities.`,
-  }
+  };
 }
 
 export default async function UniversityPage({ params }: UniversityPageProps) {
-  const { slug } = await params
-  const university = getUniversityBySlug(slug)
+  const { slug } = await params;
+  const university = getUniversityBySlug(slug);
 
   if (!university) {
-    notFound()
+    notFound();
   }
 
-  const city = university.citySlug ? getCityBySlug(university.citySlug) : undefined
-  const cityHref = city ? `/cities/${city.slug}` : undefined
+  const city = university.citySlug
+    ? getCityBySlug(university.citySlug)
+    : undefined;
+  const cityHref = city ? `/cities/${city.slug}` : undefined;
 
   const relatedUniversities = universities.filter(
     (u) => u.city === university.city && u.slug !== university.slug,
-  )
-  const universityProperties = accommodationProperties.filter((property) => property.universities.some((name) => getUniversityByName(name, property.city)?.slug === university.slug))
+  );
+  const universityProperties = accommodationProperties.filter((property) =>
+    property.universities.some(
+      (name) =>
+        getUniversityByName(name, property.city)?.slug === university.slug,
+    ),
+  );
 
-  const countryName = city?.country ?? countryLabel(university.country)
+  const countryName = city?.country ?? countryLabel(university.country);
 
   return (
     <>
@@ -104,7 +120,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 Student accommodation near {university.name}.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed mb-6">
-                Find student accommodation near {university.name}. Explore housing costs, popular student neighbourhoods, and practical guidance for living in {university.city}.
+                Find student accommodation near {university.name}. Explore
+                housing costs, popular student neighbourhoods, and practical
+                guidance for living in {university.city}.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
@@ -145,7 +163,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed mb-4">
-                  {university.name} is located in {university.city}, {countryName}, and is home to more than {university.students} students.
+                  {university.name} is located in {university.city},{" "}
+                  {countryName}, and is home to more than {university.students}{" "}
+                  students.
                 </p>
 
                 {city && (
@@ -233,16 +253,60 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <div className="inline-flex items-center gap-2 mb-6">
                   <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">Accommodation</span>
+                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
+                    Accommodation
+                  </span>
                 </div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Properties linked to {university.name}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">See accommodation entries connected to this university, including images, room options and property details.</p>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">
+                      Properties linked to {university.name}
+                    </h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">
+                      See accommodation entries connected to this university,
+                      including images, room options and property details.
+                    </p>
                   </div>
-                  <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse accommodation</Link>
+                  <Link
+                    href={`/accommodation?query=${encodeURIComponent(university.name)}`}
+                    className="shrink-0 text-sm font-bold text-[#00319D] hover:underline"
+                  >
+                    Browse accommodation
+                  </Link>
                 </div>
-                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.slice(0, 4).map((property) => <Link key={property.slug} href={`/accommodation/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]"><img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No catalogue entries are directly linked to this university yet. Browse nearby options in {university.city} instead.</p>}
+                {universityProperties.length > 0 ? (
+                  <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {universityProperties.slice(0, 4).map((property) => (
+                      <Link
+                        key={property.slug}
+                        href={`/accommodation/${property.slug}`}
+                        className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"
+                      >
+                        <div className="h-32 overflow-hidden bg-[#00319D]">
+                          <img
+                            src={property.image}
+                            alt={property.name}
+                            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h3 className="font-heading font-bold text-[#1A1A1A]">
+                            {property.name}
+                          </h3>
+                          <p className="mt-1 text-xs text-[#6B6860]">
+                            {property.city} ·{" "}
+                            {property.roomTypes.slice(0, 2).join(" · ")}
+                          </p>
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="mt-5 text-[#6B6860]">
+                    No catalogue entries are directly linked to this university
+                    yet. Browse nearby options in {university.city} instead.
+                  </p>
+                )}
               </section>
 
               {relatedUniversities.length > 0 && (
@@ -293,7 +357,10 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       When should I start looking for student accommodation?
                     </h3>
                     <p className="text-[#6B6860] text-sm leading-relaxed">
-                      Start as soon as your offer or likely study location is clear. Availability, contract dates, and prices can change quickly near intake periods, so early planning gives you more room to compare options.
+                      Start as soon as your offer or likely study location is
+                      clear. Contract dates and prices can change quickly near
+                      intake periods, so early planning gives you more room to
+                      compare options.
                     </p>
                   </div>
 
@@ -302,7 +369,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       Should I choose housing closest to campus?
                     </h3>
                     <p className="text-[#6B6860] text-sm leading-relaxed">
-                      Not always. A slightly longer commute can be worthwhile if it improves budget fit, room quality, transport access, or lifestyle. Confirm your course building before deciding.
+                      Not always. A slightly longer commute can be worthwhile if
+                      it improves budget fit, room quality, transport access, or
+                      lifestyle. Confirm your course building before deciding.
                     </p>
                   </div>
 
@@ -311,7 +380,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       What budget details should I prepare?
                     </h3>
                     <p className="text-[#6B6860] text-sm leading-relaxed">
-                      Prepare your monthly rent limit, deposit budget, bills preference, transport budget, and move-in date. These details make it easier to compare housing fairly.
+                      Prepare your monthly rent limit, deposit budget, bills
+                      preference, transport budget, and move-in date. These
+                      details make it easier to compare housing fairly.
                     </p>
                   </div>
 
@@ -320,7 +391,9 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                       How can HearthAway help me decide?
                     </h3>
                     <p className="text-[#6B6860] text-sm leading-relaxed">
-                      Tell us your course, budget, and move-in date. We can help you understand the trade-offs around location, commute, contract timing, and suitable housing types.
+                      Tell us your course, budget, and move-in date. We can help
+                      you understand the trade-offs around location, commute,
+                      contract timing, and suitable housing types.
                     </p>
                   </div>
                 </div>
@@ -333,7 +406,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                   Need help near {university.name}?
                 </h2>
                 <p className="text-[#6B6860] text-sm leading-relaxed mb-5">
-                  Tell us your course, budget, and move-in date. We will help you plan location, timing, commute, and housing type.
+                  Tell us your course, budget, and move-in date. We will help
+                  you plan location, timing, commute, and housing type.
                 </p>
 
                 {cityHref && (
@@ -361,16 +435,22 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             <div className="rounded-3xl bg-[#00319D] p-10 lg:p-16">
               <div className="max-w-2xl">
                 <div className="inline-flex items-center gap-2 mb-7">
-                  <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
+                  <div
+                    className="w-2 h-2 rounded-full bg-[#FCC20A]"
+                    aria-hidden="true"
+                  />
                   <span className="text-white/70 text-sm font-semibold">
                     Free to use and no commitment required
                   </span>
                 </div>
                 <h2 className="font-heading text-4xl lg:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6">
-                  Get matched near <span className="text-[#FCC20A]">{university.name}</span>.
+                  Get matched near{" "}
+                  <span className="text-[#FCC20A]">{university.name}</span>.
                 </h2>
                 <p className="text-white/65 text-lg leading-relaxed mb-10">
-                  Tell us your course, budget, and move-in date. An accommodation advisor will help you understand your next best steps.
+                  Tell us your course, budget, and move-in date. An
+                  accommodation advisor will help you understand your next best
+                  steps.
                 </p>
                 <Link
                   href="/get-matched"
@@ -385,5 +465,5 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
       </main>
       <Footer />
     </>
-  )
+  );
 }
