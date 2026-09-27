@@ -39,7 +39,7 @@ function buildRooms(property: CatalogProperty, currency: AccommodationCurrency, 
           currency,
           period: pricePeriod,
           indicative: true,
-          conditions: 'Starting price for this property; confirm the exact rate for this room type, dates and contract length with the provider.',
+          conditions: 'Starting price for this property; confirm the exact room photo, room offer, dates, contract length, bills and deposit with the provider.',
         }
       : { currency, period: pricePeriod, priceOnEnquiry: true },
   }))
