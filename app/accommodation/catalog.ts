@@ -1,5 +1,6 @@
 import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
+import { bulkAccommodationProperties } from './bulk-inventory'
 import { propertyOverrides } from './property-overrides'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
@@ -108,10 +109,12 @@ const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property
 })))
 
 const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(applyOverride)
+const normalizedBulkProperties: CatalogProperty[] = bulkAccommodationProperties.map(applyOverride)
 
 const allAccommodationProperties: CatalogProperty[] = [
   ...normalizedSeedProperties,
   ...normalizedAdditionalProperties,
+  ...normalizedBulkProperties,
 ]
 
 /**
