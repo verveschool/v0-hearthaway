@@ -35,6 +35,7 @@ export default function PropertyGallery({ images, rooms, name, city, country, ci
   const combinedImages = useMemo(() => [...propertyImages, ...roomOnlyImages], [propertyImages, roomOnlyImages])
   const roomImageIndex = new Map(rooms.filter((room) => room.image).map((room) => [room.image as string, room.name]))
   const activeRoom = activeRoomName ? rooms.find((room) => room.name === activeRoomName) : undefined
+  const displayedRooms = activeRoom ? [activeRoom] : rooms.slice(0, 1)
   const initialIndex = activeRoom?.image ? Math.max(combinedImages.indexOf(activeRoom.image), 0) : 0
 
   const [activeIndex, setActiveIndex] = useState(initialIndex)
@@ -91,10 +92,10 @@ export default function PropertyGallery({ images, rooms, name, city, country, ci
       </div>
 
       <div className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-        <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Room types</h2>
+        <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Selected room</h2>
         <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">Every room type offered at this property, as listed by the source. Select a room type to view its own photo above; a room type stays listed here even when it currently has no availability.</p>
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
-          {rooms.map((room) => {
+          {displayedRooms.map((room) => {
             const isSelected = selectedRoom === room.name
             return (
               <button

@@ -1,5 +1,6 @@
 import { accommodationProperties as seedProperties } from './accommodation-data'
 import { additionalAccommodationProperties, type CatalogProperty } from './partner-inventory'
+import { bulkAccommodationProperties } from './bulk-inventory'
 import { propertyOverrides } from './property-overrides'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import { formatAccommodationPrice, formatAccommodationPricePeriod } from './formatters'
@@ -39,7 +40,7 @@ function buildRooms(property: CatalogProperty, currency: AccommodationCurrency, 
           currency,
           period: pricePeriod,
           indicative: true,
-          conditions: 'Starting price for this property; confirm the exact rate for this room type, dates and contract length with the provider.',
+          conditions: 'Starting price for this property; confirm the exact room photo, room offer, dates, contract length, bills and deposit with the provider.',
         }
       : { currency, period: pricePeriod, priceOnEnquiry: true },
   }))
@@ -108,10 +109,12 @@ const normalizedSeedProperties: CatalogProperty[] = seedProperties.map((property
 })))
 
 const normalizedAdditionalProperties: CatalogProperty[] = additionalAccommodationProperties.map(applyOverride)
+const normalizedBulkProperties: CatalogProperty[] = bulkAccommodationProperties.map(applyOverride)
 
 const allAccommodationProperties: CatalogProperty[] = [
   ...normalizedSeedProperties,
   ...normalizedAdditionalProperties,
+  ...normalizedBulkProperties,
 ]
 
 /**
@@ -143,8 +146,6 @@ export type AccommodationListing = Readonly<{
   roomAmenities: string[]
   /** Building-wide amenities only, e.g. gym, laundry, reception. Never merged with room-level amenities. */
   propertyAmenities: string[]
-  /** The other room types at the same property, for a "other room types here" section. */
-  siblingListings: AccommodationListingSibling[]
   /** True only when this specific room type has its own source photo, not just some room somewhere at the property. */
   hasVerifiedRoomPhoto: boolean
 }>
@@ -157,10 +158,12 @@ export function hasListingLevelEvidence(property: CatalogProperty): boolean {
   const hasSource = Boolean(property.pricingSourceUrl)
   const hasPropertyPrice = Number.isFinite(property.priceFrom) && property.priceFrom > 0
   const hasPropertyPhoto = Boolean(property.image) && property.gallery.length > 0
+  const hasEligibleRoom = (property.rooms ?? []).some((room) => Boolean(room.image) && !room.price.priceOnEnquiry && Number.isFinite(room.price.value) && (room.price.value ?? 0) > 0)
 
-  // Keep a sourced property visible when its room-level photo is still being
-  // confirmed; the card and detail page state that limitation explicitly.
-  return hasSource && hasPropertyPrice && hasPropertyPhoto
+  // A catalogue property is only useful when at least one individual room has
+  // both a bedroom photo and a tentative price. Unpriced or image-less rooms
+  // are omitted rather than shown as incomplete listings.
+  return hasSource && hasPropertyPrice && hasPropertyPhoto && hasEligibleRoom
 }
 
 export const accommodationProperties: CatalogProperty[] = allAccommodationProperties.filter(hasListingLevelEvidence)
@@ -230,21 +233,19 @@ export function getAccommodationBudgetRanges(properties: readonly CatalogPropert
  * synthesized by `buildRooms` above) &mdash; coverage is automatic for every
  * property, current and future, with no re-entry of data required.
  */
-export const accommodationListings: AccommodationListing[] = accommodationProperties.flatMap((property) => {
-  const rooms = property.rooms ?? []
-  return rooms.map((room, index): AccommodationListing => ({
-    slug: buildListingSlug(property.slug, room.name),
-    propertySlug: property.slug,
-    property,
-    room,
-    roomAmenities: room.features ?? [],
-    propertyAmenities: property.amenities,
-    siblingListings: rooms
-      .filter((_, siblingIndex) => siblingIndex !== index)
-      .map((sibling) => ({ slug: buildListingSlug(property.slug, sibling.name), name: sibling.name, price: sibling.price })),
-    hasVerifiedRoomPhoto: Boolean(room.image),
-  }))
-})
+export const accommodationListings: AccommodationListing[] = accommodationProperties.flatMap((property) =>
+  (property.rooms ?? [])
+    .filter((room) => Boolean(room.image) && !room.price.priceOnEnquiry && Number.isFinite(room.price.value) && (room.price.value ?? 0) > 0)
+    .map((room): AccommodationListing => ({
+      slug: buildListingSlug(property.slug, room.name),
+      propertySlug: property.slug,
+      property,
+      room,
+      roomAmenities: room.features ?? [],
+      propertyAmenities: property.amenities,
+      hasVerifiedRoomPhoto: true,
+    })),
+)
 
 export function getAccommodationListingBySlug(slug: string): AccommodationListing | undefined {
   return accommodationListings.find((listing) => listing.slug === slug)
