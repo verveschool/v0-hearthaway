@@ -71,6 +71,11 @@ export default function RootLayout({
       lang="en"
       className={`${manrope.variable} bg-background`}
     >
+      <head>
+        {/* TrustBox script */}
+        <script type="text/javascript" src="//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async />
+        {/* End TrustBox script */}
+      </head>
       <body className="font-sans antialiased">
         {children}
         <CustomCursor />
