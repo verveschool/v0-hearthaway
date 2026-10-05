@@ -126,12 +126,7 @@ export default function HeroSection() {
             style={{ fontSize: 'clamp(0.98rem, 1.45vw, 1.08rem)' }}
           >
             <p>
-              Moving abroad for university is a big decision. Choosing where to
-              live is one too.
-            </p>
-
-            <p>
-              We&apos;ll help you compare verified accommodation near your university, across {countries.length} destinations and within your budget.
+              Near your university. Within your budget.
             </p>
           </div>
 
