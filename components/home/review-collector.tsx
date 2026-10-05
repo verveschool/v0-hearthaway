@@ -2,13 +2,9 @@ export default function ReviewCollector() {
   return (
     <section className="bg-[#F7F6F3] border-y border-[#E8E6E1] py-12" aria-labelledby="review-collector-heading">
       <div className="mx-auto max-w-3xl px-6 text-center lg:px-8">
-        <p className="mb-3 text-xs font-bold uppercase tracking-[0.2em] text-[#00319D]">Your experience matters</p>
         <h2 id="review-collector-heading" className="font-heading text-3xl font-extrabold tracking-tight text-[#1A1A1A]">
-          Help another student move with confidence.
+          Your experience matters.
         </h2>
-        <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-[#6B6860]">
-          Had a good experience with HearthAway? Share your story on Trustpilot and help future students make a confident move.
-        </p>
         <div className="mx-auto mt-8 max-w-xl">
           {/* TrustBox widget - Review Collector */}
           <div
