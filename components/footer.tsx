@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import ReviewCollector from '@/components/home/review-collector'
 
 const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
 
@@ -178,6 +179,10 @@ export default function Footer() {
                 </p>
               </div>
             </div>
+          </div>
+
+          <div className="mt-12">
+            <ReviewCollector />
           </div>
 
           {/* Bottom row */}
