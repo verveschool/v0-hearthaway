@@ -20,8 +20,13 @@ export default function ReviewCollector() {
             data-style-width="100%"
             data-token="f549839c-e32a-4086-8f65-f9a53265ff20"
           >
-            <a href="https://www.trustpilot.com/review/hearthaway.com" target="_blank" rel="noopener">
-              Trustpilot
+            <a
+              href="https://www.trustpilot.com/review/hearthaway.com"
+              target="_blank"
+              rel="noopener"
+              className="inline-flex min-h-[52px] w-full items-center justify-center rounded-lg bg-[#00b67a] px-6 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#009f6b] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
+            >
+              Leave a review on Trustpilot
             </a>
           </div>
           {/* End TrustBox widget */}
