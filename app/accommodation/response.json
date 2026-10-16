@@ -1,0 +1,2435 @@
+{
+    "code": "OK",
+    "message": null,
+    "meta": null,
+    "data": {
+        "Birmingham": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-birmingham",
+                    "name": "Vita Student Birmingham",
+                    "brand": "vita-student",
+                    "buildings": [  
+                        {
+                            "id": "vita-student-birmingham",
+                            "name": "Vita Student Birmingham",
+                            "brand": "vita-student",
+                            "postcode": "B29 7ES",
+                            "units_available": 12,
+                            "latitude": "-1.91",
+                            "longitude": "52.45",
+                            "description": "Pebble Mill is home to Vita Student's first residential development in the Midlands, a flagship scheme providing premium student accommodation a mile from the University of Birmingham. It provides the ideal location for students wishing to study and enjoy the leisure and lifestyle facilities of the local area. What's included is an on-site gym with PT sessions, a coffee lounge, private dining areas, a cinema, a study area, leisure activities, superfast Wi-Fi, a 24/7 on-site team, free weekday breakfast, and bi-weekly housekeeping.",
+                            "external_link": "https://www.vitastudent.com/en/cities/birmingham/pebble-mill/",
+                            "address": "Vita Student Birmingham,\nPershore Road,\nBirmingham,\nB29 7ES"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/64hv3fwvm8t8pm645pr7rvq/CLASSIC-405-VITA-BIRMINGHAM---JULY-20223155_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 279,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Courtyard": {
+                            "total_available": 6,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/p9ppktstwptqrtf9m3k7q2c/CLASSIC_COURTYARD_Room_G34_VITA_BIRMINGHAM_-_JULY_20220308_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 304,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/67cf9mcwcc8854pc7fgp96v/CLASSIC_PLUS_Room_431_VITA_BIRMINGHAM_-_JULY_20220112_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 363,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/f94qrcpqk72sgmkkxktvgp5/PREMIUM_Room_420_VITA_BIRMINGHAM_-_JULY_20220218_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 405,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/f94qrcpqk72sgmkkxktvgp5/PREMIUM_Room_420_VITA_BIRMINGHAM_-_JULY_20220218_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 426,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mp4brwbsxbqfjc3mfsfs4xn8/DELUXE_409_VITA_BIRMINGHAM_-_JULY_20223293_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 480,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "birmingham-gough-street",
+                    "name": "Birmingham Gough Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "birmingham-gough-street",
+                            "name": "Birmingham Gough Street",
+                            "brand": "vita-student",
+                            "postcode": "B1 1GJ",
+                            "units_available": 7,
+                            "latitude": "-1.903",
+                            "longitude": "52.476",
+                            "description": "Comfort and convenience, perfectly combined. Explore the city’s most popular student spots just steps away, while reaching the University of Birmingham campus in just 20 minutes by bus, or Birmingham City University in a 25-minute walk. This landmark project offers high-quality studio apartments across two modern towers. What's included is a spacious hub, private dining rooms, private study rooms, a 24/7 gym, a basketball court, outdoor seating, a laundry room, a pool table, 24/7 CCTV & secure access, free weekday breakfast, bi-weekly housekeeping, unlimited ground coffee & tea, and exclusive weekly events.",
+                            "external_link": "https://www.vitastudent.com/en/cities/birmingham/gough-street/",
+                            "address": "Vita Student Gough Street,\n8 Gough Street,\nBirmingham,\nB1 1GJ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/5z7xmk2rrsm96x2rhpcvh4/LITE-315-VITA---BELFAST---AUG-20235446_RT2.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 279,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/nzc8wt832gvsf5fjqv9xzn5/LITE_PLUS_708_VITA_GOUGH_STREET_-_AUG_20260131.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 294,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/39kcc3fxb39v4w8s7p33wg/GS_-_ONE_BEDROOM_-_2801_-_PERSPECTIVE_01.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 635,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Leeds": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-leeds",
+                    "name": "Vita Student Leeds",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-leeds",
+                            "name": "Vita Student Leeds",
+                            "brand": "vita-student",
+                            "postcode": "LS2 8JP",
+                            "units_available": 3,
+                            "latitude": "-1.542",
+                            "longitude": "53.803",
+                            "description": "Our private student accommodation is located at the top of New Briggate, just a short walk from the University of Leeds, and directly opposite the Trinity Centre. Neighbors also include the Belgrave Music Hall & Canteen, City Museum, Art Gallery and Grand Theatre. What’s included is a spacious hub, bi-weekly housekeeping, private dining room, cinema room, pool & table tennis tables, 24/7 gym access, and free weekday breakfast.",
+                            "external_link": "https://www.vitastudent.com/en/cities/leeds/st-albans/",
+                            "address": "Vita Student Leeds,\nCross Belgrave Street,\nLeeds,\nLS2 8JP"
+                        }
+                    ],
+                    "unit_types": {
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/nbm7wv2xt9nztg3x3kw4t8f9/VITA_Leeds_Aug2019_108.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 340,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jwvfqg4nw84nkqntnsbrhgc/PREMIUM_ROOM_1201_VITA_LEEDS_PC_-_JULY_20220432.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 354,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jwvfqg4nw84nkqntnsbrhgc/PREMIUM_ROOM_1201_VITA_LEEDS_PC_-_JULY_20220432.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 364,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "leeds-portland-crescent",
+                    "name": "Leeds Portland Crescent",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "leeds-portland-crescent",
+                            "name": "Leeds Portland Crescent",
+                            "brand": "vita-student",
+                            "postcode": "LS1 3AY",
+                            "units_available": 8,
+                            "latitude": "-1.547",
+                            "longitude": "53.801",
+                            "description": "Vita Student is for students that want it all; for students that want to live without limits. This 16-storey development features a quarried stone facade designed to reflect the calibre of the location, close to the historic Leeds Civic Hall. What’s included is a high-spec gym, quiet study areas, a coffee lounge, a laundry room, free weekday breakfast, bi-weekly housekeeping, all-inclusive utility bills, and a 24/7 on-site team providing support and security.",
+                            "external_link": "https://www.vitastudent.com/en/cities/leeds/portland-crescent/",
+                            "address": "Leeds Portland Crescent,\n93 Portland Crescent,\nLeeds,\nLS1 3AY"
+                        }
+                    ],
+                    "unit_types": {
+                        "Premium": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jg4cmzx5rhmc4xhm56crp/PREMIUM_PLUS_ROOM_1511_VITA_LEEDS_PC_-_JULY_20220513.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 304,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/q6t9nnb4wv2x4rf9qp6hpb9/PREMIUM_ROOM_1201_VITA_LEEDS_PC_-_JULY_20220456.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 357,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jwvfqg4nw84nkqntnsbrhgc/PREMIUM_ROOM_1201_VITA_LEEDS_PC_-_JULY_20220432.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 445,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jz34kt8j8r389x5k5fgrcbkq/DELUXE_ROOM_503_VITA_LEEDS_PC_-_JULY_20220581.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 475,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Cardiff": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-cardiff",
+                    "name": "Vita Student Cardiff",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-cardiff",
+                            "name": "Vita Student Cardiff",
+                            "brand": "vita-student",
+                            "postcode": "CF10 3FH",
+                            "units_available": 17,
+                            "latitude": "-3.177",
+                            "longitude": "51.485",
+                            "description": "Experience the best of city living in Cardiff at our brand-new building, Vita Student Park Place. Ideally located if you're studying at Cardiff University, University of South Wales, or Cardiff Met, it stands out as a modern and convenient living hub. What's included is a spacious hub, private dining room, free weekday breakfast, bi-weekly housekeeping, VIP brand experiences & discounts, a 24/7 gym, an outside terrace, and a 24-hour parcel room.",
+                            "external_link": "https://www.vitastudent.com/en/cities/cardiff/park-place/",
+                            "address": "Vita Student Cardiff,\nPark Place, Cathays,\nCardiff,\nCF10 3FH"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 7,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/h8cmcr6b797hc684c8p7jqp/CLASSIC_325_VITA_CARDIFF_-_AUG_20235909_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 219,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 9,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8g2gmkbjw9xw6kf7qphg5msc/CLASSIC_301_VITA_CARDIFF_-_AUG_20235688_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 234,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/q6tmn4k6s7hjfrxxrg45gjhn/ULTIMATE_V239_VITA_CARDIFF_-_AUG_20235889_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 539,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Nottingham": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-nottingham",
+                    "name": "Vita Student Nottingham",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-nottingham",
+                            "name": "Vita Student Nottingham",
+                            "brand": "vita-student",
+                            "postcode": "NG2 3AJ",
+                            "units_available": 11,
+                            "latitude": "-1.146",
+                            "longitude": "52.948",
+                            "description": "Vita Student Station Street Nottingham is nestled in the heart of one of the UK's most vibrant student cities, where convenience meets style. It is not just a place to stay; it's a launchpad into the thriving Nottingham student scene. What’s included is a spacious hub, a games area, a 24/7 gym, a dance studio, an outside terrace and courtyard, a private dining room, free weekday breakfasts, complimentary tea and coffee, and daily social events.",
+                            "external_link": "https://www.vitastudent.com/en/cities/nottingham/station-street/",
+                            "address": "Vita Student Nottingham,\n25 Station Street,\nNottingham,\nNG2 3AJ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 5,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mz5h5zp69537n995f4hrstsj/VITA_NOTTINGHAM_SEP2020_109_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 258,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Lite Plus": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/ckkvbvvgjq96k7pf7zcrc6/VITA_NOTTINGHAM_SEP2020_154_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 285,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/sjxn33rxc86wk6k6sv6rpb/VITA_NOTTINGHAM_SEP2020_97_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 297,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jqkgv9mkh8pnm62n6hqpb6/VITA_NOTTINGHAM_SEP2020_149_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 307,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Liverpool": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "crosshall-street",
+                    "name": "The Chapel",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/4378krrcvc4vfrv4vc495vs/CLASSIC_TINLINGS_ROOM_309_VITA_Liverpool_-_AUG_20221784.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 211,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 12,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/np6hprv7shn3x8xphwbw7tth/PREMIUM_CHAPEL_ROOM_21_VITA_Liverpool_-_AUG_20221587.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 219,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kb6x97bv78htthvgjbrckn3/Crosshall-517-Premium-studio---Opening-Window_2000x1360_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 256,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "crosshall-street",
+                    "name": "Tinlings",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/4378krrcvc4vfrv4vc495vs/CLASSIC_TINLINGS_ROOM_309_VITA_Liverpool_-_AUG_20221784.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 211,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 12,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/np6hprv7shn3x8xphwbw7tth/PREMIUM_CHAPEL_ROOM_21_VITA_Liverpool_-_AUG_20221587.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 219,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kb6x97bv78htthvgjbrckn3/Crosshall-517-Premium-studio---Opening-Window_2000x1360_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 256,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "crosshall-street",
+                    "name": "Crosshall Building",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/4378krrcvc4vfrv4vc495vs/CLASSIC_TINLINGS_ROOM_309_VITA_Liverpool_-_AUG_20221784.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 211,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 12,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/np6hprv7shn3x8xphwbw7tth/PREMIUM_CHAPEL_ROOM_21_VITA_Liverpool_-_AUG_20221587.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 219,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kb6x97bv78htthvgjbrckn3/Crosshall-517-Premium-studio---Opening-Window_2000x1360_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 256,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "crosshall-street",
+                    "name": "Crosshall Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-the-chapel",
+                            "name": "Vita Student The Chapel",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 12,
+                            "latitude": "-2.987",
+                            "longitude": "53.409",
+                            "description": "A short walk from the University of Liverpool and amongst all the city's most exciting spots, Vita Student Crosshall Street is Liverpool's first-choice student accommodation. It is the place to learn, thrive and make connections in the heart of the city. What's included is a spacious hub, private dining room, cinema room, pool & table tennis tables, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/liverpool/crosshall-street/",
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-crosshall",
+                            "name": "Vita Student Crosshall",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        },
+                        {
+                            "id": "vita-student-tinlings",
+                            "name": "Vita Student Tinlings",
+                            "brand": "vita-student",
+                            "postcode": "L1 6DQ",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Liverpool,\n5-7 Crosshall Street,\nLiverpool,\nL1 6DQ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/4378krrcvc4vfrv4vc495vs/CLASSIC_TINLINGS_ROOM_309_VITA_Liverpool_-_AUG_20221784.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 211,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 12,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/np6hprv7shn3x8xphwbw7tth/PREMIUM_CHAPEL_ROOM_21_VITA_Liverpool_-_AUG_20221587.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 219,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kb6x97bv78htthvgjbrckn3/Crosshall-517-Premium-studio---Opening-Window_2000x1360_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 256,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Manchester": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "first-street",
+                    "name": "First Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-first-street",
+                            "name": "Vita Student First Street",
+                            "brand": "vita-student",
+                            "postcode": "M15 4RB",
+                            "units_available": 7,
+                            "latitude": "-2.247",
+                            "longitude": "53.472",
+                            "description": "Manchester’s original and award-winning Vita Student residence, Vita Student First Street is a short stroll from all the city's universities, and has a thriving community in the building who are ready to welcome you. Located in the ready-made First Street neighbourhood near bars, restaurants, cinemas and theatres, the building offers a peaceful environment loved for its airy and open double-height Hub space. What's included is a large double-height hub, a private cinema room, a 24/7 high-spec gym with private training sessions and yoga classes, a coffee lounge with unlimited ground coffee and tea, free weekday breakfast, bi-weekly housekeeping, bike storage, and a 24-hour on-site team providing security and parcel services.",
+                            "external_link": "https://www.vitastudent.com/en/cities/manchester/first-street/",
+                            "address": "Vita Student First Street,\n13 Jack Rosenthal Street,\nManchester,\nM15 4RB"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/vkbvwfvvmc76jfb4gbp43h69/05164_VITA_First_Street_Anon_2.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 299,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/79c42p45gxgkk3cz3w9tfwvw/VG_Manc_FirstStreet_Classic_Plus_RT_WEB.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 314,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "vita-student-manchester-circle-square",
+                    "name": "Vita Student Manchester, Circle Square",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "charles-building",
+                            "name": "Charles Building",
+                            "brand": "vita-student",
+                            "postcode": "M1 7FE",
+                            "units_available": 2,
+                            "latitude": "-2.237",
+                            "longitude": "53.473",
+                            "description": "Located in the heart of the Symphony Park district, Circle Square provides high-quality, serviced accommodation on two plots of a vibrant new neighbourhood. These studios share communal living and dining spaces with floor-to-ceiling glazed windows and are perfectly positioned for the University of Manchester and MMU. What’s included is access to a huge split-level hub with quiet and active zones, private dining rooms, high-tech study areas, 24/7 gym access, superfast Wi-Fi, all-inclusive utility bills, free weekday breakfast, and bi-weekly housekeeping.",
+                            "external_link": "https://www.vitastudent.com/en/cities/manchester/circle-square/",
+                            "address": "Vita Student Circle Square Building 9,\n6 Nobel Way,\nManchester,\nM1 7FE"
+                        },
+                        {
+                            "id": "medlock-building",
+                            "name": "Medlock Building",
+                            "brand": "vita-student",
+                            "postcode": "M1 7FE",
+                            "units_available": 5,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Circle Square Building 10,\n6 Nobel Way,\nManchester,\nM1 7FE"
+                        },
+                        {
+                            "id": "nobel-building",
+                            "name": "Nobel Building",
+                            "brand": "vita-student",
+                            "postcode": "M1 7FA",
+                            "units_available": 1,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Circle Square Building 11,\n2 Nobel Way,\nManchester,\nM1 7FA"
+                        }
+                    ],
+                    "unit_types": {
+                        "Cluster": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8qkf8wsjfpvj9ff8r5xwrp/VITA_CSQ_MODELS_JUNE2021_399_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 324,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Lite": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8qkf8wsjfpvj9ff8r5xwrp/VITA_CSQ_MODELS_JUNE2021_399_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 357,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8qkf8wsjfpvj9ff8r5xwrp/VITA_CSQ_MODELS_JUNE2021_399_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 419,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/p8rsm9bznvmh3jksh43hbvb/VITA_CSQ_MODELS_JUNE2021_411_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 499,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "manchester-one-port-street",
+                    "name": "One Port Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "one-port-street",
+                            "name": "One Port Street",
+                            "brand": "vita-student",
+                            "postcode": "M1 2FZ",
+                            "latitude": "53.4825848849270",
+                            "longitude": "-2.23011591799438",
+                            "description": null,
+                            "external_link": null,
+                            "address": "One Port Street,\n80 Port Street,\nManchester,\nM1 2FZ"
+                        }
+                    ],
+                    "unit_types": {}
+                },
+                {
+                    "id": "manchester-downtown",
+                    "name": "Downtown",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "downtown",
+                            "name": "Downtown",
+                            "brand": "vita-student",
+                            "postcode": "M5 4YH",
+                            "latitude": "53.4732536473845",
+                            "longitude": "-2.26558661658691",
+                            "description": null,
+                            "external_link": null,
+                            "address": "Downtown Manchester,\n7-9 Woden Street,\nManchester,\nM5 4YH"
+                        }
+                    ],
+                    "unit_types": {}
+                }
+            ]
+        },
+        "Exeter": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "portland-house",
+                    "name": "Portland House",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-portland-house",
+                            "name": "Vita Student Portland House",
+                            "brand": "vita-student",
+                            "postcode": "EX4 6AB",
+                            "latitude": "-3.527",
+                            "longitude": "50.727",
+                            "description": "Located just a 10-minute walk from the University of Exeter and two minutes from the city centre's bustle, Vita Student is the only student accommodation in Exeter with everything covered. You’re close to everything that makes the city great. What’s included is a spacious hub, pool table, VIP brand experiences, weekday breakfast, bi-weekly housekeeping, VIP brand discounts, a coffee lounge, and an on-site gym with free private training sessions.",
+                            "external_link": "https://www.vitastudent.com/en/cities/exeter/portland-house/",
+                            "address": "Vita Student Portland House,\n23 Longbrook Street,\nExeter,\nEX4 6AB"
+                        }
+                    ],
+                    "unit_types": {}
+                }
+            ]
+        },
+        "Bristol": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "zed-alley",
+                    "name": "Zed Alley",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-zed-alley",
+                            "name": "Vita Student Zed Alley",
+                            "brand": "vita-student",
+                            "postcode": "BS1 4TT",
+                            "units_available": 3,
+                            "latitude": "-2.597",
+                            "longitude": "51.455",
+                            "description": "Student living doesn't get much more central than this. Less than a 10-minute walk from the University of Bristol, it's no surprise that Zed Alley sells out quick. Tucked into the city's famous street-art-filled alleys, it offers a modern, community-driven residence. What's included is a spacious hub, private dining room, VIP brand experiences and discounts, free weekday breakfast, bi-weekly housekeeping, personal training sessions, quiet study spaces, and a coffee lounge.",
+                            "external_link": "https://www.vitastudent.com/en/cities/bristol/zed-alley/",
+                            "address": "Vita Student Colston Avenue,\n35 Colston Avenue,\nBristol,\nBS1 4TT"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/k7h86fhnh59kr49x4spxmn8q/CLASSIC_102_VITA_BRISTOL_-_JULY_20251384.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 448,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/7j48rc93krf82tk3cm7w86wj/PREMIUM_223_VITA_BRISTOL_-_JULY_20251245.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 455,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/2g3nqfqc5h342pt94sn4tms/CLASSIC_PLUS_422_VITA_BRISTOL_-_JULY_20251294.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 459,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Southampton": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "richmond-house",
+                    "name": "Richmond House",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-richmond-house",
+                            "name": "Vita Student Richmond House",
+                            "brand": "vita-student",
+                            "postcode": "SO14 3EU",
+                            "units_available": 1,
+                            "latitude": "-1.398",
+                            "longitude": "50.908",
+                            "description": "Known for its high-rise experience and central location, Vita Student Richmond House offers easy access to Southampton's vibrant city life and major universities. It offers a mix of comfort and convenience with top-quality amenities. What’s included is a large outdoor courtyard, a spacious social hub, a 24/7 gym, a cinema room, pool and table tennis facilities, free weekday breakfast, daily coffee, and a free fortnightly cleaning service.",
+                            "external_link": "https://www.vitastudent.com/en/cities/southampton/richmond-house/",
+                            "address": "Vita Student Richmond House,\n3 Terminus Terrace,\nSouthampton,\nSO14 3EU"
+                        }
+                    ],
+                    "unit_types": {
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/rgxjqmnjkbjgsgxwb3424gn/VG_Southampton_RH_Premium_220_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 389,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "vita-student-at-portswood-southampton",
+                    "name": "Vita Student at Portswood, Southampton",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "belmont-building---portswood",
+                            "name": "Belmont Building - Portswood",
+                            "brand": "vita-student",
+                            "postcode": "SO17 2LB",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Portswood,\n236 Portswood Road,\nSouthampton,\nSO17 2LB"
+                        },
+                        {
+                            "id": "grosvenor-building---portswood",
+                            "name": "Grosvenor Building - Portswood",
+                            "brand": "vita-student",
+                            "postcode": "SO17 2LB",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Portswood,\n236 Portswood Road,\nSouthampton,\nSO17 2LB"
+                        }
+                    ],
+                    "unit_types": {}
+                }
+            ]
+        },
+        "Sheffield": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "telephone-house",
+                    "name": "Telephone House",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-telephone-house",
+                            "name": "Vita Student Telephone House",
+                            "brand": "vita-student",
+                            "postcode": "S1 1BA",
+                            "units_available": 1,
+                            "latitude": "-1.47",
+                            "longitude": "53.379",
+                            "description": "Formerly Telephone House, this landmark building has always been one of Sheffield's most popular student accommodation options. With a free shuttle bus included to the University of Sheffield, it is the epitome of all-in student living. What's included is a spacious hub, bi-weekly housekeeping, a private dining room, a free shuttle bus, pool & table tennis tables, Mahjong tables, free weekday breakfast, and VIP brand experiences & discounts.",
+                            "external_link": "https://www.vitastudent.com/en/cities/sheffield/telephone-house/",
+                            "address": "Vita Student Telephone House,\nWellington Street,\nSheffield,\nS1 1BA"
+                        }
+                    ],
+                    "unit_types": {
+                        "Three Bedroom": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/fv8txcq7kk3cwfp7hj77c97/VG_Sheffield_Three_Bed_126_RT.png",
+                            "minimum_occupancy": 3,
+                            "maximum_occupancy": 6,
+                            "price_from": 474,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Newcastle": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "westgate",
+                    "name": "Westgate",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-newcastle",
+                            "name": "Vita Student Newcastle",
+                            "brand": "vita-student",
+                            "postcode": "NE1 1TT",
+                            "units_available": 27,
+                            "latitude": "-1.614",
+                            "longitude": "54.97",
+                            "description": "A centrally located building near Newcastle Central Station, Westgate is known for its historic exterior and modern interior, providing the perfect base for city-centre living. It offers easy access to both Northumbria and Newcastle University. What’s included is access to the signature Vita Student social hub, private study rooms, a 24/7 gym, free weekday breakfast to grab on the go, bi-weekly housekeeping, all-inclusive bills, superfast Wi-Fi, and a 24-hour on-site team to ensure safety and security.",
+                            "external_link": "https://www.vitastudent.com/en/cities/newcastle/westgate/",
+                            "address": "Vita Student Westgate,\n48 Westgate Road,\nNewcastle,\nNE1 1TT"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 10,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/w7m6s89p6mmbhhbv7f2rjw4m/PREMIUM_ROOM_601_WESTGATE_VITA_NEWCASTLE_-_AUG_20222340.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 249,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 13,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/hzn9sb9ggmv48s4gqj3r6vmk/VG_Newcastle_WG_Classic_131_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 260,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/f4rnx9g36n6qxcskvs5bsk6z/ACCESSIBLE_ROOM_114_WESTGATE_VITA_NEWCASTLE_-_AUG_20222271.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 343,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8n6ntmn576rgr72kvxq2twn/PREMIUM_ROOM_601_WESTGATE_VITA_NEWCASTLE_-_AUG_20222347.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 410,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8n6ntmn576rgr72kvxq2twn/PREMIUM_ROOM_601_WESTGATE_VITA_NEWCASTLE_-_AUG_20222347.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 429,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "vita-student-at-strawberry-place-newcastle",
+                    "name": "Vita Student at Strawberry Place, Newcastle",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-at-strawberry-place-newcastle",
+                            "name": "Vita Student at Strawberry Place, Newcastle",
+                            "brand": "vita-student",
+                            "postcode": "NE1 4PQ",
+                            "units_available": 37,
+                            "latitude": "-1.621",
+                            "longitude": "54.974",
+                            "description": "Located directly next to St. James' Park, Strawberry Place offers a seamless blend of modern amenities and a supportive community in one of the city's most iconic locations. It’s no surprise that this building is a favourite for those who want to be in the middle of the action. What’s included is a host of amenities at no extra cost, including free weekday breakfast, utility bills, bi-weekly housekeeping, daily coffee in the lounge, a state-of-the-art gym with personal training and yoga sessions, a movie room, a private dining room for special events, bike rental, and a 24-hour parcel room.",
+                            "external_link": "https://www.vitastudent.com/en/cities/newcastle/strawberry-place/",
+                            "address": "Vita Student Strawberry Place,\nStrawberry Place,\nNewcastle,\nNE1 4PQ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Cluster": {
+                            "total_available": 5,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/xk59nvc948xzj9kkw8gv8v8k/PREMIUM_ROOM_110_STRAWBS_VITA_NEWCASTLE_-_AUG_20222563.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 204,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 13,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/pffc788brw4tp8bbv4zxm5v/PREMIUM_ROOM_110_STRAWBS_VITA_NEWCASTLE_-_AUG_20222603.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 249,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 11,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/5tg6vrvtptbsj65xnk4rj5/DELUXE_ROOM_735_STRAWBS_VITA_NEWCASTLE_-_AUG_20222557.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 284,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mjv65m28k7f3p7kb95kwh5r/CLASSIC_ROOM_204_STRAWBS_VITA_NEWCASTLE_-_AUG_20222423.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 290,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/brwhb9bm5t6rwj2m8b9trbpm/ACCESSIBLE_ROOM_603CCC_STRAWBS_VITA_NEWCASTLE_-_AUG_20222648.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 348,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium Plus": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/pvfg6348zc6q89v3rgbmk/VG_Newcastle_Dec2018_80_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 349,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/xk59nvc948xzj9kkw8gv8v8k/PREMIUM_ROOM_110_STRAWBS_VITA_NEWCASTLE_-_AUG_20222563.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 487,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "newcastle-leazes-park",
+                    "name": "Newcastle Leazes Park",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "newcastle-leazes-park",
+                            "name": "Newcastle Leazes Park",
+                            "brand": "vita-student",
+                            "postcode": "NE1 4DS",
+                            "units_available": 4,
+                            "latitude": "-1.622",
+                            "longitude": "54.975",
+                            "description": "Strike the perfect balance between student life and city energy. Nestled between the serene greenery of Leazes Park and the iconic buzz of St James' Park, our new building is primely positioned. Enjoy Newcastle's top cafes, bars, restaurants and nightlife all within a 10-minute walk. What’s included is a spacious hub and study space, private dining room, private study rooms, 24/7 gym and fitness studio, cinema room, outdoor courtyard, basketball court, laundry room, gaming area and Mahjong lounge, and free weekday breakfast.",
+                            "external_link": "https://www.vitastudent.com/en/cities/newcastle/leazes-park/",
+                            "address": "Vita Student Leazes Park,\nStrawberry Place,\nNewcastle Upon Tyne,\nNE1 4DS"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/cp639s3tbjxfg8573h6mntrk/LITE_402_LEAZES_PARK_NEWCASTLE_VITA_SEP_20260768.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 249,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mh89qbh3m3c4bn8vzspvk3r/CLASSIC_018_LEAZES_PARK_NEWCASTLE_VITA_SEP_20261012.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 284,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/4xbp863tc96m57h5mppc43/PREMIUM_PLUS_443_LEAZES_PARK_NEWCASTLE_VITA_SEP_20260814.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 359,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Glasgow": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-glasgow",
+                    "name": "Vita Student Glasgow",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-glasgow",
+                            "name": "Vita Student Glasgow",
+                            "brand": "vita-student",
+                            "postcode": "G11 6BZ",
+                            "units_available": 30,
+                            "latitude": "-4.306",
+                            "longitude": "55.874",
+                            "description": "Vita Student West End accommodation is in a league of its own when it comes to common amenities, located in the popular West End near the University of Glasgow. It is the perfect place to learn, thrive and make connections with a community that supports your journey. What’s included is an amazing on-site gym which offers yoga classes and free private training sessions, a spacious hub, private dining room, laundry room, Mahjong tables, cinema rooms, bike storage, a coffee lounge, and creative activities like art workshops and cocktail making.",
+                            "external_link": "https://www.vitastudent.com/en/cities/glasgow/west-end/",
+                            "address": "Vita Student Glasgow,\n21 Beith Street,\nGlasgow,\nG11 6BZ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Cluster": {
+                            "total_available": 10,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/rnw895wz6b84fm4szgfkzcb/VG_Glasgow_Premium_18_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 209,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 15,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kbn4nn2j4wk87knpsz6vrj/VG_Glasgow_Premium_2_RT_WEB.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 259,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/7p2j45ft43r4569tpqw3p4v7/VG_Glasgow_Accessible_59_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 360,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium Plus": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/v9kznq6z5rmrwpxq8kmhpmf/VG_Glasgow_Premium_Plus_90_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 377,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/rnw895wz6b84fm4szgfkzcb/VG_Glasgow_Premium_18_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 392,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "glasgow-india-street",
+                    "name": "Glasgow India Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "glasgow-india-street",
+                            "name": "Glasgow India Street",
+                            "brand": "vita-student",
+                            "postcode": null,
+                            "latitude": "-1.903",
+                            "longitude": "52.476",
+                            "description": null,
+                            "external_link": null,
+                            "address": ",\n,\n,\n"
+                        }
+                    ],
+                    "unit_types": {}
+                }
+            ]
+        },
+        "Edinburgh": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-edinburgh",
+                    "name": "Vita Student Edinburgh",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-edinburgh",
+                            "name": "Vita Student Edinburgh",
+                            "brand": "vita-student",
+                            "postcode": "EH3 9QG",
+                            "units_available": 34,
+                            "latitude": "-3.211",
+                            "longitude": "55.943",
+                            "description": "Vita Student Fountainbridge's location is next-to-none, and just one of the reasons why so many students in Edinburgh line up to live here. Just a 20-minute walk from Edinburgh Napier University Merchiston Campus and 20-minute drive to the main campus at Edinburgh University. Whether you are creative or academic, Vita Student is the place to learn, thrive and make connections. What's included is a spacious hub, bi-weekly housekeeping, an open plan private dining room, a poker room, gaming stations, pool & table tennis tables, and VIP brand experiences & discounts.",
+                            "external_link": "https://www.vitastudent.com/en/cities/edinburgh/fountainbridge/",
+                            "address": "Vita Student Edinburgh,\n125a Fountainbridge,\nEdinburgh,\nEH3 9QG"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 19,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jzfrjhgrccnvrhk86ssrknx/VG_Edinburgh_Classic_42_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 329,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 11,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mj8prqnfj6x6xfm36fphr3qp/VG_Edinburgh_Premium_77_RT_WEB.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 369,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/f6kw5v6xnz2mbznqcgxbx/VG_Edinburgh_Accessible_Room_145_RT_WEB.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 429,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/3n97rz3z8bqp4fhwbpx82vs/VG_Edinburgh_Ultimate_Vita_136_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 577,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "edinburgh-iona-street",
+                    "name": "Edinburgh Iona Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "albert-building",
+                            "name": "Albert Building",
+                            "brand": "vita-student",
+                            "postcode": "EH6 8FN",
+                            "units_available": 1,
+                            "latitude": "-3.176",
+                            "longitude": "55.962",
+                            "description": "Situated in a bustling area with a rich history and a strong sense of community, Iona Street offers a modern retreat for students in the Scottish capital. At Vita Student, we provide the ultimate student living experience, and our Iona Street building is no exception. What’s included is a spacious social hub, private study rooms for focused work, a 24/7 gym, a cinema room for movie nights, an outdoor terrace, free weekday breakfast to start your morning, bi-weekly housekeeping, all-inclusive bills, and an on-site management team available 24/7.",
+                            "external_link": "https://www.vitastudent.com/en/cities/edinburgh/iona-street/",
+                            "address": "Vita Student Iona Street - Albert Building,\n50 Iona Street,\nEdinburgh,\nEH6 8FN"
+                        },
+                        {
+                            "id": "buchanan-building",
+                            "name": "Buchanan Building",
+                            "brand": "vita-student",
+                            "postcode": "EH6 8FN",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Iona Street - Buchanan Building,\n50 Iona Street,\nEdinburgh,\nEH6 8FN"
+                        },
+                        {
+                            "id": "drum-building",
+                            "name": "Drum Building",
+                            "brand": "vita-student",
+                            "postcode": "EH6 8FN",
+                            "units_available": 26,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student Iona Street - Buchanan Building,\n50 Iona Street,\nEdinburgh,\nEH6 8FN"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 12,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/sh75pbj9tjtfwj9n4kkmk763/LITE_IS-D-303_IONA_STREET_EDINBURGH_VITA_-_DEC_20230107.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 249,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 11,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kzrxg8jhhjgcbt74hw3mtt5p/CLASSICF_IS-D-246_IONA_STREET_EDINBURGH_VITA_-_DEC_20230139.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 269,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mmpqwwvnmr55nvc8ttnbvnt6/ACCESSIBLE_IS-D-412_IONA_STREET_EDINBURGH_VITA_-_DEC_20230069.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 431,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Ultimate Vita": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/fk36kwrfwx8nbcb5crqh3xm/ULTIMATE_IS-B-GF5_IONA_STREET_EDINBURGH_VITA_-_DEC_20230308.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 481,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/kzrxg8jhhjgcbt74hw3mtt5p/CLASSICF_IS-D-246_IONA_STREET_EDINBURGH_VITA_-_DEC_20230139.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 481,
+                            "academic_year": "2026 / 27"
+                        },
+                        "One Bedroom": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/9tkf6cmpnksnr6n4s9bvsw/ONE_BED_IS-A-GF5_IONA_STREET_EDINBURGH_VITA_-_DEC_20230351.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 533,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Two Bedroom": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/9tkf6cmpnksnr6n4s9bvsw/ONE_BED_IS-A-GF5_IONA_STREET_EDINBURGH_VITA_-_DEC_20230351.png",
+                            "minimum_occupancy": 2,
+                            "maximum_occupancy": 2,
+                            "price_from": 774,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Three Bedroom": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/9tkf6cmpnksnr6n4s9bvsw/ONE_BED_IS-A-GF5_IONA_STREET_EDINBURGH_VITA_-_DEC_20230351.png",
+                            "minimum_occupancy": 3,
+                            "maximum_occupancy": 3,
+                            "price_from": 1009,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "edinburgh-new-waverley",
+                    "name": "Edinburgh New Waverley",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "edinburgh-new-waverley",
+                            "name": "Edinburgh New Waverley",
+                            "brand": "vita-student",
+                            "postcode": "EH8 8GG",
+                            "units_available": 10,
+                            "latitude": "-3.183",
+                            "longitude": "55.951",
+                            "description": "Immerse yourself in the magic of Edinburgh's most historic neighbourhood. Tucked in the heart of the Old Town, Vita Student New Waverley is just a 15-minute stroll from the University of Edinburgh campus where you can discover characterful cafés, cosy bars, and centuries of culture. At New Waverley, you’re perfectly placed to experience the best that Edinburgh has to offer. What's included is a spacious hub and lounge, private dining rooms, VIP brand experiences and discounts, a cinema room, an outside courtyard, a laundry room, games zones and a Mahjong lounge, free weekday breakfast, bi-weekly housekeeping, and superfast Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/edinburgh/new-waverley/",
+                            "address": "Vita Student New Waverley,\nNo 14 Sibbald Walk,\nEdinburgh,,\nEH8 8GG"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/3gv9zw59jkwmn3qtvj7/CLASSIC_401_NEW_WAVERLEY_EDINBURGH_VITA_-_SEP_20260202.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 349,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Lite Plus": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/c5cmchpnsh8b76mn38pncv3/LITE_PLUS_443_NEW_WAVERLEY_EDINBURGH_VITA_-_SEP_20260366.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 349,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/3gv9zw59jkwmn3qtvj7/CLASSIC_401_NEW_WAVERLEY_EDINBURGH_VITA_-_SEP_20260202.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 379,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Three Bedroom": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/6j4pfvfx7qnfcth9569b8/TOWNHOUSE_NEW_WAVERLEY_EDINBURGH_VITA_-_SEP_20260740.png",
+                            "minimum_occupancy": 3,
+                            "maximum_occupancy": 3,
+                            "price_from": 1245,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "York": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-york",
+                    "name": "Vita Student York",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "kiplin-house",
+                            "name": "Kiplin House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "barley-house",
+                            "name": "Barley House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "merchant-house",
+                            "name": "Merchant House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 2,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "knavesmire-house",
+                            "name": "Knavesmire House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 2,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "apple-house",
+                            "name": "Apple House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 1,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "cherry-house",
+                            "name": "Cherry House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "everingham-house",
+                            "name": "Everingham House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 3,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "cawood-house",
+                            "name": "Cawood House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "pear-house",
+                            "name": "Pear House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "collentine's-house",
+                            "name": "Collentine's House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 4,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "library",
+                            "name": "Library",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "minster-house",
+                            "name": "Minster House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "units_available": 1,
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "middlethorpe-house",
+                            "name": "Middlethorpe House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "hazelwood-house",
+                            "name": "Hazelwood House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "goldie-house",
+                            "name": "Goldie House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        },
+                        {
+                            "id": "allerton-house",
+                            "name": "Allerton House",
+                            "brand": "vita-student",
+                            "postcode": "YO10 3FT",
+                            "latitude": null,
+                            "longitude": null,
+                            "description": null,
+                            "external_link": null,
+                            "address": "Vita Student York,\nLawrence Street,\nYork,\nYO10 3FT"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 5,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/gcjgts4ght55ffm5bhfr9kn/Room_6_CLASSIC_BARLEY_VITA_York_-_JULY_20242790.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 239,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 6,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/bfwz8jjf59n9pxbnnvgpnzgs/Room_14__CLASSIC_PLUS_EVERINGHAM_VITA_York_-_JULY_20242883.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 244,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Cluster": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/n8tv2mvqc68m646sgkx45vfz/Room_2A__CLUSTER_MIDDLETHORPE_VITA_York_-_JULY_20242853.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 287,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/rnhxnmbzpsvb6jnjskkp6tsg/Room_31_PREMIUM_APPLE_VITA_York_-_JULY_20241013.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 339,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "London": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "vita-student-lewisham",
+                    "name": "Vita Student Lewisham",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-lewisham",
+                            "name": "Vita Student Lewisham Exchange",
+                            "brand": "vita-student",
+                            "postcode": "SE13 7NX",
+                            "units_available": 18,
+                            "latitude": "-0.013",
+                            "longitude": "51.463",
+                            "description": "Live 35-storeys high in the buzzing south-east area of London. Wake up to iconic views of The Shard and the River Thames. Walk just 30 seconds to Lewisham's train and DLR station, and access the Big Smoke in no time. Vita Student Lewisham Exchange is no ordinary student accommodation. What's included is a gym and dance studio, beautifully designed lounge spaces, a coffee lounge and dining area, a gaming station, a spacious hub, free weekday breakfast, daily coffee, and bi-weekly housekeeping.",
+                            "external_link": "https://www.vitastudent.com/en/cities/london/lewisham-exchange/",
+                            "address": "Vita Student Lewisham Exchange,\nExchange Point, Loampit Vale,\nLondon,\nSE13 7NX"
+                        }
+                    ],
+                    "unit_types": {
+                        "Cluster": {
+                            "total_available": 17,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/bt3vw9kn63hn2hgbksnsfwh8/CLUSTER_ROOM_317_VITA_-_LEWISHAM_-_AUG_20221435_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 218,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8wk5hgv3jch5pfvm9x45f7z/CLUSTER_ROOM_317_VITA_-_LEWISHAM_-_AUG_20221441.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 409,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Barcelona": {
+            "country": "Spain",
+            "developments": [
+                {
+                    "id": "vita-student-pedralbes",
+                    "name": "Vita Student Pedralbes",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-pedralbes",
+                            "name": "Vita Student Pedralbes",
+                            "brand": "vita-student",
+                            "postcode": "08034",
+                            "units_available": 1,
+                            "latitude": "2.115",
+                            "longitude": "41.386",
+                            "description": "Located in the vibrant Pedralbes neighbourhood, you'll live a short stroll from some of the world's most renowned business schools like IESE, ESADE, The University of Barcelona and BarcelonaTech. It’s our first building to open in Barcelona, and we're here to make an entrance. What’s included is a swimming pool, spacious hub, private dining room, cinema room, lush gardens and a courtyard, free weekday breakfast, bi-weekly housekeeping (with weekly cleaning options for certain rooms), bi-weekly linen changes, and VIP brand experiences.",
+                            "external_link": "https://www.vitastudent.com/en/cities/barcelona/pedralbes/",
+                            "address": "Vita Student Pedralbes,\nAv Esplugues 102,\nBarcelona,\n08034"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/f6xkhjkqxznqkjvm27qnqj/Vita_Student_Pedralbes_-_344_-_Classic.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 502,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "vita-student-poblenou",
+                    "name": "Vita Student Poblenou",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "vita-student-poblenou",
+                            "name": "Vita Student Poblenou",
+                            "brand": "vita-student",
+                            "postcode": "08018",
+                            "units_available": 2,
+                            "latitude": "2.189",
+                            "longitude": "41.398",
+                            "description": "This student accommodation is ideal if you're attending Pompeu Fabra University and want to be a part of the most forward-thinking neighbourhoods in Europe. Surrounded by over 5,000 tech companies and just 15 minutes from the beach, it is designed for the Mediterranean lifestyle. What’s included is an exclusive rooftop swimming pool and sun terrace, a spacious social hub, a 24/7 gym, laundry rooms, study areas, free weekday breakfast, bi-weekly housekeeping with linen changes, bike storage, and a 24/7 on-site team with CCTV monitoring.",
+                            "external_link": "https://www.vitastudent.com/en/cities/barcelona/poblenou/",
+                            "address": "Vita Student Poblenou,\nCarrer de Sancho de Ávila, 2-10,\nBarcelona,\n08018"
+                        }
+                    ],
+                    "unit_types": {
+                        "Ultimate Vita": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/jtbkv53vw6z2q7rxw985vxs/BCN_-_Poblenou_-_Room_1208_6_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 515,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Coventry": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "coventry-cannon-park",
+                    "name": "Warwick Cannon Park",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "coventry-cannon-park",
+                            "name": "Warwick Cannon Park",
+                            "brand": "vita-student",
+                            "postcode": "CV4 7FA",
+                            "units_available": 30,
+                            "latitude": "-1.554",
+                            "longitude": "52.387",
+                            "description": "One of Coventry's most well-liked and opulent student housing options, Vita Student Cannon Park Warwick offers students a truly exceptional experience. It is less than a five-minute walk from University of Warwick's main campus and has all the essential amenities next door. What's included is a spacious hub, cinema room, outdoor courtyard, basketball court, weekday breakfast, bi-weekly housekeeping, 24/7 gym with yoga classes, and shared study rooms.",
+                            "external_link": "https://www.vitastudent.com/en/cities/warwick/cannon-park/",
+                            "address": "Vita Student Warwick,\nCannon Park, DeMontfort Way,\nCoventry,\nCV4 7FA"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 14,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mffqtwnfbtg7t8jbhxj82bfk/LITE_C216_VITA_WARWICK_-_AUG_20220971_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 354,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 14,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/8zc38jxr2jr5t85gb83cwbc/CLASSIC_C207_VITA_WARWICK_-_AUG_20221034_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 379,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/6r6kc5pg8vqgcx2zfz5r9686/CLASSIC_PLUS_D238_VITA_WARWICK_-_AUG_20221159_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 473,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Twin Room": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/9gktx6fcp6qjbgct47sv53j/TWIN_ROOM_C217_VITA_WARWICK_-_AUG_20220929_RT.png",
+                            "minimum_occupancy": 2,
+                            "maximum_occupancy": 2,
+                            "price_from": 675,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                },
+                {
+                    "id": "coventry-copper-towers",
+                    "name": "Coventry Copper Towers",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "coventry-copper-towers",
+                            "name": "Coventry Copper Towers",
+                            "brand": "vita-student",
+                            "postcode": "CV1 2EZ",
+                            "units_available": 7,
+                            "latitude": "-1.511",
+                            "longitude": "52.404",
+                            "description": "The newest and most iconic addition to the Coventry skyline, Copper Towers makes no attempt to blend in. Located just minutes from Coventry University and the city’s main transport links, it offers a bold, luxury living experience for those who want to be at the heart of the city. What’s included is a spacious hub, a private dining room, a cinema room, an outdoor courtyard, free weekday breakfast, unlimited tea and coffee, bi-weekly housekeeping, superfast Wi-Fi, 24/7 gym access, and all-inclusive bills.",
+                            "external_link": "https://www.vitastudent.com/en/cities/coventry/copper-towers/",
+                            "address": "Vita Student Coventry Copper Towers,\n24 Warwick Road,\nCoventry,\nCV1 2EZ"
+                        }
+                    ],
+                    "unit_types": {
+                        "Premium Plus": {
+                            "total_available": 4,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mt5m974g54xnqfsvtq64cgn/PREMIUM_PLUS_A1309F_VITA_Coventry_-_JUNE_20234966.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 299,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 2,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/vvsw7h7m49sgjf6rthqh74h3/PREMIUM_B1106_VITA_Coventry_-_JUNE_20235196.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 366,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/mq9x7gfqk7bf4fcs3jxttrh/DELUXE_A1320c_VITA_Coventry_-_JUNE_20235138.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 437,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Belfast": {
+            "country": "United Kingdom",
+            "developments": [
+                {
+                    "id": "belfast-bruce-street",
+                    "name": "Belfast Bruce Street",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "belfast-bruce-street",
+                            "name": "Belfast Bruce Street",
+                            "brand": "vita-student",
+                            "postcode": "BT2 7JD",
+                            "units_available": 12,
+                            "latitude": "-5.932",
+                            "longitude": "54.594",
+                            "description": "Perfectly situated for students at Queen's University Belfast and Ulster University, and within walking distance of the city's best spots. Vita Student Bruce Street brings our iconic all-inclusive living to Northern Ireland for the first time. What’s included is a studying area, weekday breakfast, unlimited ground coffee and tea, pool tables, onsite team, VIP brand experiences and discounts, 24/7 gym, 24/7 CCTV and secure access, exclusive weekly events, bi-weekly housekeeping, an exclusive rooftop terrace, and personal training sessions.",
+                            "external_link": "https://www.vitastudent.com/en/cities/belfast/bruce-street/",
+                            "address": "Vita Student Belfast Bruce Street,\n29 Bruce Street,\nBelfast,\nBT2 7JD"
+                        }
+                    ],
+                    "unit_types": {
+                        "Classic": {
+                            "total_available": 11,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/fqtm2k6c6t9wrs2q6rxsnts9/CLASSIC-314-VITA---BELFAST---AUG-20235406_RT2.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 204,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Premium": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/57sjc87w9kpgkmghf7t35cbj/PREMIUM-306-VITA---BELFAST---AUG-20235374_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 1,
+                            "price_from": 354,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        },
+        "Madrid": {
+            "country": "Spain",
+            "developments": [
+                {
+                    "id": "madrid-oria",
+                    "name": "Madrid Oria",
+                    "brand": "vita-student",
+                    "buildings": [
+                        {
+                            "id": "madrid-oria",
+                            "name": "Madrid Oria",
+                            "brand": "vita-student",
+                            "postcode": null,
+                            "units_available": 25,
+                            "latitude": "-3.689",
+                            "longitude": "40.485",
+                            "description": "Vita Student Madrid Oria is a 15-story premium student residence in the heart of Madrid Nuevo Norte, the capital's new financial and technological center. From where you'll enjoy iconic sunsets overlooking the Four Towers from the rooftop pool, you are just a 2-minute walk from Ramón y Cajal train station. What’s included is a rooftop pool with iconic views of the Four Towers, a 24/7 gym, study rooms, a TV and games room, free bicycles for exploring the city, a delicious weekday breakfast, bi-weekly room cleaning and linen changes, all-inclusive utility bills, and high-speed Wi-Fi.",
+                            "external_link": "https://www.vitastudent.com/en/cities/madrid/oria/",
+                            "address": ",\n,\n,\n"
+                        },
+                        {
+                            "id": "madrid-oria-north",
+                            "name": "Madrid Oria North",
+                            "brand": "vita-student",
+                            "postcode": null,
+                            "latitude": "-3.689",
+                            "longitude": "40.485",
+                            "description": null,
+                            "external_link": null,
+                            "address": ",\n,\n,\n"
+                        }
+                    ],
+                    "unit_types": {
+                        "Lite": {
+                            "total_available": 7,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/wjh8jn6xbt2mr75p3wn7nwkx/OR1-432-LITEPLUS3_2_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 285,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Lite Plus": {
+                            "total_available": 7,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/wjh8jn6xbt2mr75p3wn7nwkx/OR1-432-LITEPLUS3_2_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 305,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Accessible Room": {
+                            "total_available": 3,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/gkjfk98q66vvmc9qnmsj5k3v/OR1-254-ACCESSIBLE1_5.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 321,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic": {
+                            "total_available": 6,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/2883pbkq5zk3rr7t3843kg79/OR1-024-CLASSIC1_4_RT.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 365,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Classic Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/2k8t3357h6283zbthr8sk5j8/Madrid_Classic_Plus.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 445,
+                            "academic_year": "2026 / 27"
+                        },
+                        "Deluxe Plus": {
+                            "total_available": 1,
+                            "room_image": "https://cdn.brandfolder.io/2EZAWJN8/as/wm4ggznv2ckj3xbmcb6zqcc5/Madrid_Oria_-_Deluxe_Plus_2_Perspective.png",
+                            "minimum_occupancy": 1,
+                            "maximum_occupancy": 2,
+                            "price_from": 704,
+                            "academic_year": "2026 / 27"
+                        }
+                    }
+                }
+            ]
+        }
+    }
+}
