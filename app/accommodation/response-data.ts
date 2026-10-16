@@ -1123,10 +1123,6 @@ export function getFeedPropertySourceLocation(development: AccommodationFeedDeve
   return getDevelopmentLocation(development)
 }
 
-export function getFeedPropertySourceBrand(development: AccommodationFeedDevelopment): string | undefined {
-  return development.brand
-}
-
 export function getFeedPropertySourceCity(development: AccommodationFeedDevelopment): string {
   return development.city
 }
