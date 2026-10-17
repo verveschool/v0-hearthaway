@@ -6,16 +6,7 @@ export default function ReviewCollector() {
           Your experience matters.
         </h2>
         <div className="mx-auto mt-8 max-w-xl">
-          {/* TrustBox widget - Review Collector */}
-          <div
-            className="trustpilot-widget"
-            data-locale="en-US"
-            data-template-id="56278e9abfbbba0bdcd568bc"
-            data-businessunit-id="6a321976a30ac9aadd7ffc87"
-            data-style-height="52px"
-            data-style-width="100%"
-            data-token="f549839c-e32a-4086-8f65-f9a53265ff20"
-          >
+          <div>
             <a
               href="https://www.trustpilot.com/review/hearthaway.com"
               target="_blank"
@@ -25,7 +16,6 @@ export default function ReviewCollector() {
               Leave a review on Trustpilot
             </a>
           </div>
-          {/* End TrustBox widget */}
           <a
             href="https://g.page/r/CQbYIORr_7-pEBM/review"
             target="_blank"
