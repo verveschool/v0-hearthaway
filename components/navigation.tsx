@@ -52,10 +52,6 @@ const navLinks = [
     ],
   },
   {
-    label: 'Accommodation',
-    href: '/accommodation',
-  },
-  {
     label: 'Resources',
     href: '/moving-abroad',
   },
