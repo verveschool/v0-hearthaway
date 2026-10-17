@@ -22,7 +22,8 @@ type AccommodationListingsProps = {
 }
 
 function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
-  const previewRoom = listing.roomTypes.find((room) => room.image) ?? listing.roomTypes[0]
+  const previewRoom = listing.roomTypes.find((room) => room.image)
+  const previewImage = previewRoom?.image ?? listing.gallery[0] ?? null
   const startingPrices = listing.roomTypes
     .map((room) => room.priceFrom)
     .filter((price): price is number => price !== null)
@@ -36,10 +37,10 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
       className="group flex flex-col overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F0EC]">
-        {previewRoom?.image ? (
+        {previewImage ? (
           <img
-            src={previewRoom.image}
-            alt={`${previewRoom.name} room at ${listing.name}`}
+            src={previewImage}
+            alt={previewRoom?.image ? `${previewRoom.name} room at ${listing.name}` : `${listing.name} property photo`}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
             decoding="async"
