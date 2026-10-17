@@ -16,6 +16,8 @@ export type AccommodationFeedRoom = Readonly<{
   image?: string
   priceFrom?: number
   available?: number
+  minimumOccupancy?: number
+  maximumOccupancy?: number
   academicYear?: string
 }>
 
@@ -113,6 +115,8 @@ function readRooms(value: unknown): AccommodationFeedRoom[] {
       image: safeWebUrl(room.room_image),
       priceFrom: count(room.price_from),
       available: count(room.total_available),
+      minimumOccupancy: count(room.minimum_occupancy),
+      maximumOccupancy: count(room.maximum_occupancy),
       academicYear: text(room.academic_year),
     })
   }

@@ -1,11 +1,9 @@
 'use client'
 
+import Link from 'next/link'
 import { useState } from 'react'
-import { Building2, ExternalLink, MapPin } from 'lucide-react'
-import type {
-  AccommodationListingRecord,
-  AccommodationRoomRecord,
-} from '@/app/accommodation/listing-data'
+import { ArrowRight, Building2, MapPin } from 'lucide-react'
+import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
 
 const accommodationSourceNotice =
   'Prices are shown as supplied; the source does not specify a currency or billing period.'
@@ -24,25 +22,32 @@ type AccommodationListingsProps = {
 }
 
 function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
-  const [selectedRoomIndex, setSelectedRoomIndex] = useState(0)
-  const selectedRoom = listing.roomTypes[selectedRoomIndex] ?? null
+  const previewRoom = listing.roomTypes.find((room) => room.image) ?? listing.roomTypes[0]
+  const startingPrices = listing.roomTypes
+    .map((room) => room.priceFrom)
+    .filter((price): price is number => price !== null)
+  const startingPrice = startingPrices.length ? Math.min(...startingPrices) : null
   const buildingNames = [...new Set(listing.buildings.flatMap((building) => building.name ? [building.name] : []))]
 
   return (
-    <article className="flex flex-col overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white shadow-sm">
+    <Link
+      href={`/accommodation/property/${listing.slug}`}
+      aria-label={`View ${listing.name} student accommodation in ${listing.city}`}
+      className="group flex flex-col overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
+    >
       <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F0EC]">
-        {selectedRoom?.image ? (
+        {previewRoom?.image ? (
           <img
-            src={selectedRoom.image}
-            alt={`${selectedRoom.name} room at ${listing.name}`}
-            className="h-full w-full object-cover"
+            src={previewRoom.image}
+            alt={`${previewRoom.name} room at ${listing.name}`}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
             decoding="async"
           />
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-[#6B6860]">
             <Building2 aria-hidden="true" className="size-10" />
-            <span className="text-sm font-semibold">Room photo not provided</span>
+            <span className="text-sm font-semibold">Property photo not provided</span>
           </div>
         )}
         <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#00319D] shadow-sm">
@@ -52,117 +57,29 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div>
-          <h2 className="font-heading text-xl font-extrabold leading-snug text-[#1A1A1A] sm:text-2xl">
+          <h2 className="font-heading text-xl font-extrabold leading-snug text-[#1A1A1A] group-hover:text-[#00319D] sm:text-2xl">
             {listing.name}
           </h2>
-          {buildingNames.length > 0 ? (
-            <p className="mt-2 text-sm font-medium leading-relaxed text-[#6B6860]">
-              {buildingNames.join(' · ')}
-            </p>
-          ) : null}
+          {buildingNames.length ? <p className="mt-2 text-sm font-medium leading-relaxed text-[#6B6860]">{buildingNames.join(' · ')}</p> : null}
           {listing.address ? (
             <p className="mt-3 flex items-start gap-2 text-sm leading-relaxed text-[#6B6860]">
               <MapPin aria-hidden="true" className="mt-0.5 size-4 shrink-0 text-[#00319D]" />
-              <span className="whitespace-pre-line">{listing.address}</span>
+              <span>{listing.address}</span>
             </p>
           ) : null}
-          {listing.description ? (
-            <p className="mt-4 line-clamp-4 text-sm leading-relaxed text-[#4C4A45]">
-              {listing.description}
-            </p>
-          ) : null}
+          {listing.description ? <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-[#4C4A45]">{listing.description}</p> : null}
         </div>
 
-        <div className="mt-5 border-t border-[#E8E6E1] pt-4">
-          {listing.roomTypes.length > 0 ? (
-            <RoomDetails
-              listingName={listing.name}
-              roomTypes={listing.roomTypes}
-              selectedRoomIndex={selectedRoomIndex}
-              onRoomChange={setSelectedRoomIndex}
-            />
-          ) : (
-            <p className="text-sm leading-relaxed text-[#6B6860]">
-              Room details are not included in the supplied data.
-            </p>
-          )}
-        </div>
-
-        {listing.providerLinks.length > 0 ? (
-          <div className="mt-5 flex flex-wrap gap-2">
-            {listing.providerLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-[#00319D] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#00277D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
-              >
-                Visit {link.label}
-                <ExternalLink aria-hidden="true" className="size-4" />
-              </a>
-            ))}
-          </div>
-        ) : null}
-      </div>
-    </article>
-  )
-}
-
-function RoomDetails({
-  listingName,
-  roomTypes,
-  selectedRoomIndex,
-  onRoomChange,
-}: {
-  listingName: string
-  roomTypes: AccommodationRoomRecord[]
-  selectedRoomIndex: number
-  onRoomChange: (index: number) => void
-}) {
-  const room = roomTypes[selectedRoomIndex]
-  if (!room) return null
-
-  return (
-    <div>
-      {roomTypes.length > 1 ? (
-        <label className="flex flex-col gap-2 text-sm font-bold text-[#1A1A1A]">
-          <span>Room type</span>
-          <select
-            aria-label={`Room type at ${listingName}`}
-            value={selectedRoomIndex}
-            onChange={(event) => onRoomChange(Number(event.currentTarget.value))}
-            className="min-h-11 w-full rounded-xl border border-[#D8D5CE] bg-white px-3 text-sm font-semibold text-[#1A1A1A] outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
-          >
-            {roomTypes.map((roomType, index) => (
-              <option key={`${roomType.name}-${index}`} value={index}>
-                {roomType.name}
-              </option>
-            ))}
-          </select>
-        </label>
-      ) : (
-        <p className="text-sm font-bold text-[#1A1A1A]">{room.name}</p>
-      )}
-
-      <div className="mt-4 grid grid-cols-2 gap-3">
-        <div className="min-w-0 rounded-xl bg-[#F7F6F3] p-3">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Starting price</p>
-          <p className="mt-1 break-words font-heading text-xl font-extrabold text-[#00319D]">
-            {room.priceFrom === null ? 'Not provided' : formatSourcePrice(room.priceFrom)}
+        <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
+          <p className="text-sm font-semibold text-[#1A1A1A]">
+            {startingPrice === null ? 'Price not provided' : <>From <span className="text-[#00319D]">{formatSourcePrice(startingPrice)}</span></>}
           </p>
-        </div>
-        <div className="min-w-0 rounded-xl bg-[#F7F6F3] p-3">
-          <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Availability</p>
-          <p className="mt-1 break-words text-sm font-bold text-[#1A1A1A]">
-            {room.available === null ? 'Not provided' : formatSourceAvailability(room.available)}
-          </p>
+          <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
+            View property <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
+          </span>
         </div>
       </div>
-      {room.academicYear ? (
-        <p className="mt-3 text-xs font-medium text-[#6B6860]">Academic year: {room.academicYear}</p>
-      ) : null}
-    </div>
+    </Link>
   )
 }
 

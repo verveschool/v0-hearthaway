@@ -2,26 +2,37 @@ import {
   accommodationFeedCities,
   accommodationFeedDevelopments,
   getDevelopmentDescription,
-  getDevelopmentExternalLinks,
   type AccommodationFeedDevelopment,
 } from './response-data'
+import { accommodationProperties as curatedProperties } from './catalog'
 
 export type AccommodationRoomRecord = {
   name: string
   image: string | null
   priceFrom: number | null
   available: number | null
+  minimumOccupancy: number | null
+  maximumOccupancy: number | null
   academicYear: string | null
 }
 
 export type AccommodationListingRecord = {
   key: string
+  slug: string
   city: string
+  country: string | null
   name: string
-  buildings: Array<{ name: string | null }>
+  buildings: Array<{ name: string | null; address: string | null; postcode: string | null; unitsAvailable: number | null }>
   address: string | null
   description: string | null
-  providerLinks: Array<{ label: string; href: string }>
+  gallery: string[]
+  amenities: string[]
+  inclusions: string[]
+  roomFeatures: string[]
+  contractTerms: string[]
+  depositNote: string | null
+  distance: string | null
+  universities: string[]
   roomTypes: AccommodationRoomRecord[]
 }
 
@@ -40,6 +51,8 @@ function getDuplicateIdentity(development: AccommodationFeedDevelopment): string
       room.image ?? null,
       room.priceFrom ?? null,
       room.available ?? null,
+      room.minimumOccupancy ?? null,
+      room.maximumOccupancy ?? null,
       normalized(room.academicYear),
     ]))
     .sort()
@@ -59,9 +72,33 @@ function getDevelopmentAddress(development: AccommodationFeedDevelopment): strin
   const building = development.buildings.find((candidate) => candidate.address || candidate.postcode)
   if (!building) return null
 
-  return building.address
-    ? formatSourceAddress(building.address)
-    : building.postcode ?? null
+  const address = building.address ? formatSourceAddress(building.address) : null
+  const postcode = building.postcode && !address?.toLocaleLowerCase().includes(building.postcode.toLocaleLowerCase())
+    ? building.postcode
+    : null
+  return [address, postcode].filter(Boolean).join(', ') || null
+}
+
+function normalizeIdentity(value: string): string {
+  return value.trim().toLocaleLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
+}
+
+function getCuratedProperty(development: AccommodationFeedDevelopment) {
+  const name = normalizeIdentity(development.name)
+  const city = normalizeIdentity(development.city)
+  return curatedProperties.find((property) =>
+    normalizeIdentity(property.name) === name && normalizeIdentity(property.city) === city,
+  )
+}
+
+function getDescriptionInclusions(description: string | null): string[] {
+  if (!description) return []
+  const includedText = description.match(/what(?:'|’)s included is\s*(.+?)(?:\.|$)/i)?.[1]
+  if (!includedText) return []
+  return includedText
+    .split(/,|\s+and\s+/i)
+    .map((item) => item.trim().replace(/[.;]+$/, ''))
+    .filter(Boolean)
 }
 
 const uniqueDevelopments: AccommodationFeedDevelopment[] = []
@@ -74,22 +111,55 @@ for (const development of accommodationFeedDevelopments) {
   uniqueDevelopments.push(development)
 }
 
-export const accommodationListings: AccommodationListingRecord[] = uniqueDevelopments.map((development) => ({
-  key: development.key,
-  city: development.city,
-  name: development.name,
-  buildings: development.buildings.map((building) => ({ name: building.name ?? null })),
-  address: getDevelopmentAddress(development),
-  description: getDevelopmentDescription(development) ?? null,
-  providerLinks: getDevelopmentExternalLinks(development).map(({ building, href }) => ({ label: building, href })),
-  roomTypes: development.rooms.map((room) => ({
-    name: room.name,
-    image: room.image ?? null,
-    priceFrom: room.priceFrom ?? null,
-    available: room.available ?? null,
-    academicYear: room.academicYear ?? null,
-  })),
-}))
+const slugCounts = new Map<string, number>()
+
+export const accommodationListings: AccommodationListingRecord[] = uniqueDevelopments.map((development) => {
+  const curatedProperty = getCuratedProperty(development)
+  const description = getDevelopmentDescription(development) ?? null
+  const baseSlug = `${development.city}-${development.name}`
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+  const duplicateCount = slugCounts.get(baseSlug) ?? 0
+  slugCounts.set(baseSlug, duplicateCount + 1)
+  const slug = duplicateCount ? `${baseSlug}-${duplicateCount + 1}` : baseSlug
+
+  return {
+    key: development.key,
+    slug,
+    city: development.city,
+    country: development.country ?? null,
+    name: development.name,
+    buildings: development.buildings.map((building) => ({
+      name: building.name ?? null,
+      address: building.address ? formatSourceAddress(building.address) : null,
+      postcode: building.postcode ?? null,
+      unitsAvailable: building.unitsAvailable ?? null,
+    })),
+    address: getDevelopmentAddress(development) ?? curatedProperty?.address ?? null,
+    description,
+    gallery: curatedProperty?.gallery ?? [],
+    amenities: curatedProperty?.amenities ?? [],
+    inclusions: [...new Set([
+      ...(curatedProperty?.inclusions ?? []),
+      ...getDescriptionInclusions(description),
+    ])],
+    roomFeatures: curatedProperty?.roomFeatures ?? [],
+    contractTerms: curatedProperty?.contractTerms ?? [],
+    depositNote: curatedProperty?.depositNote ?? null,
+    distance: curatedProperty?.distance ?? null,
+    universities: curatedProperty?.universities ?? [],
+    roomTypes: development.rooms.map((room) => ({
+      name: room.name,
+      image: room.image ?? null,
+      priceFrom: room.priceFrom ?? null,
+      available: room.available ?? null,
+      minimumOccupancy: room.minimumOccupancy ?? null,
+      maximumOccupancy: room.maximumOccupancy ?? null,
+      academicYear: room.academicYear ?? null,
+    })),
+  }
+})
 
 export const accommodationCities = accommodationFeedCities
 
