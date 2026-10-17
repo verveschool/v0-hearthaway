@@ -159,9 +159,33 @@ export const accommodationListings: AccommodationListingRecord[] = uniqueDevelop
       academicYear: room.academicYear ?? null,
     })),
   }
+}).filter((listing) => {
+  const hasPhoto = listing.gallery.length > 0 || listing.roomTypes.some((room) => Boolean(room.image))
+  const hasPropertyDetails = Boolean(
+    listing.description
+    || listing.address
+    || listing.amenities.length
+    || listing.inclusions.length
+    || listing.roomFeatures.length
+    || listing.contractTerms.length
+    || listing.depositNote
+    || listing.distance
+    || listing.universities.length
+    || listing.buildings.some((building) => building.address || building.postcode || building.unitsAvailable !== null)
+    || listing.roomTypes.some((room) =>
+      room.priceFrom !== null
+      || room.available !== null
+      || room.minimumOccupancy !== null
+      || room.maximumOccupancy !== null
+      || room.academicYear !== null,
+    )
+  )
+
+  return hasPhoto || hasPropertyDetails
 })
 
-export const accommodationCities = accommodationFeedCities
+export const accommodationCities = [...new Set(accommodationListings.map((listing) => listing.city))]
+  .sort((first, second) => first.localeCompare(second))
 
 export const accommodationSourceNotice =
   'Prices are shown as supplied; the source does not specify a currency or billing period.'
