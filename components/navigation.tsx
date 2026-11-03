@@ -51,6 +51,10 @@ const navLinks = [
       { label: 'Amsterdam', href: '/cities/amsterdam' },
     ],
   },
+    {
+    label: 'Accommodation',
+    href: '/accommodation',
+  },
   {
     label: 'Resources',
     href: '/moving-abroad',
