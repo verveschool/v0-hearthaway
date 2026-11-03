@@ -44,7 +44,7 @@ const team = [
     name: 'Zubia Shah',
     role: 'Chief of Staff',
     linkedin: 'https://www.linkedin.com/in/zubia-shah-11332a228/',
-    description: '3.5 years across UniScholars and Study Smart, handling admissions, visas, and student logistics for thousands of students. Coordinates work across supply, product, and student experience to keep operations aligned and moving.',
+    description: '3.5 years across UniScholars and Study Smart, handling admissions, visas, and student logistics for thousands of students. Coordinates work across supply, product and student experience.',
   },
 ]
 
