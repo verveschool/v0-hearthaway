@@ -199,7 +199,7 @@ export default function Footer() {
                   alt="HearthAway"
                   width={128}
                   height={57}
-                  className="h-9 w-auto"
+                  className="h-12 w-auto"
                   priority
                 />
               </Link>
