@@ -149,7 +149,7 @@ export default function AboutPage() {
                 Finding <span style={{ color: '#FCC20A' }}>home,</span> wherever you go.
               </h1>
               <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
-                Finding accommodation abroad is one of the most important decisions a student makes before moving. Students should not have to navigate that decision alone.
+                Finding accommodation abroad is one of the biggest decisions a student makes before moving. But too many are left to figure it out alone.
               </p>
             </div>
           </div>
@@ -232,7 +232,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <h2 className="font-heading text-4xl font-bold text-[#1A1A1A] text-balance leading-tight mb-10 max-w-xl">
               Built by people who&apos;ve lived this problem.
-              <span className="text-[#00319D]"> Not just studied it.</span>
+              <span className="text-[#00319D]"> Not merely studied it.</span>
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {team.map((member) => (
