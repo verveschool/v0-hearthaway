@@ -51,9 +51,14 @@ const navLinks = [
       { label: 'Amsterdam', href: '/cities/amsterdam' },
     ],
   },
-    {
+  {
     label: 'Accommodation',
     href: '/accommodation',
+    dropdown: [
+      { label: 'All Accommodation', href: '/accommodation' },
+      { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
+      { label: 'Stacey', href: '/accommodation?provider=stacey' },
+    ],
   },
   {
     label: 'Resources',

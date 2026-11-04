@@ -11,7 +11,15 @@ export const metadata: Metadata = {
   description: 'Explore student accommodation properties, room options, prices and availability by city.',
 }
 
-export default function AccommodationPage() {
+type AccommodationPageProps = {
+  searchParams: Promise<{ provider?: string }>
+}
+
+export default async function AccommodationPage({ searchParams }: AccommodationPageProps) {
+  const { provider } = await searchParams
+  const visibleListings = provider === 'stacey' || provider === 'vita-student'
+    ? accommodationListings.filter((listing) => listing.provider === provider)
+    : accommodationListings
   return (
     <>
       <Navigation />
@@ -37,7 +45,7 @@ export default function AccommodationPage() {
           className="bg-[#F7F6F3] px-6 py-12 lg:px-8 lg:py-16"
         >
           <div className="mx-auto max-w-7xl">
-            <AccommodationListings cities={accommodationCities} listings={accommodationListings} />
+            <AccommodationListings cities={[...new Set(visibleListings.map((listing) => listing.city))].sort()} listings={visibleListings} />
             <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-2xl bg-[#00319D] p-6 text-white sm:flex-row sm:items-center sm:p-8">
               <div>
                 <h2 className="font-heading text-xl font-extrabold sm:text-2xl">Need help choosing?</h2>

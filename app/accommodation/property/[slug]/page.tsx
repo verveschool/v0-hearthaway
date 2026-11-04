@@ -163,7 +163,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                               </div>
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
                                 <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Availability</p>
-                                <p className="mt-1 text-sm font-bold text-[#1A1A1A]">{room.available === null ? 'Not provided' : formatSourceAvailability(room.available)}</p>
+                                <p className="mt-1 text-sm font-bold text-[#1A1A1A]">{room.status ?? (room.available === null ? 'Not provided' : formatSourceAvailability(room.available))}</p>
                               </div>
                             </div>
                             {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? (
