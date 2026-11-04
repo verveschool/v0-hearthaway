@@ -1,0 +1,1409 @@
+{
+	"cities": [
+        {
+            "name": "Berlin",
+            "locality": "Mitte",
+            "head": {
+                "title": "STACEY Mitte",
+                "subtitle": "Most Central Coliving in Berlin",
+                "address": "Fischerinsel 13-15, 10179 Berlin",
+                "description": "Fischerinsel 13-15, 10179 Berlin, directly in the mix. 5 minutes to the Berliner Dom, Gendarmenmarkt or Alexanderplatz. Suites measure up to 38 m² across shared apartments and private studios, and every shared apartment has just one other room.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 52.51320825165492,
+                "longitude": 13.4058515423282
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Mitte, Berlin",
+                "description": "On the Fischerinsel, next to the Museumsinsel, a central, Berlin-style living experience between historic landmarks like Alexanderplatz and the Berliner Dom, while still only minutes away from the cool Kreuzberg area. The U-Bahn station Märkisches Museum is directly outside."
+            },
+            "rooms": [
+                {
+                    "name": "Basic+",
+                    "price": "€795/month",
+                    "status": "Sold Out",
+                    "area": "8-10 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Basic+/FI_Basic 1.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Basic+/FI_Basic 2.jpg"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Single Bed",
+                        "Chest of Drawers",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Mighty",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "8-10 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Mighty/FI_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Mighty/FI_Mighty_2.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Mighty/FI_Mighty_3.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium",
+                    "price": "€845/month",
+                    "status": "Available",
+                    "area": "9-13 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium/FI_Premium_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium/FI_Premium_3.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium Balcony",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "11-14 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_2.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_3.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_4.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_premium_Balcony_5.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_6.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_7.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_8.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium Balcony/FI_Premium_Balcony_9.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+ Balcony",
+                    "price": "€945/month",
+                    "status": "Available",
+                    "area": "13-16 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium+ Balcony/FI_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Premium+ Balcony/FI_Premium_Plus_2.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1095/month",
+                    "status": "Available",
+                    "area": "19-20 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_Jumbo_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_jumbo_3.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_Jumbo_4.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_Jumbo_5.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_Jumbo_6.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo/FI_Jumbo_7.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Queen-Size Bed",
+                        "Sofa",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo Balcony",
+                    "price": "€1145/month",
+                    "status": "Available",
+                    "area": "18-24 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo Balcony/FI_Jumbo_Balcony_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo Balcony/FI_Jumbo_Balcony_2.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo Balcony/FI_Jumbo_Balcony_3.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Jumbo Balcony/FI_Jumbo_Balcony_4.png"
+                    ],
+                    "amenities": [
+                        "Bath & Kitchen shared with 1 room",
+                        "Queen-Size Bed",
+                        "Sofa",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Studio",
+                    "price": "€1395/month",
+                    "status": "Available",
+                    "area": "30-38 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_1.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_2.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_3.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_4.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_5.png",
+                        "/components/accommodation/Stacey/images/Berlin_Mitte/Studio/FI_Studio_6.png"
+                    ],
+                    "amenities": [
+                        "Private Bath & Kitchen",
+                        "Double Bed",
+                        "Sofa",
+                        "Dining Table",
+                        "Chair",
+                        "Kitchen",
+                        "Private Bathroom",
+                        "Wardrobe",
+                        "Mirror",
+                        "Artwork & Bedding"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Berlin",
+            "locality": "Moabit",
+            "head": {
+                "title": "STACEY Moabit",
+                "subtitle": "Green Coliving in Berlin Moabit",
+                "address": "Stromstraße 48a, 10551 Berlin",
+                "description": "Stromstraße 48a, 10551 Berlin, in a modern house behind the courtyard in Moabit. Three suites share each apartment, most with access to a shared balcony to the garden or the courtyard, and the Ensuite suites come with a private bathroom. U Turmstraße is a few minutes' walk away.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 52.52948222126173,
+                "longitude": 13.342986744179495
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Moabit, Berlin",
+                "description": "Moabit is a real Berlin neighbourhood on an island between the Spree and its canals, with cafés along Turmstraße and the Arminius market hall. The Kleiner Tiergarten park and U Turmstraße are a few minutes' walk away, and Berlin Hauptbahnhof is close by."
+            },
+            "rooms": [
+                {
+                    "name": "Mighty Garden",
+                    "price": "€895/month",
+                    "status": "Sold Out",
+                    "area": "10-11 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Mighty Garden/001-mighty-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Mighty Garden/002-mighty-garden-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Bath shared with 1 room, Kitchen shared with 2",
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium",
+                    "price": "€945/month",
+                    "status": "Available",
+                    "area": "10-11 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium/001-premium-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium/002-premium-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Bath shared with 1 room, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium Balcony",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "11-14 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Balcony/001-premium-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Balcony/002-premium-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Balcony/003-premium-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Balcony/004-premium-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Balcony/005-premium-balcony-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Bath shared with 1 room, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+ Garden",
+                    "price": "€995/month",
+                    "status": "Available",
+                    "area": "12-15 m²",
+                    "capacity": "1 person",
+                    "images": [],
+                    "amenities": [
+                        "Bath shared with 1 room, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Ensuite",
+                    "price": "€1095/month",
+                    "status": "Available",
+                    "area": "13-15 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite/001-ensuite-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite/002-ensuite-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite/003-ensuite-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite/004-ensuite-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Private bath, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Private Bathroom",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Ensuite Balcony",
+                    "price": "€1145/month",
+                    "status": "Available",
+                    "area": "14-15 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/001-ensuite-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/002-ensuite-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/003-ensuite-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/004-ensuite-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/005-ensuite-balcony-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Balcony/006-ensuite-balcony-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Private bath, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Private Bathroom",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Ensuite Garden",
+                    "price": "€1145/month",
+                    "status": "Available",
+                    "area": "17 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Garden/001-ensuite-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Garden/002-ensuite-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Garden/003-ensuite-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Ensuite Garden/004-ensuite-garden-mo.jpg"
+                    ],
+                    "amenities": [
+                        "Private bath, Kitchen shared with 2",
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Desk Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Private Bathroom",
+                        "Curtains",
+                        "Bedding"
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Hamburg",
+            "locality": "Downtown",
+            "head": {
+                "title": "STACEY Downtown",
+                "subtitle": "The Heart of Hamburg",
+                "address": "Brandstwiete 36, 20457 Hamburg",
+                "description": "Directly between the city center and the UNESCO World Heritage Speicherstadt. Suites of up to 18 m² with 5-meter-high ceilings, set in a historic building voted Hamburg's most beautiful facade.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.547193308539676,
+                "longitude":  9.996661986507698
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Altstadt, Hamburg",
+                "description": "Sightseeing right on your doorstep. Restaurants, cafés and every major public transport line are just steps away, perfect for both leisure and business stays in Hamburg's liveable downtown."
+            },
+            "rooms": [
+                {
+                    "name": "Mighty",
+                    "price": "€860/month",
+                    "pricePerNight": "€54",
+                    "status": "Available",
+                    "area": "10-12 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Mighty/Downtown_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Mighty/Downtown_Mighty_2png.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Mighty/Downtown_Mighty_3.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Floor Lamp",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium",
+                    "price": "€1103/month",
+                    "pricePerNight": "€58",
+                    "status": "Available",
+                    "area": "10-12 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium/Downtown_Premium_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium/Downtown_Premium_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium/Downtown_Premium_3.png"
+                    ],
+                    "amenities": [
+                        "Elevated Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium Balcony",
+                    "price": "€970/month",
+                    "pricePerNight": "€48",
+                    "status": "Available",
+                    "area": "13 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium Balcony/Downtown_Premium_Balcony_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium Balcony/Downtown_Premium_Balcony_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium Balcony/Downtown_Premium_Balcony_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium Balcony/Downtown_Premium_Balcony_4.png"
+                    ],
+                    "amenities": [
+                        "Elevated Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€1,175/month",
+                    "pricePerNight": "€61",
+                    "status": "Available",
+                    "area": "13-18 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium+/Downtown_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium+/Downtown_Premium_Plus_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium+/Downtown_Premium_Plus_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Premium+/Downtown_Premium_Plus_4.png"
+                    ],
+                    "amenities": [
+                        "Elevated Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Wall Lamp",
+                        "Artwork",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1,252/month",
+                    "pricePerNight": "€64",
+                    "status": "Available",
+                    "area": "18 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_4.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_5.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Downtown/Jumbo/Jumbo_6.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Wall Lamp",
+                        "Artwork",
+                        "Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Hamburg",
+            "locality": "Alster",
+            "head": {
+                "title": "STACEY Alster",
+                "subtitle": "Coliving next door to Udo",
+                "address": "Gurlittstraße 28, 20099 Hamburg",
+                "description": "Centrally located in Hamburg St. Georg. Our suites are spread over 4 floors, measuring up to 18 m², some with optional balcony. A converted former office building dedicated exclusively to short-term coliving, with a community kitchen on the top floor and laundry facilities in the basement.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.558070351579005, 
+                "longitude":  10.009587499999999
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "ASt. Georg, Hamburg",
+                "description": "We sit on Gurlittstraße between the Alster lake and the lively Lange Reihe restaurant street, roughly ten minutes on foot from central Hamburg's attractions. St. Georg is colorful, diverse and one of the city's most characterful neighborhoods."
+            },
+            "rooms": [
+                {
+                    "name": "Premium",
+                    "price": "€1236/month",
+                    "pricePerNight": "€56",
+                    "status": "Available",
+                    "area": "13-16 m²",
+                    "capacity": "1 person",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]    
+                },
+                {
+                    "name": "Premium Balcony",
+                    "pricePerNight": "€58",
+                    "status": "Available",
+                    "area": "15 m²",
+                    "capacity": "1 person",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€1249/month",
+                    "pricePerNight": "€54",
+                    "status": "Available",
+                    "area": "16 m²",
+                    "capacity": "1 person",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+ Balcony",
+                    "price": "€1,309/month",
+                    "pricePerNight": "€60",
+                    "status": "Available",
+                    "area": "15 m²",
+                    "capacity": "2 people",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1,393/month",
+                    "pricePerNight": "€61",
+                    "status": "Available",
+                    "area": "17 m²",
+                    "capacity": "2 people",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Sofa",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Wall Lamp",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Hamburg",
+            "locality": "Mühlenkamp",
+            "head": {
+                "title": "STACEY Mühlenkamp",
+                "subtitle": "The Cradle of Coliving",
+                "address": "Dorotheenstraße 3-5, 22301 Hamburg",
+                "description": "Since 2019, STACEY welcomes tenants from all over the world at Hamburg's #1 address for coliving, directly next to the beautiful lake Alster. Our oldest and largest coliving property features private suites of up to 27 square meters within shared apartments, surrounded by restaurants, bars and cafés, and wrapped around a quiet inner courtyard.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.5795357410531, 
+                "longitude":  10.010616213492302
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Winterhude, Hamburg",
+                "description": "Winterhude offers a unique blend of serene central living and vibrant social opportunities. Our coliving is tucked away on a quiet street between the well-known Mühlenkamp and the green heart of Hamburg, the Alster. A bus station within 100 meters connects you to downtown in 10 minutes, and the Alster is just around the corner for running or paddleboarding."
+            },
+            "rooms": [
+                {
+                    "name": "Basic+",
+                    "price": "€795/month",
+                    "status": "Available",
+                    "area": "",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Basic+/MK_Basic+_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Basic+/MK_Basic+_2.png"
+                    ],
+                    "amenities": [
+                        "Single Bed",
+                        "Nightstand",
+                        "Chest of Drawers",
+                        "Mirror",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]    
+                },
+                {
+                    "name": "Mighty",
+                    "price": "€795/month",
+                    "status": "Available",
+                    "area": "8-10 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_4.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_5.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Mighty/MK_Mighty_6.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "10-13 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium/MK_Premium_1.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€995/month",
+                    "status": "Available",
+                    "area": "11-19 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium+/MK_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium+/MK_Premium_Plus_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium+/MK_Premium_Plus_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium+/MK_Premium_Plus_4.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Premium+/MK_Premium_Plus_5.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1,295/month",
+                    "status": "Available",
+                    "area": "23-27 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Jumbo/MK_Jumbo_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Jumbo/MK_Jumbo_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Jumbo/MK_Jumbo_3.png"
+                    ],
+                    "amenities": [
+                        "Queen-Size Bed",
+                        "Sofa",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Walk-in Closet",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Hamburg",
+            "locality": "Eppendorf",
+            "head": {
+                "title": "STACEY Eppendorf",
+                "subtitle": "Coliving for Locals",
+                "address": "Eppendorfer Weg 270, 20251 Hamburg",
+                "description": "Centrally located in Hamburg Eppendorf, our coliving offers suites of up to 17 m², some with optional balconies. A maximum of 4 suites per apartment strikes the balance between privacy and community living.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.58419110445939, 
+                "longitude":  9.979237457671795
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Eppendorf, Hamburg",
+                "description": "Eppendorf is the neighborhood every local wants to live in, green parks, boutique shops and some of Hamburg's most acclaimed brunch spots. The U-Bahn connects you to Sternschanze and the city center within 10 minutes."
+            },
+            "rooms": [
+                {
+                    "name": "Mighty",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "9-11 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Mighty/EW_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Mighty/EW_Mighty_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Mighty/EW_Mighty_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Mighty/EW_Mighty_4.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Floor Lamp",
+                        "Wardrobe",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]    
+                },
+                {
+                    "name": "Premium",
+                    "price": "€995/month",
+                    "status": "Available",
+                    "area": "10-13 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium/Premium_2.webp",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium/Premium.webp"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium Balcony",
+                    "price": "€1045/month",
+                    "status": "Available",
+                    "area": "12-15 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium Balcony/Premium_2.webp",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium Balcony/Premium_Balcony_1.webp",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium Balcony/Premium_Balcony_2.webp",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium Balcony/Premium.webp"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€1,095/month",
+                    "status": "Available",
+                    "area": "13-15 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium+/EW_Premium+_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium+/EW_Premium+_2.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+ Balcony",
+                    "price": "€1,145/month",
+                    "status": "Sold Out",
+                    "area": "13-14 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium+ Balcony/EW_Premium_Balcony_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Premium+ Balcony/EW_Premium_Balcony_2.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Sofa",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1,295/month",
+                    "status": "Sold Out",
+                    "area": "16 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo/EW_Jumbo_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo/EW_Jumbo_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo/EW_Jumbo_3.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo Balcony",
+                    "price": "€1,345/month",
+                    "status": "Sold Out",
+                    "area": "17 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo Balcony/EW_Jumbo_Balcony_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo Balcony/EW_Jumbo_Balcony_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Jumbo Balcony/EW_Jumbo_Balcony_3.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Hamburg",
+            "locality": "St. Pauli",
+            "head": {
+                "title": "STACEY St. Pauli",
+                "subtitle": "Central, Colorful, Diverse",
+                "address": "Detlev-Bremer-Straße 2, 20359 Hamburg",
+                "description": "Cozy shared living next to the Millerntor stadium. Our 7-bedroom duplex coliving apartment has everything you need within its doors, living room, common kitchen and the old-building charm that (let's be honest) is unmatched by new developments.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.55312936710467, 
+                "longitude": 9.965401057671798 
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "St. Pauli, Hamburg",
+                "description": "St. Pauli sits between Hamburg's nightlife area and Sternschanze, the best of both worlds. You can reach every major Hamburg hotspot within 15 minutes via public transport, and the Elbe river and city center are just around the corner."
+            },
+            "rooms": [
+                {
+                    "name": "Mighty",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "8-9 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Mighty/St_Pauli_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Mighty/St_Pauli_Mighty_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Mighty/St_Pauli_Mighty_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Mighty/St_Pauli_Mighty_4.png"
+                    ],
+                    "amenities": [
+                        "Single Bed",
+                        "Nightstand",
+                        "Armchair",
+                        "Floor Lamp",
+                        "Coat Hooks",
+                        "Artwork & Bedding"
+                    ]    
+                },
+                {
+                    "name": "Premium",
+                    "price": "€995/month",
+                    "status": "Sold Out",
+                    "area": "9 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium/St_Pauli_Premium_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium/St_Pauli_Premium_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium/St_Pauli_Premium_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium/St_Pauli_Premium_4.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Floor Lamp",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€1,095/month",
+                    "status": "Available",
+                    "area": "12-14 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium+/St_Pauli_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium+/St_Pauli_Premium_Plus_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Premium+/St_Pauli_Premium_Plus_4.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Floor Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Jumbo",
+                    "price": "€1,295/month",
+                    "status": "Available",
+                    "area": "18-23 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Jumbo/St_Pauli_Jumbo_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Jumbo/St_Pauli_Jumbo_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Jumbo/St_Pauli_Jumbo_4.png",
+                        "/components/accommodation/Stacey/images/Hamburg_St Pauli/Jumbo/St_Pauli_Jumbo_5.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "ArtWork & Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Hamburg",
+            "locality": "Eimsbüttel",
+            "head": {
+                "title": "STACEY Eimsbüttel",
+                "subtitle": "Beautiful, Peaceful & Quiet",
+                "address": "Bei der Apostelkirche 13, 20257 Hamburg",
+                "description": "Our smallest coliving location is in Hamburg-Eimsbüttel, a neighborhood of locals. The shared apartment offers a kitchen and a small inner yard. You can choose between private suites of up to 17 m².",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 53.575954721370806,
+                "longitude": 9.943281371164103
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Eimsbüttel, Hamburg",
+                "description": "Eimsbüttel gives you an authentic Hamburg experience, a diverse community of families, students and long-time residents. Sternschanze and Osterstraße (the neighborhood's shopping and dining hub) are right next door, and downtown is about 20 minutes away."},
+            "rooms": [
+                {
+                    "name": "Basic+",
+                    "price": "€795/month",
+                    "status": "Sold Out",
+                    "area": "",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Basic+/202406-stacey-eimsbuttel-38.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Basic+/202406-stacey-eimsbuttel-39.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Basic+/202406-stacey-eimsbuttel-40.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Basic+/202406-stacey-eimsbuttel-41.jpg"
+                    ],
+                    "amenities": [
+                        "Single Bed",
+                        "Chest of Drawers",
+                        "Mirror",
+                        "ArtWork & Bedding"
+                    ]    
+                },
+                {
+                    "name": "Premium",
+                    "price": "€995/month",
+                    "status": "Available",
+                    "area": "10 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium/Premium_1.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium/Premium_2.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium/Premium_3.png",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium/Premium_4.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "ArtWork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium Balcony",
+                    "price": "€1,045/month",
+                    "status": "Sold Out",
+                    "area": "14 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-10.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-12.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-16.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-17.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-18.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-20.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-21.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium Balcony/202406-stacey-eimsbuttel-22.jpg"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "Artwork & Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€1,095/month",
+                    "status": "Available",
+                    "area": "14-17 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-27.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-29.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-31.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-32.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-33.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-34.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-35.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-36.jpg",
+                        "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Premium+/202406-stacey-eimsbuttel-37.jpg"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Floor Lamp",
+                        "ArtWork & Bedding"
+                    ]
+                }
+            ]
+        },  
+        {
+            "name": "Vallendar",
+            "locality": "Vallendar",
+            "head": {
+                "title": "STACEY Vallendar",
+                "subtitle": "The Cradle of the Spirit",
+                "address": "Löhrstraße 54, 56179 Vallendar",
+                "description": "Centrally located in Vallendar, less than 4 minutes on foot from all WHU university buildings. The property features spacious terraces and modern community spaces designed for studying and socializing in equal measure.",
+                "features": [
+                    "Furnished Suite",
+                    "Weekly Cleaning",
+                    "All Utilities",
+                    "WiFi",
+                    "Community Events"
+                ]
+            },
+            "cordinates": {
+                "latitude": 50.400333239827326,
+                "longitude": 7.616792286507696
+            },
+            "neighborhood": {
+                "title": "The Neighborhood",
+                "subtitle": "Vallendar, Vallendar",
+                "description": "We're right on Löhrstraße, in the heart of Vallendar. You won't need a bike or a car: everything is within walking distance, with restaurants on Hellenstraße, the WHU campus next door, and Koblenz a few minutes away by train."
+            },
+            "rooms": [
+                {
+                    "name": "Mighty",
+                    "price": "€595/month",
+                    "status": "Available",
+                    "area": "9-12 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Vallendar/Mighty/VA_Mighty_1.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Mighty/VA_Mighty_2.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]    
+                },
+                {
+                    "name": "Premium",
+                    "price": "€695/month",
+                    "status": "Available",
+                    "area": "10-13 m²",
+                    "capacity": "1 person",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Vallendar/Premium/VA_Premium_1.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premium/VA_Premium_2.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premium/VA_Premium_3.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Desk",
+                        "Chair",
+                        "Wall Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Premium+",
+                    "price": "€595/month",
+                    "status": "Available",
+                    "area": "12-15 m²",
+                    "capacity": "1 person",
+                    "images": [],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Bedding"
+                    ]
+                },
+                {
+                    "name": "Ensuite",
+                    "price": "€895/month",
+                    "status": "Available",
+                    "area": "18 m²",
+                    "capacity": "2 people",
+                    "images": [
+                        "/components/accommodation/Stacey/images/Vallendar/Ensuite/VA_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Ensuite/VA_Premium_Plus_2.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Ensuite/VA_Premium_Plus_3.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Ensuite/VA_Premium_Plus_4.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Ensuite/VA_Premium_Plus_5.png"
+                    ],
+                    "amenities": [
+                        "Double Bed",
+                        "Nightstand",
+                        "Desk",
+                        "Chair",
+                        "Armchair",
+                        "Wall Lamp",
+                        "Wardrobe",
+                        "Mirror",
+                        "Coat Hooks",
+                        "Private Bathroom",
+                        "Bedding"
+                    ]
+                }
+            ]
+        }
+
+    ]
+}

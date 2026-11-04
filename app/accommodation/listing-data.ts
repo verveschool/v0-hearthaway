@@ -5,18 +5,21 @@ import {
   type AccommodationFeedDevelopment,
 } from './response-data'
 import { accommodationProperties as curatedProperties } from './catalog'
+import staceyInventory from './stacey-inventory.json'
 
 export type AccommodationRoomRecord = {
   name: string
   image: string | null
   priceFrom: number | null
   available: number | null
+  status: string | null
   minimumOccupancy: number | null
   maximumOccupancy: number | null
   academicYear: string | null
 }
 
 export type AccommodationListingRecord = {
+  provider: 'vita-student' | 'stacey'
   key: string
   slug: string
   city: string
@@ -120,7 +123,7 @@ for (const development of accommodationFeedDevelopments) {
 
 const slugCounts = new Map<string, number>()
 
-export const accommodationListings: AccommodationListingRecord[] = uniqueDevelopments.map((development) => {
+const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopments.map((development) => {
   const curatedProperty = getCuratedProperty(development)
   const description = getDevelopmentDescription(development) ?? null
   const baseSlug = `${development.city}-${development.name}`
@@ -132,6 +135,7 @@ export const accommodationListings: AccommodationListingRecord[] = uniqueDevelop
   const slug = duplicateCount ? `${baseSlug}-${duplicateCount + 1}` : baseSlug
 
   return {
+    provider: 'vita-student' as const,
     key: development.key,
     slug,
     city: development.city,
@@ -161,6 +165,7 @@ export const accommodationListings: AccommodationListingRecord[] = uniqueDevelop
       image: room.image ?? null,
       priceFrom: room.priceFrom ?? null,
       available: room.available ?? null,
+      status: null,
       minimumOccupancy: room.minimumOccupancy ?? null,
       maximumOccupancy: room.maximumOccupancy ?? null,
       academicYear: room.academicYear ?? null,
@@ -170,7 +175,46 @@ export const accommodationListings: AccommodationListingRecord[] = uniqueDevelop
   listing.gallery.length > 0 || listing.roomTypes.some((room) => Boolean(room.image)),
 )
 
-export const accommodationCities = [...new Set(accommodationListings.map((listing) => listing.city))]
+function parseStaceyPrice(price: string | null): number | null {
+  if (!price) return null
+  const numeric = Number(price.replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}(?:\D|$))/g, '').replace(',', '.'))
+  return Number.isFinite(numeric) ? numeric : null
+}
+
+const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map((property, index) => ({
+  provider: 'stacey',
+  key: `stacey-${property.name.toLocaleLowerCase()}-${index}`,
+  slug: `stacey-${property.name.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+  city: property.name,
+  country: 'Germany',
+  name: property.head.title,
+  buildings: [{ name: property.locality, address: property.head.address, postcode: null, unitsAvailable: null }],
+  address: property.head.address,
+  description: [property.head.subtitle, property.head.description, property.neighborhood.description].filter(Boolean).join('\n\n'),
+  gallery: [],
+  amenities: property.head.features,
+  inclusions: property.head.features,
+  roomFeatures: [...new Set(property.rooms.flatMap((room) => room.amenities))],
+  contractTerms: [],
+  depositNote: null,
+  distance: null,
+  universities: [],
+  roomTypes: property.rooms.map((room) => ({
+    name: room.name,
+    image: null,
+    priceFrom: parseStaceyPrice(room.price ?? null),
+    available: null,
+    status: room.status,
+    minimumOccupancy: null,
+    maximumOccupancy: null,
+    academicYear: null,
+  })),
+}))
+
+export const accommodationListings = [...vitaAccommodationListings, ...staceyListings]
+export const allAccommodationListings = accommodationListings
+
+export const accommodationCities = [...new Set(allAccommodationListings.map((listing) => listing.city))]
   .sort((first, second) => first.localeCompare(second))
 
 export const accommodationSourceNotice =
