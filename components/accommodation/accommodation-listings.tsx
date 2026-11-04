@@ -5,9 +5,6 @@ import { useState } from 'react'
 import { ArrowRight, Building2, MapPin } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
 
-const accommodationSourceNotice =
-  'Prices are shown as supplied; the source does not specify a currency or billing period.'
-
 function formatSourcePrice(value: number): string {
   return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
 }
@@ -115,7 +112,6 @@ export default function AccommodationListings({ cities, listings }: Accommodatio
         </label>
       </div>
 
-      <p className="mt-5 text-sm leading-relaxed text-[#6B6860]">{accommodationSourceNotice}</p>
 
       {visibleListings.length > 0 ? (
         <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
