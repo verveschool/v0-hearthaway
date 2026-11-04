@@ -217,9 +217,6 @@ export const allAccommodationListings = accommodationListings
 export const accommodationCities = [...new Set(allAccommodationListings.map((listing) => listing.city))]
   .sort((first, second) => first.localeCompare(second))
 
-export const accommodationSourceNotice =
-  'Prices are shown as supplied; the source does not specify a currency or billing period.'
-
 export function formatSourcePrice(value: number): string {
   return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
 }
