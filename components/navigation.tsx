@@ -58,7 +58,7 @@ const navLinks = [
       { label: 'All Accommodation', href: '/accommodation' },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
       { label: 'Stacey', href: '/accommodation?provider=stacey' },
-      { label: 'More coming soon' },
+      { label: 'More coming soon', href: '/accommodation'  },
     ],
   },
   {
