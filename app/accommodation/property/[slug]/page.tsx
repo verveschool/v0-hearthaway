@@ -185,7 +185,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                       {property.roomTypes.map((room) => (
                         <article key={room.name} className="overflow-hidden rounded-xl border border-[#E8E6E1] bg-white">
                           {room.image ? (
-                            <img src={room.image} alt={`${room.name} at ${property.name}`} className="aspect-[16/10] w-full bg-[#F7F6F3] object-cover" loading="lazy" decoding="async" />
+                            <img src={room.image} alt={`${room.name} sample suite at ${property.name}`} className="aspect-[16/10] w-full bg-[#F7F6F3] object-cover" loading="lazy" decoding="async" />
                           ) : (
                             <div className="flex aspect-[16/10] items-center justify-center bg-[#F7F6F3] px-4 text-center text-sm text-[#6B6860]">No room image provided for this type</div>
                           )}
@@ -194,13 +194,16 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                             <div className="mt-4 grid grid-cols-2 gap-3">
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
                                 <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Starting price</p>
-                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">{room.priceFrom === null ? 'Not provided' : formatSourcePrice(room.priceFrom)}</p>
+                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">{room.priceFrom !== null ? formatSourcePrice(room.priceFrom) : room.pricePerNight !== null ? `From €${formatSourcePrice(room.pricePerNight)}/night` : 'Not provided'}</p>
                               </div>
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
                                 <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Availability</p>
                                 <p className="mt-1 text-sm font-bold text-[#1A1A1A]">{room.status ?? (room.available === null ? 'Not provided' : formatSourceAvailability(room.available))}</p>
                               </div>
                             </div>
+                            {room.priceFrom === null && room.pricePerNight !== null ? (
+                              <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">Monthly total varies by dates and stay length.</p>
+                            ) : null}
                             {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? (
                               <p className="mt-3 text-sm text-[#4C4A45]">
                                 Occupancy: {room.minimumOccupancy ?? 'Not specified'}–{room.maximumOccupancy ?? 'Not specified'}
@@ -276,7 +279,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 ) : null}
               </Section>
 
-              {property.contractTerms.length || property.depositNote || property.roomTypes.some((room) => room.priceFrom !== null) ? (
+              {property.contractTerms.length || property.depositNote || property.roomTypes.some((room) => room.priceFrom !== null || room.pricePerNight !== null) ? (
                 <Section id="booking" title="Booking information">
                   {property.contractTerms.length ? <ul className="flex flex-col gap-2">{property.contractTerms.map((term) => <li key={term} className="text-sm leading-relaxed text-[#4C4A45]">{term}</li>)}</ul> : null}
                   {property.depositNote ? <p className="mt-3 text-sm leading-relaxed text-[#4C4A45]">{property.depositNote}</p> : null}
@@ -303,7 +306,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                     ['rooms', 'Room types and pricing'],
                     ...(property.amenities.length || property.inclusions.length ? [['amenities', 'Amenities and inclusions']] : []),
                     ['location', 'Location'],
-                    ...(property.contractTerms.length || property.depositNote || property.roomTypes.some((room) => room.priceFrom !== null) ? [['booking', 'Booking information']] : []),
+                    ...(property.contractTerms.length || property.depositNote || property.roomTypes.some((room) => room.priceFrom !== null || room.pricePerNight !== null) ? [['booking', 'Booking information']] : []),
                   ].map(([id, label]) => <li key={id}><a href={`#${id}`} className="text-[#00319D] underline-offset-4 hover:underline">{label}</a></li>)}
                 </ul>
               </nav>

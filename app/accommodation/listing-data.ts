@@ -12,6 +12,7 @@ export type AccommodationRoomRecord = {
   image: string | null
   images: string[]
   priceFrom: number | null
+  pricePerNight: number | null
   available: number | null
   status: string | null
   minimumOccupancy: number | null
@@ -170,6 +171,7 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
       image: room.image ?? null,
       images: room.image ? [room.image] : [],
       priceFrom: room.priceFrom ?? null,
+      pricePerNight: null,
       available: room.available ?? null,
       status: null,
       minimumOccupancy: room.minimumOccupancy ?? null,
@@ -228,6 +230,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
       image: images[0] ?? null,
       images,
       priceFrom: parseStaceyPrice(room.price ?? null),
+      pricePerNight: parseStaceyPrice('pricePerNight' in room ? room.pricePerNight ?? null : null),
       available: null,
       status: room.status,
       minimumOccupancy: null,
