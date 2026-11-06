@@ -69,7 +69,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
   const gallery = [...new Set([
     ...property.gallery,
-    ...property.roomTypes.flatMap((room) => room.image ? [room.image] : []),
+    ...property.roomTypes.flatMap((room) => room.images),
   ])]
   const mapQuery = getDisplayAddress(property)
   const cityUniversities = getUniversitiesByCity(property.city)
@@ -124,7 +124,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 {gallery.length ? (
                   <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
                     {gallery.map((image, index) => {
-                      const roomName = property.roomTypes.find((room) => room.image === image)?.name
+                      const roomName = property.roomTypes.find((room) => room.images.includes(image))?.name
                       return (
                         <figure key={`${image}-${index}`} className={`${index === 0 ? 'col-span-2 row-span-2' : ''} overflow-hidden rounded-xl bg-[#F7F6F3]`}>
                           <img

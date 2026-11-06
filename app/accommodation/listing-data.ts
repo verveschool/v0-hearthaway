@@ -10,6 +10,7 @@ import staceyInventory from './stacey-inventory.json'
 export type AccommodationRoomRecord = {
   name: string
   image: string | null
+  images: string[]
   priceFrom: number | null
   available: number | null
   status: string | null
@@ -163,6 +164,7 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
     roomTypes: development.rooms.map((room) => ({
       name: room.name,
       image: room.image ?? null,
+      images: room.image ? [room.image] : [],
       priceFrom: room.priceFrom ?? null,
       available: room.available ?? null,
       status: null,
@@ -181,35 +183,76 @@ function parseStaceyPrice(price: string | null): number | null {
   return Number.isFinite(numeric) ? numeric : null
 }
 
-const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map((property, index) => ({
-  provider: 'stacey',
-  key: `stacey-${property.name.toLocaleLowerCase()}-${index}`,
-  slug: `stacey-${property.name.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
-  city: property.name,
-  country: 'Germany',
-  name: property.head.title,
-  buildings: [{ name: property.locality, address: property.head.address, postcode: null, unitsAvailable: null }],
-  address: property.head.address,
-  description: [property.head.subtitle, property.head.description, property.neighborhood.description].filter(Boolean).join('\n\n'),
-  gallery: [],
-  amenities: property.head.features,
-  inclusions: property.head.features,
-  roomFeatures: [...new Set(property.rooms.flatMap((room) => room.amenities))],
-  contractTerms: [],
-  depositNote: null,
-  distance: null,
-  universities: [],
-  roomTypes: property.rooms.map((room) => ({
-    name: room.name,
-    image: null,
-    priceFrom: parseStaceyPrice(room.price ?? null),
-    available: null,
-    status: room.status,
-    minimumOccupancy: null,
-    maximumOccupancy: null,
-    academicYear: null,
-  })),
-}))
+const supplementalStaceyImagesByRoom: Record<string, string[]> = {
+  'Moabit:Premium+ Garden': [
+    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/001-premium-garden-mo.jpg',
+    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/002-premium-garden-mo.jpg',
+    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/003-premium-garden-mo.jpg',
+  ],
+  'Vallendar:Premium+': [
+    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_1.png',
+    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_2.png',
+    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_3.png',
+    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_4.png',
+    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_5.png',
+  ],
+}
+
+function mapStaceyImage(sourcePath: string): string | null {
+  const sourcePrefix = '/components/accommodation/Stacey/images/'
+  if (!sourcePath.startsWith(sourcePrefix)) return null
+
+  const relativePath = sourcePath.slice(sourcePrefix.length)
+  if (!relativePath || relativePath.split('/').some((segment) => !segment || segment === '.' || segment === '..')) return null
+
+  return `/stacey/${relativePath}`
+}
+
+const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map((property, index) => {
+  const roomTypes = property.rooms.map((room) => {
+    const supplementalKey = `${property.locality}:${room.name}`
+    const imageSources = [
+      ...(room.images ?? []),
+      ...(supplementalStaceyImagesByRoom[supplementalKey] ?? []),
+    ]
+    const images = imageSources
+      .map(mapStaceyImage)
+      .filter((image): image is string => image !== null)
+
+    return {
+      name: room.name,
+      image: images[0] ?? null,
+      images,
+      priceFrom: parseStaceyPrice(room.price ?? null),
+      available: null,
+      status: room.status,
+      minimumOccupancy: null,
+      maximumOccupancy: null,
+      academicYear: null,
+    }
+  })
+
+  return {
+    provider: 'stacey',
+    key: `stacey-${property.name.toLocaleLowerCase()}-${index}`,
+    slug: `stacey-${property.name.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    city: property.name,
+    country: 'Germany',
+    name: property.head.title,
+    buildings: [{ name: property.locality, address: property.head.address, postcode: null, unitsAvailable: null }],
+    address: property.head.address,
+    description: [property.head.subtitle, property.head.description, property.neighborhood.description].filter(Boolean).join('\n\n'),
+    gallery: [...new Set(roomTypes.flatMap((room) => room.images))],
+    amenities: property.head.features,
+    inclusions: property.head.features,
+    roomFeatures: [...new Set(property.rooms.flatMap((room) => room.amenities))],
+    contractTerms: [],
+    depositNote: null,
+    distance: null,
+    universities: [],
+    roomTypes,
+  }
+})
 
 export const accommodationListings = [...vitaAccommodationListings, ...staceyListings]
 export const allAccommodationListings = accommodationListings
