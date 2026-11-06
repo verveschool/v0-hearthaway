@@ -19,8 +19,8 @@ type AccommodationListingsProps = {
 }
 
 function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
-  const previewRoom = listing.roomTypes.find((room) => room.image)
-  const previewImage = previewRoom?.image ?? listing.gallery[0] ?? null
+  const previewRoom = listing.roomTypes.find((room) => room.image || room.images.length > 0)
+  const previewImage = previewRoom?.image ?? previewRoom?.images[0] ?? listing.gallery[0] ?? null
   const startingPrices = listing.roomTypes
     .map((room) => room.priceFrom)
     .filter((price): price is number => price !== null)
@@ -37,7 +37,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
         {previewImage ? (
           <img
             src={previewImage}
-            alt={previewRoom?.image ? `${previewRoom.name} room at ${listing.name}` : `${listing.name} property photo`}
+            alt={previewRoom ? `${previewRoom.name} room at ${listing.name}` : `${listing.name} property photo`}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
             decoding="async"
