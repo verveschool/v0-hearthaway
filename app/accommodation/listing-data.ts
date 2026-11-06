@@ -29,6 +29,8 @@ export type AccommodationListingRecord = {
   buildings: Array<{ name: string | null; address: string | null; postcode: string | null; unitsAvailable: number | null }>
   address: string | null
   description: string | null
+  coverImage: string | null
+  photoSourceUrl: string | null
   gallery: string[]
   amenities: string[]
   inclusions: string[]
@@ -150,6 +152,8 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
     })),
     address: getDevelopmentAddress(development) ?? curatedProperty?.address ?? null,
     description,
+    coverImage: curatedProperty?.gallery[0] ?? development.rooms.find((room) => room.image)?.image ?? null,
+    photoSourceUrl: null,
     gallery: curatedProperty?.gallery ?? [],
     amenities: curatedProperty?.amenities ?? [],
     inclusions: [...new Set([
@@ -174,28 +178,13 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
     })),
   }
 }).filter((listing) =>
-  listing.gallery.length > 0 || listing.roomTypes.some((room) => Boolean(room.image)),
+  Boolean(listing.coverImage) || listing.gallery.length > 0 || listing.roomTypes.some((room) => Boolean(room.image)),
 )
 
 function parseStaceyPrice(price: string | null): number | null {
   if (!price) return null
   const numeric = Number(price.replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}(?:\D|$))/g, '').replace(',', '.'))
   return Number.isFinite(numeric) ? numeric : null
-}
-
-const supplementalStaceyImagesByRoom: Record<string, string[]> = {
-  'Moabit:Premium+ Garden': [
-    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/001-premium-garden-mo.jpg',
-    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/002-premium-garden-mo.jpg',
-    '/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/003-premium-garden-mo.jpg',
-  ],
-  'Vallendar:Premium+': [
-    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_1.png',
-    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_2.png',
-    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_3.png',
-    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_4.png',
-    '/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_5.png',
-  ],
 }
 
 function mapStaceyImage(sourcePath: string): string | null {
@@ -225,12 +214,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
   staceySlugCounts.set(slugBase, duplicateCount + 1)
   const slug = duplicateCount ? `${slugBase}-${duplicateCount + 1}` : slugBase
   const roomTypes = property.rooms.map((room) => {
-    const supplementalKey = `${property.locality}:${room.name}`
-    const imageSources = [
-      ...(room.images ?? []),
-      ...(supplementalStaceyImagesByRoom[supplementalKey] ?? []),
-    ]
-    const images = imageSources
+    const images = (room.images ?? [])
       .map(mapStaceyImage)
       .filter((image): image is string => image !== null)
 
@@ -246,6 +230,13 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
       academicYear: null,
     }
   })
+  const propertyGallery = property.gallery
+    .map(mapStaceyImage)
+    .filter((image): image is string => image !== null)
+  const coverImage = mapStaceyImage(property.coverImage)
+    ?? propertyGallery[0]
+    ?? roomTypes.find((room) => room.images.length > 0)?.images[0]
+    ?? null
 
   return {
     provider: 'stacey',
@@ -257,7 +248,9 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
     buildings: [{ name: property.locality, address: property.head.address, postcode: null, unitsAvailable: null }],
     address: property.head.address,
     description: [property.head.subtitle, property.head.description, property.neighborhood.description].filter(Boolean).join('\n\n'),
-    gallery: [...new Set(roomTypes.flatMap((room) => room.images))],
+    coverImage,
+    photoSourceUrl: property.photoSourceUrl,
+    gallery: [...new Set([...(coverImage ? [coverImage] : []), ...propertyGallery, ...roomTypes.flatMap((room) => room.images)])],
     amenities: property.head.features,
     inclusions: property.head.features,
     roomFeatures: [...new Set(property.rooms.flatMap((room) => room.amenities))],

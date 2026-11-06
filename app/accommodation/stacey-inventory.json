@@ -3,6 +3,9 @@
         {
             "name": "Berlin",
             "locality": "Mitte",
+            "coverImage": "/components/accommodation/Stacey/images/Berlin_Mitte/Basic+/FI_Basic 1.jpg",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Mitte",
                 "subtitle": "Most Central Coliving in Berlin",
@@ -228,6 +231,9 @@
         {
             "name": "Berlin",
             "locality": "Moabit",
+            "coverImage": "/components/accommodation/Stacey/images/Berlin_Moabit/Mighty Garden/001-mighty-garden-mo.jpg",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Moabit",
                 "subtitle": "Green Coliving in Berlin Moabit",
@@ -328,7 +334,11 @@
                     "status": "Available",
                     "area": "12-15 m²",
                     "capacity": "1 person",
-                    "images": [],
+                    "images": [
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/001-premium-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/002-premium-garden-mo.jpg",
+                        "/components/accommodation/Stacey/images/Berlin_Moabit/Premium Garden/003-premium-garden-mo.jpg"
+                    ],
                     "amenities": [
                         "Bath shared with 1 room, Kitchen shared with 2",
                         "Double Bed",
@@ -427,6 +437,9 @@
         {
             "name": "Hamburg",
             "locality": "Downtown",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_Downtown/Mighty/Downtown_Mighty_1.png",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Downtown",
                 "subtitle": "The Heart of Hamburg",
@@ -583,6 +596,24 @@
         {
             "name": "Hamburg",
             "locality": "Alster",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_Alster/official/001-community-al.webp",
+            "gallery": [
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/001-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/002-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/003-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/004-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/005-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/006-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/007-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/008-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/009-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/010-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/011-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/012-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/013-community-al.webp",
+                "/components/accommodation/Stacey/images/Hamburg_Alster/official/014-community-al.webp"
+            ],
+            "photoSourceUrl": "https://stacey.de/locations/alster",
             "head": {
                 "title": "STACEY Alster",
                 "subtitle": "Coliving next door to Udo",
@@ -711,6 +742,9 @@
         {
             "name": "Hamburg",
             "locality": "Mühlenkamp",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_Mühlenkamp/Basic+/MK_Basic+_1.png",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Mühlenkamp",
                 "subtitle": "The Cradle of Coliving",
@@ -857,6 +891,9 @@
         {
             "name": "Hamburg",
             "locality": "Eppendorf",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_Eppendorf/Mighty/EW_Mighty_1.png",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Eppendorf",
                 "subtitle": "Coliving for Locals",
@@ -1049,6 +1086,9 @@
         {
             "name": "Hamburg",
             "locality": "St. Pauli",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_St Pauli/Mighty/St_Pauli_Mighty_1.png",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY St. Pauli",
                 "subtitle": "Central, Colorful, Diverse",
@@ -1165,6 +1205,9 @@
         {
             "name": "Hamburg",
             "locality": "Eimsbüttel",
+            "coverImage": "/components/accommodation/Stacey/images/Hamburg_Eimsbüttel/Basic+/202406-stacey-eimsbuttel-38.jpg",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Eimsbüttel",
                 "subtitle": "Beautiful, Peaceful & Quiet",
@@ -1290,6 +1333,9 @@
         {
             "name": "Vallendar",
             "locality": "Vallendar",
+            "coverImage": "/components/accommodation/Stacey/images/Vallendar/Mighty/VA_Mighty_1.png",
+            "gallery": [],
+            "photoSourceUrl": null,
             "head": {
                 "title": "STACEY Vallendar",
                 "subtitle": "The Cradle of the Spirit",
@@ -1362,7 +1408,13 @@
                     "status": "Available",
                     "area": "12-15 m²",
                     "capacity": "1 person",
-                    "images": [],
+                    "images": [
+                        "/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_1.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_2.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_3.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_4.png",
+                        "/components/accommodation/Stacey/images/Vallendar/Premuim+/VA_Premium_Plus_5.png"
+                    ],
                     "amenities": [
                         "Double Bed",
                         "Nightstand",
