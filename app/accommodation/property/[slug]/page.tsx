@@ -22,6 +22,7 @@ function getProperty(slug: string) {
 
 function getPropertyImages(property: (typeof accommodationListings)[number]): string[] {
   return [...new Set([
+    ...(property.coverImage ? [property.coverImage] : []),
     ...property.gallery,
     ...property.roomTypes.flatMap((room) => room.images),
   ])]
@@ -135,6 +136,14 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 loading="eager"
                 decoding="async"
               />
+              {property.photoSourceUrl ? (
+                <figcaption className="border-t border-[#E8E6E1] bg-white px-4 py-3 text-xs text-[#6B6860]">
+                  Official property photos from{' '}
+                  <a href={property.photoSourceUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-[#00319D] underline-offset-4 hover:underline">
+                    STACEY
+                  </a>
+                </figcaption>
+              ) : null}
             </figure>
           ) : (
             <div className="flex aspect-[16/8] max-h-[560px] flex-col items-center justify-center gap-3 rounded-2xl bg-[#E8E6E1] text-[#6B6860]">
