@@ -194,7 +194,12 @@ function mapStaceyImage(sourcePath: string): string | null {
   const relativePath = sourcePath.slice(sourcePrefix.length)
   if (!relativePath || relativePath.split('/').some((segment) => !segment || segment === '.' || segment === '..')) return null
 
-  return `/stacey/${relativePath}`
+  const encodedRelativePath = relativePath
+    .split("/")
+    .map((segment) => encodeURIComponent(segment))
+    .join("/")
+
+  return `/stacey/${encodedRelativePath}`
 }
 
 function slugifyAccommodationValue(value: string): string {
