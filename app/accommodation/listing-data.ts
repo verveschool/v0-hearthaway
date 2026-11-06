@@ -208,7 +208,22 @@ function mapStaceyImage(sourcePath: string): string | null {
   return `/stacey/${relativePath}`
 }
 
+function slugifyAccommodationValue(value: string): string {
+  return value
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '')
+}
+
+const staceySlugCounts = new Map<string, number>()
+
 const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map((property, index) => {
+  const slugBase = `stacey-${slugifyAccommodationValue(`${property.locality}-${property.name}`)}`
+  const duplicateCount = staceySlugCounts.get(slugBase) ?? 0
+  staceySlugCounts.set(slugBase, duplicateCount + 1)
+  const slug = duplicateCount ? `${slugBase}-${duplicateCount + 1}` : slugBase
   const roomTypes = property.rooms.map((room) => {
     const supplementalKey = `${property.locality}:${room.name}`
     const imageSources = [
@@ -235,7 +250,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
   return {
     provider: 'stacey',
     key: `stacey-${property.name.toLocaleLowerCase()}-${index}`,
-    slug: `stacey-${property.name.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    slug,
     city: property.name,
     country: 'Germany',
     name: property.head.title,

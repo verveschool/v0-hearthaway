@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { ArrowLeft, MapPin } from 'lucide-react'
+import { ArrowLeft, Building2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import PropertyEnquiryModal from '@/components/accommodation/property-enquiry-modal'
@@ -18,6 +18,13 @@ type PropertyPageProps = {
 
 function getProperty(slug: string) {
   return accommodationListings.find((property) => property.slug === slug)
+}
+
+function getPropertyImages(property: (typeof accommodationListings)[number]): string[] {
+  return [...new Set([
+    ...property.gallery,
+    ...property.roomTypes.flatMap((room) => room.images),
+  ])]
 }
 
 function getDisplayAddress(property: (typeof accommodationListings)[number]): string {
@@ -39,7 +46,7 @@ export async function generateMetadata({ params }: PropertyPageProps): Promise<M
 
   const title = `${property.name} student accommodation in ${property.city} | HearthAway`
   const description = property.description ?? `Compare room types, prices and availability at ${property.name} in ${property.city}. Get help from HearthAway before you book.`
-  const images = [...property.gallery, ...property.roomTypes.flatMap((room) => room.image ? [room.image] : [])]
+  const images = getPropertyImages(property)
 
   return {
     title,
@@ -67,10 +74,12 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
   const property = getProperty(slug)
   if (!property) notFound()
 
-  const gallery = [...new Set([
-    ...property.gallery,
-    ...property.roomTypes.flatMap((room) => room.images),
-  ])]
+  const gallery = getPropertyImages(property)
+  const primaryImage = gallery[0] ?? null
+  const primaryImageRoom = primaryImage
+    ? property.roomTypes.find((room) => room.images.includes(primaryImage))?.name ?? null
+    : null
+  const additionalImages = gallery.slice(1)
   const mapQuery = getDisplayAddress(property)
   const cityUniversities = getUniversitiesByCity(property.city)
   const mentionedUniversityNames = cityUniversities
@@ -117,19 +126,36 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
             </div>
           </header>
 
+          {primaryImage ? (
+            <figure className="overflow-hidden rounded-2xl bg-[#E8E6E1]">
+              <img
+                src={primaryImage}
+                alt={primaryImageRoom ? `${primaryImageRoom} room at ${property.name}` : `${property.name} property photo`}
+                className="aspect-[16/8] max-h-[560px] w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            </figure>
+          ) : (
+            <div className="flex aspect-[16/8] max-h-[560px] flex-col items-center justify-center gap-3 rounded-2xl bg-[#E8E6E1] text-[#6B6860]">
+              <Building2 aria-hidden="true" className="size-12" />
+              <p className="text-sm font-semibold">Photos are not available for this property yet.</p>
+            </div>
+          )}
+
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.6fr)_minmax(280px,0.7fr)]">
             <div className="flex flex-col gap-6">
               <Section id="overview" title="Property overview">
                 {property.description ? <p className="whitespace-pre-line text-sm leading-7 text-[#4C4A45] sm:text-base">{property.description}</p> : <p className="text-sm leading-relaxed text-[#6B6860]">Explore the room options and practical details currently available for this property.</p>}
-                {gallery.length ? (
+                {additionalImages.length ? (
                   <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-                    {gallery.map((image, index) => {
+                    {additionalImages.map((image, index) => {
                       const roomName = property.roomTypes.find((room) => room.images.includes(image))?.name
                       return (
                         <figure key={`${image}-${index}`} className={`${index === 0 ? 'col-span-2 row-span-2' : ''} overflow-hidden rounded-xl bg-[#F7F6F3]`}>
                           <img
                             src={image}
-                            alt={roomName ? `${roomName} at ${property.name}` : `${property.name} ${index === 0 ? 'property photo' : `photo ${index + 1}`}`}
+                            alt={roomName ? `${roomName} at ${property.name}` : `${property.name} photo ${index + 2}`}
                             className={`${index === 0 ? 'aspect-[4/3] h-full' : 'aspect-[4/3]'} w-full object-cover`}
                             loading={index < 2 ? 'eager' : 'lazy'}
                             decoding="async"
