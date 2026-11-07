@@ -73,7 +73,7 @@ export default function PropertyEnquiryModal({ propertyName }: PropertyEnquiryMo
           onClick={() => openEnquiry('get-matched')}
           className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
         >
-          Get Matched
+          Talk to Us
         </button>
       </div>
 
@@ -85,8 +85,7 @@ export default function PropertyEnquiryModal({ propertyName }: PropertyEnquiryMo
       >
         <div className="flex items-start justify-between gap-4 border-b border-[#E8E6E1] px-6 py-5">
           <div>
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#00319D]">HearthAway enquiry</p>
-            <h2 id="property-enquiry-title" className="mt-2 font-heading text-2xl font-extrabold">{title}</h2>
+            <h2 id="property-enquiry-title" className="font-heading text-2xl font-extrabold">{title}</h2>
             <p className="mt-1 text-sm text-[#6B6860]">About {propertyName}</p>
           </div>
           <button

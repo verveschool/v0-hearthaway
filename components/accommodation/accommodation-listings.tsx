@@ -97,9 +97,6 @@ export default function AccommodationListings({ cities, listings }: Accommodatio
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
             Available properties
           </h2>
-          <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">
-            {`${visibleListings.length} ${visibleListings.length === 1 ? 'property' : 'properties'}${selectedCity === 'all' ? ' across all cities' : ` in ${selectedCity}`}`}
-          </p>
         </div>
         <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A] sm:max-w-xs">
           <span>Choose a city</span>

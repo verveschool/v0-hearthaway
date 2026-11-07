@@ -136,14 +136,6 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 loading="eager"
                 decoding="async"
               />
-              {property.photoSourceUrl ? (
-                <figcaption className="border-t border-[#E8E6E1] bg-white px-4 py-3 text-xs text-[#6B6860]">
-                  Official property photos from{' '}
-                  <a href={property.photoSourceUrl} target="_blank" rel="noopener noreferrer" className="font-bold text-[#00319D] underline-offset-4 hover:underline">
-                    STACEY
-                  </a>
-                </figcaption>
-              ) : null}
             </figure>
           ) : (
             <div className="flex aspect-[16/8] max-h-[560px] flex-col items-center justify-center gap-3 rounded-2xl bg-[#E8E6E1] text-[#6B6860]">
@@ -159,17 +151,20 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 {additionalImages.length ? (
                   <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
                     {additionalImages.map((image, index) => {
-                      const roomName = property.roomTypes.find((room) => room.images.includes(image))?.name
+                      const room = property.roomTypes.find((roomType) => roomType.images.includes(image))
+                      const photoLabel = room
+                        ? `${room.name} room${room.priceLabel ? ` · ${room.priceLabel}` : ''}`
+                        : property.galleryLabels?.[image] ?? `${property.name} property photo`
                       return (
                         <figure key={`${image}-${index}`} className={`${index === 0 ? 'col-span-2 row-span-2' : ''} overflow-hidden rounded-xl bg-[#F7F6F3]`}>
                           <img
                             src={image}
-                            alt={roomName ? `${roomName} at ${property.name}` : `${property.name} photo ${index + 2}`}
+                            alt={room ? `${photoLabel} at ${property.name}` : photoLabel}
                             className={`${index === 0 ? 'aspect-[4/3] h-full' : 'aspect-[4/3]'} w-full object-cover`}
                             loading={index < 2 ? 'eager' : 'lazy'}
                             decoding="async"
                           />
-                          {roomName ? <figcaption className="px-3 py-2 text-xs font-semibold text-[#4C4A45]">{roomName} room</figcaption> : null}
+                          {index > 0 ? <figcaption className="px-3 py-2 text-xs font-semibold text-[#4C4A45]">{photoLabel}</figcaption> : null}
                         </figure>
                       )
                     })}

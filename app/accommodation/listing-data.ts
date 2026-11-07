@@ -13,6 +13,7 @@ export type AccommodationRoomRecord = {
   images: string[]
   priceFrom: number | null
   pricePerNight: number | null
+  priceLabel: string | null
   available: number | null
   status: string | null
   minimumOccupancy: number | null
@@ -33,6 +34,7 @@ export type AccommodationListingRecord = {
   coverImage: string | null
   photoSourceUrl: string | null
   gallery: string[]
+  galleryLabels?: Record<string, string>
   amenities: string[]
   inclusions: string[]
   roomFeatures: string[]
@@ -172,6 +174,7 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
       images: room.image ? [room.image] : [],
       priceFrom: room.priceFrom ?? null,
       pricePerNight: null,
+      priceLabel: null,
       available: room.available ?? null,
       status: null,
       minimumOccupancy: room.minimumOccupancy ?? null,
@@ -204,6 +207,19 @@ function mapStaceyImage(sourcePath: string): string | null {
   return `/stacey/${encodedRelativePath}`
 }
 
+function mapStaceyGalleryLabels(
+  sourcePaths: string[],
+  captions: (string | null)[] | undefined,
+): Record<string, string> {
+  const labels: Record<string, string> = {}
+  sourcePaths.forEach((sourcePath, index) => {
+    const image = mapStaceyImage(sourcePath)
+    const caption = captions?.[index]
+    if (image && caption) labels[image] = caption
+  })
+  return labels
+}
+
 function slugifyAccommodationValue(value: string): string {
   return value
     .normalize('NFKD')
@@ -231,6 +247,11 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
       images,
       priceFrom: parseStaceyPrice(room.price ?? null),
       pricePerNight: parseStaceyPrice('pricePerNight' in room ? room.pricePerNight ?? null : null),
+      priceLabel: typeof room.price === 'string' && room.price
+        ? room.price
+        : 'pricePerNight' in room && typeof room.pricePerNight === 'string'
+          ? `${room.pricePerNight}/night`
+          : null,
       available: null,
       status: room.status,
       minimumOccupancy: null,
@@ -241,6 +262,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
   const propertyGallery = property.gallery
     .map(mapStaceyImage)
     .filter((image): image is string => image !== null)
+  const sourceGalleryLabels = 'galleryLabels' in property ? property.galleryLabels : undefined
   const coverImage = mapStaceyImage(property.coverImage)
     ?? propertyGallery[0]
     ?? roomTypes.find((room) => room.images.length > 0)?.images[0]
@@ -259,6 +281,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
     coverImage,
     photoSourceUrl: property.photoSourceUrl,
     gallery: [...new Set([...(coverImage ? [coverImage] : []), ...propertyGallery, ...roomTypes.flatMap((room) => room.images)])],
+    galleryLabels: mapStaceyGalleryLabels(property.gallery, sourceGalleryLabels),
     amenities: property.head.features,
     inclusions: property.head.features,
     roomFeatures: [...new Set(property.rooms.flatMap((room) => room.amenities))],
