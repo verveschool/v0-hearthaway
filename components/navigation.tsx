@@ -58,7 +58,7 @@ const navLinks = [
       { label: 'All Accommodation', href: '/accommodation' },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
       { label: 'Stacey', href: '/accommodation?provider=stacey' },
-      { label: 'More coming soon', href: '/accommodation'  },
+      { label: 'Browse individual rooms', href: '/accommodation/rooms' },
     ],
   },
   {
@@ -68,6 +68,10 @@ const navLinks = [
   {
     label: 'About',
     href: '/about',
+  },
+  {
+    label: 'My account',
+    href: '/account',
   },
 ]
 

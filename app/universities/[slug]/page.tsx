@@ -4,8 +4,8 @@ import Footer from '@/components/footer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-import { getCityBySlug, getUniversityByName, getUniversityBySlug, universities } from '@/lib/place-data'
-import { accommodationProperties } from '@/app/accommodation/catalog'
+import { getCityBySlug, getUniversityBySlug, universities } from '@/lib/place-data'
+import { accommodationListings } from '@/app/accommodation/listing-data'
 
 export function generateStaticParams() {
   return universities.map((university) => ({ slug: university.slug }))
@@ -86,7 +86,14 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
   const relatedUniversities = universities.filter(
     (u) => u.city === university.city && u.slug !== university.slug,
   )
-  const universityProperties = accommodationProperties.filter((property) => property.universities.some((name) => getUniversityByName(name, property.city)?.slug === university.slug))
+  const universityProperties = accommodationListings
+    .filter((property) => property.city.toLowerCase() === university.city.toLowerCase())
+    .map((property) => ({
+      ...property,
+      primaryListingSlug: property.slug,
+      image: property.coverImage ?? property.roomTypes.find((room) => room.image)?.image ?? '',
+      roomTypes: property.roomTypes.map((room) => room.name),
+    }))
 
   const countryName = city?.country ?? countryLabel(university.country)
 
@@ -237,12 +244,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 </div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Properties linked to {university.name}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">See accommodation entries connected to this university, including images, room options and property details.</p>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Partner accommodation in {university.city}</h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and Stacey room inventory in {university.city}. Confirm travel distance and availability with an advisor.</p>
                   </div>
                   <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse accommodation</Link>
                 </div>
-                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.slice(0, 4).map((property) => <Link key={property.slug} href={`/accommodation/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]"><img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" /></div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No catalogue entries are directly linked to this university yet. Browse nearby options in {university.city} instead.</p>}
+                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No partner accommodation is currently listed in {university.city}. Browse the full inventory to explore other destinations.</p>}
               </section>
 
               {relatedUniversities.length > 0 && (

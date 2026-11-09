@@ -6,7 +6,7 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import PropertyEnquiryModal from '@/components/accommodation/property-enquiry-modal'
 import { getUniversitiesByCity } from '@/lib/place-data'
-import { accommodationListings, formatSourceAvailability, formatSourcePrice } from '../../listing-data'
+import { accommodationListings, formatSourceAvailability, formatSourcePrice, getAccommodationRoomSlug } from '../../listing-data'
 
 export function generateStaticParams() {
   return accommodationListings.map((property) => ({ slug: property.slug }))
@@ -186,6 +186,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                           )}
                           <div className="p-5">
                             <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">{room.name}</h3>
+                            <Link href={`/accommodation/rooms/${getAccommodationRoomSlug(property.slug, room.name)}`} className="mt-1 inline-flex text-sm font-semibold text-[#00319D] underline-offset-4 hover:underline">View room details and booking options</Link>
                             <div className="mt-4 grid grid-cols-2 gap-3">
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
                                 <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Starting price</p>

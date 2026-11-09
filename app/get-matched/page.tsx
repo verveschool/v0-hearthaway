@@ -66,6 +66,8 @@ const TOTAL_STEPS = 4
 export default function GetMatchedPage() {
   const [step, setStep] = useState(1)
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [form, setForm] = useState<FormData>({
     country: '',
     city: '',
@@ -96,24 +98,23 @@ export default function GetMatchedPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    
+    if (isSubmitting) return
+    setIsSubmitting(true)
+    setSubmitError('')
+
     try {
       const response = await fetch('/api/get-matched', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form)
       })
 
-      if (!response.ok) {
-        throw new Error('Failed to submit operations data')
-      }
-
+      if (!response.ok) throw new Error('submission failed')
       setSubmitted(true)
-    } catch (error) {
-      console.error('Submission tracking failure', error)
-      alert('System error. Please verify input and try again.')
+    } catch {
+      setSubmitError('We could not send your enquiry just now. Please check your connection and try again.')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -474,6 +475,8 @@ export default function GetMatchedPage() {
                 </div>
               )}
 
+              {submitError ? <p role="alert" className="mt-5 rounded-xl bg-red-50 px-4 py-3 text-sm text-red-800">{submitError}</p> : null}
+
               {/* Navigation */}
               <div className="flex items-center justify-between mt-8 pt-6 border-t border-[#E8E6E1]">
                 {step > 1 ? (
@@ -506,10 +509,10 @@ export default function GetMatchedPage() {
                 ) : (
                   <button
                     type="submit"
-                    disabled={!form.phone}
+                    disabled={!form.phone || isSubmitting}
                     className="flex items-center gap-2 px-7 py-3 bg-[#FCC20A] text-[#333333] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
                   >
-                    {"Get my matches"}
+                    {isSubmitting ? 'Sending…' : 'Get my matches'}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
                       <path d="M9 18l6-6-6-6"/>
                     </svg>

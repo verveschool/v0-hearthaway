@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://hearthaway.com'),
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation in the UK, Ireland, France and Australia. Explore by city or university, compare room details, and get guidance before you arrive.',
+    'Explore current Vita Student and Stacey room inventory, compare options by city, and manage your student housing journey with a private HearthAway account.',
   keywords:
     'student accommodation, international students, UK student housing, university accommodation, student housing abroad',
   icons: {
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
   openGraph: {
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation in the UK, Ireland, France and Australia. Explore by city or university, compare room details, and get guidance before you arrive.',
+    'Explore current Vita Student and Stacey room inventory, compare options by city, and manage your student housing journey with a private HearthAway account.',
   type: 'website',
   locale: 'en_GB',
   images: [
@@ -49,7 +49,7 @@ twitter: {
   card: 'summary_large_image',
   title: 'HearthAway | Find the Right Student Accommodation Before You Arrive',
   description:
-    'Find student accommodation in the UK, Ireland, France and Australia. Explore by city or university, compare room details, and get guidance before you arrive.',
+    'Explore current Vita Student and Stacey room inventory, compare options by city, and manage your student housing journey with a private HearthAway account.',
   images: [brandBannerPath],
 },
 }
