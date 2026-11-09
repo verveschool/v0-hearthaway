@@ -4,22 +4,25 @@ import { ArrowRight } from 'lucide-react'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import AccommodationListings from '@/components/accommodation/accommodation-listings'
-import { accommodationCities, accommodationListings } from './listing-data'
+import { accommodationListings } from './listing-data'
 
 export const metadata: Metadata = {
   title: 'Student Accommodation | HearthAway',
-  description: 'Explore student accommodation properties, room options, prices and availability by city.',
+  description: 'Search student accommodation by city, university, property or room, with property details to help you compare your options.'
 }
 
 type AccommodationPageProps = {
-  searchParams: Promise<{ provider?: string }>
+  searchParams: Promise<{ provider?: string; city?: string; query?: string }>
 }
 
 export default async function AccommodationPage({ searchParams }: AccommodationPageProps) {
-  const { provider } = await searchParams
+  const { provider, city, query } = await searchParams
   const visibleListings = provider === 'stacey' || provider === 'vita-student'
     ? accommodationListings.filter((listing) => listing.provider === provider)
     : accommodationListings
+  const cities = [...new Set(visibleListings.map((listing) => listing.city))].sort()
+  const initialCity = city && cities.includes(city) ? city : 'all'
+  const initialQuery = query?.trim().slice(0, 100) ?? ''
   return (
     <>
       <Navigation />
@@ -45,7 +48,13 @@ export default async function AccommodationPage({ searchParams }: AccommodationP
           className="bg-[#F7F6F3] px-6 py-12 lg:px-8 lg:py-16"
         >
           <div className="mx-auto max-w-7xl">
-            <AccommodationListings cities={[...new Set(visibleListings.map((listing) => listing.city))].sort()} listings={visibleListings} />
+            <AccommodationListings
+              key={`${provider ?? 'all'}:${initialCity}:${initialQuery}`}
+              cities={cities}
+              listings={visibleListings}
+              initialCity={initialCity}
+              initialQuery={initialQuery}
+            />
             <div className="mt-12 flex flex-col items-start justify-between gap-5 rounded-2xl bg-[#00319D] p-6 text-white sm:flex-row sm:items-center sm:p-8">
               <div>
                 <h2 className="font-heading text-xl font-extrabold sm:text-2xl">Need help choosing?</h2>
