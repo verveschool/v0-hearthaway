@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { createClient } from '@/lib/supabase/server'
 
 type PropertyEnquiry = {
   firstName: string
@@ -88,9 +89,42 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Please check the enquiry details and try again.' }, { status: 400 })
   }
 
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  const input = body as Record<string, unknown>
+  const readText = (key: string) => typeof input[key] === 'string' ? String(input[key]).trim() : ''
+
+  if (user) {
+    const priorities = Array.isArray(input.priorities)
+      ? input.priorities.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean).slice(0, 16)
+      : []
+    const { error } = await supabase.from('enquiries').insert({
+      student_id: user.id,
+      contact_email: user.email || readText('email') || null,
+      first_name: readText('firstName').slice(0, 120),
+      last_name: readText('lastName').slice(0, 120),
+      phone: readText('phone').slice(0, 40) || null,
+      enquiry_type: validPropertyEnquiry ? String(input.enquiryType) : 'get-matched',
+      room_slug: null,
+      country: readText('country').slice(0, 120) || null,
+      city: readText('city').slice(0, 120) || null,
+      university: readText('university').slice(0, 200) || null,
+      move_in_window: readText('moveIn').slice(0, 120) || null,
+      stay_duration: readText('duration').slice(0, 120) || null,
+      budget_range: readText('budget').slice(0, 120) || null,
+      accommodation_preference: (readText('accommodation') || readText('propertyName')).slice(0, 200) || null,
+      priorities,
+      message: readText('message').slice(0, 1200) || null,
+      source: 'website',
+    })
+    if (error) return NextResponse.json({ error: 'We could not save your enquiry. Please try again.' }, { status: 500 })
+  }
+
   const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL
   if (!webhookUrl) {
-    return NextResponse.json({ error: 'Enquiries are temporarily unavailable.' }, { status: 503 })
+    return user
+      ? NextResponse.json({ success: true })
+      : NextResponse.json({ error: 'Enquiries are temporarily unavailable.' }, { status: 503 })
   }
 
   try {
@@ -101,12 +135,12 @@ export async function POST(request: Request) {
       signal: AbortSignal.timeout(10_000),
     })
 
-    if (!response.ok) {
+    if (!response.ok && !user) {
       return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 502 })
     }
-
-    return NextResponse.json({ success: true })
   } catch {
-    return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 502 })
+    if (!user) return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 502 })
   }
+
+  return NextResponse.json({ success: true })
 }

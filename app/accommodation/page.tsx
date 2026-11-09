@@ -39,6 +39,10 @@ export default async function AccommodationPage({ searchParams }: AccommodationP
               <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
                 Explore accommodation options and room details by city.
               </p>
+              <Link href="/accommodation/rooms" className="mt-5 inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/35 px-4 py-2 text-sm font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]">
+                Browse individual room types
+                <ArrowRight aria-hidden="true" className="size-4" />
+              </Link>
             </div>
           </div>
         </section>

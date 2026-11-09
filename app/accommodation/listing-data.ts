@@ -4,7 +4,6 @@ import {
   getDevelopmentDescription,
   type AccommodationFeedDevelopment,
 } from './response-data'
-import { accommodationProperties as curatedProperties } from './catalog'
 import staceyInventory from './stacey-inventory.json'
 
 export type AccommodationRoomRecord = {
@@ -95,18 +94,6 @@ function getDevelopmentAddress(development: AccommodationFeedDevelopment): strin
   return [address, postcode].filter(Boolean).join(', ') || null
 }
 
-function normalizeIdentity(value: string): string {
-  return value.trim().toLocaleLowerCase().replace(/[^a-z0-9]+/g, ' ').trim()
-}
-
-function getCuratedProperty(development: AccommodationFeedDevelopment) {
-  const name = normalizeIdentity(development.name)
-  const city = normalizeIdentity(development.city)
-  return curatedProperties.find((property) =>
-    normalizeIdentity(property.name) === name && normalizeIdentity(property.city) === city,
-  )
-}
-
 function getDescriptionInclusions(description: string | null): string[] {
   if (!description) return []
   const includedText = description.match(/what(?:'|’)s included is\s*(.+?)(?:\.|$)/i)?.[1]
@@ -130,7 +117,6 @@ for (const development of accommodationFeedDevelopments) {
 const slugCounts = new Map<string, number>()
 
 const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopments.map((development) => {
-  const curatedProperty = getCuratedProperty(development)
   const description = getDevelopmentDescription(development) ?? null
   const baseSlug = `${development.city}-${development.name}`
     .toLocaleLowerCase()
@@ -153,21 +139,18 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
       postcode: building.postcode ?? null,
       unitsAvailable: building.unitsAvailable ?? null,
     })),
-    address: getDevelopmentAddress(development) ?? curatedProperty?.address ?? null,
+    address: getDevelopmentAddress(development),
     description,
-    coverImage: curatedProperty?.gallery[0] ?? development.rooms.find((room) => room.image)?.image ?? null,
+    coverImage: development.rooms.find((room) => room.image)?.image ?? null,
     photoSourceUrl: null,
-    gallery: curatedProperty?.gallery ?? [],
-    amenities: curatedProperty?.amenities ?? [],
-    inclusions: [...new Set([
-      ...(curatedProperty?.inclusions ?? []),
-      ...getDescriptionInclusions(description),
-    ])],
-    roomFeatures: curatedProperty?.roomFeatures ?? [],
-    contractTerms: curatedProperty?.contractTerms ?? [],
-    depositNote: curatedProperty?.depositNote ?? null,
-    distance: curatedProperty?.distance ?? null,
-    universities: curatedProperty?.universities ?? [],
+    gallery: [...new Set(development.rooms.flatMap((room) => room.image ? [room.image] : []))],
+    amenities: [],
+    inclusions: getDescriptionInclusions(description),
+    roomFeatures: [],
+    contractTerms: [],
+    depositNote: null,
+    distance: null,
+    universities: [],
     roomTypes: development.rooms.map((room) => ({
       name: room.name,
       image: room.image ?? null,
@@ -295,6 +278,32 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
 
 export const accommodationListings = [...vitaAccommodationListings, ...staceyListings]
 export const allAccommodationListings = accommodationListings
+
+export type AccommodationRoomListing = {
+  slug: string
+  property: AccommodationListingRecord
+  room: AccommodationRoomRecord
+}
+
+export function getAccommodationRoomSlug(propertySlug: string, roomName: string, occurrence = 1): string {
+  const roomNameSlug = roomName.trim().toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'room'
+  const baseSlug = `${propertySlug}--${roomNameSlug}`
+  return occurrence > 1 ? `${baseSlug}-${occurrence}` : baseSlug
+}
+
+const roomSlugCounts = new Map<string, number>()
+export const accommodationRoomListings: AccommodationRoomListing[] = accommodationListings.flatMap((property) =>
+  property.roomTypes.map((room) => {
+    const baseSlug = getAccommodationRoomSlug(property.slug, room.name)
+    const occurrence = (roomSlugCounts.get(baseSlug) ?? 0) + 1
+    roomSlugCounts.set(baseSlug, occurrence)
+    return { slug: getAccommodationRoomSlug(property.slug, room.name, occurrence), property, room }
+  }),
+)
+
+export function getAccommodationRoomBySlug(slug: string): AccommodationRoomListing | null {
+  return accommodationRoomListings.find((room) => room.slug === slug) ?? null
+}
 
 export const accommodationCities = [...new Set(allAccommodationListings.map((listing) => listing.city))]
   .sort((first, second) => first.localeCompare(second))
