@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { ArrowRight, Building2, MapPin } from 'lucide-react'
+import { ArrowRight, Building2, MapPin, Search } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
 
 function formatSourcePrice(value: number): string {
@@ -16,6 +16,8 @@ function formatSourceAvailability(value: number): string {
 type AccommodationListingsProps = {
   cities: string[]
   listings: AccommodationListingRecord[]
+  initialCity?: string
+  initialQuery?: string
 }
 
 function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
@@ -84,21 +86,63 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
   )
 }
 
-export default function AccommodationListings({ cities, listings }: AccommodationListingsProps) {
-  const [selectedCity, setSelectedCity] = useState('all')
-  const visibleListings = selectedCity === 'all'
-    ? listings
-    : listings.filter((listing) => listing.city === selectedCity)
+export default function AccommodationListings({
+  cities,
+  listings,
+  initialCity = 'all',
+  initialQuery = '',
+}: AccommodationListingsProps) {
+  const [selectedCity, setSelectedCity] = useState(initialCity)
+  const [searchQuery, setSearchQuery] = useState(initialQuery)
+  const normalizedQuery = searchQuery.trim().toLocaleLowerCase()
+  const visibleListings = listings.filter((listing) => {
+    const matchesCity = selectedCity === 'all' || listing.city.toLocaleLowerCase() === selectedCity.toLocaleLowerCase()
+    if (!matchesCity || !normalizedQuery) return matchesCity
+
+    const searchableDetails = [
+      listing.name,
+      listing.city,
+      listing.country,
+      listing.address ?? '',
+      listing.description ?? '',
+      ...listing.universities,
+      ...listing.buildings.map((building) => building.name ?? ''),
+      ...listing.roomTypes.map((room) => room.name),
+    ].join(' ').toLocaleLowerCase()
+
+    return searchableDetails.includes(normalizedQuery)
+  })
+
+  const clearFilters = () => {
+    setSelectedCity('all')
+    setSearchQuery('')
+  }
 
   return (
     <div>
-      <div className="flex flex-col gap-5 border-b border-[#E8E6E1] pb-6 sm:flex-row sm:items-end sm:justify-between">
+      <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)] sm:items-end">
         <div>
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
             Available properties
           </h2>
+          <p className="mt-2 text-sm text-[#6B6860]" aria-live="polite">
+            {visibleListings.length} {visibleListings.length === 1 ? 'property' : 'properties'}
+          </p>
         </div>
-        <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A] sm:max-w-xs">
+        <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A]">
+          <span>Search properties, cities or universities</span>
+          <span className="relative block">
+            <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#6B6860]" />
+            <input
+              type="search"
+              value={searchQuery}
+              onChange={(event) => setSearchQuery(event.currentTarget.value)}
+              placeholder="Try a campus or city"
+              className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white pl-11 pr-4 text-sm font-medium text-[#1A1A1A] outline-none placeholder:font-normal placeholder:text-[#8A877F] focus-visible:ring-2 focus-visible:ring-[#00319D]"
+            />
+          </span>
+        </label>
+        <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A]">
           <span>Choose a city</span>
           <select
             aria-label="Filter accommodations by city"
@@ -112,15 +156,23 @@ export default function AccommodationListings({ cities, listings }: Accommodatio
         </label>
       </div>
 
-
       {visibleListings.length > 0 ? (
         <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {visibleListings.map((listing) => <PropertyCard key={listing.key} listing={listing} />)}
         </div>
       ) : (
-        <p className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center text-sm text-[#6B6860]">
-          No accommodation listings are present for this city in the supplied data.
-        </p>
+        <div className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center">
+          <p className="text-sm text-[#6B6860]">
+            No properties match these filters. Try another city or search term.
+          </p>
+          <button
+            type="button"
+            onClick={clearFilters}
+            className="mt-4 rounded-lg px-3 py-2 text-sm font-bold text-[#00319D] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
+          >
+            Clear filters
+          </button>
+        </div>
       )}
     </div>
   )
