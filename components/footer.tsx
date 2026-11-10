@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ReviewCollector from '@/components/home/review-collector'
 
-const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
+const brandIconPath = '/brand/  hearthaway_icon_light.png'
 
 const footerLinks = {
   Destinations: [
@@ -48,7 +48,7 @@ export default function Footer() {
     <footer className="font-sans">
 
       {/* CTA section */}
-      <section className="bg-[#00319D] text-white">
+      <section className="bg-[#01329C] text-white">
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
           <div className="flex flex-col items-start justify-between gap-7 lg:flex-row lg:items-center">
             <div>
@@ -64,7 +64,7 @@ export default function Footer() {
 
             <Link
               href="/get-matched"
-              className="inline-flex w-full flex-shrink-0 items-center justify-center rounded-xl bg-[#FCC20A] px-8 py-4 text-center text-base font-bold text-[#333333] shadow-lg transition-colors hover:bg-[#FCC20A] sm:w-auto"
+              className="brand-cta inline-flex min-h-12 w-full flex-shrink-0 items-center justify-center rounded-xl bg-[#FEBB01] px-8 py-4 text-center text-base font-bold text-[#333333] sm:w-auto"
             >
               Get Matched
             </Link>
@@ -86,7 +86,7 @@ export default function Footer() {
 
                 return (
                   <div key={category} className="min-w-0 sm:flex-shrink-0">
-                    <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
+                    <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
                       {category}
                     </h3>
 
@@ -97,7 +97,7 @@ export default function Footer() {
                             <li key={`${category}-${link.href}`}>
                               <Link
                                 href={link.href}
-                                className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                                className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
                               >
                                 {link.label}
                               </Link>
@@ -112,7 +112,7 @@ export default function Footer() {
 
               return (
                 <div key={category} className="sm:flex-shrink-0">
-                  <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
+                  <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
                     {category}
                   </h3>
 
@@ -121,7 +121,7 @@ export default function Footer() {
                       <li key={`${category}-${link.href}`}>
                         <Link
                           href={link.href}
-                          className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                          className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
                         >
                           {link.label}
                         </Link>
@@ -134,7 +134,7 @@ export default function Footer() {
 
             {/* Contact */}
             <div className="sm:flex-shrink-0">
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#00319D]">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
                 Contact
               </h3>
 
@@ -142,7 +142,7 @@ export default function Footer() {
                 <p>
                   <a
                     href="mailto:faraz@hearthaway.com"
-                    className="underline transition-colors hover:text-[#00319D]"
+                    className="underline transition-colors hover:text-[#01329C]"
                   >
                     faraz@hearthaway.com
                   </a>
@@ -151,7 +151,7 @@ export default function Footer() {
                 <p>
                   <a
                     href="tel:+919999965742"
-                    className="underline transition-colors hover:text-[#00319D]"
+                    className="underline transition-colors hover:text-[#01329C]"
                   >
                     +91 99999 65742
                   </a>
@@ -164,7 +164,7 @@ export default function Footer() {
                 <p>
                   <Link
                     href="/partners"
-                    className="font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                    className="font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
                   >
                     For Partners
                   </Link>
@@ -173,7 +173,7 @@ export default function Footer() {
                 <p>
                   <Link
                     href="/careers"
-                    className="font-semibold text-[#171717] transition-colors hover:text-[#00319D]"
+                    className="font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
                   >
                     Careers
                   </Link>
@@ -194,16 +194,18 @@ export default function Footer() {
               <Link
                 href="/"
                 aria-label="HearthAway home"
-                className="flex items-center"
+                className="flex items-center gap-2"
               >
                 <Image
-                  src={brandWordmarkPath}
-                  alt="HearthAway"
+                  src={brandIconPath}
+                  alt=""
                   width={128}
-                  height={57}
-                  className="h-12 w-auto"
-                  priority
+                  height={128}
+                  className="size-9"
                 />
+                <span className="font-heading text-base font-extrabold tracking-tight text-[#01329C]">
+                  Hearth<span className="text-[#FEBB01]">Away</span>
+                </span>
               </Link>
 
               <div className="flex items-center gap-5 sm:border-l sm:border-[#E5E5E5] sm:pl-6">
@@ -211,7 +213,7 @@ export default function Footer() {
                 <a
                   href="https://www.linkedin.com/company/hearthaway"
                   aria-label="LinkedIn"
-                  className="text-[#00319D]/60 transition-colors hover:text-[#00319D]"
+                  className="text-[#01329C]/60 transition-colors hover:text-[#01329C]"
                 >
                   <svg
                     width="20"
@@ -233,7 +235,7 @@ export default function Footer() {
                 <a
                   href="https://www.instagram.com/hearthaway_official"
                   aria-label="Instagram"
-                  className="text-[#00319D]/60 transition-colors hover:text-[#00319D]"
+                  className="text-[#01329C]/60 transition-colors hover:text-[#01329C]"
                 >
                   <svg
                     width="20"
@@ -263,21 +265,21 @@ export default function Footer() {
             <div className="flex gap-5 text-xs font-normal text-[#6B6B6B] md:text-sm">
               <Link
                 href="/privacy"
-                className="transition-colors hover:text-[#00319D]"
+                className="transition-colors hover:text-[#01329C]"
               >
                 Privacy
               </Link>
 
               <Link
                 href="/terms"
-                className="transition-colors hover:text-[#00319D]"
+                className="transition-colors hover:text-[#01329C]"
               >
                 Terms
               </Link>
 
               <Link
                 href="/cookies"
-                className="transition-colors hover:text-[#00319D]"
+                className="transition-colors hover:text-[#01329C]"
               >
                 Cookies
               </Link>

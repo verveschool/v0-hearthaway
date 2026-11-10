@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
-const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
+const brandIconPath = '/brand/  hearthaway_icon_light.png'
 
 const navLinks = [
   {
@@ -100,19 +100,22 @@ export default function Navbar() {
   }, [closeMobileDrawer])
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-slate-100 bg-white text-[#00319D] shadow-sm">
+    <nav className="sticky top-0 z-50 border-b border-[#E8E6E1] bg-white text-[#01329C] shadow-[0_1px_0_rgba(1,50,156,0.03)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="relative flex h-20 items-center justify-between">
+        <div className="relative flex h-[4.5rem] items-center justify-between sm:h-20">
           <div className="flex-shrink-0">
-            <Link href="/" aria-label="HearthAway Home" className="flex items-center">
+            <Link href="/" aria-label="HearthAway Home" className="flex items-center gap-2">
               <Image
-                src={brandWordmarkPath}
-                alt="HearthAway Logo"
+                src={brandIconPath}
+                alt=""
                 width={128}
-                height={57}
-                className="h-12 w-auto"
+                height={128}
+                className="size-8 sm:size-10"
                 priority
               />
+              <span className="font-heading text-base font-extrabold tracking-tight text-[#01329C] sm:text-lg">
+                Hearth<span className="text-[#FEBB01]">Away</span>
+              </span>
             </Link>
           </div>
 
@@ -124,7 +127,11 @@ export default function Navbar() {
                 onMouseEnter={() => {
                   if (link.dropdown) setActiveDropdown(idx)
                 }}
-                onMouseLeave={() => setActiveDropdown(null)}
+                onMouseLeave={(event) => {
+                  if (!event.currentTarget.contains(document.activeElement)) {
+                    setActiveDropdown(null)
+                  }
+                }}
                 onFocus={() => {
                   if (link.dropdown) setActiveDropdown(idx)
                 }}
@@ -135,7 +142,11 @@ export default function Navbar() {
                   }
                 }}
                 onKeyDown={(event) => {
-                  if (event.key === 'Escape') setActiveDropdown(null)
+                  if (event.key === 'Escape') {
+                    event.preventDefault()
+                    setActiveDropdown(null)
+                    event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus()
+                  }
                 }}
               >
                 {link.dropdown ? (
@@ -144,39 +155,39 @@ export default function Navbar() {
                       id={`desktop-button-${idx}`}
                       type="button"
                       onClick={() => setActiveDropdown(activeDropdown === idx ? null : idx)}
-                      className="flex items-center gap-1 text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
+                      className="nav-link flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
                       aria-expanded={activeDropdown === idx}
                       aria-controls={`desktop-dropdown-${idx}`}
                     >
                       {link.label}
-                      <ChevronDown className="h-4 w-4" aria-hidden="true" />
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
                     </button>
 
-                    {activeDropdown === idx && (
-                      <div
-                        id={`desktop-dropdown-${idx}`}
-                        aria-labelledby={`desktop-button-${idx}`}
-                        className="absolute left-0 top-full mt-0 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl"
-                        onKeyDown={(event) => {
-                          if (event.key === 'Escape') setActiveDropdown(null)
-                        }}
-                      >
+                    <div
+                      id={`desktop-dropdown-${idx}`}
+                      aria-labelledby={`desktop-button-${idx}`}
+                      aria-hidden={activeDropdown !== idx}
+                      inert={activeDropdown !== idx}
+                      data-open={activeDropdown === idx}
+                      className="nav-dropdown absolute left-0 top-full z-50 w-56 pt-2"
+                    >
+                      <div className="max-h-[70vh] overflow-y-auto rounded-2xl border border-[#E8E6E1] bg-white p-2 shadow-[0_18px_50px_rgba(15,23,42,0.14)]">
                         {link.dropdown.map((subLink, subIdx) => (
                           <Link
                             key={`desktop-sub-${subLink.label}-${subIdx}`}
                             href={subLink.href}
-                            className="block px-4 py-2 text-sm text-slate-700 transition-colors hover:bg-slate-50 hover:text-[#00319D]"
+                            className="flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#F7F6F3] hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
                           >
                             {subLink.label}
                           </Link>
                         ))}
                       </div>
-                    )}
+                    </div>
                   </>
                 ) : (
                   <Link
                     href={link.href}
-                    className="text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
+                    className="nav-link rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
                   >
                     {link.label}
                   </Link>
@@ -189,14 +200,14 @@ export default function Navbar() {
     <Link
       href="/sign-in?next=%2Faccount"
       aria-label="Log in or create a student account"
-      className="inline-flex items-center gap-2 rounded-lg border-2 border-[#00319D] px-4 py-2.5 text-sm font-bold text-[#00319D] transition-colors hover:bg-[#00319D]/5"
+      className="nav-login-button inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-[#01329C]"
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />
       <span>Log in / Sign up</span>
     </Link>
     <Link
       href="/get-matched"
-      className="inline-flex rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-[#333333] shadow-sm transition-colors hover:bg-[#FCC20A]"
+      className="brand-cta inline-flex min-h-11 items-center justify-center rounded-lg bg-[#FEBB01] px-5 py-2.5 text-sm font-bold text-[#333333]"
     >
       Get Matched
     </Link>
@@ -206,7 +217,7 @@ export default function Navbar() {
     <Link
       href="/sign-in?next=%2Faccount"
       aria-label="Log in or create a student account"
-      className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#00319D] px-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#00267A]"
+      className="nav-login-button inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-3 text-sm font-bold text-[#01329C] shadow-sm"
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />
       <span>Sign in</span>
@@ -223,7 +234,7 @@ export default function Navbar() {
               aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
               aria-controls="mobile-navigation-panel"
               aria-expanded={isOpen}
-              className="inline-flex items-center justify-center rounded-md p-2 text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
+              className="inline-flex size-11 items-center justify-center rounded-xl text-[#01329C]/80 transition-all hover:bg-[#01329C]/5 hover:text-[#01329C] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
             >
               {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </button>
@@ -233,8 +244,10 @@ export default function Navbar() {
 
       <div
         id="mobile-navigation-panel"
-        hidden={!isOpen}
-        className="nav-mobile-panel max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-inner xl:hidden"
+        aria-hidden={!isOpen}
+        inert={!isOpen}
+        data-open={isOpen}
+        className="nav-mobile-panel overscroll-contain border-t border-[#E8E6E1] bg-white px-4 pb-6 pt-2 shadow-[0_18px_40px_rgba(15,23,42,0.08)] xl:hidden"
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             closeMobileDrawer()
@@ -243,7 +256,7 @@ export default function Navbar() {
         }}
       >
           {navLinks.map((link, idx) => (
-            <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
+            <div key={`mobile-group-${link.label}-${idx}`} className="flex flex-col gap-1">
               {link.dropdown ? (
                 <div>
                   <button
@@ -251,32 +264,36 @@ export default function Navbar() {
                     onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="flex min-h-11 w-full items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
+                    className="nav-link flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
                   >
                     {link.label}
                     <ChevronDown className={`h-4 w-4 transition-transform ${openMobileDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
                   </button>
 
-                  {openMobileDropdown === idx && (
-                    <div id={`mobile-dropdown-${idx}`} className="space-y-1 pl-4">
-                      {link.dropdown.map((subLink, subIdx) => (
-                        <Link
-                          key={`mobile-sub-${subLink.label}-${subIdx}`}
-                          href={subLink.href}
-                          onClick={closeMobileDrawer}
-                          className="flex min-h-11 items-center rounded-md px-3 py-2 text-base font-medium text-[#00319D]/70 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
-                        >
-                          {subLink.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                  <div
+                    id={`mobile-dropdown-${idx}`}
+                    aria-hidden={openMobileDropdown !== idx}
+                    inert={openMobileDropdown !== idx}
+                    data-open={openMobileDropdown === idx}
+                    className="nav-mobile-submenu flex flex-col gap-1 pl-4"
+                  >
+                    {link.dropdown.map((subLink, subIdx) => (
+                      <Link
+                        key={`mobile-sub-${subLink.label}-${subIdx}`}
+                        href={subLink.href}
+                        onClick={closeMobileDrawer}
+                        className="nav-link flex min-h-11 items-center rounded-lg px-3 py-2 text-base font-medium text-[#01329C]/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
+                      >
+                        {subLink.label}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               ) : (
                 <Link
                   href={link.href}
                   onClick={closeMobileDrawer}
-                  className="flex min-h-11 items-center rounded-md px-3 py-2 text-base font-medium text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
+                  className="nav-link flex min-h-11 items-center rounded-lg px-3 py-2 text-base font-medium text-[#01329C]/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
                 >
                   {link.label}
                 </Link>
@@ -288,14 +305,14 @@ export default function Navbar() {
     <Link
       href="/sign-in?next=%2Faccount"
       onClick={closeMobileDrawer}
-      className="block w-full rounded-xl border-2 border-[#00319D] px-4 py-3 text-center font-bold text-[#00319D] transition-colors hover:bg-[#00319D]/5"
+      className="nav-login-button flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-4 py-3 text-center font-bold text-[#01329C]"
     >
       Log in / Sign up
     </Link>
     <Link
       href="/get-matched"
               onClick={closeMobileDrawer}
-              className="block w-full rounded-xl bg-[#FCC20A] px-4 py-3 text-center font-bold text-[#333333] shadow-md transition-colors hover:bg-[#FCC20A]"
+              className="brand-cta flex min-h-12 w-full items-center justify-center rounded-xl bg-[#FEBB01] px-4 py-3 text-center font-bold text-[#333333]"
             >
               Get Matched
             </Link>

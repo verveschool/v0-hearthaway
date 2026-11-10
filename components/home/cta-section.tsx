@@ -5,15 +5,15 @@ import { countries } from '@/lib/country-data'
 
 export default function CtaSection() {
   return (
-    <section className="bg-[#F7F6F3] py-24 lg:py-32">
+    <section className="bg-[#F7F6F3] py-20 sm:py-24 lg:py-28" data-home-reveal>
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="relative overflow-hidden rounded-3xl bg-[#00319D] min-h-[480px] flex flex-col lg:flex-row">
+        <div className="relative flex min-h-[430px] flex-col overflow-hidden rounded-[2rem] bg-[#01329C] shadow-[0_24px_80px_rgba(1,50,156,0.16)] lg:flex-row">
 
           {/* Text side */}
           <div className="relative z-10 flex-1 flex flex-col justify-center p-10 lg:p-16 xl:p-20">
             <div className="inline-flex items-center gap-2 mb-7">
               <div
-                className="w-2 h-2 rounded-full bg-[#FCC20A]"
+                className="w-2 h-2 rounded-full bg-[#FEBB01]"
                 aria-hidden="true"
               />
               <span className="text-white/70 text-sm font-semibold">
@@ -23,7 +23,7 @@ export default function CtaSection() {
 
             <h2 className="font-heading text-3xl lg:text-[2.5rem] xl:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6 max-w-xl">
               You&apos;ve got your place.{' '}
-              <span className="text-[#FCC20A]">Now get your home.</span>
+              <span className="text-[#FEBB01]">Now get your home.</span>
             </h2>
 
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
@@ -35,7 +35,7 @@ export default function CtaSection() {
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#333333] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
+                className="brand-cta inline-flex min-h-14 items-center justify-center gap-3 rounded-xl bg-[#FEBB01] px-8 py-4 text-base font-extrabold text-[#333333] sm:text-lg"
               >
                 Get Matched
               </Link>
@@ -57,7 +57,7 @@ export default function CtaSection() {
                   >
                     <path
                       d="M2 7L5.5 10.5L12 4"
-                      stroke="#FCC20A"
+                      stroke="#FEBB01"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -81,7 +81,7 @@ export default function CtaSection() {
 
             {/* Floating stat */}
             <div className="absolute top-6 right-6 bg-white rounded-2xl p-5 shadow-2xl max-w-[210px]">
-              <div className="font-extrabold text-3xl text-[#00319D] mb-0.5">
+              <div className="font-extrabold text-3xl text-[#01329C] mb-0.5">
                 {countries.length}
               </div>
               <div className="text-[#6B6860] text-sm leading-snug">
@@ -93,7 +93,7 @@ export default function CtaSection() {
             <div className="absolute bottom-6 right-6 bg-white/95 rounded-xl px-4 py-3 shadow-lg">
               <div className="flex items-center gap-2.5">
                 <div
-                  className="w-2 h-2 rounded-full bg-green-500 animate-pulse"
+                  className="size-2 rounded-full bg-[#FEBB01]"
                   aria-hidden="true"
                 />
                 <span className="text-[#1A1A1A] text-sm font-bold">

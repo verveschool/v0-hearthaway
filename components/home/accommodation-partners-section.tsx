@@ -40,19 +40,19 @@ const accommodationPartnerLogos: readonly AccommodationPartnerLogo[] = [
 
 export default function AccommodationPartnersSection() {
   return (
-    <section className="bg-[#ffffff] py-12 lg:py-16" aria-labelledby="accommodation-partners-heading">
+    <section className="bg-[#F7F6F3] py-16 sm:py-20 lg:py-24" aria-labelledby="accommodation-partners-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="mx-auto max-w-2xl text-center mb-8 lg:mb-10">
+        <div className="mx-auto mb-10 max-w-2xl text-center sm:mb-12" data-home-reveal>
           <h2 id="accommodation-partners-heading" className="font-heading text-[#1A1A1A] text-2xl lg:text-3xl font-extrabold tracking-tight text-balance">
             Trusted homes from verified providers
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-6 lg:gap-4">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-6" data-home-reveal>
           {accommodationPartnerLogos.map((logo) => (
             <div
               key={logo.src}
-              className="flex aspect-[4/3] items-center justify-center rounded-none bg-white p-0"
+              className="group flex aspect-[4/3] items-center justify-center rounded-2xl border border-[#E8E6E1] bg-white p-4 shadow-[0_1px_2px_rgba(0,0,0,0.025)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#01329C]/20 hover:shadow-md sm:p-5"
             >
               <Image
                 src={logo.src}
