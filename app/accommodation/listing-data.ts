@@ -1,5 +1,4 @@
 import {
-  accommodationFeedCities,
   accommodationFeedDevelopments,
   getDevelopmentDescription,
   type AccommodationFeedDevelopment,

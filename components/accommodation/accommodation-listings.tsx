@@ -9,10 +9,6 @@ function formatSourcePrice(value: number): string {
   return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
 }
 
-function formatSourceAvailability(value: number): string {
-  return `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(value)} available`
-}
-
 type AccommodationListingsProps = {
   cities: string[]
   listings: AccommodationListingRecord[]
