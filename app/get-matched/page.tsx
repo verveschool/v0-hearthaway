@@ -52,6 +52,7 @@ type FormData = {
   moveIn: string
   duration: string
   budget: string
+  intent: string
   accommodation: string
   priorities: string[]
   firstName: string
@@ -59,6 +60,7 @@ type FormData = {
   email: string
   phone: string
   message: string
+  companyWebsite?: string
 }
 
 const TOTAL_STEPS = 4
@@ -75,13 +77,15 @@ export default function GetMatchedPage() {
     moveIn: '',
     duration: '',
     budget: '',
+    intent: 'exploring',
     accommodation: '',
     priorities: [],
     firstName: '',
     lastName: '',
     email: '',
     phone: '',
-    message: ''
+    message: '',
+    companyWebsite: ''
   })
 
   const cities = citiesByCountry.get(form.country) ?? []
@@ -197,6 +201,10 @@ export default function GetMatchedPage() {
           </div>
 
           <form onSubmit={handleSubmit}>
+            <label aria-hidden="true" className="pointer-events-none absolute -left-[10000px] h-px w-px overflow-hidden">
+              Leave this field empty
+              <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" value={form.companyWebsite ?? ''} onChange={(event) => setForm((current) => ({ ...current, companyWebsite: event.target.value }))} />
+            </label>
             <div className="bg-white rounded-2xl border border-[#E8E6E1] p-8 shadow-sm">
 
               {/* Step 1: Destination */}
@@ -339,6 +347,22 @@ export default function GetMatchedPage() {
                   <p className="text-[#6B6860] mb-7">{"We use this to match you with accommodation that fits your life, not just your budget."}</p>
 
                   <div className="flex flex-col gap-5">
+                    <fieldset>
+                      <legend className="mb-3 text-sm font-semibold text-[#1A1A1A]">{"What best describes your plans?"}</legend>
+                      <div className="grid gap-2 sm:grid-cols-3">
+                        {[
+                          { value: 'exploring', label: 'Just exploring', detail: 'I am starting to look around.' },
+                          { value: 'shortlisting', label: 'Comparing options', detail: 'I am ready to shortlist homes.' },
+                          { value: 'ready-to-book', label: 'Ready to book', detail: 'I would like help moving forward.' },
+                        ].map((intent) => (
+                          <label key={intent.value} className={`flex cursor-pointer flex-col gap-1 rounded-xl border-2 p-4 transition-colors focus-within:ring-2 focus-within:ring-[#00319D] ${form.intent === intent.value ? 'border-[#00319D] bg-[#00319D]/5' : 'border-[#E8E6E1] hover:border-[#00319D]/40'}`}>
+                            <input className="sr-only" type="radio" name="intent" value={intent.value} checked={form.intent === intent.value} onChange={() => setForm((current) => ({ ...current, intent: intent.value }))} />
+                            <span className="text-sm font-bold text-[#1A1A1A]">{intent.label}</span>
+                            <span className="text-xs leading-relaxed text-[#6B6860]">{intent.detail}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
                     <div>
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-3">{"Type of accommodation"}</label>
                       <div className="flex flex-col gap-2">

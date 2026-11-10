@@ -16,6 +16,7 @@ import {
   type ProfileFormValues,
 } from '@/components/account/forms'
 import { createClient } from '@/lib/supabase/server'
+import { StudentJourneyForms } from '@/components/account/student-journey-forms'
 import { accommodationRoomListings, getAccommodationRoomBySlug } from '@/app/accommodation/listing-data'
 
 export const metadata: Metadata = {
@@ -33,6 +34,15 @@ function formatDate(value: string) {
 
 function formatStatus(value: string) {
   return value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+}
+
+function formatEnquiryTitle(type: string, message: string | null) {
+  if (type !== 'service' || !message) return formatStatus(type)
+  const marker = message.split('\n')[0]
+  if (marker === '[Renewal planning request]') return 'Renewal planning'
+  if (marker === '[Student referral]') return 'Student referral'
+  if (marker === '[Student feedback]') return 'Student feedback'
+  return formatStatus(type)
 }
 
 function readOptionalString(value: unknown, key: string): string | null {
@@ -69,7 +79,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
     supabase.from('saved_rooms').select('room_slug,created_at').eq('student_id', user.id).order('created_at', { ascending: false }),
     supabase.from('shortlists').select('id,name,created_at').eq('student_id', user.id).order('created_at', { ascending: false }),
     supabase.from('shortlist_items').select('shortlist_id,room_slug,created_at').order('created_at', { ascending: false }),
-    supabase.from('enquiries').select('id,enquiry_type,room_slug,status,city,university,created_at').eq('student_id', user.id).order('created_at', { ascending: false }),
+    supabase.from('enquiries').select('id,enquiry_type,room_slug,status,city,university,message,created_at').eq('student_id', user.id).order('created_at', { ascending: false }),
     supabase.from('booking_requests').select('id,room_slug,status,message,created_at,updated_at').eq('student_id', user.id).order('created_at', { ascending: false }),
     supabase.from('payment_records').select('id,booking_request_id,amount_minor,currency,status,provider,created_at').eq('student_id', user.id).order('created_at', { ascending: false }),
     supabase.from('service_catalog').select('slug,name,description').eq('active', true).order('sort_order', { ascending: true }),
@@ -143,7 +153,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           <nav aria-label="Account sections" className="mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
             {[
               ['profile', 'Profile'], ['saved', 'Saved rooms'], ['shortlists', 'Shortlists'],
-              ['bookings', 'Bookings'], ['services', 'Services'], ['advisor', 'Advisor'], ['documents', 'Documents'],
+              ['bookings', 'Bookings'], ['services', 'Services'], ['ongoing-support', 'Future plans'], ['advisor', 'Advisor'], ['documents', 'Documents'],
             ].map(([id, label]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-[#D8D5CE] bg-white px-4 py-2 text-[#00319D] hover:border-[#00319D]">{label}</a>)}
           </nav>
 
@@ -238,7 +248,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             {enquiries.length ? <div className="mt-6 border-t border-[#E8E6E1] pt-5">
               <h3 className="font-semibold text-[#1A1A1A]">Enquiry history</h3>
               <ul className="mt-3 grid gap-3 sm:grid-cols-2">
-                {enquiries.map((enquiry) => <li key={enquiry.id} className="rounded-xl bg-[#F7F6F3] p-4"><div className="flex items-center justify-between gap-3"><span className="font-semibold text-[#333333]">{formatStatus(enquiry.enquiry_type)}</span><span className="text-xs text-[#6B6860]">{formatStatus(enquiry.status)}</span></div><p className="mt-2 text-sm text-[#6B6860]">{[enquiry.city, enquiry.university].filter(Boolean).join(' · ') || 'HearthAway enquiry'} · {formatDate(enquiry.created_at)}</p></li>)}
+                {enquiries.map((enquiry) => <li key={enquiry.id} className="rounded-xl bg-[#F7F6F3] p-4"><div className="flex items-center justify-between gap-3"><span className="font-semibold text-[#333333]">{formatEnquiryTitle(enquiry.enquiry_type, enquiry.message)}</span><span className="text-xs text-[#6B6860]">{formatStatus(enquiry.status)}</span></div><p className="mt-2 text-sm text-[#6B6860]">{[enquiry.city, enquiry.university].filter(Boolean).join(' · ') || 'HearthAway enquiry'} · {formatDate(enquiry.created_at)}</p>{enquiry.message ? <p className="mt-2 whitespace-pre-wrap text-sm leading-relaxed text-[#4C4A45]">{enquiry.message.slice(0, 320)}{enquiry.message.length > 320 ? '…' : ''}</p> : null}</li>)}
               </ul>
             </div> : null}
           </section>
@@ -256,6 +266,11 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
               <h3 className="font-semibold text-[#1A1A1A]">Your service requests</h3>
               <ul className="mt-3 grid gap-3 sm:grid-cols-2">{serviceRequests.map((request) => <li key={request.id} className="rounded-xl bg-[#F7F6F3] p-4"><div className="flex items-center justify-between gap-3"><span className="font-semibold text-[#333333]">{serviceNames.get(request.service_slug) ?? request.service_slug}</span><span className="text-xs font-bold text-[#00319D]">{formatStatus(request.status)}</span></div><p className="mt-2 text-xs text-[#6B6860]">Requested {formatDate(request.created_at)}</p>{request.message ? <p className="mt-2 text-sm text-[#4C4A45]">{request.message}</p> : null}</li>)}</ul>
             </div> : null}
+          </section>
+
+          <section id="ongoing-support" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+            <SectionHeading eyebrow="Keep in touch" title="Your next chapter with HearthAway" detail="Plan a future move, refer a student, or share feedback with the team. Public sharing of feedback is always opt-in." />
+            <StudentJourneyForms profileCity={profile.city} />
           </section>
 
           <section id="advisor" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">

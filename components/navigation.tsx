@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useState, useEffect, useCallback } from 'react'
-import { Menu, X, ChevronDown } from 'lucide-react'
+import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
 const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
 
@@ -68,10 +68,6 @@ const navLinks = [
   {
     label: 'About',
     href: '/about',
-  },
-  {
-    label: 'My account',
-    href: '/account',
   },
 ]
 
@@ -183,15 +179,33 @@ export default function Navbar() {
             ))}
           </div>
 
-          <Link
-            href="/get-matched"
-            className="hidden rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-[#333333] shadow-sm transition-colors hover:bg-[#FCC20A] md:inline-flex"
-          >
-            Get Matched
-          </Link>
+  <div className="hidden items-center gap-2 md:flex">
+    <Link
+      href="/sign-in?next=%2Faccount"
+      aria-label="Log in or create a student account"
+      className="inline-flex items-center gap-2 rounded-lg border-2 border-[#00319D] px-4 py-2.5 text-sm font-bold text-[#00319D] transition-colors hover:bg-[#00319D]/5"
+    >
+      <UserRound className="h-4 w-4" aria-hidden="true" />
+      <span>Log in / Sign up</span>
+    </Link>
+    <Link
+      href="/get-matched"
+      className="inline-flex rounded-lg bg-[#FCC20A] px-5 py-2.5 text-sm font-bold text-[#333333] shadow-sm transition-colors hover:bg-[#FCC20A]"
+    >
+      Get Matched
+    </Link>
+  </div>
 
-          <div className="flex items-center md:hidden">
-            <button
+  <div className="flex items-center gap-2 md:hidden">
+    <Link
+      href="/sign-in?next=%2Faccount"
+      aria-label="Log in or create a student account"
+      className="inline-flex min-h-10 items-center gap-2 rounded-lg bg-[#00319D] px-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-[#00267A]"
+    >
+      <UserRound className="h-4 w-4" aria-hidden="true" />
+      <span>Sign in</span>
+    </Link>
+    <button
               type="button"
               onClick={() => {
                 setIsOpen((currentIsOpen) => {
@@ -253,9 +267,16 @@ export default function Navbar() {
             </div>
           ))}
 
-          <div className="px-3 pt-4">
-            <Link
-              href="/get-matched"
+  <div className="flex flex-col gap-3 px-3 pt-4">
+    <Link
+      href="/sign-in?next=%2Faccount"
+      onClick={closeMobileDrawer}
+      className="block w-full rounded-xl border-2 border-[#00319D] px-4 py-3 text-center font-bold text-[#00319D] transition-colors hover:bg-[#00319D]/5"
+    >
+      Log in / Sign up
+    </Link>
+    <Link
+      href="/get-matched"
               onClick={closeMobileDrawer}
               className="block w-full rounded-xl bg-[#FCC20A] px-4 py-3 text-center font-bold text-[#333333] shadow-md transition-colors hover:bg-[#FCC20A]"
             >
