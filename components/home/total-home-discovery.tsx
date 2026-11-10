@@ -40,9 +40,6 @@ export default function TotalHomeDiscovery() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <header className="max-w-xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#00319D]">
-              A more connected way to find your place
-            </p>
             <h2 className="mt-4 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] text-balance sm:text-4xl lg:text-5xl">
               One home search. Start anywhere.
             </h2>

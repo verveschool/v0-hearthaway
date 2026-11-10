@@ -27,7 +27,6 @@ export default async function SignInPage({ searchParams }: SignInPageProps) {
       <Navigation />
       <main className="flex min-h-[calc(100vh-5rem)] items-center justify-center bg-[#F7F6F3] px-5 py-16 pt-28">
         <section className="w-full max-w-md rounded-3xl border border-[#E8E6E1] bg-white p-7 shadow-sm sm:p-9" aria-labelledby="sign-in-title">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#00319D]">Your HearthAway account</p>
           <h1 id="sign-in-title" className="mt-3 font-heading text-3xl font-extrabold text-[#1A1A1A]">Welcome back</h1>
           <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">Sign in to manage saved rooms, requests and your support documents.</p>
           {message === 'check-email' ? <p role="status" className="mt-5 rounded-xl bg-emerald-50 p-3 text-sm text-emerald-800">Check your email to confirm your account, then sign in.</p> : null}
