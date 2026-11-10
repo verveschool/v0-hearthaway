@@ -134,6 +134,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 alt={primaryImageRoom ? `${primaryImageRoom} room at ${property.name}` : `${property.name} property photo`}
                 className="aspect-[16/8] max-h-[560px] w-full object-cover"
                 loading="eager"
+                fetchPriority="high"
                 decoding="async"
               />
             </figure>
@@ -161,7 +162,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                             src={image}
                             alt={room ? `${photoLabel} at ${property.name}` : photoLabel}
                             className={`${index === 0 ? 'aspect-[4/3] h-full' : 'aspect-[4/3]'} w-full object-cover`}
-                            loading={index < 2 ? 'eager' : 'lazy'}
+                            loading="lazy"
                             decoding="async"
                           />
                           {index > 0 ? <figcaption className="px-3 py-2 text-xs font-semibold text-[#4C4A45]">{photoLabel}</figcaption> : null}

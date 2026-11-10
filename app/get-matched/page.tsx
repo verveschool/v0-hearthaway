@@ -205,7 +205,7 @@ export default function GetMatchedPage() {
               Leave this field empty
               <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" value={form.companyWebsite ?? ''} onChange={(event) => setForm((current) => ({ ...current, companyWebsite: event.target.value }))} />
             </label>
-            <div className="bg-white rounded-2xl border border-[#E8E6E1] p-8 shadow-sm">
+            <div className="bg-white rounded-2xl border border-[#E8E6E1] p-5 shadow-sm sm:p-8">
 
               {/* Step 1: Destination */}
               {step === 1 && (
@@ -218,13 +218,14 @@ export default function GetMatchedPage() {
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">
                         {"Country "} <span className="text-[#00319D] font-bold">*</span>
                       </label>
-                      <div className="grid grid-cols-3 gap-3">
+                      <div role="group" aria-label="Country" className="grid grid-cols-2 gap-3 sm:grid-cols-3">
                         {countries.map((c) => (
                           <button
                             key={c}
                             type="button"
+                            aria-pressed={form.country === c}
                             onClick={() => setForm((f) => ({ ...f, country: c, city: '' }))}
-                            className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all ${
+                            className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] ${
                               form.country === c
                                 ? 'border-[#00319D] bg-[#00319D] text-white'
                                 : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
@@ -239,13 +240,14 @@ export default function GetMatchedPage() {
                     {form.country && (
                       <div>
                         <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"City"}</label>
-                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        <div role="group" aria-label="City" className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                           {cities.map((c) => (
                             <button
                               key={c}
                               type="button"
+                              aria-pressed={form.city === c}
                               onClick={() => setForm((f) => ({ ...f, city: c }))}
-                              className={`py-2.5 px-3 rounded-xl border text-sm font-medium transition-all ${
+                              className={`py-2.5 px-3 rounded-xl border text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] ${
                                 form.city === c
                                   ? 'border-[#00319D] bg-[#00319D]/8 text-[#00319D]'
                                   : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
@@ -319,13 +321,14 @@ export default function GetMatchedPage() {
 
                     <div>
                       <label className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"Monthly budget"}</label>
-                      <div className="grid grid-cols-2 gap-3">
+                      <div role="group" aria-label="Monthly budget" className="grid grid-cols-2 gap-3">
                         {budgetRanges.map((b) => (
                           <button
                             key={b.value}
                             type="button"
+                            aria-pressed={form.budget === b.value}
                             onClick={() => setForm((f) => ({ ...f, budget: b.value }))}
-                            className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all ${
+                            className={`py-3 px-4 rounded-xl border-2 text-sm font-semibold transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] ${
                               form.budget === b.value
                                 ? 'border-[#00319D] bg-[#00319D] text-white'
                                 : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
@@ -370,8 +373,9 @@ export default function GetMatchedPage() {
                           <button
                             key={a.value}
                             type="button"
+                            aria-pressed={form.accommodation === a.value}
                             onClick={() => setForm((f) => ({ ...f, accommodation: a.value }))}
-                            className={`flex items-center justify-between px-5 py-4 rounded-xl border-2 text-left transition-all ${
+                            className={`flex items-center justify-between px-5 py-4 rounded-xl border-2 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] ${
                               form.accommodation === a.value
                                 ? 'border-[#00319D] bg-[#00319D]/5'
                                 : 'border-[#E8E6E1] hover:border-[#00319D]/40'
@@ -404,8 +408,9 @@ export default function GetMatchedPage() {
                           <button
                             key={p}
                             type="button"
+                            aria-pressed={form.priorities.includes(p)}
                             onClick={() => togglePriority(p)}
-                            className={`px-4 py-2 rounded-full border text-sm font-medium transition-all ${
+                            className={`px-4 py-2 rounded-full border text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] ${
                               form.priorities.includes(p)
                                 ? 'border-[#FCC20A] bg-[#FCC20A] text-[#333333]'
                                 : 'border-[#E8E6E1] text-[#6B6860] hover:border-[#00319D]/40'
@@ -427,7 +432,7 @@ export default function GetMatchedPage() {
                   <p className="text-[#6B6860] mb-7">{"Your contact details are used solely to send verified options directly to you."}</p>
 
                   <div className="flex flex-col gap-4">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                       <div>
                         <label htmlFor="first-name" className="block text-sm font-semibold text-[#1A1A1A] mb-2">{"First name"}</label>
                         <input
