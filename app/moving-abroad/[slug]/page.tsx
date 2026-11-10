@@ -290,7 +290,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </p>
                 <Link
                   href="/get-matched"
-                  className="inline-flex px-8 py-4 bg-accent text-primary font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
+                  className="inline-flex px-8 py-4 bg-accent text-accent-foreground font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
                 >
                   Get matched
                 </Link>
