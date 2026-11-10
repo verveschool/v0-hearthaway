@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import {
-  ArrowRight,
   ArrowUpRight,
   Building2,
   GraduationCap,
@@ -77,25 +76,23 @@ export default function TotalHomeDiscovery() {
           </nav>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5 rounded-3xl bg-[#00319D] p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:p-8 lg:mt-10 lg:p-10">
+        <div className="mt-8 flex flex-col gap-5 rounded-3xl bg-[#00319D] p-5 text-white sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-8 lg:mt-10">
           <div className="flex items-start gap-4 sm:items-center">
-            <span className="flex size-12 shrink-0 items-center justify-center rounded-full bg-[#FCC20A] text-[#1A1A1A]">
-              <Building2 aria-hidden="true" className="size-5" />
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#FCC20A] text-[#1A1A1A]">
+              <MessageCircle aria-hidden="true" className="size-5" />
             </span>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/65">The room directory</p>
-              <h3 className="mt-1 font-heading text-xl font-extrabold sm:text-2xl">A clear next step, whenever you&apos;re ready.</h3>
+              <h3 className="font-heading text-xl font-extrabold leading-snug sm:text-2xl">Need help deciding?</h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
-                Compare property and room details, return to a city or campus guide, or bring an advisor in when you want a hand.
+                Have questions or need a hand? Talk to our team. We&apos;re happy to help.
               </p>
             </div>
           </div>
           <Link
-            href="/accommodation"
-            className="inline-flex min-h-12 shrink-0 items-center justify-center gap-2 rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-extrabold text-[#1A1A1A] transition-colors hover:bg-[#f5b900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
+            href="/get-matched"
+            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-extrabold text-[#1A1A1A] transition-colors hover:bg-[#f5b900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
           >
-            Explore rooms
-            <ArrowRight aria-hidden="true" className="size-4" />
+            Talk to us →
           </Link>
         </div>
       </div>

@@ -93,3 +93,10 @@
     font-family: var(--font-manrope), 'Manrope Fallback', system-ui, sans-serif;
   }
 }
+
+a[class~="bg-[#FCC20A]"],
+button[class~="bg-[#FCC20A]"],
+a[class~="bg-accent"],
+button[class~="bg-accent"] {
+  border: 1px solid #00319D;
+}

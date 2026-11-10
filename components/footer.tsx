@@ -27,6 +27,7 @@ const footerLinks = {
 
   Students: [
     { label: 'Accommodation', href: '/accommodation' },
+    { label: 'How it works', href: '/how-it-works' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' },
     { label: 'Resources', href: '/moving-abroad' },
