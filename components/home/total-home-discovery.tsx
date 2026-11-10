@@ -41,9 +41,6 @@ export default function TotalHomeDiscovery() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
           <header className="max-w-xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#00319D]">
-              A more connected way to find your place
-            </p>
             <h2 className="mt-4 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] text-balance sm:text-4xl lg:text-5xl">
               One home search. Start anywhere.
             </h2>
@@ -83,7 +80,6 @@ export default function TotalHomeDiscovery() {
               <Building2 aria-hidden="true" className="size-5" />
             </span>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-white/65">The room directory</p>
               <h3 className="mt-1 font-heading text-xl font-extrabold sm:text-2xl">A clear next step, whenever you&apos;re ready.</h3>
               <p className="mt-2 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">
                 Compare property and room details, return to a city or campus guide, or bring an advisor in when you want a hand.
