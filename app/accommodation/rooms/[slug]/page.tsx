@@ -39,7 +39,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
           <Link href="/accommodation/rooms" className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">All room types</Link>
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.7fr)]">
             <section className="overflow-hidden rounded-3xl border border-[#E8E6E1] bg-white">
-              {room.image ? <img src={room.image} alt={`${room.name} room at ${property.name}`} className="aspect-[16/9] w-full bg-[#F1F0EC] object-cover" /> : property.coverImage ? <img src={property.coverImage} alt={`${property.name} accommodation`} className="aspect-[16/9] w-full bg-[#F1F0EC] object-cover" /> : <div aria-hidden="true" className="aspect-[16/9] bg-[#F1F0EC]" />}
+              {room.image ? <img src={room.image} alt={`${room.name} room at ${property.name}`} className="aspect-[16/9] w-full bg-[#F1F0EC] object-cover" fetchPriority="high" decoding="async" /> : property.coverImage ? <img src={property.coverImage} alt={`${property.name} accommodation`} className="aspect-[16/9] w-full bg-[#F1F0EC] object-cover" fetchPriority="high" decoding="async" /> : <div aria-hidden="true" className="aspect-[16/9] bg-[#F1F0EC]" />}
               <div className="p-6 sm:p-9">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-bold uppercase tracking-wide text-[#00319D]">{property.provider === 'vita-student' ? 'Vita Student' : 'Stacey'}</span>

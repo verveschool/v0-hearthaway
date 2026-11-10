@@ -177,7 +177,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             <SectionHeading eyebrow="Your shortlist" title="Saved rooms" detail="Save rooms from the inventory and return to them whenever you need." />
             {savedRooms.length ? <div className="grid gap-4 md:grid-cols-2">
               {savedRooms.map(({ room_slug, created_at, room }) => <article key={room_slug} className="flex gap-4 rounded-xl border border-[#E8E6E1] p-4">
-                {room?.room.image ? <img src={room.room.image} alt={`${room.room.name} at ${room.property.name}`} className="size-24 shrink-0 rounded-lg object-cover" /> : <div aria-hidden="true" className="size-24 shrink-0 rounded-lg bg-[#F1F0EC]" />}
+                {room?.room.image ? <img src={room.room.image} alt={`${room.room.name} at ${room.property.name}`} className="size-24 shrink-0 rounded-lg object-cover" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="size-24 shrink-0 rounded-lg bg-[#F1F0EC]" />}
                 <div className="min-w-0 flex-1">
                   <Link href={`/accommodation/rooms/${room_slug}`} className="font-bold text-[#00319D] underline-offset-4 hover:underline">{room?.room.name} at {room?.property.name}</Link>
                   <p className="mt-1 text-sm text-[#6B6860]">{room?.property.city} · Saved {formatDate(created_at)}</p>

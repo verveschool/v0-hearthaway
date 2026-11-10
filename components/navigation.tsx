@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
 const brandWordmarkPath = '/brand/  hearthaway_icon_light.png'
@@ -12,6 +12,7 @@ const navLinks = [
     label: 'Universities',
     href: '/universities',
     dropdown: [
+      { label: 'All Universities', href: '/universities' },
       { label: 'UK', href: '/uk' },
       { label: 'Ireland', href: '/ireland' },
       { label: 'USA', href: '/usa' },
@@ -81,17 +82,21 @@ export default function Navbar() {
     setOpenMobileDropdown(null)
   }, [])
 
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth >= 768) {
+    const desktopNavigation = window.matchMedia('(min-width: 1280px) and (hover: hover) and (pointer: fine)')
+    const closeDrawerOnDesktop = () => {
+      if (desktopNavigation.matches) {
         closeMobileDrawer()
         setActiveDropdown(null)
       }
     }
 
-    window.addEventListener('resize', handleResize)
+    desktopNavigation.addEventListener('change', closeDrawerOnDesktop)
+    closeDrawerOnDesktop()
 
-    return () => window.removeEventListener('resize', handleResize)
+    return () => desktopNavigation.removeEventListener('change', closeDrawerOnDesktop)
   }, [closeMobileDrawer])
 
   return (
@@ -111,7 +116,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
+          <div className="nav-desktop-layout absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 xl:flex">
             {navLinks.map((link, idx) => (
               <div
                 key={`desktop-main-${link.label}-${idx}`}
@@ -123,11 +128,14 @@ export default function Navbar() {
                 onFocus={() => {
                   if (link.dropdown) setActiveDropdown(idx)
                 }}
-                onBlur={(e: any) => {
-                  if (!e.currentTarget.contains(e.relatedTarget)) setActiveDropdown(null)
+                onBlur={(event) => {
+                  const nextTarget = event.relatedTarget
+                  if (!(nextTarget instanceof Node) || !event.currentTarget.contains(nextTarget)) {
+                    setActiveDropdown(null)
+                  }
                 }}
-                onKeyDown={(e: any) => {
-                  if (e.key === 'Escape') setActiveDropdown(null)
+                onKeyDown={(event) => {
+                  if (event.key === 'Escape') setActiveDropdown(null)
                 }}
               >
                 {link.dropdown ? (
@@ -137,7 +145,6 @@ export default function Navbar() {
                       type="button"
                       onClick={() => setActiveDropdown(activeDropdown === idx ? null : idx)}
                       className="flex items-center gap-1 text-sm font-bold text-[#00319D] transition-colors hover:text-[#00319D]"
-                      aria-haspopup="true"
                       aria-expanded={activeDropdown === idx}
                       aria-controls={`desktop-dropdown-${idx}`}
                     >
@@ -148,11 +155,10 @@ export default function Navbar() {
                     {activeDropdown === idx && (
                       <div
                         id={`desktop-dropdown-${idx}`}
-                        role="menu"
                         aria-labelledby={`desktop-button-${idx}`}
                         className="absolute left-0 top-full mt-0 w-48 rounded-xl border border-slate-100 bg-white py-2 shadow-xl"
-                        onKeyDown={(e: any) => {
-                          if (e.key === 'Escape') setActiveDropdown(null)
+                        onKeyDown={(event) => {
+                          if (event.key === 'Escape') setActiveDropdown(null)
                         }}
                       >
                         {link.dropdown.map((subLink, subIdx) => (
@@ -179,7 +185,7 @@ export default function Navbar() {
             ))}
           </div>
 
-  <div className="hidden items-center gap-2 md:flex">
+  <div className="nav-desktop-layout hidden items-center gap-2 xl:flex">
     <Link
       href="/sign-in?next=%2Faccount"
       aria-label="Log in or create a student account"
@@ -196,7 +202,7 @@ export default function Navbar() {
     </Link>
   </div>
 
-  <div className="flex items-center gap-2 md:hidden">
+  <div className="nav-mobile-layout flex items-center gap-2 xl:hidden">
     <Link
       href="/sign-in?next=%2Faccount"
       aria-label="Log in or create a student account"
@@ -205,7 +211,8 @@ export default function Navbar() {
       <UserRound className="h-4 w-4" aria-hidden="true" />
       <span>Sign in</span>
     </Link>
-    <button
+            <button
+              ref={menuButtonRef}
               type="button"
               onClick={() => {
                 setIsOpen((currentIsOpen) => {
@@ -213,9 +220,10 @@ export default function Navbar() {
                   return !currentIsOpen
                 })
               }}
-              aria-label="Toggle Menu"
+              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-controls="mobile-navigation-panel"
               aria-expanded={isOpen}
-              className="inline-flex items-center justify-center rounded-md p-2 text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D]"
+              className="inline-flex items-center justify-center rounded-md p-2 text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
             >
               {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
             </button>
@@ -223,8 +231,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {isOpen && (
-        <div className="space-y-3 border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-inner md:hidden">
+      <div
+        id="mobile-navigation-panel"
+        hidden={!isOpen}
+        className="nav-mobile-panel max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain border-t border-slate-100 bg-white px-4 pb-6 pt-2 shadow-inner xl:hidden"
+        onKeyDown={(event) => {
+          if (event.key === 'Escape') {
+            closeMobileDrawer()
+            menuButtonRef.current?.focus()
+          }
+        }}
+      >
           {navLinks.map((link, idx) => (
             <div key={`mobile-group-${link.label}-${idx}`} className="space-y-1">
               {link.dropdown ? (
@@ -234,7 +251,7 @@ export default function Navbar() {
                     onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="flex w-full items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#00319D]"
+                    className="flex min-h-11 w-full items-center justify-between rounded-md px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
                   >
                     {link.label}
                     <ChevronDown className={`h-4 w-4 transition-transform ${openMobileDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -247,7 +264,7 @@ export default function Navbar() {
                           key={`mobile-sub-${subLink.label}-${subIdx}`}
                           href={subLink.href}
                           onClick={closeMobileDrawer}
-                          className="block rounded-md px-3 py-2 text-base font-medium text-[#00319D]/70 transition-all hover:bg-[#00319D]/5 hover:text-[#00319D]"
+                          className="flex min-h-11 items-center rounded-md px-3 py-2 text-base font-medium text-[#00319D]/70 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
                         >
                           {subLink.label}
                         </Link>
@@ -259,7 +276,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={closeMobileDrawer}
-                  className="block rounded-md px-3 py-2 text-base font-medium text-[#00319D]/80 transition-all hover:bg-[#00319D]/5 hover:text-[#00319D]"
+                  className="flex min-h-11 items-center rounded-md px-3 py-2 text-base font-medium text-[#00319D]/80 transition-colors hover:bg-[#00319D]/5 hover:text-[#00319D] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
                 >
                   {link.label}
                 </Link>
@@ -284,7 +301,6 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
-      )}
     </nav>
   )
 }

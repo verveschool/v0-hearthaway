@@ -9,10 +9,6 @@ function formatSourcePrice(value: number): string {
   return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
 }
 
-function formatSourceAvailability(value: number): string {
-  return `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(value)} available`
-}
-
 type AccommodationListingsProps = {
   cities: string[]
   listings: AccommodationListingRecord[]
@@ -120,8 +116,8 @@ export default function AccommodationListings({
 
   return (
     <div>
-      <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)] sm:items-end">
-        <div>
+      <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
+        <div className="sm:col-span-2 xl:col-span-1">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
             Available properties
           </h2>

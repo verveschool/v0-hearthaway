@@ -80,7 +80,7 @@ export default function GuidanceSection() {
 
           {/* Pillars */}
           <div className="flex flex-col gap-8">
-            {pillars.map((pillar, i) => (
+            {pillars.map((pillar) => (
               <div
                 key={pillar.title}
                 className="flex gap-5 items-start group"

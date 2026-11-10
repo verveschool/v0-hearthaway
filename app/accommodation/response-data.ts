@@ -762,7 +762,7 @@ export function getFeedPropertyRoomPriceLabel(room: AccommodationFeedRoom): stri
   return getDevelopmentRoomPrice(room)
 }
 
-export function getFeedPropertyRoomOccupancy(room: AccommodationFeedRoom): string | undefined {
+export function getFeedPropertyRoomOccupancy(): string | undefined {
   return undefined
 }
 

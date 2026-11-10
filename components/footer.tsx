@@ -77,7 +77,7 @@ export default function Footer() {
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
 
           {/* Navigation + contact */}
-          <div className="flex flex-col gap-10 sm:flex-row sm:flex-nowrap sm:items-start sm:justify-between sm:gap-8">
+          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-8">
 
             {Object.entries(footerLinks).map(([category, links]) => {
               if (category === 'Destinations') {

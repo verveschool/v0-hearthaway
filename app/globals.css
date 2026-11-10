@@ -97,6 +97,33 @@
 a[class~="bg-[#FCC20A]"],
 button[class~="bg-[#FCC20A]"],
 a[class~="bg-accent"],
-button[class~="bg-accent"] {
-  border: 1px solid #00319D;
+button[class~="bg-accent"],
+a[class~="bg-hearth-gold"],
+button[class~="bg-hearth-gold"] {
+  border: 2px solid #000000;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .nav-desktop-layout {
+    display: none !important;
+  }
+
+  .nav-mobile-layout {
+    display: flex !important;
+  }
+
+  .nav-mobile-panel:not([hidden]) {
+    display: block !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
