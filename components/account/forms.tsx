@@ -165,7 +165,7 @@ export function StudentDocumentUploadForm() {
   const [state, formAction, pending] = useActionState(uploadStudentDocumentAction, initialState)
   return <form action={formAction} className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
     <label className="flex min-w-0 flex-col gap-2 text-sm font-semibold text-[#333333]">
-      <span>Choose document</span>
+      <span>Choose Document</span>
       <input name="document" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" required className="block min-w-0 w-full text-sm text-[#4C4A45] file:mr-3 file:min-h-10 file:rounded-lg file:border-0 file:bg-[#F7F6F3] file:px-3 file:font-semibold file:text-[#00319D]" />
     </label>
     <SubmitButton pending={pending} className="w-auto self-end">Upload securely</SubmitButton>
