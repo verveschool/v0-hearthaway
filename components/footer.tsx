@@ -6,12 +6,10 @@ import ReviewCollector from '@/components/home/review-collector'
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 const priorityDestinations = [
-  { label: 'UK', href: '/uk' },
+  { label: 'United Kingdom', href: '/uk' },
   { label: 'Australia', href: '/australia' },
   { label: 'Germany', href: '/germany' },
-  { label: 'France', href: '/france' },
   { label: 'Ireland', href: '/ireland' },
-  { label: 'Dubai', href: '/uae' },
   { label: 'Spain', href: '/spain' },
   { label: 'Italy', href: '/italy' },
 ]
