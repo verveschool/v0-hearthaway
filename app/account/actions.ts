@@ -54,9 +54,9 @@ export async function saveRoomAction(_previous: ActionState, formData: FormData)
 
   const { error } = await supabase.from('saved_rooms').insert({ student_id: user.id, room_slug: roomSlug })
   if (error?.code === '23505') return { status: 'success', message: 'This room is already in your saved rooms.' }
-  return error
-    ? { status: 'error', message: 'We could not save this room. Please try again.' }
-    : { status: 'success', message: 'Room saved to your account.' }
+  if (error) return { status: 'error', message: 'We could not save this room. Please try again.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Room saved to your account.' }
 }
 
 export async function removeSavedRoomAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
