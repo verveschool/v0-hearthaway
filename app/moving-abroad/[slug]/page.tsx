@@ -58,18 +58,25 @@ function titleCase(text: string) {
     .join(' ')
 }
 
-function relatedGuidesForArticle(articleSlug: string, countrySlugs: MovingAbroadCountrySlug[], category: string) {
-  const seen = new Set<string>()
-
+function relatedGuidesForArticle(articleSlug: string, countrySlugs: MovingAbroadCountrySlug[], category: string, stage: string) {
   return movingAbroadArticles
     .filter((article) => article.slug !== articleSlug)
-    .filter((article) => article.category === category || article.countries.some((country) => countrySlugs.includes(country)))
-    .filter((article) => {
-      if (seen.has(article.slug)) return false
-      seen.add(article.slug)
-      return true
+    .map((article, index) => {
+      const sameCategory = article.category === category
+      const sameStage = article.stage === stage
+      const sharedCountry = article.countries.some((country) => countrySlugs.includes(country))
+
+      return {
+        article,
+        index,
+        score: (sameCategory ? 6 : 0) + (sameStage ? 3 : 0) + (sharedCountry ? 1 : 0),
+        isTopicallyRelevant: sameCategory || sameStage,
+      }
     })
+    .filter((match) => match.isTopicallyRelevant)
+    .sort((a, b) => b.score - a.score || a.index - b.index)
     .slice(0, 4)
+    .map((match) => match.article)
 }
 
 export async function generateMetadata({ params }: MovingAbroadArticlePageProps): Promise<Metadata> {
@@ -97,7 +104,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
   }
 
   const relevantCountries = getRelevantCountries(article.countries)
-  const relatedGuides = relatedGuidesForArticle(article.slug, article.countries, article.category)
+  const relatedGuides = relatedGuidesForArticle(article.slug, article.countries, article.category, article.stage)
 
   const keyTakeaways = article.sections.slice(0, 3)
 
