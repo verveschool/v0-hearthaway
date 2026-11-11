@@ -26,21 +26,21 @@ const footerLinks = {
   ],
 
   Students: [
-    { label: 'Properties', href: '/accommodation' },
-    { label: 'Available Rooms', href: '/accommodation/rooms' },
+    { label: 'About us', href: '/about' },
     { label: 'How it works', href: '/how-it-works' },
+    { label: 'All Properties', href: '/accommodation' },
+    { label: 'All Rooms', href: '/accommodation/rooms' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' },
-    { label: 'Resources', href: '/moving-abroad' },
-    { label: 'About', href: '/about' },
-    { label: 'Get Matched', href: '/get-matched' },
   ],
 
   Guides: [
+    { label: 'All Resources', href: '/moving-abroad' },
     { label: 'Pre-Arrival Checklist', href: '/moving-abroad/pre-arrival-checklist' },
     { label: 'Student Visa', href: '/moving-abroad/student-visa' },
     { label: 'Accommodation Guide', href: '/moving-abroad/choose-accommodation' },
     { label: 'Budget Planning', href: '/moving-abroad/real-cost-abroad' },
+    { label: 'Get Matched', href: '/get-matched' },
   ],
 }
 
@@ -197,13 +197,13 @@ export default function Footer() {
                 aria-label="HearthAway home"
                 className="inline-flex items-center"
               >
-              <Image
-                src={brandWordmarkPath}
-                alt="HearthAway"
-                width={336}
-                height={100}
-                className="hidden h-auto w-[13rem] xl:block 2xl:w-[15rem]"
-                priority
+                <Image
+                  src={brandWordmarkPath}
+                  alt="HearthAway"
+                  width={336}
+                  height={100}
+                  className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
+                  priority
                 />
               </Link>
 
