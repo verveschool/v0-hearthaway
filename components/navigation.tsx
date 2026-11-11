@@ -119,9 +119,9 @@ export default function Navbar() {
                 alt="HearthAway"
                 width={336}
                 height={100}
-                className="hidden h-auto w-[14rem] xl:block 2xl:w-64"
+                className="hidden h-auto w-[13rem] xl:block 2xl:w-[15rem]"
                 priority
-              />
+                />
             </Link>
           </div>
 
