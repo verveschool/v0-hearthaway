@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
-const brandIconPath = '/brand/  hearthaway-icon-light.png'
+const brandIconPath = '/brand/  hearthaway_icon_light.png'
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 type NavSubLink = {
