@@ -2,6 +2,7 @@
 
 import { useActionState, type ReactNode } from 'react'
 import Link from 'next/link'
+import { LogOut } from 'lucide-react'
 import {
   addRoomToShortlistAction,
   createShortlistAction,
@@ -162,17 +163,17 @@ export function RequestServiceForm({ serviceSlug }: { serviceSlug: string }) {
 
 export function StudentDocumentUploadForm() {
   const [state, formAction, pending] = useActionState(uploadStudentDocumentAction, initialState)
-  return <form action={formAction} className="flex flex-col gap-4">
-    <label className="flex flex-col gap-2 text-sm font-semibold text-[#333333]">
-      <span>Choose a document</span>
-      <input name="document" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" required className="block w-full text-sm text-[#4C4A45] file:mr-4 file:min-h-10 file:rounded-lg file:border-0 file:bg-[#F7F6F3] file:px-4 file:font-semibold file:text-[#00319D]" />
+  return <form action={formAction} className="grid gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-end">
+    <label className="flex min-w-0 flex-col gap-2 text-sm font-semibold text-[#333333]">
+      <span>Choose document</span>
+      <input name="document" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" required className="block min-w-0 w-full text-sm text-[#4C4A45] file:mr-3 file:min-h-10 file:rounded-lg file:border-0 file:bg-[#F7F6F3] file:px-3 file:font-semibold file:text-[#00319D]" />
     </label>
-    <p className="text-xs leading-relaxed text-[#6B6860]">PDF, JPG, PNG or WebP, up to 10 MB. Documents are private to your account and your assigned support team.</p>
-    <SubmitButton pending={pending}>Upload securely</SubmitButton>
-    <Feedback state={state} />
+    <SubmitButton pending={pending} className="w-auto self-end">Upload securely</SubmitButton>
+    <p className="text-xs leading-relaxed text-[#6B6860] sm:col-span-2">PDF, JPG, PNG or WebP · Up to 10 MB · Private to you and your support team.</p>
+    <div className="sm:col-span-2"><Feedback state={state} /></div>
   </form>
 }
 
 export function SignOutButton() {
-  return <form action={signOutAction}><button type="submit" className="rounded-xl border border-[#D8D5CE] px-4 py-2 text-sm font-bold text-[#00319D] hover:bg-[#F7F6F3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]">Sign out</button></form>
+  return <form action={signOutAction}><button type="submit" className="inline-flex min-h-10 items-center gap-2 rounded-xl border border-white/50 bg-white px-4 py-2 text-sm font-bold text-[#00319D] transition-colors hover:bg-[#F7F6F3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"><LogOut aria-hidden="true" size={16} strokeWidth={2} />Sign Out</button></form>
 }
