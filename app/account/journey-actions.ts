@@ -63,6 +63,7 @@ export async function submitJourneyRequestAction(
       `Referral name: ${referralName}`,
       `Referral email: ${referralEmail}`,
       'Permission to share contact details: confirmed',
+      'Referral reward: £50 for a successful referral under the existing programme terms',
     ].join('\n')
   } else if (journeyType === 'testimonial') {
     const testimonial = readText(formData, 'testimonial', 1000)

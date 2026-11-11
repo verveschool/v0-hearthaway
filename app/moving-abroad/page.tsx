@@ -60,10 +60,7 @@ function GuideLink({ guide }: { guide: MovingAbroadArticleCard }) {
       href={guide.href}
       className="group bg-white rounded-2xl p-5 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200 flex flex-col h-full"
     >
-      <div className="flex items-center justify-between gap-4 mb-4">
-        <span className="text-xs font-bold text-primary tracking-wider uppercase px-2.5 py-1 bg-accent rounded-full">
-          {guide.category}
-        </span>
+      <div className="flex items-center justify-end gap-4 mb-4">
         <span className="text-xs text-muted-foreground flex-shrink-0">{guide.readTime}</span>
       </div>
       <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2 group-hover:text-primary transition-colors">
@@ -109,9 +106,6 @@ export default function MovingAbroadPage() {
                   href={preArrivalChecklist.href}
                   className="group lg:col-span-2 bg-[var(--color-warm-gray)] rounded-2xl p-7 lg:p-8 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-xl transition-all duration-300 flex flex-col"
                 >
-                  <span className="text-xs font-bold text-primary tracking-wider uppercase px-3 py-1.5 bg-accent rounded-full self-start mb-5">
-                    Start here
-                  </span>
                   <h2 className="font-heading font-bold text-3xl text-charcoal-ink leading-tight mb-4 group-hover:text-primary transition-colors text-balance">
                     {titleCase(preArrivalChecklist.title)}
                   </h2>

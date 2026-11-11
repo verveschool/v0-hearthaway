@@ -1,16 +1,22 @@
-import { MetadataRoute } from 'next'
+import type { MetadataRoute } from 'next'
+import { countries } from '@/lib/country-data'
 import { cities, universities } from '@/lib/place-data'
+import { movingAbroadArticles } from '@/lib/moving-abroad-data'
 import { accommodationListings, accommodationRoomListings } from '@/app/accommodation/listing-data'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://hearthaway.com'
+const baseUrl = 'https://hearthaway.com'
 
-  // Define static routes
+export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     '',
+    '/universities',
+    '/cities',
     '/about',
     '/how-it-works',
+    '/moving-abroad',
     '/get-matched',
+    '/accommodation',
+    '/accommodation/rooms',
     '/partners',
     '/careers',
     '/privacy',
@@ -18,46 +24,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/cookies',
   ]
 
-  // Define country routes
-  const countryRoutes = [
-    '/uk',
-    '/ireland',
-    '/france',
-    '/germany',
-    '/australia',
-    '/usa',
-    '/canada',
-    '/spain',
-    '/italy',
-    '/singapore',
-    '/austria',
-    '/belgium',
-    '/hungary',
-    '/malta',
-    '/uae',
-    '/netherlands',
-    '/malaysia',
-  ]
-
-  const placeRoutes = [
-    ...cities.map((city) => `/cities/${city.slug}`),
-    ...universities.map((university) => `/universities/${university.slug}`),
-  ]
+  const countryRoutes = countries.map((country) => `/${country.slug}`)
+  const resourceRoutes = movingAbroadArticles.map((article) => `/moving-abroad/${article.slug}`)
+  const cityRoutes = cities.map((city) => `/cities/${city.slug}`)
+  const universityRoutes = universities.map((university) => `/universities/${university.slug}`)
   const accommodationRoutes = [
-    '/accommodation',
-    '/accommodation/rooms',
     ...accommodationListings.map((property) => `/accommodation/property/${property.slug}`),
     ...accommodationRoomListings.map((room) => `/accommodation/rooms/${room.slug}`),
   ]
 
-  const allRoutes = [...staticRoutes, ...countryRoutes, ...placeRoutes, ...accommodationRoutes]
+  const allRoutes = Array.from(new Set([
+    ...staticRoutes,
+    ...countryRoutes,
+    ...resourceRoutes,
+    ...cityRoutes,
+    ...universityRoutes,
+    ...accommodationRoutes,
+  ]))
 
-  const sitemapEntries: MetadataRoute.Sitemap = allRoutes.map((route) => ({
+  return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: route === '' ? 'weekly' : 'monthly',
-    priority: route === '' ? 1 : route.startsWith('/accommodation') ? 0.9 : route.startsWith('/cities/') || route.startsWith('/universities/') ? 0.8 : route.startsWith('/uk') || route.startsWith('/ireland') ? 0.8 : 0.6,
+    priority: route === '' ? 1 : route.startsWith('/accommodation') ? 0.9 : route.startsWith('/universities') || route.startsWith('/cities') ? 0.8 : 0.7,
   }))
-
-  return sitemapEntries
 }

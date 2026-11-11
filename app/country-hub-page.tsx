@@ -24,7 +24,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
       <Navigation />
       <main>
         {/* Hero */}
-        <section className="relative bg-[#00319D] pt-28 pb-16 px-6 overflow-hidden">
+        <section className="relative bg-[#00319D] px-6 pb-12 pt-20 overflow-hidden lg:pb-14 lg:pt-24">
           <div className="absolute inset-0 opacity-25" aria-hidden="true">
             <Image
               src={country.heroImage}
@@ -38,17 +38,13 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           </div>
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <p className="mb-5 text-sm font-semibold text-white/80">Study in {country.name}</p>
               <h1 className="font-heading text-4xl lg:text-6xl font-extrabold text-white text-balance mb-5 leading-tight tracking-tight">
                 International student guide to {country.name}.
               </h1>
               <p className="text-white/75 text-lg leading-relaxed max-w-2xl mb-8">
                 {country.summary}
               </p>
-              <div className="flex flex-wrap gap-3 mb-8">
-                <span className="px-3 py-1.5 rounded-full bg-[#FCC20A] text-[#00319D] text-xs font-extrabold">
-                  {country.badge}
-                </span>
+              <div className="mb-8 flex flex-wrap gap-3">
                 <span className="px-3 py-1.5 rounded-full bg-white/10 border border-white/15 text-white/80 text-xs font-medium">
                   {country.universityCount} universities
                 </span>
@@ -123,7 +119,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                       </h3>
                       <span className="text-xs text-[#6B6860] ml-2 mt-1">{city.universities} unis</span>
                     </div>
-                    <p className="text-[#6B6860] text-sm leading-relaxed mb-3 line-clamp-2">{city.description}</p>
+                    <p className="mb-3 text-sm leading-relaxed text-[#6B6860]">{city.description}</p>
                     <div className="text-xs text-[#00319D] font-semibold">{city.avgRent}</div>
                   </div>
                 </Link>
@@ -153,9 +149,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                   href={`/universities/${university.slug}`}
                   className="group bg-[#F7F6F3] rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#00319D]/30 hover:shadow-lg transition-all duration-200"
                 >
-                  <span className="text-xs font-bold tracking-wider uppercase text-[#00319D] bg-[#00319D]/8 px-2.5 py-1 rounded-full inline-block mb-3">
-                    {university.city}
-                  </span>
+                  <p className="mb-3 text-xs font-semibold text-[#00319D]">{university.city}</p>
                   <h3 className="font-heading font-bold text-[#1A1A1A] text-sm leading-snug mb-1 group-hover:text-[#00319D] transition-colors">
                     {university.name}
                   </h3>
@@ -185,9 +179,6 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                   href={guide.href}
                   className="group bg-white rounded-2xl p-5 border border-[#E8E6E1] hover:border-[#00319D]/30 hover:shadow-lg transition-all duration-200"
                 >
-                  <span className="text-xs font-bold text-[#00319D] tracking-wider uppercase px-2.5 py-1 bg-[#FCC20A] rounded-full inline-block mb-4">
-                    {guide.category}
-                  </span>
                   <h3 className="font-heading font-bold text-[#1A1A1A] text-base leading-snug mb-2 group-hover:text-[#00319D] transition-colors">
                     {guide.title}
                   </h3>

@@ -127,8 +127,6 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
     itemsByShortlist.set(item.shortlist_id, list)
   }
 
-  const firstName = profile.first_name?.trim() || user.user_metadata?.first_name || 'there'
-
   return (
     <>
       <Navigation />
@@ -136,8 +134,8 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <header className="flex flex-col gap-6 rounded-3xl bg-[#00319D] p-7 text-white sm:flex-row sm:items-end sm:justify-between sm:p-10">
             <div>
-              <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">Welcome back, {firstName}</h1>
-              <p className="mt-3 text-sm text-white/75">Your HearthAway profile, housing plans and support in one place.</p>
+              <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">My HearthAway Account</h1>
+              <p className="mt-3 text-sm text-white/75">Your profile, saved rooms, booking requests and support in one place.</p>
               <p className="mt-2 text-sm text-white/75">{user.email}</p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -151,7 +149,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           <nav aria-label="Account sections" className="mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
             {[
               ['profile', 'Profile'], ['saved', 'Saved rooms'], ['shortlists', 'Shortlists'],
-              ['bookings', 'Bookings'], ['services', 'Services'], ['ongoing-support', 'Future plans'], ['advisor', 'Advisor'], ['documents', 'Documents'],
+              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['advisor', 'Advisor'], ['documents', 'Documents'],
             ].map(([id, label]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-[#D8D5CE] bg-white px-4 py-2 text-[#00319D] hover:border-[#00319D]">{label}</a>)}
           </nav>
 
@@ -266,9 +264,9 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             </div> : null}
           </section>
 
-          <section id="ongoing-support" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading title="Your next chapter with HearthAway" detail="Plan a future move, refer a student, or share feedback with the team. Public sharing of feedback is always opt-in." />
-            <StudentJourneyForms profileCity={profile.city} />
+          <section id="referrals" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+            <SectionHeading title="Refer and earn" detail="Share HearthAway with a student who is planning their move." />
+            <StudentJourneyForms />
           </section>
 
           <section id="advisor" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
