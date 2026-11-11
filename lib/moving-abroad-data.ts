@@ -15,6 +15,7 @@ export type MovingAbroadArticle = {
   slug: string
   title: string
   category: MovingAbroadArticleCategory
+  tags: string[]
   description: string
   readTime: string
   stage: MovingAbroadArticleStage
@@ -28,7 +29,7 @@ export type MovingAbroadArticle = {
 
 export type MovingAbroadArticleCard = Pick<
   MovingAbroadArticle,
-  'slug' | 'title' | 'category' | 'description' | 'readTime' | 'countries'
+  'slug' | 'title' | 'category' | 'tags' | 'description' | 'readTime' | 'countries'
 > & {
   href: string
 }
@@ -43,6 +44,7 @@ export type MovingAbroadCategoryGroup = {
 export const movingAbroadArticles: MovingAbroadArticle[] = [
   {
     slug: 'pre-arrival-checklist',
+    tags: ['Pre-Arrival', 'Student Visa', 'Documentation', 'Accommodation'],
     title: 'The Complete 2026 Pre Arrival Checklist For International Students',
     category: 'Before you go',
     description: 'Everything you need to sort before you travel. A tactical guide covering 2026 visa financial rules, accommodation locks and arrival prep.',
@@ -89,6 +91,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'choose-accommodation',
+    tags: ['Accommodation', 'Renting', 'Commute', 'Tenancy Agreements'],
     title: 'How To Choose The Right Accommodation And Avoid The Commute Trap',
     category: 'Accommodation',
     description: 'Walking through the real decisions you face. Purpose built versus private rentals, transport line tradeoffs and how to read the contract.',
@@ -131,6 +134,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'real-cost-abroad',
+    tags: ['Budgeting', 'Financial Requirements', 'Cost of Living', 'Student Finance'],
     title: 'The Real Cost Of Studying Abroad Exact 2026 Capital Requirements',
     category: 'Budgeting',
     description: 'Rent and tuition are just the baseline. Here are the exact government financial proofs required for the UK, Ireland and Australia.',
@@ -183,6 +187,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'student-visa',
+    tags: ['Student Visa', 'Immigration', 'Financial Requirements', 'Documentation'],
     title: 'Understanding Your 2026 Student Visa Financial Mechanics',
     category: 'Before you go',
     description: 'Plan your document trail, financial seasoning periods and biometric appointments perfectly so you do not miss your intake date.',
@@ -223,6 +228,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'uk-bank-account',
+    tags: ['Banking', 'Student Finance', 'Arrival', 'Documentation'],
     title: 'How To Open A UK Bank Account And Bridge The Gap',
     category: 'Before you go',
     description: 'Traditional banks will reject you without the right paperwork. Here is the exact playbook to get your local sort code and account number fast.',
@@ -238,6 +244,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'packing-list',
+    tags: ['Pre-Arrival', 'Packing', 'Travel', 'Student Life'],
     title: 'The Tactical Packing List For International Students',
     category: 'Before you go',
     description: 'Pack for climate, classes, housing and your first few weeks of survival before your local bank accounts clear.',
@@ -253,6 +260,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'accommodation-costs',
+    tags: ['Accommodation', 'Renting', 'Cost of Living', 'Student Finance'],
     title: 'How Much Purpose Built Student Housing Actually Costs',
     category: 'Accommodation',
     description: 'Real costs broken down by asset type so you can plan your capital deployment with absolute confidence.',
@@ -269,6 +277,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'halls-vs-private',
+    tags: ['Accommodation', 'Renting', 'Housing Options', 'Student Life'],
     title: 'Purpose Built Student Blocks Versus Private Rentals',
     category: 'Accommodation',
     description: 'Compare the two major housing formats before locking up your cash for an entire academic year.',
@@ -284,6 +293,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'avoid-scams',
+    tags: ['Accommodation', 'Renting', 'Housing Safety', 'Scams'],
     title: 'How To Identify And Avoid Rental Fraud Syndicates',
     category: 'Accommodation',
     description: 'The rental market is full of sophisticated operators preying on international students. Learn the warning signs.',
@@ -300,6 +310,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'tenancy-agreement',
+    tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Deposits'],
     title: 'How To Read Your Tenancy Agreement Without Getting Trapped',
     category: 'Accommodation',
     description: 'Review the hard legal terms before signing a binding contract for student housing abroad.',
@@ -315,6 +326,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'cost-of-living',
+    tags: ['Budgeting', 'Cost of Living', 'Transport', 'Student Finance'],
     title: 'The Exact Weekly Cost Of Living In Major Student Hubs',
     category: 'Budgeting',
     description: 'Compare the hard costs of transport, groceries and everyday survival across the UK, Ireland and Australia.',
@@ -358,6 +370,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'student-budget',
+    tags: ['Budgeting', 'Student Finance', 'Cash Flow', 'Cost of Living'],
     title: 'How To Structure Your Cash Flow As An International Student',
     category: 'Budgeting',
     description: 'Build an ironclad monthly plan for rent, food, transport and emergencies.',
@@ -373,6 +386,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'hidden-costs',
+    tags: ['Budgeting', 'Hidden Costs', 'Student Finance', 'Cost of Living'],
     title: 'Hidden Capital Drains New Students Never Expect',
     category: 'Budgeting',
     description: 'Spot the extra expenses beyond rent and tuition before you land and burn through your savings.',
@@ -388,6 +402,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'student-discounts',
+    tags: ['Budgeting', 'Student Discounts', 'Cost of Living', 'Student Finance'],
     title: 'How To Leverage Student Status For Structural Savings',
     category: 'Budgeting',
     description: 'Find the high leverage savings on transport, software and everyday essentials that actually move the needle.',
@@ -403,6 +418,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'first-week',
+    tags: ['Arrival', 'Settling In', 'Student Life', 'Orientation'],
     title: 'Your First Week Playbook Registration And Survival',
     category: 'Arriving',
     description: 'Know exactly what to do after landing to clear your admin backlog and settle into your new city.',
@@ -444,6 +460,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'airport-to-home',
+    tags: ['Arrival', 'Travel', 'Transport', 'Settling In'],
     title: 'Getting From The Arrival Terminal To Your Room Safely',
     category: 'Arriving',
     description: 'Make your arrival seamless with a tactical first journey plan straight from the baggage claim.',
@@ -459,6 +476,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'healthcare',
+    tags: ['Arrival', 'Healthcare', 'Settling In', 'Documentation'],
     title: 'How To Navigate Local Healthcare And Register With A Doctor',
     category: 'Arriving',
     description: 'Understand how to find medical support and lock down your health insurance after arriving.',
@@ -474,6 +492,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'making-friends',
+    tags: ['Arrival', 'Student Life', 'Settling In', 'Community'],
     title: 'Building A High Value Network In A Foreign Country',
     category: 'Arriving',
     description: 'Practical tactics to build a support network and break out of isolation during your first term.',
@@ -489,6 +508,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'uae-visa-sponsorship',
+    tags: ['Student Visa', 'Immigration', 'Documentation', 'Sponsorship'],
     title: 'UAE Student Visa And Visa Sponsorship: Understanding Your Pathway',
     category: 'Before you go',
     description: 'Comprehensive guide to UAE student visas, employer sponsorship models, and visa-to-residency transitions unique to the emirates.',
@@ -537,6 +557,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'uae-housing-furnished',
+    tags: ['Accommodation', 'Renting', 'Housing Options', 'Furnished Housing'],
     title: 'Understanding Furnished Housing And Utilities In The UAE',
     category: 'Accommodation',
     description: 'Navigate UAE student housing culture where furnished apartments with included utilities are the norm, not the exception.',
@@ -584,6 +605,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'uae-tax-free-income-planning',
+    tags: ['Budgeting', 'Banking', 'Financial Requirements', 'Student Finance'],
     title: 'Tax-Free Income And Student Work: Financial Planning For UAE Study',
     category: 'Budgeting',
     description: 'The UAE has no personal income tax. Understand how this affects your earnings, savings strategy, and post-graduation financial planning.',
@@ -630,6 +652,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'germany-studentenwerk-housing',
+    tags: ['Accommodation', 'Renting', 'Student Housing', 'Housing Safety'],
     title: 'Studentenwerk Dorms, WG Flats, And Finding Affordable Student Housing In Germany',
     category: 'Accommodation',
     description: 'Germany\'s unique student housing model: public Studentenwerk dorms with waitlists, shared WG flats, and the cultural norms you need to navigate successfully.',
@@ -686,6 +709,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'germany-monthly-budgeting',
+    tags: ['Budgeting', 'Cost of Living', 'Student Finance', 'Cash Flow'],
     title: 'Monthly Budget Planning For German University Cities: Rent, Food, And Student Life',
     category: 'Budgeting',
     description: 'Germany offers exceptional value for international students. Break down realistic monthly budgets by city and housing type.',
@@ -736,6 +760,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   },
   {
     slug: 'germany-tenancy-law-deposits',
+    tags: ['Accommodation', 'Tenancy Agreements', 'Deposits', 'Housing Safety'],
     title: 'German Tenancy Agreements, Deposits, And Landlord-Tenant Rights You Must Know',
     category: 'Accommodation',
     description: 'Germany has strong tenant protection laws. Understand your rights, deposit regulations, and what makes a valid lease agreement.',
@@ -854,6 +879,7 @@ function toMovingAbroadArticleCard(article: MovingAbroadArticle): MovingAbroadAr
     slug: article.slug,
     title: article.title,
     category: article.category,
+    tags: article.tags,
     description: article.description,
     readTime: article.readTime,
     countries: article.countries,
