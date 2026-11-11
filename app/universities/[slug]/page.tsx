@@ -104,14 +104,11 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
         <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
-                University housing guide
-              </div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
-                Student accommodation near {university.name}.
+                Student properties near {university.name}.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed mb-6">
-                Find student accommodation near {university.name}. Explore housing costs, popular student neighbourhoods, and practical guidance for living in {university.city}.
+                Find student properties near {university.name}. Explore local housing costs, popular neighbourhoods, and practical guidance for living in {university.city}.
               </p>
 
               <div className="flex flex-wrap gap-3 mb-8">
@@ -128,7 +125,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#333333] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
+                className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl shadow-[#FCC20A]/20"
               >
                 Get matched
               </Link>
@@ -140,15 +137,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    University Overview
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
-                  Student Accommodation Near {university.name}
+                  Student properties near {university.name}
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed mb-4">
@@ -170,13 +160,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               {city && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
-                  <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                      Housing Costs
-                    </span>
-                  </div>
-
                   <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-6">
                     Student Housing Costs in {city.name}
                   </h2>
@@ -209,13 +192,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
 
               {city && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                  <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                      Best Areas For Students
-                    </span>
-                  </div>
-
                   <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                     Student Neighbourhoods in {city.name}
                   </h2>
@@ -238,29 +214,18 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               )}
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">Accommodation</span>
-                </div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Partner accommodation in {university.city}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and Stacey room inventory in {university.city}. Confirm travel distance and availability with an advisor.</p>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Partner properties in {university.city}</h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and Stacey properties and their available rooms in {university.city}. Confirm travel distance and availability with an advisor.</p>
                   </div>
-                  <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse accommodation</Link>
+                  <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse properties</Link>
                 </div>
-                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No partner accommodation is currently listed in {university.city}. Browse the full inventory to explore other destinations.</p>}
+                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No partner properties are currently listed in {university.city}. Browse the full inventory to explore other destinations.</p>}
               </section>
 
               {relatedUniversities.length > 0 && (
                 <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                  <div className="inline-flex items-center gap-2 mb-6">
-                    <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                    <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                      Other Universities
-                    </span>
-                  </div>
-
                   <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-6">
                     Other Universities in {university.city}
                   </h2>
@@ -285,12 +250,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
               )}
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Student Housing FAQ
-                  </span>
-                </div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-5">
                   Frequently Asked Questions
                 </h2>
@@ -381,7 +340,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 </p>
                 <Link
                   href="/get-matched"
-                  className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#333333] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl shadow-[#FCC20A]/20"
+className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl shadow-[#FCC20A]/20"
                 >
                   Start matching
                 </Link>

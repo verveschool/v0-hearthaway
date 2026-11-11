@@ -84,16 +84,10 @@ export default function HeroSection() {
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
 
-          <div className="hero-enter mb-5 flex w-full items-center sm:mb-6">
-            <span className="inline-flex shrink-0 rounded-full bg-[#01329C] px-3.5 py-1.5 text-[10px] font-extrabold uppercase tracking-[0.16em] text-white shadow-sm sm:text-xs">
-              100% verified
-            </span>
-          </div>
-
           {/* Headline */}
           <h1 className="hero-enter hero-enter-delay-1 mb-5 font-heading text-[1.9rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:mb-6 sm:text-[clamp(2.35rem,3.8vw,3.25rem)] sm:leading-[1.04]">
-            <span className="block text-[#171717]">Find the right</span>
-            <span className="block text-[#01329C]">accommodation</span>
+            <span className="block text-[#171717]">Find your student</span>
+            <span className="block text-[#01329C]">property</span>
             <span className="block text-[#171717]">before you arrive.</span>
           </h1>
           
@@ -121,7 +115,7 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <nav aria-label="Browse student accommodation by country" className="mt-6 flex flex-wrap items-center gap-1.5 sm:gap-2">
+          <nav aria-label="Browse student properties by country" className="mt-6 flex flex-wrap items-center gap-1.5 sm:gap-2">
             {countries.map((country) => (
               <Link
                 key={country}
@@ -139,7 +133,7 @@ export default function HeroSection() {
           className="relative aspect-[4/3] max-h-[560px] w-full touch-pan-y overflow-hidden rounded-[2rem] border border-white/80 bg-white shadow-[0_24px_70px_rgba(1,50,156,0.14)] lg:w-[45%] lg:aspect-[0.92/1]"
           role="region"
           aria-roledescription="carousel"
-          aria-label="Student accommodation preview showcase"
+          aria-label="Student property preview showcase"
           onMouseEnter={() => {
             pauseAutoplay.current = true
           }}
@@ -213,7 +207,7 @@ export default function HeroSection() {
 
           <div
             aria-hidden="true"
-            className="absolute inset-x-0 bottom-0 z-[1] h-44 bg-gradient-to-t from-[#01329C]/90 via-[#01329C]/35 to-transparent"
+            className="absolute inset-x-0 bottom-0 z-[1] h-44 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
           />
 
           {/* Photo label */}
@@ -228,7 +222,7 @@ export default function HeroSection() {
             <div
               className="flex flex-1 items-center gap-2"
               role="group"
-              aria-label="Choose an accommodation preview image"
+              aria-label="Choose a student property preview image"
             >
               {photos.map((_, i) => (
                 <button

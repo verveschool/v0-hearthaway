@@ -38,12 +38,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           </div>
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 mb-5">
-                <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                <span className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase">
-                  Study in {country.name}
-                </span>
-              </div>
+              <p className="mb-5 text-sm font-semibold text-white/80">Study in {country.name}</p>
               <h1 className="font-heading text-4xl lg:text-6xl font-extrabold text-white text-balance mb-5 leading-tight tracking-tight">
                 International student guide to {country.name}.
               </h1>
@@ -63,7 +58,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="inline-flex px-8 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
+                className="brand-cta inline-flex px-8 py-4 font-bold text-base shadow-lg"
               >
                 Get Matched
               </Link>
@@ -75,7 +70,6 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div className="lg:col-span-2 bg-[#F7F6F3] rounded-2xl p-7 border border-[#E8E6E1]">
-              <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-4">Country overview</div>
               <h2 className="font-heading font-bold text-2xl lg:text-3xl text-[#1A1A1A] mb-4 text-balance">
                 Studying and finding housing in {country.name}
               </h2>
@@ -84,7 +78,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </p>
             </div>
             <div className="bg-[#00319D] rounded-2xl p-7">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">Housing notes</div>
+              <h2 className="mb-4 font-heading text-lg font-extrabold text-white">Housing notes</h2>
               <p className="text-white/75 text-sm leading-relaxed">
                 {country.studentHousingNotes}
               </p>
@@ -97,7 +91,6 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-7">
               <div>
-                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Featured cities</div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">Explore student cities</h2>
               </div>
               <Link
@@ -117,7 +110,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={city.image}
-                      alt={`Student accommodation in ${city.name}`}
+                      alt={`Student properties in ${city.name}`}
                       fill
                       className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -144,7 +137,6 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-7">
               <div>
-                <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Featured universities</div>
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A]">Start near your campus</h2>
               </div>
               <Link
@@ -169,7 +161,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
                   </h3>
                   <p className="text-[#6B6860] text-xs">{university.students} students</p>
                   <div className="mt-4 text-xs font-semibold text-[#00319D] group-hover:translate-x-1 transition-transform inline-block">
-                    View accommodation &rarr;
+                    View university details &rarr;
                   </div>
                 </Link>
               ))}
@@ -181,7 +173,6 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         <section className="bg-[#F7F6F3] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
-              <div className="text-[#00319D] text-sm font-bold tracking-widest uppercase mb-3">Moving abroad</div>
               <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-3">Plan the move, not just the room</h2>
               <p className="text-[#6B6860] text-sm leading-relaxed">
                 Use these guides to prepare for visas, budgeting, arrival, and accommodation decisions before you fly to {country.name}.
@@ -224,7 +215,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </div>
               <Link
                 href="/get-matched"
-                className="flex-shrink-0 px-8 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-lg"
+                className="brand-cta flex-shrink-0 px-8 py-4 font-bold text-base shadow-lg"
               >
                 Get Matched
               </Link>

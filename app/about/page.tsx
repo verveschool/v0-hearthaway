@@ -249,7 +249,7 @@ export default function AboutPage() {
                   <h3 className="font-heading font-bold text-xl text-[#1A1A1A] mb-1 group-hover:text-[#00319D] transition-colors">
                     {member.name}
                   </h3>
-                  <div className="text-[#00319D] text-xs font-bold tracking-widest uppercase mb-4">{member.role}</div>
+                  <div className="mb-4 text-xs font-semibold text-[#00319D]">{member.role}</div>
                   <p className="text-[#6B6860] leading-relaxed text-sm">{member.description}</p>
                 </Link>
               ))}

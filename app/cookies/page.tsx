@@ -16,9 +16,6 @@ export default function CookiesPage() {
         <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
-                Cookies Policy
-              </div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
                 How we use cookies.
               </h1>

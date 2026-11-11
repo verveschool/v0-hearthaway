@@ -107,12 +107,12 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
       <main className="bg-[#F7F6F3]">
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-6 lg:px-8 lg:py-12">
           <Link href="/accommodation" className="inline-flex min-h-10 w-fit items-center gap-2 text-sm font-bold text-[#00319D] hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]">
-            <ArrowLeft aria-hidden="true" className="size-4" /> All accommodation
+            <ArrowLeft aria-hidden="true" className="size-4" /> All properties
           </Link>
 
           <header className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(280px,0.45fr)] lg:items-end">
             <div>
-              <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#00319D]">{[property.city, property.country].filter(Boolean).join(', ')}</p>
+              <p className="text-sm font-semibold text-[#00319D]">{[property.city, property.country].filter(Boolean).join(', ')}</p>
               <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl lg:text-5xl">{property.name}</h1>
               {property.address ? (
                 <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-[#6B6860] sm:text-base">
@@ -173,7 +173,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
                 ) : null}
               </Section>
 
-              <Section id="rooms" title="Room types and pricing">
+              <Section id="rooms" title="Available rooms and pricing">
                 {property.roomTypes.length ? (
                   <>
                     <p className="text-sm leading-relaxed text-[#6B6860]">{sourceNotice}</p>
@@ -296,7 +296,7 @@ export default async function PropertyDetailPage({ params }: PropertyPageProps) 
 
             <aside className="h-fit lg:sticky lg:top-28">
               <nav aria-label="On this page" className="rounded-2xl border border-[#E8E6E1] bg-white p-5">
-                <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#6B6860]">On this page</p>
+                <p className="text-sm font-semibold text-[#6B6860]">On this page</p>
                 <ul className="mt-3 flex flex-col gap-2 text-sm font-semibold">
                   {[
                     ['overview', 'Property overview'],

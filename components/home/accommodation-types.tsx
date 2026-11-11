@@ -54,16 +54,10 @@ export default function AccommodationTypes() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-14">
           <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-              <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                Types of accommodation
-              </span>
-            </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
               Every student is different.{' '}
               <br className="hidden lg:block" />
-              <span className="text-[#00319D]">Your accommodation should match.</span>
+              <span className="text-[#00319D]">Your student property should match.</span>
             </h2>
           </div>
           <p className="max-w-sm text-[#6B6860] text-base leading-relaxed lg:text-right">
@@ -157,7 +151,7 @@ export default function AccommodationTypes() {
         <div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center gap-5">
           <Link
             href="/get-matched"
-            className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
+            className="brand-cta inline-flex items-center gap-3 px-7 py-4 font-bold text-base shadow-sm"
           >
             Get matched to the right type for you
           </Link>
@@ -165,7 +159,7 @@ export default function AccommodationTypes() {
             href="/accommodation"
             className="text-[#00319D] font-semibold text-sm border-b-2 border-[#FCC20A] pb-px hover:text-[#00319D] transition-colors"
           >
-            Explore all accommodation types
+            Explore all student properties
           </Link>
         </div>
       </div>

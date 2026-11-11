@@ -126,8 +126,7 @@ export default async function TeamPage() {
       <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <header className="rounded-3xl bg-[#00319D] p-7 text-white sm:p-10">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FCC20A]">HearthAway team</p>
-            <h1 className="mt-3 font-heading text-3xl font-extrabold sm:text-4xl">Assigned case inbox</h1>
+            <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">Assigned case inbox</h1>
             <p className="mt-3 text-sm text-white/75">Signed in as {user.email} · {formatStatus(member.role)}</p>
           </header>
 
@@ -179,7 +178,7 @@ export default async function TeamPage() {
           </section>
 
           <section className="mt-10" aria-label="Unassigned sales intake">
-            <div className="mb-5"><p className="text-xs font-bold uppercase tracking-[0.16em] text-[#00319D]">Team queue</p><h2 className="mt-2 font-heading text-2xl font-extrabold text-[#1A1A1A]">Unassigned enquiries and student requests</h2><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#6B6860]">Assign a case to yourself to become the student’s primary contact. Existing owners and closed enquiries stay out of this queue.</p></div>
+            <div className="mb-5"><h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">Unassigned enquiries and student requests</h2><p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#6B6860]">Assign a case to yourself to become the student’s primary contact. Existing owners and closed enquiries stay out of this queue.</p></div>
             {unassignedEnquiries.length || unassignedStudentIds.length ? <div className="grid gap-4 lg:grid-cols-2">
               {unassignedEnquiries.map((item) => <article key={item.id} className="rounded-2xl border border-[#E8E6E1] bg-white p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">{formatStatus(item.enquiry_type)} · {formatStatus(item.status)}</p><h3 className="mt-2 font-heading text-lg font-extrabold text-[#1A1A1A]">{`${item.first_name} ${item.last_name}`.trim() || 'New enquiry'}</h3><p className="mt-2 text-sm text-[#4C4A45]">{[item.contact_email, item.phone, item.city, item.university].filter(Boolean).join(' · ') || 'Contact details not provided'}</p>{item.message ? <p className="mt-3 whitespace-pre-wrap rounded-xl bg-[#F7F6F3] p-4 text-sm leading-relaxed text-[#4C4A45]">{item.message}</p> : null}<p className="mt-3 text-xs text-[#6B6860]">Received {formatDate(item.created_at)}</p><CaseClaimForm enquiryId={item.id} /></article>)}
               {unassignedStudentIds.map((studentId) => { const profile = profileById.get(studentId); return <article key={studentId} className="rounded-2xl border border-[#E8E6E1] bg-white p-5 sm:p-6"><p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">Student service request</p><h3 className="mt-2 font-heading text-lg font-extrabold text-[#1A1A1A]">{`${profile?.first_name ?? ''} ${profile?.last_name ?? ''}`.trim() || 'Student account'}</h3><p className="mt-2 text-sm text-[#4C4A45]">{[profile?.city, profile?.university].filter(Boolean).join(' · ') || 'Student has a booking or service request pending.'}</p><CaseClaimForm studentId={studentId} /></article>})}

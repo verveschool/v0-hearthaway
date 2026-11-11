@@ -62,9 +62,7 @@ export default function CareersPage() {
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:gap-20">
               <div>
-                <div className="mb-5 text-sm font-bold uppercase tracking-widest text-[#00319D]">
-                  Open role
-                </div>
+                <p className="mb-5 text-sm font-semibold text-[#00319D]">Open role</p>
 
                 <h1 className="mb-6 font-heading text-4xl font-bold leading-tight text-[#1A1A1A] text-balance">
                   Accommodation Specialist

@@ -35,12 +35,6 @@ export default function TrustSection() {
         {/* Section Header */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-16">
           <div>
-            <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-              <span className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase">
-                From students like you
-              </span>
-            </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-white leading-[1.1] tracking-tight text-balance">
               Students chose with confidence.
               <br />
@@ -104,9 +98,6 @@ export default function TrustSection() {
 
         {/* Trust Strip */}
         <div className="border-t border-white/10 pt-12">
-          <p className="text-white/40 text-xs font-bold tracking-widest uppercase text-center mb-10">
-            What every student gets with HearthAway
-          </p>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { heading: 'Verified Properties Only', body: 'Every property is reviewed before it reaches you. No unverified listings.' },

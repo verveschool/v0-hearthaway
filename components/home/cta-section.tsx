@@ -27,7 +27,7 @@ export default function CtaSection() {
             </h2>
 
             <p className="text-white/65 text-lg leading-relaxed mb-10 max-w-lg">
-              Tell us your university, move-in date, and budget. An accommodation
+              Tell us your university, move-in date, and budget. A property
               advisor will match you with verified options near your campus
               before you fly.
             </p>

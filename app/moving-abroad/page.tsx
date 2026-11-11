@@ -91,9 +91,6 @@ export default function MovingAbroadPage() {
         <section className="bg-primary pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
-                Moving Abroad
-              </div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
                 Plan the move with order, not panic.
               </h1>
@@ -131,9 +128,7 @@ export default function MovingAbroadPage() {
               )}
 
               <div className="bg-primary rounded-2xl p-7">
-                <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
-                  Pre-arrival checklist
-                </div>
+                <h2 className="mb-4 font-heading text-lg font-extrabold text-white">Pre-arrival checklist</h2>
                 <div className="flex flex-col gap-4">
                   {preArrivalSteps.map((step, index) => (
                     <div key={step} className="flex gap-3">
@@ -152,9 +147,6 @@ export default function MovingAbroadPage() {
         <section className="bg-[var(--color-warm-gray)] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
-              <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                Essential guides
-              </div>
               <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
                 The core decisions most students face
               </h2>
@@ -173,9 +165,6 @@ export default function MovingAbroadPage() {
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
-              <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                Browse by topic
-              </div>
               <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
                 All moving abroad guidance
               </h2>
@@ -239,9 +228,6 @@ export default function MovingAbroadPage() {
         <section className="bg-[var(--color-warm-gray)] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl mb-7">
-              <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                Country pathways
-              </div>
               <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
                 Plan for your destination
               </h2>
@@ -282,9 +268,6 @@ export default function MovingAbroadPage() {
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
               <div className="lg:col-span-1">
-                <div className="text-primary text-sm font-bold tracking-widest uppercase mb-3">
-                  Next steps
-                </div>
                 <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-3">
                   Move from guidance to local planning
                 </h2>

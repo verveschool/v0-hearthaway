@@ -16,12 +16,11 @@ export default function CitiesPage() {
         <section className="bg-[#00319D] pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-2xl">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">Student Cities</div>
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
-                Find accommodation in your city.
+                Find student properties in your city.
               </h1>
               <p className="text-white/70 text-lg leading-relaxed">
-                Whether you know your city or are still deciding, explore what each destination offers for international students.
+                Whether you know your city or are still deciding, explore student properties and local context for each destination.
               </p>
             </div>
           </div>
@@ -53,7 +52,7 @@ export default function CitiesPage() {
                         <div className="relative h-44 overflow-hidden">
                           <Image
                             src={city.image}
-                            alt={`Student accommodation in ${city.name}`}
+                            alt={`Student properties in ${city.name}`}
                             fill
                             className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
