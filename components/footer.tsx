@@ -197,12 +197,13 @@ export default function Footer() {
                 aria-label="HearthAway home"
                 className="inline-flex items-center"
               >
-                <Image
-                  src={brandWordmarkPath}
-                  alt="HearthAway"
-                  width={336}
-                  height={100}
-                  className="h-auto w-56 sm:w-64"
+              <Image
+                src={brandWordmarkPath}
+                alt="HearthAway"
+                width={336}
+                height={100}
+                className="hidden h-auto w-[13rem] xl:block 2xl:w-[15rem]"
+                priority
                 />
               </Link>
 
