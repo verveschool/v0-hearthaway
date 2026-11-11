@@ -86,9 +86,9 @@ export default function HeroSection() {
 
           {/* Headline */}
           <h1 className="hero-enter hero-enter-delay-1 mb-5 font-heading text-[1.9rem] font-extrabold leading-[1.08] tracking-tight text-balance sm:mb-6 sm:text-[clamp(2.35rem,3.8vw,3.25rem)] sm:leading-[1.04]">
-            <span className="block text-[#171717]">Find your student</span>
-            <span className="block text-[#01329C]">property</span>
-            <span className="block text-[#171717]">before you arrive.</span>
+            <span className="text-[#171717]">Finding </span>
+            <span className="text-[#01329C]">home</span>
+            <span className="text-[#171717]">, wherever you go.</span>
           </h1>
           
           {/* Supporting copy */}
