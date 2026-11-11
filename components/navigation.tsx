@@ -58,9 +58,9 @@ const navLinks = [
     href: '/accommodation',
     dropdown: [
       { label: 'All Properties', href: '/accommodation' },
+      { label: 'All Rooms', href: '/accommodation/rooms' },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
       { label: 'Stacey', href: '/accommodation?provider=stacey' },
-      { label: 'Available Rooms', href: '/accommodation/rooms' },
     ],
   },
   {
