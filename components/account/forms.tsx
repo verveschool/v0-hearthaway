@@ -162,17 +162,23 @@ export function RequestServiceForm({ serviceSlug }: { serviceSlug: string }) {
 
 export function StudentDocumentUploadForm() {
   const [state, formAction, pending] = useActionState(uploadStudentDocumentAction, initialState)
-  return <form action={formAction} className="flex flex-col gap-4">
-    <label className="flex flex-col gap-2 text-sm font-semibold text-[#333333]">
-      <span>Choose a document</span>
-      <input name="document" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" required className="block w-full text-sm text-[#4C4A45] file:mr-4 file:min-h-10 file:rounded-lg file:border-0 file:bg-[#F7F6F3] file:px-4 file:font-semibold file:text-[#00319D]" />
-    </label>
-    <p className="text-xs leading-relaxed text-[#6B6860]">PDF, JPG, PNG or WebP, up to 10 MB. Documents are private to your account and your assigned support team.</p>
-    <SubmitButton pending={pending}>Upload securely</SubmitButton>
+  return <form action={formAction} className="flex flex-col gap-3">
+    <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
+      <label className="flex min-w-0 flex-1 flex-col gap-2 text-sm font-semibold text-[#333333]">
+        <span>Choose a document</span>
+        <input name="document" type="file" accept="application/pdf,image/jpeg,image/png,image/webp" required className="block min-h-10 w-full min-w-0 rounded-lg border border-[#E8E6E1] bg-white px-2 py-1.5 text-sm text-[#4C4A45] file:mr-3 file:min-h-8 file:rounded-md file:border-0 file:bg-[#F7F6F3] file:px-3 file:font-semibold file:text-[#00319D]" />
+      </label>
+      <SubmitButton pending={pending} className="shrink-0">Upload document</SubmitButton>
+    </div>
+    <p className="text-xs leading-relaxed text-[#6B6860]">PDF, JPG, PNG or WebP, up to 10 MB. Your documents remain private to your account and support team.</p>
     <Feedback state={state} />
   </form>
 }
 
 export function SignOutButton() {
-  return <form action={signOutAction}><button type="submit" className="rounded-xl border border-[#D8D5CE] px-4 py-2 text-sm font-bold text-[#00319D] hover:bg-[#F7F6F3] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]">Sign out</button></form>
+  return <form action={signOutAction}>
+    <button type="submit" className="inline-flex min-h-10 items-center justify-center rounded-lg border border-white/45 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]">
+      Sign out
+    </button>
+  </form>
 }
