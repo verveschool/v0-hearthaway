@@ -39,13 +39,13 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-white py-24 lg:py-32" id="how-it-works">
+    <section className="bg-white py-20 sm:py-24 lg:py-28" id="how-it-works">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-end mb-20">
+        <div className="mb-14 grid grid-cols-1 items-end gap-8 sm:mb-16 lg:grid-cols-2 lg:gap-16" data-home-reveal>
           <div>
             <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
+              <div className="w-8 h-px bg-[#FEBB01]" aria-hidden="true" />
             </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
               Most students find accommodation. We help them find the right one.
@@ -62,7 +62,7 @@ export default function HowItWorks() {
 
             <Link
               href="/get-matched"
-              className="inline-flex items-center gap-3 px-7 py-4 bg-[#FCC20A] text-[#333333] font-bold text-base rounded-xl hover:bg-[#FCC20A] transition-colors shadow-sm"
+              className="brand-cta inline-flex min-h-12 items-center gap-3 rounded-xl bg-[#FEBB01] px-7 py-4 text-base font-bold text-[#333333]"
             >
               Talk to an Accommodation Advisor
             </Link>
@@ -70,14 +70,15 @@ export default function HowItWorks() {
         </div>
 
         {/* Steps */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:gap-5" data-home-reveal-stagger>
           {steps.map((step) => (
             <div
               key={step.number}
-              className="group relative bg-[#F7F6F3] rounded-2xl p-8 lg:p-10 border border-[#E8E6E1] hover:border-[#00319D]/20 hover:shadow-lg transition-all duration-300 overflow-hidden"
+              data-home-reveal
+              className="group relative overflow-hidden rounded-[1.5rem] border border-[#E8E6E1] bg-[#F7F6F3] p-6 transition-all duration-300 hover:-translate-y-0.5 hover:border-[#01329C]/20 hover:bg-white hover:shadow-[0_16px_40px_rgba(17,24,39,0.08)] sm:p-8 lg:p-9"
             >
               <div
-                className="absolute top-4 right-6 font-extrabold text-[7rem] leading-none text-[#00319D]/5 select-none pointer-events-none group-hover:text-[#00319D]/8 transition-colors"
+                className="absolute top-4 right-6 font-extrabold text-[7rem] leading-none text-[#01329C]/5 select-none pointer-events-none group-hover:text-[#01329C]/8 transition-colors"
                 aria-hidden="true"
               >
                 {step.number}
@@ -85,7 +86,7 @@ export default function HowItWorks() {
 
               <div className="relative z-10">
                 <div className="flex items-center gap-3 mb-6">
-                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#00319D] text-white font-extrabold text-sm">
+                  <span className="inline-flex items-center justify-center w-9 h-9 rounded-full bg-[#01329C] text-white font-extrabold text-sm">
                     {parseInt(step.number, 10)}
                   </span>
 
@@ -102,7 +103,7 @@ export default function HowItWorks() {
                   {step.description}
                 </p>
 
-                <p className="text-[#00319D] text-sm font-bold">
+                <p className="text-[#01329C] text-sm font-bold">
                   {step.accent}
                 </p>
               </div>

@@ -39,7 +39,7 @@ export default function TotalHomeDiscovery() {
     <section className="bg-white px-6 py-20 sm:py-24 lg:px-8 lg:py-28">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end lg:gap-16">
-          <header className="max-w-xl">
+          <header className="max-w-xl" data-home-reveal>
             <h2 className="mt-4 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] text-balance sm:text-4xl lg:text-5xl">
               One home search. Start anywhere.
             </h2>
@@ -48,15 +48,16 @@ export default function TotalHomeDiscovery() {
             </p>
           </header>
 
-          <nav aria-label="Ways to start your accommodation search" className="grid gap-3 sm:grid-cols-2">
+          <nav aria-label="Ways to start your accommodation search" className="grid gap-4 sm:grid-cols-2" data-home-reveal-stagger>
             {discoveryPaths.map(({ label, description, href, icon: Icon }, index) => (
               <Link
                 key={label}
                 href={href}
-                className="group flex min-h-40 flex-col rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-[#00319D]/25 hover:bg-white hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2 sm:p-6"
+                data-home-reveal
+                className="group flex min-h-48 flex-col rounded-[1.5rem] border border-[#E8E6E1] bg-[#F7F6F3] p-6 shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all duration-300 hover:-translate-y-1 hover:border-[#01329C]/25 hover:bg-white hover:shadow-[0_16px_40px_rgba(17,24,39,0.08)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] focus-visible:ring-offset-2 sm:p-7"
               >
                 <div className="flex items-start justify-between gap-4">
-                  <span className="flex size-11 items-center justify-center rounded-xl bg-white text-[#00319D] shadow-sm transition-colors group-hover:bg-[#00319D] group-hover:text-white">
+                  <span className="flex size-11 items-center justify-center rounded-xl bg-white text-[#01329C] shadow-sm transition-colors group-hover:bg-[#01329C] group-hover:text-white">
                     <Icon aria-hidden="true" className="size-5" />
                   </span>
                   <span className="text-xs font-bold tracking-[0.16em] text-[#8A877F]">
@@ -65,7 +66,7 @@ export default function TotalHomeDiscovery() {
                 </div>
                 <span className="mt-5 flex items-center gap-2 font-heading text-lg font-extrabold text-[#1A1A1A]">
                   {label}
-                  <ArrowUpRight aria-hidden="true" className="size-4 text-[#00319D] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  <ArrowUpRight aria-hidden="true" className="size-4 text-[#01329C] transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
                 <span className="mt-2 text-sm leading-relaxed text-[#6B6860]">{description}</span>
               </Link>
@@ -73,9 +74,9 @@ export default function TotalHomeDiscovery() {
           </nav>
         </div>
 
-        <div className="mt-8 flex flex-col gap-5 rounded-3xl bg-[#00319D] p-5 text-white sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-8 lg:mt-10">
+        <div className="mt-10 flex flex-col gap-5 rounded-[1.75rem] bg-[#01329C] p-6 text-white shadow-[0_20px_50px_rgba(1,50,156,0.14)] sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-8" data-home-reveal>
           <div className="flex items-start gap-4 sm:items-center">
-            <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#FCC20A] text-[#1A1A1A]">
+            <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-[#FEBB01] text-[#1A1A1A]">
               <MessageCircle aria-hidden="true" className="size-5" />
             </span>
             <div>
@@ -87,7 +88,7 @@ export default function TotalHomeDiscovery() {
           </div>
           <Link
             href="/get-matched"
-            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-extrabold text-[#1A1A1A] transition-colors hover:bg-[#f5b900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
+            className="brand-cta inline-flex min-h-12 shrink-0 items-center justify-center rounded-xl bg-[#FEBB01] px-5 py-3 text-sm font-extrabold text-[#1A1A1A] focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#01329C]"
           >
             Talk to us →
           </Link>

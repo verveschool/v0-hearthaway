@@ -6,6 +6,7 @@ import AccommodationPartnersSection from '@/components/home/accommodation-partne
 import TrustStatsSection from '@/components/home/trust-stats-section'
 import HowItWorks from '@/components/home/how-it-works'
 import CtaSection from '@/components/home/cta-section'
+import { HomeMotion } from '@/components/home/home-motion'
 
 export default function HomePage() {
   return (
@@ -13,10 +14,11 @@ export default function HomePage() {
       <Navigation />
 
       <main>
+        <HomeMotion />
         <HeroSection />
+        <TrustStatsSection />
         <TotalHomeDiscovery />
         <AccommodationPartnersSection />
-        <TrustStatsSection />
         <HowItWorks />
         <CtaSection />
       </main>

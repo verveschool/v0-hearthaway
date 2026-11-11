@@ -55,7 +55,7 @@ twitter: {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#00319D',
+  themeColor: '#01329C',
   width: 'device-width',
   initialScale: 1,
 }
