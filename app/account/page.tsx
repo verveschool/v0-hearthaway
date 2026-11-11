@@ -132,13 +132,12 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <header className="flex flex-col gap-6 rounded-3xl bg-[#00319D] p-7 text-white sm:flex-row sm:items-end sm:justify-between sm:p-10">
-            <div>
-              <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">My HearthAway Account</h1>
-              <p className="mt-3 text-sm text-white/75">Your profile, saved rooms, booking requests and support in one place.</p>
-              <p className="mt-2 text-sm text-white/75">{user.email}</p>
+          <header className="flex flex-col gap-5 rounded-2xl bg-[#00319D] p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
+            <div className="min-w-0">
+              <h1 className="font-heading text-2xl font-extrabold sm:text-3xl">My HearthAway Account</h1>
+              {user.email ? <p className="mt-1.5 truncate text-sm text-white/80">{user.email}</p> : null}
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex shrink-0 flex-wrap items-center gap-3">
               {teamMemberResult.data ? <Link href="/team" className="inline-flex min-h-10 items-center rounded-xl border border-white/35 px-4 py-2 text-sm font-bold text-white hover:bg-white/10">Team inbox</Link> : null}
               <SignOutButton />
             </div>
@@ -149,16 +148,16 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           <nav aria-label="Account sections" className="mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
             {[
               ['profile', 'Profile'], ['saved', 'Saved rooms'], ['shortlists', 'Shortlists'],
-              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['advisor', 'Advisor'], ['documents', 'Documents'],
+              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['support', 'Your Support'],
             ].map(([id, label]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-[#D8D5CE] bg-white px-4 py-2 text-[#00319D] hover:border-[#00319D]">{label}</a>)}
           </nav>
 
-          <section id="profile" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="profile" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Student profile" detail="Keep your preferences current so your advisor can focus on relevant homes and support." />
             <SaveProfileForm profile={profile} />
           </section>
 
-          {recommendations.length > 0 ? <section className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          {recommendations.length > 0 ? <section className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Advisor room recommendations" />
             <div className="grid gap-3 sm:grid-cols-2">
               {recommendations.map(({ id, room_slug, note, room, created_at }) => <article key={id} className="rounded-xl bg-[#F7F6F3] p-4">
@@ -169,7 +168,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             </div>
           </section> : null}
 
-          <section id="saved" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="saved" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Saved rooms" detail="Save rooms from the inventory and return to them whenever you need." />
             {savedRooms.length ? <div className="grid gap-4 md:grid-cols-2">
               {savedRooms.map(({ room_slug, created_at, room }) => <article key={room_slug} className="flex gap-4 rounded-xl border border-[#E8E6E1] p-4">
@@ -183,7 +182,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             </div> : <p className="rounded-xl bg-[#F7F6F3] p-4 text-sm text-[#6B6860]">No saved rooms yet. <Link href="/accommodation/rooms" className="font-bold text-[#00319D] underline-offset-4 hover:underline">Browse the room inventory</Link>.</p>}
           </section>
 
-          <section id="shortlists" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="shortlists" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Your shortlists" detail="Create named groups and add saved rooms to compare your favourites." />
             <CreateShortlistForm />
             <div className="mt-6 grid gap-4 lg:grid-cols-2">
@@ -218,7 +217,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             {!shortlists.length ? <p className="mt-5 text-sm text-[#6B6860]">Create your first shortlist to organize rooms by city, budget or move-in date.</p> : null}
           </section>
 
-          <section id="bookings" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="bookings" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Booking and payment history" detail="Requests and payment records appear here as your advisor updates your case." />
             <div className="grid gap-6 lg:grid-cols-2">
               <div>
@@ -249,7 +248,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             </div> : null}
           </section>
 
-          <section id="services" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="services" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Services" detail="Send a request to the HearthAway team. They will confirm availability, timing and any applicable fees." />
             {serviceCatalog.length ? <div className="grid gap-4 lg:grid-cols-2">
               {serviceCatalog.map((service) => <article key={service.slug} className="rounded-xl border border-[#E8E6E1] p-5">
@@ -264,28 +263,35 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             </div> : null}
           </section>
 
-          <section id="referrals" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+          <section id="referrals" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
             <SectionHeading title="Refer and earn" detail="Share HearthAway with a student who is planning their move." />
             <StudentJourneyForms />
           </section>
 
-          <section id="advisor" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading title="Your HearthAway advisor" detail="Your assigned advisor is the contact for your room search and booking questions." />
-            {advisor ? <div className="flex flex-col gap-2 rounded-xl bg-[#F7F6F3] p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div><p className="font-heading text-lg font-extrabold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
-              {advisor.phone ? <a href={`tel:${advisor.phone}`} className="inline-flex min-h-10 items-center justify-center rounded-xl bg-[#00319D] px-4 py-2 text-sm font-bold text-white hover:bg-[#00277D]">Call {advisor.phone}</a> : <p className="text-sm text-[#6B6860]">Your advisor will contact you through your enquiry.</p>}
-            </div> : <p className="rounded-xl bg-[#F7F6F3] p-4 text-sm text-[#6B6860]">An advisor will appear here once your enquiry has been assigned.</p>}
-          </section>
+          <section id="support" className="mt-6 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
+            <SectionHeading title="Your Support" detail="Your advisor and secure document space, together in one place." />
+            <div className="grid items-start gap-4 lg:grid-cols-2">
+              <article id="advisor" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5 sm:p-6">
+                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your advisor</h3>
+                <p className="mt-1 mb-4 text-sm leading-relaxed text-[#6B6860]">Your assigned advisor can help with your room search and booking questions.</p>
+                {advisor ? <div className="flex flex-col gap-3 rounded-xl bg-[#F7F6F3] p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div><p className="font-semibold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
+                  {advisor.phone ? <a href={`tel:${advisor.phone}`} className="inline-flex min-h-10 items-center justify-center self-start rounded-xl bg-[#00319D] px-4 py-2 text-sm font-bold text-white hover:bg-[#00277D]">Call {advisor.phone}</a> : <p className="text-sm text-[#6B6860]">Your advisor will contact you through your enquiry.</p>}
+                </div> : <p className="rounded-xl bg-[#F7F6F3] p-4 text-sm text-[#6B6860]">An advisor will appear here once your enquiry has been assigned.</p>}
+              </article>
 
-          <section id="documents" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading title="Your documents" detail="Upload documents requested by your advisor. Files are stored privately and accessed through short-lived links." />
-            <StudentDocumentUploadForm />
-            {documents.length ? <ul className="mt-6 divide-y divide-[#E8E6E1] rounded-xl border border-[#E8E6E1] px-4">
-              {documents.map((document) => <li key={document.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
-                <div><p className="font-semibold text-[#333333]">{document.file_name}</p><p className="mt-1 text-xs text-[#6B6860]">{(document.byte_size / 1024 / 1024).toFixed(2)} MB · Uploaded {formatDate(document.created_at)}</p></div>
-                {document.signedUrl ? <a href={document.signedUrl} target="_blank" rel="noreferrer" className="text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">Open securely</a> : <span className="text-xs text-[#6B6860]">Link unavailable</span>}
-              </li>)}
-            </ul> : <p className="mt-5 text-sm text-[#6B6860]">No documents uploaded yet.</p>}
+              <article id="documents" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5 sm:p-6">
+                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your documents</h3>
+                <p className="mt-1 mb-4 text-sm leading-relaxed text-[#6B6860]">Upload files requested by your advisor. They stay private and use short-lived access links.</p>
+                <div className="max-w-xl [&_form]:gap-3 [&_button]:self-start [&_button]:w-auto"><StudentDocumentUploadForm /></div>
+                {documents.length ? <ul className="mt-4 divide-y divide-[#E8E6E1] rounded-xl border border-[#E8E6E1] px-4">
+                  {documents.map((document) => <li key={document.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                    <div><p className="break-all font-semibold text-[#333333]">{document.file_name}</p><p className="mt-1 text-xs text-[#6B6860]">{(document.byte_size / 1024 / 1024).toFixed(2)} MB · Uploaded {formatDate(document.created_at)}</p></div>
+                    {document.signedUrl ? <a href={document.signedUrl} target="_blank" rel="noreferrer" className="text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">Open securely</a> : <span className="text-xs text-[#6B6860]">Link unavailable</span>}
+                  </li>)}
+                </ul> : <p className="mt-4 text-sm text-[#6B6860]">No documents uploaded yet.</p>}
+              </article>
+            </div>
           </section>
         </div>
       </main>

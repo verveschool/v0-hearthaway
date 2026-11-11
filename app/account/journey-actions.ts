@@ -22,6 +22,10 @@ export async function submitJourneyRequestAction(
   if (!user) return { status: 'error', message: 'Please sign in to send a request.' }
 
   const journeyType = readText(formData, 'journey_type', 24)
+  if (!['renewal', 'referral', 'testimonial'].includes(journeyType)) {
+    return { status: 'error', message: 'Choose a valid request type.' }
+  }
+
   const { data: profile } = await supabase.from('profiles')
     .select('first_name,last_name,phone,city')
     .eq('id', user.id)
