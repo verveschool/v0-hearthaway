@@ -804,8 +804,8 @@ export const movingAbroadCategoryOrder: MovingAbroadArticleCategory[] = [
 
 export const movingAbroadCategorySlugs: Record<MovingAbroadArticleCategory, string[]> = {
   'Before you go': ['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list', 'uae-visa-sponsorship'],
-  Accommodation: ['accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement', 'uae-housing-furnished', 'germany-studentenwerk-housing', 'germany-tenancy-law-deposits'],
-  Budgeting: ['cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts', 'uae-tax-free-income-planning', 'germany-monthly-budgeting'],
+  Accommodation: ['choose-accommodation', 'accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement', 'uae-housing-furnished', 'germany-studentenwerk-housing', 'germany-tenancy-law-deposits'],
+  Budgeting: ['real-cost-abroad', 'cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts', 'uae-tax-free-income-planning', 'germany-monthly-budgeting'],
   Arriving: ['first-week', 'airport-to-home', 'healthcare', 'making-friends'],
 }
 
