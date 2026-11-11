@@ -28,14 +28,12 @@ const navLinks: NavLink[] = [
   dropdown: [
     { label: 'All Universities', href: '/universities' },
     { label: 'All Cities', href: '/cities', dividerAfter: true },
-    { label: 'UK', href: '/uk' },
+    { label: 'United Kingdom', href: '/uk' },
     { label: 'Australia', href: '/australia' },
     { label: 'Germany', href: '/germany' },
-    { label: 'France', href: '/france' },
     { label: 'Ireland', href: '/ireland' },
-    { label: 'Dubai', href: '/uae' },
-    { label: 'Spain', href: '/spain' },
     { label: 'Italy', href: '/italy' },
+    { label: 'Spain', href: '/spain' },
   ],
 },
   {
