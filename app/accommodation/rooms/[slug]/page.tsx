@@ -34,7 +34,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
+      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-8">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <Link href="/accommodation/rooms" className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">Available Rooms</Link>
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.7fr)]">
