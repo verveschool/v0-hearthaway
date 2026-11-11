@@ -130,7 +130,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
+      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <header className="flex flex-col gap-5 rounded-2xl bg-[#00319D] p-6 text-white sm:flex-row sm:items-center sm:justify-between sm:px-8 sm:py-6">
             <div className="min-w-0">
@@ -148,7 +148,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           <nav aria-label="Account sections" className="mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
             {[
               ['profile', 'Profile'], ['saved', 'Saved rooms'], ['shortlists', 'Shortlists'],
-              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['support', 'Your Support'],
+              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and Earn'], ['advisor', 'Advisor'], ['documents', 'Documents'],
             ].map(([id, label]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-[#D8D5CE] bg-white px-4 py-2 text-[#00319D] hover:border-[#00319D]">{label}</a>)}
           </nav>
 
@@ -272,7 +272,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             <SectionHeading title="Your Support" detail="Your advisor and secure document space, together in one place." />
             <div className="grid items-start gap-4 lg:grid-cols-2">
               <article id="advisor" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5 sm:p-6">
-                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your advisor</h3>
+                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your HearthAway Advisor</h3>
                 <p className="mt-1 mb-4 text-sm leading-relaxed text-[#6B6860]">Your assigned advisor can help with your room search and booking questions.</p>
                 {advisor ? <div className="flex flex-col gap-3 rounded-xl bg-[#F7F6F3] p-4 sm:flex-row sm:items-center sm:justify-between">
                   <div><p className="font-semibold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
@@ -281,7 +281,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
               </article>
 
               <article id="documents" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5 sm:p-6">
-                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your documents</h3>
+                <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Your Documents</h3>
                 <p className="mt-1 mb-4 text-sm leading-relaxed text-[#6B6860]">Upload files requested by your advisor. They stay private and use short-lived access links.</p>
                 <div className="max-w-xl [&_form]:gap-3 [&_button]:self-start [&_button]:w-auto"><StudentDocumentUploadForm /></div>
                 {documents.length ? <ul className="mt-4 divide-y divide-[#E8E6E1] rounded-xl border border-[#E8E6E1] px-4">
