@@ -36,12 +36,9 @@ function JourneyRequestForm() {
 export function StudentJourneyForms() {
   return <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-start">
     <div>
-      <p className="text-3xl font-extrabold tracking-tight text-[#00319D] sm:text-4xl">Earn £50 for Every Successful Referral</p>
+      <p className="font-heading text-2xl font-extrabold leading-tight tracking-tight text-[#00319D] sm:text-3xl">Earn £50 for Every Successful Referral</p>
       <p className="mt-4 max-w-xl text-base leading-relaxed text-[#4C4A45]">Know a student who needs help finding a room? Send their details with permission and our Sales team will take it from there. The existing referral tracking and eligibility rules still apply.</p>
-      <div className="mt-6 rounded-xl bg-[#F7F6F3] p-5 text-sm leading-relaxed text-[#4C4A45]">
-        <p className="font-bold text-[#1A1A1A]">How it works</p>
-        <p className="mt-2">Share a student&apos;s details, we&apos;ll contact them, and you&apos;ll receive £50 when the referral is successful under the existing programme terms.</p>
-      </div>
+      <p className="mt-4 text-sm leading-relaxed text-[#6B6860]"><span className="font-semibold text-[#333333]">How it works. </span>Share a student&apos;s details with permission. We&apos;ll contact them, and you&apos;ll receive £50 if the referral is successful under the existing programme terms.</p>
     </div>
     <div className="rounded-2xl border border-[#E8E6E1] p-5 sm:p-6">
       <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Refer a student</h3>
