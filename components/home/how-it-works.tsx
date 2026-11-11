@@ -31,7 +31,7 @@ const steps = [
     number: '04',
     title: 'Book before you fly',
     description:
-      'Confirm your accommodation from home, before you travel. Arrive knowing exactly where you are going and what to expect on day one.',
+      'Confirm your student property from home, before you travel. Arrive knowing exactly where you are going and what to expect on day one.',
     detail: 'Housing sorted before arrival',
     accent: 'Land. Do not search.',
   },
@@ -44,27 +44,24 @@ export default function HowItWorks() {
         {/* Header */}
         <div className="mb-14 grid grid-cols-1 items-end gap-8 sm:mb-16 lg:grid-cols-2 lg:gap-16" data-home-reveal>
           <div>
-            <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FEBB01]" aria-hidden="true" />
-            </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
-              Most students find accommodation. We help them find the right one.
+              Most students browse properties. We help them choose the right room.
             </h2>
           </div>
 
           <div>
             <p className="text-[#6B6860] text-lg leading-relaxed mb-8">
-              Finding accommodation abroad is one of the most important decisions
+              Choosing a student property abroad is one of the most important decisions
               you make before moving. Most platforms hand you a search bar and
-              leave you to it. HearthAway pairs you with an advisor who guides you
-              to the right decision.
+              leave you to it. HearthAway pairs you with an advisor who helps you
+              compare properties and rooms.
             </p>
 
             <Link
               href="/get-matched"
               className="brand-cta inline-flex min-h-12 items-center gap-3 rounded-xl bg-[#FEBB01] px-7 py-4 text-base font-bold text-[#333333]"
             >
-              Talk to an Accommodation Advisor
+              Talk to a Property Advisor
             </Link>
           </div>
         </div>

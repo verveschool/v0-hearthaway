@@ -108,11 +108,9 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
         <section className="bg-primary pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 mb-5">
-                <div className="w-8 h-px bg-accent" aria-hidden="true" />
-                <span className="text-accent text-sm font-bold tracking-widest uppercase">
-                  {article.category} &middot; {article.stage}
-                </span>
+              <div className="mb-5 flex flex-wrap gap-2">
+                <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white">{article.category}</span>
+                <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white">{article.stage}</span>
               </div>
 
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
@@ -144,9 +142,6 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
             <article className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-8 lg:p-10">
-                <div className="text-primary text-sm font-bold tracking-widest uppercase mb-4">
-                  Key takeaways
-                </div>
                 <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
                   The main decisions in this guide
                 </h2>
@@ -157,7 +152,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {keyTakeaways.map((section, index) => (
                     <div key={section.title} className="rounded-2xl bg-white border border-[var(--color-mid-gray)] p-5">
-                      <div className="text-xs font-bold tracking-widest uppercase text-primary mb-2">
+                      <div className="text-xs font-bold text-primary mb-2">
                         Point {index + 1}
                       </div>
                       <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2">
@@ -177,12 +172,6 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                   id={`section-${index + 1}`}
                   className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-8 lg:p-10"
                 >
-                  <div className="inline-flex items-center gap-2 mb-5">
-                    <div className="w-8 h-px bg-accent" aria-hidden="true" />
-                    <span className="text-primary text-sm font-bold tracking-widest uppercase">
-                      {`Section ${index + 1}`}
-                    </span>
-                  </div>
                   <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
                     {titleCase(section.title)}
                   </h2>
@@ -192,7 +181,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
 
                   {section.keyPoints && section.keyPoints.length > 0 && (
                     <div className="mb-6">
-                      <h3 className="text-sm font-bold text-charcoal-ink uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-bold text-charcoal-ink mb-3">
                         Key Points
                       </h3>
                       <ul className="space-y-2">
@@ -208,7 +197,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
 
                   {section.numbers && section.numbers.length > 0 && (
                     <div className="mb-6 rounded-xl bg-[var(--color-warm-gray)] p-5 border border-[var(--color-mid-gray)]">
-                      <h3 className="text-sm font-bold text-primary uppercase tracking-wider mb-3">
+                      <h3 className="text-sm font-bold text-primary mb-3">
                         Critical Numbers
                       </h3>
                       <ul className="space-y-3">
@@ -223,7 +212,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
 
                   {section.warning && (
                     <div className="rounded-xl bg-red-50 p-5 border border-red-100 mt-2">
-                      <h3 className="text-sm font-bold text-red-800 uppercase tracking-wider mb-2 flex items-center gap-2">
+                      <h3 className="text-sm font-bold text-red-800 mb-2 flex items-center gap-2">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                         </svg>
@@ -239,12 +228,6 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
 
               {relatedGuides.length > 0 && (
                 <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-8 lg:p-10">
-                  <div className="inline-flex items-center gap-2 mb-5">
-                    <div className="w-8 h-px bg-accent" aria-hidden="true" />
-                    <span className="text-primary text-sm font-bold tracking-widest uppercase">
-                      Related guides
-                    </span>
-                  </div>
                   <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-5">
                     Keep moving in the right order
                   </h2>
@@ -279,9 +262,6 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
               )}
 
               <section className="rounded-2xl bg-primary p-8 lg:p-10">
-                <div className="text-accent text-sm font-bold tracking-widest uppercase mb-4">
-                  Next step
-                </div>
                 <h2 className="font-heading font-bold text-2xl lg:text-3xl text-white mb-4 text-balance">
                   Turn this into a housing plan.
                 </h2>
@@ -290,7 +270,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </p>
                 <Link
                   href="/get-matched"
-                  className="inline-flex px-8 py-4 bg-accent text-accent-foreground font-bold text-base rounded-xl hover:bg-[var(--color-hearth-gold-dark)] transition-colors shadow-lg"
+                  className="brand-cta inline-flex px-8 py-4 font-bold text-base shadow-lg"
                 >
                   Get matched
                 </Link>

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import {
   ArrowUpRight,
+  BedDouble,
   Building2,
   GraduationCap,
   MapPin,
@@ -16,21 +17,21 @@ const discoveryPaths = [
   },
   {
     label: 'Start with a university',
-    description: 'Find your campus, then see the accommodation options connected to it.',
+    description: 'Find your campus, then explore nearby properties and the rooms they offer.',
     href: '/universities',
     icon: GraduationCap,
   },
   {
-    label: 'Browse available rooms',
-    description: 'Go straight to property details, room types and the information available.',
+    label: 'Browse properties',
+    description: 'Compare student properties, then open one to explore its available rooms.',
     href: '/accommodation',
     icon: Building2,
   },
   {
-    label: 'Talk it through',
-    description: 'Share your plans and ask an accommodation advisor for guidance.',
-    href: '/get-matched',
-    icon: MessageCircle,
+    label: 'Browse available rooms',
+    description: 'Go straight to room listings and see which property each room belongs to.',
+    href: '/accommodation/rooms',
+    icon: BedDouble,
   },
 ]
 
@@ -48,7 +49,7 @@ export default function TotalHomeDiscovery() {
             </p>
           </header>
 
-          <nav aria-label="Ways to start your accommodation search" className="grid gap-4 sm:grid-cols-2" data-home-reveal-stagger>
+          <nav aria-label="Ways to browse student properties and rooms" className="grid gap-4 sm:grid-cols-2" data-home-reveal-stagger>
             {discoveryPaths.map(({ label, description, href, icon: Icon }, index) => (
               <Link
                 key={label}

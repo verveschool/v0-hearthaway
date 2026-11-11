@@ -64,14 +64,14 @@ export default function PropertyEnquiryModal({ propertyName }: PropertyEnquiryMo
         <button
           type="button"
           onClick={() => openEnquiry('virtual-tour')}
-          className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-bold text-[#1A1A1A] transition-colors hover:bg-[#f5b900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
+          className="brand-cta inline-flex min-h-12 flex-1 items-center justify-center px-5 py-3 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
         >
           Book a Free Virtual Tour
         </button>
         <button
           type="button"
           onClick={() => openEnquiry('get-matched')}
-          className="inline-flex min-h-12 flex-1 items-center justify-center rounded-xl border border-white/40 bg-white/10 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
+          className="secondary-cta inline-flex min-h-12 flex-1 items-center justify-center px-5 py-3 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
         >
           Talk to Us
         </button>

@@ -13,11 +13,11 @@ export const metadata: Metadata = {
 const steps = [
   {
     number: '01',
-    title: 'Explore places and rooms',
+    title: 'Browse properties and rooms',
     description:
-      'Start with a destination, university, or room type. Compare current partner listings and the details available for each option.',
+      'Start with a destination, university, property, or room type. Compare current property listings and the details available for each option.',
     href: '/accommodation',
-    linkLabel: 'Explore accommodation',
+    linkLabel: 'Explore properties',
     icon: MapPin,
   },
   {
@@ -26,7 +26,7 @@ const steps = [
     description:
       'Create an account to save rooms to a shortlist, revisit their details, and keep your housing plans in one place.',
     href: '/accommodation/rooms',
-    linkLabel: 'Browse room types',
+    linkLabel: 'Browse available rooms',
     icon: Bookmark,
   },
   {
@@ -47,11 +47,8 @@ export default function HowItWorksPage() {
       <main className="min-h-screen bg-[#F7F6F3]">
         <section className="bg-[#00319D] px-6 py-16 text-white sm:py-20 lg:px-8 lg:py-24">
           <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#FCC20A]">
-              How HearthAway works
-            </p>
-            <h1 className="mt-4 max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl">
-              A clearer path to finding your student home.
+            <h1 className="max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl">
+              A clearer path to finding the right student property.
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
               Explore at your own pace, save the rooms that stand out, and bring in our team whenever you want a hand.
@@ -59,14 +56,14 @@ export default function HowItWorksPage() {
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/accommodation"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-white/35 px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
+                className="secondary-cta inline-flex min-h-11 items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
               >
-                Explore accommodation
+                Explore Properties
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
               <Link
                 href="/get-matched"
-                className="inline-flex min-h-12 items-center justify-center rounded-xl bg-[#FCC20A] px-5 py-3 text-sm font-extrabold text-[#1A1A1A] transition-colors hover:bg-[#f5b900] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
+                className="brand-cta inline-flex min-h-12 items-center justify-center px-5 py-3 text-sm font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
               >
                 Get matched
               </Link>
@@ -77,10 +74,7 @@ export default function HowItWorksPage() {
         <section aria-labelledby="journey-heading" className="px-6 py-12 sm:py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
             <header className="mb-8 max-w-2xl sm:mb-10">
-              <p className="text-xs font-extrabold uppercase tracking-[0.18em] text-[#00319D]">
-                Your search, supported
-              </p>
-              <h2 id="journey-heading" className="mt-3 font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
+              <h2 id="journey-heading" className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
                 Three steps, with room to make your own decision.
               </h2>
             </header>

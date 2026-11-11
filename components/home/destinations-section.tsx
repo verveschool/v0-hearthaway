@@ -23,12 +23,6 @@ export default function DestinationsSection() {
 
         {/* Header */}
         <div className="max-w-2xl mb-14">
-          <div className="inline-flex items-center gap-2 mb-6">
-            <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-            <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-              Where are you heading?
-            </span>
-          </div>
           <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
             {countries.length} countries. One trusted guide.
           </h2>
@@ -116,7 +110,7 @@ export default function DestinationsSection() {
             href="/get-matched"
             className="inline-flex items-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
           >
-            Find accommodation near my university
+            Find student properties near my university
           </Link>
           <Link
             href="/cities"

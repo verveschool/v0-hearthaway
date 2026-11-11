@@ -28,12 +28,6 @@ export default function MovingAbroadPreview() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 mb-6">
-              <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-              <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                Moving Abroad Guide
-              </span>
-            </div>
             <h2 className="font-heading text-4xl lg:text-[3.25rem] font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight text-balance">
               Navigate the move with confidence.
             </h2>

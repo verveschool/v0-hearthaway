@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import ReviewCollector from '@/components/home/review-collector'
 
-const brandIconPath = '/brand/  hearthaway_icon_light.png'
+const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 const footerLinks = {
   Destinations: [
@@ -26,7 +26,8 @@ const footerLinks = {
   ],
 
   Students: [
-    { label: 'Accommodation', href: '/accommodation' },
+    { label: 'Properties', href: '/accommodation' },
+    { label: 'Available Rooms', href: '/accommodation/rooms' },
     { label: 'How it works', href: '/how-it-works' },
     { label: 'All Cities', href: '/cities' },
     { label: 'All Universities', href: '/universities' },
@@ -58,7 +59,7 @@ export default function Footer() {
 
               <p className="max-w-xl text-base font-medium leading-relaxed text-white/80 sm:text-lg">
                 Tell us about your situation and we&apos;ll help you find the
-                right accommodation near your university.
+                right property near your university.
               </p>
             </div>
 
@@ -194,18 +195,15 @@ export default function Footer() {
               <Link
                 href="/"
                 aria-label="HearthAway home"
-                className="flex items-center gap-2"
+                className="inline-flex items-center"
               >
                 <Image
-                  src={brandIconPath}
-                  alt=""
-                  width={128}
-                  height={128}
-                  className="size-9"
+                  src={brandWordmarkPath}
+                  alt="HearthAway"
+                  width={336}
+                  height={100}
+                  className="h-auto w-56 sm:w-64"
                 />
-                <span className="font-heading text-base font-extrabold tracking-tight text-[#01329C]">
-                  Hearth<span className="text-[#FEBB01]">Away</span>
-                </span>
               </Link>
 
               <div className="flex items-center gap-5 sm:border-l sm:border-[#E5E5E5] sm:pl-6">

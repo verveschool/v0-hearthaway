@@ -5,8 +5,8 @@ import Footer from '@/components/footer'
 import { accommodationCities, accommodationRoomListings, formatSourceAvailability, formatSourcePrice } from '@/app/accommodation/listing-data'
 
 export const metadata: Metadata = {
-  title: 'Browse Student Room Types | HearthAway',
-  description: 'Browse room types from the current Vita Student and Stacey accommodation inventory.',
+  title: 'Available Student Rooms | HearthAway',
+  description: 'Browse available room types and see which student property each room belongs to.',
 }
 
 type RoomsPageProps = {
@@ -26,12 +26,16 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
-        <header className="bg-[#00319D] px-5 py-12 text-white sm:px-8 sm:py-16">
-          <div className="mx-auto max-w-7xl">
-            <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FCC20A]">Current partner inventory</p>
-            <h1 className="mt-3 font-heading text-3xl font-extrabold sm:text-4xl">Browse individual room types</h1>
-            <p className="mt-3 max-w-2xl text-sm leading-relaxed text-white/75 sm:text-base">Explore the live Vita Student and Stacey room inventory. Prices, availability and details are shown only when provided by the source.</p>
+      <main className="min-h-screen bg-[#F7F6F3] pb-16">
+        <header className="flex min-h-[220px] items-center bg-[#00319D] px-5 py-12 text-white sm:min-h-[270px] sm:px-8 sm:py-16">
+          <div className="mx-auto flex w-full max-w-7xl flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
+            <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">Available Rooms</h1>
+            <Link
+              href="/accommodation"
+              className="secondary-cta inline-flex min-h-11 items-center justify-center px-4 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
+            >
+              View All Properties
+            </Link>
           </div>
         </header>
 
@@ -54,10 +58,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
             </div>
           </form>
 
-          <div className="mt-6 flex items-center justify-between gap-4">
-            <p className="text-sm text-[#6B6860]">{rooms.length} room {rooms.length === 1 ? 'type' : 'types'}</p>
-            <Link href="/accommodation" className="text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">View all properties</Link>
-          </div>
+          <p className="mt-6 text-sm text-[#6B6860]">{rooms.length} room {rooms.length === 1 ? 'type' : 'types'}</p>
 
           {rooms.length ? <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
             {rooms.map(({ slug, property, room }) => <article key={slug} className="overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md">
@@ -78,7 +79,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
               </Link>
             </article>)}
           </div> : <div className="mt-5 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center">
-            <h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">No room types match those filters</h2>
+            <h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">No available rooms match those filters</h2>
             <p className="mt-2 text-sm text-[#6B6860]">Try another city or search term.</p>
           </div>}
         </section>

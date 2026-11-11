@@ -20,8 +20,7 @@ export default async function ForgotPasswordPage({ searchParams }: ForgotPasswor
       <Navigation />
       <main className="flex min-h-[calc(100vh-5rem)] items-center justify-center bg-[#F7F6F3] px-5 py-16 pt-28">
         <section className="w-full max-w-md rounded-3xl border border-[#E8E6E1] bg-white p-7 shadow-sm sm:p-9" aria-labelledby="forgot-password-title">
-          <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#00319D]">Account access</p>
-          <h1 id="forgot-password-title" className="mt-3 font-heading text-3xl font-extrabold text-[#1A1A1A]">Reset your password</h1>
+          <h1 id="forgot-password-title" className="font-heading text-3xl font-extrabold text-[#1A1A1A]">Reset your password</h1>
           {sent ? <p role="status" className="mt-4 rounded-xl bg-emerald-50 p-4 text-sm leading-relaxed text-emerald-800">If an account exists for that email, a password reset link is on its way.</p> : <>
             <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">Enter the email address on your account and we will send a secure reset link.</p>
             <form action={requestPasswordResetAction} className="mt-6 flex flex-col gap-5">

@@ -59,10 +59,9 @@ function formatPayment(amountMinor: number, currency: string) {
   }
 }
 
-function SectionHeading({ eyebrow, title, detail }: { eyebrow: string; title: string; detail?: string }) {
+function SectionHeading({ title, detail }: { title: string; detail?: string }) {
   return <div className="mb-6">
-    <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#00319D]">{eyebrow}</p>
-    <h2 className="mt-2 font-heading text-2xl font-extrabold text-[#1A1A1A]">{title}</h2>
+    <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">{title}</h2>
     {detail ? <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[#6B6860]">{detail}</p> : null}
   </div>
 }
@@ -137,8 +136,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
           <header className="flex flex-col gap-6 rounded-3xl bg-[#00319D] p-7 text-white sm:flex-row sm:items-end sm:justify-between sm:p-10">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#FCC20A]">Student account</p>
-              <h1 className="mt-3 font-heading text-3xl font-extrabold sm:text-4xl">Welcome back, {firstName}</h1>
+              <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">Welcome back, {firstName}</h1>
               <p className="mt-3 text-sm text-white/75">Your HearthAway profile, housing plans and support in one place.</p>
               <p className="mt-2 text-sm text-white/75">{user.email}</p>
             </div>
@@ -158,12 +156,12 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </nav>
 
           <section id="profile" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Your details" title="Student profile" detail="Keep your preferences current so your advisor can focus on relevant homes and support." />
+            <SectionHeading title="Student profile" detail="Keep your preferences current so your advisor can focus on relevant homes and support." />
             <SaveProfileForm profile={profile} />
           </section>
 
           {recommendations.length > 0 ? <section className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="For you" title="Advisor room recommendations" />
+            <SectionHeading title="Advisor room recommendations" />
             <div className="grid gap-3 sm:grid-cols-2">
               {recommendations.map(({ id, room_slug, note, room, created_at }) => <article key={id} className="rounded-xl bg-[#F7F6F3] p-4">
                 <Link href={`/accommodation/rooms/${room_slug}`} className="font-bold text-[#00319D] underline-offset-4 hover:underline">{room?.room.name} at {room?.property.name}</Link>
@@ -174,7 +172,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section> : null}
 
           <section id="saved" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Your shortlist" title="Saved rooms" detail="Save rooms from the inventory and return to them whenever you need." />
+            <SectionHeading title="Saved rooms" detail="Save rooms from the inventory and return to them whenever you need." />
             {savedRooms.length ? <div className="grid gap-4 md:grid-cols-2">
               {savedRooms.map(({ room_slug, created_at, room }) => <article key={room_slug} className="flex gap-4 rounded-xl border border-[#E8E6E1] p-4">
                 {room?.room.image ? <img src={room.room.image} alt={`${room.room.name} at ${room.property.name}`} className="size-24 shrink-0 rounded-lg object-cover" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="size-24 shrink-0 rounded-lg bg-[#F1F0EC]" />}
@@ -188,7 +186,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section>
 
           <section id="shortlists" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Compare options" title="Your shortlists" detail="Create named groups and add saved rooms to compare your favourites." />
+            <SectionHeading title="Your shortlists" detail="Create named groups and add saved rooms to compare your favourites." />
             <CreateShortlistForm />
             <div className="mt-6 grid gap-4 lg:grid-cols-2">
               {shortlists.map((shortlist) => {
@@ -223,7 +221,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section>
 
           <section id="bookings" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Your housing journey" title="Booking and payment history" detail="Requests and payment records appear here as your advisor updates your case." />
+            <SectionHeading title="Booking and payment history" detail="Requests and payment records appear here as your advisor updates your case." />
             <div className="grid gap-6 lg:grid-cols-2">
               <div>
                 <h3 className="font-semibold text-[#1A1A1A]">Booking requests</h3>
@@ -254,7 +252,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section>
 
           <section id="services" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Extra support" title="Services" detail="Send a request to the HearthAway team. They will confirm availability, timing and any applicable fees." />
+            <SectionHeading title="Services" detail="Send a request to the HearthAway team. They will confirm availability, timing and any applicable fees." />
             {serviceCatalog.length ? <div className="grid gap-4 lg:grid-cols-2">
               {serviceCatalog.map((service) => <article key={service.slug} className="rounded-xl border border-[#E8E6E1] p-5">
                 <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">{service.name}</h3>
@@ -269,12 +267,12 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section>
 
           <section id="ongoing-support" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Keep in touch" title="Your next chapter with HearthAway" detail="Plan a future move, refer a student, or share feedback with the team. Public sharing of feedback is always opt-in." />
+            <SectionHeading title="Your next chapter with HearthAway" detail="Plan a future move, refer a student, or share feedback with the team. Public sharing of feedback is always opt-in." />
             <StudentJourneyForms profileCity={profile.city} />
           </section>
 
           <section id="advisor" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Personal support" title="Your HearthAway advisor" detail="Your assigned advisor is the contact for your room search and booking questions." />
+            <SectionHeading title="Your HearthAway advisor" detail="Your assigned advisor is the contact for your room search and booking questions." />
             {advisor ? <div className="flex flex-col gap-2 rounded-xl bg-[#F7F6F3] p-5 sm:flex-row sm:items-center sm:justify-between">
               <div><p className="font-heading text-lg font-extrabold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
               {advisor.phone ? <a href={`tel:${advisor.phone}`} className="inline-flex min-h-10 items-center justify-center rounded-xl bg-[#00319D] px-4 py-2 text-sm font-bold text-white hover:bg-[#00277D]">Call {advisor.phone}</a> : <p className="text-sm text-[#6B6860]">Your advisor will contact you through your enquiry.</p>}
@@ -282,7 +280,7 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
           </section>
 
           <section id="documents" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading eyebrow="Private files" title="Your documents" detail="Upload documents requested by your advisor. Files are stored privately and accessed through short-lived links." />
+            <SectionHeading title="Your documents" detail="Upload documents requested by your advisor. Files are stored privately and accessed through short-lived links." />
             <StudentDocumentUploadForm />
             {documents.length ? <ul className="mt-6 divide-y divide-[#E8E6E1] rounded-xl border border-[#E8E6E1] px-4">
               {documents.map((document) => <li key={document.id} className="flex flex-wrap items-center justify-between gap-3 py-4">

@@ -539,7 +539,7 @@ export default function GetMatchedPage() {
                   <button
                     type="submit"
                     disabled={!form.phone || isSubmitting}
-                    className="flex items-center gap-2 px-7 py-3 bg-[#FCC20A] text-[#333333] font-bold rounded-xl hover:bg-[#FCC20A] transition-colors disabled:opacity-40 disabled:cursor-not-allowed text-sm"
+                    className="brand-cta flex items-center gap-2 px-7 py-3 font-bold disabled:opacity-40 disabled:cursor-not-allowed text-sm"
                   >
                     {isSubmitting ? 'Sending…' : 'Get my matches'}
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">

@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
 const brandIconPath = '/brand/  hearthaway_icon_light.png'
+const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 const navLinks = [
   {
@@ -53,13 +54,13 @@ const navLinks = [
     ],
   },
   {
-    label: 'Accommodation',
+    label: 'Properties',
     href: '/accommodation',
     dropdown: [
-      { label: 'All Accommodation', href: '/accommodation' },
+      { label: 'All Properties', href: '/accommodation' },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
       { label: 'Stacey', href: '/accommodation?provider=stacey' },
-      { label: 'Browse individual rooms', href: '/accommodation/rooms' },
+      { label: 'Available Rooms', href: '/accommodation/rooms' },
     ],
   },
   {
@@ -104,22 +105,27 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-[4.5rem] items-center justify-between sm:h-20">
           <div className="flex-shrink-0">
-            <Link href="/" aria-label="HearthAway Home" className="flex items-center gap-2">
+            <Link href="/" aria-label="HearthAway home" className="inline-flex shrink-0 items-center">
               <Image
                 src={brandIconPath}
                 alt=""
                 width={128}
                 height={128}
-                className="size-8 sm:size-10"
+                className="size-12 sm:size-14 xl:hidden"
                 priority
               />
-              <span className="font-heading text-base font-extrabold tracking-tight text-[#01329C] sm:text-lg">
-                Hearth<span className="text-[#FEBB01]">Away</span>
-              </span>
+              <Image
+                src={brandWordmarkPath}
+                alt="HearthAway"
+                width={336}
+                height={100}
+                className="hidden h-auto w-[14rem] xl:block 2xl:w-64"
+                priority
+              />
             </Link>
           </div>
 
-          <div className="nav-desktop-layout absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 xl:flex">
+          <div className="nav-desktop-layout hidden min-w-0 flex-1 items-center justify-center gap-1.5 xl:flex 2xl:gap-2">
             {navLinks.map((link, idx) => (
               <div
                 key={`desktop-main-${link.label}-${idx}`}
@@ -198,12 +204,11 @@ export default function Navbar() {
 
   <div className="nav-desktop-layout hidden items-center gap-2 xl:flex">
     <Link
-      href="/sign-in?next=%2Faccount"
-      aria-label="Log in or create a student account"
-      className="nav-login-button inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-4 py-2.5 text-sm font-bold text-[#01329C]"
+      href="/account"
+      className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />
-      <span>Log in / Sign up</span>
+      <span>My Account</span>
     </Link>
     <Link
       href="/get-matched"
@@ -215,12 +220,11 @@ export default function Navbar() {
 
   <div className="nav-mobile-layout flex items-center gap-2 xl:hidden">
     <Link
-      href="/sign-in?next=%2Faccount"
-      aria-label="Log in or create a student account"
-      className="nav-login-button inline-flex min-h-11 items-center gap-2 rounded-lg bg-white px-3 text-sm font-bold text-[#01329C] shadow-sm"
+      href="/account"
+      className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />
-      <span>Sign in</span>
+      <span>My Account</span>
     </Link>
             <button
               ref={menuButtonRef}
@@ -264,7 +268,7 @@ export default function Navbar() {
                     onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
-                    className="nav-link flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-xs font-bold uppercase tracking-wider text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
+                    className="nav-link flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
                   >
                     {link.label}
                     <ChevronDown className={`h-4 w-4 transition-transform ${openMobileDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -303,11 +307,11 @@ export default function Navbar() {
 
   <div className="flex flex-col gap-3 px-3 pt-4">
     <Link
-      href="/sign-in?next=%2Faccount"
+      href="/account"
       onClick={closeMobileDrawer}
-      className="nav-login-button flex min-h-12 w-full items-center justify-center rounded-xl bg-white px-4 py-3 text-center font-bold text-[#01329C]"
+      className="secondary-cta flex min-h-11 w-full items-center justify-center px-4 py-2.5 text-center text-sm font-bold"
     >
-      Log in / Sign up
+      My Account
     </Link>
     <Link
       href="/get-matched"

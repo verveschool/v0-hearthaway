@@ -10,14 +10,8 @@ const stats = [
 
 export default function TrustStatsSection() {
   return (
-    <section className="bg-[#01329C]" aria-labelledby="trust-stats-heading">
+    <section className="bg-[#01329C]" aria-label="HearthAway student trust statistics">
       <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 sm:py-10 lg:px-8">
-        <p
-          id="trust-stats-heading"
-          className="mb-6 text-center text-[0.68rem] font-bold uppercase tracking-[0.2em] text-white/70 sm:mb-8"
-        >
-          Trusted by students moving abroad
-        </p>
         <dl className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-white/15 sm:grid-cols-4">
           {stats.map((stat) => (
             <div key={stat.label} className="flex flex-col bg-[#01329C] px-3 py-4 text-center sm:px-5 sm:py-2">

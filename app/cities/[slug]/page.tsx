@@ -89,12 +89,10 @@ export default async function CityPage({ params }: CityPageProps) {
 
           <div className="relative max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="text-[#FCC20A] text-sm font-bold tracking-widest uppercase mb-4">
-                {countryName} student housing guide
-              </div>
+              <p className="mb-4 text-sm font-semibold text-white/80">{city.name}, {countryName}</p>
 
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
-                Student housing in {city.name}.
+                Student properties in {city.name}.
               </h1>
 
               <p className="text-white/70 text-lg leading-relaxed mb-8">
@@ -115,7 +113,7 @@ export default async function CityPage({ params }: CityPageProps) {
 
               <Link
                 href="/get-matched"
-                className="inline-flex items-center justify-center gap-3 px-8 py-5 bg-[#FCC20A] text-[#333333] font-extrabold text-lg rounded-xl hover:bg-[#FCC20A] transition-colors shadow-xl"
+                className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl"
               >
                 Get matched in {city.name}
               </Link>
@@ -127,15 +125,8 @@ export default async function CityPage({ params }: CityPageProps) {
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2 space-y-5">
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    City Overview
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
-                  Student Housing In {city.name}
+                  Student housing in {city.name}
                 </h2>
 
                 <p className="text-[#6B6860] text-base leading-relaxed mb-4">
@@ -148,13 +139,6 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Budget Planning
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   Typical Rent And Budgeting
                 </h2>
@@ -185,13 +169,6 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Best Areas For Students
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   Student Neighbourhoods In {city.name}
                 </h2>
@@ -213,13 +190,6 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Universities
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-5">
                   Universities In And Near {city.name}
                 </h2>
@@ -252,30 +222,17 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Accommodation
-                  </span>
-                </div>
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
-                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Student accommodation in {city.name}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">Browse {cityProperties.length} linked accommodation {cityProperties.length === 1 ? 'option' : 'options'} with images, room types and current property details.</p>
+                    <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Student properties in {city.name}</h2>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Browse {cityProperties.length} linked {cityProperties.length === 1 ? 'property' : 'properties'} with images, available rooms and current listing details.</p>
                   </div>
                   <Link href={`/accommodation?city=${encodeURIComponent(city.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">View all in {city.name}</Link>
                 </div>
-                {cityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{cityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No accommodation entries are linked to {city.name} yet.</p>}
+                {cityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{cityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No property listings are linked to {city.name} yet.</p>}
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <div className="inline-flex items-center gap-2 mb-6">
-                  <div className="w-8 h-px bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-[#00319D] text-sm font-bold tracking-widest uppercase">
-                    Advisor Support
-                  </span>
-                </div>
-
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   How HearthAway Helps
                 </h2>

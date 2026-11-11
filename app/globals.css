@@ -94,9 +94,16 @@
   }
 }
 
-.brand-cta {
-  border: 2px solid #01329C;
+.brand-cta,
+.secondary-cta {
+  box-sizing: border-box;
+  border-width: 2px;
+  border-style: solid;
   border-radius: 0.875rem;
+}
+
+.brand-cta {
+  border-color: #000000;
   background-color: #FEBB01;
   color: #000000;
   box-shadow: 0 6px 18px rgb(1 50 156 / 0.12);
@@ -104,6 +111,7 @@
 }
 
 .brand-cta:hover {
+  background-color: #FEBB01;
   filter: brightness(0.96);
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgb(1 50 156 / 0.18);
@@ -114,25 +122,26 @@
   box-shadow: 0 3px 10px rgb(1 50 156 / 0.12);
 }
 
+.secondary-cta {
+  border-color: #01329C;
+  background-color: #FFFFFF;
+  color: #01329C;
+}
+
+.secondary-cta:hover {
+  border-color: #01329C;
+  background-color: #FFFFFF;
+  color: #01329C;
+}
+
+.secondary-cta:active {
+  transform: none;
+}
+
 .brand-cta:focus-visible,
-.nav-login-button:focus-visible {
+.secondary-cta:focus-visible {
   outline: 3px solid #01329C;
   outline-offset: 3px;
-}
-
-.nav-login-button {
-  border: 2px solid #01329C;
-  border-radius: 0.875rem;
-  transition: background-color 180ms ease, transform 180ms ease;
-}
-
-.nav-login-button:hover {
-  background-color: rgb(1 50 156 / 0.05);
-  transform: translateY(-1px);
-}
-
-.nav-login-button:active {
-  transform: scale(0.985);
 }
 
 .nav-link {

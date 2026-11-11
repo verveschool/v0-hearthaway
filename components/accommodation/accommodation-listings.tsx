@@ -31,7 +31,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
   return (
     <Link
       href={`/accommodation/property/${listing.slug}`}
-      aria-label={`View ${listing.name} student accommodation in ${listing.city}`}
+      aria-label={`View ${listing.name} student property in ${listing.city}`}
       className="group flex flex-col overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D] focus-visible:ring-offset-2"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F0EC]">
@@ -119,7 +119,7 @@ export default function AccommodationListings({
       <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
         <div className="sm:col-span-2 xl:col-span-1">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
-            Available properties
+            Available Properties
           </h2>
           <p className="mt-2 text-sm text-[#6B6860]" aria-live="polite">
             {visibleListings.length} {visibleListings.length === 1 ? 'property' : 'properties'}
@@ -141,7 +141,7 @@ export default function AccommodationListings({
         <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A]">
           <span>Choose a city</span>
           <select
-            aria-label="Filter accommodations by city"
+            aria-label="Filter properties by city"
             value={selectedCity}
             onChange={(event) => setSelectedCity(event.currentTarget.value)}
             className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white px-4 text-sm font-semibold text-[#1A1A1A] outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
