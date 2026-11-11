@@ -34,19 +34,19 @@ function JourneyRequestForm() {
 }
 
 export function StudentJourneyForms() {
-  return <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(320px,0.9fr)] lg:items-start">
-    <div>
-      <p className="text-3xl font-extrabold tracking-tight text-[#00319D] sm:text-4xl">Earn £50 for Every Successful Referral</p>
-      <p className="mt-4 max-w-xl text-base leading-relaxed text-[#4C4A45]">Know a student who needs help finding a room? Send their details with permission and our Sales team will take it from there. The existing referral tracking and eligibility rules still apply.</p>
-      <div className="mt-6 rounded-xl bg-[#F7F6F3] p-5 text-sm leading-relaxed text-[#4C4A45]">
-        <p className="font-bold text-[#1A1A1A]">How it works</p>
-        <p className="mt-2">Share a student&apos;s details, we&apos;ll contact them, and you&apos;ll receive £50 when the referral is successful under the existing programme terms.</p>
+  return <div className="grid items-start gap-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)]">
+    <div className="pt-1">
+      <p className="max-w-lg text-2xl font-bold leading-tight tracking-tight text-[#00319D] sm:text-3xl">Earn £50 for Every Successful Referral</p>
+      <p className="mt-3 max-w-xl text-sm leading-relaxed text-[#4C4A45]">Know a student who needs help finding a room? Share their details with permission and our Sales team will take it from there. Existing referral tracking and eligibility rules continue to apply.</p>
+      <div className="mt-5 border-t border-[#E8E6E1] pt-4">
+        <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">How it works</p>
+        <p className="mt-1.5 max-w-xl text-sm leading-relaxed text-[#6B6860]">Share a student&apos;s details. We&apos;ll contact them. You&apos;ll receive £50 when the referral is successful under the programme terms.</p>
       </div>
     </div>
-    <div className="rounded-2xl border border-[#E8E6E1] p-5 sm:p-6">
-      <h3 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Refer a student</h3>
-      <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">Only share details when you have permission for HearthAway to make contact.</p>
-      <div className="mt-5"><JourneyRequestForm /></div>
+    <div className="rounded-xl border border-[#E8E6E1] bg-white p-5 sm:p-6">
+      <h3 className="font-heading text-lg font-bold text-[#1A1A1A]">Refer a student</h3>
+      <p className="mt-1.5 text-sm leading-relaxed text-[#6B6860]">Only share details when you have permission for HearthAway to contact them.</p>
+      <div className="mt-4"><JourneyRequestForm /></div>
     </div>
   </div>
 }
