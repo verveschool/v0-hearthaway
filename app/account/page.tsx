@@ -130,26 +130,25 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-28">
+      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-20 sm:pt-24">
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <header className="flex flex-col gap-6 rounded-3xl bg-[#00319D] p-7 text-white sm:flex-row sm:items-end sm:justify-between sm:p-10">
-            <div>
-              <h1 className="font-heading text-3xl font-extrabold sm:text-4xl">My HearthAway Account</h1>
-              <p className="mt-3 text-sm text-white/75">Your profile, saved rooms, booking requests and support in one place.</p>
-              <p className="mt-2 text-sm text-white/75">{user.email}</p>
+          <header className="flex flex-col gap-4 rounded-2xl bg-[#00319D] px-6 py-5 text-white sm:flex-row sm:items-center sm:justify-between sm:px-7 sm:py-6">
+            <div className="min-w-0">
+              <h1 className="font-heading text-2xl font-bold tracking-tight sm:text-3xl">My HearthAway Account</h1>
+              <p className="mt-1.5 truncate text-sm text-white/75">{user.email}</p>
             </div>
-            <div className="flex flex-wrap gap-3">
-              {teamMemberResult.data ? <Link href="/team" className="inline-flex min-h-10 items-center rounded-xl border border-white/35 px-4 py-2 text-sm font-bold text-white hover:bg-white/10">Team inbox</Link> : null}
+            <div className="flex shrink-0 items-center gap-2">
+              {teamMemberResult.data ? <Link href="/team" className="inline-flex min-h-10 items-center rounded-lg border border-white/35 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-white/10">Team inbox</Link> : null}
               <SignOutButton />
             </div>
           </header>
 
           {search.profile === 'updated' ? <p role="status" className="mt-5 rounded-xl bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-800">Profile updated.</p> : null}
 
-          <nav aria-label="Account sections" className="mt-6 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
+          <nav aria-label="Account sections" className="mt-5 flex gap-2 overflow-x-auto pb-2 text-sm font-semibold">
             {[
               ['profile', 'Profile'], ['saved', 'Saved rooms'], ['shortlists', 'Shortlists'],
-              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['advisor', 'Advisor'], ['documents', 'Documents'],
+              ['bookings', 'Bookings'], ['services', 'Services'], ['referrals', 'Refer and earn'], ['support', 'Your support'],
             ].map(([id, label]) => <a key={id} href={`#${id}`} className="shrink-0 rounded-full border border-[#D8D5CE] bg-white px-4 py-2 text-[#00319D] hover:border-[#00319D]">{label}</a>)}
           </nav>
 
@@ -269,23 +268,34 @@ export default async function AccountPage({ searchParams }: AccountPageProps) {
             <StudentJourneyForms />
           </section>
 
-          <section id="advisor" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading title="Your HearthAway advisor" detail="Your assigned advisor is the contact for your room search and booking questions." />
-            {advisor ? <div className="flex flex-col gap-2 rounded-xl bg-[#F7F6F3] p-5 sm:flex-row sm:items-center sm:justify-between">
-              <div><p className="font-heading text-lg font-extrabold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
-              {advisor.phone ? <a href={`tel:${advisor.phone}`} className="inline-flex min-h-10 items-center justify-center rounded-xl bg-[#00319D] px-4 py-2 text-sm font-bold text-white hover:bg-[#00277D]">Call {advisor.phone}</a> : <p className="text-sm text-[#6B6860]">Your advisor will contact you through your enquiry.</p>}
-            </div> : <p className="rounded-xl bg-[#F7F6F3] p-4 text-sm text-[#6B6860]">An advisor will appear here once your enquiry has been assigned.</p>}
-          </section>
+          <section id="support" className="mt-7 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-7">
+            <SectionHeading title="Your support" detail="Your advisor and your documents, together in one place." />
+            <div className="grid gap-5 lg:grid-cols-2">
+              <article id="advisor" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5">
+                <div className="mb-4">
+                  <h3 className="font-heading text-lg font-bold text-[#1A1A1A]">Your HearthAway advisor</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[#6B6860]">Your assigned advisor is your contact for room search and booking questions.</p>
+                </div>
+                {advisor ? <div className="flex flex-col gap-3 rounded-lg bg-[#F7F6F3] p-4 sm:flex-row sm:items-center sm:justify-between">
+                  <div><p className="font-semibold text-[#1A1A1A]">{advisor.display_name}</p><p className="mt-1 text-sm text-[#6B6860]">{formatStatus(advisor.role)}</p></div>
+                  {advisor.phone ? <a href={`tel:${advisor.phone}`} className="inline-flex min-h-9 items-center justify-center self-start rounded-lg bg-[#00319D] px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#00277D]">Call advisor</a> : <p className="text-sm text-[#6B6860]">Your advisor will contact you through your enquiry.</p>}
+                </div> : <p className="rounded-lg bg-[#F7F6F3] p-4 text-sm leading-relaxed text-[#6B6860]">Your advisor will appear here once your enquiry has been assigned.</p>}
+              </article>
 
-          <section id="documents" className="mt-8 scroll-mt-28 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-            <SectionHeading title="Your documents" detail="Upload documents requested by your advisor. Files are stored privately and accessed through short-lived links." />
-            <StudentDocumentUploadForm />
-            {documents.length ? <ul className="mt-6 divide-y divide-[#E8E6E1] rounded-xl border border-[#E8E6E1] px-4">
-              {documents.map((document) => <li key={document.id} className="flex flex-wrap items-center justify-between gap-3 py-4">
-                <div><p className="font-semibold text-[#333333]">{document.file_name}</p><p className="mt-1 text-xs text-[#6B6860]">{(document.byte_size / 1024 / 1024).toFixed(2)} MB · Uploaded {formatDate(document.created_at)}</p></div>
-                {document.signedUrl ? <a href={document.signedUrl} target="_blank" rel="noreferrer" className="text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">Open securely</a> : <span className="text-xs text-[#6B6860]">Link unavailable</span>}
-              </li>)}
-            </ul> : <p className="mt-5 text-sm text-[#6B6860]">No documents uploaded yet.</p>}
+              <article id="documents" className="scroll-mt-28 rounded-xl border border-[#E8E6E1] p-5">
+                <div className="mb-4">
+                  <h3 className="font-heading text-lg font-bold text-[#1A1A1A]">Your documents</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-[#6B6860]">Upload documents requested by your advisor. Files remain private to your account and support team.</p>
+                </div>
+                <StudentDocumentUploadForm />
+                {documents.length ? <ul className="mt-5 divide-y divide-[#E8E6E1] border-t border-[#E8E6E1]">
+                  {documents.map((document) => <li key={document.id} className="flex flex-wrap items-center justify-between gap-3 py-3">
+                    <div className="min-w-0"><p className="break-all text-sm font-semibold text-[#333333]">{document.file_name}</p><p className="mt-1 text-xs text-[#6B6860]">{(document.byte_size / 1024 / 1024).toFixed(2)} MB · Uploaded {formatDate(document.created_at)}</p></div>
+                    {document.signedUrl ? <a href={document.signedUrl} target="_blank" rel="noreferrer" className="shrink-0 text-sm font-semibold text-[#00319D] underline-offset-4 hover:underline">Open securely</a> : <span className="text-xs text-[#6B6860]">Link unavailable</span>}
+                  </li>)}
+                </ul> : <p className="mt-4 text-sm text-[#6B6860]">No documents uploaded yet.</p>}
+              </article>
+            </div>
           </section>
         </div>
       </main>
