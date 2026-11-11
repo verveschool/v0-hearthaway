@@ -1,3 +1,4 @@
+
 'use client'
 
 import Image from 'next/image'
@@ -5,39 +6,36 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
-const brandIconPath = '/brand/  hearthaway_icon_light.png'
+const brandIconPath = '/brand/hearthaway_icon_light.png'
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
-const navLinks = [
+type NavSubLink = {
+  label: string
+  href: string
+  dividerAfter?: boolean
+}
+
+type NavLink = {
+  label: string
+  href: string
+  dropdown?: NavSubLink[]
+}
+
+const navLinks: NavLink[] = [
   {
-    label: 'Universities',
+    label: 'Destinations',
     href: '/universities',
     dropdown: [
       { label: 'All Universities', href: '/universities' },
+      { label: 'All Cities', href: '/cities', dividerAfter: true },
       { label: 'United Kingdom', href: '/uk' },
-      { label: 'Ireland', href: '/ireland' },
-      { label: 'Germany', href: '/germany' },
       { label: 'Australia', href: '/australia' },
+      { label: 'Germany', href: '/germany' },
       { label: 'France', href: '/france' },
-      { label: 'Italy', href: '/italy' },
-      { label: 'Spain', href: '/spain' },
+      { label: 'Ireland', href: '/ireland' },
       { label: 'Dubai', href: '/uae' },
-    ],
-  },
-  {
-    label: 'Cities',
-    href: '/cities',
-    dropdown: [
-      { label: 'All Cities', href: '/cities' },
-      { label: 'London', href: '/cities/london' },
-      { label: 'Melbourne', href: '/cities/melbourne' },
-      { label: 'Sydney', href: '/cities/sydney' },
-      { label: 'Manchester', href: '/cities/manchester' },
-      { label: 'Munich', href: '/cities/munich' },
-      { label: 'Dublin', href: '/cities/dublin' },
-      { label: 'Paris', href: '/cities/paris' },
-      { label: 'Dubai', href: '/cities/dubai' },
-      { label: 'Milan', href: '/cities/milan' },
+      { label: 'Spain', href: '/spain' },
+      { label: 'Italy', href: '/italy' },
     ],
   },
   {
@@ -53,6 +51,21 @@ const navLinks = [
   {
     label: 'Resources',
     href: '/moving-abroad',
+    dropdown: [
+      { label: 'All Resources', href: '/moving-abroad' },
+      {
+        label: 'Pre-Arrival Checklist',
+        href: '/moving-abroad/pre-arrival-checklist',
+      },
+      { label: 'Student Visa', href: '/moving-abroad/student-visa' },
+      {
+        label: 'Accommodation Guide',
+        href: '/moving-abroad/accommodation-guide',
+      },
+      { label: 'Budget Planning', href: '/moving-abroad/budget-planning' },
+      { label: 'How It Works', href: '/how-it-works' },
+      { label: 'About Us', href: '/about-us' },
+    ],
   },
 ]
 
@@ -61,15 +74,18 @@ export default function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<number | null>(null)
   const [openMobileDropdown, setOpenMobileDropdown] = useState<number | null>(null)
 
+  const menuButtonRef = useRef<HTMLButtonElement>(null)
+
   const closeMobileDrawer = useCallback(() => {
     setIsOpen(false)
     setOpenMobileDropdown(null)
   }, [])
 
-  const menuButtonRef = useRef<HTMLButtonElement>(null)
-
   useEffect(() => {
-    const desktopNavigation = window.matchMedia('(min-width: 1280px) and (hover: hover) and (pointer: fine)')
+    const desktopNavigation = window.matchMedia(
+      '(min-width: 1280px) and (hover: hover) and (pointer: fine)'
+    )
+
     const closeDrawerOnDesktop = () => {
       if (desktopNavigation.matches) {
         closeMobileDrawer()
@@ -80,15 +96,24 @@ export default function Navbar() {
     desktopNavigation.addEventListener('change', closeDrawerOnDesktop)
     closeDrawerOnDesktop()
 
-    return () => desktopNavigation.removeEventListener('change', closeDrawerOnDesktop)
+    return () => {
+      desktopNavigation.removeEventListener('change', closeDrawerOnDesktop)
+    }
   }, [closeMobileDrawer])
 
   return (
     <nav className="sticky top-0 z-50 border-b border-[#E8E6E1] bg-white text-[#01329C] shadow-[0_1px_0_rgba(1,50,156,0.03)]">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative flex h-[4.5rem] items-center justify-between sm:h-20">
+
+          {/* Brand */}
           <div className="flex-shrink-0">
-            <Link href="/" aria-label="HearthAway home" className="inline-flex shrink-0 items-center">
+            <Link
+              href="/"
+              aria-label="HearthAway home"
+              className="inline-flex shrink-0 items-center"
+            >
+              {/* Symbol-only logo for mobile and tablet */}
               <Image
                 src={brandIconPath}
                 alt=""
@@ -97,21 +122,24 @@ export default function Navbar() {
                 className="size-12 sm:size-14 xl:hidden"
                 priority
               />
-                <Image
-                  src={brandWordmarkPath}
-                  alt="HearthAway"
-                  width={336}
-                  height={100}
-                  className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
-                  priority
-                />
+
+              {/* Full wordmark for desktop */}
+              <Image
+                src={brandWordmarkPath}
+                alt="HearthAway"
+                width={336}
+                height={100}
+                className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
+                priority
+              />
             </Link>
           </div>
 
+          {/* Desktop navigation */}
           <div className="nav-desktop-layout hidden min-w-0 flex-1 items-center justify-center gap-1.5 xl:flex 2xl:gap-2">
             {navLinks.map((link, idx) => (
               <div
-                key={`desktop-main-${link.label}-${idx}`}
+                key={`desktop-main-${link.label}`}
                 className="group relative py-2"
                 onMouseEnter={() => {
                   if (link.dropdown) setActiveDropdown(idx)
@@ -126,7 +154,11 @@ export default function Navbar() {
                 }}
                 onBlur={(event) => {
                   const nextTarget = event.relatedTarget
-                  if (!(nextTarget instanceof Node) || !event.currentTarget.contains(nextTarget)) {
+
+                  if (
+                    !(nextTarget instanceof Node) ||
+                    !event.currentTarget.contains(nextTarget)
+                  ) {
                     setActiveDropdown(null)
                   }
                 }}
@@ -134,7 +166,10 @@ export default function Navbar() {
                   if (event.key === 'Escape') {
                     event.preventDefault()
                     setActiveDropdown(null)
-                    event.currentTarget.querySelector<HTMLButtonElement>('button')?.focus()
+
+                    event.currentTarget
+                      .querySelector<HTMLButtonElement>('button')
+                      ?.focus()
                   }
                 }}
               >
@@ -143,13 +178,23 @@ export default function Navbar() {
                     <button
                       id={`desktop-button-${idx}`}
                       type="button"
-                      onClick={() => setActiveDropdown(activeDropdown === idx ? null : idx)}
+                      onClick={() =>
+                        setActiveDropdown(
+                          activeDropdown === idx ? null : idx
+                        )
+                      }
                       className="nav-link flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
                       aria-expanded={activeDropdown === idx}
                       aria-controls={`desktop-dropdown-${idx}`}
                     >
                       {link.label}
-                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${activeDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
+
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${
+                          activeDropdown === idx ? 'rotate-180' : ''
+                        }`}
+                        aria-hidden="true"
+                      />
                     </button>
 
                     <div
@@ -158,14 +203,18 @@ export default function Navbar() {
                       aria-hidden={activeDropdown !== idx}
                       inert={activeDropdown !== idx}
                       data-open={activeDropdown === idx}
-                      className="nav-dropdown absolute left-0 top-full z-50 w-56 pt-2"
+                      className="nav-dropdown absolute left-0 top-full z-50 w-60 pt-2"
                     >
                       <div className="max-h-[70vh] overflow-y-auto rounded-2xl border border-[#E8E6E1] bg-white p-2 shadow-[0_18px_50px_rgba(15,23,42,0.14)]">
-                        {link.dropdown.map((subLink, subIdx) => (
+                        {link.dropdown.map((subLink) => (
                           <Link
-                            key={`desktop-sub-${subLink.label}-${subIdx}`}
+                            key={subLink.label}
                             href={subLink.href}
-                            className="flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#F7F6F3] hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
+                            className={`flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#F7F6F3] hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] ${
+                              subLink.dividerAfter
+                                ? 'mb-2 border-b border-[#E8E6E1] pb-3'
+                                : ''
+                            }`}
                           >
                             {subLink.label}
                           </Link>
@@ -185,30 +234,34 @@ export default function Navbar() {
             ))}
           </div>
 
-  <div className="nav-desktop-layout hidden items-center gap-2 xl:flex">
-    <Link
-      href="/account"
-      className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
-    >
-      <UserRound className="h-4 w-4" aria-hidden="true" />
-      <span>My Account</span>
-    </Link>
-    <Link
-      href="/get-matched"
-      className="brand-cta inline-flex min-h-11 items-center justify-center rounded-lg bg-[#FEBB01] px-5 py-2.5 text-sm font-bold text-[#333333]"
-    >
-      Get Matched
-    </Link>
-  </div>
+          {/* Desktop actions */}
+          <div className="nav-desktop-layout hidden items-center gap-2 xl:flex">
+            <Link
+              href="/account"
+              className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
+            >
+              <UserRound className="h-4 w-4" aria-hidden="true" />
+              <span>My Account</span>
+            </Link>
 
-  <div className="nav-mobile-layout flex items-center gap-2 xl:hidden">
-    <Link
-      href="/account"
-      className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
-    >
-      <UserRound className="h-4 w-4" aria-hidden="true" />
-      <span>My Account</span>
-    </Link>
+            <Link
+              href="/get-matched"
+              className="brand-cta inline-flex min-h-11 items-center justify-center rounded-lg bg-[#FEBB01] px-5 py-2.5 text-sm font-bold text-[#333333]"
+            >
+              Get Matched
+            </Link>
+          </div>
+
+          {/* Mobile actions */}
+          <div className="nav-mobile-layout flex items-center gap-2 xl:hidden">
+            <Link
+              href="/account"
+              className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
+            >
+              <UserRound className="h-4 w-4" aria-hidden="true" />
+              <span>My Account</span>
+            </Link>
+
             <button
               ref={menuButtonRef}
               type="button"
@@ -218,17 +271,24 @@ export default function Navbar() {
                   return !currentIsOpen
                 })
               }}
-              aria-label={isOpen ? 'Close navigation menu' : 'Open navigation menu'}
+              aria-label={
+                isOpen ? 'Close navigation menu' : 'Open navigation menu'
+              }
               aria-controls="mobile-navigation-panel"
               aria-expanded={isOpen}
               className="inline-flex size-11 items-center justify-center rounded-xl text-[#01329C]/80 transition-all hover:bg-[#01329C]/5 hover:text-[#01329C] active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
             >
-              {isOpen ? <X className="h-6 w-6" aria-hidden="true" /> : <Menu className="h-6 w-6" aria-hidden="true" />}
+              {isOpen ? (
+                <X className="h-6 w-6" aria-hidden="true" />
+              ) : (
+                <Menu className="h-6 w-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
       </div>
 
+      {/* Mobile navigation drawer */}
       <div
         id="mobile-navigation-panel"
         aria-hidden={!isOpen}
@@ -242,19 +302,33 @@ export default function Navbar() {
           }
         }}
       >
+        <div className="max-h-[calc(100dvh-5rem)] overflow-y-auto">
           {navLinks.map((link, idx) => (
-            <div key={`mobile-group-${link.label}-${idx}`} className="flex flex-col gap-1">
+            <div
+              key={`mobile-group-${link.label}`}
+              className="flex flex-col gap-1"
+            >
               {link.dropdown ? (
                 <div>
                   <button
                     type="button"
-                    onClick={() => setOpenMobileDropdown(openMobileDropdown === idx ? null : idx)}
+                    onClick={() =>
+                      setOpenMobileDropdown(
+                        openMobileDropdown === idx ? null : idx
+                      )
+                    }
                     aria-expanded={openMobileDropdown === idx}
                     aria-controls={`mobile-dropdown-${idx}`}
                     className="nav-link flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
                   >
                     {link.label}
-                    <ChevronDown className={`h-4 w-4 transition-transform ${openMobileDropdown === idx ? 'rotate-180' : ''}`} aria-hidden="true" />
+
+                    <ChevronDown
+                      className={`h-4 w-4 transition-transform ${
+                        openMobileDropdown === idx ? 'rotate-180' : ''
+                      }`}
+                      aria-hidden="true"
+                    />
                   </button>
 
                   <div
@@ -264,12 +338,16 @@ export default function Navbar() {
                     data-open={openMobileDropdown === idx}
                     className="nav-mobile-submenu flex flex-col gap-1 pl-4"
                   >
-                    {link.dropdown.map((subLink, subIdx) => (
+                    {link.dropdown.map((subLink) => (
                       <Link
-                        key={`mobile-sub-${subLink.label}-${subIdx}`}
+                        key={subLink.label}
                         href={subLink.href}
                         onClick={closeMobileDrawer}
-                        className="nav-link flex min-h-11 items-center rounded-lg px-3 py-2 text-base font-medium text-[#01329C]/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
+                        className={`nav-link flex min-h-11 items-center rounded-lg px-3 py-2 text-base font-medium text-[#01329C]/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C] ${
+                          subLink.dividerAfter
+                            ? 'mb-2 border-b border-[#E8E6E1] pb-3'
+                            : ''
+                        }`}
                       >
                         {subLink.label}
                       </Link>
@@ -288,16 +366,18 @@ export default function Navbar() {
             </div>
           ))}
 
-  <div className="flex flex-col gap-3 px-3 pt-4">
-    <Link
-      href="/account"
-      onClick={closeMobileDrawer}
-      className="secondary-cta flex min-h-11 w-full items-center justify-center px-4 py-2.5 text-center text-sm font-bold"
-    >
-      My Account
-    </Link>
-    <Link
-      href="/get-matched"
+          {/* Mobile CTA actions */}
+          <div className="flex flex-col gap-3 px-3 pt-4">
+            <Link
+              href="/account"
+              onClick={closeMobileDrawer}
+              className="secondary-cta flex min-h-11 w-full items-center justify-center px-4 py-2.5 text-center text-sm font-bold"
+            >
+              My Account
+            </Link>
+
+            <Link
+              href="/get-matched"
               onClick={closeMobileDrawer}
               className="brand-cta flex min-h-12 w-full items-center justify-center rounded-xl bg-[#FEBB01] px-4 py-3 text-center font-bold text-[#333333]"
             >
@@ -305,6 +385,7 @@ export default function Navbar() {
             </Link>
           </div>
         </div>
+      </div>
     </nav>
   )
 }
