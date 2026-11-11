@@ -1,48 +1,49 @@
+
 import Image from 'next/image'
 import Link from 'next/link'
 import ReviewCollector from '@/components/home/review-collector'
 
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
-const footerLinks = {
-  Destinations: [
-  { label: 'UK', href: '/uk' },
-  { label: 'Ireland', href: '/ireland' },
-  { label: 'USA', href: '/usa' },
-  { label: 'Canada', href: '/canada' },
+const priorityDestinations = [
+  { label: 'United Kingdom', href: '/uk' },
   { label: 'Australia', href: '/australia' },
   { label: 'Germany', href: '/germany' },
-  { label: 'UAE', href: '/uae' },
-  { label: 'Singapore', href: '/singapore' },
-  { label: 'Netherlands', href: '/netherlands' },
   { label: 'France', href: '/france' },
-  { label: 'Italy', href: '/italy' },
+  { label: 'Ireland', href: '/ireland' },
+  { label: 'Dubai', href: '/uae' },
   { label: 'Spain', href: '/spain' },
-  { label: 'Austria', href: '/austria' },
-  { label: 'Belgium', href: '/belgium' },
-  { label: 'Hungary', href: '/hungary' },
-  { label: 'Malta', href: '/malta' },
-  { label: 'Malaysia', href: '/malaysia' },
-  ],
+  { label: 'Italy', href: '/italy' },
+]
 
-  Students: [
-    { label: 'About us', href: '/about' },
-    { label: 'How it works', href: '/how-it-works' },
-    { label: 'All Properties', href: '/accommodation' },
-    { label: 'All Rooms', href: '/accommodation/rooms' },
-    { label: 'All Cities', href: '/cities' },
-    { label: 'All Universities', href: '/universities' },
-  ],
+const accommodationLinks = [
+  { label: 'All Properties', href: '/accommodation' },
+  { label: 'All Rooms', href: '/accommodation/rooms' },
+  { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
+  { label: 'Stacey', href: '/accommodation?provider=stacey' },
+]
 
-  Guides: [
-    { label: 'All Resources', href: '/moving-abroad' },
-    { label: 'Pre-Arrival Checklist', href: '/moving-abroad/pre-arrival-checklist' },
-    { label: 'Student Visa', href: '/moving-abroad/student-visa' },
-    { label: 'Accommodation Guide', href: '/moving-abroad/choose-accommodation' },
-    { label: 'Budget Planning', href: '/moving-abroad/real-cost-abroad' },
-    { label: 'Get Matched', href: '/get-matched' },
-  ],
-}
+const resourceLinks = [
+  { label: 'All Resources', href: '/moving-abroad' },
+  {
+    label: 'Pre-Arrival Checklist',
+    href: '/moving-abroad/pre-arrival-checklist',
+  },
+  { label: 'Student Visa', href: '/moving-abroad/student-visa' },
+  {
+    label: 'Accommodation Guide',
+    href: '/moving-abroad/choose-accommodation',
+  },
+  {
+    label: 'Budget Planning',
+    href: '/moving-abroad/real-cost-abroad',
+  },
+  { label: 'How It Works', href: '/how-it-works' },
+  { label: 'About Us', href: '/about' },
+]
+
+const linkClass =
+  'text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]'
 
 export default function Footer() {
   return (
@@ -77,64 +78,77 @@ export default function Footer() {
       <section className="bg-white text-[#171717]">
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
 
-          {/* Navigation + contact */}
+          {/* Navigation and contact */}
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-8">
 
-            {Object.entries(footerLinks).map(([category, links]) => {
-              if (category === 'Destinations') {
-                const midpoint = Math.ceil(links.length / 2)
-                const columns = [links.slice(0, midpoint), links.slice(midpoint)]
+            {/* Destinations */}
+            <div className="min-w-0">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
+                Destinations
+              </h3>
 
-                return (
-                  <div key={category} className="min-w-0 sm:flex-shrink-0">
-                    <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                      {category}
-                    </h3>
+              <ul className="flex flex-col gap-2.5">
+                <li>
+                  <Link href="/universities" className={linkClass}>
+                    All Universities
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cities" className={linkClass}>
+                    All Cities
+                  </Link>
+                </li>
+              </ul>
 
-                    <div className="grid grid-cols-2 gap-x-8 sm:gap-x-10">
-                      {columns.map((column, columnIndex) => (
-                        <ul key={`${category}-column-${columnIndex}`} className="flex min-w-0 flex-col gap-2.5">
-                          {column.map((link) => (
-                            <li key={`${category}-${link.href}`}>
-                              <Link
-                                href={link.href}
-                                className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
-                              >
-                                {link.label}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      ))}
-                    </div>
-                  </div>
-                )
-              }
+              <div className="my-3 border-t border-[#E5E5E5]" />
 
-              return (
-                <div key={category} className="sm:flex-shrink-0">
-                  <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                    {category}
-                  </h3>
+              <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
+                {priorityDestinations.map((destination) => (
+                  <li key={destination.href}>
+                    <Link href={destination.href} className={linkClass}>
+                      {destination.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-                  <ul className="flex flex-col gap-2.5">
-                    {links.map((link) => (
-                      <li key={`${category}-${link.href}`}>
-                        <Link
-                          href={link.href}
-                          className="text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]"
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
+            {/* Accommodation */}
+            <div className="min-w-0">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
+                Accommodation
+              </h3>
+
+              <ul className="flex flex-col gap-2.5">
+                {accommodationLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div className="min-w-0">
+              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
+                Resources
+              </h3>
+
+              <ul className="flex flex-col gap-2.5">
+                {resourceLinks.map((link) => (
+                  <li key={link.href}>
+                    <Link href={link.href} className={linkClass}>
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
             {/* Contact */}
-            <div className="sm:flex-shrink-0">
+            <div className="min-w-0">
               <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
                 Contact
               </h3>
@@ -183,6 +197,7 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Reviews */}
           <div className="mt-12">
             <ReviewCollector />
           </div>
@@ -190,7 +205,7 @@ export default function Footer() {
           {/* Bottom row */}
           <div className="mt-10 flex flex-col gap-6 border-t border-[#E5E5E5] pt-7 md:flex-row md:items-center md:justify-between">
 
-            {/* Logo + socials */}
+            {/* Logo and social links */}
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
               <Link
                 href="/"
@@ -202,8 +217,7 @@ export default function Footer() {
                   alt="HearthAway"
                   width={336}
                   height={100}
-                  className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
-                  priority
+                  className="h-auto w-[13rem] translate-y-1 sm:w-[14rem]"
                 />
               </Link>
 
