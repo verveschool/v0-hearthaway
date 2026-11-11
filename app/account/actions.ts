@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { getAccommodationRoomBySlug } from '@/app/accommodation/listing-data'
 
@@ -40,9 +41,9 @@ export async function saveProfileAction(_previous: ActionState, formData: FormDa
     accommodation_preference: textValue(formData, 'accommodation_preference', 100) || null,
   }, { onConflict: 'id' })
 
-  return error
-    ? { status: 'error', message: 'Your profile could not be saved. Please try again.' }
-    : { status: 'success', message: 'Your profile has been updated.' }
+  if (error) return { status: 'error', message: 'Your profile could not be saved. Please try again.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Your profile has been updated.' }
 }
 
 export async function saveRoomAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -64,9 +65,9 @@ export async function removeSavedRoomAction(_previous: ActionState, formData: Fo
   if (!user) return { status: 'error', message: 'Please sign in again to update saved rooms.' }
 
   const { error } = await supabase.from('saved_rooms').delete().eq('student_id', user.id).eq('room_slug', roomSlug)
-  return error
-    ? { status: 'error', message: 'This room could not be removed.' }
-    : { status: 'success', message: 'Room removed from saved rooms.' }
+  if (error) return { status: 'error', message: 'This room could not be removed.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Room removed from saved rooms.' }
 }
 
 export async function createShortlistAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -77,9 +78,9 @@ export async function createShortlistAction(_previous: ActionState, formData: Fo
 
   const { error } = await supabase.from('shortlists').insert({ student_id: user.id, name })
   if (error?.code === '23505') return { status: 'error', message: 'You already have a shortlist with that name.' }
-  return error
-    ? { status: 'error', message: 'Your shortlist could not be created.' }
-    : { status: 'success', message: 'Shortlist created.' }
+  if (error) return { status: 'error', message: 'Your shortlist could not be created.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Shortlist created.' }
 }
 
 export async function addRoomToShortlistAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -91,9 +92,9 @@ export async function addRoomToShortlistAction(_previous: ActionState, formData:
 
   const { error } = await supabase.from('shortlist_items').insert({ shortlist_id: shortlistId, room_slug: roomSlug })
   if (error?.code === '23505') return { status: 'success', message: 'This room is already in that shortlist.' }
-  return error
-    ? { status: 'error', message: 'This room could not be added to the shortlist.' }
-    : { status: 'success', message: 'Room added to shortlist.' }
+  if (error) return { status: 'error', message: 'This room could not be added to the shortlist.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Room added to shortlist.' }
 }
 
 export async function removeShortlistItemAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -103,9 +104,9 @@ export async function removeShortlistItemAction(_previous: ActionState, formData
   if (!user) return { status: 'error', message: 'Please sign in again to update your shortlist.' }
 
   const { error } = await supabase.from('shortlist_items').delete().eq('shortlist_id', shortlistId).eq('room_slug', roomSlug)
-  return error
-    ? { status: 'error', message: 'This room could not be removed from the shortlist.' }
-    : { status: 'success', message: 'Room removed from shortlist.' }
+  if (error) return { status: 'error', message: 'This room could not be removed from the shortlist.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Room removed from shortlist.' }
 }
 
 export async function deleteShortlistAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -114,9 +115,9 @@ export async function deleteShortlistAction(_previous: ActionState, formData: Fo
   if (!user) return { status: 'error', message: 'Please sign in again to manage shortlists.' }
 
   const { error } = await supabase.from('shortlists').delete().eq('id', shortlistId).eq('student_id', user.id)
-  return error
-    ? { status: 'error', message: 'This shortlist could not be deleted.' }
-    : { status: 'success', message: 'Shortlist deleted.' }
+  if (error) return { status: 'error', message: 'This shortlist could not be deleted.' }
+  revalidatePath('/account')
+  return { status: 'success', message: 'Shortlist deleted.' }
 }
 
 export async function requestRoomBookingAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -127,9 +128,10 @@ export async function requestRoomBookingAction(_previous: ActionState, formData:
   if (!getAccommodationRoomBySlug(roomSlug)) return { status: 'error', message: 'This room is no longer available.' }
 
   const { error } = await supabase.from('booking_requests').insert({ student_id: user.id, room_slug: roomSlug, message })
-  return error
-    ? { status: 'error', message: 'Your booking request could not be sent. Please try again.' }
-    : { status: 'success', message: 'Booking request sent. Your advisor will follow up with current availability and terms.' }
+  if (error) return { status: 'error', message: 'Your booking request could not be sent. Please try again.' }
+  revalidatePath('/account')
+  revalidatePath('/team')
+  return { status: 'success', message: 'Booking request sent. Your advisor will follow up with current availability and terms.' }
 }
 
 export async function requestServiceAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -142,9 +144,10 @@ export async function requestServiceAction(_previous: ActionState, formData: For
   if (!service) return { status: 'error', message: 'This service is not currently available.' }
 
   const { error } = await supabase.from('service_requests').insert({ student_id: user.id, service_slug: serviceSlug, message })
-  return error
-    ? { status: 'error', message: 'Your service request could not be sent.' }
-    : { status: 'success', message: 'Service request sent.' }
+  if (error) return { status: 'error', message: 'Your service request could not be sent.' }
+  revalidatePath('/account')
+  revalidatePath('/team')
+  return { status: 'success', message: 'Service request sent.' }
 }
 
 export async function uploadStudentDocumentAction(_previous: ActionState, formData: FormData): Promise<ActionState> {
@@ -190,5 +193,6 @@ export async function uploadStudentDocumentAction(_previous: ActionState, formDa
     return { status: 'error', message: 'The document could not be saved to your account.' }
   }
 
+  revalidatePath('/account')
   return { status: 'success', message: 'Document uploaded securely.' }
 }
