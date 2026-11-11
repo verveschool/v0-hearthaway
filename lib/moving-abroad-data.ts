@@ -86,7 +86,6 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
       }
     ],
     ctaVariant: 'housing',
-    image: '/images/acc-common.png',
     featured: true,
   },
   {
