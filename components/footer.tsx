@@ -10,8 +10,8 @@ const priorityDestinations = [
   { label: 'Australia', href: '/australia' },
   { label: 'Germany', href: '/germany' },
   { label: 'Ireland', href: '/ireland' },
-  { label: 'Spain', href: '/spain' },
   { label: 'Italy', href: '/italy' },
+  { label: 'Spain', href: '/spain' },
 ]
 
 const destinationLinks = [
@@ -80,7 +80,7 @@ export default function Footer() {
     <footer className="font-sans">
       {/* CTA section */}
       <section className="bg-[#01329C] text-white">
-        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
+        <div className="mx-auto max-w-7xl px-6 py-8 sm:px-10 lg:px-8 lg:py-9">
           <div className="flex flex-col items-start justify-between gap-7 lg:flex-row lg:items-center">
             <div>
               <h2 className="mb-3 font-heading text-3xl font-bold leading-tight sm:text-4xl">
