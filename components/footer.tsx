@@ -6,7 +6,7 @@ import ReviewCollector from '@/components/home/review-collector'
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 const priorityDestinations = [
-  { label: 'United Kingdom', href: '/uk' },
+  { label: 'UK', href: '/uk' },
   { label: 'Australia', href: '/australia' },
   { label: 'Germany', href: '/germany' },
   { label: 'France', href: '/france' },
@@ -14,6 +14,12 @@ const priorityDestinations = [
   { label: 'Dubai', href: '/uae' },
   { label: 'Spain', href: '/spain' },
   { label: 'Italy', href: '/italy' },
+]
+
+const destinationLinks = [
+  { label: 'All Universities', href: '/universities' },
+  { label: 'All Cities', href: '/cities' },
+  ...priorityDestinations,
 ]
 
 const accommodationLinks = [
@@ -45,10 +51,35 @@ const resourceLinks = [
 const linkClass =
   'text-sm font-semibold text-[#171717] transition-colors hover:text-[#01329C]'
 
+function FooterLinkGroup({
+  title,
+  links,
+}: {
+  title: string
+  links: { label: string; href: string }[]
+}) {
+  return (
+    <div className="min-w-0">
+      <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
+        {title}
+      </h3>
+
+      <ul className="flex flex-col gap-2.5">
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href} className={linkClass}>
+              {link.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 export default function Footer() {
   return (
     <footer className="font-sans">
-
       {/* CTA section */}
       <section className="bg-[#01329C] text-white">
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
@@ -74,78 +105,28 @@ export default function Footer() {
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer navigation */}
       <section className="bg-white text-[#171717]">
         <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
-
-          {/* Navigation and contact */}
           <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-8">
 
             {/* Destinations */}
-            <div className="min-w-0">
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                Destinations
-              </h3>
-
-              <ul className="flex flex-col gap-2.5">
-                <li>
-                  <Link href="/universities" className={linkClass}>
-                    All Universities
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/cities" className={linkClass}>
-                    All Cities
-                  </Link>
-                </li>
-              </ul>
-
-              <div className="my-3 border-t border-[#E5E5E5]" />
-
-              <ul className="grid grid-cols-2 gap-x-5 gap-y-2.5">
-                {priorityDestinations.map((destination) => (
-                  <li key={destination.href}>
-                    <Link href={destination.href} className={linkClass}>
-                      {destination.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterLinkGroup
+              title="Destinations"
+              links={destinationLinks}
+            />
 
             {/* Accommodation */}
-            <div className="min-w-0">
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                Accommodation
-              </h3>
-
-              <ul className="flex flex-col gap-2.5">
-                {accommodationLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className={linkClass}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterLinkGroup
+              title="Accommodation"
+              links={accommodationLinks}
+            />
 
             {/* Resources */}
-            <div className="min-w-0">
-              <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                Resources
-              </h3>
-
-              <ul className="flex flex-col gap-2.5">
-                {resourceLinks.map((link) => (
-                  <li key={link.href}>
-                    <Link href={link.href} className={linkClass}>
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <FooterLinkGroup
+              title="Resources"
+              links={resourceLinks}
+            />
 
             {/* Contact */}
             <div className="min-w-0">
@@ -196,14 +177,14 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Reviews */}
-          <div className="mt-12">
-            <ReviewCollector />
-          </div>
+        {/* Full-width review section */}
+        <ReviewCollector />
 
-          {/* Bottom row */}
-          <div className="mt-10 flex flex-col gap-6 border-t border-[#E5E5E5] pt-7 md:flex-row md:items-center md:justify-between">
+        {/* Bottom row */}
+        <div className="mx-auto mt-10 max-w-7xl px-6 sm:px-10 lg:px-8">
+          <div className="flex flex-col gap-6 border-t border-[#E5E5E5] py-7 md:flex-row md:items-center md:justify-between">
 
             {/* Logo and social links */}
             <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
@@ -222,7 +203,6 @@ export default function Footer() {
               </Link>
 
               <div className="flex items-center gap-5 sm:border-l sm:border-[#E5E5E5] sm:pl-6">
-
                 <a
                   href="https://www.linkedin.com/company/hearthaway"
                   aria-label="LinkedIn"

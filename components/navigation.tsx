@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useState, useEffect, useCallback, useRef } from 'react'
 import { Menu, X, ChevronDown, UserRound } from 'lucide-react'
 
-const brandIconPath = '/brand/  hearthaway_icon_light.png'
+const brandIconPath = '/brand/hearthaway_branding.png'
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
 type NavSubLink = {
@@ -22,28 +22,28 @@ type NavLink = {
 }
 
 const navLinks: NavLink[] = [
-  {
-    label: 'Destinations',
-    href: '/universities',
-    dropdown: [
-      { label: 'All Universities', href: '/universities' },
-      { label: 'All Cities', href: '/cities', dividerAfter: true },
-      { label: 'United Kingdom', href: '/uk' },
-      { label: 'Australia', href: '/australia' },
-      { label: 'Germany', href: '/germany' },
-      { label: 'France', href: '/france' },
-      { label: 'Ireland', href: '/ireland' },
-      { label: 'Dubai', href: '/uae' },
-      { label: 'Spain', href: '/spain' },
-      { label: 'Italy', href: '/italy' },
-    ],
-  },
+{
+  label: 'Destinations',
+  href: '/universities',
+  dropdown: [
+    { label: 'All Universities', href: '/universities' },
+    { label: 'All Cities', href: '/cities', dividerAfter: true },
+    { label: 'UK', href: '/uk' },
+    { label: 'Australia', href: '/australia' },
+    { label: 'Germany', href: '/germany' },
+    { label: 'France', href: '/france' },
+    { label: 'Ireland', href: '/ireland' },
+    { label: 'Dubai', href: '/uae' },
+    { label: 'Spain', href: '/spain' },
+    { label: 'Italy', href: '/italy' },
+  ],
+},
   {
     label: 'Accommodation',
     href: '/accommodation',
     dropdown: [
       { label: 'All Properties', href: '/accommodation' },
-      { label: 'All Rooms', href: '/accommodation/rooms' },
+      { label: 'All Rooms', href: '/accommodation/rooms', dividerAfter: true },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
       { label: 'Stacey', href: '/accommodation?provider=stacey' },
     ],
@@ -52,7 +52,7 @@ const navLinks: NavLink[] = [
     label: 'Resources',
     href: '/moving-abroad',
     dropdown: [
-      { label: 'All Resources', href: '/moving-abroad' },
+      { label: 'All Resources', href: '/moving-abroad', dividerAfter: true },
       {
         label: 'Pre-Arrival Checklist',
         href: '/moving-abroad/pre-arrival-checklist',

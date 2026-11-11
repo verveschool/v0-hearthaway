@@ -20,7 +20,6 @@ export default function HomePage() {
         <TotalHomeDiscovery />
         <AccommodationPartnersSection />
         <HowItWorks />
-        <CtaSection />
       </main>
 
       <Footer />
