@@ -105,7 +105,8 @@ export default function HeroSection() {
           <div className="hero-enter hero-enter-delay-3 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/get-matched"
-              className="brand-cta group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl bg-[#FEBB01] px-8 py-4 text-base font-extrabold text-[#333333]"
+              className="brand-cta group inline-flex min-h-14 items-center justify-center gap-3 rounded-2xl border-2 border-black bg-[#FEBB01] px-8 py-4 text-base font-extrabold text-black"
+              style={{ border: '2px solid #000000' }}
             >
               Get Matched
               <ArrowRight
@@ -115,16 +116,25 @@ export default function HeroSection() {
             </Link>
           </div>
 
-          <nav aria-label="Browse student properties by country" className="mt-6 flex flex-wrap items-center gap-1.5 sm:gap-2">
-            {countries.map((country) => (
-              <Link
-                key={country}
-                href={countryLinks[country] ?? '/universities'}
-                className="country-chip inline-flex min-h-8 items-center rounded-full border border-[#01329C]/15 bg-white/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#01329C] transition-all hover:border-[#01329C] hover:bg-[#01329C] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] focus-visible:ring-offset-2 sm:text-[11px]"
-              >
-                {country}
-              </Link>
-            ))}
+          <nav
+            aria-label="Browse student properties by country"
+            className="mt-6 flex flex-col items-start gap-2"
+          >
+            {[countries.slice(0, 6), countries.slice(6, 12), countries.slice(12)].map(
+              (row, rowIndex) => (
+                <div key={rowIndex} className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  {row.map((country) => (
+                    <Link
+                      key={country}
+                      href={countryLinks[country] ?? '/universities'}
+                      className="country-chip inline-flex min-h-8 items-center rounded-full border border-[#01329C]/15 bg-white/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#01329C] transition-all hover:border-[#01329C] hover:bg-[#01329C] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] focus-visible:ring-offset-2 sm:text-[11px]"
+                    >
+                      {country}
+                    </Link>
+                  ))}
+                </div>
+              )
+            )}
           </nav>
         </div>
 
