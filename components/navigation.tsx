@@ -54,7 +54,7 @@ const navLinks = [
     ],
   },
   {
-    label: 'Properties',
+    label: 'Accommodation',
     href: '/accommodation',
     dropdown: [
       { label: 'All Properties', href: '/accommodation' },
@@ -114,13 +114,13 @@ export default function Navbar() {
                 className="size-12 sm:size-14 xl:hidden"
                 priority
               />
-              <Image
-                src={brandWordmarkPath}
-                alt="HearthAway"
-                width={336}
-                height={100}
-                className="hidden h-auto w-[13rem] xl:block 2xl:w-[15rem]"
-                priority
+                <Image
+                  src={brandWordmarkPath}
+                  alt="HearthAway"
+                  width={336}
+                  height={100}
+                  className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
+                  priority
                 />
             </Link>
           </div>
