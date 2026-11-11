@@ -14,7 +14,7 @@ const navLinks = [
     href: '/universities',
     dropdown: [
       { label: 'All Universities', href: '/universities' },
-      { label: 'UK', href: '/uk' },
+      { label: 'United Kingdom', href: '/uk' },
       { label: 'Ireland', href: '/ireland' },
       { label: 'Germany', href: '/germany' },
       { label: 'Australia', href: '/australia' },
