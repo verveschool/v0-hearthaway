@@ -94,7 +94,7 @@ export const cities: CityPlace[] = [
     universities: '5',
     image: '/images/city-birmingham.png',
     slug: 'birmingham',
-    description: 'England&apos;s second largest city offering an affordable central tech hub with rapid national rail connections',
+    description: 'England\'s second largest city offering an affordable central tech hub with rapid national rail connections',
     avgRent: '£550 to £800 / mo',
     studentPositioning: 'a highly practical and well connected city where international students can live adjacent to campus without sacrificing urban access',
     bestAreasForStudents: {
@@ -227,7 +227,7 @@ export const cities: CityPlace[] = [
     universities: '5',
     image: '/images/city-glasgow.png',
     slug: 'glasgow',
-    description: 'Scotland&apos;s massive cultural capital containing world beating red brick campuses and elite creative arts academies',
+    description: 'Scotland\'s massive cultural capital containing world beating red brick campuses and elite creative arts academies',
     avgRent: '£600 to £850 / mo',
     studentPositioning: 'the west end is beautiful but commands intense premiums look to adjacent transport lines to find real margin',
     bestAreasForStudents: {
@@ -303,7 +303,7 @@ export const cities: CityPlace[] = [
     universities: '8',
     image: '/images/city-dublin.png',
     slug: 'dublin',
-    description: 'the thriving tech capital of Ireland hosting the European headquarters of the world&apos;s greatest internet giants',
+    description: 'the thriving tech capital of Ireland hosting the European headquarters of the world\'s greatest internet giants',
     avgRent: '€900 to €1400 / mo',
     studentPositioning: 'an extreme supply squeeze dictates terms here focus entirely on transport routing reliability to maintain sanity',
     bestAreasForStudents: {
@@ -322,7 +322,7 @@ export const cities: CityPlace[] = [
     universities: '3',
     image: '/images/city-cork.png',
     slug: 'cork',
-    description: 'Ireland&apos;s southern maritime capital boasting an independent global pharmaceutical and food science presence',
+    description: 'Ireland\'s southern maritime capital boasting an independent global pharmaceutical and food science presence',
     avgRent: '€700 to €1000 / mo',
     studentPositioning: 'a compact river delta layout where college road functions as an immediate structural extension of the academic campus',
     bestAreasForStudents: {
@@ -417,7 +417,7 @@ export const cities: CityPlace[] = [
     universities: '5+',
     image: '/images/city-marseille.png',
     slug: 'marseille',
-    description: 'a vibrant Mediterranean port city and France&apos;s second largest metropolis blending historic architecture with modern research infrastructure',
+    description: 'a vibrant Mediterranean port city and France\'s second largest metropolis blending historic architecture with modern research infrastructure',
     avgRent: '€550 to €900 / mo',
     studentPositioning: 'marseille rewards students who anchor to the metro and metro tramway network connecting to campuses spread across the wider urban basin',
     bestAreasForStudents: {
@@ -493,7 +493,7 @@ export const cities: CityPlace[] = [
     universities: '2+',
     image: '/images/city-nice.png',
     slug: 'nice',
-    description: 'a glamorous Côte d&apos;Azur resort city and academic hub famous for coastal living research institutions and Mediterranean climate',
+    description: 'a glamorous Côte d\'Azur resort city and academic hub famous for coastal living research institutions and Mediterranean climate',
     avgRent: '€600 to €950 / mo',
     studentPositioning: 'nice student housing trades between central promenade des anglais prestige and suburban campuses requiring bus or tram connections',
     bestAreasForStudents: {
@@ -535,8 +535,8 @@ export const cities: CityPlace[] = [
     avgRent: '€500 to €800 / mo',
     studentPositioning: 'grenoble campus geography requires students to anchor to tram and bus routes serving dispersed technology and research institutes in foothills',
     bestAreasForStudents: {
-      summary: 'the centre ville provides walkable accommodation while the southern campuses in Gières and Saint-Martin-d&apos;Hères require tram line planning',
-      topNeighbourhoods: ['centre ville', 'Gières', 'Saint-Martin-d&apos;Hères', 'South']
+      summary: 'the centre ville provides walkable accommodation while the southern campuses in Gières and Saint-Martin-d\'Hères require tram line planning',
+      topNeighbourhoods: ['centre ville', 'Gières', 'Saint-Martin-d\'Hères', 'South']
     },
     rentBudgeting: {
       summary: 'grenoble delivers strong student value with mountain culture appeal and solid crous and private residence options across suburbs',
@@ -683,7 +683,7 @@ export const cities: CityPlace[] = [
     universities: '15+',
     image: '/images/city-dubai.png',
     slug: 'dubai',
-    description: 'the middle east&apos;s global education hub with modern branch campuses, tax free income, and world class infrastructure for international students',
+    description: 'the middle east\'s global education hub with modern branch campuses, tax free income, and world class infrastructure for international students',
     avgRent: 'AED 2500 to 4500 / mo',
     studentPositioning: 'metro linked marina and jbr offer beachside student accommodation with easy access to major universities across emirates hills and downtown',
     bestAreasForStudents: {
@@ -767,7 +767,7 @@ export const cities: CityPlace[] = [
       topNeighbourhoods: ['kreuzberg', 'prenzlauer berg', 'friedrichshain', 'charlottenburg', 'neukölln']
     },
     rentBudgeting: {
-      summary: 'berlin&apos;s reputation for affordability is eroding as new students flood the market meaning wg rooms increasingly stretch toward EUR 700 800 in central districts',
+      summary: 'berlin\'s reputation for affordability is eroding as new students flood the market meaning wg rooms increasingly stretch toward EUR 700 800 in central districts',
       averageMonthlyRent: 'EUR 600'
     }
   },
@@ -797,7 +797,7 @@ export const cities: CityPlace[] = [
     universities: '3',
     image: '/images/city-hamburg.png',
     slug: 'hamburg',
-    description: 'germany&apos;s northern port city with hamburg university and haw hamburg offering maritime research strength and cosmopolitan student culture',
+    description: 'germany\'s northern port city with hamburg university and haw hamburg offering maritime research strength and cosmopolitan student culture',
     avgRent: 'EUR 400 to 750 / mo',
     studentPositioning: 'university of hamburg and haw campuses connect via s bahn with student housing concentrated in areas anchoring the ring around the inner lakes',
     bestAreasForStudents: {
@@ -805,7 +805,7 @@ export const cities: CityPlace[] = [
       topNeighbourhoods: ['san pauli', 'ottensen', 'altona', 'eppendorf', 'winter huder']
     },
     rentBudgeting: {
-      summary: 'hamburg&apos;s studentenwerk maintains strong inventory of EUR 300 500 dorms offsetting private market pressure on wg shares in central districts',
+      summary: 'hamburg\'s studentenwerk maintains strong inventory of EUR 300 500 dorms offsetting private market pressure on wg shares in central districts',
       averageMonthlyRent: 'EUR 580'
     }
   },
@@ -835,7 +835,7 @@ export const cities: CityPlace[] = [
     universities: '3',
     image: '/images/city-aachen.png',
     slug: 'aachen',
-    description: 'the engineering capital with rwth aachen university as one of europe&apos;s top technical institutions attracting strong international student cohorts',
+    description: 'the engineering capital with rwth aachen university as one of europe\'s top technical institutions attracting strong international student cohorts',
     avgRent: 'EUR 350 to 600 / mo',
     studentPositioning: 'rwth aachen dominates the city with student accommodation concentrated around the main campus connected by tram network',
     bestAreasForStudents: {
@@ -854,7 +854,7 @@ export const cities: CityPlace[] = [
     universities: '2',
     image: '/images/city-heidelberg.png',
     slug: 'heidelberg',
-    description: 'germany&apos;s oldest university town nestled on the neckar river with exceptional student culture and walkable intimacy versus big city competition',
+    description: 'germany\'s oldest university town nestled on the neckar river with exceptional student culture and walkable intimacy versus big city competition',
     avgRent: 'EUR 400 to 700 / mo',
     studentPositioning: 'heidelberg university dominates the city with most student accommodation within walking or short tram distance of historic old town campuses',
     bestAreasForStudents: {
@@ -862,7 +862,7 @@ export const cities: CityPlace[] = [
       topNeighbourhoods: ['old town', 'neuenheim', 'rohrbach', 'baiertal', 'handschuhsheim']
     },
     rentBudgeting: {
-      summary: 'heidelberg&apos;s smaller scale keeps rent competitive with strong studentenwerk provision meaning wg shares anchor around EUR 550 per person',
+      summary: 'heidelberg\'s smaller scale keeps rent competitive with strong studentenwerk provision meaning wg shares anchor around EUR 550 per person',
       averageMonthlyRent: 'EUR 550'
     }
   },
@@ -881,7 +881,7 @@ export const cities: CityPlace[] = [
       topNeighbourhoods: ['schleußig', 'plagwitz', 'reudnitz', 'zentrum west', 'connewitz']
     },
     rentBudgeting: {
-      summary: 'leipzig remains germany&apos;s affordable sanctuary with wg shares regularly under EUR 450 and studentenwerk dorms below EUR 350 per month',
+      summary: 'leipzig remains germany\'s affordable sanctuary with wg shares regularly under EUR 450 and studentenwerk dorms below EUR 350 per month',
       averageMonthlyRent: 'EUR 425'
     }
   },
@@ -951,9 +951,9 @@ export const cities: CityPlace[] = [
     ['Innsbruck', 'Austria', 'AT', 'innsbruck', 'EUR 450 to 800 / mo', 'an alpine university city where outdoor access is balanced by a tight housing market.', 'wilten', 'hötting', 'pradl'],
     ['Brussels', 'Belgium', 'BE', 'brussels', 'EUR 550 to 950 / mo', 'a multilingual EU capital with major universities, excellent international transport links, and a diverse student population.', 'ixelles', 'etterbeek', 'saint-gilles'],
     ['Antwerp', 'Belgium', 'BE', 'antwerp', 'EUR 500 to 850 / mo', 'a compact port city known for design, fashion, and a growing international student community.', 'zuid', 'het eilandje', 'city centre'],
-    ['Leuven', 'Belgium', 'BE', 'leuven', 'EUR 450 to 750 / mo', 'a classic university town built around one of Europe&apos;s oldest institutions, with a dense, walkable student core.', 'city centre', 'heverlee', 'kessel-lo'],
+    ['Leuven', 'Belgium', 'BE', 'leuven', 'EUR 450 to 750 / mo', 'a classic university town built around one of Europe\'s oldest institutions, with a dense, walkable student core.', 'city centre', 'heverlee', 'kessel-lo'],
     ['Budapest', 'Hungary', 'HU', 'budapest', 'EUR 350 to 700 / mo', 'a low-cost European capital with strong medical and technical universities and an easy tram-and-metro commute.', 'district vii', 'district ix', 'buda side'],
-    ['Debrecen', 'Hungary', 'HU', 'debrecen', 'EUR 280 to 500 / mo', 'a compact university city known for medicine and life sciences, with some of the region&apos;s lowest living costs.', 'city centre', 'university quarter', 'nagyerdő'],
+    ['Debrecen', 'Hungary', 'HU', 'debrecen', 'EUR 280 to 500 / mo', 'a compact university city known for medicine and life sciences, with some of the region\'s lowest living costs.', 'city centre', 'university quarter', 'nagyerdő'],
     ['Szeged', 'Hungary', 'HU', 'szeged', 'EUR 280 to 500 / mo', 'a riverside university city with a strong research reputation and an easy, walkable student core.', 'belváros', 'újszeged', 'university area'],
     ['Singapore', 'Singapore', 'SG', 'singapore-city', 'SGD 900 to 1800 / mo', 'a compact Asia-Pacific hub with efficient transport, leading universities, and high housing demand.', 'queenstown', 'clementi', 'kent ridge'],
     ['Kuala Lumpur', 'Malaysia', 'MY', 'kuala-lumpur', 'MYR 900 to 1800 / mo', 'a connected Southeast Asian capital with international universities, strong transit, and practical student living.', 'bangsar south', 'kl sentral', 'bukit bintang'],
@@ -965,7 +965,7 @@ export const cities: CityPlace[] = [
     ['Bologna', 'Italy', 'IT', 'bologna', 'EUR 450 to 800 / mo', 'a classic university city where porticoes, cycling, and a dense student community shape daily life.', 'san donato', 'santo stefano', 'saragozza'],
     ['Amsterdam', 'Netherlands', 'NL', 'amsterdam', 'EUR 850 to 1400 / mo', 'a highly international canal city with leading research universities, creative industries, and excellent cycling infrastructure', 'de pijp', 'oud-west', 'oost'],
     ['Rotterdam', 'Netherlands', 'NL', 'rotterdam', 'EUR 700 to 1100 / mo', 'a modern port city with strong business, economics, and applied sciences programmes', 'kralingen', 'noord', 'delfshaven'],
-    ['Delft', 'Netherlands', 'NL', 'delft', 'EUR 650 to 1050 / mo', 'a compact technology and engineering city built around one of Europe&apos;s leading technical universities', 'city centre', 'wippolder', 'tanthof'],
+    ['Delft', 'Netherlands', 'NL', 'delft', 'EUR 650 to 1050 / mo', 'a compact technology and engineering city built around one of Europe\'s leading technical universities', 'city centre', 'wippolder', 'tanthof'],
     ['Utrecht', 'Netherlands', 'NL', 'utrecht', 'EUR 750 to 1250 / mo', 'a central, bike-friendly university city with excellent national rail connections', 'oost', 'lombok', 'wittevrouwen'],
     ['Groningen', 'Netherlands', 'NL', 'groningen', 'EUR 550 to 900 / mo', 'a dedicated student city with a youthful centre, strong research community, and excellent cycling culture', 'centrum', 'helpman', 'korrewegwijk'],
   ].map(([name, country, countryCode, slug, avgRent, description, ...areas]) => ({

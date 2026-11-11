@@ -632,7 +632,7 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     slug: 'germany-studentenwerk-housing',
     title: 'Studentenwerk Dorms, WG Flats, And Finding Affordable Student Housing In Germany',
     category: 'Accommodation',
-    description: 'Germany&apos;s unique student housing model: public Studentenwerk dorms with waitlists, shared WG flats, and the cultural norms you need to navigate successfully.',
+    description: 'Germany\'s unique student housing model: public Studentenwerk dorms with waitlists, shared WG flats, and the cultural norms you need to navigate successfully.',
     readTime: '9 min read',
     stage: 'Booking',
     countries: ['germany'],

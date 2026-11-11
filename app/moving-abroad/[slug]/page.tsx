@@ -108,11 +108,6 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
         <section className="bg-primary pt-28 pb-16 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <div className="mb-5 flex flex-wrap gap-2">
-                <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white">{article.category}</span>
-                <span className="rounded-full bg-white/10 px-3 py-1.5 text-sm font-semibold text-white">{article.stage}</span>
-              </div>
-
               <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
                 {titleCase(article.title)}
               </h1>
@@ -150,11 +145,8 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </p>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {keyTakeaways.map((section, index) => (
+                  {keyTakeaways.map((section) => (
                     <div key={section.title} className="rounded-2xl bg-white border border-[var(--color-mid-gray)] p-5">
-                      <div className="text-xs font-bold text-primary mb-2">
-                        Point {index + 1}
-                      </div>
                       <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2">
                         {titleCase(section.title)}
                       </h3>
@@ -166,10 +158,10 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                 </div>
               </section>
 
-              {article.sections.map((section, index) => (
+              {article.sections.map((section) => (
                 <section
                   key={section.title}
-                  id={`section-${index + 1}`}
+                  id={`section-${section.title}`}
                   className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-8 lg:p-10"
                 >
                   <h2 className="font-heading font-bold text-2xl text-charcoal-ink mb-4">
@@ -238,10 +230,7 @@ export default async function MovingAbroadArticlePage({ params }: MovingAbroadAr
                         href={`/moving-abroad/${guide.slug}`}
                         className="group bg-white rounded-2xl p-5 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200 flex flex-col"
                       >
-                        <div className="flex items-center justify-between gap-4 mb-4">
-                          <span className="text-xs font-bold text-primary tracking-wider uppercase px-2.5 py-1 bg-accent rounded-full">
-                            {guide.category}
-                          </span>
+                        <div className="flex items-center justify-end gap-4 mb-4">
                           <span className="text-xs text-muted-foreground flex-shrink-0">
                             {guide.readTime}
                           </span>

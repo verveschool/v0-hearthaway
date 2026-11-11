@@ -58,8 +58,8 @@ export const countries: CountryPlace[] = [
       'ulster', 'coventry', 'warwick'
     ],
     summary: 'a globally recognised study destination with historic universities, diverse student cities, and a broad range of accommodation options for every stage of your move.',
-    overview: 'studying in the uk gives international students access to compact academic terms, strong transport links, and city choices that range from london scale to smaller campus led communi[...]',
-    studentHousingNotes: 'the 2026 visa regulations now require proving £1,529 per month for london living costs or £1,171 outside the capital. with the complete shift to digital e-visas and str[...]',
+    overview: 'studying in the UK gives international students access to compact academic terms, strong transport links, and city choices that range from London scale to smaller campus-led communities. Students can compare historic universities, large metropolitan campuses, and specialist cities with different budgets and lifestyles.',
+    studentHousingNotes: 'The 2026 visa regulations require proof of £1,529 per month for London living costs or £1,171 outside the capital. With the shift to digital e-visas and stronger pre-arrival planning, secure a verified room early and check the contract, deposit, bills, and commute before you travel.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('uk')
   },
   {
@@ -72,8 +72,8 @@ export const countries: CountryPlace[] = [
     citySlugs: ['dublin', 'cork', 'galway'],
     universitySlugs: ['tcd', 'ucd', 'dcu', 'tud', 'ucc', 'mtu', 'galway', 'atu'],
     summary: 'a welcoming english speaking destination with respected universities, a close knit international student community, and strong city centre student life.',
-    overview: 'ireland is popular with students who want an english speaking study experience, friendly campus communities, and access to technology, business, culture, and research networks. hous[...]',
-    studentHousingNotes: 'ireland faces a structural housing supply squeeze. international students must secure housing before arrival. rely entirely on verified operators and public transit lines[...]',
+    overview: 'Ireland is popular with students who want an English-speaking study experience, friendly campus communities, and access to technology, business, culture, and research networks. Housing, campus location, and transport connections are important parts of choosing between Dublin, Cork, and Galway.',
+    studentHousingNotes: 'Ireland faces a structural housing supply squeeze, so international students should secure housing before arrival. Rely on verified operators, check the lease and deposit terms carefully, and choose a room with practical access to campus and public transport.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('ireland')
   },
   {
@@ -86,8 +86,8 @@ export const countries: CountryPlace[] = [
     citySlugs: ['paris', 'lyon', 'toulouse', 'marseille', 'montpellier', 'bordeaux', 'lille', 'nice', 'strasbourg', 'grenoble'],
     universitySlugs: ['sorbonne', 'sciences-po', 'psl', 'lyon-univ', 'toulouse-univ', 'marseille-univ', 'montpellier-univ', 'bordeaux-univ', 'lille-univ', 'nice-univ', 'strasbourg-univ', 'grenoble-univ'],
     summary: 'a globally respected european study destination with historic universities, specialist grandes ecoles, and strong public transport links across major student cities.',
-    overview: 'studying in france gives international students access to research led public universities, specialist business and engineering schools, and student life shaped by dense urban trans[...]',
-    studentHousingNotes: 'france offers a mix of CROUS residences, private student residences, shared apartments, and homestays. demand is especially intense in paris, lyon, and toulouse before th[...]',
+    overview: 'Studying in France gives international students access to research-led public universities, specialist business and engineering schools, and student life shaped by dense urban transport networks. Paris, Lyon, Toulouse, and other regional cities each offer a different balance of campus scale, culture, and cost.',
+    studentHousingNotes: 'France offers a mix of CROUS residences, private student residences, shared apartments, and homestays. Demand is especially intense in Paris, Lyon, and Toulouse before the main intake, so verify the room, deposit, contract, and transport connection before committing.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('france')
   },
   {
@@ -103,8 +103,8 @@ export const countries: CountryPlace[] = [
       'uae-univ', 'khalifa-univ', 'zayed-univ', 'nyu-abu-dhabi', 'sharjah-univ'
     ],
     summary: 'a rapidly growing global education hub with international branch campuses, tax-free income, and a fast-track post-study runway for ambitious students.',
-    overview: 'the uae attracts international students seeking quality western education brands, modern infrastructure, safety, and career opportunities in the middle east. dubai and abu dhabi host ma[...]',
-    studentHousingNotes: 'uae student housing spans luxury apartment compounds, university residences, and shared villas. furnished accommodation with utilities is standard. note: uae visa sponsorship[...]',
+    overview: 'The UAE attracts international students seeking quality Western education brands, modern infrastructure, safety, and career opportunities in the Middle East. Dubai and Abu Dhabi host major international campuses, while Sharjah offers another established student base with strong links across the emirates.',
+    studentHousingNotes: 'UAE student housing spans apartment compounds, university residences, and shared villas. Furnished accommodation with utilities is common, but students should confirm what is included, understand the tenancy terms, and check how housing connects to campus and visa arrangements.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('uae')
   },
   {
@@ -119,9 +119,9 @@ export const countries: CountryPlace[] = [
       'tum-munich', 'lmu-munich', 'humboldt-berlin', 'heidelberg-univ', 'rwth-aachen', 
       'hamburg-univ', 'goethe-frankfurt', 'gottingen-univ', 'tubingen-univ', 'stuttgart-univ'
     ],
-    summary: 'world-class tuition-free public universities, leading engineering programs, and one of europe&apos;s largest international student populations.',
-    overview: 'germany attracts international students with essentially free higher education at public universities, world-leading research, and strong industry partnerships. housing through student[...]',
-    studentHousingNotes: 'germany&apos;s housing model differs from uk/australia: public studentenwerk dorms dominate with lengthy waitlists, shared wgs (flats) are cultural norm, and rent quoted monthl[...]',
+    summary: 'world-class tuition-free public universities, leading engineering programs, and one of europe\'s largest international student populations.',
+    overview: 'Germany attracts international students with essentially free higher education at public universities, world-leading research, and strong industry partnerships. Its cities range from large research centres to compact university towns, with different housing markets and transport patterns to consider.',
+    studentHousingNotes: 'Germany\'s housing model differs from the UK and Australia: public Studentenwerk dorms can have lengthy waitlists, shared WGs (flats) are a cultural norm, and rent is usually quoted monthly. Apply early, verify the address and contract, and budget for deposits and registration.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('germany')
   },
   {
@@ -138,8 +138,8 @@ export const countries: CountryPlace[] = [
       'anu', 'uc', 'bond', 'griffith-gc'
     ],
     summary: 'a high quality study destination known for major research universities, outdoor lifestyles, multicultural cities, and flexible accommodation choices.',
-    overview: 'australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large uni[...]',
-    studentHousingNotes: 'the 2026 national cap of 295,000 international students heavily favors universities that provide guaranteed housing. competition for private rentals in major hubs is fie[...]',
+    overview: 'Australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large university campuses. Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, and the Gold Coast each offer a distinct student experience.',
+    studentHousingNotes: 'The 2026 national cap of 295,000 international students makes university-linked housing and early planning especially important. Competition for private rentals in major hubs is fierce, so compare verified options, check the full weekly cost, and allow for transport and utilities.',
     movingAbroadLinks: getMovingAbroadLinksForCountry('australia')
   },
   {
