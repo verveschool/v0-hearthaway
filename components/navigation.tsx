@@ -22,22 +22,22 @@ type NavLink = {
 }
 
 const navLinks: NavLink[] = [
-  {
-    label: 'Destinations',
-    href: '/universities',
-    dropdown: [
-      { label: 'All Universities', href: '/universities' },
-      { label: 'All Cities', href: '/cities', dividerAfter: true },
-      { label: 'United Kingdom', href: '/uk' },
-      { label: 'Australia', href: '/australia' },
-      { label: 'Germany', href: '/germany' },
-      { label: 'France', href: '/france' },
-      { label: 'Ireland', href: '/ireland' },
-      { label: 'Dubai', href: '/uae' },
-      { label: 'Spain', href: '/spain' },
-      { label: 'Italy', href: '/italy' },
-    ],
-  },
+{
+  label: 'Destinations',
+  href: '/universities',
+  dropdown: [
+    { label: 'All Universities', href: '/universities' },
+    { label: 'All Cities', href: '/cities', dividerAfter: true },
+    { label: 'UK', href: '/uk' },
+    { label: 'Australia', href: '/australia' },
+    { label: 'Germany', href: '/germany' },
+    { label: 'France', href: '/france' },
+    { label: 'Ireland', href: '/ireland' },
+    { label: 'Dubai', href: '/uae' },
+    { label: 'Spain', href: '/spain' },
+    { label: 'Italy', href: '/italy' },
+  ],
+},
   {
     label: 'Accommodation',
     href: '/accommodation',
