@@ -291,7 +291,7 @@ const igluListings: AccommodationListingRecord[] = igluProperties.map((property)
     description: property.description,
     coverImage: property.gallery[0] ?? rooms[0]?.image ?? null,
     photoSourceUrl: null,
-    gallery: [...new Set([...property.gallery, ...rooms.flatMap((room) => [...room.images, room.floorplan])])],
+    gallery: [...new Set([...property.gallery, ...rooms.flatMap((room) => [...room.images, ...(room.floorplan ? [room.floorplan] : [])])])],
     amenities: property.amenities,
     inclusions: property.inclusions,
     roomFeatures: [...new Set(rooms.flatMap((room) => room.features))],
