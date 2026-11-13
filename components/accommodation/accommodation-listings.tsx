@@ -4,10 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRight, Building2, MapPin, Search } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
-
-function formatSourcePrice(value: number): string {
-  return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
-}
+import { formatSourcePrice, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 type AccommodationListingsProps = {
   cities: string[]
@@ -22,10 +19,9 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
   const previewImageRoom = previewImage
     ? listing.roomTypes.find((room) => room.images.includes(previewImage))?.name ?? null
     : null
-  const startingPrices = listing.roomTypes
-    .map((room) => room.priceFrom)
-    .filter((price): price is number => price !== null)
-  const startingPrice = startingPrices.length ? Math.min(...startingPrices) : null
+  const startingRoom = listing.roomTypes
+    .filter((room) => room.priceFrom !== null)
+    .sort((first, second) => (first.priceFrom ?? 0) - (second.priceFrom ?? 0))[0]
   const buildingNames = [...new Set(listing.buildings.flatMap((building) => building.name ? [building.name] : []))]
 
   return (
@@ -71,7 +67,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
           <p className="text-sm font-semibold text-[#1A1A1A]">
-            {startingPrice === null ? 'Price not provided' : <>From <span className="text-[#00319D]">{formatSourcePrice(startingPrice)}</span></>}
+            {!startingRoom ? 'Price not provided' : <>From <span className="text-[#00319D]">{startingRoom.priceLabel ?? formatSourcePrice(startingRoom.priceFrom ?? 0)}</span></>}
           </p>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
             View property <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
@@ -151,6 +147,10 @@ export default function AccommodationListings({
           </select>
         </label>
       </div>
+
+      <p className="mt-5 text-sm leading-relaxed text-[#6B6860]">
+        {PRICE_AVAILABILITY_NOTICE}
+      </p>
 
       {visibleListings.length > 0 ? (
         <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">

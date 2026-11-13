@@ -294,9 +294,13 @@ export const igluRooms: IgluRoom[] = roomRows.flatMap(([propertySlug, roomPath, 
   const roomInfo = inferredRoomFeatures(name, property.id, roomPath)
   const offer = findComparableOffer(property.slug, name)
   if (!offer) throw new Error(`Iglu room ${property.id}:${roomPath} has no published or comparable room rate`)
-  const numericAvailability = offer.sourceStatus?.match(/about (\d+)/i)?.[1]
-  const soldOut = /sold out/i.test(offer.sourceStatus ?? '')
-  const status = offer.sourceStatus ?? 'Live availability has not been verified; confirm with HearthAway.'
+  const hasRateListings = /about \d+/i.test(offer.sourceStatus ?? '')
+  const sourceDate = offer.sourceStatus?.match(/on (\d+ November 2026)/i)?.[1]
+  const status = hasRateListings
+    ? `Rate listed by source${sourceDate ? ` (${sourceDate})` : ''}`
+    : /sold out/i.test(offer.sourceStatus ?? '')
+      ? `Sold out as listed${sourceDate ? ` (${sourceDate})` : ''}`
+      : 'Not provided'
   const images = visuals.images
   return [{
     id: `${property.id}:${roomPath}`,
@@ -310,9 +314,9 @@ export const igluRooms: IgluRoom[] = roomRows.flatMap(([propertySlug, roomPath, 
     inclusions: ['Unlimited high-speed Wi-Fi', 'Furnished room', 'Access to property communal facilities'],
     approximateArea: roomInfo.approximateArea,
     priceFrom: offer.amount,
-    priceLabel: `A$${offer.amount.toLocaleString('en-AU')} / week · ${offer.exact ? 'Iglu published' : 'indicative estimate'}`,
+    priceLabel: `A$${offer.amount.toLocaleString('en-AU')}/week${offer.exact ? '' : ' (indicative estimate)'}`,
     priceConfidence: offer.exact ? 'published' : 'indicative',
-    available: soldOut ? 0 : (numericAvailability ? Number(numericAvailability) : null),
+    available: null,
     status,
     minimumOccupancy: 1,
     maximumOccupancy: /\bqueen\b/i.test(name) ? 2 : 1,

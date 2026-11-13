@@ -5,6 +5,9 @@ import {
 } from './response-data'
 import staceyInventory from './stacey-inventory.json'
 import { getIgluPropertyForRoom, igluProperties, igluRooms } from './iglu-data'
+import { formatCurrencyAmount, formatSourcePrice } from './presentation'
+
+export { formatSourceAvailability, formatSourcePrice } from './presentation'
 
 export type AccommodationRoomRecord = {
   name: string
@@ -13,6 +16,8 @@ export type AccommodationRoomRecord = {
   priceFrom: number | null
   pricePerNight: number | null
   priceLabel: string | null
+  sourcePriceLabel?: string | null
+  nightlyPriceLabel?: string | null
   available: number | null
   status: string | null
   minimumOccupancy: number | null
@@ -160,7 +165,13 @@ const vitaAccommodationListings: AccommodationListingRecord[] = uniqueDevelopmen
       images: room.image ? [room.image] : [],
       priceFrom: room.priceFrom ?? null,
       pricePerNight: null,
-      priceLabel: null,
+      priceLabel: room.priceFrom === undefined
+        ? null
+        : development.country === 'United Kingdom'
+          ? `${formatCurrencyAmount(room.priceFrom, '£')}/week`
+          : development.country === 'Spain'
+            ? `${formatSourcePrice(room.priceFrom)} (currency and billing period not supplied)`
+            : formatSourcePrice(room.priceFrom),
       available: room.available ?? null,
       status: null,
       minimumOccupancy: room.minimumOccupancy ?? null,
@@ -176,6 +187,12 @@ function parseStaceyPrice(price: string | null): number | null {
   if (!price) return null
   const numeric = Number(price.replace(/[^0-9.,]/g, '').replace(/,(?=\d{3}(?:\D|$))/g, '').replace(',', '.'))
   return Number.isFinite(numeric) ? numeric : null
+}
+
+function parseStaceyMonthlyPrice(price: string | null): number | null {
+  return price && /\/\s*month\s*$/i.test(price)
+    ? parseStaceyPrice(price)
+    : null
 }
 
 function mapStaceyImage(sourcePath: string): string | null {
@@ -227,17 +244,28 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
       .map(mapStaceyImage)
       .filter((image): image is string => image !== null)
 
+    const sourceMonthlyPrice = parseStaceyMonthlyPrice(room.price ?? null)
+    const nightlyPrice = parseStaceyPrice('pricePerNight' in room ? room.pricePerNight ?? null : null)
+    const sourceCurrencySymbol = room.price?.match(/^[^\d\s]+/)?.[0] ?? '€'
+    const weeklyPrice = sourceMonthlyPrice === null ? null : (sourceMonthlyPrice * 12) / 52
+
     return {
       name: room.name,
       image: images[0] ?? null,
       images,
-      priceFrom: parseStaceyPrice(room.price ?? null),
-      pricePerNight: parseStaceyPrice('pricePerNight' in room ? room.pricePerNight ?? null : null),
-      priceLabel: typeof room.price === 'string' && room.price
-        ? room.price
-        : 'pricePerNight' in room && typeof room.pricePerNight === 'string'
-          ? `${room.pricePerNight}/night`
-          : null,
+      priceFrom: weeklyPrice,
+      pricePerNight: nightlyPrice,
+      priceLabel: weeklyPrice !== null
+        ? `${formatCurrencyAmount(weeklyPrice, sourceCurrencySymbol, 2)}/week`
+        : nightlyPrice !== null
+          ? `${formatCurrencyAmount(nightlyPrice, sourceCurrencySymbol)}/night`
+          : room.price ?? null,
+      sourcePriceLabel: sourceMonthlyPrice !== null
+        ? `${formatCurrencyAmount(sourceMonthlyPrice, sourceCurrencySymbol)}/month`
+        : null,
+      nightlyPriceLabel: nightlyPrice !== null
+        ? `${formatCurrencyAmount(nightlyPrice, sourceCurrencySymbol)}/night`
+        : null,
       available: null,
       status: room.status,
       minimumOccupancy: null,
@@ -356,11 +384,3 @@ export function getAccommodationRoomBySlug(slug: string): AccommodationRoomListi
 
 export const accommodationCities = [...new Set(allAccommodationListings.map((listing) => listing.city))]
   .sort((first, second) => first.localeCompare(second))
-
-export function formatSourcePrice(value: number): string {
-  return new Intl.NumberFormat('en-GB', { maximumFractionDigits: 2 }).format(value)
-}
-
-export function formatSourceAvailability(value: number): string {
-  return `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(value)} available`
-}

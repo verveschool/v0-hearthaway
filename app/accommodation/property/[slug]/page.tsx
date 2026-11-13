@@ -12,6 +12,7 @@ import {
   formatSourcePrice,
   getAccommodationRoomSlug,
 } from '../../listing-data'
+import { formatAvailabilityStatus, PRICE_AVAILABILITY_NOTICE } from '../../presentation'
 
 export function generateStaticParams() {
   return accommodationListings.map((property) => ({ slug: property.slug }))
@@ -184,10 +185,6 @@ export default async function PropertyDetailPage({
     (building) => building.unitsAvailable !== null
   )
 
-  const sourceNotice = property.provider === 'iglu'
-    ? 'Prices are shown in Australian dollars per week. Figures marked as indicative are estimates based on the closest Iglu room type at the same property. Source availability snippets were captured on 13 November 2026 and may have changed; other availability has not been verified.'
-    : 'Prices and availability are shown as supplied by the source. The source does not specify a price currency or billing period.'
-
   const pageLinks = [
     ['overview', 'Property overview'],
     ['rooms', 'Room types and pricing'],
@@ -324,7 +321,7 @@ export default async function PropertyDetailPage({
                 {property.roomTypes.length ? (
                   <>
                     <p className="text-sm leading-relaxed text-[#6B6860]">
-                      {sourceNotice}
+                      {PRICE_AVAILABILITY_NOTICE}
                     </p>
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -361,37 +358,37 @@ export default async function PropertyDetailPage({
 
                             <div className="mt-4 grid grid-cols-2 gap-3">
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
-                                <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">
+                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">
                                   Starting price
                                 </p>
                                 <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">
-                                  {property.provider === 'iglu'
-                                    ? room.priceLabel
-                                    : room.priceFrom !== null
+                                  {room.priceLabel ?? (room.priceFrom !== null
                                     ? formatSourcePrice(room.priceFrom)
                                     : room.pricePerNight !== null
                                       ? `From €${formatSourcePrice(room.pricePerNight)}/night`
-                                      : 'Not provided'}
+                                      : 'Not provided')}
                                 </p>
+                                {room.sourcePriceLabel ? <p className="mt-1 text-xs text-[#6B6860]">Source rate: {room.sourcePriceLabel}</p> : null}
+                                {room.nightlyPriceLabel && room.priceFrom !== null ? <p className="mt-1 text-xs text-[#6B6860]">Also listed at {room.nightlyPriceLabel}</p> : null}
                               </div>
 
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
-                                <p className="text-xs font-bold uppercase tracking-wide text-[#6B6860]">
+                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">
                                   Availability
                                 </p>
                                 <p className="mt-1 text-sm font-bold text-[#1A1A1A]">
-                                  {room.status ??
-                                    (room.available === null
+                                  {room.status
+                                    ? formatAvailabilityStatus(room.status)
+                                    : room.available === null
                                       ? 'Not provided'
-                                      : formatSourceAvailability(room.available))}
+                                      : formatSourceAvailability(room.available)}
                                 </p>
                               </div>
                             </div>
 
-                            {room.priceFrom === null &&
-                            room.pricePerNight !== null ? (
+                            {room.priceFrom === null && room.pricePerNight !== null ? (
                               <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">
-                                Monthly total varies by dates and stay length.
+                                The source lists a nightly rate; no weekly equivalent was provided.
                               </p>
                             ) : null}
 
@@ -436,6 +433,16 @@ export default async function PropertyDetailPage({
                   </p>
                 )}
               </Section>
+
+              {/* Property-specific comparison CTA */}
+              <section className="flex flex-col gap-5 rounded-2xl bg-[#00319D] p-5 text-white sm:flex-row sm:items-center sm:justify-between sm:p-6">
+                <div>
+                  <p className="text-sm leading-relaxed text-white/80">
+                    Want help comparing this property with your study plans?
+                  </p>
+                </div>
+                <Link href="/get-matched" className="inline-flex min-h-11 w-fit shrink-0 items-center justify-center rounded-xl bg-[#FEBB01] px-5 py-3 text-sm font-bold text-[#171717]">Ask HearthAway</Link>
+              </section>
 
               {/* Amenities and inclusions */}
               {property.amenities.length || property.inclusions.length ? (
@@ -629,14 +636,6 @@ export default async function PropertyDetailPage({
                   ))}
                 </ul>
               </nav>
-
-              {/* Property enquiry CTA */}
-              <section className="rounded-2xl bg-[#00319D] p-5 text-white sm:p-6">
-                <p className="text-sm leading-relaxed text-white/80">
-                  Want help comparing this property with your study plans?
-                </p>
-                <Link href="/get-matched" className="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#FEBB01] px-5 py-3 text-sm font-bold text-[#171717]">Ask HearthAway</Link>
-              </section>
 
             </aside>
           </div>

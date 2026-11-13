@@ -8,8 +8,8 @@ import {
   accommodationCities,
   accommodationRoomListings,
   formatSourceAvailability,
-  formatSourcePrice,
 } from '@/app/accommodation/listing-data'
+import { formatAvailabilityStatus, getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 export const metadata: Metadata = {
   title: 'Available Student Rooms | HearthAway',
@@ -123,6 +123,9 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           <p className="mt-6 text-sm text-[#6B6860]">
             {rooms.length} room {rooms.length === 1 ? 'type' : 'types'}
           </p>
+          <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">
+            {PRICE_AVAILABILITY_NOTICE}
+          </p>
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -152,8 +155,8 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
 
                     <div className="p-5">
                       <div className="flex items-center justify-between gap-3">
-                        <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#00319D]">
-                          {property.provider === 'vita-student' ? 'Vita Student' : property.provider === 'stacey' ? 'Stacey' : 'Iglu'}
+                        <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-[11px] font-bold tracking-wide text-[#00319D]">
+                          {property.provider === 'vita-student' ? 'Vita Student' : property.provider === 'stacey' ? 'STACEY' : 'Iglu'}
                         </span>
 
                         <span className="text-xs text-[#6B6860]">
@@ -171,28 +174,26 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
 
                       <div className="mt-4 flex items-end justify-between gap-3 border-t border-[#E8E6E1] pt-4">
                         <div>
-                          <p className="text-[11px] font-bold uppercase tracking-wide text-[#6B6860]">
+                          <p className="text-[11px] font-bold tracking-wide text-[#6B6860]">
                             Price
                           </p>
                           <p className="mt-1 text-sm font-bold text-[#00319D]">
-                            {room.priceLabel ??
-                              (room.priceFrom !== null
-                                ? `From ${formatSourcePrice(room.priceFrom)}`
-                                : room.pricePerNight !== null
-                                  ? `From ${formatSourcePrice(room.pricePerNight)} per night`
-                                  : 'Not provided')}
+                            {getRoomPriceDisplay(room, true)}
                           </p>
+                          {room.sourcePriceLabel ? <p className="mt-1 text-xs font-normal text-[#6B6860]">Source rate: {room.sourcePriceLabel}</p> : null}
+                          {room.nightlyPriceLabel ? <p className="mt-1 text-xs font-normal text-[#6B6860]">Nightly rate: {room.nightlyPriceLabel}</p> : null}
                         </div>
 
                         <div className="text-right">
-                          <p className="text-[11px] font-bold uppercase tracking-wide text-[#6B6860]">
+                          <p className="text-[11px] font-bold tracking-wide text-[#6B6860]">
                             Availability
                           </p>
                           <p className="mt-1 text-sm font-semibold text-[#333333]">
-                            {room.status ??
-                              (room.available !== null
+                            {room.status
+                              ? formatAvailabilityStatus(room.status)
+                              : room.available !== null
                                 ? formatSourceAvailability(room.available)
-                                : 'Not provided')}
+                                : 'Not provided'}
                           </p>
                         </div>
                       </div>
