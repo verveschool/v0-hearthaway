@@ -184,8 +184,9 @@ export default async function PropertyDetailPage({
     (building) => building.unitsAvailable !== null
   )
 
-  const sourceNotice =
-    'Prices and availability are shown as supplied by the source. The source does not specify a price currency or billing period.'
+  const sourceNotice = property.provider === 'iglu'
+    ? 'Prices are shown in Australian dollars per week. Figures marked as indicative are estimates based on the closest Iglu room type at the same property. Source availability snippets were captured on 13 November 2026 and may have changed; other availability has not been verified.'
+    : 'Prices and availability are shown as supplied by the source. The source does not specify a price currency or billing period.'
 
   const pageLinks = [
     ['overview', 'Property overview'],
@@ -364,7 +365,9 @@ export default async function PropertyDetailPage({
                                   Starting price
                                 </p>
                                 <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">
-                                  {room.priceFrom !== null
+                                  {property.provider === 'iglu'
+                                    ? room.priceLabel
+                                    : room.priceFrom !== null
                                     ? formatSourcePrice(room.priceFrom)
                                     : room.pricePerNight !== null
                                       ? `From €${formatSourcePrice(room.pricePerNight)}/night`

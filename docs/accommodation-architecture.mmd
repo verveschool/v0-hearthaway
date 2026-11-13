@@ -21,9 +21,9 @@ flowchart TB
     direction TB
     igluPages["Public Property and Room pages"] --> evidence["Captured browser evidence\nHAR · embedded page state · source IDs"]
     evidence --> raw["Separate typed Property and Room datasets\niglu-data.ts"]
-    raw --> ids["Stable source IDs\nProperty 18 · Room 1265"]
+    raw --> ids["16 Property records · 117 Room records\nStable Property IDs + room-page IDs"]
     ids --> validate["Relationship validation\nRoom.parentPropertyId = Property.id"]
-    validate --> map["Shared catalogue field mapping\nNo live pricing or availability claims"]
+    validate --> map["Shared catalogue field mapping\nPublished weekly rent + labelled estimates\nAvailability confidence is explicit"]
     map --> igluProp["Iglu Property records"]
     map --> igluRoom["Iglu Room records"]
     igluProp -- "1 to many · parentPropertyId" --> igluRoom

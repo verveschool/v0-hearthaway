@@ -19,6 +19,8 @@ export type AccommodationRoomRecord = {
   maximumOccupancy: number | null
   academicYear: string | null
   features?: string[]
+  priceConfidence?: 'published' | 'indicative' | null
+  floorplan?: string | null
 }
 
 export type AccommodationListingRecord = {
@@ -297,21 +299,23 @@ const igluListings: AccommodationListingRecord[] = igluProperties.map((property)
     roomFeatures: [...new Set(rooms.flatMap((room) => room.features))],
     contractTerms: [],
     depositNote: null,
-    distance: null,
-    universities: [],
+    distance: property.distance,
+    universities: property.universities,
     roomTypes: rooms.map((room) => ({
       name: room.name,
       image: room.image,
       images: room.images,
-      priceFrom: null,
+      priceFrom: room.priceFrom,
       pricePerNight: null,
-      priceLabel: null,
-      available: null,
-      status: null,
-      minimumOccupancy: 1,
-      maximumOccupancy: 1,
+      priceLabel: room.priceLabel,
+      available: room.available,
+      status: room.status,
+      minimumOccupancy: room.minimumOccupancy,
+      maximumOccupancy: room.maximumOccupancy,
       academicYear: null,
       features: room.features,
+      priceConfidence: room.priceConfidence,
+      floorplan: room.floorplan,
     })),
   }
 })
