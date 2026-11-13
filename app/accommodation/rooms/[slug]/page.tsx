@@ -3,6 +3,8 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import { SaveRoomButton } from '@/components/account/forms'
+import { createClient } from '@/lib/supabase/server'
 import { getAccommodationRoomBySlug, formatSourceAvailability } from '@/app/accommodation/listing-data'
 import { formatAvailabilityStatus, getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
@@ -27,6 +29,8 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
   const entry = getAccommodationRoomBySlug(slug)
   if (!entry) notFound()
   const { property, room } = entry
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
 
   return (
     <>
@@ -62,6 +66,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
                 {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Occupancy</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.minimumOccupancy ?? 'Not specified'}–{room.maximumOccupancy ?? 'Not specified'}</dd></div> : null}
               </dl>
               <p className="mt-4 rounded-xl bg-[#F7F6F3] p-4 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
+              <div className="mt-5"><SaveRoomButton roomSlug={slug} isAuthenticated={Boolean(user)} /></div>
               <Link href="/get-matched" className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#00319D] px-5 py-3 text-sm font-bold text-white hover:bg-[#00277D]">Ask HearthAway about this property</Link>
             </aside>
           </div>
