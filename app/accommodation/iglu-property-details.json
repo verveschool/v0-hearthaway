@@ -1,0 +1,131 @@
+{
+  "sydney-broadway": {
+    "address": "9 Kensington Street, Chippendale NSW 2008, Australia",
+    "description": "Situated directly opposite UTS and close to Notre Dame and the University of Sydney, Iglu Broadway sits in Chippendale’s Central Park precinct across two buildings on Kensington Street. Cafés, dining, shopping, nightlife and multiple transport options are nearby.",
+    "distance": "Opposite UTS; close to Notre Dame and the University of Sydney; in the Central Park precinct.",
+    "universities": ["University of Technology Sydney", "University of Notre Dame Australia, Sydney campus", "The University of Sydney"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Complimentary weekday breakfast and coffee", "Resident events", "Private and group study areas", "Resident gym at Central Park (4-minute walk)", "Communal kitchen and lounge", "Table tennis", "Large terrace and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-central": {
+    "address": "1 Regent Street, Chippendale NSW 2008, Australia",
+    "description": "Iglu Central is a boutique student residence in Chippendale beside the Central Park precinct. Cafés, restaurants and shops are close by, and Central Station is just around the corner. The official listing describes major university campuses as within walking distance.",
+    "distance": "Central Station is around the corner; major university campuses are within walking distance (Iglu description).",
+    "universities": ["Nearby Sydney university campuses (Iglu does not name them on this property page)"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Complimentary weekday breakfast and coffee", "Resident events", "Communal study tables and meeting room", "Resident gym at Central Park (5-minute walk)", "Lounge and large-screen TV", "Table tennis", "Courtyard and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-central-park": {
+    "address": "6 Central Park Avenue, Chippendale NSW 2008, Australia",
+    "description": "Iglu Central Park is in Chippendale’s student neighbourhood and Central Park precinct, with transport links, cafés, bars and nightlife nearby. The residence combines city access with nearby parkland and communal student facilities.",
+    "distance": "Central Park precinct; transport links and university campuses nearby (Iglu description).",
+    "universities": ["Nearby Sydney university campuses (Iglu does not name them on this property page)"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Complimentary weekday breakfast and coffee", "Resident events", "Private study rooms", "Gym and exercise area", "Cinema room", "Communal kitchens and lounge", "Games space", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-chatswood": {
+    "address": "73 Albert Avenue, Chatswood NSW 2067, Australia",
+    "description": "Iglu Chatswood is in the Chatswood shopping and dining district, a major transport hub. Iglu lists Macquarie University as a 10-minute commute away and central Sydney as about 20 minutes away.",
+    "distance": "Macquarie University: about a 10-minute commute; Sydney CBD: about 20 minutes (Iglu description).",
+    "universities": ["Macquarie University"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounges and cinema room", "Table tennis and vending machines", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Courtyard and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-mascot": {
+    "address": "8 John Street, Mascot NSW 2020, Australia",
+    "description": "Iglu Mascot is about 200 metres from Mascot Station. The property offers private studios and six-bedroom share apartments alongside large resident communal spaces and local shops and services.",
+    "distance": "Mascot Station: approximately 200 metres (Iglu description).",
+    "universities": ["Sydney campuses accessible by train; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounges", "Table tennis and pool table", "Basketball court", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Rooftop terrace and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-mascot-duo": {
+    "address": "13A Church Avenue, Mascot NSW 2020, Australia",
+    "description": "Iglu Mascot Duo is a studio-only residence in Mascot. It combines private studio accommodation with resident gym, study areas and outdoor terraces; Mascot Station and the local shopping village are a short walk away. Iglu’s page describes the property as due to open in early 2027, so imagery is illustrative.",
+    "distance": "Mascot Station and the local shopping village are a short walk away (Iglu description).",
+    "universities": ["Sydney campuses accessible by train; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounges", "Table tennis and pool table", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Outdoor terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished studio, according to room type", "Use of resident communal areas"],
+    "illustrativeImages": true
+  },
+  "sydney-redfern": {
+    "address": "66 Regent Street, Redfern NSW 2016, Australia",
+    "description": "Iglu Redfern is around 3 km from central Sydney, with public transport and campuses accessible from the neighbourhood. Cafés, design studios and eateries contribute to the surrounding inner-city area.",
+    "distance": "Approximately 3 km from central Sydney (Iglu description); public transport nearby.",
+    "universities": ["Nearby Sydney campuses (Iglu does not name them on this property page)"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Complimentary weekday breakfast and coffee", "Resident events", "Study tables and meeting rooms", "Lounge and TV areas", "Pool table and vending machines", "Gym and exercise area", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-summer-hill": {
+    "address": "74 Carlton Crescent, Summer Hill NSW 2130, Australia",
+    "description": "Iglu Summer Hill is in Sydney’s Inner West, in a village setting around a restored Western Suburbs District Ambulance building façade. The property offers private studios and communal areas including study rooms, a gym, breakfast bar and courtyard, with public transport nearby.",
+    "distance": "Summer Hill village; public transport links nearby (Iglu description).",
+    "universities": ["Sydney campuses accessible by public transport; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounge and games areas", "Vending machines", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Courtyard and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished studio, according to room type", "Use of resident communal areas"]
+  },
+  "sydney-waterloo": {
+    "address": "111 Botany Road, Waterloo NSW 2017, Australia",
+    "description": "Iglu Waterloo adjoins the metro station and offers two-bedroom share apartments and private studios. The property page highlights resident gym, study areas and an outdoor terrace, with Sydney campuses reachable by metro.",
+    "distance": "Adjoining the metro station (Iglu description).",
+    "universities": ["Sydney campuses accessible by metro; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounges", "Table tennis and pool table", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "brisbane-brisbane-city": {
+    "address": "65 Mary Street, Brisbane QLD 4000, Australia",
+    "description": "Iglu Brisbane City is in the CBD, around the corner from QUT Gardens Point and a short walk from Griffith University’s campus in the Treasury Building. Shops, transport, entertainment and fitness facilities are nearby.",
+    "distance": "QUT Gardens Point is around the corner; Griffith University’s Treasury Building campus is a short walk (Iglu description).",
+    "universities": ["Queensland University of Technology, Gardens Point", "Griffith University, Treasury Building campus"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Complimentary weekday breakfast and coffee", "Resident events", "Study tables and meeting rooms", "Lounges", "Cinema room", "Table tennis and vending machine", "Gym and exercise area", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "brisbane-kelvin-grove": {
+    "address": "62 Blamey Street, Kelvin Grove QLD 4059, Australia",
+    "description": "Iglu Kelvin Grove is next to QUT’s Kelvin Grove campus, about 3 km from Brisbane’s city centre and a ten-minute bus ride from the CBD. The property offers resident study, gym, lounge and courtyard facilities.",
+    "distance": "QUT Kelvin Grove campus is on the doorstep; Brisbane CBD is about 3 km away and a ten-minute bus ride (Iglu description).",
+    "universities": ["Queensland University of Technology, Kelvin Grove"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Weekday continental breakfast during semester", "Resident events", "Study tables and meeting rooms", "Lounge and TV areas", "Table tennis", "Gym and exercise area", "Large courtyard and BBQ", "Onsite laundry", "QUT under-18 accommodation partner"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "melbourne-flagstaff-gardens": {
+    "address": "7 Batman Street, West Melbourne VIC 3003, Australia",
+    "description": "Iglu Flagstaff Gardens is beside Flagstaff Gardens. Flagstaff Station is a five-minute walk away, with Queen Victoria Market and Melbourne’s CBD shopping and laneways nearby. Public transport connects residents to Melbourne’s universities and colleges.",
+    "distance": "Flagstaff Station: 5-minute walk; beside Flagstaff Gardens and near Queen Victoria Market (Iglu description).",
+    "universities": ["Melbourne universities and colleges accessible by public transport (Iglu description)"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounge and games areas", "Vending machines", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "melbourne-flagstaff-station": {
+    "address": "356 William Street, Melbourne VIC 3000, Australia",
+    "description": "Iglu Flagstaff Station sits across the road from Flagstaff Station, with Melbourne CBD parkland nearby. The property offers two-bedroom share apartments and private studios with resident gym, study areas and an outdoor terrace.",
+    "distance": "Flagstaff Station is directly across the road (Iglu description).",
+    "universities": ["Melbourne CBD universities accessible by train and tram; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Private and communal study areas", "Lounge and games areas", "Vending machines", "Gym and workout space", "Complimentary weekday breakfast and coffee", "Terraces and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "melbourne-melbourne-central": {
+    "address": "167 Little Lonsdale Street, Melbourne VIC 3000, Australia",
+    "description": "Iglu Melbourne Central is behind the State Library on the corner of Little Lonsdale and Russell Streets. RMIT is around the corner, with the University of Melbourne, ACU, Monash College and other CBD campuses a short trip away. The property offers private studios and shared spaces including a rooftop terrace and gym.",
+    "distance": "Behind the State Library; RMIT around the corner; University of Melbourne, ACU and Monash College a short trip away (Iglu description).",
+    "universities": ["RMIT University", "The University of Melbourne", "Australian Catholic University", "Monash College"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Weekday breakfast-on-the-go", "Life @ Iglu resident program", "Study areas", "Rooftop gym", "Lounge and flexible spaces", "Rooftop terrace", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished studio, according to room type", "Use of resident communal areas"]
+  },
+  "melbourne-melbourne-city": {
+    "address": "229 Franklin Street, Melbourne VIC 3000, Australia",
+    "description": "Iglu Melbourne City is in central Melbourne, with the city tram network, shops, arts and cultural venues, Carlton and Fitzroy, and nearby parklands within reach. The property offers shared apartments and studios with a large resident lounge, library and study areas.",
+    "distance": "Central Melbourne tram network and parklands nearby; Iglu describes the property as at the centre of the city.",
+    "universities": ["Melbourne city universities reachable by tram; Iglu does not name a nearest campus on this page"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Weekday breakfast-on-the-go", "Resident events", "Library and study areas", "Gym and exercise area", "Large lounge and large-screen TV", "Table tennis and pool table", "Courtyards and BBQ", "Onsite laundry", "Bicycle storage"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  },
+  "melbourne-south-yarra": {
+    "address": "8 Claremont Street, South Yarra VIC 3141, Australia",
+    "description": "Iglu South Yarra is a two-minute walk from the train station, with cafés, bars and local dining nearby. Iglu lists both the CBD and Monash University’s Caulfield campus as about eight minutes away, with study, social and exercise spaces onsite.",
+    "distance": "South Yarra Station: 2-minute walk; CBD and Monash University Caulfield campus: about 8 minutes (Iglu description).",
+    "universities": ["Monash University, Caulfield campus"],
+    "amenities": ["Unlimited high-speed Wi-Fi", "CCTV and secure access", "24/7 onsite support and Sonder app", "Resident events", "Study areas and meeting rooms", "Lounge", "Table tennis and pool table", "Terrace and BBQ", "Gym and exercise area", "Complimentary weekday breakfast and coffee", "Onsite laundry", "Bicycle storage", "Limited paid car parking"],
+    "inclusions": ["Unlimited high-speed Wi-Fi", "Furnished room, according to room type", "Use of resident communal areas"]
+  }
+}

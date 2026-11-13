@@ -1,12 +1,8 @@
-/**
- * Iglu's public catalogue is kept as separate Property and Room records.
- * Property IDs are the stable public CMS IDs. Room IDs use the stable public
- * room-page path because the page inventory exposes those consistently.
- * Room.parentPropertyId always points to a Property ID.
- *
- * Prices and availability are deliberately omitted: they change frequently.
- * Source-page paths are refresh metadata, never visitor-facing links.
- */
+import propertyImageCatalog from './iglu-images.json'
+import broadwayRoomImageCatalog from './iglu-room-images.json'
+import propertyDetails from './iglu-property-details.json'
+import publishedOffers from './iglu-offers.json'
+
 export type IgluProperty = {
   id: string
   sourcePath: string
@@ -14,11 +10,14 @@ export type IgluProperty = {
   name: string
   city: string
   country: string
-  address: string | null
+  address: string
   description: string
   gallery: string[]
   amenities: string[]
   inclusions: string[]
+  distance: string
+  universities: string[]
+  illustrativeImages?: boolean
 }
 
 export type IgluRoom = {
@@ -32,48 +31,64 @@ export type IgluRoom = {
   features: string[]
   inclusions: string[]
   approximateArea: string
+  priceFrom: number
+  priceLabel: string
+  priceConfidence: 'published' | 'indicative'
+  available: number | null
+  status: string
+  minimumOccupancy: number
+  maximumOccupancy: number
 }
 
-const sourceImage = (path: string) => `https://iglu.com.au/wp-content/uploads/${path}`
-
-const propertyRows: Array<[string, string, string, string, string, string]> = [
-  ['18','sydney/broadway','Sydney','Broadway','2017/06/iglu-broadway-study-spaces.jpg','Situated opposite UTS and close to Notre Dame and Sydney Uni, Iglu Broadway offers a central student location in Chippendale.'],
-  ['19','sydney/central','Sydney','Central','2020/08/IgluCentralPark-Gym-1400x739.jpg','Iglu Central is a boutique Sydney student accommodation in Chippendale, surrounded by cafés, restaurants and city amenities.'],
-  ['20','sydney/central-park','Sydney','Central Park','2019/08/scp-hero-5.jpg','Iglu Central Park offers a city-centre student community with distinctive architecture and access to Sydney campuses.'],
-  ['22','sydney/chatswood','Sydney','Chatswood','2017/06/Chatswood-courtyard-edit.jpg','Iglu Chatswood offers student accommodation near local eateries, entertainment, shopping and public transport.'],
-  ['45254','sydney/mascot','Sydney','Mascot','2022/12/iglu-mascot-hero-6-1400x739-1.jpg','Iglu Mascot is located near Mascot Station and offers private studios and shared apartments for students.'],
-  ['119777','sydney/mascot-duo','Sydney','Mascot Duo','2026/06/Iglu-Mascot-Duo-Hero-1400x739-2.jpg','Iglu Mascot Duo offers studio accommodation in Sydney’s Mascot neighbourhood.'],
-  ['21','sydney/redfern','Sydney','Redfern','2021/03/sre-hero-13.jpg','Iglu Redfern offers a student community in Sydney’s inner city, with public transport and campuses nearby.'],
-  ['38740','sydney/summer-hill','Sydney','Summer Hill','2022/02/Iglu-Summer-Hill-Gym-2.jpg','Iglu Summer Hill offers student accommodation in Sydney’s Inner West, with public transport links.'],
-  ['101749','sydney/waterloo','Sydney','Waterloo','2025/08/Iglu-Waterloo-Study-Area-2-1400x739-1.jpg','Iglu Waterloo is positioned beside the metro station, with convenient connections to Sydney campuses.'],
-  ['23','brisbane/brisbane-city','Brisbane','Brisbane City','2024/05/Iglu-Brisbane-City-Hero-1400x739-08.jpg','Iglu Brisbane City is in the CBD near QUT Gardens Point and central Brisbane amenities.'],
-  ['24','brisbane/kelvin-grove','Brisbane','Kelvin Grove','2017/06/Iglu-Kelvin-Grove-6.jpg','Iglu Kelvin Grove offers student accommodation near QUT’s Kelvin Grove campus.'],
-  ['43240','melbourne/flagstaff-gardens','Melbourne','Flagstaff Gardens','2022/08/Flagstaff-King-St-2.jpg','Iglu Flagstaff Gardens is beside its namesake park, with access to Melbourne universities and public transport.'],
-  ['114718','melbourne/flagstaff-station','Melbourne','Flagstaff Station','2026/09/Iglu-Flagstaff-Station-communal-1400x739-4.jpg','Iglu Flagstaff Station offers student accommodation near central Melbourne transport and campuses.'],
-  ['59651','melbourne/melbourne-central','Melbourne','Melbourne Central','2023/09/Iglu-Melbourne-Central-1400x739-07.jpg','Iglu Melbourne Central is behind the State Library, within walking distance of RMIT and central Melbourne.'],
-  ['25','melbourne/melbourne-city','Melbourne','Melbourne City','2021/03/IgluMelbourneCity-Chess-1400x739.jpg.jpg','Iglu Melbourne City places students close to universities, shops and central Melbourne amenities.'],
-  ['14854','melbourne/south-yarra','Melbourne','South Yarra','2020/06/iglu-south-yarra-slider-11.jpg','Iglu South Yarra offers student accommodation near trains and the neighbourhood’s local amenities.'],
+type PropertySourceRow = [string, string, string, string]
+const propertyRows: PropertySourceRow[] = [
+  ['18','sydney/broadway','Sydney','Broadway'],
+  ['19','sydney/central','Sydney','Central'],
+  ['20','sydney/central-park','Sydney','Central Park'],
+  ['22','sydney/chatswood','Sydney','Chatswood'],
+  ['45254','sydney/mascot','Sydney','Mascot'],
+  ['119777','sydney/mascot-duo','Sydney','Mascot Duo'],
+  ['21','sydney/redfern','Sydney','Redfern'],
+  ['38740','sydney/summer-hill','Sydney','Summer Hill'],
+  ['101749','sydney/waterloo','Sydney','Waterloo'],
+  ['23','brisbane/brisbane-city','Brisbane','Brisbane City'],
+  ['24','brisbane/kelvin-grove','Brisbane','Kelvin Grove'],
+  ['43240','melbourne/flagstaff-gardens','Melbourne','Flagstaff Gardens'],
+  ['114718','melbourne/flagstaff-station','Melbourne','Flagstaff Station'],
+  ['59651','melbourne/melbourne-central','Melbourne','Melbourne Central'],
+  ['25','melbourne/melbourne-city','Melbourne','Melbourne City'],
+  ['14854','melbourne/south-yarra','Melbourne','South Yarra'],
 ]
+const slugify = (value: string) => value.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+const imageFilesBySourceSlug = new Map(propertyImageCatalog.map((item) => [item.slug, item.assets]))
+const detailByPropertySlug = propertyDetails as Record<string, {
+  address: string; description: string; distance: string; universities: string[]; amenities: string[]; inclusions: string[]; illustrativeImages?: boolean
+}>
+const publishedOffersBySlug = publishedOffers as Record<string, Array<{ name: string; amount: number; status?: string }>>
+const roomGalleryBySlug = new Map(broadwayRoomImageCatalog.map((item) => [item.slug, item.images]))
 
-export const igluProperties: IgluProperty[] = propertyRows.map(([id, path, city, label, image, description]) => {
-  const slug = `${city}-${label}`.toLocaleLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+function getPropertyImages(propertySlug: string): Array<{ name: string; src: string }> {
+  const files = imageFilesBySourceSlug.get(propertySlug.replace(/^sydney-|^brisbane-|^melbourne-/, '')) ?? []
+  return files
+    .filter((asset) => !/380x460|608x230|short-stay|scholarship|IgluCentralPark-(?:Gym|SpinClass)/i.test(asset.name))
+    .map((asset) => ({ name: asset.name, src: asset.src }))
+}
+
+export const igluProperties: IgluProperty[] = propertyRows.map(([id, path, city, label]) => {
+  const slug = slugify(`${city}-${label}`)
+  const details = detailByPropertySlug[slug]
+  const images = getPropertyImages(slug)
+  const sourcePath = `/properties/${path}/`
   return {
-    id,
-    sourcePath: `/properties/${path}/`,
-    slug,
-    name: `Iglu ${label}`,
-    city,
-    country: 'Australia',
-    address: id === '18' ? '9 Kensington Street, Chippendale NSW 2008, Australia' : null,
-    description,
-    gallery: [sourceImage(image)],
-    amenities: id === '18' ? ['Study spaces', 'Communal kitchen', 'Games room', 'Gym', 'On-site resident support'] : [],
-    inclusions: id === '18' ? ['Unlimited Wi-Fi', 'Utilities', 'Use of communal spaces', 'Resident events'] : [],
+    id, sourcePath, slug, name: `Iglu ${label}`, city, country: 'Australia',
+    address: details.address, description: details.description,
+    gallery: images.map((image) => image.src),
+    amenities: details.amenities, inclusions: details.inclusions,
+    distance: details.distance, universities: details.universities,
+    illustrativeImages: details.illustrativeImages,
   }
 })
 
-// Property slug, source room-page slug, and displayed room name. The parent
-// relation is derived from the containing group, not inferred from the name.
 const roomRows: Array<[string, string, string]> = [
   ['sydney-broadway','standard-studio-apartment-nras-br','Standard Studio Apartment (NRAS)'],
   ['sydney-broadway','single-bedroom-6-share-apt-br','Single Bedroom – 6 Share Apt'],
@@ -195,36 +210,112 @@ const roomRows: Array<[string, string, string]> = [
 ]
 
 const propertyBySlug = new Map(igluProperties.map((property) => [property.slug, property]))
+const normalizeWords = (value: string) => value.toLocaleLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()
+
+function getRoomAssets(property: IgluProperty, roomPath: string, name: string): { images: string[]; floorplan: string | null } {
+  if (property.id === '18') {
+    const roomAssets = roomGalleryBySlug.get(roomPath) ?? []
+    const photos = roomAssets.filter((asset) => !asset.name.toLocaleLowerCase().endsWith('.png')).map((asset) => asset.src)
+    const floorplan = name === 'Standard Studio Apartment' ? '/iglu/broadway/SBR-standard-studio.webp' : null
+    if (photos.length) return { images: [...new Set(photos)], floorplan }
+  }
+
+  const assets = imageFilesBySourceSlug.get(property.sourcePath.split('/').filter(Boolean).slice(-1)[0]) ?? []
+  const roomTiles = assets.filter((asset) => /380x460/i.test(asset.name))
+  const tokens = normalizeWords(name).split(' ').filter((token) => token && !['iglu','apartment','apt','the','room','bedroom','single','female','male','nras','saex','u18'].includes(token))
+  const scored = roomTiles.map((asset) => {
+    const filename = normalizeWords(asset.name)
+    let score = tokens.reduce((sum, token) => sum + (filename.includes(token) ? 2 : 0), 0)
+    if (/studio/i.test(name) && /studio/i.test(filename)) score += 5
+    if (/premium/i.test(name) && /premium|prem/i.test(filename)) score += 5
+    if (/superior/i.test(name) && /superior/i.test(filename)) score += 5
+    if (/corner/i.test(name) && /corner/i.test(filename)) score += 5
+    const shareCount = name.match(/\b([1-6])\s*(?:bed(?:room)?|share)/i)?.[1]
+    if (shareCount && filename.includes(shareCount)) score += 4
+    if (/share/i.test(name) && /share|bed/i.test(filename)) score += 2
+    return { asset, score }
+  }).sort((a, b) => b.score - a.score)
+  const selected = scored[0]?.asset
+  return { images: selected ? [selected.src] : (property.gallery[0] ? [property.gallery[0]] : []), floorplan: null }
+}
+
+function inferredRoomFeatures(name: string, propertyId: string, roomPath: string): { features: string[]; approximateArea: string } {
+  if (propertyId === '18') {
+    if (roomPath.includes('share-apt')) {
+      const features = ['Private bedroom for one resident', 'King single bed', 'Study desk, chair and lamp', 'Pin board and shelves', 'Built-in wardrobe, storage and full-length mirror', 'Air conditioning, acoustic windows and block-out blinds', 'Shared apartment living area with sofa and dining table', 'Full shared kitchen with oven, microwave, cooktop, refrigerator and freezer']
+      return { features, approximateArea: 'Approximately 17 m² (bedroom)' }
+    }
+    const size = roomPath.includes('nras') ? 'Approximately 18–20 m²' : roomPath.includes('superior') ? 'Approximately 23 m²' : roomPath.includes('premium') ? 'Approximately 30 m²' : 'Approximately 19 m²'
+    const bed = /superior|premium/i.test(roomPath) ? 'Double bed' : 'King single or double bed'
+    const extra = roomPath.includes('nras') ? 'NRAS-supported room; eligibility criteria apply' : roomPath.includes('premium') ? 'Some rooms are accessible; allocation depends on availability' : null
+    return { features: ['Private studio for one resident', bed, 'Private bathroom', 'Air conditioning and heating', 'Study desk, chair and lamp', 'Built-in wardrobe and full-length mirror', 'Kitchenette with sink, convection microwave, two-burner cooktop and refrigerator', 'Acoustic windows and block-out blinds', ...(extra ? [extra] : [])], approximateArea: size }
+  }
+
+  const share = /share|bed(?:room)?/i.test(name) && !/studio/i.test(name) && !/1 bedroom apartment/i.test(name)
+  const sharedBathroom = /share bath/i.test(name)
+  const n = name.match(/\b([1-6])\s*(?:bed(?:room)?|share)/i)?.[1]
+  const features = share
+    ? ['Private furnished bedroom for one resident', sharedBathroom ? 'Bathroom shared within the apartment' : 'Private bathroom', `Shared apartment with up to ${n ?? 'several'} bedrooms`, 'Shared kitchen and living area', 'Study desk and storage', 'Room configuration and furnishings vary by specific room']
+    : ['Private furnished room for one resident', 'Private bathroom', 'Study and storage area', 'Kitchenette or apartment kitchen according to room type', 'Room configuration and furnishings vary by specific room']
+  return { features, approximateArea: '' }
+}
+
+function findComparableOffer(propertySlug: string, roomName: string): { amount: number; exact: boolean; sourceStatus?: string } | null {
+  const offers = publishedOffersBySlug[propertySlug] ?? []
+  const exact = offers.find((offer) => offer.name === roomName)
+  if (exact) return { amount: exact.amount, exact: true, sourceStatus: exact.status }
+
+  const lower = roomName.toLocaleLowerCase()
+  const shared = /share|bed(?:room)?/i.test(lower) && !/studio/i.test(lower) && !/1 bedroom apartment/i.test(lower)
+  const targetCount = lower.match(/\b([1-6])\s*(?:bed(?:room)?|share)/i)?.[1]
+  const targetStyle = /corner/.test(lower) ? 'corner' : /premium/.test(lower) ? 'premium' : /superior/.test(lower) ? 'superior' : /single studio/.test(lower) ? 'single' : /studio/.test(lower) ? 'standard' : ''
+  const targetSharedBathroom = /share bath/.test(lower)
+  const roomType = /studio/.test(lower) ? 'studio' : shared ? 'share' : /1 bedroom apartment/.test(lower) ? 'one-bedroom' : 'other'
+  const score = (offer: { name: string }) => {
+    const item = offer.name.toLocaleLowerCase()
+    const itemType = /studio/.test(item) ? 'studio' : /share|bed(?:room)?/i.test(item) && !/1 bedroom apartment/i.test(item) ? 'share' : /1 bedroom apartment/i.test(item) ? 'one-bedroom' : 'other'
+    let value = itemType === roomType ? 100 : 0
+    const itemCount = item.match(/\b([1-6])\s*(?:bed(?:room)?|share)/i)?.[1]
+    if (targetCount && itemCount) value += Math.max(0, 50 - Math.abs(Number(targetCount) - Number(itemCount)) * 15)
+    if (targetStyle && item.includes(targetStyle)) value += 35
+    if (targetSharedBathroom && /share bath/.test(item)) value += 25
+    if (!targetSharedBathroom && /share bath/.test(item)) value -= 40
+    if (/nras/.test(lower) && /nras/.test(item)) value += 10
+    return value
+  }
+  const candidate = [...offers].sort((a, b) => score(b) - score(a))[0] ?? offers[0]
+  return candidate ? { amount: candidate.amount, exact: false } : null
+}
+
 export const igluRooms: IgluRoom[] = roomRows.flatMap(([propertySlug, roomPath, name]) => {
   const property = propertyBySlug.get(propertySlug)
   if (!property) return []
-  // Broadway's detailed room gallery was captured and hosted locally already.
-  const broadwayImages = name === 'Standard Studio Apartment' && property.id === '18'
-    ? [
-      '/iglu/broadway/Broadway-Standard-810x1215-room-1.jpg',
-      '/iglu/broadway/Broadway-Standard-810x1215-room-2.jpg',
-      '/iglu/broadway/Broadway-Standard-810x1215-room-3.jpg',
-      '/iglu/broadway/Broadway-Standard-810x1215-room-4.jpg',
-      '/iglu/broadway/Broadway-Standard-810x1215-room-5.jpg',
-      '/iglu/broadway/Broadway-Standard-810x1215-room-6.jpg',
-    ]
-    : []
+  const visuals = getRoomAssets(property, roomPath, name)
+  const roomInfo = inferredRoomFeatures(name, property.id, roomPath)
+  const offer = findComparableOffer(property.slug, name)
+  if (!offer) throw new Error(`Iglu room ${property.id}:${roomPath} has no published or comparable room rate`)
+  const numericAvailability = offer.sourceStatus?.match(/about (\d+)/i)?.[1]
+  const soldOut = /sold out/i.test(offer.sourceStatus ?? '')
+  const status = offer.sourceStatus ?? 'Live availability has not been verified; confirm with HearthAway.'
+  const images = visuals.images
   return [{
     id: `${property.id}:${roomPath}`,
     sourcePath: `/rooms/${property.sourcePath.split('/').slice(2, 4).join('/')}/${roomPath}/`,
     parentPropertyId: property.id,
     name,
-    image: broadwayImages[0] ?? property.gallery[0] ?? null,
-    images: broadwayImages.length ? broadwayImages : property.gallery,
-    floorplan: property.id === '18' && broadwayImages.length ? '/iglu/broadway/SBR-standard-studio.webp' : null,
-    features: broadwayImages.length ? [
-      'Private studio for one resident', 'King single or double bed', 'Private bathroom',
-      'Air conditioning and heating', 'Study desk, chair and lamp',
-      'Kitchenette with sink, convection microwave, two-burner cooktop and refrigerator',
-      'Approximately 19 m²',
-    ] : [],
-    inclusions: broadwayImages.length ? ['Unlimited high-speed Wi-Fi', 'Smart TV with Apple TV', 'Utilities and communal spaces'] : [],
-    approximateArea: broadwayImages.length ? '19 m²' : '',
+    image: images[0] ?? property.gallery[0] ?? null,
+    images,
+    floorplan: visuals.floorplan,
+    features: roomInfo.features,
+    inclusions: ['Unlimited high-speed Wi-Fi', 'Furnished room', 'Access to property communal facilities'],
+    approximateArea: roomInfo.approximateArea,
+    priceFrom: offer.amount,
+    priceLabel: `A$${offer.amount.toLocaleString('en-AU')} / week · ${offer.exact ? 'Iglu published' : 'indicative estimate'}`,
+    priceConfidence: offer.exact ? 'published' : 'indicative',
+    available: soldOut ? 0 : (numericAvailability ? Number(numericAvailability) : null),
+    status,
+    minimumOccupancy: 1,
+    maximumOccupancy: /\bqueen\b/i.test(name) ? 2 : 1,
   }]
 })
 

@@ -1,0 +1,361 @@
+[
+  {
+    "slug": "standard-studio-apartment-nras-br",
+    "images": [
+      {
+        "name": "SBR-standard-studio.png",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/SBR-standard-studio.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-standard-studio.png",
+        "contentType": "image/png"
+      },
+      {
+        "name": "Broadway-studio-810x1215-2.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/Broadway-studio-810x1215-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-studio-810x1215-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SBR-standard-studio-1400x739-6-1.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/SBR-standard-studio-1400x739-6-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-standard-studio-1400x739-6-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-studio-810x1215-5.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/Broadway-studio-810x1215-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-studio-810x1215-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-studio-810x1215-1-1.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/Broadway-studio-810x1215-1-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-studio-810x1215-1-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SBR-standard-studio-1400x739-13-2.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/SBR-standard-studio-1400x739-13-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-standard-studio-1400x739-13-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-studio-810x1215-4.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-nras-br/Broadway-studio-810x1215-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-studio-810x1215-4.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "single-bedroom-6-share-apt-br",
+    "images": [
+      {
+        "name": "SBR-6-share.png",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/SBR-6-share.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/SBR-6-share.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-share-810x1215-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/Broadway-share-810x1215-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Broadway-share-810x1215-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-4.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/Broadway-share-810x1215-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Broadway-share-810x1215-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-hero-6-bed-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/iglu-broadway-hero-6-bed-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-hero-6-bed-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-5.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/Broadway-share-810x1215-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Broadway-share-810x1215-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-hero-share-3-portrait.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-6-share-apt-br/iglu-broadway-hero-share-3-portrait.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-hero-share-3-portrait.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "single-bedroom-5-share-apt-br",
+    "images": [
+      {
+        "name": "SBR-4-5-share.png",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/SBR-4-5-share.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-4-5-share.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-share-810x1215-2.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/Broadway-share-810x1215-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SBR-Share-Kitchen-1400x739-1-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/SBR-Share-Kitchen-1400x739-1-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-Share-Kitchen-1400x739-1-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-7.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/Broadway-share-810x1215-7.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-7.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-5.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/Broadway-share-810x1215-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-4-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-5-share-apt-br/Broadway-share-810x1215-4-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-4-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "single-bedroom-4-share-apt-br",
+    "images": [
+      {
+        "name": "SBR-4-5-share.png",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/SBR-4-5-share.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-4-5-share.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-share-810x1215-6.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/Broadway-share-810x1215-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-4.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/Broadway-share-810x1215-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/Broadway-share-810x1215-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SBR-Share-apartment-bedroom-1400x739-4-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/SBR-Share-apartment-bedroom-1400x739-4-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-Share-apartment-bedroom-1400x739-4-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-share-810x1215-9.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/Broadway-share-810x1215-9.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-share-810x1215-9.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SBR-std-sup-prem-bath-1400x739-14-1.jpg",
+        "src": "/iglu/broadway/rooms/single-bedroom-4-share-apt-br/SBR-std-sup-prem-bath-1400x739-14-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/SBR-std-sup-prem-bath-1400x739-14-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "standard-studio-apartment-br",
+    "images": [
+      {
+        "name": "SBR-standard-studio.png",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/SBR-standard-studio.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/11/SBR-standard-studio.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-6.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-4.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-1400x739-room-1.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-1400x739-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-1400x739-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-1400x739-room-4.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-1400x739-room-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-1400x739-room-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-1.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-3.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-2.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-810x1215-room-5.jpg",
+        "src": "/iglu/broadway/rooms/standard-studio-apartment-br/Broadway-Standard-810x1215-room-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-810x1215-room-5.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "superior-studio-apartment-br",
+    "images": [
+      {
+        "name": "SBR-superior-studio.png",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/SBR-superior-studio.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/11/SBR-superior-studio.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-superior-810x1215-room-3.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-room-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-room-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-810x1215-room-5.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-room-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-room-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-1400x739-room-1.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-1400x739-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-1400x739-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-810x1215-room-4.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-room-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-room-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-810x1215-room-6.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-room-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-room-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-1400x739-room-5.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-1400x739-room-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-1400x739-room-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-810x1215-room-7.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-room-7.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-room-7.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-superior-810x1215-bath-1.jpg",
+        "src": "/iglu/broadway/rooms/superior-studio-apartment-br/Broadway-superior-810x1215-bath-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-superior-810x1215-bath-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "premium-studio-apartment-br",
+    "images": [
+      {
+        "name": "SBR-premium-studio.png",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/SBR-premium-studio.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/11/SBR-premium-studio.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Broadway-premium-810x1215-room-3.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-room-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-room-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-810x1215-room-4.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-room-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-room-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-1400x739-room-1.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-1400x739-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-1400x739-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-810x1215-room-2.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-room-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-room-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-810x1215-room-5.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-room-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-room-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-1400x739-room-4.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-1400x739-room-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-1400x739-room-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-810x1215-bath-1.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-bath-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-bath-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-810x1215-room-1.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-810x1215-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-810x1215-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-premium-1400x739-room-3.jpg",
+        "src": "/iglu/broadway/rooms/premium-studio-apartment-br/Broadway-premium-1400x739-room-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-premium-1400x739-room-3.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  }
+]

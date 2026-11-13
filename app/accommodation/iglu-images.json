@@ -1,0 +1,1408 @@
+[
+  {
+    "slug": "broadway",
+    "assets": [
+      {
+        "name": "iglu-broadway-exterior-2.jpg",
+        "src": "/iglu/broadway/iglu-broadway-exterior-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-exterior-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-exterior-1.jpg",
+        "src": "/iglu/broadway/iglu-broadway-exterior-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-exterior-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-communal-kitchen.jpg",
+        "src": "/iglu/broadway/iglu-broadway-communal-kitchen.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-communal-kitchen.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-flexi-1.jpg",
+        "src": "/iglu/broadway/iglu-broadway-flexi-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-flexi-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-flexi-2.jpg",
+        "src": "/iglu/broadway/iglu-broadway-flexi-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-flexi-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluCentralPark-Gym-1400x739.jpg",
+        "src": "/iglu/broadway/IgluCentralPark-Gym-1400x739.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/08/IgluCentralPark-Gym-1400x739.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-study-spaces.jpg",
+        "src": "/iglu/broadway/iglu-broadway-study-spaces.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-study-spaces.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-surrounds.jpg",
+        "src": "/iglu/broadway/iglu-broadway-surrounds.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-surrounds.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-broadway-games.jpg",
+        "src": "/iglu/broadway/iglu-broadway-games.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-broadway-games.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Broadway-380x460-5-share.jpg",
+        "src": "/iglu/broadway/Iglu-Broadway-380x460-5-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Broadway-380x460-5-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Broadway-380x460-4-share.jpg",
+        "src": "/iglu/broadway/Iglu-Broadway-380x460-4-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Broadway-380x460-4-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Broadway-380x460-6-share.jpg",
+        "src": "/iglu/broadway/Iglu-Broadway-380x460-6-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Broadway-380x460-6-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Standard-Studio-380x460-1.jpg",
+        "src": "/iglu/broadway/Broadway-Standard-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Standard-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Superior-Studio-380x460-new.jpg",
+        "src": "/iglu/broadway/Broadway-Superior-Studio-380x460-new.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Superior-Studio-380x460-new.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Broadway-Premium-Studio-380x460-new.jpg",
+        "src": "/iglu/broadway/Broadway-Premium-Studio-380x460-new.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Broadway-Premium-Studio-380x460-new.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "central",
+    "assets": [
+      {
+        "name": "sce-hero-2-2022.jpg",
+        "src": "/iglu/central/sce-hero-2-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-2-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sce-hero-1-2022.jpg",
+        "src": "/iglu/central/sce-hero-1-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-1-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluCentralPark-Gym-1400x739.jpg",
+        "src": "/iglu/central/IgluCentralPark-Gym-1400x739.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/08/IgluCentralPark-Gym-1400x739.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sce-hero-3-2022.jpg",
+        "src": "/iglu/central/sce-hero-3-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-3-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sce-hero-4-2022.jpg",
+        "src": "/iglu/central/sce-hero-4-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-4-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sce-hero-5-2022.jpg",
+        "src": "/iglu/central/sce-hero-5-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-5-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sce-hero-6-2022.jpg",
+        "src": "/iglu/central/sce-hero-6-2022.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sce-hero-6-2022.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluCentralPark-SpinClass-1400x739.jpg",
+        "src": "/iglu/central/IgluCentralPark-SpinClass-1400x739.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/08/IgluCentralPark-SpinClass-1400x739.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-380x460-6-bed-share-1.jpg",
+        "src": "/iglu/central/Iglu-Central-380x460-6-bed-share-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/10/Iglu-Central-380x460-6-bed-share-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-380x460-6-share-Ensuite.jpg",
+        "src": "/iglu/central/Iglu-Central-380x460-6-share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/12/Iglu-Central-380x460-6-share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-380x460-6-share-Living.jpg",
+        "src": "/iglu/central/Iglu-Central-380x460-6-share-Living.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/12/Iglu-Central-380x460-6-share-Living.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-380x460-standard-studio.jpg",
+        "src": "/iglu/central/Iglu-Central-380x460-standard-studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Central-380x460-standard-studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-380x460-2-Bed-Studio.jpg",
+        "src": "/iglu/central/Iglu-Central-380x460-2-Bed-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2018/01/Iglu-Central-380x460-2-Bed-Studio.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "central-park",
+    "assets": [
+      {
+        "name": "iglu-central-park-front-desk.jpg",
+        "src": "/iglu/central-park/iglu-central-park-front-desk.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-front-desk.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-central-park-flexi-2.jpg",
+        "src": "/iglu/central-park/iglu-central-park-flexi-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-flexi-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-Park-External-1400x739-1.jpg",
+        "src": "/iglu/central-park/Iglu-Central-Park-External-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Central-Park-External-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-central-park-flexi-1.jpg",
+        "src": "/iglu/central-park/iglu-central-park-flexi-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-flexi-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluCentralPark-SpinClass-1400x739-1.jpg",
+        "src": "/iglu/central-park/IgluCentralPark-SpinClass-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluCentralPark-SpinClass-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-central-park-media-room.jpg",
+        "src": "/iglu/central-park/iglu-central-park-media-room.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-media-room.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-central-park-study-room-1.jpg",
+        "src": "/iglu/central-park/iglu-central-park-study-room-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-study-room-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "scp-hero-6.jpg",
+        "src": "/iglu/central-park/scp-hero-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/08/scp-hero-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "scp-hero-5.jpg",
+        "src": "/iglu/central-park/scp-hero-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/08/scp-hero-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-central-park-study-room-2.jpg",
+        "src": "/iglu/central-park/iglu-central-park-study-room-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/iglu-central-park-study-room-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Central-Park-Standard-Studio-380x460-room.jpg",
+        "src": "/iglu/central-park/Central-Park-Standard-Studio-380x460-room.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/04/Central-Park-Standard-Studio-380x460-room.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "SCP-Superior-Hero.jpg",
+        "src": "/iglu/central-park/SCP-Superior-Hero.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/07/SCP-Superior-Hero.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Central-Park-Superior-Studio-380x460-1.jpg",
+        "src": "/iglu/central-park/Central-Park-Superior-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Central-Park-Superior-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Central-Park-Premium-Corner-Studio-380x460-1.jpg",
+        "src": "/iglu/central-park/Central-Park-Premium-Corner-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/07/Central-Park-Premium-Corner-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-Park-380x460-6-Share-Ensuite.png",
+        "src": "/iglu/central-park/Iglu-Central-Park-380x460-6-Share-Ensuite.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Central-Park-380x460-6-Share-Ensuite.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Iglu-Central-Park-380x460-3-bed-share.jpg",
+        "src": "/iglu/central-park/Iglu-Central-Park-380x460-3-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Central-Park-380x460-3-bed-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Central-Park-Premium-6-Share-380x460-1.jpg",
+        "src": "/iglu/central-park/Central-Park-Premium-6-Share-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Central-Park-Premium-6-Share-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Central-Park-380x460-4-bed-share.jpg",
+        "src": "/iglu/central-park/Iglu-Central-Park-380x460-4-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Central-Park-380x460-4-bed-share.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "chatswood",
+    "assets": [
+      {
+        "name": "Chatswood-lobby-1400x739-2.jpg",
+        "src": "/iglu/chatswood/Chatswood-lobby-1400x739-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Chatswood-lobby-1400x739-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sch-hero-2.jpg",
+        "src": "/iglu/chatswood/sch-hero-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/sch-hero-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Chatswood-lobby-1400x739-1.jpg",
+        "src": "/iglu/chatswood/Chatswood-lobby-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Chatswood-lobby-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Chatswood-study-1400x739-3.jpg",
+        "src": "/iglu/chatswood/Chatswood-study-1400x739-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Chatswood-study-1400x739-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Chatswood-communal-1400x739-5.jpg",
+        "src": "/iglu/chatswood/Chatswood-communal-1400x739-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Chatswood-communal-1400x739-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Chatswood-courtyard-edit.jpg",
+        "src": "/iglu/chatswood/Chatswood-courtyard-edit.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Chatswood-courtyard-edit.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sch-hero-11.jpg",
+        "src": "/iglu/chatswood/sch-hero-11.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sch-hero-11.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-Share-Apartment-1.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-Share-Apartment-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Chatswood-380x460-Share-Apartment-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-Share-Apartment-2.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-Share-Apartment-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Chatswood-380x460-Share-Apartment-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-4-Share-Ensuite.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-4-Share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Chatswood-380x460-4-Share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-Superior-Studio-2.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-Superior-Studio-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Chatswood-380x460-Superior-Studio-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-Standard-Studio-1-1.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-Standard-Studio-1-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/10/Iglu-Chatswood-380x460-Standard-Studio-1-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Chatswood-380x460-Prem-Studio-1.jpg",
+        "src": "/iglu/chatswood/Iglu-Chatswood-380x460-Prem-Studio-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Chatswood-380x460-Prem-Studio-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "mascot",
+    "assets": [
+      {
+        "name": "iglu-mascot-hero-5-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-5-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-5-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-mascot-hero-1-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-1-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-1-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-mascot-hero-4-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-4-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-4-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-mascot-hero-2-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-2-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-2-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-mascot-hero-3-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-3-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-3-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMascot-Gym-1400x739-1.jpg",
+        "src": "/iglu/mascot/IgluMascot-Gym-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Gym-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-mascot-hero-6-1400x739-1.jpg",
+        "src": "/iglu/mascot/iglu-mascot-hero-6-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/12/iglu-mascot-hero-6-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMascot-Terrace-1400x739-1.jpg",
+        "src": "/iglu/mascot/IgluMascot-Terrace-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/04/IgluMascot-Terrace-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-380x460-6-Share-Ensuite.jpg",
+        "src": "/iglu/mascot/Iglu-Mascot-380x460-6-Share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/01/Iglu-Mascot-380x460-6-Share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-380x460-Standard-Studio.jpg",
+        "src": "/iglu/mascot/Iglu-Mascot-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/02/Iglu-Mascot-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-380x460-Premium-6-Share-Ensuite.jpg",
+        "src": "/iglu/mascot/Iglu-Mascot-380x460-Premium-6-Share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/02/Iglu-Mascot-380x460-Premium-6-Share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-380x460-Premium-Studio.jpg",
+        "src": "/iglu/mascot/Iglu-Mascot-380x460-Premium-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/02/Iglu-Mascot-380x460-Premium-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Mascot-Queen-Standard-380x460-1.jpg",
+        "src": "/iglu/mascot/Mascot-Queen-Standard-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/01/Mascot-Queen-Standard-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "mascot-duo",
+    "assets": [
+      {
+        "name": "Iglu-Mascot-Duo-Hero-Exterior-1400x739-1.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-Exterior-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-Exterior-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Hero-1400x739-3.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-1400x739-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-1400x739-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Hero-1400x739-5.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-1400x739-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-1400x739-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Hero-1400x739-4.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-1400x739-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-1400x739-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Hero-1400x739-2.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-1400x739-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-1400x739-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Standard-Studio-380x460-1.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Standard-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/08/Iglu-Mascot-Duo-Standard-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Superior-Studio-380x460-1.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Superior-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Mascot-Duo-Superior-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Premium-Studio-380x460-1.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Premium-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Mascot-Duo-Premium-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Mascot-Duo-Hero-1400x739-1.jpg",
+        "src": "/iglu/mascot-duo/Iglu-Mascot-Duo-Hero-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/06/Iglu-Mascot-Duo-Hero-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "redfern",
+    "assets": [
+      {
+        "name": "Iglu-Redfern-Web-1.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-Web-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-Web-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sre-hero-14.jpg",
+        "src": "/iglu/redfern/sre-hero-14.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/sre-hero-14.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-Web-4.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-Web-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-Web-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sre-hero-2.jpg",
+        "src": "/iglu/redfern/sre-hero-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/sre-hero-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sre-hero-11.jpg",
+        "src": "/iglu/redfern/sre-hero-11.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/sre-hero-11.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-study-2.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-study-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-study-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-terrace-2.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-terrace-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-terrace-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sre-hero-9.jpg",
+        "src": "/iglu/redfern/sre-hero-9.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/sre-hero-9.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "sre-hero-13.jpg",
+        "src": "/iglu/redfern/sre-hero-13.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/sre-hero-13.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-Web-2.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-Web-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-Web-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-Web-6.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-Web-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Redfern-Web-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-6-bed-share.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-6-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Redfern-380x460-6-bed-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-5-bed-share.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-5-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Redfern-380x460-5-bed-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-6-bed-share-male-2.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-6-bed-share-male-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Redfern-380x460-6-bed-share-male-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-Premium-Studio-1.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-Premium-Studio-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Redfern-380x460-Premium-Studio-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-Single-Studio-1.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-Single-Studio-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Redfern-380x460-Single-Studio-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Redfern-380x460-Standard-Studio-NRAS.jpg",
+        "src": "/iglu/redfern/Iglu-Redfern-380x460-Standard-Studio-NRAS.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/06/Iglu-Redfern-380x460-Standard-Studio-NRAS.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "summer-hill",
+    "assets": [
+      {
+        "name": "Iglu-Summer-Hill-Exterior-1400x739-3.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Exterior-1400x739-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Exterior-1400x739-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Exterior-1400x739-4.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Exterior-1400x739-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Exterior-1400x739-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-breakfast-bar-1400x739-1.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-breakfast-bar-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-breakfast-bar-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Exterior-1400x739-2.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Exterior-1400x739-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Exterior-1400x739-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Lounge-1400x739-1.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Lounge-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Lounge-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Exterior-1400x739-1.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Exterior-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Exterior-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Gym-2.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Gym-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Gym-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-Exterior-2.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-Exterior-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/02/Iglu-Summer-Hill-Exterior-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-380x460-Standard-Studio.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/04/Iglu-Summer-Hill-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Summer-Hill-380x460-Premium-Studio.jpg",
+        "src": "/iglu/summer-hill/Iglu-Summer-Hill-380x460-Premium-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/04/Iglu-Summer-Hill-380x460-Premium-Studio.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "waterloo",
+    "assets": [
+      {
+        "name": "Iglu-Waterloo-Front-Desk-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Front-Desk-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Front-Desk-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Resident-Lounge-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Resident-Lounge-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Resident-Lounge-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Study-Area-1-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Study-Area-1-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Study-Area-1-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Study-Area-3-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Study-Area-3-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Study-Area-3-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Resident-Kitchen-1-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Resident-Kitchen-1-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Resident-Kitchen-1-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Front-Desk-1400x739-2.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Front-Desk-1400x739-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Front-Desk-1400x739-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Media-Room-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Media-Room-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Media-Room-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Terrace-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Terrace-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Terrace-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Study-Area-2-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Study-Area-2-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Study-Area-2-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-Gym-1400x739-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-Gym-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/08/Iglu-Waterloo-Gym-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Waterloo-Standard-Studio-380x460-new-2.jpg",
+        "src": "/iglu/waterloo/Waterloo-Standard-Studio-380x460-new-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/09/Waterloo-Standard-Studio-380x460-new-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Waterloo-608x230-1.jpg",
+        "src": "/iglu/waterloo/Iglu-Waterloo-608x230-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Waterloo-608x230-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Waterloo-Standard-Studio-380x460-new.jpg",
+        "src": "/iglu/waterloo/Waterloo-Standard-Studio-380x460-new.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/09/Waterloo-Standard-Studio-380x460-new.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Waterloo-Superior-Studio-380x460-new.jpg",
+        "src": "/iglu/waterloo/Waterloo-Superior-Studio-380x460-new.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/09/Waterloo-Superior-Studio-380x460-new.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Waterloo-Superior-Studio-380x460-1.jpg",
+        "src": "/iglu/waterloo/Waterloo-Superior-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/09/Waterloo-Superior-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Waterloo-Premium-Studio-380x460-new.jpg",
+        "src": "/iglu/waterloo/Waterloo-Premium-Studio-380x460-new.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2025/09/Waterloo-Premium-Studio-380x460-new.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "brisbane-city",
+    "assets": [
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-01.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-01.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-01.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-02.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-02.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-02.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-03.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-03.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-03.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-04.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-04.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-04.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-06.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-06.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-06.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-07.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-07.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-07.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-09.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-09.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-09.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-05.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-05.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-05.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-Hero-1400x739-08.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-Hero-1400x739-08.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2024/05/Iglu-Brisbane-City-Hero-1400x739-08.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-380x460-share-3.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-380x460-share-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Brisbane-City-380x460-share-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-380x460-share-2.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-380x460-share-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Brisbane-City-380x460-share-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-380x460-share-1.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-380x460-share-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Brisbane-City-380x460-share-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-380x460-Standard-Studio-1.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-380x460-Standard-Studio-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Brisbane-City-380x460-Standard-Studio-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Brisbane-City-380x460-Premium-Studio-1.jpg",
+        "src": "/iglu/brisbane-city/Iglu-Brisbane-City-380x460-Premium-Studio-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Brisbane-City-380x460-Premium-Studio-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "kelvin-grove",
+    "assets": [
+      {
+        "name": "Iglu-Kelvin-Grove-1.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-2.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-5.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-3.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-7.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-7.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-7.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-6.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-4a.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-4a.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/Iglu-Kelvin-Grove-4a.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-380x460-6-bed-share.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-380x460-6-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/01/Iglu-Kelvin-Grove-380x460-6-bed-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-380x460-5-bed-share.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-380x460-5-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/10/Iglu-Kelvin-Grove-380x460-5-bed-share.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-380x460-5-bed-share-male.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-380x460-5-bed-share-male.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Kelvin-Grove-380x460-5-bed-share-male.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-380x460-3-bed-share-female.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-380x460-3-bed-share-female.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Kelvin-Grove-380x460-3-bed-share-female.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Kelvin-Grove-380x460-1-bed-share.jpg",
+        "src": "/iglu/kelvin-grove/Iglu-Kelvin-Grove-380x460-1-bed-share.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Kelvin-Grove-380x460-1-bed-share.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "flagstaff-gardens",
+    "assets": [
+      {
+        "name": "Flagstaff-games.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-games.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-games.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-King-St-1.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-King-St-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-King-St-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-study.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-study.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-study.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-gym.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-gym.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-gym.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-kitchen.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-kitchen.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-kitchen.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-terrace.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-terrace.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-terrace.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-communal.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-communal.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-communal.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Flagstaff-King-St-2.jpg",
+        "src": "/iglu/flagstaff-gardens/Flagstaff-King-St-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Flagstaff-King-St-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-Single-Studio.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-Single-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/06/Iglu-Flagstaff-Gardens-380x460-Single-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-Standard-Studio.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/09/Iglu-Flagstaff-Gardens-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-Premium-Studio.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-Premium-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/09/Iglu-Flagstaff-Gardens-380x460-Premium-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-Premium-Corner-Studio.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-Premium-Corner-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/04/Iglu-Flagstaff-Gardens-380x460-Premium-Corner-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-2-Share-Standard.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-2-Share-Standard.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/08/Iglu-Flagstaff-Gardens-380x460-2-Share-Standard.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Gardens-380x460-2-Share-Premium.jpg",
+        "src": "/iglu/flagstaff-gardens/Iglu-Flagstaff-Gardens-380x460-2-Share-Premium.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2022/09/Iglu-Flagstaff-Gardens-380x460-2-Share-Premium.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "flagstaff-station",
+    "assets": [
+      {
+        "name": "Iglu-Flagstaff-Station-exterior-1400x739-1.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-exterior-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-exterior-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-2.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-communal-1400x739-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-1-2.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-1-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/03/Iglu-Flagstaff-Station-communal-1400x739-1-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-3.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-communal-1400x739-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-5.png",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-5.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-communal-1400x739-5.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-6.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-communal-1400x739-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-gym-1400x739-3.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-gym-1400x739-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-gym-1400x739-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-communal-1400x739-4.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-communal-1400x739-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-communal-1400x739-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-exterior-1400x739-2.png",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-exterior-1400x739-2.png",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/09/Iglu-Flagstaff-Station-exterior-1400x739-2.png",
+        "contentType": "image/webp"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-Premium-Studio-380x460-1.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-Premium-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/03/Iglu-Flagstaff-Station-Premium-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-Standard-Studio-380x460-1.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-Standard-Studio-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/03/Iglu-Flagstaff-Station-Standard-Studio-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-Premium-Corner-380x460-1.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-Premium-Corner-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/03/Iglu-Flagstaff-Station-Premium-Corner-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Flagstaff-Station-2-share-380x460-1.jpg",
+        "src": "/iglu/flagstaff-station/Iglu-Flagstaff-Station-2-share-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2026/03/Iglu-Flagstaff-Station-2-share-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "melbourne-central",
+    "assets": [
+      {
+        "name": "iglu-melbourne-central-hero-2-1400x739-1.jpg",
+        "src": "/iglu/melbourne-central/iglu-melbourne-central-hero-2-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/05/iglu-melbourne-central-hero-2-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-Central-1400x739-01.jpg",
+        "src": "/iglu/melbourne-central/Iglu-Melbourne-Central-1400x739-01.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/09/Iglu-Melbourne-Central-1400x739-01.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-Central-1400x739-02.jpg",
+        "src": "/iglu/melbourne-central/Iglu-Melbourne-Central-1400x739-02.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/09/Iglu-Melbourne-Central-1400x739-02.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-melbourne-central-hero-1-1400x739-1.jpg",
+        "src": "/iglu/melbourne-central/iglu-melbourne-central-hero-1-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/05/iglu-melbourne-central-hero-1-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-melbourne-central-hero-3-1400x739-1.jpg",
+        "src": "/iglu/melbourne-central/iglu-melbourne-central-hero-3-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/05/iglu-melbourne-central-hero-3-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-melbourne-central-hero-4-1400x739-1.jpg",
+        "src": "/iglu/melbourne-central/iglu-melbourne-central-hero-4-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/05/iglu-melbourne-central-hero-4-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-Central-1400x739-07.jpg",
+        "src": "/iglu/melbourne-central/Iglu-Melbourne-Central-1400x739-07.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/09/Iglu-Melbourne-Central-1400x739-07.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-Central-380x460-Standard-Studio.jpg",
+        "src": "/iglu/melbourne-central/Iglu-Melbourne-Central-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/06/Iglu-Melbourne-Central-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-Central-Premium-380x460-1.jpg",
+        "src": "/iglu/melbourne-central/Iglu-Melbourne-Central-Premium-380x460-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/06/Iglu-Melbourne-Central-Premium-380x460-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-melbourne-central-hero-5-1400x739-1.jpg",
+        "src": "/iglu/melbourne-central/iglu-melbourne-central-hero-5-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/05/iglu-melbourne-central-hero-5-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "melbourne-city",
+    "assets": [
+      {
+        "name": "IgluMelbourneCity-Library2-1400x739-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Library2-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/IgluMelbourneCity-Library2-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Breakfast-1400x739.jpg.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Breakfast-1400x739.jpg.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Breakfast-1400x739.jpg.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Communal-1400x739-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Communal-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/IgluMelbourneCity-Communal-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Lobby-1400x739.jpg.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Lobby-1400x739.jpg.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Lobby-1400x739.jpg.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Fireplace-1400x739-1.jpg-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Fireplace-1400x739-1.jpg-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Fireplace-1400x739-1.jpg-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Gym-1400x739-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Gym-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/IgluMelbourneCity-Gym-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Library-1400x739-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Library-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/IgluMelbourneCity-Library-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Outdoors-1400x739-1.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Outdoors-1400x739-1.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/06/IgluMelbourneCity-Outdoors-1400x739-1.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Terrace-1400x739.jpg.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Terrace-1400x739.jpg.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Terrace-1400x739.jpg.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Chess-1400x739.jpg.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Chess-1400x739.jpg.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Chess-1400x739.jpg.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-City-380x460-6-Share-Ensuite.jpg",
+        "src": "/iglu/melbourne-city/Iglu-Melbourne-City-380x460-6-Share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/10/Iglu-Melbourne-City-380x460-6-Share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-City-380x460-Standard-Studio.jpg",
+        "src": "/iglu/melbourne-city/Iglu-Melbourne-City-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Melbourne-City-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "IgluMelbourneCity-Exterior-1400x739.jpg.jpg",
+        "src": "/iglu/melbourne-city/IgluMelbourneCity-Exterior-1400x739.jpg.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2021/03/IgluMelbourneCity-Exterior-1400x739.jpg.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-City-380x460-5-Share-Ensuite.jpg",
+        "src": "/iglu/melbourne-city/Iglu-Melbourne-City-380x460-5-Share-Ensuite.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2017/11/Iglu-Melbourne-City-380x460-5-Share-Ensuite.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-Melbourne-City-380x460-Premium-Studio.jpg",
+        "src": "/iglu/melbourne-city/Iglu-Melbourne-City-380x460-Premium-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2018/02/Iglu-Melbourne-City-380x460-Premium-Studio.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  },
+  {
+    "slug": "south-yarra",
+    "assets": [
+      {
+        "name": "iglu-south-yarra-slider-2.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-2.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-2.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-10.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-10.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-10.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-13.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-13.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-13.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-8.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-8.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-8.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-9.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-9.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-9.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-7.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-7.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-7.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-6.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-6.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-6.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-5.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-5.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-5.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-3.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-3.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-3.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-12.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-12.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-12.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-11.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-11.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-11.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "iglu-south-yarra-slider-4.jpg",
+        "src": "/iglu/south-yarra/iglu-south-yarra-slider-4.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2020/06/iglu-south-yarra-slider-4.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-6-Share-Premium.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-6-Share-Premium.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/11/Iglu-South-Yarra-380x460-6-Share-Premium.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-6-Share-Standard.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-6-Share-Standard.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/09/Iglu-South-Yarra-380x460-6-Share-Standard.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-5-Share-Premium.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-5-Share-Premium.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/11/Iglu-South-Yarra-380x460-5-Share-Premium.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-5-Share-Standard.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-5-Share-Standard.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/09/Iglu-South-Yarra-380x460-5-Share-Standard.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-Single-Studio.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-Single-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/09/Iglu-South-Yarra-380x460-Single-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-Standard-Studio.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-Standard-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2019/09/Iglu-South-Yarra-380x460-Standard-Studio.jpg",
+        "contentType": "image/jpeg"
+      },
+      {
+        "name": "Iglu-South-Yarra-380x460-Premium-Studio.jpg",
+        "src": "/iglu/south-yarra/Iglu-South-Yarra-380x460-Premium-Studio.jpg",
+        "sourceUrl": "https://iglu.com.au/wp-content/uploads/2023/02/Iglu-South-Yarra-380x460-Premium-Studio.jpg",
+        "contentType": "image/jpeg"
+      }
+    ]
+  }
+]

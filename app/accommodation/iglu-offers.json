@@ -1,0 +1,50 @@
+{
+  "sydney-broadway": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":805}, {"name":"Single Bedroom – 5 Share Apt","amount":805}, {"name":"Single Bedroom – 4 Share Apt","amount":690,"status":"Official page showed about 4 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Standard Studio Apartment","amount":895}, {"name":"Superior Studio Apartment","amount":800,"status":"Official page showed about 2 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Premium Studio Apartment","amount":1045,"status":"Official page showed about 4 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Standard Studio Apartment (NRAS)","amount":565}
+  ],
+  "sydney-central": [
+    {"name":"Single Room, Share Bath – 6 Share","amount":735}, {"name":"Single Bedroom – 6 Share Apt","amount":775}, {"name":"Single Bedroom – 5 Share Apt","amount":795,"status":"Official page showed about 2 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Standard Studio Apartment","amount":800,"status":"Official page showed about 1 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 2 Bedroom Studio","amount":859,"status":"Official page marked this room sold out on 13 November 2026; live availability may have changed."}
+  ],
+  "sydney-central-park": [
+    {"name":"Standard Studio Apartment","amount":915}, {"name":"Superior Studio Apartment","amount":995}, {"name":"Premium Studio Apartment","amount":1025}, {"name":"Premium Corner Studio Apartment","amount":1075,"status":"Official page showed about 4 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 6 Share Apt","amount":785}, {"name":"Premium Single Room – 6 Share Apt","amount":815}, {"name":"Single Bedroom – 4 Share Apt","amount":865,"status":"Official page showed about 5 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 3 Share Apt","amount":945,"status":"Official page showed about 3 at this rate on 13 November 2026; live availability may have changed."}
+  ],
+  "sydney-chatswood": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":585}, {"name":"Single Bedroom – 5 Share Apt","amount":605}, {"name":"Single Bedroom – 4 Share Apt","amount":625}, {"name":"Standard Studio Apartment","amount":775,"status":"Official page showed about 5 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Superior Studio Apartment","amount":785}, {"name":"Premium Studio Apartment","amount":815}
+  ],
+  "sydney-mascot": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":685,"status":"Official page showed about 2 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Premium Single Room – 6 Share","amount":705}, {"name":"Standard Studio Apartment","amount":805}, {"name":"Premium Studio Apartment","amount":825}, {"name":"Standard Studio Apartment (Queen)","amount":905,"status":"Official page showed about 1 at this rate on 13 November 2026; live availability may have changed."}
+  ],
+  "sydney-mascot-duo": [
+    {"name":"Standard Studio Apartment","amount":815}, {"name":"Superior Studio Apartment","amount":825}, {"name":"Premium Studio Apartment","amount":845}
+  ],
+  "sydney-redfern": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":725}, {"name":"Single Bedroom – 5 Share Apt","amount":755,"status":"Official page marked this room sold out on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 4 Share Apt","amount":805,"status":"Official page marked this room sold out on 13 November 2026; live availability may have changed."}, {"name":"Single Studio Apartment","amount":865,"status":"Official page marked this room sold out on 13 November 2026; live availability may have changed."}, {"name":"Standard Studio Apartment","amount":895}, {"name":"Premium Studio Apartment","amount":955}
+  ],
+  "sydney-summer-hill": [
+    {"name":"Standard Studio Apartment","amount":735}, {"name":"Premium Studio Apartment","amount":755}
+  ],
+  "sydney-waterloo": [
+    {"name":"Single Bedroom – 2 Share Apt","amount":725}, {"name":"Standard Studio Apartment","amount":825}, {"name":"Superior Studio Apartment","amount":845,"status":"Official page showed about 2 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Premium Studio Apartment","amount":865}, {"name":"Premium Corner Studio Apartment","amount":905,"status":"Official page showed about 5 at this rate on 13 November 2026; live availability may have changed."}
+  ],
+  "brisbane-brisbane-city": [
+    {"name":"Single Room, Share Bath – 6 Share","amount":429,"status":"Official page showed about 3 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 6 Share Apt","amount":519}, {"name":"Single Bedroom – 5 Share Apt","amount":529}, {"name":"Standard Studio Apartment","amount":719}, {"name":"Premium Studio Apartment","amount":779}
+  ],
+  "brisbane-kelvin-grove": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":399}, {"name":"Single Bedroom – 5 Share Apt","amount":399}, {"name":"Single Bedroom – 3 Share Apt","amount":449}, {"name":"Single Bedroom – 2 Share Apt","amount":479}, {"name":"1 Bedroom Apartment","amount":729}
+  ],
+  "melbourne-flagstaff-gardens": [
+    {"name":"Single Studio Apartment","amount":635}, {"name":"Standard Studio Apartment","amount":635}, {"name":"Premium Studio Apartment","amount":665}, {"name":"Premium Corner Studio Apartment","amount":705,"status":"Official page showed about 3 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 2 Share Apt","amount":515}, {"name":"Premium Single Bedroom – 2 Share","amount":615}
+  ],
+  "melbourne-flagstaff-station": [
+    {"name":"Standard Studio Apartment","amount":675}, {"name":"Premium Studio Apartment","amount":705}, {"name":"Premium Corner Studio Apartment","amount":745,"status":"Official page showed about 1 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 2 Share Apt","amount":535,"status":"Official page showed about 2 at this rate on 13 November 2026; live availability may have changed."}
+  ],
+  "melbourne-melbourne-central": [
+    {"name":"Standard Studio Apartment","amount":635}, {"name":"Premium Studio Apartment","amount":655}
+  ],
+  "melbourne-melbourne-city": [
+    {"name":"Single Bedroom – 6 Share Apt","amount":515}, {"name":"Single Bedroom – 5 Share Apt","amount":525}, {"name":"Standard Studio Apartment","amount":665}, {"name":"Premium Studio Apartment","amount":705}
+  ],
+  "melbourne-south-yarra": [
+    {"name":"Premium Single Bedroom – 6 Share","amount":575}, {"name":"Single Bedroom – 6 Share Apt","amount":555,"status":"Official page showed about 4 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Premium Single Bedroom – 5 Share","amount":585,"status":"Official page showed about 5 at this rate on 13 November 2026; live availability may have changed."}, {"name":"Single Bedroom – 5 Share Apt","amount":565}, {"name":"Single Studio Apartment","amount":665}, {"name":"Standard Studio Apartment","amount":685}, {"name":"Premium Studio Apartment","amount":715}
+  ]
+}
