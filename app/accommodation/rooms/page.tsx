@@ -180,7 +180,6 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                           <p className="mt-1 text-sm font-bold text-[#00319D]">
                             {getRoomPriceDisplay(room, true)}
                           </p>
-                          {room.sourcePriceLabel ? <p className="mt-1 text-xs font-normal text-[#6B6860]">Source rate: {room.sourcePriceLabel}</p> : null}
                           {room.nightlyPriceLabel ? <p className="mt-1 text-xs font-normal text-[#6B6860]">Nightly rate: {room.nightlyPriceLabel}</p> : null}
                         </div>
 
