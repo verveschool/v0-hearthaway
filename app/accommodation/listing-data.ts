@@ -16,7 +16,6 @@ export type AccommodationRoomRecord = {
   priceFrom: number | null
   pricePerNight: number | null
   priceLabel: string | null
-  sourcePriceLabel?: string | null
   nightlyPriceLabel?: string | null
   available: number | null
   status: string | null
@@ -261,9 +260,6 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
         : nightlyPrice !== null
           ? `${formatCurrencyAmount(nightlyPrice, sourceCurrencySymbol)}/night`
           : room.price ?? null,
-      sourcePriceLabel: sourceMonthlyPrice !== null
-        ? `${formatCurrencyAmount(sourceMonthlyPrice, sourceCurrencySymbol)}/month`
-        : null,
       nightlyPriceLabel: nightlyPrice !== null
         ? `${formatCurrencyAmount(nightlyPrice, sourceCurrencySymbol)}/night`
         : null,
