@@ -248,6 +248,7 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
     const nightlyPrice = parseStaceyPrice('pricePerNight' in room ? room.pricePerNight ?? null : null)
     const sourceCurrencySymbol = room.price?.match(/^[^\d\s]+/)?.[0] ?? '€'
     const weeklyPrice = sourceMonthlyPrice === null ? null : (sourceMonthlyPrice * 12) / 52
+    const displayedWeeklyPrice = weeklyPrice === null ? null : Math.round(weeklyPrice / 10) * 10
 
     return {
       name: room.name,
@@ -255,8 +256,8 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
       images,
       priceFrom: weeklyPrice,
       pricePerNight: nightlyPrice,
-      priceLabel: weeklyPrice !== null
-        ? `${formatCurrencyAmount(weeklyPrice, sourceCurrencySymbol, 2)}/week`
+      priceLabel: displayedWeeklyPrice !== null
+        ? `${formatCurrencyAmount(displayedWeeklyPrice, sourceCurrencySymbol)}/week`
         : nightlyPrice !== null
           ? `${formatCurrencyAmount(nightlyPrice, sourceCurrencySymbol)}/night`
           : room.price ?? null,
