@@ -368,7 +368,6 @@ export default async function PropertyDetailPage({
                                       ? `From €${formatSourcePrice(room.pricePerNight)}/night`
                                       : 'Not provided')}
                                 </p>
-                                {room.sourcePriceLabel ? <p className="mt-1 text-xs text-[#6B6860]">Source rate: {room.sourcePriceLabel}</p> : null}
                                 {room.nightlyPriceLabel && room.priceFrom !== null ? <p className="mt-1 text-xs text-[#6B6860]">Also listed at {room.nightlyPriceLabel}</p> : null}
                               </div>
 
