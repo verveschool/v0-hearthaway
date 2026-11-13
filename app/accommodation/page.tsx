@@ -23,7 +23,7 @@ export default async function AccommodationPage({
   const { provider, city, query } = await searchParams
 
   const visibleListings =
-    provider === 'stacey' || provider === 'vita-student'
+    provider === 'stacey' || provider === 'vita-student' || provider === 'iglu'
       ? accommodationListings.filter((listing) => listing.provider === provider)
       : accommodationListings
 
