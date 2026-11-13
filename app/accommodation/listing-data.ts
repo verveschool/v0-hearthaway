@@ -4,6 +4,7 @@ import {
   type AccommodationFeedDevelopment,
 } from './response-data'
 import staceyInventory from './stacey-inventory.json'
+import { getIgluPropertyForRoom, igluProperties, igluRooms } from './iglu-data'
 
 export type AccommodationRoomRecord = {
   name: string
@@ -17,10 +18,11 @@ export type AccommodationRoomRecord = {
   minimumOccupancy: number | null
   maximumOccupancy: number | null
   academicYear: string | null
+  features?: string[]
 }
 
 export type AccommodationListingRecord = {
-  provider: 'vita-student' | 'stacey'
+  provider: 'vita-student' | 'stacey' | 'iglu'
   key: string
   slug: string
   city: string
@@ -275,7 +277,51 @@ const staceyListings: AccommodationListingRecord[] = staceyInventory.cities.map(
   }
 })
 
-export const accommodationListings = [...vitaAccommodationListings, ...staceyListings]
+const igluListings: AccommodationListingRecord[] = igluProperties.map((property) => {
+  const rooms = igluRooms.filter((room) => room.parentPropertyId === property.id)
+  return {
+    provider: 'iglu',
+    key: `iglu-property-${property.id}`,
+    slug: property.slug,
+    city: property.city,
+    country: property.country,
+    name: property.name,
+    buildings: [{ name: property.name, address: property.address, postcode: null, unitsAvailable: null }],
+    address: property.address,
+    description: property.description,
+    coverImage: property.gallery[0] ?? rooms[0]?.image ?? null,
+    photoSourceUrl: null,
+    gallery: [...new Set([...property.gallery, ...rooms.flatMap((room) => [...room.images, room.floorplan])])],
+    amenities: property.amenities,
+    inclusions: property.inclusions,
+    roomFeatures: [...new Set(rooms.flatMap((room) => room.features))],
+    contractTerms: [],
+    depositNote: null,
+    distance: null,
+    universities: [],
+    roomTypes: rooms.map((room) => ({
+      name: room.name,
+      image: room.image,
+      images: room.images,
+      priceFrom: null,
+      pricePerNight: null,
+      priceLabel: null,
+      available: null,
+      status: null,
+      minimumOccupancy: 1,
+      maximumOccupancy: 1,
+      academicYear: null,
+      features: room.features,
+    })),
+  }
+})
+
+// Keep the source relationship explicit and fail loudly if source data drifts.
+for (const room of igluRooms) {
+  if (!getIgluPropertyForRoom(room)) throw new Error(`Iglu room ${room.id} has no parent property ${room.parentPropertyId}`)
+}
+
+export const accommodationListings = [...vitaAccommodationListings, ...staceyListings, ...igluListings]
 export const allAccommodationListings = accommodationListings
 
 export type AccommodationRoomListing = {
