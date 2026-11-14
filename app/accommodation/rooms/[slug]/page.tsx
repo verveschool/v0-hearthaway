@@ -5,7 +5,7 @@ import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import { SaveRoomButton } from '@/components/account/forms'
 import { createClient } from '@/lib/supabase/server'
-import { getAccommodationRoomBySlug, formatSourceAvailability } from '@/app/accommodation/listing-data'
+import { getAccommodationProviderName, getAccommodationRoomBySlug, formatSourceAvailability } from '@/app/accommodation/listing-data'
 import { formatAvailabilityStatus, getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 type RoomPageProps = {
@@ -45,7 +45,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
               {property.provider === 'iglu' && room.floorplan ? <figure className="border-t border-[#E8E6E1] p-5 sm:p-6"><img src={room.floorplan} alt={`${room.name} floor plan at ${property.name}`} className="mx-auto max-h-[28rem] w-auto max-w-full object-contain" loading="lazy" decoding="async" /><figcaption className="mt-2 text-center text-xs text-[#6B6860]">Floor plan supplied for this room type</figcaption></figure> : null}
               <div className="p-6 sm:p-9">
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-bold tracking-wide text-[#00319D]">{property.provider === 'vita-student' ? 'Vita Student' : property.provider === 'stacey' ? 'STACEY' : 'Iglu'}</span>
+                  <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-bold tracking-wide text-[#00319D]">{getAccommodationProviderName(property.provider)}</span>
                   <span className="text-sm text-[#6B6860]">{property.city}{property.country ? `, ${property.country}` : ''}</span>
                 </div>
                 <h1 className="mt-4 font-heading text-3xl font-extrabold text-[#1A1A1A] sm:text-4xl">{room.name}</h1>
@@ -60,7 +60,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
             <aside className="h-fit rounded-3xl border border-[#E8E6E1] bg-white p-6 sm:p-8 lg:sticky lg:top-28">
               <h2 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Room information</h2>
               <dl className="mt-5 divide-y divide-[#E8E6E1]">
-                <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Price</dt><dd className="mt-1 font-heading text-2xl font-extrabold text-[#00319D]">{getRoomPriceDisplay(room)}</dd>{room.nightlyPriceLabel ? <dd className="mt-1 text-xs text-[#6B6860]">Nightly rate: {room.nightlyPriceLabel}</dd> : null}</div>
+                <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Price</dt><dd className="mt-1 font-heading text-2xl font-extrabold text-[#00319D]">{property.provider === 'neonwood' || property.provider === 'tannhaus' ? `From ${room.priceLabel ?? 'Price not provided'}` : getRoomPriceDisplay(room)}</dd>{room.nightlyPriceLabel ? <dd className="mt-1 text-xs text-[#6B6860]">Nightly rate: {room.nightlyPriceLabel}</dd> : null}</div>
                 <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Availability</dt><dd className="mt-1 font-semibold text-[#1A1A1A]">{room.status ? formatAvailabilityStatus(room.status) : (room.available !== null ? formatSourceAvailability(room.available) : 'Not provided')}</dd></div>
                 {room.academicYear ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Academic year</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.academicYear}</dd></div> : null}
                 {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Occupancy</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.minimumOccupancy ?? 'Not specified'}–{room.maximumOccupancy ?? 'Not specified'}</dd></div> : null}

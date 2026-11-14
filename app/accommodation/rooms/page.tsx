@@ -8,6 +8,7 @@ import {
   accommodationCities,
   accommodationRoomListings,
   formatSourceAvailability,
+  getAccommodationProviderName,
 } from '@/app/accommodation/listing-data'
 import { formatAvailabilityStatus, getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
@@ -156,7 +157,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                     <div className="p-5">
                       <div className="flex items-center justify-between gap-3">
                         <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-[11px] font-bold tracking-wide text-[#00319D]">
-                          {property.provider === 'vita-student' ? 'Vita Student' : property.provider === 'stacey' ? 'STACEY' : 'Iglu'}
+                          {getAccommodationProviderName(property.provider)}
                         </span>
 
                         <span className="text-xs text-[#6B6860]">
