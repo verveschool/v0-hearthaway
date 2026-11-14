@@ -567,6 +567,9 @@ function sanitizeListing(property: AccommodationListingRecord): AccommodationLis
     const priceLabel = price ? formatCataloguePrice(price.amount, symbol, price.billingPeriod) : ''
     return {
       ...room,
+      academicYear: null,
+      available: null,
+      status: null,
       name: cleanListingText(room.name),
       description: room.description ? cleanListingText(room.description) : room.description,
       accommodationFormat: room.accommodationFormat ? cleanListingText(room.accommodationFormat) : room.accommodationFormat,
@@ -678,3 +681,4 @@ export function getAccommodationRoomBySlug(slug: string): AccommodationRoomListi
 
 export const accommodationCities = [...new Set(allAccommodationListings.map((listing) => listing.city))]
   .sort((first, second) => first.localeCompare(second))
+

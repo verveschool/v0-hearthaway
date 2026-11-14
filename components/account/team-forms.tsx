@@ -98,7 +98,8 @@ export function RoomRecommendationForm({ studentId, rooms }: { studentId: string
       </label>
       <button type="submit" disabled={pending || !rooms.length} className="min-h-10 rounded-xl bg-[#00319D] px-4 py-2 text-sm font-bold text-white hover:bg-[#00277D] disabled:opacity-60">{pending ? 'Adding…' : 'Recommend room'}</button>
     </div>
-    {!rooms.length ? <p className="mt-3 text-sm text-[#6B6860]">There are no available rooms to recommend right now.</p> : null}
+    {!rooms.length ? <p className="mt-3 text-sm text-[#6B6860]">Room recommendations will appear as catalogue entries are added.</p> : null}
     <WorkflowFeedback state={state} />
   </form>
 }
+

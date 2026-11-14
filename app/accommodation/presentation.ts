@@ -1,5 +1,5 @@
 export const PRICE_AVAILABILITY_NOTICE =
-  'Prices and availability are indicative, catalog details and may change.'
+  'Prices and availability are indicative catalogue details and may change.'
 
 export function getProviderAvailabilityNotice(): string {
   return PRICE_AVAILABILITY_NOTICE
@@ -13,11 +13,13 @@ export function formatSourcePrice(value: number, minimumFractionDigits = 0): str
 }
 
 export function formatSourceAvailability(value: number): string {
-  return `${new Intl.NumberFormat('en-GB', { maximumFractionDigits: 0 }).format(value)} available`
+  void value
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function formatAvailabilityStatus(value: string): string {
-  return /^sold out$/i.test(value) ? 'Sold out' : value
+  void value
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function formatCurrencyAmount(
@@ -38,3 +40,4 @@ export function getRoomPriceDisplay(room: RoomPriceFields, includeFrom = false):
   void includeFrom
   return room.priceLabel ?? ''
 }
+

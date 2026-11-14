@@ -63,7 +63,7 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
                 {room.description ? <p className="mt-5 text-sm leading-7 text-[#4C4A45]">{room.description}</p> : null}
                 {property.inclusions.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Source-listed inclusions</h2><ul className="mt-3 grid gap-2 sm:grid-cols-2">{property.inclusions.map((inclusion) => <li key={inclusion} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]" />{inclusion}</li>)}</ul></div> : null}
                 <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Price</dt><dd className="mt-1 font-heading text-2xl font-extrabold text-[#00319D]">{getRoomPriceDisplay(room)}</dd></div>
-                <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Availability</dt><dd className="mt-2 rounded-xl bg-[#F7F6F3] p-3 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</dd></div>
+                <p className="my-4 rounded-xl bg-[#F7F6F3] p-3 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
                 
                 {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Occupancy</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.minimumOccupancy !== null && room.maximumOccupancy !== null ? `${room.minimumOccupancy}–${room.maximumOccupancy}` : room.maximumOccupancy !== null ? `Up to ${room.maximumOccupancy}` : `At least ${room.minimumOccupancy}`}</dd></div> : null}                <Link href={`/accommodation/property/${property.slug}`} className="mt-7 inline-flex font-bold text-[#00319D] underline-offset-4 hover:underline">View full property details</Link>
               </div>
@@ -86,3 +86,4 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
     </>
   )
 }
+

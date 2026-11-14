@@ -42,7 +42,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
         ) : (
           <div className="flex h-full flex-col items-center justify-center gap-3 text-[#6B6860]">
             <Building2 aria-hidden="true" className="size-10" />
-            <span className="text-sm font-semibold">Property photo not provided</span>
+            <span className="text-sm font-semibold">Property photos coming soon</span>
           </div>
         )}
         <span className="absolute left-4 top-4 rounded-full bg-white/95 px-3 py-1.5 text-xs font-bold text-[#00319D] shadow-sm">
@@ -68,7 +68,6 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
           <div className="text-sm font-semibold text-[#1A1A1A]">
             <p>From <span className="text-[#00319D]">{startingRoom?.priceLabel ?? listing.propertyPriceLabel}</span></p>
-            <p className="mt-2 text-[11px] font-bold tracking-wide text-[#6B6860]">Availability</p>
             <p className="mt-1 max-w-[260px] text-xs font-normal leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
           </div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
@@ -171,3 +170,4 @@ export default function AccommodationListings({
     </div>
   )
 }
+

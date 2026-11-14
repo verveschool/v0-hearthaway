@@ -1,3 +1,4 @@
+import { PRICE_AVAILABILITY_NOTICE } from './presentation'
 import response from './response.json'
 
 type DataRecord = Record<string, unknown>
@@ -260,7 +261,8 @@ export function getDevelopmentBrandLabel(development: AccommodationFeedDevelopme
 }
 
 export function getDevelopmentUnitAvailability(room: AccommodationFeedRoom): string {
-  return room.available === undefined ? 'Availability not provided' : `${formatFeedCount(room.available)} available`
+  void room
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getDevelopmentRoomPrice(room: AccommodationFeedRoom): string {
@@ -268,11 +270,13 @@ export function getDevelopmentRoomPrice(room: AccommodationFeedRoom): string {
 }
 
 export function getDevelopmentUnitYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getDevelopmentBuildingAvailability(building: AccommodationFeedBuilding): string | undefined {
-  return building.unitsAvailable === undefined ? undefined : `${formatFeedCount(building.unitsAvailable)} units available`
+  void building
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getDevelopmentCountLabel(count: number): string {
@@ -280,11 +284,12 @@ export function getDevelopmentCountLabel(count: number): string {
 }
 
 export function getRoomAvailabilityLabel(count: number): string {
-  return `${formatFeedCount(count)} ${count === 1 ? 'room available' : 'rooms available'}`
+  void count
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getFeedRecordMessage(developments: readonly AccommodationFeedDevelopment[]): string {
-  return developments.length ? 'Browse room types, availability and property details from the supplied feed.' : 'No accommodation records are available for this selection.'
+  return developments.length ? 'Browse room types, prices and property details.' : 'Explore another destination to find catalogue entries.'
 }
 
 export function getFeedCountryLabel(development: AccommodationFeedDevelopment): string | undefined {
@@ -304,7 +309,7 @@ export function getFeedPriceNotice(): string {
 }
 
 export function getFeedAvailabilityNotice(): string {
-  return 'Availability figures reflect the room counts supplied for each room type.'
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getDevelopmentAddressLabel(building: AccommodationFeedBuilding): string | undefined {
@@ -331,7 +336,8 @@ export function getDevelopmentStartingPriceLabel(price: number): string {
 }
 
 export function getDevelopmentRoomAvailability(room: AccommodationFeedRoom): string {
-  return room.available === undefined ? 'Availability not provided' : getRoomAvailabilityLabel(room.available)
+  void room
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getAccommodationCityOptionLabel(city: string): string {
@@ -347,8 +353,8 @@ export function getDevelopmentCityLabel(development: AccommodationFeedDevelopmen
 }
 
 export function getDevelopmentAvailabilitySummary(development: AccommodationFeedDevelopment): string | undefined {
-  const available = getDevelopmentAvailableRoomCount(development)
-  return available === undefined ? undefined : getRoomAvailabilityLabel(available)
+  void development
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getDevelopmentRoomTypes(development: AccommodationFeedDevelopment): AccommodationFeedRoom[] {
@@ -372,7 +378,8 @@ export function getDevelopmentRoomKey(development: AccommodationFeedDevelopment,
 }
 
 export function getFeedUnitsAvailableLabel(value: number): string {
-  return `${formatFeedCount(value)} units available`
+  void value
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getAccommodationFeedPageTitle(city?: string): string {
@@ -392,8 +399,8 @@ export function getDevelopmentRoomImage(room: AccommodationFeedRoom): string | u
 }
 
 export function getDevelopmentPropertyAvailability(development: AccommodationFeedDevelopment): string | undefined {
-  const availability = getDevelopmentAvailability(development)
-  return availability === undefined ? undefined : getFeedUnitsAvailableLabel(availability)
+  void development
+  return PRICE_AVAILABILITY_NOTICE
 }
 
 export function getDevelopmentSummary(development: AccommodationFeedDevelopment): string | undefined {
@@ -462,7 +469,8 @@ export function getFeedCityLabel(city: string): string {
 }
 
 export function getFeedRoomAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedBuildings(development: AccommodationFeedDevelopment): AccommodationFeedBuilding[] {
@@ -615,7 +623,8 @@ export function getFeedDevelopmentCardKey(development: AccommodationFeedDevelopm
 }
 
 export function getFeedDevelopmentRoomYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedBuildingKey(building: AccommodationFeedBuilding, index: number): string {
@@ -711,7 +720,8 @@ export function getFeedPropertyRoomAvailability(room: AccommodationFeedRoom): st
 }
 
 export function getFeedPropertyRoomYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertyBuildingName(building: AccommodationFeedBuilding, development: AccommodationFeedDevelopment): string {
@@ -839,7 +849,8 @@ export function getFeedPropertyRoomPriceText(room: AccommodationFeedRoom): strin
 }
 
 export function getFeedPropertyAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertyProviderLink(building: AccommodationFeedBuilding): string | undefined {
@@ -871,7 +882,8 @@ export function getFeedPropertyRoomPhoto(room: AccommodationFeedRoom): string | 
 }
 
 export function getFeedPropertyRoomAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertyDescriptionText(development: AccommodationFeedDevelopment): string | undefined {
@@ -972,7 +984,8 @@ export function getFeedPropertyUnitImage(room: AccommodationFeedRoom): string | 
 }
 
 export function getFeedPropertyUnitYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertyUnitName(room: AccommodationFeedRoom): string {
@@ -992,7 +1005,8 @@ export function getFeedPropertyUnitPhotoAlt(room: AccommodationFeedRoom, develop
 }
 
 export function getFeedPropertyUnitAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertyUnitCardKey(development: AccommodationFeedDevelopment, room: AccommodationFeedRoom): string {
@@ -1016,7 +1030,7 @@ export function getFeedPropertyCityOptions(cities: readonly string[]): Array<{ v
 }
 
 export function getFeedPropertyNoResultsMessage(): string {
-  return 'No accommodation records are available for this selection.'
+  return 'Explore another destination to find catalogue entries.'
 }
 
 export function getFeedPropertyAvailableNotice(): string {
@@ -1092,7 +1106,8 @@ export function getFeedPropertySourceRoomImage(room: AccommodationFeedRoom): str
 }
 
 export function getFeedPropertySourceRoomYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertySourceBuildingLink(building: AccommodationFeedBuilding): string | undefined {
@@ -1168,7 +1183,8 @@ export function getFeedPropertySourceRoomImageAlt(room: AccommodationFeedRoom, d
 }
 
 export function getFeedPropertySourceRoomAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertySourceAddressLabel(building: AccommodationFeedBuilding): string | undefined {
@@ -1260,7 +1276,8 @@ export function getFeedPropertySourceUnitImage(room: AccommodationFeedRoom): str
 }
 
 export function getFeedPropertySourceUnitYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertySourceUnitName(room: AccommodationFeedRoom): string {
@@ -1280,7 +1297,8 @@ export function getFeedPropertySourceUnitPhotoAlt(room: AccommodationFeedRoom, d
 }
 
 export function getFeedPropertySourceUnitAcademicYear(room: AccommodationFeedRoom): string | undefined {
-  return room.academicYear
+  void room
+  return undefined
 }
 
 export function getFeedPropertySourceUnitCardKey(development: AccommodationFeedDevelopment, room: AccommodationFeedRoom): string {
@@ -1310,3 +1328,4 @@ export function getFeedPropertySourceMainAddress(development: AccommodationFeedD
 export function getFeedPropertySourceMainLink(development: AccommodationFeedDevelopment): string | undefined {
   return getProviderLink(development)
 }
+
