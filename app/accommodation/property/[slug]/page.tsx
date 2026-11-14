@@ -188,7 +188,7 @@ export default async function PropertyDetailPage({
   const pageLinks = [
     ['overview', 'Property overview'],
     ['rooms', 'Room types and pricing'],
-    ...(property.amenities.length || property.inclusions.length
+    ...(property.amenities.length || property.inclusions.length || property.contractTerms.length
       ? [['amenities', 'Amenities and inclusions']]
       : []),
     ['location', 'Location'],
@@ -444,7 +444,7 @@ export default async function PropertyDetailPage({
               </section>
 
               {/* Amenities and inclusions */}
-              {property.amenities.length || property.inclusions.length ? (
+              {property.amenities.length || property.inclusions.length || property.contractTerms.length ? (
                 <Section id="amenities" title="Amenities and inclusions">
                   {property.amenities.length ? (
                     <>
@@ -492,6 +492,20 @@ export default async function PropertyDetailPage({
                               className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]"
                             />
                             {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+
+                  {property.contractTerms.length ? (
+                    <div className="mt-6 border-t border-[#E8E6E1] pt-5">
+                      <h3 className="font-semibold text-[#1A1A1A]">Lease terms</h3>
+                      <ul className="mt-3 grid gap-3">
+                        {property.contractTerms.map((term) => (
+                          <li key={term} className="flex items-start gap-2 text-sm leading-relaxed text-[#4C4A45]">
+                            <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]" />
+                            {term}
                           </li>
                         ))}
                       </ul>

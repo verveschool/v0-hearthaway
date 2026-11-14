@@ -366,7 +366,7 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
     gallery: [],
     amenities: property.amenities,
     inclusions: property.inclusions,
-    roomFeatures: [...new Set(property.rooms.flatMap((room) => room.details))],
+    roomFeatures: [],
     contractTerms: property.contractTerms,
     depositNote: null,
     distance: null,
