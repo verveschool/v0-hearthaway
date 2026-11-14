@@ -2,6 +2,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import { permanentRedirect } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import AccommodationListings from '@/components/accommodation/accommodation-listings'
@@ -22,8 +23,15 @@ export default async function AccommodationPage({
 }: AccommodationPageProps) {
   const { provider, city, query } = await searchParams
 
-  const visibleListings = provider === 'neonhomes' || provider === 'neonwood' || provider === 'tannhaus'
-    ? accommodationListings.filter((listing) => listing.provider === 'neonwood' || listing.provider === 'tannhaus')
+  if (provider === 'neonhomes' || provider === 'neon-homes' || provider === 'neonwood' || provider === 'tannhaus') {
+    const params = new URLSearchParams({ provider: 'neon-wood' })
+    if (city) params.set('city', city)
+    if (query) params.set('query', query)
+    permanentRedirect(`/accommodation?${params.toString()}`)
+  }
+
+  const visibleListings = provider === 'neon-wood'
+    ? accommodationListings.filter((listing) => listing.provider === 'neonwood')
     : provider === 'stacey' || provider === 'vita-student' || provider === 'iglu'
       ? accommodationListings.filter((listing) => listing.provider === provider)
       : accommodationListings

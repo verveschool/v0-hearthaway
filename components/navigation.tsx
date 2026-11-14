@@ -43,9 +43,9 @@ const navLinks: NavLink[] = [
       { label: 'All Properties', href: '/accommodation' },
       { label: 'All Rooms', href: '/accommodation/rooms', dividerAfter: true },
       { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
-      { label: 'Stacey', href: '/accommodation?provider=stacey' },
+      { label: 'STACEY', href: '/accommodation?provider=stacey' },
       { label: 'Iglu', href: '/accommodation?provider=iglu' },
-      { label: 'Neon Homes', href: '/accommodation?provider=neonhomes' },
+      { label: 'Neon Wood', href: '/accommodation?provider=neon-wood' },
     ],
   },
   {

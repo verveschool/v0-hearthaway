@@ -11,9 +11,9 @@ flowchart TB
 
   subgraph stacey["STACEY · EXISTING · PRESERVE"]
     direction TB
-    staceySrc["stacey-inventory.json\nExisting locally hosted images"] --> staceyAdapter["Existing Stacey mapper\nKeep data and implementation"]
-    staceyAdapter --> staceyProp["Stacey Property records"]
-    staceyAdapter --> staceyRoom["Stacey Room records"]
+    staceySrc["stacey-inventory.json\nExisting locally hosted images"] --> staceyAdapter["Existing STACEY mapper\nKeep data and implementation"]
+    staceyAdapter --> staceyProp["STACEY Property records"]
+    staceyAdapter --> staceyRoom["STACEY Room records"]
     staceyProp -- "1 to many · parentPropertyId" --> staceyRoom
   end
 
@@ -30,12 +30,12 @@ flowchart TB
     igluRoom --> hosted["Partner-approved images\nDownloaded and hosted locally under /public/iglu"]
   end
 
-  subgraph neonhomes["NEON HOMES · NINE CONTRACTED PROPERTIES"]
+  subgraph neonwood["NEON WOOD · NINE CONTRACTED PROPERTIES"]
     direction TB
     nwPages["Official Neon Wood and Tannhaus pages"] --> nwEvidence["Dated source mapping\nURLs, public details, agreement mapping"]
     nwEvidence --> nwRaw["neonwood-data.ts\n6 Neon Wood properties · 22 room types\n3 Tannhaus properties · 9 room categories"]
     nwRaw --> nwAdapter["Shared catalogue adapter\nweekly indicative rent · Available catalogue status\nagreement-approved local images"]
-    nwAdapter --> nwProp["Neon Homes Property and Room records\nNeon Wood and Tannhaus brand names retained"]
+    nwAdapter --> nwProp["Neon Wood Property and Room records\nAll nine buildings grouped under Neon Wood"]
   end
 
   vitaProp --> presentation
@@ -48,7 +48,7 @@ flowchart TB
   nwProp --> presentation
 
   presentation["SHARED HEARTHAWAY PRESENTATION TEMPLATE\nProperty cards + property detail · Room cards + room detail\nSame fields, gallery behavior and internal parent/child navigation"]
-  presentation --> nav["Shared navigation and footer\nAll Properties · All Rooms · Vita Student · Stacey · Iglu · Neon Homes"]
+  presentation --> nav["Shared navigation and footer\nAll Properties · All Rooms · Vita Student · STACEY · Iglu · Neon Wood"]
   presentation --> behavior["HearthAway browsing only\nNo source-site links · no booking/application actions\nProperty ↔ Room links remain within HearthAway"]
 
   classDef existing fill:#E7EEFF,stroke:#3159A8,color:#182D62,stroke-width:2px;
@@ -63,4 +63,4 @@ flowchart TB
   style vita fill:#F7F9FF,stroke:#8CA5DB,stroke-width:2px;
   style stacey fill:#F7F9FF,stroke:#8CA5DB,stroke-width:2px;
   style iglu fill:#FFF8F2,stroke:#C9783E,stroke-width:3px;
-  style neonhomes fill:#F3FBF7,stroke:#72AD8E,stroke-width:2px;
+  style neonwood fill:#F3FBF7,stroke:#72AD8E,stroke-width:2px;
