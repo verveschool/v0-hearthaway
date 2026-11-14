@@ -142,7 +142,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                     {room.image || property.coverImage ? (
                       <img
                         src={room.image ?? property.coverImage ?? ''}
-                        alt={`${room.name} room at ${property.name}`}
+                        alt={room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`}
                         className="aspect-[4/3] w-full bg-[#F1F0EC] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="lazy"
                         decoding="async"

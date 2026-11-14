@@ -32,7 +32,9 @@ export default async function AccommodationPage({
 
   const visibleListings = provider === 'neon-wood'
     ? accommodationListings.filter((listing) => listing.provider === 'neonwood')
-    : provider === 'stacey' || provider === 'vita-student' || provider === 'iglu'
+    : provider === 'stacey' || provider === 'vita-student' || provider === 'iglu' || provider === 'study-inn'
+      ? accommodationListings.filter((listing) => listing.provider === provider)
+      : accommodationListings
       ? accommodationListings.filter((listing) => listing.provider === provider)
       : accommodationListings
 

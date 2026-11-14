@@ -7,6 +7,7 @@ import staceyInventory from './stacey-inventory.json'
 import { getIgluPropertyForRoom, igluProperties, igluRooms } from './iglu-data'
 import { newProviderProperties } from './neonwood-data'
 import newProviderImages from './new-provider-images.json'
+import { studyInnListings } from './studyinn-data'
 import { formatCurrencyAmount, formatSourcePrice } from './presentation'
 
 export { formatSourceAvailability, formatSourcePrice } from './presentation'
@@ -14,8 +15,12 @@ export { formatSourceAvailability, formatSourcePrice } from './presentation'
 export type AccommodationRoomRecord = {
   sourceId?: string
   name: string
+  description?: string | null
+  accommodationFormat?: string | null
+  configuration?: string | null
   image: string | null
   images: string[]
+  imageLabels?: Record<string, string>
   priceFrom: number | null
   pricePerNight: number | null
   priceLabel: string | null
@@ -28,10 +33,37 @@ export type AccommodationRoomRecord = {
   features?: string[]
   priceConfidence?: 'published' | 'indicative' | null
   floorplan?: string | null
+  floorplans?: Array<{ image: string; label: string }>
+  floorplanNote?: string | null
+  publishedAreaSqm?: number | null
+  sourcePublishedBeds?: number | null
+  bedroomFeatures?: string[]
+  bathroomFeatures?: string[]
+  kitchenFeatures?: string[]
+  furnishings?: string[]
+  appliances?: string[]
+  storage?: string[]
+  studyFacilities?: string[]
+  pricingOptions?: AccommodationPricingOption[]
+  sourceUrl?: string | null
+}
+
+export type AccommodationPricingOption = {
+  academicYear: string | null
+  amount: number | null
+  currency: string
+  billingPeriod: 'week'
+  contractDurationWeeks: number | null
+  offerType: 'standard' | 'semester' | 'promotional'
+  startDate?: string | null
+  endDate?: string | null
+  status: string | null
+  sourceUrl: string
+  note?: string | null
 }
 
 export type AccommodationListingRecord = {
-  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood'
+  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'study-inn'
   sourceBrand?: 'neonwood' | 'tannhaus'
   sourceId?: string
   key: string
@@ -46,6 +78,14 @@ export type AccommodationListingRecord = {
   photoSourceUrl: string | null
   gallery: string[]
   galleryLabels?: Record<string, string>
+  highlights?: string[]
+  facilities?: string[]
+  transportConnections?: string[]
+  landmarks?: string[]
+  locationInfo?: string[]
+  policies?: string[]
+  sourceUrl?: string | null
+  dataNotes?: string[]
   amenities: string[]
   inclusions: string[]
   roomFeatures: string[]
@@ -432,7 +472,7 @@ for (const listing of newProviderListings) {
   if (new Set(roomIds).size !== roomIds.length) throw new Error(`Duplicate room source ID under ${listing.sourceId}`)
 }
 
-export const accommodationListings = [...vitaAccommodationListings, ...staceyListings, ...igluListings, ...newProviderListings]
+export const accommodationListings = [...vitaAccommodationListings, ...staceyListings, ...igluListings, ...newProviderListings, ...studyInnListings]
 export const allAccommodationListings = accommodationListings
 
 export function getAccommodationProviderName(provider: AccommodationListingRecord['provider']): string {
@@ -441,6 +481,7 @@ export function getAccommodationProviderName(provider: AccommodationListingRecor
     stacey: 'STACEY',
     iglu: 'Iglu',
     neonwood: 'Neon Wood',
+    'study-inn': 'Study Inn',
   }[provider]
 }
 

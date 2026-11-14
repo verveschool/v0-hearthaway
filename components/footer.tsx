@@ -26,7 +26,7 @@ const accommodationLinks = [
   { label: 'Vita Student', href: '/accommodation?provider=vita-student' },
   { label: 'STACEY', href: '/accommodation?provider=stacey' },
   { label: 'Iglu', href: '/accommodation?provider=iglu' },
-  { label: 'Neon Wood', href: '/accommodation?provider=neon-wood' },
+  { label: 'Neon Wood', href: '/accommodation?provider=neon-wood' },  { label: 'Study Inn', href: '/accommodation?provider=study-inn' },
 ]
 
 const resourceLinks = [

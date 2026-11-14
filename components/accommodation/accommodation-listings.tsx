@@ -34,7 +34,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
         {previewImage ? (
           <img
             src={previewImage}
-            alt={previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`}
+            alt={listing.galleryLabels?.[previewImage] ?? (previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`)}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
             decoding="async"
