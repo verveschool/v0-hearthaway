@@ -31,7 +31,8 @@ export type AccommodationRoomRecord = {
 }
 
 export type AccommodationListingRecord = {
-  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'tannhaus'
+  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood'
+  sourceBrand?: 'neonwood' | 'tannhaus'
   sourceId?: string
   key: string
   slug: string
@@ -357,17 +358,17 @@ type NewProviderImageCatalog = Record<
 const newProviderImageCatalog = newProviderImages as NewProviderImageCatalog
 
 const newProviderListings: AccommodationListingRecord[] = newProviderProperties.map((property) => {
-  const slug = `${property.provider}-${property.sourcePath.split('/').filter(Boolean).at(-1)}`
-  const photoCatalog = newProviderImageCatalog[property.provider][property.sourcePath]
-  if (!photoCatalog) throw new Error(`No image catalog for ${property.provider}:${property.sourcePath}`)
-  const sourceHost = property.provider === 'neonwood' ? 'https://neonwood.com' : 'https://tannhaus.com'
+  const slug = `${property.sourceBrand}-${property.sourcePath.split('/').filter(Boolean).at(-1)}`
+  const photoCatalog = newProviderImageCatalog[property.sourceBrand][property.sourcePath]
+  if (!photoCatalog) throw new Error(`No image catalog for ${property.sourceBrand}:${property.sourcePath}`)
+  const sourceHost = property.sourceBrand === 'neonwood' ? 'https://neonwood.com' : 'https://tannhaus.com'
   const roomTypes = property.rooms.map((room) => {
     const images = photoCatalog.rooms[room.name] ?? []
     const weeklyFrom = room.monthlyFrom === null
       ? null
       : Math.round(((room.monthlyFrom * 12) / 52) / 10) * 10
     return {
-      sourceId: `${property.provider}:${room.sourcePath}`,
+      sourceId: `${property.sourceBrand}:${room.sourcePath}`,
       name: room.name,
       image: images[0] ?? null,
       images,
@@ -384,7 +385,7 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
       features: [
         ...(room.size ? [`Published size: ${room.size}`] : []),
         ...room.details,
-        ...(property.provider === 'tannhaus'
+        ...(property.sourceBrand === 'tannhaus'
           ? ['Warm rent; utilities may be billed by individual consumption depending on property and stay length.']
           : ['All-inclusive starting rent; weekly price is an indicative equivalent of the source monthly starting rent.']),
       ],
@@ -394,8 +395,9 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
   const gallery = [...new Set([photoCatalog.cover, ...roomTypes.flatMap((room) => room.images)])]
   return {
     provider: property.provider,
-    sourceId: `${property.provider}:${property.sourcePath}`,
-    key: `${property.provider}:${property.sourcePath}`,
+    sourceBrand: property.sourceBrand,
+    sourceId: `${property.sourceBrand}:${property.sourcePath}`,
+    key: `${property.sourceBrand}:${property.sourcePath}`,
     slug,
     city: property.city,
     country: 'Germany',
@@ -438,8 +440,7 @@ export function getAccommodationProviderName(provider: AccommodationListingRecor
     'vita-student': 'Vita Student',
     stacey: 'STACEY',
     iglu: 'Iglu',
-    neonwood: 'Neon Homes',
-    tannhaus: 'Neon Homes',
+    neonwood: 'Neon Wood',
   }[provider]
 }
 

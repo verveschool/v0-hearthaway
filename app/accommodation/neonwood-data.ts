@@ -12,7 +12,8 @@ export type NewProviderRoom = {
 }
 
 export type NewProviderProperty = {
-  provider: 'neonwood' | 'tannhaus'
+  provider: 'neonwood'
+  sourceBrand: 'neonwood' | 'tannhaus'
   sourcePath: string
   city: string
   name: string
@@ -58,14 +59,14 @@ const nw = (path: string, name: string, monthlyFrom: number, size: string | null
 })
 
 const neonwood = (path: string, city: string, name: string, address: string, description: string, amenities: string[], rooms: NewProviderRoom[]): NewProviderProperty => ({
-  provider: 'neonwood', sourcePath: path, city, name, address, description,
+  provider: 'neonwood', sourceBrand: 'neonwood', sourcePath: path, city, name, address, description,
   amenities, inclusions: ['Fully furnished', 'All-inclusive rent'],
   contractTerms: [], rooms,
 })
 
 const tannhaus = (path: string, name: string, address: string, rooms: NewProviderRoom[], contractTerms: string[] = []): NewProviderProperty => ({
-  provider: 'tannhaus', sourcePath: path, city: 'Berlin', name, address,
-  description: 'Tannhaus furnished apartments, grouped under Neon Homes on HearthAway. The provider describes custom-crafted interiors using natural materials and vintage pieces. Displayed rents are warm rents; utility consumption may be billed individually depending on the property and length of stay. Contact Tannhaus at +49 (0) 30 555 707 111 or info@tannhaus.com. A 360° tour is available from the provider.',
+  provider: 'neonwood', sourceBrand: 'tannhaus', sourcePath: path, city: 'Berlin', name, address,
+  description: 'Tannhaus furnished apartments listed under Neon Wood on HearthAway. The provider describes custom-crafted interiors using natural materials and vintage pieces. Displayed rents are warm rents; utility consumption may be billed individually depending on the property and length of stay. Contact Tannhaus at +49 (0) 30 555 707 111 or info@tannhaus.com. A 360° tour is available from the provider.',
   amenities: ['High-speed internet included', 'Laundrette with washers and dryers available seven days a week', 'On-call housekeeping'],
   inclusions: ['Fully furnished and equipped apartments'], contractTerms, rooms,
 })

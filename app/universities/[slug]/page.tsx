@@ -217,7 +217,7 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Partner properties in {university.city}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and Stacey properties and their available rooms in {university.city}. Confirm travel distance and availability with an advisor.</p>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and STACEY properties and their available rooms in {university.city}. Confirm travel distance and availability with an advisor.</p>
                   </div>
                   <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse properties</Link>
                 </div>
