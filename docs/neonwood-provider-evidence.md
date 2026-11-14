@@ -4,7 +4,7 @@ Research snapshot: 2026-11-14. Prices are changing advertised starting rents and
 
 ## Identity and agreement mapping
 
-The Neon Wood–HearthAway email thread and the supplied agreement screenshot show nine accommodation agreements: six with `NW` in the filename and three with `TH`. The email names six Neon Wood locations (Adlershof, Frankfurter Tor, Mitte-Wedding, K115, Frankfurt Riedberg, TÜ3) and three Tannhaus locations (Frankfurter Tor, Mitte-Wedding, Rix-Neukölln). Neon Wood and Tannhaus are kept as separate student-facing provider brands. Neon Wood and Tannhaus official sites each identify Cresco Immobilien Verwaltungs GmbH as their operator/brand entity.
+The Neon Wood–HearthAway email thread and supplied agreements show nine accommodation agreements: six Neon Wood locations and three Tannhaus locations. The user requested that Tannhaus be listed under Neon Homes. HearthAway therefore presents one Neon Homes provider filter and partner grouping, while retaining Neon Wood and Tannhaus in property names, source URLs, and room descriptions.
 
 RIX Neukölln appears on Neon Wood's wider public marketing catalogue, but the agreement/thread names the RIX agreement under `TH`; the HearthAway record is therefore Tannhaus. This avoids a duplicate RIX property under Neon Wood.
 
@@ -34,10 +34,10 @@ The email thread is `PARTNERSHIP PROPOSAL` in `duggal@hearthaway.com`. It says N
 - Property stable keys use provider + normalized official location path. Room stable keys use provider + official location path + the public category identifier. These are documented fallbacks because no API or partner source IDs were provided.
 - Displayed availability uses the user-requested static “Available” catalogue status; it does not represent live vacancies or a unit count. Booking status, student discounts, deposit, and room-level occupancy remain unknown unless shown as a published room attribute.
 - Universities and campus distances are left empty; no campus routing evidence was imported.
-- Current starting rents are recorded as numeric source values for the 2026-11-14 snapshot. Neon Wood describes rent as all-inclusive. Tannhaus says displayed rents are warm and that utility consumption can be billed individually depending on property and stay length.
+- Starting rents remain stored as monthly source values for the 2026-11-14 snapshot and are displayed as weekly equivalents using (monthly rent × 12) ÷ 52, rounded to the nearest 10 units in the source currency. EUR prices remain in EUR; no exchange-rate conversion is applied. Neon Wood describes rent as all-inclusive. Tannhaus says displayed rents are warm and that utility consumption can be billed individually depending on property and stay length.
+- Property descriptions, neighborhood and transit information, facilities, service inclusions, room sizes, variants, occupancy (where published), rental terms, and source-listed room notes are included in the corresponding listing fields. Unknown items remain unasserted.
 - The user confirmed that the signed agreements grant image usage rights. Official Neon Wood and Tannhaus room/property photography is stored in `public/neonwood/` and `public/tannhaus/`, mapped per property and room in `app/accommodation/new-provider-images.json`, and served through the established accommodation image fields like Iglu.
 
 ## Follow-up data needed
 
 1. Retrieve and validate the attached iCal feed map if live vacancy synchronization is later required; catalogue availability is currently shown without claiming live feed status.
-2. Confirm whether the parties intend to surface Tannhaus under its distinct brand in HearthAway; this implementation follows the agreement names and official provider identity.

@@ -321,7 +321,7 @@ export default async function PropertyDetailPage({
                 {property.roomTypes.length ? (
                   <>
                     <p className="text-sm leading-relaxed text-[#6B6860]">
-                      {getProviderAvailabilityNotice(property.provider)}
+                      {getProviderAvailabilityNotice()}
                     </p>
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -397,6 +397,17 @@ export default async function PropertyDetailPage({
                                 Occupancy: {room.minimumOccupancy ?? 'Not specified'}–
                                 {room.maximumOccupancy ?? 'Not specified'}
                               </p>
+                            ) : null}
+
+                            {room.features?.length ? (
+                              <ul className="mt-3 flex flex-col gap-2 border-t border-[#E8E6E1] pt-3">
+                                {room.features.map((feature) => (
+                                  <li key={feature} className="flex items-start gap-2 text-sm text-[#4C4A45]">
+                                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#C9783E]" />
+                                    {feature}
+                                  </li>
+                                ))}
+                              </ul>
                             ) : null}
 
                             {room.academicYear ? (
