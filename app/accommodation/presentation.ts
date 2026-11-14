@@ -1,6 +1,12 @@
 export const PRICE_AVAILABILITY_NOTICE =
   'Prices and availability are indicative catalogue details and may change.'
 
+export function getProviderAvailabilityNotice(provider: string): string {
+  return provider === 'neonwood' || provider === 'tannhaus'
+    ? 'Availability is shown at catalogue level. Confirm current vacancies and prices with the provider before booking.'
+    : PRICE_AVAILABILITY_NOTICE
+}
+
 export function formatSourcePrice(value: number, minimumFractionDigits = 0): string {
   return new Intl.NumberFormat('en-GB', {
     minimumFractionDigits,

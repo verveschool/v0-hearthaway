@@ -6,6 +6,7 @@ import {
 import staceyInventory from './stacey-inventory.json'
 import { getIgluPropertyForRoom, igluProperties, igluRooms } from './iglu-data'
 import { newProviderProperties } from './neonwood-data'
+import newProviderImages from './new-provider-images.json'
 import { formatCurrencyAmount, formatSourcePrice } from './presentation'
 
 export { formatSourceAvailability, formatSourcePrice } from './presentation'
@@ -348,39 +349,30 @@ const igluListings: AccommodationListingRecord[] = igluProperties.map((property)
   }
 })
 
+type NewProviderImageCatalog = Record<
+  'neonwood' | 'tannhaus',
+  Record<string, { cover: string; rooms: Record<string, string[]> }>
+>
+
+const newProviderImageCatalog = newProviderImages as NewProviderImageCatalog
+
 const newProviderListings: AccommodationListingRecord[] = newProviderProperties.map((property) => {
   const slug = `${property.provider}-${property.sourcePath.split('/').filter(Boolean).at(-1)}`
-  return {
-    provider: property.provider,
-    sourceId: `${property.provider}:${property.sourcePath}`,
-    key: `${property.provider}:${property.sourcePath}`,
-    slug,
-    city: property.city,
-    country: 'Germany',
-    name: property.name,
-    buildings: [{ name: property.name, address: property.address, postcode: null, unitsAvailable: null }],
-    address: property.address,
-    description: property.description,
-    coverImage: null,
-    photoSourceUrl: null,
-    gallery: [],
-    amenities: property.amenities,
-    inclusions: property.inclusions,
-    roomFeatures: [],
-    contractTerms: property.contractTerms,
-    depositNote: null,
-    distance: null,
-    universities: [],
-    roomTypes: property.rooms.map((room) => ({
+  const photoCatalog = newProviderImageCatalog[property.provider][property.sourcePath]
+  if (!photoCatalog) throw new Error(`No image catalog for ${property.provider}:${property.sourcePath}`)
+  const sourceHost = property.provider === 'neonwood' ? 'https://neonwood.com' : 'https://tannhaus.com'
+  const roomTypes = property.rooms.map((room) => {
+    const images = photoCatalog.rooms[room.name] ?? []
+    return {
       sourceId: `${property.provider}:${room.sourcePath}`,
       name: room.name,
-      image: null,
-      images: [],
+      image: images[0] ?? null,
+      images,
       priceFrom: room.monthlyFrom,
       pricePerNight: null,
       priceLabel: room.monthlyFrom === null ? null : `€${room.monthlyFrom.toLocaleString('en-US')}/month`,
       available: null,
-      status: null,
+      status: 'Available',
       minimumOccupancy: null,
       maximumOccupancy: room.details.join(' ').match(/up to (\d+) people/i)
         ? Number(room.details.join(' ').match(/up to (\d+) people/i)?.[1])
@@ -394,7 +386,31 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
           : ['Published starting rent; amount can vary by room, stay length, and current promotion.']),
       ],
       priceConfidence: 'published' as const,
-    })),
+    }
+  })
+  const gallery = [...new Set([photoCatalog.cover, ...roomTypes.flatMap((room) => room.images)])]
+  return {
+    provider: property.provider,
+    sourceId: `${property.provider}:${property.sourcePath}`,
+    key: `${property.provider}:${property.sourcePath}`,
+    slug,
+    city: property.city,
+    country: 'Germany',
+    name: property.name,
+    buildings: [{ name: property.name, address: property.address, postcode: null, unitsAvailable: null }],
+    address: property.address,
+    description: property.description,
+    coverImage: photoCatalog.cover,
+    photoSourceUrl: `${sourceHost}${property.sourcePath}`,
+    gallery,
+    amenities: property.amenities,
+    inclusions: property.inclusions,
+    roomFeatures: [],
+    contractTerms: property.contractTerms,
+    depositNote: null,
+    distance: null,
+    universities: [],
+    roomTypes,
   }
 })
 

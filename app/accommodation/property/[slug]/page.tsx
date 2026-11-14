@@ -12,7 +12,7 @@ import {
   formatSourcePrice,
   getAccommodationRoomSlug,
 } from '../../listing-data'
-import { formatAvailabilityStatus, PRICE_AVAILABILITY_NOTICE } from '../../presentation'
+import { formatAvailabilityStatus, getProviderAvailabilityNotice } from '../../presentation'
 
 export function generateStaticParams() {
   return accommodationListings.map((property) => ({ slug: property.slug }))
@@ -321,7 +321,7 @@ export default async function PropertyDetailPage({
                 {property.roomTypes.length ? (
                   <>
                     <p className="text-sm leading-relaxed text-[#6B6860]">
-                      {PRICE_AVAILABILITY_NOTICE}
+                      {getProviderAvailabilityNotice(property.provider)}
                     </p>
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">

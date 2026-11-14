@@ -25,20 +25,19 @@ All public web sources below were opened on 2026-11-14. They are the source of t
 | Tannhaus Mitte-Wedding | https://tannhaus.com/location/mitte-wedding/ |
 | Tannhaus Rix-Neukölln | https://tannhaus.com/location/neukoelln/ |
 
-The email thread is `PARTNERSHIP PROPOSAL` in `duggal@hearthaway.com`. It says Neon Wood cannot offer API access and can supply property-level iCal feeds; an `iCal Links.xlsx` attachment is referenced. The spreadsheet contents were not available through the connected email attachment tools during this implementation. No iCal data or current vacancy count has been imported, and all availability remains “Not provided”.
+The email thread is `PARTNERSHIP PROPOSAL` in `duggal@hearthaway.com`. It says Neon Wood cannot offer API access and can supply property-level iCal feeds; an `iCal Links.xlsx` attachment is referenced. Availability is displayed as “Available” at catalogue level per the user's instruction; the pages tell students to confirm current vacancy and price with the provider. No live iCal vacancy count is represented.
 
 ## Catalogue mapping
 
 - Neon Wood: 6 properties and 22 listed room types, excluding RIX from the Neon Wood lane.
 - Tannhaus: 3 properties and 9 top-level room categories. Publicly named subcategories are recorded on their parent category so that the source's group-level advertised price is not misrepresented as an individual variant price.
 - Property stable keys use provider + normalized official location path. Room stable keys use provider + official location path + the public category identifier. These are documented fallbacks because no API or partner source IDs were provided.
-- Inventory availability, booking status, student discounts, deposit, and room-level occupancy are unknown unless shown as a published room attribute. They are not inferred.
+- Displayed availability uses the user-requested static “Available” catalogue status; it does not represent live vacancies or a unit count. Booking status, student discounts, deposit, and room-level occupancy remain unknown unless shown as a published room attribute.
 - Universities and campus distances are left empty; no campus routing evidence was imported.
 - Current starting rents are recorded as numeric source values for the 2026-11-14 snapshot. Neon Wood describes rent as all-inclusive. Tannhaus says displayed rents are warm and that utility consumption can be billed individually depending on property and stay length.
-- No property photographs are republished. The accessible agreements were not reviewed for image licensing terms, so image usage permission remains unverified. The shared HearthAway empty-photo state is used.
+- The user confirmed that the signed agreements grant image usage rights. Official Neon Wood and Tannhaus room/property photography is stored in `public/neonwood/` and `public/tannhaus/`, mapped per property and room in `app/accommodation/new-provider-images.json`, and served through the established accommodation image fields like Iglu.
 
 ## Follow-up data needed
 
-1. Retrieve and validate the attached iCal feed map, then record feed URL, retrieval time, response status and content hash for every authorized property.
-2. Review the agreements' image and marketing rights clauses, or obtain written image approval, before adding provider photos.
-3. Confirm whether the parties intend to surface Tannhaus under its distinct brand in HearthAway; this implementation follows the agreement names and official provider identity.
+1. Retrieve and validate the attached iCal feed map if live vacancy synchronization is later required; catalogue availability is currently shown without claiming live feed status.
+2. Confirm whether the parties intend to surface Tannhaus under its distinct brand in HearthAway; this implementation follows the agreement names and official provider identity.

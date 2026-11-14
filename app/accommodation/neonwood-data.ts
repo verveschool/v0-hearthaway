@@ -1,7 +1,7 @@
 /**
  * Neon Wood and Tannhaus public inventory captured 2026-11-14.
- * No property photographs are republished: provider image reuse permission was
- * not confirmed in the accessible agreement text. Prices are dated snapshots.
+ * Prices are dated snapshots; photo assets and usage rights are recorded in the
+ * image catalog and onboarding evidence file.
  */
 export type NewProviderRoom = {
   sourcePath: string
