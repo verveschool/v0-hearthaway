@@ -43,15 +43,27 @@ export default async function AccommodationPage({
     const publicListing = {
       ...listing,
       roomTypes: listing.roomTypes.map((room) => {
-        const publicRoom = { ...room }
+        const publicRoom = { ...room } as Record<string, unknown>
         delete publicRoom.priceSourceUrl
         delete publicRoom.pricingBasis
-        return publicRoom
+        delete publicRoom.sourceUrl
+        delete publicRoom.academicYear
+        delete publicRoom.pricingOptions
+        delete publicRoom.status
+        delete publicRoom.available
+        return publicRoom as unknown as typeof room
       }),
-    }
+      buildings: listing.buildings.map((building) => ({
+        ...building,
+        unitsAvailable: null,
+      })),
+    } as Record<string, unknown>
     delete publicListing.propertyPriceSourceUrl
     delete publicListing.propertyPricingBasis
-    return publicListing
+    delete publicListing.sourceUrl
+    delete publicListing.photoSourceUrl
+    delete publicListing.dataNotes
+    return publicListing as unknown as typeof listing
   })
 
   return (
