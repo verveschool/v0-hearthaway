@@ -1,0 +1,15 @@
+{
+  "neonwood": {
+    "/cities/berlin/berlin-adlershof": {"cover":"/neonwood/rooms/berlin-adlershof-classic.webp","rooms":{"Classic":["/neonwood/rooms/berlin-adlershof-classic.webp"],"Deluxe":["/neonwood/rooms/berlin-adlershof-deluxe.webp"],"Double Deluxe":["/neonwood/rooms/berlin-adlershof-double-deluxe.webp"]}},
+    "/cities/berlin/berlin-frankfurter-tor": {"cover":"/neonwood/rooms/berlin-frankfurter-tor-classic.webp","rooms":{"Classic":["/neonwood/rooms/berlin-frankfurter-tor-classic.webp"],"Deluxe":["/neonwood/rooms/berlin-frankfurter-tor-deluxe.webp"],"Double":["/neonwood/rooms/berlin-frankfurter-tor-double.jpg"],"Neon Silver / Gold":["/neonwood/rooms/berlin-frankfurter-tor-neon-silver.jpg"]}},
+    "/cities/berlin/berlin-mitte-wedding": {"cover":"/neonwood/rooms/berlin-mitte-wedding-classic.webp","rooms":{"Classic":["/neonwood/rooms/berlin-mitte-wedding-classic.webp"],"Deluxe":["/neonwood/rooms/berlin-mitte-wedding-deluxe.webp"],"Neon Gold":["/neonwood/rooms/berlin-mitte-wedding-neon-gold.webp"],"Penthouse":["/neonwood/rooms/berlin-mitte-wedding-penthouse.webp"]}},
+    "/cities/cologne/cologne-k115": {"cover":"/neonwood/rooms/cologne-k115-comfort.webp","rooms":{"Comfort":["/neonwood/rooms/cologne-k115-comfort.webp"],"Cozy":["/neonwood/rooms/cologne-k115-cozy.webp"],"Double":["/neonwood/rooms/cologne-k115-double.webp"]}},
+    "/cities/frankfurt/frankfurt-riedberg": {"cover":"/neonwood/rooms/frankfurt-riedberg-classic.jpg","rooms":{"Classic":["/neonwood/rooms/frankfurt-riedberg-classic.jpg"],"Deluxe":["/neonwood/rooms/frankfurt-riedberg-deluxe.webp"],"Double":["/neonwood/rooms/frankfurt-riedberg-double.webp"],"Penthouse":["/neonwood/rooms/frankfurt-riedberg-penthouse.jpg"]}},
+    "/cities/tuebingen/tu3": {"cover":"/neonwood/rooms/tuebingen-comfort.jpg","rooms":{"Comfort":["/neonwood/rooms/tuebingen-comfort.jpg"],"Cozy":["/neonwood/rooms/tuebingen-cozy.jpg"],"Double":["/neonwood/rooms/tuebingen-double.webp"],"Superior":["/neonwood/rooms/tuebingen-superior.jpg"]}}
+  },
+  "tannhaus": {
+    "/location/frankfurter-tor": {"cover":"/tannhaus/frankfurter-tor/cover.jpg","rooms":{"Fir":["/tannhaus/frankfurter-tor/fir-02.jpg","/tannhaus/frankfurter-tor/fir-01.jpg"],"Sequoia Superior":["/tannhaus/frankfurter-tor/sequoia-02.jpg","/tannhaus/frankfurter-tor/sequoia-01.jpg"]}},
+    "/location/mitte-wedding": {"cover":"/tannhaus/mitte-wedding/cover.jpg","rooms":{"Pine Superior Balcony":["/tannhaus/mitte-wedding/pine-02.jpg","/tannhaus/mitte-wedding/pine-01.jpg"],"Fir":["/tannhaus/mitte-wedding/fir-02.jpg","/tannhaus/mitte-wedding/fir-01.jpg"],"Fir Family":["/tannhaus/mitte-wedding/fir-family-01.jpg"]}},
+    "/location/neukoelln": {"cover":"/tannhaus/rix-neukoelln/cover.jpg","rooms":{"Pine":["/tannhaus/rix-neukoelln/pine-02.jpg","/tannhaus/rix-neukoelln/pine-01.jpg"],"Cedar":["/tannhaus/rix-neukoelln/cedar-01.jpg"],"Fir":["/tannhaus/rix-neukoelln/fir-01.jpg"],"Sequoia":["/tannhaus/rix-neukoelln/sequoia-02.jpg","/tannhaus/rix-neukoelln/sequoia-01.jpg"]}}
+  }
+}

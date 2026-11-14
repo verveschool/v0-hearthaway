@@ -30,6 +30,22 @@ flowchart TB
     igluRoom --> hosted["Partner-approved images\nDownloaded and hosted locally under /public/iglu"]
   end
 
+  subgraph neonwood["NEON WOOD · SIX CONTRACTED PROPERTIES"]
+    direction TB
+    nwPages["Official property and room category pages"] --> nwEvidence["Dated source mapping\nURLs, public details, agreement mapping"]
+    nwEvidence --> nwRaw["neonwood-data.ts\n6 properties · 22 room types"]
+    nwRaw --> nwAdapter["Shared catalogue adapter\navailability unknown · images omitted pending rights"]
+    nwAdapter --> nwProp["Neon Wood Property and Room records"]
+  end
+
+  subgraph tannhaus["TANNHAUS · THREE CONTRACTED PROPERTIES"]
+    direction TB
+    thPages["Official Tannhaus location pages"] --> thEvidence["Dated source mapping\nAgreement names keep RIX under Tannhaus"]
+    thEvidence --> thRaw["neonwood-data.ts\n3 properties · 9 room categories"]
+    thRaw --> thAdapter["Shared catalogue adapter\navailability unknown · images omitted pending rights"]
+    thAdapter --> thProp["Tannhaus Property and Room records"]
+  end
+
   vitaProp --> presentation
   vitaRoom --> presentation
   staceyProp --> presentation
@@ -37,18 +53,24 @@ flowchart TB
   igluProp --> presentation
   igluRoom --> presentation
   hosted --> presentation
+  nwProp --> presentation
+  thProp --> presentation
 
   presentation["SHARED HEARTHAWAY PRESENTATION TEMPLATE\nProperty cards + property detail · Room cards + room detail\nSame fields, gallery behavior and internal parent/child navigation"]
-  presentation --> nav["Shared navigation and footer\nAll Properties · All Rooms · Vita Student · Stacey · Iglu"]
+  presentation --> nav["Shared navigation and footer\nAll Properties · All Rooms · Vita Student · Stacey · Iglu · Neon Wood · Tannhaus"]
   presentation --> behavior["HearthAway browsing only\nNo source-site links · no booking/application actions\nProperty ↔ Room links remain within HearthAway"]
 
   classDef existing fill:#E7EEFF,stroke:#3159A8,color:#182D62,stroke-width:2px;
   classDef iglu fill:#FFF0E5,stroke:#C9783E,color:#713C20,stroke-width:3px;
+  classDef newprovider fill:#EAF7F1,stroke:#22845B,color:#164A36,stroke-width:2px;
   classDef shared fill:#F5F3EF,stroke:#4B5563,color:#1F2937,stroke-width:2px;
   classDef gate fill:#FFF8E7,stroke:#A77816,color:#4D3B0B,stroke-width:2px;
   class vitaSrc,vitaAdapter,vitaProp,vitaRoom,staceySrc,staceyAdapter,staceyProp,staceyRoom existing;
   class igluPages,evidence,raw,ids,validate,map,igluProp,igluRoom,hosted iglu;
+  class nwPages,nwEvidence,nwRaw,nwAdapter,nwProp,thPages,thEvidence,thRaw,thAdapter,thProp newprovider;
   class catalog,presentation,nav,behavior shared;
   style vita fill:#F7F9FF,stroke:#8CA5DB,stroke-width:2px;
   style stacey fill:#F7F9FF,stroke:#8CA5DB,stroke-width:2px;
   style iglu fill:#FFF8F2,stroke:#C9783E,stroke-width:3px;
+  style neonwood fill:#F3FBF7,stroke:#72AD8E,stroke-width:2px;
+  style tannhaus fill:#F3FBF7,stroke:#72AD8E,stroke-width:2px;

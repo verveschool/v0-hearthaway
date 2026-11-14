@@ -5,11 +5,14 @@ import {
 } from './response-data'
 import staceyInventory from './stacey-inventory.json'
 import { getIgluPropertyForRoom, igluProperties, igluRooms } from './iglu-data'
+import { newProviderProperties } from './neonwood-data'
+import newProviderImages from './new-provider-images.json'
 import { formatCurrencyAmount, formatSourcePrice } from './presentation'
 
 export { formatSourceAvailability, formatSourcePrice } from './presentation'
 
 export type AccommodationRoomRecord = {
+  sourceId?: string
   name: string
   image: string | null
   images: string[]
@@ -28,7 +31,8 @@ export type AccommodationRoomRecord = {
 }
 
 export type AccommodationListingRecord = {
-  provider: 'vita-student' | 'stacey' | 'iglu'
+  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'tannhaus'
+  sourceId?: string
   key: string
   slug: string
   city: string
@@ -345,13 +349,96 @@ const igluListings: AccommodationListingRecord[] = igluProperties.map((property)
   }
 })
 
+type NewProviderImageCatalog = Record<
+  'neonwood' | 'tannhaus',
+  Record<string, { cover: string; rooms: Record<string, string[]> }>
+>
+
+const newProviderImageCatalog = newProviderImages as NewProviderImageCatalog
+
+const newProviderListings: AccommodationListingRecord[] = newProviderProperties.map((property) => {
+  const slug = `${property.provider}-${property.sourcePath.split('/').filter(Boolean).at(-1)}`
+  const photoCatalog = newProviderImageCatalog[property.provider][property.sourcePath]
+  if (!photoCatalog) throw new Error(`No image catalog for ${property.provider}:${property.sourcePath}`)
+  const sourceHost = property.provider === 'neonwood' ? 'https://neonwood.com' : 'https://tannhaus.com'
+  const roomTypes = property.rooms.map((room) => {
+    const images = photoCatalog.rooms[room.name] ?? []
+    return {
+      sourceId: `${property.provider}:${room.sourcePath}`,
+      name: room.name,
+      image: images[0] ?? null,
+      images,
+      priceFrom: room.monthlyFrom,
+      pricePerNight: null,
+      priceLabel: room.monthlyFrom === null ? null : `€${room.monthlyFrom.toLocaleString('en-US')}/month`,
+      available: null,
+      status: 'Available',
+      minimumOccupancy: null,
+      maximumOccupancy: room.details.join(' ').match(/up to (\d+) people/i)
+        ? Number(room.details.join(' ').match(/up to (\d+) people/i)?.[1])
+        : null,
+      academicYear: null,
+      features: [
+        ...(room.size ? [`Published size: ${room.size}`] : []),
+        ...room.details,
+        ...(property.provider === 'tannhaus'
+          ? ['Warm rent; utilities may be billed by individual consumption depending on property and stay length.']
+          : ['Published starting rent; amount can vary by room, stay length, and current promotion.']),
+      ],
+      priceConfidence: 'published' as const,
+    }
+  })
+  const gallery = [...new Set([photoCatalog.cover, ...roomTypes.flatMap((room) => room.images)])]
+  return {
+    provider: property.provider,
+    sourceId: `${property.provider}:${property.sourcePath}`,
+    key: `${property.provider}:${property.sourcePath}`,
+    slug,
+    city: property.city,
+    country: 'Germany',
+    name: property.name,
+    buildings: [{ name: property.name, address: property.address, postcode: null, unitsAvailable: null }],
+    address: property.address,
+    description: property.description,
+    coverImage: photoCatalog.cover,
+    photoSourceUrl: `${sourceHost}${property.sourcePath}`,
+    gallery,
+    amenities: property.amenities,
+    inclusions: property.inclusions,
+    roomFeatures: [],
+    contractTerms: property.contractTerms,
+    depositNote: null,
+    distance: null,
+    universities: [],
+    roomTypes,
+  }
+})
+
 // Keep the source relationship explicit and fail loudly if source data drifts.
 for (const room of igluRooms) {
   if (!getIgluPropertyForRoom(room)) throw new Error(`Iglu room ${room.id} has no parent property ${room.parentPropertyId}`)
 }
 
-export const accommodationListings = [...vitaAccommodationListings, ...staceyListings, ...igluListings]
+for (const listing of newProviderListings) {
+  if (newProviderListings.filter((candidate) => candidate.sourceId === listing.sourceId).length !== 1) {
+    throw new Error(`Duplicate property source ID ${listing.sourceId}`)
+  }
+  const roomIds = listing.roomTypes.map((room) => room.sourceId)
+  if (new Set(roomIds).size !== roomIds.length) throw new Error(`Duplicate room source ID under ${listing.sourceId}`)
+}
+
+export const accommodationListings = [...vitaAccommodationListings, ...staceyListings, ...igluListings, ...newProviderListings]
 export const allAccommodationListings = accommodationListings
+
+export function getAccommodationProviderName(provider: AccommodationListingRecord['provider']): string {
+  return {
+    'vita-student': 'Vita Student',
+    stacey: 'STACEY',
+    iglu: 'Iglu',
+    neonwood: 'Neon Wood',
+    tannhaus: 'Tannhaus',
+  }[provider]
+}
 
 export type AccommodationRoomListing = {
   slug: string
