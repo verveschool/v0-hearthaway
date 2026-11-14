@@ -9,8 +9,7 @@ export type AccommodationPartner = {
 export const accommodationPartners: AccommodationPartner[] = [
   { slug: 'amber-student', name: 'Amber Student', kind: 'marketplace', website: 'https://amberstudent.com/' },
   { slug: 'study-inn', name: 'Study Inn', kind: 'operator', website: 'https://studyinn.com/' },
-  { slug: 'neon-wood', name: 'Neon Wood', kind: 'operator', website: 'https://neonwood.com/' },
-  { slug: 'tannhaus', name: 'Tannhaus', kind: 'operator', website: 'https://tannhaus.com/' },
+  { slug: 'neon-homes', name: 'Neon Homes', kind: 'operator', website: 'https://neonwood.com/', note: 'Neon Wood and Tannhaus listings' },
   { slug: 'vita-student', name: 'Vita Student', kind: 'operator', website: 'https://www.vitastudent.com/en/' },
   { slug: 'the-social-hub', name: 'The Social Hub', kind: 'operator', website: 'https://www.thesocialhub.co/' },
   { slug: 'homes-for-students', name: 'Homes for Students', kind: 'operator', website: 'https://homesforstudents.co.uk/' },

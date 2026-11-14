@@ -363,19 +363,22 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
   const sourceHost = property.provider === 'neonwood' ? 'https://neonwood.com' : 'https://tannhaus.com'
   const roomTypes = property.rooms.map((room) => {
     const images = photoCatalog.rooms[room.name] ?? []
+    const weeklyFrom = room.monthlyFrom === null
+      ? null
+      : Math.round(((room.monthlyFrom * 12) / 52) / 10) * 10
     return {
       sourceId: `${property.provider}:${room.sourcePath}`,
       name: room.name,
       image: images[0] ?? null,
       images,
-      priceFrom: room.monthlyFrom,
+      priceFrom: weeklyFrom,
       pricePerNight: null,
-      priceLabel: room.monthlyFrom === null ? null : `€${room.monthlyFrom.toLocaleString('en-US')}/month`,
+      priceLabel: weeklyFrom === null ? null : `€${weeklyFrom.toLocaleString('en-US')}/week`,
       available: null,
       status: 'Available',
       minimumOccupancy: null,
-      maximumOccupancy: room.details.join(' ').match(/up to (\d+) people/i)
-        ? Number(room.details.join(' ').match(/up to (\d+) people/i)?.[1])
+      maximumOccupancy: room.details.join(' ').match(/(?:up to|suitable for) (\d+) (?:people|resident)/i)
+        ? Number(room.details.join(' ').match(/(?:up to|suitable for) (\d+) (?:people|resident)/i)?.[1])
         : null,
       academicYear: null,
       features: [
@@ -383,9 +386,9 @@ const newProviderListings: AccommodationListingRecord[] = newProviderProperties.
         ...room.details,
         ...(property.provider === 'tannhaus'
           ? ['Warm rent; utilities may be billed by individual consumption depending on property and stay length.']
-          : ['Published starting rent; amount can vary by room, stay length, and current promotion.']),
+          : ['All-inclusive starting rent; weekly price is an indicative equivalent of the source monthly starting rent.']),
       ],
-      priceConfidence: 'published' as const,
+      priceConfidence: 'indicative' as const,
     }
   })
   const gallery = [...new Set([photoCatalog.cover, ...roomTypes.flatMap((room) => room.images)])]
@@ -435,8 +438,8 @@ export function getAccommodationProviderName(provider: AccommodationListingRecor
     'vita-student': 'Vita Student',
     stacey: 'STACEY',
     iglu: 'Iglu',
-    neonwood: 'Neon Wood',
-    tannhaus: 'Tannhaus',
+    neonwood: 'Neon Homes',
+    tannhaus: 'Neon Homes',
   }[provider]
 }
 

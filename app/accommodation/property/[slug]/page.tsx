@@ -321,7 +321,7 @@ export default async function PropertyDetailPage({
                 {property.roomTypes.length ? (
                   <>
                     <p className="text-sm leading-relaxed text-[#6B6860]">
-                      {getProviderAvailabilityNotice(property.provider)}
+                      {getProviderAvailabilityNotice()}
                     </p>
 
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
@@ -394,9 +394,25 @@ export default async function PropertyDetailPage({
                             {room.minimumOccupancy !== null ||
                             room.maximumOccupancy !== null ? (
                               <p className="mt-3 text-sm text-[#4C4A45]">
-                                Occupancy: {room.minimumOccupancy ?? 'Not specified'}–
-                                {room.maximumOccupancy ?? 'Not specified'}
+                                Occupancy:{' '}
+                                {room.minimumOccupancy !== null &&
+                                room.maximumOccupancy !== null
+                                  ? `${room.minimumOccupancy}–${room.maximumOccupancy}`
+                                  : room.maximumOccupancy !== null
+                                    ? `Up to ${room.maximumOccupancy}`
+                                    : `At least ${room.minimumOccupancy}`}
                               </p>
+                            ) : null}
+
+                            {room.features?.length ? (
+                              <ul className="mt-3 flex flex-col gap-2 border-t border-[#E8E6E1] pt-3">
+                                {room.features.map((feature) => (
+                                  <li key={feature} className="flex items-start gap-2 text-sm text-[#4C4A45]">
+                                    <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#C9783E]" />
+                                    {feature}
+                                  </li>
+                                ))}
+                              </ul>
                             ) : null}
 
                             {room.academicYear ? (
