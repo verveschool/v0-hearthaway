@@ -394,8 +394,13 @@ export default async function PropertyDetailPage({
                             {room.minimumOccupancy !== null ||
                             room.maximumOccupancy !== null ? (
                               <p className="mt-3 text-sm text-[#4C4A45]">
-                                Occupancy: {room.minimumOccupancy ?? 'Not specified'}–
-                                {room.maximumOccupancy ?? 'Not specified'}
+                                Occupancy:{' '}
+                                {room.minimumOccupancy !== null &&
+                                room.maximumOccupancy !== null
+                                  ? `${room.minimumOccupancy}–${room.maximumOccupancy}`
+                                  : room.maximumOccupancy !== null
+                                    ? `Up to ${room.maximumOccupancy}`
+                                    : `At least ${room.minimumOccupancy}`}
                               </p>
                             ) : null}
 
