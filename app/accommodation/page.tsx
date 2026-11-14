@@ -11,7 +11,7 @@ import { accommodationListings } from './listing-data'
 export const metadata: Metadata = {
   title: 'Student Properties | HearthAway',
   description:
-    'Explore student properties by city, compare their details, and browse available rooms.',
+    'Explore student properties by city, compare their details, and browse student room types.',
 }
 
 type AccommodationPageProps = {
@@ -35,12 +35,24 @@ export default async function AccommodationPage({
     : provider === 'stacey' || provider === 'vita-student' || provider === 'iglu' || provider === 'study-inn'
       ? accommodationListings.filter((listing) => listing.provider === provider)
       : accommodationListings
-      ? accommodationListings.filter((listing) => listing.provider === provider)
-      : accommodationListings
 
   const cities = [...new Set(visibleListings.map((listing) => listing.city))].sort()
   const initialCity = city && cities.includes(city) ? city : 'all'
   const initialQuery = query?.trim().slice(0, 100) ?? ''
+  const publicListings = visibleListings.map((listing) => {
+    const publicListing = {
+      ...listing,
+      roomTypes: listing.roomTypes.map((room) => {
+        const publicRoom = { ...room }
+        delete publicRoom.priceSourceUrl
+        delete publicRoom.pricingBasis
+        return publicRoom
+      }),
+    }
+    delete publicListing.propertyPriceSourceUrl
+    delete publicListing.propertyPricingBasis
+    return publicListing
+  })
 
   return (
     <>
@@ -58,7 +70,7 @@ export default async function AccommodationPage({
                 href="/accommodation/rooms"
                 className="secondary-cta mt-6 inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
               >
-                Browse Available Rooms
+                Browse Room Types
                 <ArrowRight aria-hidden="true" className="size-4" />
               </Link>
             </div>
@@ -73,7 +85,7 @@ export default async function AccommodationPage({
             <AccommodationListings
               key={`${provider ?? 'all'}:${initialCity}:${initialQuery}`}
               cities={cities}
-              listings={visibleListings}
+              listings={publicListings}
               initialCity={initialCity}
               initialQuery={initialQuery}
             />

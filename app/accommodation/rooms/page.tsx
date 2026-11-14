@@ -7,15 +7,14 @@ import Footer from '@/components/footer'
 import {
   accommodationCities,
   accommodationRoomListings,
-  formatSourceAvailability,
   getAccommodationProviderName,
 } from '@/app/accommodation/listing-data'
-import { formatAvailabilityStatus, getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
+import { getRoomPriceDisplay, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 export const metadata: Metadata = {
-  title: 'Available Student Rooms | HearthAway',
+  title: 'Student Room Types | HearthAway',
   description:
-    'Browse available room types and see which student property each room belongs to.',
+    'Browse student room types and see which property each room belongs to.',
 }
 
 type RoomsPageProps = {
@@ -55,7 +54,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           <div className="mx-auto w-full max-w-7xl">
             <div className="max-w-3xl">
               <h1 className="font-heading text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-                Available Rooms
+                Student Room Types
               </h1>
 
               <Link
@@ -124,9 +123,6 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           <p className="mt-6 text-sm text-[#6B6860]">
             {rooms.length} room {rooms.length === 1 ? 'type' : 'types'}
           </p>
-          <p className="mt-2 text-sm leading-relaxed text-[#6B6860]">
-            {PRICE_AVAILABILITY_NOTICE}
-          </p>
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
@@ -179,21 +175,16 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                             Price
                           </p>
                           <p className="mt-1 text-sm font-bold text-[#00319D]">
-                            {getRoomPriceDisplay(room, true)}
+                            {getRoomPriceDisplay(room)}
                           </p>
-                          {room.nightlyPriceLabel ? <p className="mt-1 text-xs font-normal text-[#6B6860]">Nightly rate: {room.nightlyPriceLabel}</p> : null}
                         </div>
 
                         <div className="text-right">
                           <p className="text-[11px] font-bold tracking-wide text-[#6B6860]">
                             Availability
                           </p>
-                          <p className="mt-1 text-sm font-semibold text-[#333333]">
-                            {room.status
-                              ? formatAvailabilityStatus(room.status)
-                              : room.available !== null
-                                ? formatSourceAvailability(room.available)
-                                : 'Not provided'}
+                          <p className="mt-2 rounded-lg bg-[#F7F6F3] p-3 text-left text-xs leading-relaxed text-[#6B6860]">
+                            {PRICE_AVAILABILITY_NOTICE}
                           </p>
                         </div>
                       </div>
@@ -205,7 +196,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           ) : (
             <div className="mt-5 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center">
               <h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">
-                No available rooms match those filters
+                No rooms match those filters
               </h2>
               <p className="mt-2 text-sm text-[#6B6860]">
                 Try another city or search term.

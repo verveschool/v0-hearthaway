@@ -8,11 +8,9 @@ import Footer from '@/components/footer'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import {
   accommodationListings,
-  formatSourceAvailability,
-  formatSourcePrice,
   getAccommodationRoomSlug,
 } from '../../listing-data'
-import { formatAvailabilityStatus, getProviderAvailabilityNotice } from '../../presentation'
+import { PRICE_AVAILABILITY_NOTICE } from '../../presentation'
 
 export function generateStaticParams() {
   return accommodationListings.map((property) => ({ slug: property.slug }))
@@ -181,17 +179,13 @@ export default async function PropertyDetailPage({
     ]),
   ]
 
-  const buildingsWithAvailability = property.buildings.filter(
-    (building) => building.unitsAvailable !== null
-  )
-
   const pageLinks = [
     ['overview', 'Property overview'],
     ['rooms', 'Room types and pricing'],
     ...(property.amenities.length || property.inclusions.length || property.contractTerms.length
       ? [['amenities', 'Amenities and inclusions']]
       : []),
-    ...(property.policies?.length || property.contractTerms.length || property.dataNotes?.length
+    ...(property.policies?.length || property.contractTerms.length
       ? [['policies', 'Policies and contract information']]
       : []),
     ['location', 'Location'],
@@ -222,6 +216,7 @@ export default async function PropertyDetailPage({
             <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl lg:text-5xl">
               {property.name}
             </h1>
+            <p className="mt-3 text-lg font-bold text-[#00319D]">From {property.propertyPriceLabel}</p>
 
             {property.address ? (
               <p className="mt-4 flex items-start gap-2 text-sm leading-relaxed text-[#6B6860] sm:text-base">
@@ -321,14 +316,10 @@ export default async function PropertyDetailPage({
                 ) : null}
               </Section>
 
-              {/* Available rooms and pricing */}
-              <Section id="rooms" title="Available rooms and pricing">
+              {/* Room types and pricing */}
+              <Section id="rooms" title="Room types and pricing">
                 {property.roomTypes.length ? (
                   <>
-                    <p className="text-sm leading-relaxed text-[#6B6860]">
-                      {getProviderAvailabilityNotice()}
-                    </p>
-
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
                       {property.roomTypes.map((room) => (
                         <article
@@ -363,38 +354,16 @@ export default async function PropertyDetailPage({
 
                             <div className="mt-4 grid grid-cols-2 gap-3">
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
-                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">
-                                  Starting price
-                                </p>
-                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">
-                                  {room.priceLabel ?? (room.priceFrom !== null
-                                    ? formatSourcePrice(room.priceFrom)
-                                    : room.pricePerNight !== null
-                                      ? `From €${formatSourcePrice(room.pricePerNight)}/night`
-                                      : 'Not provided')}
-                                </p>
-                                {room.nightlyPriceLabel && room.priceFrom !== null ? <p className="mt-1 text-xs text-[#6B6860]">Also listed at {room.nightlyPriceLabel}</p> : null}
+                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">Price</p>
+                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">{room.priceLabel}</p>
                               </div>
 
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
-                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">
-                                  Availability
-                                </p>
-                                <p className="mt-1 text-sm font-bold text-[#1A1A1A]">
-                                  {room.status
-                                    ? formatAvailabilityStatus(room.status)
-                                    : room.available === null
-                                      ? 'Not provided'
-                                      : formatSourceAvailability(room.available)}
-                                </p>
+                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">Availability</p>
+                                <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
                               </div>
                             </div>
 
-                            {room.priceFrom === null && room.pricePerNight !== null ? (
-                              <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">
-                                The source lists a nightly rate; no weekly equivalent was provided.
-                              </p>
-                            ) : null}
 
                             {room.minimumOccupancy !== null ||
                             room.maximumOccupancy !== null ? (
@@ -420,37 +389,17 @@ export default async function PropertyDetailPage({
                               </ul>
                             ) : null}
 
-                            {room.academicYear ? (
-                              <p className="mt-2 text-sm text-[#4C4A45]">
-                                Academic year: {room.academicYear}
-                              </p>
-                            ) : null}
 
-                            {property.roomFeatures.length ? (
-                              <ul className="mt-4 flex flex-col gap-2 border-t border-[#E8E6E1] pt-4">
-                                {property.roomFeatures.map((feature) => (
-                                  <li
-                                    key={feature}
-                                    className="flex items-start gap-2 text-sm text-[#4C4A45]"
-                                  >
-                                    <span
-                                      aria-hidden="true"
-                                      className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]"
-                                    />
-                                    {feature}
-                                  </li>
-                                ))}
-                              </ul>
-                            ) : null}
                           </div>
                         </article>
                       ))}
                     </div>
                   </>
                 ) : (
-                  <p className="text-sm text-[#6B6860]">
-                    Room types have not been provided for this property.
-                  </p>
+                  <div className="rounded-xl bg-[#F7F6F3] p-4">
+                    <p className="text-sm text-[#6B6860]">Room categories have not been published for this property.</p>
+                    <p className="mt-3 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
+                  </div>
                 )}
               </Section>
 
@@ -535,11 +484,10 @@ export default async function PropertyDetailPage({
                 </Section>
               ) : null}
 
-              {property.policies?.length || property.contractTerms.length || property.dataNotes?.length ? (
+              {property.policies?.length || property.contractTerms.length ? (
                 <Section id="policies" title="Policies and contract information">
                   {property.contractTerms.length ? <div><h3 className="font-semibold text-[#1A1A1A]">Contract terms</h3><ul className="mt-3 grid gap-2 sm:grid-cols-2">{property.contractTerms.map((term) => <li key={term} className="text-sm leading-relaxed text-[#4C4A45]">{term}</li>)}</ul></div> : null}
                   {property.policies?.length ? <div className="mt-5"><h3 className="font-semibold text-[#1A1A1A]">Property policies</h3><ul className="mt-3 grid gap-2">{property.policies.map((policy) => <li key={policy} className="text-sm leading-relaxed text-[#4C4A45]">{policy}</li>)}</ul></div> : null}
-                  {property.dataNotes?.length ? <div className="mt-5 rounded-xl bg-[#FFF8E5] p-4"><h3 className="font-semibold text-[#1A1A1A]">Research notes</h3>{property.dataNotes.map((note) => <p key={note} className="mt-2 text-sm leading-relaxed text-[#4C4A45]">{note}</p>)}</div> : null}
                 </Section>
               ) : null}
 
@@ -627,33 +575,6 @@ export default async function PropertyDetailPage({
                 {property.locationInfo?.length ? <div className="mt-6"><h3 className="font-semibold text-[#1A1A1A]">Location details</h3>{property.locationInfo.map((item) => <p key={item} className="mt-2 text-sm leading-relaxed text-[#4C4A45]">{item}</p>)}</div> : null}
               </Section>
 
-              {/* Building availability */}
-              {buildingsWithAvailability.length ? (
-                <div className="rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
-                  <h2 className="font-heading text-2xl font-extrabold text-[#1A1A1A]">
-                    Building availability
-                  </h2>
-
-                  <ul className="mt-4 flex flex-col gap-3">
-                    {buildingsWithAvailability.map((building, index) => (
-                      <li
-                        key={`${building.name ?? 'building'}-${index}`}
-                        className="flex items-center justify-between gap-4 text-sm"
-                      >
-                        <span className="font-medium text-[#4C4A45]">
-                          {building.name ?? `Building ${index + 1}`}
-                        </span>
-
-                        <span className="font-bold text-[#00319D]">
-                          {building.unitsAvailable === null
-                            ? 'Not provided'
-                            : formatSourceAvailability(building.unitsAvailable)}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
             </div>
 
             {/* Sticky sidebar */}

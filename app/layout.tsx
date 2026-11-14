@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   // domain. That mismatch is what lets social platforms cache a broken or stale
   // preview image against the wrong host across deployments.
   metadataBase: new URL('https://hearthaway.com'),
-  title: 'HearthAway | Find Student Properties and Available Rooms',
+  title: 'HearthAway | Student Properties and Rooms',
   description:
-    'Explore student properties by city, compare property details, browse available rooms, and manage your housing plans with a private HearthAway account.',
+    'Explore student properties by city, compare property details, browse student room types, and manage your housing plans with a private HearthAway account.',
   keywords:
     'student properties, student rooms, international students, UK student housing, university properties, student housing abroad',
   icons: {
@@ -31,9 +31,9 @@ export const metadata: Metadata = {
     apple: brandIconPath,
   },
   openGraph: {
-  title: 'HearthAway | Find Student Properties and Available Rooms',
+  title: 'HearthAway | Student Properties and Rooms',
   description:
-    'Explore student properties by city, compare property details, browse available rooms, and manage your housing plans with a private HearthAway account.',
+    'Explore student properties by city, compare property details, browse student room types, and manage your housing plans with a private HearthAway account.',
   type: 'website',
   locale: 'en_GB',
   images: [
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
 },
 twitter: {
   card: 'summary_large_image',
-  title: 'HearthAway | Find Student Properties and Available Rooms',
+  title: 'HearthAway | Student Properties and Rooms',
   description:
-    'Explore student properties by city, compare property details, browse available rooms, and manage your housing plans with a private HearthAway account.',
+    'Explore student properties by city, compare property details, browse student room types, and manage your housing plans with a private HearthAway account.',
   images: [brandBannerPath],
 },
 }

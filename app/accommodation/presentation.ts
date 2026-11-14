@@ -1,5 +1,5 @@
 export const PRICE_AVAILABILITY_NOTICE =
-  'Prices and availability are indicative catalogue details and may change.'
+  'Prices and availability are indicative, catalog details and may change.'
 
 export function getProviderAvailabilityNotice(): string {
   return PRICE_AVAILABILITY_NOTICE
@@ -35,14 +35,6 @@ type RoomPriceFields = {
 }
 
 export function getRoomPriceDisplay(room: RoomPriceFields, includeFrom = false): string {
-  if (room.priceLabel) return includeFrom ? `From ${room.priceLabel}` : room.priceLabel
-  if (room.priceFrom !== null) {
-    const price = formatSourcePrice(room.priceFrom)
-    return includeFrom ? `From ${price}` : price
-  }
-  if (room.pricePerNight !== null) {
-    const price = `${formatSourcePrice(room.pricePerNight)}/night`
-    return includeFrom ? `From ${price}` : price
-  }
-  return 'Price not provided'
+  void includeFrom
+  return room.priceLabel ?? ''
 }

@@ -26,7 +26,7 @@ const steps = [
     description:
       'Create an account to save rooms to a shortlist, revisit their details, and keep your housing plans in one place.',
     href: '/accommodation/rooms',
-    linkLabel: 'Browse available rooms',
+    linkLabel: 'Browse room types',
     icon: Bookmark,
   },
   {

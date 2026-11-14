@@ -368,7 +368,11 @@ function createRoom(property: PropertySeed, room: RoomSeed): AccommodationRoomRe
     ...featureFields.storage,
     ...featureFields.studyFacilities,
   ])]
-  const primaryAmount = room.price2027 ?? room.price2026
+  const researchedRate = property.slug === 'triumph-house'
+    && room.name === 'Platinum Plus En-suite Serviced Apartment'
+    ? 239
+    : null
+  const primaryAmount = room.price2027 ?? room.price2026 ?? researchedRate
   const primaryYear = room.price2027 !== null ? '2027/28' : room.price2026 !== null ? '2026/27' : null
   const floorplans = plans.map(({ asset, label }) => ({ image: asset.localPath, label }))
 
@@ -384,7 +388,7 @@ function createRoom(property: PropertySeed, room: RoomSeed): AccommodationRoomRe
     pricePerNight: null,
     priceLabel: primaryAmount === null
       ? null
-      : `£${primaryAmount.toFixed(Number.isInteger(primaryAmount) ? 0 : 2)}/week · ${primaryYear}`,
+      : `£${primaryAmount.toFixed(Number.isInteger(primaryAmount) ? 0 : 2)}/week`,
     available: null,
     status: room.soldOut2027
       ? 'Sold out on the official 2027/28 listing at capture; room count not published.'
@@ -398,6 +402,12 @@ function createRoom(property: PropertySeed, room: RoomSeed): AccommodationRoomRe
     academicYear: primaryYear,
     features,
     priceConfidence: primaryAmount === null ? null : 'published',
+    priceSourceUrl: researchedRate !== null
+      ? 'https://www.shurieducation.com/accommodations/triumph-house-nottingham'
+      : roomUrl,
+    pricingBasis: researchedRate !== null
+      ? 'Published third-party rate for this exact room type at Triumph House: £239/week for a 51-week stay; retained as the closest published same-room price after current Study Inn listings showed no price.'
+      : primaryAmount === null ? null : 'Published Study Inn or University of Bristol room rate, with source URL retained in this record.',
     floorplan: floorplans.find((plan) => !plan.label.toLocaleLowerCase().includes('shared'))?.image ?? floorplans[0]?.image ?? null,
     floorplans,
     floorplanNote: floorplans.length ? 'Study Inn states that photographs and 3D plans are illustrative and that room dimensions and layouts may vary.' : null,
@@ -667,6 +677,7 @@ function makeProperty(seed: PropertySeed): AccommodationListingRecord {
   ]))
   const coverAsset = propertyGalleryAssets.find((asset) => /exterior|building|property/i.test(asset.sourceFilename)) ?? propertyGalleryAssets[0]
   const buildingName = seed.slug === 'james-street' ? 'James Street (coming soon)' : seed.name
+  const yorkEstimate = seed.slug === 'james-street'
   return {
     provider: 'study-inn',
     key: getUrlFallbackKey(seed.propertyUrl),
@@ -674,6 +685,13 @@ function makeProperty(seed: PropertySeed): AccommodationListingRecord {
     city: seed.city,
     country: 'United Kingdom',
     name: seed.name,
+    ...(yorkEstimate ? {
+      propertyPriceFrom: 250,
+      propertyPriceLabel: '£250/week',
+      propertyPriceConfidence: 'indicative' as const,
+      propertyPriceSourceUrl: 'https://www.graddinghomes.com/uk/student-accommodation-in-york',
+      propertyPricingBasis: 'Estimate for this coming-soon property: York student accommodation market mean reported at about £225/week; rounded premium uplift of approximately 11% to reflect Study Inn’s official positioning as premium, all-inclusive accommodation with wellness and gym facilities. Rounded to the nearest £10. Comparable source: https://www.graddinghomes.com/uk/student-accommodation-in-york; property positioning: https://studyinn.com/student-accommodation/york/james-street/.',
+    } : {}),
     buildings: [{ name: buildingName, address: seed.address, postcode: seed.postcode, unitsAvailable: null }],
     address: [seed.address, seed.postcode].filter(Boolean).join(', ') || null,
     description: seed.description,

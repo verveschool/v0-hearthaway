@@ -4,7 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { ArrowRight, Building2, MapPin, Search } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
-import { formatSourcePrice, PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
+import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 type AccommodationListingsProps = {
   cities: string[]
@@ -66,9 +66,11 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
-          <p className="text-sm font-semibold text-[#1A1A1A]">
-            {!startingRoom ? 'Price not provided' : <>From <span className="text-[#00319D]">{startingRoom.priceLabel ?? formatSourcePrice(startingRoom.priceFrom ?? 0)}</span></>}
-          </p>
+          <div className="text-sm font-semibold text-[#1A1A1A]">
+            <p>From <span className="text-[#00319D]">{startingRoom?.priceLabel ?? listing.propertyPriceLabel}</span></p>
+            <p className="mt-2 text-[11px] font-bold tracking-wide text-[#6B6860]">Availability</p>
+            <p className="mt-1 max-w-[260px] text-xs font-normal leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
+          </div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
             View property <ArrowRight aria-hidden="true" className="size-4 transition-transform group-hover:translate-x-1" />
           </span>
@@ -115,7 +117,7 @@ export default function AccommodationListings({
       <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
         <div className="sm:col-span-2 xl:col-span-1">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
-            Available Properties
+            Student Properties
           </h2>
           <p className="mt-2 text-sm text-[#6B6860]" aria-live="polite">
             {visibleListings.length} {visibleListings.length === 1 ? 'property' : 'properties'}
@@ -147,10 +149,6 @@ export default function AccommodationListings({
           </select>
         </label>
       </div>
-
-      <p className="mt-5 text-sm leading-relaxed text-[#6B6860]">
-        {PRICE_AVAILABILITY_NOTICE}
-      </p>
 
       {visibleListings.length > 0 ? (
         <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">

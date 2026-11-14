@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -217,11 +218,11 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Partner properties in {university.city}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">Explore current Vita Student and STACEY properties and their available rooms in {university.city}. Confirm travel distance and availability with an advisor.</p>
+                    <p className="text-[#6B6860] text-base leading-relaxed">Compare property details, room categories and travel distances in {university.city}.</p>
                   </div>
                   <Link href={`/accommodation?query=${encodeURIComponent(university.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">Browse properties</Link>
                 </div>
-                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No partner properties are currently listed in {university.city}. Browse the full inventory to explore other destinations.</p>}
+                {universityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{universityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.city} · {property.roomTypes.slice(0, 2).join(' · ')}</p><p className="mt-3 text-sm font-bold text-[#00319D]">From {property.propertyPriceLabel}</p><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No partner properties are currently listed in {university.city}. Browse the full inventory to explore other destinations.</p>}
               </section>
 
               {relatedUniversities.length > 0 && (
