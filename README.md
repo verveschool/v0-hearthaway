@@ -2,6 +2,10 @@
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [v0](https://v0.app).
 
+## Product and design context
+
+Start with [HearthAway product and design context](docs/product-design-context.md) for product purpose, users, brand, navigation, inventory relationships, permissions, workflows and known evidence gaps. It distinguishes confirmed decisions from verified implementation and proposed investigations.
+
 ## Built with v0
 
 This repository is linked to a [v0](https://v0.app) project. You can continue developing by visiting the link below -- start new chats to make changes, and v0 will push commits directly to this repo. Every merge to `main` will automatically deploy.

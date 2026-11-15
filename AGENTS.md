@@ -2,6 +2,10 @@
 
 These instructions apply to the entire repository. HearthAway is a student-accommodation and moving-abroad guidance site operated by Jiraiya Education LLP. Preserve the existing product voice: practical, reassuring, editorial, and trustworthy rather than sales-heavy.
 
+## Product and design context
+
+Read [docs/product-design-context.md](docs/product-design-context.md) before Product Design work. It records owner-confirmed decisions, source-verified behaviour, inventory relationships and evidence gaps. Preserve the existing implementation unless the task authorizes product changes.
+
 ## Product surface
 
 - Runtime: Next.js 16 App Router, React 19, TypeScript, and Tailwind CSS v4.
@@ -32,8 +36,9 @@ These instructions apply to the entire repository. HearthAway is a student-accom
 
 ## HearthAway brand system
 
-- Primary blue: `#00319D`. Use for brand anchors, primary actions, links, and strong navigation emphasis.
-- Accent gold: `#FCC20A`. Use intentionally for highlights, secondary emphasis, badges, and selected action details; do not turn every element into a yellow CTA.
+- Primary blue: `#01329C`. Use for brand anchors, primary actions, links, and strong navigation emphasis.
+- Accent gold: `#FEBB01`. Use intentionally for highlights, secondary emphasis, badges, and selected action details; do not turn every element into a yellow CTA.
+- Black: `#000000`. Use for brand text and primary CTA borders/text where established.
 - White: `#FFFFFF`. Use for clean surfaces and contrast against the primary blue.
 - Warm gray: `#F7F6F3`. Use for soft page backgrounds and editorial section separation.
 - Mid gray: `#E8E6E1`. Use for borders, dividers, and quiet surfaces.
