@@ -279,6 +279,12 @@ export default function Navbar() {
                   return !currentIsOpen
                 })
               }}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  closeMobileDrawer()
+                  menuButtonRef.current?.focus()
+                }
+              }}
               aria-label={
                 isOpen ? 'Close navigation menu' : 'Open navigation menu'
               }
