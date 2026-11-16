@@ -143,13 +143,11 @@ export default function Navbar() {
                 className="group relative py-2"
                 onMouseEnter={() => {
                   if (link.dropdown && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-
                     setActiveDropdown(idx)
                   }
                 }}
                 onMouseLeave={(event) => {
                   if (!event.currentTarget.contains(document.activeElement)) {
-
                     setActiveDropdown(null)
                   }
                 }}
@@ -160,14 +158,12 @@ export default function Navbar() {
                     !(nextTarget instanceof Node) ||
                     !event.currentTarget.contains(nextTarget)
                   ) {
-
                     setActiveDropdown(null)
                   }
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
                     event.preventDefault()
-
                     setActiveDropdown(null)
 
                     event.currentTarget
@@ -182,7 +178,6 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => {
-
                           setActiveDropdown(null)
                         }}
                         className="rounded-lg py-2 pl-2.5 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"

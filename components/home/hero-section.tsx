@@ -118,7 +118,7 @@ export default function HeroSection() {
 
           <nav
             aria-label="Browse student properties by country"
-            className="mt-6 flex flex-wrap items-center gap-1.5 sm:flex-col sm:items-start sm:gap-2"
+            className="mt-6 flex flex-wrap items-center gap-1.5 sm:flex-col sm:flex-nowrap sm:items-start sm:gap-2"
           >
             {[countries.slice(0, 6), countries.slice(6, 12), countries.slice(12)].map(
               (row, rowIndex) => (
