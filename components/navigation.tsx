@@ -75,6 +75,7 @@ export default function Navbar() {
   const [openMobileDropdown, setOpenMobileDropdown] = useState<number | null>(null)
 
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const dropdownOpenedByHover = useRef(false)
 
   const closeMobileDrawer = useCallback(() => {
     setIsOpen(false)
@@ -83,7 +84,7 @@ export default function Navbar() {
 
   useEffect(() => {
     const desktopNavigation = window.matchMedia(
-      '(min-width: 1280px) and (hover: hover) and (pointer: fine)'
+      '(min-width: 1024px)'
     )
 
     const closeDrawerOnDesktop = () => {
@@ -119,7 +120,7 @@ export default function Navbar() {
                 alt=""
                 width={128}
                 height={128}
-                className="size-12 sm:size-14 xl:hidden"
+                className="size-12 sm:size-14 lg:hidden"
                 priority
               />
 
@@ -129,28 +130,29 @@ export default function Navbar() {
                 alt="HearthAway"
                 width={336}
                 height={100}
-                className="hidden h-auto w-[13rem] translate-y-1 xl:block 2xl:w-[15rem]"
+                className="hidden h-auto w-44 translate-y-1 lg:block xl:w-[13rem] 2xl:w-[15rem]"
                 priority
               />
             </Link>
           </div>
 
           {/* Desktop navigation */}
-          <div className="nav-desktop-layout hidden min-w-0 flex-1 items-center justify-center gap-1.5 xl:flex 2xl:gap-2">
+          <div className="nav-desktop-layout hidden min-w-0 flex-1 items-center justify-center gap-1.5 lg:flex 2xl:gap-2">
             {navLinks.map((link, idx) => (
               <div
                 key={`desktop-main-${link.label}`}
                 className="group relative py-2"
                 onMouseEnter={() => {
-                  if (link.dropdown) setActiveDropdown(idx)
+                  if (link.dropdown && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    dropdownOpenedByHover.current = true
+                    setActiveDropdown(idx)
+                  }
                 }}
                 onMouseLeave={(event) => {
                   if (!event.currentTarget.contains(document.activeElement)) {
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
                   }
-                }}
-                onFocus={() => {
-                  if (link.dropdown) setActiveDropdown(idx)
                 }}
                 onBlur={(event) => {
                   const nextTarget = event.relatedTarget
@@ -159,12 +161,14 @@ export default function Navbar() {
                     !(nextTarget instanceof Node) ||
                     !event.currentTarget.contains(nextTarget)
                   ) {
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
                   }
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
                     event.preventDefault()
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
 
                     event.currentTarget
@@ -178,11 +182,15 @@ export default function Navbar() {
                     <button
                       id={`desktop-button-${idx}`}
                       type="button"
-                      onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === idx ? null : idx
-                        )
-                      }
+                      onClick={() => {
+                        // Keep a hover-open menu open on the first click.
+                        if (dropdownOpenedByHover.current) {
+                          dropdownOpenedByHover.current = false
+                          setActiveDropdown(idx)
+                        } else {
+                          setActiveDropdown(activeDropdown === idx ? null : idx)
+                        }
+                      }}
                       className="nav-link flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
                       aria-expanded={activeDropdown === idx}
                       aria-controls={`desktop-dropdown-${idx}`}
@@ -210,7 +218,7 @@ export default function Navbar() {
                           <Link
                             key={subLink.label}
                             href={subLink.href}
-                            className={`flex min-h-10 items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#F7F6F3] hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] ${
+                            className={`flex min-h-11 items-center rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-[#F7F6F3] hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] ${
                               subLink.dividerAfter
                                 ? 'mb-2 border-b border-[#E8E6E1] pb-3'
                                 : ''
@@ -235,7 +243,7 @@ export default function Navbar() {
           </div>
 
           {/* Desktop actions */}
-          <div className="nav-desktop-layout hidden items-center gap-2 xl:flex">
+          <div className="nav-desktop-layout hidden items-center gap-2 lg:flex">
             <Link
               href="/account"
               className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
@@ -253,7 +261,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobile actions */}
-          <div className="nav-mobile-layout flex items-center gap-2 xl:hidden">
+          <div className="nav-mobile-layout flex items-center gap-2 lg:hidden">
             <Link
               href="/account"
               className="secondary-cta inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold"
@@ -270,6 +278,12 @@ export default function Navbar() {
                   if (currentIsOpen) setOpenMobileDropdown(null)
                   return !currentIsOpen
                 })
+              }}
+              onKeyDown={(event) => {
+                if (event.key === 'Escape') {
+                  closeMobileDrawer()
+                  menuButtonRef.current?.focus()
+                }
               }}
               aria-label={
                 isOpen ? 'Close navigation menu' : 'Open navigation menu'
@@ -291,10 +305,11 @@ export default function Navbar() {
       {/* Mobile navigation drawer */}
       <div
         id="mobile-navigation-panel"
+        hidden={!isOpen}
         aria-hidden={!isOpen}
         inert={!isOpen}
         data-open={isOpen}
-        className="nav-mobile-panel overscroll-contain border-t border-[#E8E6E1] bg-white px-4 pb-6 pt-2 shadow-[0_18px_40px_rgba(15,23,42,0.08)] xl:hidden"
+        className="nav-mobile-panel overscroll-contain border-t border-[#E8E6E1] bg-white px-4 pb-6 pt-2 shadow-[0_18px_40px_rgba(15,23,42,0.08)] lg:hidden"
         onKeyDown={(event) => {
           if (event.key === 'Escape') {
             closeMobileDrawer()

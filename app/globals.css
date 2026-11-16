@@ -259,20 +259,6 @@ html.home-motion-ready [data-home-reveal].home-revealed {
   --home-reveal-delay: 210ms;
 }
 
-@media (hover: none) and (pointer: coarse) {
-  .nav-desktop-layout {
-    display: none !important;
-  }
-
-  .nav-mobile-layout {
-    display: flex !important;
-  }
-
-  .nav-mobile-panel:not([hidden]) {
-    display: block !important;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

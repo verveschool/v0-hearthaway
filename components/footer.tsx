@@ -107,8 +107,8 @@ export default function Footer() {
 
       {/* Footer navigation */}
       <section className="bg-white text-[#171717]">
-        <div className="mx-auto max-w-7xl px-6 py-12 sm:px-10 lg:px-8 lg:py-14">
-          <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 xl:grid-cols-4 xl:gap-8">
+        <div className="mx-auto max-w-7xl px-6 py-8 sm:px-10 sm:py-10 lg:px-8 lg:py-12">
+          <div className="grid grid-cols-2 gap-x-5 gap-y-8 sm:gap-10 xl:grid-cols-4 xl:gap-8">
 
             {/* Destinations */}
             <FooterLinkGroup
@@ -138,7 +138,7 @@ export default function Footer() {
                 <p>
                   <a
                     href="mailto:faraz@hearthaway.com"
-                    className="underline transition-colors hover:text-[#01329C]"
+                    className="break-words underline transition-colors hover:text-[#01329C]"
                   >
                     faraz@hearthaway.com
                   </a>
@@ -183,11 +183,11 @@ export default function Footer() {
         <ReviewCollector />
 
         {/* Bottom row */}
-        <div className="mx-auto mt-10 max-w-7xl px-6 sm:px-10 lg:px-8">
-          <div className="flex flex-col gap-6 border-t border-[#E5E5E5] py-7 md:flex-row md:items-center md:justify-between">
+        <div className="mx-auto max-w-7xl px-6 sm:px-10 lg:px-8">
+          <div className="grid gap-3 py-6 sm:grid-cols-[1fr_auto] sm:items-center lg:grid-cols-[auto_1fr_auto] lg:gap-x-6">
 
             {/* Logo and social links */}
-            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:gap-6">
+            <div className="flex items-center justify-between gap-4 sm:col-span-2 lg:col-span-1">
               <Link
                 href="/"
                 aria-label="HearthAway home"
@@ -198,15 +198,15 @@ export default function Footer() {
                   alt="HearthAway"
                   width={336}
                   height={100}
-                  className="h-auto w-[13rem] translate-y-1 sm:w-[14rem]"
+                  className="h-auto w-36 sm:w-44 lg:w-40 xl:w-44"
                 />
               </Link>
 
-              <div className="flex items-center gap-5 sm:border-l sm:border-[#E5E5E5] sm:pl-6">
+              <div className="flex shrink-0 items-center gap-1">
                 <a
                   href="https://www.linkedin.com/company/hearthaway"
                   aria-label="LinkedIn"
-                  className="text-[#01329C]/60 transition-colors hover:text-[#01329C]"
+                  className="inline-flex size-11 items-center justify-center rounded-lg text-[#01329C]/60 transition-colors hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
                 >
                   <svg
                     width="20"
@@ -228,7 +228,7 @@ export default function Footer() {
                 <a
                   href="https://www.instagram.com/hearthaway_official"
                   aria-label="Instagram"
-                  className="text-[#01329C]/60 transition-colors hover:text-[#01329C]"
+                  className="inline-flex size-11 items-center justify-center rounded-lg text-[#01329C]/60 transition-colors hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
                 >
                   <svg
                     width="20"
@@ -250,29 +250,29 @@ export default function Footer() {
             </div>
 
             {/* Copyright */}
-            <p className="text-xs font-normal text-[#6B6B6B] md:text-sm">
+            <p className="text-xs font-normal text-[#6B6B6B] lg:text-center">
               © 2026 JIRAIYA EDUCATION LLP
             </p>
 
             {/* Legal */}
-            <div className="flex gap-5 text-xs font-normal text-[#6B6B6B] md:text-sm">
+            <div className="flex flex-wrap items-center gap-x-5 text-xs font-normal text-[#6B6B6B]">
               <Link
                 href="/privacy"
-                className="transition-colors hover:text-[#01329C]"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
               >
                 Privacy
               </Link>
 
               <Link
                 href="/terms"
-                className="transition-colors hover:text-[#01329C]"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
               >
                 Terms
               </Link>
 
               <Link
                 href="/cookies"
-                className="transition-colors hover:text-[#01329C]"
+                className="inline-flex min-h-11 items-center transition-colors hover:text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
               >
                 Cookies
               </Link>
