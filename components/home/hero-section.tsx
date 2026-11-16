@@ -118,17 +118,23 @@ export default function HeroSection() {
 
           <nav
             aria-label="Browse student properties by country"
-            className="mt-6 flex flex-wrap gap-2"
+            className="mt-6 flex flex-wrap items-center gap-1.5 sm:flex-col sm:flex-nowrap sm:items-start sm:gap-2"
           >
-            {countries.map((country) => (
-              <Link
-                key={country}
-                href={countryLinks[country] ?? '/universities'}
-                className="country-chip inline-flex min-h-11 max-w-full items-center justify-center whitespace-nowrap rounded-full border border-[#01329C]/15 bg-white/85 px-3 py-2 text-[10px] font-bold uppercase tracking-[0.08em] text-[#01329C] transition-all hover:border-[#01329C] hover:bg-[#01329C] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] focus-visible:ring-offset-2 sm:text-[11px]"
-              >
-                {country}
-              </Link>
-            ))}
+            {[countries.slice(0, 6), countries.slice(6, 12), countries.slice(12)].map(
+              (row, rowIndex) => (
+                <div key={rowIndex} className="contents sm:flex sm:flex-wrap sm:items-center sm:gap-2">
+                  {row.map((country) => (
+                    <Link
+                      key={country}
+                      href={countryLinks[country] ?? '/universities'}
+                      className="country-chip inline-flex min-h-8 items-center rounded-full border border-[#01329C]/15 bg-white/85 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.08em] text-[#01329C] transition-all hover:border-[#01329C] hover:bg-[#01329C] hover:text-white active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C] focus-visible:ring-offset-2 sm:text-[11px]"
+                    >
+                      {country}
+                    </Link>
+                  ))}
+                </div>
+              )
+            )}
           </nav>
         </div>
 
