@@ -75,7 +75,6 @@ export default function Navbar() {
   const [openMobileDropdown, setOpenMobileDropdown] = useState<number | null>(null)
 
   const menuButtonRef = useRef<HTMLButtonElement>(null)
-  const dropdownOpenedByHover = useRef(false)
 
   const closeMobileDrawer = useCallback(() => {
     setIsOpen(false)
@@ -144,13 +143,13 @@ export default function Navbar() {
                 className="group relative py-2"
                 onMouseEnter={() => {
                   if (link.dropdown && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-                    dropdownOpenedByHover.current = true
+
                     setActiveDropdown(idx)
                   }
                 }}
                 onMouseLeave={(event) => {
                   if (!event.currentTarget.contains(document.activeElement)) {
-                    dropdownOpenedByHover.current = false
+
                     setActiveDropdown(null)
                   }
                 }}
@@ -161,14 +160,14 @@ export default function Navbar() {
                     !(nextTarget instanceof Node) ||
                     !event.currentTarget.contains(nextTarget)
                   ) {
-                    dropdownOpenedByHover.current = false
+
                     setActiveDropdown(null)
                   }
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
                     event.preventDefault()
-                    dropdownOpenedByHover.current = false
+
                     setActiveDropdown(null)
 
                     event.currentTarget
@@ -183,7 +182,7 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => {
-                          dropdownOpenedByHover.current = false
+
                           setActiveDropdown(null)
                         }}
                         className="rounded-lg py-2 pl-2.5 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
@@ -193,14 +192,9 @@ export default function Navbar() {
                       <button
                         id={`desktop-button-${idx}`}
                         type="button"
-                        onClick={() => {
-                          if (dropdownOpenedByHover.current) {
-                            dropdownOpenedByHover.current = false
-                            setActiveDropdown(idx)
-                          } else {
-                            setActiveDropdown(activeDropdown === idx ? null : idx)
-                          }
-                        }}
+                        onClick={() =>
+                          setActiveDropdown(activeDropdown === idx ? null : idx)
+                        }
                         className="rounded-lg p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
                         aria-label={`Toggle ${link.label} menu`}
                         aria-expanded={activeDropdown === idx}
