@@ -24,7 +24,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
 {
   label: 'Destinations',
-  href: '/universities',
+  href: '/cities',
   dropdown: [
     { label: 'All Universities', href: '/universities' },
     { label: 'All Cities', href: '/cities', dividerAfter: true },
@@ -179,31 +179,41 @@ export default function Navbar() {
               >
                 {link.dropdown ? (
                   <>
-                    <button
-                      id={`desktop-button-${idx}`}
-                      type="button"
-                      onClick={() => {
-                        // Keep a hover-open menu open on the first click.
-                        if (dropdownOpenedByHover.current) {
+                    <div className="nav-link flex items-center rounded-lg text-sm font-bold text-[#01329C]">
+                      <Link
+                        href={link.href}
+                        onClick={() => {
                           dropdownOpenedByHover.current = false
-                          setActiveDropdown(idx)
-                        } else {
-                          setActiveDropdown(activeDropdown === idx ? null : idx)
-                        }
-                      }}
-                      className="nav-link flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
-                      aria-expanded={activeDropdown === idx}
-                      aria-controls={`desktop-dropdown-${idx}`}
-                    >
-                      {link.label}
-
-                      <ChevronDown
-                        className={`h-4 w-4 transition-transform duration-200 ${
-                          activeDropdown === idx ? 'rotate-180' : ''
-                        }`}
-                        aria-hidden="true"
-                      />
-                    </button>
+                          setActiveDropdown(null)
+                        }}
+                        className="rounded-lg py-2 pl-2.5 pr-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        id={`desktop-button-${idx}`}
+                        type="button"
+                        onClick={() => {
+                          if (dropdownOpenedByHover.current) {
+                            dropdownOpenedByHover.current = false
+                            setActiveDropdown(idx)
+                          } else {
+                            setActiveDropdown(activeDropdown === idx ? null : idx)
+                          }
+                        }}
+                        className="rounded-lg p-1.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#01329C]"
+                        aria-label={`Toggle ${link.label} menu`}
+                        aria-expanded={activeDropdown === idx}
+                        aria-controls={`desktop-dropdown-${idx}`}
+                      >
+                        <ChevronDown
+                          className={`h-4 w-4 transition-transform duration-200 ${
+                            activeDropdown === idx ? 'rotate-180' : ''
+                          }`}
+                          aria-hidden="true"
+                        />
+                      </button>
+                    </div>
 
                     <div
                       id={`desktop-dropdown-${idx}`}
@@ -325,26 +335,34 @@ export default function Navbar() {
             >
               {link.dropdown ? (
                 <div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setOpenMobileDropdown(
-                        openMobileDropdown === idx ? null : idx
-                      )
-                    }
-                    aria-expanded={openMobileDropdown === idx}
-                    aria-controls={`mobile-dropdown-${idx}`}
-                    className="nav-link flex min-h-11 w-full items-center justify-between rounded-lg px-3 py-2 text-sm font-bold text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
-                  >
-                    {link.label}
-
-                    <ChevronDown
-                      className={`h-4 w-4 transition-transform ${
-                        openMobileDropdown === idx ? 'rotate-180' : ''
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </button>
+                  <div className="flex items-center">
+                    <Link
+                      href={link.href}
+                      onClick={closeMobileDrawer}
+                      className="nav-link flex min-h-11 min-w-0 flex-1 items-center rounded-lg px-3 py-2 text-sm font-bold text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
+                    >
+                      {link.label}
+                    </Link>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenMobileDropdown(
+                          openMobileDropdown === idx ? null : idx
+                        )
+                      }
+                      aria-label={`Toggle ${link.label} menu`}
+                      aria-expanded={openMobileDropdown === idx}
+                      aria-controls={`mobile-dropdown-${idx}`}
+                      className="nav-link inline-flex size-11 shrink-0 items-center justify-center rounded-lg text-[#01329C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#01329C]"
+                    >
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform ${
+                          openMobileDropdown === idx ? 'rotate-180' : ''
+                        }`}
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
 
                   <div
                     id={`mobile-dropdown-${idx}`}
