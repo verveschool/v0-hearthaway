@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { redirect } from 'next/navigation'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
+import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 import {
   AddRoomToShortlistForm,
   CreateShortlistForm,
@@ -376,6 +377,7 @@ export default async function AccountPage({
           {recommendations.length > 0 ? (
             <section className="mt-6 rounded-2xl border border-[#E8E6E1] bg-white p-6 sm:p-8">
               <SectionHeading title="Advisor room recommendations" />
+              <p className="mb-4 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
 
               <div className="grid gap-3 sm:grid-cols-2">
                 {recommendations.map(

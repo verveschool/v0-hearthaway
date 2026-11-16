@@ -71,7 +71,7 @@ export async function generateMetadata({
   const title = `${property.name} student accommodation in ${property.city} | HearthAway`
   const description =
     property.description ??
-    `Compare room types, prices and availability at ${property.name} in ${property.city}. Get help from HearthAway before you book.`
+    `Compare room types, prices and property details at ${property.name} in ${property.city}. Get help from HearthAway before you book.`
   const images = getPropertyImages(property)
 
   return {
@@ -249,7 +249,7 @@ export default async function PropertyDetailPage({
             <div className="flex aspect-[16/8] max-h-[560px] flex-col items-center justify-center gap-3 rounded-2xl bg-[#E8E6E1] text-[#6B6860]">
               <Building2 aria-hidden="true" className="size-12" />
               <p className="text-sm font-semibold">
-                Photos are not available for this property yet.
+                Property photos coming soon.
               </p>
             </div>
           )}
@@ -268,8 +268,7 @@ export default async function PropertyDetailPage({
                   </p>
                 ) : (
                   <p className="text-sm leading-relaxed text-[#6B6860]">
-                    Explore the room options and practical details currently
-                    available for this property.
+                    Explore the room options and practical details for this property.
                   </p>
                 )}
 
@@ -336,7 +335,7 @@ export default async function PropertyDetailPage({
                             />
                           ) : (
                             <div className="flex aspect-[16/10] items-center justify-center bg-[#F7F6F3] px-4 text-center text-sm text-[#6B6860]">
-                              No room image provided for this type
+                              Room photos coming soon
                             </div>
                           )}
 
@@ -359,7 +358,6 @@ export default async function PropertyDetailPage({
                               </div>
 
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
-                                <p className="text-xs font-bold tracking-wide text-[#6B6860]">Availability</p>
                                 <p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
                               </div>
                             </div>
@@ -612,3 +610,4 @@ export default async function PropertyDetailPage({
     </>
   )
 }
+

@@ -23,12 +23,12 @@ const discoveryPaths = [
   },
   {
     label: 'Browse properties',
-    description: 'Compare student properties, then open one to explore its available rooms.',
+    description: 'Compare student properties, then open one to explore its room types.',
     href: '/accommodation',
     icon: Building2,
   },
   {
-    label: 'Browse available rooms',
+    label: 'Browse room types',
     description: 'Go straight to room listings and see which property each room belongs to.',
     href: '/accommodation/rooms',
     icon: BedDouble,
@@ -98,3 +98,4 @@ export default function TotalHomeDiscovery() {
     </section>
   )
 }
+

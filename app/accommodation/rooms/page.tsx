@@ -180,9 +180,6 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                         </div>
 
                         <div className="text-right">
-                          <p className="text-[11px] font-bold tracking-wide text-[#6B6860]">
-                            Availability
-                          </p>
                           <p className="mt-2 rounded-lg bg-[#F7F6F3] p-3 text-left text-xs leading-relaxed text-[#6B6860]">
                             {PRICE_AVAILABILITY_NOTICE}
                           </p>
@@ -210,3 +207,4 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
     </>
   )
 }
+
