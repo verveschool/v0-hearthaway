@@ -75,6 +75,7 @@ export default function Navbar() {
   const [openMobileDropdown, setOpenMobileDropdown] = useState<number | null>(null)
 
   const menuButtonRef = useRef<HTMLButtonElement>(null)
+  const dropdownOpenedByHover = useRef(false)
 
   const closeMobileDrawer = useCallback(() => {
     setIsOpen(false)
@@ -142,15 +143,16 @@ export default function Navbar() {
                 key={`desktop-main-${link.label}`}
                 className="group relative py-2"
                 onMouseEnter={() => {
-                  if (link.dropdown) setActiveDropdown(idx)
+                  if (link.dropdown && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+                    dropdownOpenedByHover.current = true
+                    setActiveDropdown(idx)
+                  }
                 }}
                 onMouseLeave={(event) => {
                   if (!event.currentTarget.contains(document.activeElement)) {
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
                   }
-                }}
-                onFocus={() => {
-                  if (link.dropdown) setActiveDropdown(idx)
                 }}
                 onBlur={(event) => {
                   const nextTarget = event.relatedTarget
@@ -159,12 +161,14 @@ export default function Navbar() {
                     !(nextTarget instanceof Node) ||
                     !event.currentTarget.contains(nextTarget)
                   ) {
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
                   }
                 }}
                 onKeyDown={(event) => {
                   if (event.key === 'Escape') {
                     event.preventDefault()
+                    dropdownOpenedByHover.current = false
                     setActiveDropdown(null)
 
                     event.currentTarget
@@ -178,11 +182,15 @@ export default function Navbar() {
                     <button
                       id={`desktop-button-${idx}`}
                       type="button"
-                      onClick={() =>
-                        setActiveDropdown(
-                          activeDropdown === idx ? null : idx
-                        )
-                      }
+                      onClick={() => {
+                        // Keep a hover-open menu open on the first click.
+                        if (dropdownOpenedByHover.current) {
+                          dropdownOpenedByHover.current = false
+                          setActiveDropdown(idx)
+                        } else {
+                          setActiveDropdown(activeDropdown === idx ? null : idx)
+                        }
+                      }}
                       className="nav-link flex items-center gap-1 rounded-lg px-2.5 py-2 text-sm font-bold text-[#01329C]"
                       aria-expanded={activeDropdown === idx}
                       aria-controls={`desktop-dropdown-${idx}`}
