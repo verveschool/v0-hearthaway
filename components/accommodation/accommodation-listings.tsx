@@ -34,6 +34,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
       <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F0EC]">
         {previewImage ? (
           <CatalogueImage
+            card
             src={previewImage}
             sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
             alt={listing.galleryLabels?.[previewImage] ?? (previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`)}
