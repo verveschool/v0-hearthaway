@@ -2,16 +2,16 @@
 
 import { useState, type ComponentPropsWithoutRef } from 'react'
 
-type CatalogueImageProps = Omit<ComponentPropsWithoutRef<'img'>, 'src'> & { src: string }
+type CatalogueImageProps = Omit<ComponentPropsWithoutRef<'img'>, 'src'> & { src: string; card?: boolean }
 
 /** Resize local photos via Vercel and Vita photos via their source CDN. */
-export default function CatalogueImage({ src, alt, sizes = '100vw', onError, ...props }: CatalogueImageProps) {
+export default function CatalogueImage({ src, alt, sizes = '100vw', card = false, onError, ...props }: CatalogueImageProps) {
   const [failedSource, setFailedSource] = useState<string | null>(null)
   const isLocal = src.startsWith('/') && !src.startsWith('//')
   const isVita = /^https:\/\/cdn\.brandfolder\.io\/2EZAWJN8\/as\/[^?#]+$/.test(src)
   const optimize = (isLocal || isVita) && failedSource !== src
   const optimized = (width: number) => isVita
-    ? `${src}?width=${width}`
+    ? card ? `/_next/image?url=${encodeURIComponent(`${src}?width=${width}`)}&w=${width}&q=75` : `${src}?width=${width}`
     : `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
   const widths = [384, 640, 828, 1200, 1920]
 
