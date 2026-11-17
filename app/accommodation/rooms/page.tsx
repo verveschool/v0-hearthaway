@@ -1,4 +1,5 @@
 
+import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
@@ -18,11 +19,11 @@ export const metadata: Metadata = {
 }
 
 type RoomsPageProps = {
-  searchParams: Promise<{ city?: string; query?: string }>
+  searchParams: Promise<{ city?: string; query?: string; page?: string }>
 }
 
 export default async function RoomsPage({ searchParams }: RoomsPageProps) {
-  const { city = '', query = '' } = await searchParams
+  const { city = '', query = '', page = '1' } = await searchParams
 
   const normalizedQuery = query.trim().slice(0, 100).toLocaleLowerCase()
   const selectedCity = accommodationCities.includes(city) ? city : ''
@@ -42,6 +43,18 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       .toLocaleLowerCase()
       .includes(normalizedQuery)
   })
+
+  const pageCount = Math.max(1, Math.ceil(rooms.length / 12))
+  const requestedPage = Number(page)
+  const currentPage = Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1
+  const pageUrl = (target: number) => {
+    const params = new URLSearchParams()
+    if (selectedCity) params.set('city', selectedCity)
+    if (query.trim()) params.set('query', query.trim().slice(0, 100))
+    if (target > 1) params.set('page', String(target))
+    const suffix = params.toString()
+    return `/accommodation/rooms${suffix ? `?${suffix}` : ''}`
+  }
 
   return (
     <>
@@ -126,7 +139,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {rooms.map(({ slug, property, room }) => (
+              {rooms.slice((currentPage - 1) * 12, currentPage * 12).map(({ slug, property, room }) => (
                 <article
                   key={slug}
                   className="overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md"
@@ -136,8 +149,9 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                     className="group block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#00319D]"
                   >
                     {room.image || property.coverImage ? (
-                      <img
+                      <CatalogueImage
                         src={room.image ?? property.coverImage ?? ''}
+                        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
                         alt={room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`}
                         className="aspect-[4/3] w-full bg-[#F1F0EC] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="lazy"
@@ -200,6 +214,11 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
               </p>
             </div>
           )}
+          {pageCount > 1 ? <nav aria-label="Room pages" className="mt-7 flex items-center justify-center gap-4">
+            {currentPage > 1 ? <Link href={pageUrl(currentPage - 1)} className="secondary-cta px-4 py-2">Previous</Link> : null}
+            <span className="text-sm text-[#6B6860]">Page {currentPage} of {pageCount}</span>
+            {currentPage < pageCount ? <Link href={pageUrl(currentPage + 1)} className="secondary-cta px-4 py-2">Next</Link> : null}
+          </nav> : null}
         </section>
       </main>
 
