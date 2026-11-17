@@ -1,0 +1,161 @@
+{
+  "commit": "8cf6faa85700c427eaf4a2428370160adecd9827",
+  "sourceChecksums": {
+    "app/accommodation/response.json": "66f60bc8675f9e752d4b470dad73f043a0f40162934d3f521b338c20cf56844b",
+    "app/accommodation/response-data.ts": "e57911384dfbff1927a09faebba51645c81258238d38bbd400f5cd904908d9f1",
+    "app/accommodation/stacey-inventory.json": "b14c58fdc438b66a0d75984547fb99a5179a47952f08f7d6f15ca22d2c01797b",
+    "app/accommodation/iglu-data.ts": "1ef05a1c3388a6cfb90996f0a95a6d070cc5b97f912aa176de9962ed741c9ffd",
+    "app/accommodation/iglu-images.json": "de4f9327e26cd309fdb44043f5365f68c66a87a1b13f143ff469979e4f601abc",
+    "app/accommodation/iglu-room-images.json": "982bc759e3f2318ec6f201d6884178c34d011d9a299139642ae1c5589cfc8b10",
+    "app/accommodation/iglu-property-details.json": "246f6ef605dd736f40e75176b7b35edff514fd4eab68b0e2e3130a452d3ce1ab",
+    "app/accommodation/iglu-offers.json": "8edfbbe37701b854c2f2b4895a444568e4beafa89161580d171c5389cca269b5",
+    "app/accommodation/neonwood-data.ts": "cc65b0abb745a32d86d794f6f3b9cc2bdc007f2257b314efbf5162c32eff94d5",
+    "app/accommodation/new-provider-images.json": "33702013e14b571607cfe6490a20ca2c74b968fd06df62e8cf3bd868f09a222a",
+    "app/accommodation/studyinn-data.ts": "24a66a896620078624c2c3f113bd444d6d2cd6d9b74d1a044d1a1a0ab2f84f5b",
+    "docs/studyinn-image-provenance.json": "9b87b4ce8f8b95ab6b900405c491b49bfb6218ca0bf845403454b0963ec0a7a4",
+    "app/accommodation/listing-data.ts": "45e3dab0e1e1bd27b6ba33154faaed526e0a8b9f7629cc8f54e0fa2d43bb6548",
+    "app/accommodation/presentation.ts": "4f1d8e51f83824436fa3b2432464807b4a26db348157e7e9bb88044899a2eb54",
+    "lib/country-data.ts": "eae05ed6e19a2e2f2cfa4b51dde57642973b4ac1f853f1d944deaf74ed24dbce",
+    "lib/place-data.ts": "45112e8dec3b4a0d0cbb1270e0186bc70a070ade1491f6c928426dc6c80842c6"
+  },
+  "input": {
+    "vitaSource": {
+      "properties": 35,
+      "rooms": 105
+    },
+    "vitaParsed": {
+      "properties": 35,
+      "rooms": 105
+    },
+    "stacey": {
+      "properties": 9,
+      "rooms": 49
+    },
+    "iglu": {
+      "properties": 16,
+      "rooms": 117
+    },
+    "neonwood": {
+      "properties": 9,
+      "rooms": 31
+    },
+    "studyinn": {
+      "properties": 9,
+      "rooms": 72
+    }
+  },
+  "vitaDuplicateExclusions": [],
+  "vitaImageRequirementExclusions": [
+    {
+      "city": "Manchester",
+      "name": "One Port Street",
+      "roomCount": 0,
+      "sourceKey": "manchester::one port street::one port street, 80 port street, manchester, m1 2fz"
+    },
+    {
+      "city": "Manchester",
+      "name": "Downtown",
+      "roomCount": 0,
+      "sourceKey": "manchester::downtown::downtown manchester, 7-9 woden street, manchester, m5 4yh"
+    },
+    {
+      "city": "Exeter",
+      "name": "Portland House",
+      "roomCount": 0,
+      "sourceKey": "exeter::portland house::vita student portland house, 23 longbrook street, exeter, ex4 6ab"
+    },
+    {
+      "city": "Southampton",
+      "name": "Vita Student at Portswood, Southampton",
+      "roomCount": 0,
+      "sourceKey": "southampton::vita student at portswood, southampton::vita student portswood, 236 portswood road, southampton, so17 2lb|vita student portswood, 236 portswood road, southampton, so17 2lb"
+    },
+    {
+      "city": "Glasgow",
+      "name": "Glasgow India Street",
+      "roomCount": 0,
+      "sourceKey": "glasgow::glasgow india street::, , ,"
+    }
+  ],
+  "rawAdapterOutput": {
+    "iglu": {
+      "properties": 16,
+      "rooms": 117,
+      "roomsWithoutSourceId": 117,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 37
+    },
+    "neonwood": {
+      "properties": 9,
+      "rooms": 31,
+      "roomsWithoutSourceId": 0,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 31
+    },
+    "stacey": {
+      "properties": 9,
+      "rooms": 49,
+      "roomsWithoutSourceId": 49,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    },
+    "study-inn": {
+      "properties": 9,
+      "rooms": 72,
+      "roomsWithoutSourceId": 72,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    },
+    "vita-student": {
+      "properties": 30,
+      "rooms": 105,
+      "roomsWithoutSourceId": 105,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    }
+  },
+  "publishedOutput": {
+    "iglu": {
+      "properties": 16,
+      "rooms": 117,
+      "roomsWithoutSourceId": 117,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 37
+    },
+    "neonwood": {
+      "properties": 9,
+      "rooms": 31,
+      "roomsWithoutSourceId": 0,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 31
+    },
+    "stacey": {
+      "properties": 9,
+      "rooms": 49,
+      "roomsWithoutSourceId": 49,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    },
+    "study-inn": {
+      "properties": 9,
+      "rooms": 72,
+      "roomsWithoutSourceId": 72,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    },
+    "vita-student": {
+      "properties": 30,
+      "rooms": 105,
+      "roomsWithoutSourceId": 105,
+      "roomsWithoutPrice": 0,
+      "indicativeRooms": 0
+    }
+  },
+  "placeRecords": {
+    "countries": 17,
+    "cities": 99,
+    "universities": 166
+  },
+  "duplicatePropertySlugs": [],
+  "duplicateRoomSlugs": []
+}
