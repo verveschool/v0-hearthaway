@@ -4,11 +4,15 @@ import { useState, type ComponentPropsWithoutRef } from 'react'
 
 type CatalogueImageProps = Omit<ComponentPropsWithoutRef<'img'>, 'src'> & { src: string }
 
-/** Resize repository-hosted photos via the existing Next/Vercel image endpoint. */
+/** Resize local photos via Vercel and Vita photos via their source CDN. */
 export default function CatalogueImage({ src, alt, sizes = '100vw', onError, ...props }: CatalogueImageProps) {
   const [failedSource, setFailedSource] = useState<string | null>(null)
-  const optimize = src.startsWith('/') && !src.startsWith('//') && failedSource !== src
-  const optimized = (width: number) => `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
+  const isLocal = src.startsWith('/') && !src.startsWith('//')
+  const isVita = /^https:\/\/cdn\.brandfolder\.io\/2EZAWJN8\/as\/[^?#]+$/.test(src)
+  const optimize = (isLocal || isVita) && failedSource !== src
+  const optimized = (width: number) => isVita
+    ? `${src}?width=${width}`
+    : `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
   const widths = [384, 640, 828, 1200, 1920]
 
   return <img {...props} alt={alt} sizes={optimize ? sizes : undefined}
