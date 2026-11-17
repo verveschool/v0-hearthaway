@@ -1,0 +1,50 @@
+{
+  "researchedOn": "2026-11-17",
+  "purpose": "Evidence for feed properties excluded from the existing published catalogue. These are staging candidates, not a change to public listings or an assertion of image reuse rights.",
+  "records": [
+    {
+      "feedId": "manchester-one-port-street",
+      "feedBrand": "vita-student",
+      "identifiedName": "One Port Street",
+      "operatorEvidence": "The property website markets the development as One Port St; Select Property identifies it as its Prestige Collection. Preserve the feed brand as historical source data and do not assign it as a current Vita Student property.",
+      "sourcePage": "https://oneportst-manchester.com/apartments/",
+      "additionalSource": "https://selectproperty.com/investments/one-port-street/",
+      "images": [{ "url": "https://spcdn.shortpixel.ai/spio/ret_img,q_cdnize,to_auto,s_webp:avif/oneportst-manchester.com/wp-content/uploads/2025/09/one-bed-scaled.webp", "description": "One Port St one-bedroom apartment", "attribution": "One Port St", "rightsStatus": "unverified" }]
+    },
+    {
+      "feedId": "manchester-downtown",
+      "feedBrand": "vita-student",
+      "identifiedName": "Downtown, Woden Street",
+      "operatorEvidence": "The source describes the same named Woden Street development; its exact present operator is not established. Preserve the feed attribution without treating it as verified.",
+      "sourcePage": "https://www.christopherdee.co.uk/properties/downtown-woden-street-salford",
+      "images": [{ "url": "https://www.christopherdee.co.uk/static/properties/iYq-z5woGb-600.jpeg", "description": "Downtown property image", "attribution": "Christopher Dee", "rightsStatus": "unverified" }]
+    },
+    {
+      "feedId": "portland-house",
+      "feedBrand": "vita-student",
+      "identifiedName": "Portland House, Exeter",
+      "operatorEvidence": "The asset owner's page identifies Portland House as student accommodation. The former Vita property URL returned 404 in a live browser on the research date; the present operator requires confirmation.",
+      "sourcePage": "https://www.mapletree.com.sg/property/portland-house/",
+      "historicalSource": "https://www.vitastudent.com/en/cities/exeter/portland-house/",
+      "images": [{ "url": "https://www.mapletree.com.sg/uploads/2025/02/Portland-House-Exeter.jpg", "description": "Portland House exterior", "attribution": "Mapletree", "rightsStatus": "unverified" }]
+    },
+    {
+      "feedId": "vita-student-at-portswood-southampton",
+      "feedBrand": "vita-student",
+      "identifiedName": "Portswood House, Southampton",
+      "operatorEvidence": "Now Students markets Portswood House. The construction source identifies the Vita Portswood development as Belmont and Grosvenor houses, matching the two source buildings. Room names and prices on the current operator page are new observations, not automatically mapped to old categories.",
+      "sourcePage": "https://nowstudents.co.uk/location/southampton/portswood-house/",
+      "additionalSource": "https://www.morgansindallconstruction.com/news/morgan-sindall-construction-completes-luxury-vita-student-scheme-in-southampton/",
+      "images": [{ "url": "https://public.sturents.com/photo-thumbs/9683211.png", "description": "Image displayed with Bronze Studio on the current operator's page; operator notes room layouts can vary", "attribution": "Now Students / StuRents", "rightsStatus": "unverified", "illustrative": true }]
+    },
+    {
+      "feedId": "glasgow-india-street",
+      "feedBrand": "vita-student",
+      "identifiedName": "Vita Student Charing Cross, 20 India Street, Glasgow",
+      "operatorEvidence": "The provider's page identifies Charing Cross at 20 India Street; the Vita Group identifies its India Street development at that address. The source feed coordinates are inconsistent with Glasgow and must not be used without correction.",
+      "sourcePage": "https://www.vitastudent.com/en/cities/glasgow/charing-cross/",
+      "additionalSource": "https://vitagroup.com/consultations/",
+      "images": [{ "url": "https://www.vitastudent.com/wp-content/uploads/2026/07/BF_INDIA-STREET_AMENITY_003_KMHN-3000x1500-34744b0.jpg?w=2500", "description": "Charing Cross shared dining area; provider imagery", "attribution": "Vita Student", "rightsStatus": "unverified", "illustrative": true }]
+    }
+  ]
+}

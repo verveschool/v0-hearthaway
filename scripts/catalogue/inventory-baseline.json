@@ -16,7 +16,12 @@
     "app/accommodation/listing-data.ts": "45e3dab0e1e1bd27b6ba33154faaed526e0a8b9f7629cc8f54e0fa2d43bb6548",
     "app/accommodation/presentation.ts": "4f1d8e51f83824436fa3b2432464807b4a26db348157e7e9bb88044899a2eb54",
     "lib/country-data.ts": "eae05ed6e19a2e2f2cfa4b51dde57642973b4ac1f853f1d944deaf74ed24dbce",
-    "lib/place-data.ts": "45112e8dec3b4a0d0cbb1270e0186bc70a070ade1491f6c928426dc6c80842c6"
+    "lib/place-data.ts": "45112e8dec3b4a0d0cbb1270e0186bc70a070ade1491f6c928426dc6c80842c6",
+    "lib/moving-abroad-data.ts": "5f3a724c47ea4dc2bed3da06be794fdfe0e6f3264ee635498fa95d3b5f010ba9",
+    "docs/iglu-image-provenance.md": "517ff4d5ee252fb7c3590746b6c7ca7a831c138eb794baa646d5daef7679e653",
+    "docs/neonwood-provider-evidence.md": "5a5cfee1dfb391ef75cd7a5bba1e8933d23774f8b2bb85cb48572d7284d2e815",
+    "docs/studyinn-completion-matrix.md": "c47e20f3ae296e764b5baae6a0fe15d7a0a18f36fd074886727a353323d1b32b",
+    "docs/studyinn-unresolved-fields.md": "522459060a8e7e7d6ff5c857f80b50022dc36d4d9a51c5a624c8dd6e482c6ac0"
   },
   "input": {
     "vitaSource": {
@@ -156,6 +161,29 @@
     "cities": 99,
     "universities": 166
   },
+  "media": {
+    "references": 807,
+    "uniqueUrls": 381,
+    "localReferences": 567,
+    "missingLocalPaths": []
+  },
   "duplicatePropertySlugs": [],
-  "duplicateRoomSlugs": []
+  "duplicateRoomSlugs": [],
+  "sourcePricing": {
+    "studyInnSeedRoomsWithoutAnnualPrice": [
+      {
+        "property": "Triumph House",
+        "room": "Platinum Plus En-suite Serviced Apartment",
+        "price2026": null,
+        "price2027": null
+      }
+    ],
+    "neonWoodMonthlyMissing": []
+  },
+  "sourceRoomMappingBasis": {
+    "legacy-slug-only": 154,
+    "provider-room-id": 117,
+    "adapter-source-id": 31,
+    "source-url-candidate-not-unique": 72
+  }
 }
