@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- CommonJS loader is needed to instrument the TypeScript adapters in memory. */
 // Read-only inventory of the pinned source and its current public projection.
 // Run from the repository root after installing the locked dependencies.
 const fs = require('node:fs')
