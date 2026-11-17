@@ -1,4 +1,5 @@
 
+import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -232,7 +233,7 @@ export default async function PropertyDetailPage({
           {/* Primary property image */}
           {primaryImage ? (
             <figure className="overflow-hidden rounded-2xl bg-[#E8E6E1]">
-              <img
+              <CatalogueImage
                 src={primaryImage}
                 alt={
                   primaryImageRoom
@@ -291,7 +292,7 @@ export default async function PropertyDetailPage({
                           key={`${image}-${index}`}
                           className={`${index === 0 ? 'col-span-2 row-span-2' : ''} overflow-hidden rounded-xl bg-[#F7F6F3]`}
                         >
-                          <img
+                          <CatalogueImage
                             src={image}
                             alt={
                               room
@@ -326,7 +327,7 @@ export default async function PropertyDetailPage({
                           className="overflow-hidden rounded-xl border border-[#E8E6E1] bg-white"
                         >
                           {room.image ? (
-                            <img
+                            <CatalogueImage
                               src={room.image}
                               alt={`${room.name} sample suite at ${property.name}`}
                               className="aspect-[16/10] w-full bg-[#F7F6F3] object-cover"

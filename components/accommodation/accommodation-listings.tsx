@@ -1,7 +1,8 @@
 'use client'
 
+import CatalogueImage from '@/components/accommodation/catalogue-image'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Building2, MapPin, Search } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
@@ -32,8 +33,9 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-[#F1F0EC]">
         {previewImage ? (
-          <img
+          <CatalogueImage
             src={previewImage}
+            sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
             alt={listing.galleryLabels?.[previewImage] ?? (previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`)}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
@@ -85,6 +87,8 @@ export default function AccommodationListings({
   initialCity = 'all',
   initialQuery = '',
 }: AccommodationListingsProps) {
+  const [pageSize, setPageSize] = useState(12)
+  const sentinel = useRef<HTMLDivElement>(null)
   const [selectedCity, setSelectedCity] = useState(initialCity)
   const [searchQuery, setSearchQuery] = useState(initialQuery)
   const normalizedQuery = searchQuery.trim().toLocaleLowerCase()
@@ -106,7 +110,19 @@ export default function AccommodationListings({
     return searchableDetails.includes(normalizedQuery)
   })
 
+  const hasMore = pageSize < visibleListings.length
+  useEffect(() => {
+    const element = sentinel.current
+    if (!element || !hasMore) return
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0]?.isIntersecting) setPageSize((size) => size + 12)
+    }, { rootMargin: '300px' })
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [hasMore])
+
   const clearFilters = () => {
+    setPageSize(12)
     setSelectedCity('all')
     setSearchQuery('')
   }
@@ -129,7 +145,7 @@ export default function AccommodationListings({
             <input
               type="search"
               value={searchQuery}
-              onChange={(event) => setSearchQuery(event.currentTarget.value)}
+              onChange={(event) => { setSearchQuery(event.currentTarget.value); setPageSize(12) }}
               placeholder="Try a campus or city"
               className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white pl-11 pr-4 text-sm font-medium text-[#1A1A1A] outline-none placeholder:font-normal placeholder:text-[#8A877F] focus-visible:ring-2 focus-visible:ring-[#00319D]"
             />
@@ -140,7 +156,7 @@ export default function AccommodationListings({
           <select
             aria-label="Filter properties by city"
             value={selectedCity}
-            onChange={(event) => setSelectedCity(event.currentTarget.value)}
+            onChange={(event) => { setSelectedCity(event.currentTarget.value); setPageSize(12) }}
             className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white px-4 text-sm font-semibold text-[#1A1A1A] outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
           >
             <option value="all">All cities</option>
@@ -150,8 +166,11 @@ export default function AccommodationListings({
       </div>
 
       {visibleListings.length > 0 ? (
-        <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
-          {visibleListings.map((listing) => <PropertyCard key={listing.key} listing={listing} />)}
+        <div>
+          <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
+            {visibleListings.slice(0, pageSize).map((listing) => <PropertyCard key={listing.key} listing={listing} />)}
+          </div>
+          {hasMore ? <div ref={sentinel} className="mt-6 text-center"><button type="button" onClick={() => setPageSize((size) => size + 12)} className="secondary-cta">Load more properties</button></div> : null}
         </div>
       ) : (
         <div className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center">
