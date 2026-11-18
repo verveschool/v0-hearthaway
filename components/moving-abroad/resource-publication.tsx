@@ -1,210 +1,155 @@
 "use client"
 
-import { useMemo, useRef } from "react"
+import { useMemo, useState } from "react"
 import Link from "next/link"
-import { usePathname, useSearchParams } from "next/navigation"
-import { ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Search } from "lucide-react"
+import { ArrowUpRight, Search } from "lucide-react"
 
-import { Button, buttonVariants } from "@/components/ui/button"
 import type { MovingAbroadArticle } from "@/lib/moving-abroad-data"
 
-type ResourceSummary = Pick<MovingAbroadArticle, "slug" | "title" | "description" | "category" | "tags" | "readTime">
+interface ResourcePublicationProps {
+  articles: MovingAbroadArticle[]
+}
 
-const pageSize = 10
-const controlClass = "min-h-11 rounded-lg border border-border bg-background text-sm focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/40"
-const tagClass = "max-w-full rounded-full border px-2.5 py-0.5 text-xs font-medium leading-5 wrap-anywhere"
+export function ResourcePublication({ articles }: ResourcePublicationProps) {
+  const [query, setQuery] = useState("")
+  const [activeTopic, setActiveTopic] = useState("All")
 
-export function ResourcePublication({ articles }: { articles: ResourceSummary[] }) {
-  const path = usePathname()
-  const params = useSearchParams()
-  const searchRef = useRef<HTMLInputElement>(null)
-  const resultsRef = useRef<HTMLHeadingElement>(null)
-  const query = params.get("q") ?? ""
-  const topics = useMemo(
-    () => [...new Set(articles.flatMap((article) => article.tags))].sort((a, b) => a.localeCompare(b)),
-    [articles],
-  )
-  const requestedTopic = params.get("topic") ?? ""
-  const topic = topics.includes(requestedTopic) ? requestedTopic : ""
+  const topics = useMemo(() => {
+    const seen = new Set<string>()
 
-  const normalizedQuery = query.trim().toLowerCase()
-  const filteredArticles = useMemo(
-    () => articles.filter((article) =>
-      (!topic || article.tags.includes(topic)) &&
-      (!normalizedQuery || [article.title, article.description, ...article.tags]
-        .join(" ").toLowerCase().includes(normalizedQuery)),
-    ),
-    [articles, normalizedQuery, topic],
-  )
-
-  const total = filteredArticles.length
-  const pageCount = Math.max(1, Math.ceil(total / pageSize))
-  const requestedPage = Number(params.get("page"))
-  const page = Number.isInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1
-  const start = (page - 1) * pageSize
-  const visibleArticles = filteredArticles.slice(start, start + pageSize)
-
-  function updateFilters(nextQuery: string, nextTopic: string, mode: "pushState" | "replaceState") {
-    const next = new URLSearchParams(window.location.search)
-    const historyMethod = next.has("page") ? "pushState" : mode
-    next.delete("page")
-    if (nextQuery) next.set("q", nextQuery)
-    else next.delete("q")
-    if (nextTopic) next.set("topic", nextTopic)
-    else next.delete("topic")
-    window.history[historyMethod](null, "", next.size ? `?${next}` : path)
-  }
-
-  function pageLink(target: number, label: string, direction?: "previous" | "next") {
-    const selected = !direction && target === page
-    const className = buttonVariants({
-      variant: selected ? "default" : "outline",
-      className: "min-h-11 min-w-11 gap-1.5 px-2 font-semibold sm:px-2.5",
-    })
-    const content = (
-      <>
-        {direction === "previous" && <ChevronLeft aria-hidden="true" className="max-[360px]:hidden" />}
-        {label}
-        {direction === "next" && <ChevronRight aria-hidden="true" className="max-[360px]:hidden" />}
-      </>
-    )
-    if (target < 1 || target > pageCount) {
-      return <span key={direction} aria-disabled="true" className={`${className} opacity-50`}>{content}</span>
+    for (const article of articles) {
+      for (const tag of article.tags) {
+        seen.add(tag)
+      }
     }
 
-    const next = new URLSearchParams(params)
-    next.set("page", String(target))
-    const href = `${path}?${next}`
+    return ["All", ...seen]
+  }, [articles])
 
-    return (
-      <Link
-        key={direction ?? target}
-        href={href}
-        prefetch={false}
-        aria-label={direction ? undefined : `Page ${target}`}
-        aria-current={selected ? "page" : undefined}
-        className={className}
-        onNavigate={(event) => {
-          event.preventDefault()
-          if (target === page) return
-          window.history.pushState(null, "", href)
-          resultsRef.current?.focus({ preventScroll: true })
-          resultsRef.current?.scrollIntoView({ block: "start", behavior: "instant" })
-        }}
-      >
-        {content}
-      </Link>
-    )
-  }
+  const filteredArticles = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase()
+
+    return articles.filter((article) => {
+      const matchesTopic = activeTopic === "All" || article.tags.includes(activeTopic)
+      const searchableText = [article.title, article.description, ...article.tags]
+        .join(" ")
+        .toLowerCase()
+      const matchesQuery = normalizedQuery.length === 0 || searchableText.includes(normalizedQuery)
+
+      return matchesTopic && matchesQuery
+    })
+  }, [activeTopic, articles, query])
 
   return (
-    <>
-      <div className="flex flex-col gap-3 rounded-xl border border-border bg-muted p-3 sm:flex-row sm:items-end sm:p-4">
-        <div className="flex min-w-0 flex-1 flex-col gap-1.5 text-sm font-semibold">
-          <label htmlFor="resource-search">Search resources</label>
-          <span className={`${controlClass} flex items-center gap-2 px-3`}>
-            <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
+    <div className="mx-auto w-full max-w-[920px]">
+      <header className="border-b border-border/70 pb-8">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <h1 className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+            Resources
+          </h1>
+          <label className="group flex w-full items-center gap-3 border-b border-border pb-3 text-muted-foreground transition-colors focus-within:border-primary md:max-w-[320px]">
+            <Search aria-hidden="true" className="size-4 shrink-0" />
+            <span className="sr-only">Search resources</span>
             <input
-              id="resource-search"
-              ref={searchRef}
               value={query}
-              onChange={(event) => updateFilters(event.target.value, topic, "replaceState")}
-              placeholder="Search by keyword"
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search resources"
               type="search"
-              className="min-h-11 min-w-0 flex-1 bg-transparent font-normal outline-none placeholder:text-muted-foreground"
+              className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/70"
             />
-          </span>
-        </div>
-        <div className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-56">
-          <label htmlFor="resource-topic">Topic</label>
-          <span className={`${controlClass} relative`}>
-            <select
-              id="resource-topic"
-              value={topic}
-              onChange={(event) => updateFilters(query, event.target.value, "pushState")}
-              className="min-h-11 w-full appearance-none rounded-lg bg-background py-2 pr-9 pl-3 font-normal outline-none"
-            >
-              <option value="">All topics</option>
-              {topics.map((tag) => <option key={tag} value={tag}>{tag}</option>)}
-            </select>
-            <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
-          </span>
-        </div>
-      </div>
-
-      <section aria-labelledby="resource-results" className="mt-6">
-        <div className="mb-3 flex min-h-11 flex-wrap items-center justify-between gap-x-3">
-          <h2
-            id="resource-results"
-            ref={resultsRef}
-            tabIndex={-1}
-            className="scroll-mt-24 rounded-sm text-sm font-semibold text-muted-foreground focus:outline-2 focus:outline-offset-4 focus:outline-ring"
-          >
-            <span role="status">
-              {total > 0 ? `Showing ${start + 1}–${start + visibleArticles.length} of ${total} resources` : "0 resources"}
-            </span>
-          </h2>
-          {(query || topic) && (
-            <Button
-              variant="link"
-              type="button"
-              className="min-h-11 px-2 font-semibold"
-              onClick={() => {
-                updateFilters("", "", "pushState")
-                searchRef.current?.focus()
-              }}
-            >
-              Clear filters
-            </Button>
-          )}
+          </label>
         </div>
 
-        {visibleArticles.length > 0 ? (
-          <div className="grid gap-4 md:grid-cols-2">
-            {visibleArticles.map((article) => (
-              <article key={article.slug} className="flex min-w-0 flex-col rounded-xl border border-border bg-card p-4 transition-colors focus-within:border-primary/40 hover:border-primary/30 sm:p-5">
-                <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                  <span className={`${tagClass} border-primary/15 bg-primary/5 text-primary`}>{article.category}</span>
-                  <span className="text-xs text-muted-foreground">{article.readTime}</span>
-                </div>
-                <h3 className="font-heading text-lg leading-snug font-bold tracking-tight wrap-anywhere text-card-foreground sm:text-xl">
-                  {article.title}
-                </h3>
-                <p className="mt-2 mb-4 text-sm leading-6 text-muted-foreground">{article.description}</p>
-                <ul aria-label="Article topics" className="mt-auto flex flex-wrap gap-1.5">
-                  {article.tags.filter((tag) => tag !== article.category).map((tag) => (
-                    <li key={tag} className={`${tagClass} border-border bg-muted text-muted-foreground`}>{tag}</li>
-                  ))}
-                </ul>
-                <Link
-                  href={`/moving-abroad/${article.slug}`}
-                  aria-label={`Read article: ${article.title}`}
-                  className="mt-1 -mb-2 inline-flex min-h-11 max-w-full items-center gap-1.5 self-start rounded-sm text-sm font-semibold text-primary underline-offset-4 hover:underline active:text-primary/75 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+        <nav aria-label="Filter resources by topic" className="mt-8 -mb-px overflow-x-auto">
+          <div className="flex min-w-max items-center gap-6">
+            {topics.map((topic) => {
+              const isActive = activeTopic === topic
+
+              return (
+                <button
+                  key={topic}
+                  type="button"
+                  aria-pressed={isActive}
+                  onClick={() => setActiveTopic(topic)}
+                  className={`border-b-2 pb-3 text-sm transition-colors ${
+                    isActive
+                      ? "border-primary text-primary"
+                      : "border-transparent text-muted-foreground hover:text-foreground"
+                  }`}
                 >
-                  Read article <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
-                </Link>
+                  {topic}
+                </button>
+              )
+            })}
+          </div>
+        </nav>
+      </header>
+
+      <section aria-live="polite" aria-label="Resource articles">
+        {filteredArticles.length > 0 ? (
+          <div>
+            {filteredArticles.map((article) => (
+              <article key={article.slug} className="border-b border-border/70 py-8 first:pt-10 last:border-b-0">
+                <div className="flex items-start gap-6">
+                  <div className="min-w-0 flex-1">
+                    <div className="mb-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted-foreground">
+                      <span>{article.readTime}</span>
+                      <span aria-hidden="true">·</span>
+                      <div className="flex flex-wrap gap-x-2 gap-y-1">
+                        {article.tags.map((tag, index) => (
+                          <span key={tag}>
+                            {index > 0 ? " · " : ""}
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <h2 className="font-display text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl">
+                      <Link href={`/moving-abroad/${article.slug}`} className="transition-colors hover:text-primary">
+                        {article.title}
+                      </Link>
+                    </h2>
+                    <p className="mt-3 max-w-3xl text-base leading-7 text-muted-foreground">
+                      {article.description}
+                    </p>
+                    <Link
+                      href={`/moving-abroad/${article.slug}`}
+                      className="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-primary/75"
+                    >
+                      Read article
+                      <ArrowUpRight aria-hidden="true" className="size-4" />
+                    </Link>
+                  </div>
+
+                  {article.image ? (
+                    <div className="hidden size-24 shrink-0 overflow-hidden rounded-md bg-muted sm:block">
+                      <img src={article.image} alt="" className="size-full object-cover" />
+                    </div>
+                  ) : null}
+                </div>
               </article>
             ))}
           </div>
         ) : (
-          <div className="rounded-xl border border-border bg-muted px-4 py-10 text-center">
-            <h3 className="font-heading text-xl font-bold tracking-tight">No resources found</h3>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Try a different keyword or select another topic.
+          <div className="border-b border-border/70 py-16 text-center">
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground">No resources found</h2>
+            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+              Try a different search term or choose another topic to continue exploring the publication.
             </p>
+            <button
+              type="button"
+              onClick={() => {
+                setQuery("")
+                setActiveTopic("All")
+              }}
+              className="mt-6 text-sm font-medium text-primary underline-offset-4 hover:underline"
+            >
+              Clear filters
+            </button>
           </div>
         )}
-
-        {pageCount > 1 && (
-          <nav aria-label="Resource pagination" className="mt-6 flex flex-wrap items-center justify-center gap-1 sm:gap-2">
-            {pageLink(page - 1, "Previous", "previous")}
-            <div className="flex flex-wrap justify-center gap-1 sm:gap-1.5">
-              {Array.from({ length: pageCount }, (_, index) => pageLink(index + 1, String(index + 1)))}
-            </div>
-            {pageLink(page + 1, "Next", "next")}
-          </nav>
-        )}
       </section>
-    </>
+    </div>
   )
 }

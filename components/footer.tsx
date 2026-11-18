@@ -30,7 +30,7 @@ const accommodationLinks = [
 ]
 
 const resourceLinks = [
-  { label: 'All Resources', href: '/moving-abroad' },
+  { label: 'All Resources', href: '/all-resources' },
   {
     label: 'Pre-Arrival Checklist',
     href: '/moving-abroad/pre-arrival-checklist',
