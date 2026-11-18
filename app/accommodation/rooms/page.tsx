@@ -155,8 +155,9 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                   >
                     {room.image || property.coverImage ? (
                       <CatalogueImage
+                        card
                         src={room.image ?? property.coverImage ?? ''}
-                        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1280px) 392px, (min-width: 640px) calc((100vw - 84px) / 2), calc(100vw - 40px)"
                         alt={room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`}
                         className="aspect-[4/3] w-full bg-[#F1F0EC] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="lazy"
