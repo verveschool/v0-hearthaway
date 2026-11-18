@@ -1,10 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { cities, getCityBySlug, getUniversitiesByCity } from '@/lib/place-data'
 import { accommodationListings } from '@/app/accommodation/listing-data'
-import MatchedCTA from '@/components/matched-cta'
 import Navigation from '@/components/navigation'
 import Footer from '@/components/footer'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
@@ -75,56 +73,37 @@ export default async function CityPage({ params }: CityPageProps) {
     <>
       <Navigation />
       <main>
-        <section className="relative bg-[#00319D] pt-28 pb-16 px-6 overflow-hidden">
-          <div className="absolute inset-0 opacity-20" aria-hidden="true">
-            <Image
-              src={city.image}
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#00319D]/95 via-[#00319D]/80 to-[#00319D]/30" />
-          </div>
-
-          <div className="relative max-w-7xl mx-auto">
+        {/* Compact, text-only city hero */}
+        <section className="bg-[#00319D] px-6 pt-24 pb-10 lg:pt-28 lg:pb-12">
+          <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <p className="mb-4 text-sm font-semibold text-white/80">{city.name}, {countryName}</p>
-
-              <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
+              <p className="mb-3 text-sm font-semibold text-white/80">
+                {city.name}, {countryName}
+              </p>
+              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-balance mb-4 leading-tight">
                 Student properties in {city.name}.
               </h1>
-
-              <p className="text-white/70 text-lg leading-relaxed mb-8">
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-5">
                 {toSentenceCase(city.studentPositioning)}
               </p>
-
-              <div className="flex flex-wrap gap-3 mb-8">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
+              <div className="flex flex-wrap gap-2">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
                   {city.universities} universities
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
                   {city.avgRent}
                 </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
+                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
                   {countryName}
                 </div>
               </div>
-
-              <Link
-                href="/get-matched"
-                className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl"
-              >
-                Get matched in {city.name}
-              </Link>
             </div>
           </div>
         </section>
 
         <section className="bg-white py-14 px-6">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
-            <div className="lg:col-span-2 space-y-5">
+          <div className="max-w-5xl mx-auto">
+            <div className="space-y-5">
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   Student housing in {city.name}
@@ -260,36 +239,9 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
             </div>
 
-            <aside className="lg:col-span-1">
-              <div className="sticky top-24">
-                <MatchedCTA
-                  variant="compact"
-                  title={`Planning for ${city.name}?`}
-                  description="Tell us where you will study and we will help match your budget, commute, and arrival plans."
-                  buttonText="Get Matched"
-                  buttonHref="/get-matched"
-                />
-              </div>
-            </aside>
           </div>
         </section>
 
-        <section className="bg-[#F7F6F3] py-24 lg:py-32 px-6">
-          <div className="max-w-7xl mx-auto">
-            <MatchedCTA
-              variant="full"
-              title={
-                <span>
-                  Ready to plan your move to{' '}
-                  <span className="text-[#FCC20A]">{city.name}</span>?
-                </span>
-              }
-              description="Tell us your university, move-in date, and budget. An accommodation advisor will help you understand your next best steps."
-              buttonText={`Get matched for ${city.name}`}
-              buttonHref="/get-matched"
-            />
-          </div>
-        </section>
       </main>
       <Footer />
     </>
