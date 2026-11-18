@@ -17,6 +17,8 @@ Deno.serve(async (request) => {
   const payload = await request.json().catch(() => null)
   const name = typeof payload?.name === 'string' ? payload.name.trim() : ''
   const email = typeof payload?.email === 'string' ? payload.email.trim().toLowerCase() : ''
+  const notes = typeof payload?.notes === 'string' ? payload.notes.trim() : ''
+  if (notes.length > 11_000) return new Response(null, { status: 400 })
   const phone = typeof payload?.phone === 'string' ? payload.phone.trim() : ''
   if (!name || name.length > 120 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
     || phone.length > 30 || !/^[+\d][\d\s().-]*$/.test(phone) || phone.replace(/\D/g, '').length < 7) {
@@ -36,7 +38,7 @@ Deno.serve(async (request) => {
         'Content-Type': 'application/json',
         Prefer: 'return=minimal',
       },
-      body: JSON.stringify({ student_name: name, email, phone, source: 'Direct' }),
+      body: JSON.stringify({ student_name: name, email, phone, source: 'Direct', lead_requirement_notes: notes || null }),
       signal: AbortSignal.timeout(5000),
     })
     if (response.ok) return new Response(null, { status: 204 })

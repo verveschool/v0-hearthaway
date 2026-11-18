@@ -24,7 +24,7 @@ const legacyStringFields = [
   'phone',
   'message',
 ] as const
-const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite', 'source'])
+const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite', 'source', 'chatTranscript'])
 const propertyEnquiryFields = new Set(['firstName', 'lastName', 'phone', 'propertyName', 'enquiryType'])
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -58,6 +58,7 @@ function isLegacyForm(body: Record<string, unknown>): boolean {
   if (!Object.keys(body).every((key) => legacyFields.has(key))) return false
   const housingChat = body.source === 'housing-chat'
   if (body.source !== undefined && !housingChat) return false
+  if (body.chatTranscript !== undefined && (!housingChat || typeof body.chatTranscript !== 'string' || body.chatTranscript.length > 10_000)) return false
   if (housingChat && (typeof body.city !== 'string' || !body.city.trim() || body.city.length > 120)) return false
   if (!legacyStringFields.every((key) => key in body)) return false
   if (!legacyStringFields.every((key) => {
@@ -155,11 +156,18 @@ export async function POST(request: Request) {
     if (!intakeUrl || !intakeToken) {
       return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 503 })
     }
+    const notes = [
+      'HearthAway housing chat',
+      enquiry.city && `City: ${enquiry.city}`,
+      enquiry.move_in_window && `Move-in: ${enquiry.move_in_window}`,
+      enquiry.budget_range && `Budget: ${enquiry.budget_range}`,
+      readText('chatTranscript') || enquiry.message,
+    ].filter(Boolean).join('\n\n')
     try {
       const response = await fetch(intakeUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-hearthaway-intake-token': intakeToken },
-        body: JSON.stringify({ name: enquiry.first_name, email: enquiry.contact_email, phone: enquiry.phone }),
+        body: JSON.stringify({ name: enquiry.first_name, email: enquiry.contact_email, phone: enquiry.phone, notes }),
         signal: AbortSignal.timeout(7000),
       })
       if (!response.ok) throw new Error(`CRM intake returned ${response.status}`)
@@ -197,7 +205,7 @@ export async function POST(request: Request) {
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
+        body: JSON.stringify(Object.fromEntries(Object.entries(body).filter(([key]) => key !== 'chatTranscript'))),
         signal: AbortSignal.timeout(10_000),
       })
       if (!response.ok) console.error('[v0] Enquiry webhook returned a non-success status:', response.status)

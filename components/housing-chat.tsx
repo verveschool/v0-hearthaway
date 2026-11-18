@@ -125,6 +125,9 @@ function ChatWidget() {
     inFlight.current = true
     setSending(true)
     setError('')
+    const transcript = exchanges.map(({ question, topic }) =>
+      `Student: ${question}\nHearthAway: ${topic?.answer ?? 'A HearthAway advisor can help with that. Request a shortlist and we’ll include your question.'}`
+    ).join('\n\n')
     const questions = [...new Set(exchanges.slice(-4).map((entry) => entry.question))].join('\n')
     try {
       const response = await fetch('/api/get-matched', {
@@ -134,6 +137,7 @@ function ChatWidget() {
           ...housingDetails,
           ...lead,
           source: 'housing-chat',
+          chatTranscript: transcript,
           lastName: '',
           intent: 'shortlisting',
           country: '',
