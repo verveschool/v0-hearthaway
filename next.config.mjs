@@ -7,6 +7,7 @@ const nextConfig = {
   // Disables Next.js image optimization processing to prevent asset crash loops
   images: {
     unoptimized: true,
+    remotePatterns: [{ protocol: "https", hostname: "cdn.brandfolder.io", pathname: "/2EZAWJN8/as/**" }],
     qualities: [70, 75]
   },
   // Next 16.3+ rewrites AGENTS.md on every `next dev`; this repo maintains its own
