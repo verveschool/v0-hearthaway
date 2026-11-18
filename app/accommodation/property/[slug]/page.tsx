@@ -1,3 +1,4 @@
+import { catalogueDatabaseEnabled, catalogueProperty } from '../../catalogue-server'
 
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
@@ -21,7 +22,8 @@ type PropertyPageProps = {
   params: Promise<{ slug: string }>
 }
 
-function getProperty(slug: string) {
+async function getProperty(slug: string) {
+  if (catalogueDatabaseEnabled()) return catalogueProperty(slug)
   return accommodationListings.find((property) => property.slug === slug)
 }
 
@@ -63,7 +65,7 @@ export async function generateMetadata({
   params,
 }: PropertyPageProps): Promise<Metadata> {
   const { slug } = await params
-  const property = getProperty(slug)
+  const property = await getProperty(slug)
 
   if (!property) {
     return { title: 'Accommodation | HearthAway' }
@@ -122,7 +124,7 @@ export default async function PropertyDetailPage({
   params,
 }: PropertyPageProps) {
   const { slug } = await params
-  const property = getProperty(slug)
+  const property = await getProperty(slug)
 
   if (!property) notFound()
 
@@ -323,7 +325,7 @@ export default async function PropertyDetailPage({
                     <div className="mt-5 grid gap-4 md:grid-cols-2">
                       {property.roomTypes.map((room) => (
                         <article
-                          key={room.name}
+                          key={room.catalogueId ?? room.name}
                           className="overflow-hidden rounded-xl border border-[#E8E6E1] bg-white"
                         >
                           {room.image ? (
@@ -346,7 +348,7 @@ export default async function PropertyDetailPage({
                             </h3>
 
                             <Link
-                              href={`/accommodation/rooms/${getAccommodationRoomSlug(property.slug, room.name)}`}
+                              href={`/accommodation/rooms/${room.catalogueSlug ?? getAccommodationRoomSlug(property.slug, room.name)}`}
                               className="mt-1 inline-flex text-sm font-semibold text-[#00319D] underline-offset-4 hover:underline"
                             >
                               View room details

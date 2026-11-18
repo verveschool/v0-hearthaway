@@ -1,3 +1,4 @@
+import { catalogueDatabaseEnabled, cataloguePageSize, catalogueRoomPage, catalogueSearchParam, type CatalogueSearchParams } from '../catalogue-server'
 
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
@@ -19,16 +20,20 @@ export const metadata: Metadata = {
 }
 
 type RoomsPageProps = {
-  searchParams: Promise<{ city?: string; query?: string; page?: string }>
+  searchParams: Promise<CatalogueSearchParams>
 }
 
 export default async function RoomsPage({ searchParams }: RoomsPageProps) {
-  const { city = '', query = '', page = '1' } = await searchParams
+  const params = await searchParams
+  const city = catalogueSearchParam(params.city) ?? ''
+  const query = catalogueSearchParam(params.query)?.trim().slice(0, 100) ?? ''
+  const page = catalogueSearchParam(params.page) ?? '1'
 
-  const normalizedQuery = query.trim().slice(0, 100).toLocaleLowerCase()
+  const normalizedQuery = query.toLocaleLowerCase()
   const selectedCity = accommodationCities.includes(city) ? city : ''
 
-  const rooms = accommodationRoomListings.filter(({ property, room }) => {
+  const result = catalogueDatabaseEnabled() ? await catalogueRoomPage({ city: selectedCity, query: normalizedQuery, page }) : null
+  const rooms = result?.listings ?? accommodationRoomListings.filter(({ property, room }) => {
     if (selectedCity && property.city !== selectedCity) return false
     if (!normalizedQuery) return true
 
@@ -44,13 +49,13 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       .includes(normalizedQuery)
   })
 
-  const pageCount = Math.max(1, Math.ceil(rooms.length / 12))
+  const pageCount = Math.max(1, Math.ceil((result?.total ?? rooms.length) / cataloguePageSize))
   const requestedPage = Number(page)
-  const currentPage = Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1
+  const currentPage = result?.current ?? (Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1)
   const pageUrl = (target: number) => {
     const params = new URLSearchParams()
     if (selectedCity) params.set('city', selectedCity)
-    if (query.trim()) params.set('query', query.trim().slice(0, 100))
+    if (query) params.set('query', query)
     if (target > 1) params.set('page', String(target))
     const suffix = params.toString()
     return `/accommodation/rooms${suffix ? `?${suffix}` : ''}`
@@ -134,12 +139,12 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           </form>
 
           <p className="mt-6 text-sm text-[#6B6860]">
-            {rooms.length} room {rooms.length === 1 ? 'type' : 'types'}
+            {result?.total ?? rooms.length} room {(result?.total ?? rooms.length) === 1 ? 'type' : 'types'}
           </p>
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {rooms.slice((currentPage - 1) * 12, currentPage * 12).map(({ slug, property, room }) => (
+              {(result ? rooms : rooms.slice((currentPage - 1) * cataloguePageSize, currentPage * cataloguePageSize)).map(({ slug, property, room }) => (
                 <article
                   key={slug}
                   className="overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md"
@@ -150,8 +155,9 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                   >
                     {room.image || property.coverImage ? (
                       <CatalogueImage
+                        card
                         src={room.image ?? property.coverImage ?? ''}
-                        sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+                        sizes="(min-width: 1280px) 392px, (min-width: 640px) calc((100vw - 84px) / 2), calc(100vw - 40px)"
                         alt={room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`}
                         className="aspect-[4/3] w-full bg-[#F1F0EC] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="lazy"

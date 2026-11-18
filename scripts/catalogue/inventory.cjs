@@ -13,6 +13,7 @@ require.extensions['.ts'] = function (module, filename) {
   let source = fs.readFileSync(filename, 'utf8')
   // Expose the pre-sanitization projection only within this read-only process.
   if (filename.endsWith('/app/accommodation/listing-data.ts')) {
+    source = source.replace('function parseStaceyMonthlyPrice(', 'export function parseStaceyMonthlyPrice(')
     for (const name of ['rawAccommodationListings', 'uniqueDevelopments']) {
       const marker = `const ${name}`
       if (!source.includes(marker)) throw new Error(`Cannot instrument ${name}; adapter changed`)
@@ -27,7 +28,7 @@ require.extensions['.ts'] = function (module, filename) {
   const output = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, esModuleInterop: true, resolveJsonModule: true } })
   module._compile(output.outputText, filename)
 }
-const { rawAccommodationListings, uniqueDevelopments, accommodationListings, accommodationRoomListings } = require('../../app/accommodation/listing-data.ts')
+const { rawAccommodationListings, uniqueDevelopments, accommodationListings, accommodationRoomListings, parseStaceyMonthlyPrice } = require('../../app/accommodation/listing-data.ts')
 const { accommodationFeedDevelopments } = require('../../app/accommodation/response-data.ts')
 const { igluProperties, igluRooms } = require('../../app/accommodation/iglu-data.ts')
 const { newProviderProperties } = require('../../app/accommodation/neonwood-data.ts')
@@ -81,7 +82,41 @@ const mediaReferences = (properties) => {
   return refs
 }
 const media = mediaReferences(accommodationListings)
-const trackedAssets = child.execFileSync('git', ['ls-tree','-r','-z','HEAD','--','public'], { maxBuffer: 16 * 1024 * 1024 }).toString().split('\0').filter(Boolean).map(row => {
+const monthlyPrices = {}
+for (const property of rawAccommodationListings) {
+  if (!['neonwood', 'stacey'].includes(property.provider)) continue
+  const providerProperty = property.provider === 'neonwood'
+    ? newProviderProperties.find(p => `${p.sourceBrand}:${p.sourcePath}` === property.key)
+    : stacey.cities[Number(property.key.split('-').at(-1))]
+  monthlyPrices[property.slug] = property.roomTypes.map((room, index) => {
+    const sourceRoom = providerProperty?.rooms[index]
+    if (!sourceRoom || sourceRoom.name !== room.name) throw new Error(`Monthly price identity mismatch: ${property.slug} / ${room.name}`)
+    const amount = property.provider === 'neonwood' ? sourceRoom.monthlyFrom : parseStaceyMonthlyPrice(sourceRoom.price)
+    if (amount !== null && !Number.isFinite(amount)) throw new Error(`Invalid monthly price: ${property.slug} / ${room.name}`)
+    return { amount, label: sourceRoom.price ?? null }
+  })
+}
+const cityGuides = cities.map(({ name, country, slug }) => ({ name, country, slug }))
+const universityGuides = universities.map(({ name, country, city, slug, citySlug }) => ({ name, country, city, slug, citySlug }))
+const vitaBuildings = Object.fromEntries(accommodationFeedDevelopments.map(p => [p.key, p.buildings]))
+const imageAttribution = {}
+for (const { src, sourceUrl } of [
+  ...require('../../app/accommodation/iglu-images.json').flatMap(p => p.assets),
+  ...require('../../app/accommodation/iglu-room-images.json').flatMap(p => p.images),
+]) {
+  imageAttribution[src] = { sourceUrl, evidence: 'docs/iglu-image-provenance.md' }
+}
+for (const { localPath, sourceUrl, sourcePage, authorization } of require('../../docs/studyinn-image-provenance.json').assets) {
+  imageAttribution[localPath] ??= { sourceUrl, sourcePage, authorization }
+}
+const catalogueMetadata = { monthlyPrices, cityGuides, universityGuides, vitaBuildings, imageAttribution }
+const sourceCommitOption = process.argv.indexOf('--source-commit')
+const sourceCommit = sourceCommitOption === -1
+  ? child.execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim()
+  : process.argv[sourceCommitOption + 1]
+if (!sourceCommit || !/^[a-f0-9]{40}$/.test(sourceCommit)) throw new Error('Expected a full source commit SHA')
+child.execFileSync('git', ['diff', '--quiet', sourceCommit, '--', ...sources, 'scripts/catalogue/vita-excluded-research.json'])
+const trackedAssets = child.execFileSync('git', ['ls-tree','-r','-z',sourceCommit,'--','public'], { maxBuffer: 16 * 1024 * 1024 }).toString().split('\0').filter(Boolean).map(row => {
   const [metadata, file] = row.split('\t')
   const [mode, type, gitBlob] = metadata.split(' ')
   return { file, mode, type, gitBlob }
@@ -93,7 +128,7 @@ const localPath = url => {
 }
 const missingLocalMedia = [...new Set(media.map(item => localPath(item.url)).filter(file => file && !trackedPaths.has(file)))].sort()
 const report = {
-  commit: child.execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),
+  commit: sourceCommit,
   sourceChecksums: Object.fromEntries(sources.map(path => [path, crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex')])),
   input: {
     vitaSource: { properties: Object.values(vitaSource.data).reduce((n,c)=>n+c.developments.length,0), rooms: Object.values(vitaSource.data).flatMap(c=>c.developments).reduce((n,p)=>n+Object.keys(p.unit_types ?? {}).length,0) },
@@ -115,7 +150,7 @@ const report = {
   sourceRoomMappingBasis: Object.fromEntries([...new Set(sourceRoomMappings.map(m=>m.basis))].map(basis => [basis, sourceRoomMappings.filter(m=>m.basis === basis).length])),
 }
 if (process.argv.includes('--snapshot')) {
-  console.log(JSON.stringify({ report, sourceFiles, researchEvidence: evidence, mediaReferences: media, trackedAssets, sourceRoomMappings, source: { vita: vitaSource, stacey, igluProperties, igluRooms, neonwood: newProviderProperties, studyInnIdentities: studyInnVerifiedInventory, studyInnSourceSeeds }, rawAdapterOutput: rawAccommodationListings, publishedOutput: accommodationListings, roomSlugs: accommodationRoomListings.map(({slug,property,room}) => ({slug, propertySlug:property.slug, roomName:room.name})) }, null, 2))
+  console.log(JSON.stringify({ report, sourceFiles, researchEvidence: evidence, mediaReferences: media, trackedAssets, sourceRoomMappings, catalogueMetadata, source: { vita: vitaSource, stacey, igluProperties, igluRooms, neonwood: newProviderProperties, studyInnIdentities: studyInnVerifiedInventory, studyInnSourceSeeds }, rawAdapterOutput: rawAccommodationListings, publishedOutput: accommodationListings, roomSlugs: accommodationRoomListings.map(({slug,property,room}) => ({slug, propertySlug:property.slug, roomName:room.name})) }, null, 2))
 } else {
   console.log(JSON.stringify(report,null,2))
 }
