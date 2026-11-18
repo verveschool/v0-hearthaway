@@ -102,17 +102,17 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     <>
       <Navigation />
       <main>
-        <section className="bg-[#00319D] pt-28 pb-16 px-6">
+        <section className="bg-[#00319D] px-6 pt-24 pb-10 lg:pt-28 lg:pb-12">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-3xl">
-              <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
+              <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-4 leading-tight">
                 Student properties near {university.name}.
               </h1>
-              <p className="text-white/70 text-lg leading-relaxed mb-6">
+              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-5">
                 Find student properties near {university.name}. Explore local housing costs, popular neighbourhoods, and practical guidance for living in {university.city}.
               </p>
 
-              <div className="flex flex-wrap gap-3 mb-8">
+              <div className="flex flex-wrap gap-3">
                 <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
                   {university.city}
                 </div>
@@ -124,12 +124,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 </div>
               </div>
 
-              <Link
-                href="/get-matched"
-                className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl shadow-[#FCC20A]/20"
-              >
-                Get matched
-              </Link>
             </div>
           </div>
         </section>
@@ -306,18 +300,12 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
                 {cityHref && (
                   <Link
                     href={cityHref}
-                    className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-white text-[#00319D] border border-[#E8E6E1] font-bold text-base rounded-xl hover:border-[#00319D]/30 transition-colors shadow-sm mb-3"
+                    className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-white text-[#00319D] border border-[#E8E6E1] font-bold text-base rounded-xl hover:border-[#00319D]/30 transition-colors shadow-sm"
                   >
                     View the {university.city} city guide
                   </Link>
                 )}
 
-                <Link
-                  href="/get-matched"
-                  className="inline-flex w-full items-center justify-center gap-3 px-7 py-4 bg-[#00319D] text-white font-bold text-base rounded-xl hover:bg-[#00319D] transition-colors shadow-md"
-                >
-                  Get matched
-                </Link>
               </div>
             </aside>
           </div>
