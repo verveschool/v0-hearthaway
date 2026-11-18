@@ -1,4 +1,4 @@
-import { catalogueDatabaseEnabled, cataloguePropertyPage } from './catalogue-server'
+import { catalogueDatabaseEnabled, cataloguePageSize, cataloguePropertyPage, catalogueSearchParam, type CatalogueSearchParams } from './catalogue-server'
 
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -16,13 +16,17 @@ export const metadata: Metadata = {
 }
 
 type AccommodationPageProps = {
-  searchParams: Promise<{ provider?: string; city?: string; query?: string; page?: string }>
+  searchParams: Promise<CatalogueSearchParams>
 }
 
 export default async function AccommodationPage({
   searchParams,
 }: AccommodationPageProps) {
-  const { provider, city, query, page } = await searchParams
+  const params = await searchParams
+  const provider = catalogueSearchParam(params.provider)
+  const city = catalogueSearchParam(params.city)
+  const query = catalogueSearchParam(params.query)?.trim().slice(0, 100)
+  const page = catalogueSearchParam(params.page)
 
   if (provider === 'neonhomes' || provider === 'neon-homes' || provider === 'neonwood' || provider === 'tannhaus') {
     const params = new URLSearchParams({ provider: 'neon-wood' })
@@ -39,7 +43,7 @@ export default async function AccommodationPage({
 
   const cities = [...new Set(visibleListings.map((listing) => listing.city))].sort()
   const initialCity = city && cities.includes(city) ? city : 'all'
-  const initialQuery = query?.trim().slice(0, 100) ?? ''
+  const initialQuery = query ?? ''
   const databasePage = catalogueDatabaseEnabled() ? await cataloguePropertyPage({
     provider: provider === 'neon-wood' ? 'neonwood' : ['stacey','vita-student','iglu','study-inn'].find(value => value === provider),
     city: initialCity === 'all' ? undefined : initialCity, query: initialQuery, page,
@@ -113,7 +117,7 @@ export default async function AccommodationPage({
               serverPage={databasePage ? {
                 total: databasePage.total, provider,
                 previous: databasePage.current > 1 ? pageUrl(databasePage.current - 1) : undefined,
-                next: databasePage.current * 12 < databasePage.total ? pageUrl(databasePage.current + 1) : undefined,
+                next: databasePage.current * cataloguePageSize < databasePage.total ? pageUrl(databasePage.current + 1) : undefined,
               } : undefined}
               initialCity={initialCity}
               initialQuery={initialQuery}

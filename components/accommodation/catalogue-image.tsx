@@ -9,9 +9,11 @@ export default function CatalogueImage({ src, alt, sizes = '100vw', card = false
   const [failedSource, setFailedSource] = useState<string | null>(null)
   const isLocal = src.startsWith('/') && !src.startsWith('//')
   const isVita = /^https:\/\/cdn\.brandfolder\.io\/2EZAWJN8\/as\/[^?#]+$/.test(src)
-  const optimize = (isLocal || isVita) && failedSource !== src
+  // The local Next server disables /_next/image; Vercel handles this path in deployments.
+  const useHostedOptimizer = process.env.NODE_ENV === 'production'
+  const optimize = ((useHostedOptimizer && isLocal) || isVita) && failedSource !== src
   const optimized = (width: number) => isVita
-    ? card ? `/_next/image?url=${encodeURIComponent(`${src}?width=${width}`)}&w=${width}&q=75` : `${src}?width=${width}`
+    ? card && useHostedOptimizer ? `/_next/image?url=${encodeURIComponent(`${src}?width=${width}`)}&w=${width}&q=75` : `${src}?width=${width}`
     : `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
   const widths = [384, 640, 828, 1200, 1920]
 

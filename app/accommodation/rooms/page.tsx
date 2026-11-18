@@ -1,4 +1,4 @@
-import { catalogueDatabaseEnabled, catalogueRoomPage } from '../catalogue-server'
+import { catalogueDatabaseEnabled, cataloguePageSize, catalogueRoomPage, catalogueSearchParam, type CatalogueSearchParams } from '../catalogue-server'
 
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
@@ -20,13 +20,16 @@ export const metadata: Metadata = {
 }
 
 type RoomsPageProps = {
-  searchParams: Promise<{ city?: string; query?: string; page?: string }>
+  searchParams: Promise<CatalogueSearchParams>
 }
 
 export default async function RoomsPage({ searchParams }: RoomsPageProps) {
-  const { city = '', query = '', page = '1' } = await searchParams
+  const params = await searchParams
+  const city = catalogueSearchParam(params.city) ?? ''
+  const query = catalogueSearchParam(params.query)?.trim().slice(0, 100) ?? ''
+  const page = catalogueSearchParam(params.page) ?? '1'
 
-  const normalizedQuery = query.trim().slice(0, 100).toLocaleLowerCase()
+  const normalizedQuery = query.toLocaleLowerCase()
   const selectedCity = accommodationCities.includes(city) ? city : ''
 
   const result = catalogueDatabaseEnabled() ? await catalogueRoomPage({ city: selectedCity, query: normalizedQuery, page }) : null
@@ -46,13 +49,13 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       .includes(normalizedQuery)
   })
 
-  const pageCount = Math.max(1, Math.ceil((result?.total ?? rooms.length) / 12))
+  const pageCount = Math.max(1, Math.ceil((result?.total ?? rooms.length) / cataloguePageSize))
   const requestedPage = Number(page)
   const currentPage = result?.current ?? (Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1)
   const pageUrl = (target: number) => {
     const params = new URLSearchParams()
     if (selectedCity) params.set('city', selectedCity)
-    if (query.trim()) params.set('query', query.trim().slice(0, 100))
+    if (query) params.set('query', query)
     if (target > 1) params.set('page', String(target))
     const suffix = params.toString()
     return `/accommodation/rooms${suffix ? `?${suffix}` : ''}`
@@ -141,7 +144,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {(result ? rooms : rooms.slice((currentPage - 1) * 12, currentPage * 12)).map(({ slug, property, room }) => (
+              {(result ? rooms : rooms.slice((currentPage - 1) * cataloguePageSize, currentPage * cataloguePageSize)).map(({ slug, property, room }) => (
                 <article
                   key={slug}
                   className="overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md"

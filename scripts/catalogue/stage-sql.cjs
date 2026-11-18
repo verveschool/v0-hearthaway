@@ -18,12 +18,18 @@ for (const [name, size] of Object.entries({
   }
 }
 for (const [key, value] of Object.entries(snapshot.source)) sections['source_' + key] = value
+if (!snapshot.catalogueMetadata) throw new Error('Snapshot is missing catalogue metadata')
+sections.catalogueMetadata = snapshot.catalogueMetadata
 sections.report_all = snapshot.report
 sections.researchEvidence_all = snapshot.researchEvidence
 sections.sourceFiles = snapshot.sourceFiles
 sections.trackedAssets = snapshot.trackedAssets
 const digest = createHash('sha256').update(JSON.stringify(sections)).digest('hex')
 sections.digest = digest
+if (process.argv[3] === '--sections') {
+  console.log(JSON.stringify(sections))
+  process.exit(0)
+}
 const literal = JSON.stringify(sections).replaceAll("'", "''")
 console.log("set standard_conforming_strings = on;")
 console.log("begin;")

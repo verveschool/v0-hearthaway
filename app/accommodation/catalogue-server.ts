@@ -42,45 +42,69 @@ export async function catalogueRoom(slug: string): Promise<AccommodationRoomList
   if (!data) return null
   const parent = await catalogueClient().from(properties).select(propertyColumns).eq('id', data.property_id).single<Property>()
   if (parent.error) throw parent.error
-  return { slug, property: { ...parent.data.payload, roomTypes: [] }, room: data.payload }
+  return {
+    slug,
+    property: { ...parent.data.payload, catalogueId: parent.data.id, roomTypes: [] },
+    room: { ...data.payload, catalogueId: data.id, catalogueSlug: slug },
+  }
 }
 
 function contains(query: string) {
-  return '%' + query.trim().slice(0, 100).toLowerCase().replace(/[\\%_]/g, '\\$&') + '%'
+  return '%' + query.trim().slice(0, 100).toLowerCase().replace(/[\\%_*]/g, '\\$&') + '%'
 }
 
 type Filters = { provider?: string; city?: string; query?: string; page?: string }
-function pageNumber(value: string | undefined) {
-  return value && /^\d{1,6}$/.test(value) ? Math.max(1, Number(value)) : 1
+
+export type CatalogueSearchParams = Record<string, string | string[] | undefined>
+
+export function catalogueSearchParam(value: string | string[] | undefined) {
+  return Array.isArray(value) ? value[0] : value
+}
+
+async function boundedPage(page: string | undefined, countRows: () => PromiseLike<{ count: number | null; error: unknown }>) {
+  if (!page || !/^\d+$/.test(page)) return 1
+  const requested = Number(page)
+  if (requested <= 1) return 1
+  const { count, error } = await countRows()
+  if (error) throw error
+  return Math.min(requested, Math.max(1, Math.ceil((count ?? 0) / cataloguePageSize)))
 }
 
 export async function cataloguePropertyPage({ provider, city, query, page }: Filters) {
-  const current = pageNumber(page)
+  const client = catalogueClient()
+  const filtered = (head = false) => {
+    let request = client.from(properties).select(propertyColumns, { count: 'exact', head })
+    if (provider) request = request.eq('provider', provider)
+    if (city) request = request.eq('city', city)
+    if (query) request = request.like('search_text', contains(query))
+    return request
+  }
+  const current = await boundedPage(page, () => filtered(true))
   const start = (current - 1) * cataloguePageSize
-  let request = catalogueClient().from(properties).select(propertyColumns, { count: 'exact' })
-    .order('sort_order').range(start, start + cataloguePageSize - 1)
-  if (provider) request = request.eq('provider', provider)
-  if (city) request = request.eq('city', city)
-  if (query) request = request.like('search_text', contains(query))
-  const { data, error, count } = await request.returns<Property[]>()
+  const { data, error, count } = await filtered().order('sort_order')
+    .range(start, start + cataloguePageSize - 1).returns<Property[]>()
   if (error) throw error
   return { current, total: count ?? 0, listings: await propertyRecords(data ?? []) }
 }
 
 export async function catalogueRoomPage({ city, query, page }: Filters) {
-  const current = pageNumber(page)
+  const client = catalogueClient()
+  const filtered = (head = false) => {
+    let request = client.from(rooms)
+      .select('id,slug,payload,ha_catalogue_properties!inner(id,payload,city)', { count: 'exact', head })
+    if (city) request = request.eq('ha_catalogue_properties.city', city)
+    if (query) request = request.like('search_text', contains(query))
+    return request
+  }
+  const current = await boundedPage(page, () => filtered(true))
   const start = (current - 1) * cataloguePageSize
-  let request = catalogueClient().from(rooms)
-    .select('id,slug,payload,ha_catalogue_properties!inner(id,payload,city)', { count: 'exact' })
-    .order('sort_order').range(start, start + cataloguePageSize - 1)
-  if (city) request = request.eq('ha_catalogue_properties.city', city)
-  if (query) request = request.like('search_text', contains(query))
-  const { data, error, count } = await request.returns<(Pick<Room, 'id' | 'slug' | 'payload'> & {
-    ha_catalogue_properties: Pick<Property, 'id' | 'payload'>
-  })[]>()
+  const { data, error, count } = await filtered().order('sort_order')
+    .range(start, start + cataloguePageSize - 1).returns<(Pick<Room, 'id' | 'slug' | 'payload'> & {
+      ha_catalogue_properties: Pick<Property, 'id' | 'payload'>
+    })[]>()
   if (error) throw error
   const listings: AccommodationRoomListing[] = (data ?? []).map(row => ({
-    slug: row.slug, room: { ...row.payload, catalogueId: row.id },
+    slug: row.slug, room: { ...row.payload, catalogueId: row.id, catalogueSlug: row.slug },
     property: { ...row.ha_catalogue_properties.payload, catalogueId: row.ha_catalogue_properties.id, roomTypes: [] },
   }))
   return { current, total: count ?? 0, listings }
