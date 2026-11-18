@@ -1,3 +1,4 @@
+import { catalogueDatabaseEnabled, catalogueRoomPage } from '../catalogue-server'
 
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
@@ -28,7 +29,8 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
   const normalizedQuery = query.trim().slice(0, 100).toLocaleLowerCase()
   const selectedCity = accommodationCities.includes(city) ? city : ''
 
-  const rooms = accommodationRoomListings.filter(({ property, room }) => {
+  const result = catalogueDatabaseEnabled() ? await catalogueRoomPage({ city: selectedCity, query: normalizedQuery, page }) : null
+  const rooms = result?.listings ?? accommodationRoomListings.filter(({ property, room }) => {
     if (selectedCity && property.city !== selectedCity) return false
     if (!normalizedQuery) return true
 
@@ -44,9 +46,9 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       .includes(normalizedQuery)
   })
 
-  const pageCount = Math.max(1, Math.ceil(rooms.length / 12))
+  const pageCount = Math.max(1, Math.ceil((result?.total ?? rooms.length) / 12))
   const requestedPage = Number(page)
-  const currentPage = Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1
+  const currentPage = result?.current ?? (Number.isSafeInteger(requestedPage) ? Math.min(pageCount, Math.max(1, requestedPage)) : 1)
   const pageUrl = (target: number) => {
     const params = new URLSearchParams()
     if (selectedCity) params.set('city', selectedCity)
@@ -134,12 +136,12 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
           </form>
 
           <p className="mt-6 text-sm text-[#6B6860]">
-            {rooms.length} room {rooms.length === 1 ? 'type' : 'types'}
+            {result?.total ?? rooms.length} room {(result?.total ?? rooms.length) === 1 ? 'type' : 'types'}
           </p>
 
           {rooms.length ? (
             <div className="mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-              {rooms.slice((currentPage - 1) * 12, currentPage * 12).map(({ slug, property, room }) => (
+              {(result ? rooms : rooms.slice((currentPage - 1) * 12, currentPage * 12)).map(({ slug, property, room }) => (
                 <article
                   key={slug}
                   className="overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white transition-shadow hover:shadow-md"

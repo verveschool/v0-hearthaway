@@ -1,3 +1,4 @@
+import { catalogueDatabaseEnabled, catalogueRoom } from '../../catalogue-server'
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
@@ -15,7 +16,7 @@ type RoomPageProps = {
 
 export async function generateMetadata({ params }: RoomPageProps): Promise<Metadata> {
   const { slug } = await params
-  const entry = getAccommodationRoomBySlug(slug)
+  const entry = catalogueDatabaseEnabled() ? await catalogueRoom(slug) : getAccommodationRoomBySlug(slug)
   if (!entry) return { title: 'Room type not found | HearthAway' }
   const title = `${entry.room.name} at ${entry.property.name} | HearthAway`
   return {
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: RoomPageProps): Promise<Metad
 
 export default async function RoomDetailPage({ params }: RoomPageProps) {
   const { slug } = await params
-  const entry = getAccommodationRoomBySlug(slug)
+  const entry = catalogueDatabaseEnabled() ? await catalogueRoom(slug) : getAccommodationRoomBySlug(slug)
   if (!entry) notFound()
   const { property, room } = entry
   const featureGroups: Array<{ label: string; values?: string[] }> = [

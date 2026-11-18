@@ -13,6 +13,8 @@ import { formatCurrencyAmount, formatSourcePrice } from './presentation'
 export { formatSourceAvailability, formatSourcePrice } from './presentation'
 
 export type AccommodationRoomRecord = {
+  catalogueId?: string
+  catalogueSlug?: string
   sourceId?: string
   name: string
   description?: string | null
@@ -65,6 +67,7 @@ export type AccommodationPricingOption = {
 }
 
 export type AccommodationListingRecord = {
+  catalogueId?: string
   provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'study-inn'
   sourceBrand?: 'neonwood' | 'tannhaus'
   sourceId?: string

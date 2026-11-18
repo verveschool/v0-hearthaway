@@ -12,6 +12,7 @@ type AccommodationListingsProps = {
   listings: AccommodationListingRecord[]
   initialCity?: string
   initialQuery?: string
+  serverPage?: { total: number; next?: string; previous?: string; provider?: string }
 }
 
 function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
@@ -87,13 +88,14 @@ export default function AccommodationListings({
   listings,
   initialCity = 'all',
   initialQuery = '',
+  serverPage,
 }: AccommodationListingsProps) {
   const [pageSize, setPageSize] = useState(12)
   const sentinel = useRef<HTMLDivElement>(null)
   const [selectedCity, setSelectedCity] = useState(initialCity)
   const [searchQuery, setSearchQuery] = useState(initialQuery)
   const normalizedQuery = searchQuery.trim().toLocaleLowerCase()
-  const visibleListings = listings.filter((listing) => {
+  const visibleListings = serverPage ? listings : listings.filter((listing) => {
     const matchesCity = selectedCity === 'all' || listing.city.toLocaleLowerCase() === selectedCity.toLocaleLowerCase()
     if (!matchesCity || !normalizedQuery) return matchesCity
 
@@ -111,7 +113,7 @@ export default function AccommodationListings({
     return searchableDetails.includes(normalizedQuery)
   })
 
-  const hasMore = pageSize < visibleListings.length
+  const hasMore = !serverPage && pageSize < visibleListings.length
   useEffect(() => {
     const element = sentinel.current
     if (!element || !hasMore) return
@@ -130,13 +132,13 @@ export default function AccommodationListings({
 
   return (
     <div>
-      <div className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
+      <form onSubmit={serverPage ? undefined : event => event.preventDefault()} method="get" className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
         <div className="sm:col-span-2 xl:col-span-1">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
             Student Properties
           </h2>
           <p className="mt-2 text-sm text-[#6B6860]" aria-live="polite">
-            {visibleListings.length} {visibleListings.length === 1 ? 'property' : 'properties'}
+            {serverPage?.total ?? visibleListings.length} {(serverPage?.total ?? visibleListings.length) === 1 ? 'property' : 'properties'}
           </p>
         </div>
         <label className="flex w-full flex-col gap-2 text-sm font-bold text-[#1A1A1A]">
@@ -145,6 +147,7 @@ export default function AccommodationListings({
             <Search aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 size-4 -translate-y-1/2 text-[#6B6860]" />
             <input
               type="search"
+              name="query"
               value={searchQuery}
               onChange={(event) => { setSearchQuery(event.currentTarget.value); setPageSize(12) }}
               placeholder="Try a campus or city"
@@ -156,6 +159,7 @@ export default function AccommodationListings({
           <span>Choose a city</span>
           <select
             aria-label="Filter properties by city"
+            name="city"
             value={selectedCity}
             onChange={(event) => { setSelectedCity(event.currentTarget.value); setPageSize(12) }}
             className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white px-4 text-sm font-semibold text-[#1A1A1A] outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
@@ -164,7 +168,11 @@ export default function AccommodationListings({
             {cities.map((city) => <option key={city} value={city}>{city}</option>)}
           </select>
         </label>
-      </div>
+        {serverPage ? <>
+          {serverPage.provider ? <input type="hidden" name="provider" value={serverPage.provider} /> : null}
+          <button type="submit" className="secondary-cta w-fit px-4 py-2">Search properties</button>
+        </> : null}
+      </form>
 
       {visibleListings.length > 0 ? (
         <div>
@@ -180,13 +188,20 @@ export default function AccommodationListings({
           </p>
           <button
             type="button"
-            onClick={clearFilters}
+            onClick={() => {
+              if (serverPage) window.location.assign(serverPage.provider ? `/accommodation?provider=${encodeURIComponent(serverPage.provider)}` : "/accommodation")
+              else clearFilters()
+            }}
             className="mt-4 rounded-lg px-3 py-2 text-sm font-bold text-[#00319D] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
           >
             Clear filters
           </button>
         </div>
       )}
+      {serverPage && (serverPage.previous || serverPage.next) ? <nav aria-label="Property pages" className="mt-6 flex justify-center gap-4">
+        {serverPage.previous ? <Link className="secondary-cta px-4 py-2" href={serverPage.previous}>Previous</Link> : null}
+        {serverPage.next ? <Link className="secondary-cta px-4 py-2" href={serverPage.next}>Next</Link> : null}
+      </nav> : null}
     </div>
   )
 }
