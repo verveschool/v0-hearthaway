@@ -63,7 +63,7 @@ Legacy `/accommodation/[slug]` routes resolve known property or room slugs and r
 
 ### Advisory intake and follow-up
 
-- The matching form posts to `/api/get-matched`.
+- The matching form and public housing chat post to `/api/get-matched`. The chat answers common questions using predefined guidance. Students who request an advisor can send their destination, move-in timing, budget, contact details and recent questions to the same enquiry inbox.
 - Property detail uses a [property enquiry modal](../components/accommodation/property-enquiry-modal.tsx) for virtual-tour and matching enquiries.
 - The API validates supported payloads and persists an `enquiries` record. Signed-in submissions attach the current user. Guest persistence uses a server-side privileged client when configured.
 - An optional Google Sheets webhook runs after successful database persistence. Delivery failures are logged while the stored enquiry remains the primary successful result.

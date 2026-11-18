@@ -24,7 +24,7 @@ const legacyStringFields = [
   'phone',
   'message',
 ] as const
-const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite'])
+const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite', 'source'])
 const propertyEnquiryFields = new Set(['firstName', 'lastName', 'phone', 'propertyName', 'enquiryType'])
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -56,13 +56,16 @@ function isPropertyEnquiry(body: Record<string, unknown>): body is Record<string
 
 function isLegacyForm(body: Record<string, unknown>): boolean {
   if (!Object.keys(body).every((key) => legacyFields.has(key))) return false
+  const housingChat = body.source === 'housing-chat'
+  if (body.source !== undefined && !housingChat) return false
+  if (housingChat && (typeof body.city !== 'string' || !body.city.trim() || body.city.length > 120)) return false
   if (!legacyStringFields.every((key) => key in body)) return false
   if (!legacyStringFields.every((key) => {
     const value = body[key]
     return typeof value === 'string' && value.length <= 1200
   })) return false
   if (typeof body.firstName !== 'string' || !body.firstName.trim() || body.firstName.trim().length > 120) return false
-  if (typeof body.lastName !== 'string' || !body.lastName.trim() || body.lastName.trim().length > 120) return false
+  if (typeof body.lastName !== 'string' || (!housingChat && !body.lastName.trim()) || body.lastName.trim().length > 120) return false
   if (typeof body.phone !== 'string' || !isValidPhone(body.phone)) return false
   if (typeof body.email !== 'string' || body.email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(body.email.trim())) return false
   if (body.intent !== undefined && !['exploring', 'shortlisting', 'ready-to-book'].includes(String(body.intent))) return false
@@ -126,7 +129,7 @@ export async function POST(request: Request) {
   ].filter(Boolean).join('\n\n').slice(0, 1200)
   const enquiry = {
     student_id: user?.id ?? null,
-    contact_email: user?.email || readText('email') || null,
+    contact_email: (input.source === 'housing-chat' ? readText('email') : user?.email || readText('email')) || null,
     first_name: readText('firstName').slice(0, 120),
     last_name: readText('lastName').slice(0, 120),
     phone: readText('phone').slice(0, 40) || null,
