@@ -50,9 +50,9 @@ const navLinks: NavLink[] = [
   },
   {
     label: 'Resources',
-    href: '/moving-abroad',
+    href: '/all-resources',
     dropdown: [
-      { label: 'All Resources', href: '/moving-abroad', dividerAfter: true },
+      { label: 'All Resources', href: '/all-resources', dividerAfter: true },
       {
         label: 'Pre-Arrival Checklist',
         href: '/moving-abroad/pre-arrival-checklist',
