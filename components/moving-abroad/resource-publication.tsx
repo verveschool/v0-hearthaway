@@ -59,7 +59,7 @@ export function ResourcePublication({ articles }: { articles: ResourceSummary[] 
     const selected = !direction && target === page
     const className = buttonVariants({
       variant: selected ? "default" : "outline",
-      className: "min-h-11 min-w-11 gap-1.5 px-2.5 font-semibold",
+      className: "min-h-11 min-w-11 gap-1.5 px-2 font-semibold sm:px-2.5",
     })
     const content = (
       <>
@@ -100,11 +100,12 @@ export function ResourcePublication({ articles }: { articles: ResourceSummary[] 
   return (
     <>
       <div className="flex flex-col gap-3 rounded-xl border border-border bg-muted p-3 sm:flex-row sm:items-end sm:p-4">
-        <label className="flex min-w-0 flex-1 flex-col gap-1.5 text-sm font-semibold">
-          Search resources
+        <div className="flex min-w-0 flex-1 flex-col gap-1.5 text-sm font-semibold">
+          <label htmlFor="resource-search">Search resources</label>
           <span className={`${controlClass} flex items-center gap-2 px-3`}>
             <Search aria-hidden="true" className="size-4 shrink-0 text-muted-foreground" />
             <input
+              id="resource-search"
               ref={searchRef}
               value={query}
               onChange={(event) => updateFilters(event.target.value, topic, "replaceState")}
@@ -113,11 +114,12 @@ export function ResourcePublication({ articles }: { articles: ResourceSummary[] 
               className="min-h-11 min-w-0 flex-1 bg-transparent font-normal outline-none placeholder:text-muted-foreground"
             />
           </span>
-        </label>
-        <label className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-56">
-          Topic
+        </div>
+        <div className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-56">
+          <label htmlFor="resource-topic">Topic</label>
           <span className={`${controlClass} relative`}>
             <select
+              id="resource-topic"
               value={topic}
               onChange={(event) => updateFilters(query, event.target.value, "pushState")}
               className="min-h-11 w-full appearance-none rounded-lg bg-background py-2 pr-9 pl-3 font-normal outline-none"
@@ -127,7 +129,7 @@ export function ResourcePublication({ articles }: { articles: ResourceSummary[] 
             </select>
             <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
           </span>
-        </label>
+        </div>
       </div>
 
       <section aria-labelledby="resource-results" className="mt-6">
@@ -194,9 +196,9 @@ export function ResourcePublication({ articles }: { articles: ResourceSummary[] 
         )}
 
         {pageCount > 1 && (
-          <nav aria-label="Resource pagination" className="mt-6 flex flex-wrap items-center justify-center gap-2">
+          <nav aria-label="Resource pagination" className="mt-6 flex flex-wrap items-center justify-center gap-1 sm:gap-2">
             {pageLink(page - 1, "Previous", "previous")}
-            <div className="flex flex-wrap justify-center gap-1.5">
+            <div className="flex flex-wrap justify-center gap-1 sm:gap-1.5">
               {Array.from({ length: pageCount }, (_, index) => pageLink(index + 1, String(index + 1)))}
             </div>
             {pageLink(page + 1, "Next", "next")}
