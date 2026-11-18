@@ -1,6 +1,7 @@
 'use client'
 
 import { track } from '@vercel/analytics'
+import { MessageCircle, Send, X } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useRef, useState, type FormEvent } from 'react'
@@ -65,7 +66,7 @@ function ChatWidget() {
   const inFlight = useRef(false)
   const [question, setQuestion] = useState('')
   const [exchanges, setExchanges] = useState<Exchange[]>([])
-  const [mode, setMode] = useState<'offer' | 'chat' | 'enquiry' | 'contact' | 'sent'>('offer')
+  const [mode, setMode] = useState<'chat' | 'enquiry' | 'contact' | 'sent'>('chat')
   const [housingDetails, setHousingDetails] = useState({ city: '', moveIn: '', budget: '' })
 
   function startEnquiry() {
@@ -167,95 +168,109 @@ function ChatWidget() {
           dialog.current?.showModal()
           track('housing_chat_opened')
         }}
-        className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 rounded-full bg-[#01329C] px-4 py-3 text-sm font-bold text-white shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C]"
+        className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex min-h-16 items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#FEBB01] py-2 pr-5 pl-2 text-left text-[#1A1A1A] shadow-xl transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C] sm:right-6"
       >
-        Find my room
+        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#01329C] text-white">
+          <MessageCircle aria-hidden="true" className="size-6" />
+        </span>
+        <span className="text-base font-extrabold">Chat for housing help</span>
       </button>
       <dialog
         ref={dialog}
         aria-labelledby="housing-chat-title"
         onClose={() => launcher.current?.focus()}
-        className="fixed inset-auto right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] m-0 max-h-[85dvh] w-[calc(100%_-_1.5rem)] max-w-sm overflow-y-auto overscroll-contain rounded-2xl border border-[#E8E6E1] bg-white text-[#1A1A1A] shadow-xl backdrop:bg-black/25 sm:right-5"
+        className="fixed inset-auto right-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] m-0 w-[calc(100%_-_1.5rem)] max-w-[26rem] overflow-hidden rounded-2xl border border-[#E8E6E1] bg-white text-[#1A1A1A] shadow-2xl backdrop:bg-black/25 sm:right-6"
       >
-        <header className="sticky top-0 flex items-center justify-between bg-[#01329C] px-4 py-3 text-white">
-          <h2 id="housing-chat-title" className="font-bold">HearthAway housing chat</h2>
-          <button type="button" aria-label="Close housing chat" className="min-h-10 min-w-10 rounded-lg text-2xl focus-visible:outline-2" onClick={() => dialog.current?.close()}>×</button>
-        </header>
-        <div className="space-y-4 p-4 text-sm">
-          {mode === 'offer' && (
-            <div className="space-y-3">
-              <p className="text-xl font-bold">Get a student room shortlist.</p>
-              <p>Tell us where you’re moving and what you can spend. A HearthAway advisor can help you narrow down rooms that fit and check availability with the provider.</p>
-              <Button type="button" className="w-full" onClick={startEnquiry}>Help me find a room</Button>
-              <Button type="button" variant="outline" className="w-full" onClick={() => setMode('chat')}>Ask a housing question</Button>
+        <div className="flex max-h-[calc(100dvh_-_2rem)] flex-col sm:max-h-[min(42rem,85dvh)]">
+          <header className="flex shrink-0 items-center gap-3 border-b border-[#E8E6E1] bg-white px-4 py-3">
+            <span className="grid size-10 shrink-0 place-items-center rounded-full bg-[#FEBB01] text-[#1A1A1A]">
+              <MessageCircle aria-hidden="true" className="size-5" />
+            </span>
+            <h2 id="housing-chat-title" className="flex-1 font-extrabold">HearthAway housing chat</h2>
+            <button type="button" aria-label="Close housing chat" className="grid min-h-11 min-w-11 place-items-center rounded-full hover:bg-[#F7F6F3] focus-visible:outline-2 focus-visible:outline-[#01329C]" onClick={() => dialog.current?.close()}>
+              <X aria-hidden="true" className="size-5" />
+            </button>
+          </header>
+          {mode === 'chat' && (
+            <div className="flex min-h-0 flex-col">
+              <div className="min-h-0 space-y-4 overflow-y-auto overscroll-contain bg-white p-4 text-sm">
+                <div className="max-w-[92%] space-y-2 rounded-2xl rounded-tl-sm bg-[#F7F6F3] px-4 py-3 leading-relaxed">
+                  <p className="font-bold">Hi! Looking for a student room?</p>
+                  <p>Tell me where you’re moving and what you can spend. A HearthAway advisor can help you shortlist rooms that fit.</p>
+                </div>
+                <div className="flex flex-wrap gap-2" aria-label="Quick replies" role="group">
+                  <Button type="button" className="min-h-10 rounded-full border-[#1A1A1A] bg-[#FEBB01] px-4 font-bold text-[#1A1A1A] hover:bg-white" onClick={startEnquiry}>Get my room shortlist</Button>
+                  {topics.slice(1).map((topic) => (
+                    <Button key={topic.label} type="button" variant="outline" className="min-h-10 rounded-full px-3 text-[#01329C]" onClick={() => ask(topic.label, topic)}>{topic.label}</Button>
+                  ))}
+                </div>
+                <div role="log" aria-label="Housing conversation" className="space-y-3 empty:hidden">
+                  {exchanges.map(({ question, topic }, index) => (
+                    <div key={index} ref={index === exchanges.length - 1 ? latestReply : undefined} className="space-y-3">
+                      <p className="ml-auto w-fit max-w-[85%] rounded-2xl rounded-tr-sm bg-[#01329C] px-4 py-2.5 text-white [overflow-wrap:anywhere]">{question}</p>
+                      <div className="w-fit max-w-[92%] rounded-2xl rounded-tl-sm bg-[#F7F6F3] px-4 py-3 leading-relaxed">
+                        <p>{topic?.answer ?? 'A HearthAway advisor can help with that. Request a shortlist and we’ll include your question.'}</p>
+                        {topic && <Link href={topic.href} className="mt-1 inline-block font-semibold text-[#01329C] underline">{topic.link}</Link>}
+                      </div>
+                      {index === exchanges.length - 1 && (
+                        <Button type="button" variant="outline" className="min-h-10 rounded-full px-3 text-[#01329C]" onClick={startEnquiry}>Talk to an advisor</Button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <form className="flex shrink-0 items-center gap-2 border-t border-[#E8E6E1] bg-white p-3" onSubmit={(event) => { event.preventDefault(); ask(question) }}>
+                <input aria-label="Your housing question" placeholder="Type a housing question…" className={`${inputStyle} min-w-0 rounded-full`} value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={250} />
+                <Button type="submit" aria-label="Send question" size="icon" className="size-11 rounded-full bg-[#01329C] text-white" disabled={!question.trim()}>
+                  <Send aria-hidden="true" className="size-5" />
+                </Button>
+              </form>
             </div>
           )}
-          {mode === 'chat' && (
-            <>
-              <p>Ask a housing question or choose a topic.</p>
-              <div className="flex flex-wrap gap-2">
-                {topics.map((topic) => (
-                  <Button key={topic.label} type="button" variant="outline" onClick={() => ask(topic.label, topic)}>{topic.label}</Button>
-                ))}
-              </div>
-              <div role="log" aria-label="Housing conversation" className="space-y-3">
-                {exchanges.map(({ question, topic }, index) => (
-                  <div key={index} ref={index === exchanges.length - 1 ? latestReply : undefined} className="space-y-2">
-                    <p className="ml-6 rounded-xl bg-[#01329C] px-3 py-2 text-white [overflow-wrap:anywhere]">{question}</p>
-                    <div className="mr-6 rounded-xl bg-[#F7F6F3] px-3 py-2">
-                      <p>{topic?.answer ?? 'A HearthAway advisor can help with that. Use “Talk to an advisor” below to request a follow-up.'}</p>
-                      {topic && <Link href={topic.href} className="mt-1 inline-block font-semibold text-[#01329C] underline">{topic.link}</Link>}
-                    </div>
+          {mode !== 'chat' && (
+            <div className="min-h-0 overflow-y-auto overscroll-contain p-4 text-sm">
+              {mode === 'enquiry' && (
+                <form key="housing-details" onSubmit={saveHousingDetails} className="space-y-3">
+                  <p className="text-lg font-bold">Where are you looking?</p>
+                  {housingFields.map(({ name, label, maxLength }) => (
+                    <label key={name} className="block space-y-1">
+                      <span className="font-semibold">{label}{name !== 'city' && ' (optional)'}</span>
+                      <input className={inputStyle} name={name} maxLength={maxLength} defaultValue={housingDetails[name]} required={name === 'city'} />
+                    </label>
+                  ))}
+                  {error && <p role="alert" className="text-red-700">{error}</p>}
+                  <div className="flex gap-2">
+                    <Button type="submit">Continue</Button>
+                    <Button type="button" variant="outline" onClick={() => { setError(''); setMode('chat') }}>Back</Button>
                   </div>
-                ))}
-              </div>
-              <form className="flex items-center gap-2" onSubmit={(event) => { event.preventDefault(); ask(question) }}>
-                <input aria-label="Your housing question" placeholder="Type a housing question" className={inputStyle} value={question} onChange={(event) => setQuestion(event.target.value)} maxLength={250} />
-                <Button type="submit" disabled={!question.trim()}>Send</Button>
-              </form>
-              <Button type="button" variant="outline" onClick={startEnquiry}>Talk to an advisor</Button>
-            </>
-          )}
-          {mode === 'enquiry' && (
-            <form key="housing-details" onSubmit={saveHousingDetails} className="space-y-3">
-              <p className="text-lg font-bold">Where are you looking?</p>
-              {housingFields.map(({ name, label, maxLength }) => (
-                <label key={name} className="block space-y-1">
-                  <span className="font-semibold">{label}{name !== 'city' && ' (optional)'}</span>
-                  <input className={inputStyle} name={name} maxLength={maxLength} defaultValue={housingDetails[name]} required={name === 'city'} />
-                </label>
-              ))}
-              {error && <p role="alert" className="text-red-700">{error}</p>}
-              <div className="flex gap-2">
-                <Button type="submit">Continue</Button>
-                <Button type="button" variant="outline" onClick={() => { setError(''); setMode(exchanges.length ? 'chat' : 'offer') }}>Back</Button>
-              </div>
-            </form>
-          )}
-          {mode === 'contact' && (
-            <form key="contact" onSubmit={submitEnquiry} className="space-y-3">
-              <p className="text-lg font-bold">Where can we reach you?</p>
-              <p>A HearthAway advisor can follow up on your room search in {housingDetails.city}.</p>
-              {contactFields.map((field) => (
-                <label key={field.name} className="block space-y-1">
-                  <span className="font-semibold">{field.label}</span>
-                  <input className={inputStyle} name={field.name} type={field.type} maxLength={field.maxLength} autoComplete={field.autoComplete} required />
-                </label>
-              ))}
-              <input type="text" name="companyWebsite" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
-              <p className="text-xs">By sending this enquiry, you’re asking HearthAway to contact you.{exchanges.length > 0 && ' We’ll include your recent questions.'} <Link href="/privacy" className="text-[#01329C] underline">Privacy policy</Link></p>
-              {error && <p role="alert" className="text-red-700">{error}</p>}
-              <div className="flex gap-2">
-                <Button type="submit" disabled={sending}>{sending ? 'Sending…' : 'Request my shortlist'}</Button>
-                <Button type="button" variant="outline" disabled={sending} onClick={() => { setError(''); setMode('enquiry') }}>Back</Button>
-              </div>
-            </form>
-          )}
-          {mode === 'sent' && (
-            <>
-              <p role="status">Your shortlist request is in. A HearthAway advisor can follow up using the contact details you shared.</p>
-              <Button type="button" variant="outline" onClick={() => setMode('chat')}>Back to chat</Button>
-            </>
+                </form>
+              )}
+              {mode === 'contact' && (
+                <form key="contact" onSubmit={submitEnquiry} className="space-y-3">
+                  <p className="text-lg font-bold">Where can we reach you?</p>
+                  <p>A HearthAway advisor can follow up on your room search in {housingDetails.city}.</p>
+                  {contactFields.map((field) => (
+                    <label key={field.name} className="block space-y-1">
+                      <span className="font-semibold">{field.label}</span>
+                      <input className={inputStyle} name={field.name} type={field.type} maxLength={field.maxLength} autoComplete={field.autoComplete} required />
+                    </label>
+                  ))}
+                  <input type="text" name="companyWebsite" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+                  <p className="text-xs">By sending this enquiry, you’re asking HearthAway to contact you.{exchanges.length > 0 && ' We’ll include your recent questions.'} <Link href="/privacy" className="text-[#01329C] underline">Privacy policy</Link></p>
+                  {error && <p role="alert" className="text-red-700">{error}</p>}
+                  <div className="flex gap-2">
+                    <Button type="submit" disabled={sending}>{sending ? 'Sending…' : 'Request my shortlist'}</Button>
+                    <Button type="button" variant="outline" disabled={sending} onClick={() => { setError(''); setMode('enquiry') }}>Back</Button>
+                  </div>
+                </form>
+              )}
+              {mode === 'sent' && (
+                <>
+                  <p role="status">Your shortlist request is in. A HearthAway advisor can follow up using the contact details you shared.</p>
+                  <Button type="button" variant="outline" onClick={() => setMode('chat')}>Back to chat</Button>
+                </>
+              )}
+            </div>
           )}
         </div>
       </dialog>
