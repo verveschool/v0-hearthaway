@@ -149,6 +149,26 @@ export async function POST(request: Request) {
     source: 'website',
   }
 
+  if (input.source === 'housing-chat') {
+    const intakeUrl = process.env.SHINRA_CHAT_INTAKE_URL
+    const intakeToken = process.env.SHINRA_CHAT_INTAKE_TOKEN
+    if (!intakeUrl || !intakeToken) {
+      return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 503 })
+    }
+    try {
+      const response = await fetch(intakeUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-hearthaway-intake-token': intakeToken },
+        body: JSON.stringify({ name: enquiry.first_name, email: enquiry.contact_email, phone: enquiry.phone }),
+        signal: AbortSignal.timeout(7000),
+      })
+      if (!response.ok) throw new Error(`CRM intake returned ${response.status}`)
+    } catch (error) {
+      console.error('[v0] CRM intake failed:', error instanceof Error ? error.message : 'unknown error')
+      return NextResponse.json({ error: 'We could not send your enquiry. Please try again.' }, { status: 503 })
+    }
+  }
+
   let persistenceError: { message: string } | null = null
   if (user) {
     const { error } = await supabase.from('enquiries').insert(enquiry)
