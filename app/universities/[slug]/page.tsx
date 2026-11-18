@@ -322,33 +322,6 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
             </aside>
           </div>
         </section>
-
-        <section className="bg-[#F7F6F3] py-24 lg:py-32 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="rounded-3xl bg-[#00319D] p-10 lg:p-16">
-              <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 mb-7">
-                  <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
-                  <span className="text-white/70 text-sm font-semibold">
-                    Free to use and no commitment required
-                  </span>
-                </div>
-                <h2 className="font-heading text-4xl lg:text-[3rem] font-extrabold text-white leading-[1.08] tracking-tight text-balance mb-6">
-                  Get matched near <span className="text-[#FCC20A]">{university.name}</span>.
-                </h2>
-                <p className="text-white/65 text-lg leading-relaxed mb-10">
-                  Tell us your course, budget, and move-in date. An accommodation advisor will help you understand your next best steps.
-                </p>
-                <Link
-                  href="/get-matched"
-className="brand-cta inline-flex items-center justify-center gap-3 px-8 py-5 font-extrabold text-lg shadow-xl shadow-[#FCC20A]/20"
-                >
-                  Start matching
-                </Link>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <Footer />
     </>
