@@ -1,4 +1,5 @@
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -141,19 +142,7 @@ export default function AboutPage() {
     <>
       <Navigation />
       <main>
-        {/* Hero */}
-        <section className="bg-[#00319D] pt-28 pb-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-5xl lg:text-6xl font-bold text-white text-balance leading-[1.05] mb-8">
-                Finding <span style={{ color: '#FCC20A' }}>home,</span> wherever you go.
-              </h1>
-              <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
-                Finding accommodation abroad is one of the biggest decisions a student makes before moving. But too many are left to figure it out alone.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageBanner title="About HearthAway" />
 
         {/* Mission */}
         <section className="bg-white py-16 lg:py-24 px-6">

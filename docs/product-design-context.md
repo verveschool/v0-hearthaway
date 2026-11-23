@@ -29,6 +29,8 @@ Confirmed by the product owner on 15 November 2026:
 - The existing website and repository are the primary brand references. Preserve their established conventions.
 - Official brand colours are white `#FFFFFF`, blue `#01329C`, gold `#FEBB01` and black `#000000`. Manrope is the primary typeface.
 
+On 23 November 2026, the product owner specified a shared compact blue banner for public interior pages. It contains a white Manrope page heading and an optional white action, with a 210 px mobile and 230 px desktop baseline that can grow for increased text size. The homepage, authentication, account and staff screens keep their dedicated layouts.
+
 ## Purpose, users and value
 
 HearthAway helps students understand accommodation choices and obtain personal guidance before moving. Public messaging emphasizes housing near their university and within their budget, supported by an advisor.

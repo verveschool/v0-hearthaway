@@ -2,6 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import ReviewCollector from '@/components/home/review-collector'
+import { hearthAwayContact } from '@/lib/contact-details'
 
 const brandWordmarkPath = '/brand/hearthaway_branding.png'
 
@@ -131,30 +132,30 @@ export default function Footer() {
             {/* Contact */}
             <div className="min-w-0">
               <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-[#01329C]">
-                Contact
+                <Link href="/contact" className="underline-offset-4 hover:underline">Contact</Link>
               </h3>
 
               <div className="space-y-3 text-sm font-medium text-[#6B6B6B]">
                 <p>
                   <a
-                    href="mailto:faraz@hearthaway.com"
+                    href={`mailto:${hearthAwayContact.email}`}
                     className="break-words underline transition-colors hover:text-[#01329C]"
                   >
-                    faraz@hearthaway.com
+                    {hearthAwayContact.email}
                   </a>
                 </p>
 
                 <p>
                   <a
-                    href="tel:+919999965742"
+                    href={hearthAwayContact.phone.href}
                     className="underline transition-colors hover:text-[#01329C]"
                   >
-                    +91 99999 65742
+                    {hearthAwayContact.phone.label}
                   </a>
                 </p>
 
                 <p className="max-w-[220px] text-sm font-medium leading-relaxed">
-                  20, H-1/A, Sec 63, Noida 201301
+                  {hearthAwayContact.address}
                 </p>
 
                 <p>

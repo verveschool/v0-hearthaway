@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import { SaveRoomButton } from '@/components/account/forms'
 import { createClient } from '@/lib/supabase/server'
@@ -46,8 +47,9 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pb-16 pt-8">
-        <div className="mx-auto max-w-7xl px-5 sm:px-8">
+      <main className="min-h-screen bg-[#F7F6F3] pb-16">
+        <PageBanner title={room.name} />
+        <div className="mx-auto max-w-7xl px-5 pt-8 sm:px-8">
           <Link href="/accommodation/rooms" className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">All room types</Link>
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.7fr)]">
             <section className="overflow-hidden rounded-3xl border border-[#E8E6E1] bg-white">
@@ -59,7 +61,6 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
                   <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-xs font-bold tracking-wide text-[#00319D]">{getAccommodationProviderName(property.provider)}</span>
                   <span className="text-sm text-[#6B6860]">{property.city}{property.country ? `, ${property.country}` : ''}</span>
                 </div>
-                <h1 className="mt-4 font-heading text-3xl font-extrabold text-[#1A1A1A] sm:text-4xl">{room.name}</h1>
                 <p className="mt-2 text-lg font-semibold text-[#00319D]">{property.name}</p>
                 {property.description ? <p className="mt-5 whitespace-pre-line text-sm leading-7 text-[#4C4A45]">{property.description}</p> : <p className="mt-5 text-sm leading-7 text-[#6B6860]">Room and property information shown here is limited to the current partner source.</p>}
                 {room.description ? <p className="mt-5 text-sm leading-7 text-[#4C4A45]">{room.description}</p> : null}

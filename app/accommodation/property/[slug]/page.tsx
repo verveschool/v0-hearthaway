@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, Building2, MapPin } from 'lucide-react'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import { getUniversitiesByCity } from '@/lib/place-data'
 import {
@@ -199,6 +200,7 @@ export default async function PropertyDetailPage({
       <Navigation />
 
       <main className="bg-[#F7F6F3]">
+        <PageBanner title={property.name} />
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-6 lg:px-8 lg:py-12">
 
           {/* Back navigation */}
@@ -210,15 +212,12 @@ export default async function PropertyDetailPage({
             All properties
           </Link>
 
-          {/* Property heading */}
+          {/* Property location and price */}
           <header>
             <p className="text-sm font-semibold text-[#00319D]">
               {[property.city, property.country].filter(Boolean).join(', ')}
             </p>
 
-            <h1 className="mt-2 font-heading text-3xl font-extrabold leading-tight tracking-tight text-[#1A1A1A] sm:text-4xl lg:text-5xl">
-              {property.name}
-            </h1>
             <p className="mt-3 text-lg font-bold text-[#00319D]">From {property.propertyPriceLabel}</p>
 
             {property.address ? (

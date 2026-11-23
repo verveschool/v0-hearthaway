@@ -1,5 +1,6 @@
 import Footer from '@/components/footer'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Link from 'next/link'
 
 const roleHighlights = [
@@ -58,15 +59,16 @@ export default function CareersPage() {
     <>
       <Navigation />
       <main>
+        <PageBanner title="Careers" />
         <section className="bg-white px-6 py-16 lg:py-24">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:gap-20">
               <div>
                 <p className="mb-5 text-sm font-semibold text-[#00319D]">Open role</p>
 
-                <h1 className="mb-6 font-heading text-4xl font-bold leading-tight text-[#1A1A1A] text-balance">
+                <h2 className="mb-6 font-heading text-4xl font-bold leading-tight text-[#1A1A1A] text-balance">
                   Accommodation Specialist
-                </h1>
+                </h2>
 
                 <p className="mb-8 max-w-2xl leading-relaxed text-[#6B6860]">
                   Help international students find suitable accommodation and

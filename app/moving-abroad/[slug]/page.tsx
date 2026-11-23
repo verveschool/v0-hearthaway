@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -117,7 +118,9 @@ export default async function MovingAbroadArticlePage({
       <Navigation />
 
       <main>
-        {/* Minimal article header */}
+        <PageBanner title={titleCase(article.title)} />
+
+        {/* Article details */}
         <section className="bg-white px-6 pt-10 pb-9 sm:pt-12 sm:pb-10">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-4xl">
@@ -125,11 +128,7 @@ export default async function MovingAbroadArticlePage({
                 {article.readTime}
               </span>
 
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[2.625rem] font-bold text-charcoal-ink text-balance leading-[1.15] tracking-tight">
-                {titleCase(article.title)}
-              </h1>
-
-              <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed mt-4">
+              <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
                 {article.description}
               </p>
             </div>

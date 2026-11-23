@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | HearthAway',
+  title: 'Terms and Conditions | HearthAway',
   description: 'Terms of Service for HearthAway, operated by Jiraiya Education LLP.',
 }
 
@@ -14,19 +15,7 @@ export default function TermsPage() {
       <Navigation />
 
       <main>
-        <section className="bg-[#00319D] pt-28 pb-16 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-5 leading-tight">
-                Terms governing your use of HearthAway.
-              </h1>
-
-              <p className="text-white/70 text-lg leading-relaxed">
-                HearthAway is operated by Jiraiya Education LLP. By using our website and services, you agree to these terms.
-              </p>
-            </div>
-          </div>
-        </section>
+        <PageBanner title="Terms and Conditions" />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">

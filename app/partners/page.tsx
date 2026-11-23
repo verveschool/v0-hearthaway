@@ -1,18 +1,17 @@
 'use client'
 
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 
 export default function PartnershipsPage() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] py-24 px-6">
-        <div className="mx-auto max-w-3xl">
+      <main className="min-h-screen bg-[#F7F6F3]">
+        <PageBanner title="Partners" />
+        <div className="mx-auto box-content max-w-3xl px-6 pb-24 pt-12">
           <div className="mb-12">
-            <h1 className="mb-4 font-heading text-4xl font-bold text-[#1A1A1A]">
-              Housing support for students moving abroad.
-            </h1>
             <p className="text-lg leading-relaxed text-[#6B6860]">
               For many students, finding housing becomes the next challenge after receiving a visa. HearthAway helps education partners support students through the housing process with confidence.
             </p>
