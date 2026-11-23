@@ -9,7 +9,10 @@ export default function PartnershipsPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3]">
-        <PageBanner title="Partners" />
+        <PageBanner
+          title="Help your students feel at home"
+          action={{ label: 'Talk to us about partnering', href: '#partner-with-us' }}
+        />
         <div className="mx-auto box-content max-w-3xl px-6 pb-24 pt-12">
           <div className="mb-12">
             <p className="text-lg leading-relaxed text-[#6B6860]">
@@ -44,7 +47,7 @@ export default function PartnershipsPage() {
             </p>
           </div>
 
-          <div className="rounded-2xl bg-[#00319D] p-8 text-white">
+          <div id="partner-with-us" className="scroll-mt-28 rounded-2xl bg-[#00319D] p-8 text-white">
             <h2 className="mb-3 font-heading text-2xl font-bold">
               Looking for a housing partner for your students?
             </h2>

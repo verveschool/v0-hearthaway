@@ -138,7 +138,7 @@ export default function GetMatchedPage() {
       <>
         <Navigation />
         <main ref={confirmation} tabIndex={-1} className="min-h-screen bg-[#F7F6F3] focus:outline-none">
-          <PageBanner title="You're all set" />
+          <PageBanner title="We’ve got your request" action={{ label: 'Explore moving guides', href: '/all-resources' }} />
           <div className="mx-auto box-content max-w-lg px-6 pb-20 pt-12 text-center">
             <div className="w-16 h-16 rounded-full bg-[#FCC20A] flex items-center justify-center mx-auto mb-8">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
@@ -178,7 +178,7 @@ export default function GetMatchedPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3]">
-        <PageBanner title="Get Matched" />
+        <PageBanner title="Let’s find a place that fits" action={{ label: 'Start matching', href: '#matching-form' }} />
         <div className="mx-auto box-content max-w-2xl px-6 pb-20 pt-12">
           {/* Header */}
           <div className="text-center mb-10">
@@ -205,7 +205,7 @@ export default function GetMatchedPage() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form id="matching-form" className="scroll-mt-28" onSubmit={handleSubmit}>
             <label aria-hidden="true" className="pointer-events-none absolute -left-[10000px] h-px w-px overflow-hidden">
               Leave this field empty
               <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" value={form.companyWebsite ?? ''} onChange={(event) => setForm((current) => ({ ...current, companyWebsite: event.target.value }))} />

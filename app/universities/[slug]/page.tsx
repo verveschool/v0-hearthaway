@@ -98,12 +98,18 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     }))
 
   const countryName = city?.country ?? countryLabel(university.country)
+  const listingCity = universityProperties[0]?.city
+  const bannerAction = listingCity
+    ? { label: 'Browse housing in this city', href: `/accommodation?city=${encodeURIComponent(listingCity)}` }
+    : cityHref
+      ? { label: 'Get to know the city', href: cityHref }
+      : { label: 'Get housing advice', href: '/get-matched' }
 
   return (
     <>
       <Navigation />
       <main>
-        <PageBanner title={university.name} />
+        <PageBanner title={`Life near ${university.name}`} action={bannerAction} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">

@@ -200,7 +200,12 @@ export default async function PropertyDetailPage({
       <Navigation />
 
       <main className="bg-[#F7F6F3]">
-        <PageBanner title={property.name} />
+        <PageBanner
+          title={property.name}
+          action={property.roomTypes.length
+            ? { label: 'See room types and prices', href: '#rooms' }
+            : { label: 'See the location', href: '#location' }}
+        />
         <div className="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-8 sm:px-6 lg:px-8 lg:py-12">
 
           {/* Back navigation */}

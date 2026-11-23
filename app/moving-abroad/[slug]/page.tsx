@@ -10,6 +10,7 @@ import { countries } from '@/lib/country-data'
 import {
   getMovingAbroadArticleBySlug,
   movingAbroadArticles,
+  type MovingAbroadArticleCategory,
   type MovingAbroadCountrySlug,
 } from '@/lib/moving-abroad-data'
 
@@ -17,6 +18,13 @@ type MovingAbroadArticlePageProps = {
   params: Promise<{
     slug: string
   }>
+}
+
+const guideActions: Record<MovingAbroadArticleCategory, { label: string; href: string }> = {
+  'Before you go': { label: 'Open the pre-arrival checklist', href: '/moving-abroad/pre-arrival-checklist' },
+  Accommodation: { label: 'Browse student homes', href: '/accommodation' },
+  Budgeting: { label: 'Browse budgeting guides', href: '/all-resources?topic=Budgeting' },
+  Arriving: { label: 'Explore settling-in guides', href: '/all-resources?topic=Settling%20In' },
 }
 
 export function generateStaticParams() {
@@ -112,13 +120,16 @@ export default async function MovingAbroadArticlePage({
   )
 
   const keyTakeaways = article.sections.slice(0, 3)
+  const bannerAction = article.slug === 'pre-arrival-checklist'
+    ? { label: 'Explore more pre-arrival guides', href: '/all-resources?topic=Pre-Arrival' }
+    : guideActions[article.category]
 
   return (
     <>
       <Navigation />
 
       <main>
-        <PageBanner title={titleCase(article.title)} />
+        <PageBanner title={titleCase(article.title)} action={bannerAction} />
 
         {/* Article details */}
         <section className="bg-white px-6 pt-10 pb-9 sm:pt-12 sm:pb-10">

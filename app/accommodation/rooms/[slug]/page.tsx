@@ -48,7 +48,10 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
     <>
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3] pb-16">
-        <PageBanner title={room.name} />
+        <PageBanner
+          title={room.name}
+          action={{ label: 'See the property', href: `/accommodation/property/${property.slug}` }}
+        />
         <div className="mx-auto max-w-7xl px-5 pt-8 sm:px-8">
           <Link href="/accommodation/rooms" className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] underline-offset-4 hover:underline">All room types</Link>
           <div className="mt-5 grid gap-6 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.7fr)]">

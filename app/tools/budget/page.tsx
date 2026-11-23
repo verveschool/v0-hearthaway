@@ -8,7 +8,7 @@ export default function BudgetToolPage() {
     <>
       <Navigation />
       <main>
-        <PageBanner title="Budget calculator" />
+        <PageBanner title="Plan your student budget" action={{ label: 'Browse budgeting guides', href: '/all-resources?topic=Budgeting' }} />
         <section className="mx-auto max-w-3xl px-6 py-12 text-center">
           <p className="text-muted-foreground mb-6">
             The budget calculator is under development. If you need budgeting help now, our team can help when you

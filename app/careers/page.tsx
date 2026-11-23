@@ -59,14 +59,14 @@ export default function CareersPage() {
     <>
       <Navigation />
       <main>
-        <PageBanner title="Careers" />
+        <PageBanner title="Work with us at HearthAway" action={{ label: 'See the open role', href: '#open-role' }} />
         <section className="bg-white px-6 py-16 lg:py-24">
           <div className="mx-auto max-w-7xl">
             <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(280px,360px)] lg:gap-20">
               <div>
                 <p className="mb-5 text-sm font-semibold text-[#00319D]">Open role</p>
 
-                <h2 className="mb-6 font-heading text-4xl font-bold leading-tight text-[#1A1A1A] text-balance">
+                <h2 id="open-role" className="mb-6 scroll-mt-28 font-heading text-4xl font-bold leading-tight text-[#1A1A1A] text-balance">
                   Accommodation Specialist
                 </h2>
 

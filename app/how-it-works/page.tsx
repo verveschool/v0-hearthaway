@@ -46,7 +46,7 @@ export default function HowItWorksPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3]">
-        <PageBanner title="How It Works" />
+        <PageBanner title="How we help you find a home" action={{ label: 'Explore student homes', href: '/accommodation' }} />
 
         <section aria-labelledby="journey-heading" className="px-6 py-12 sm:py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
@@ -55,13 +55,6 @@ export default function HowItWorksPage() {
                 Three steps, with room to make your own decision.
               </h2>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="/accommodation"
-                  className="secondary-cta inline-flex min-h-11 items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
-                >
-                  Explore Properties
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </Link>
                 <Link
                   href="/get-matched"
                   className="brand-cta inline-flex min-h-12 items-center justify-center px-5 py-3 text-sm font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"

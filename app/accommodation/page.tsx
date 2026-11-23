@@ -88,7 +88,13 @@ export default async function AccommodationPage({
       <Navigation />
 
       <main>
-        <PageBanner title="Explore Student Properties" action={{ label: 'Browse Room Types', href: '/accommodation/rooms' }} />
+        <PageBanner
+          title="Find your student home"
+          action={{
+            label: 'Browse room types',
+            href: initialCity === 'all' ? '/accommodation/rooms' : `/accommodation/rooms?city=${encodeURIComponent(initialCity)}`,
+          }}
+        />
 
         <section
           aria-label="Property listings"

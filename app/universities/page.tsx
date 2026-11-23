@@ -17,7 +17,7 @@ export default function UniversitiesPage() {
       <Navigation />
 
       <main className="min-h-screen bg-[#FBFAF7]">
-        <PageBanner title="Find your university" />
+        <PageBanner title="Start with your university" action={{ label: 'Explore student cities', href: '/cities' }} />
 
         {/* University Directory Section */}
         <section

@@ -9,7 +9,7 @@ export default function MovingAbroadPage() {
     <>
       <Navbar />
       <main className="min-h-screen bg-background">
-        <PageBanner title="Resources" />
+        <PageBanner title="Get ready for your move" action={{ label: 'Browse all guides', href: '/all-resources' }} />
         <div className="px-4 pb-20 pt-8 sm:px-6 lg:px-8">
           <ResourcePublication articles={movingAbroadArticles} />
         </div>

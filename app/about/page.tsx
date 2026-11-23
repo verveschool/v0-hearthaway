@@ -142,7 +142,7 @@ export default function AboutPage() {
     <>
       <Navigation />
       <main>
-        <PageBanner title="About HearthAway" />
+        <PageBanner title="Meet HearthAway" action={{ label: 'See how it works', href: '/how-it-works' }} />
 
         {/* Mission */}
         <section className="bg-white py-16 lg:py-24 px-6">

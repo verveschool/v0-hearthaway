@@ -69,12 +69,18 @@ export default async function CityPage({ params }: CityPageProps) {
       roomTypes: property.roomTypes.map((room) => room.name),
     }))
   const countryName = city.country
+  const listingCity = cityProperties[0]?.city
+  const bannerAction = listingCity
+    ? { label: 'Browse local properties', href: `/accommodation?city=${encodeURIComponent(listingCity)}` }
+    : cityUniversities.length > 0
+      ? { label: 'See local universities', href: '#local-universities' }
+      : { label: 'Get housing advice', href: '/get-matched' }
 
   return (
     <>
       <Navigation />
       <main>
-        <PageBanner title={city.name} />
+        <PageBanner title={`Student life in ${city.name}`} action={bannerAction} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-5xl mx-auto">
@@ -148,7 +154,7 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-5">
+                <h2 id="local-universities" className="mb-5 scroll-mt-28 font-heading text-2xl font-bold text-[#1A1A1A]">
                   Universities In And Near {city.name}
                 </h2>
 

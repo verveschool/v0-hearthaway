@@ -15,7 +15,7 @@ export default function TermsPage() {
       <Navigation />
 
       <main>
-        <PageBanner title="Terms and Conditions" />
+        <PageBanner title="Terms and Conditions" action={{ label: 'Contact us', href: '/contact' }} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">

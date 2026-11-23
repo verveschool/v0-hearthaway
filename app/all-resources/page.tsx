@@ -24,7 +24,7 @@ export default async function AllResourcesPage() {
     <>
       <Navbar />
       <main className="bg-background">
-        <PageBanner title="Resources" />
+        <PageBanner title="Guides for your move abroad" action={{ label: 'Open the pre-arrival checklist', href: '/moving-abroad/pre-arrival-checklist' }} />
         <div className="px-4 pb-12 pt-8 sm:px-6 sm:pb-16 sm:pt-12">
           <div className="mx-auto w-full max-w-5xl">
             <ResourceLibrary articles={articles} />

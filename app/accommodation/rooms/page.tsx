@@ -66,7 +66,13 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       <Navigation />
 
       <main className="min-h-screen bg-[#F7F6F3] pb-16">
-        <PageBanner title="Student Room Types" action={{ label: 'View All Properties', href: '/accommodation' }} />
+        <PageBanner
+          title="Find a room that feels right"
+          action={{
+            label: 'Browse properties',
+            href: selectedCity ? `/accommodation?city=${encodeURIComponent(selectedCity)}` : '/accommodation',
+          }}
+        />
 
         {/* Room inventory and search */}
         <section

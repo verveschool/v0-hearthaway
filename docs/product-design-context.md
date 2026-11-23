@@ -31,6 +31,8 @@ Confirmed by the product owner on 15 November 2026:
 
 On 23 November 2026, the product owner specified a shared compact blue banner for public interior pages. It contains a white Manrope page heading and an optional white action, with a 210 px mobile and 230 px desktop baseline that can grow for increased text size. The homepage, authentication, account and staff screens keep their dedicated layouts.
 
+Public banner copy uses a warm, practical voice. Banner actions connect to an existing next step in Total Home, such as a city's housing, a property's rooms, or guides relevant to the student's stage. Preserve formal policy titles and the names of places, properties, rooms and guides. Confirm that the destination exists and avoid promising future services or guaranteed outcomes.
+
 ## Purpose, users and value
 
 HearthAway helps students understand accommodation choices and obtain personal guidance before moving. Public messaging emphasizes housing near their university and within their budget, supported by an advisor.

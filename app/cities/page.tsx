@@ -13,7 +13,7 @@ export default function CitiesPage() {
     <>
       <Navigation />
       <main>
-        <PageBanner title="Find student properties in your city" />
+        <PageBanner title="Get to know your next city" action={{ label: 'Find your university', href: '/universities' }} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto">

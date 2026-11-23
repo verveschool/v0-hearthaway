@@ -12,6 +12,9 @@ type CountryHubPageProps = {
 }
 
 export default function CountryHubPage({ country }: CountryHubPageProps) {
+  const countryName = ['uk', 'uae', 'usa', 'netherlands'].includes(country.slug)
+    ? `the ${country.name}`
+    : country.name
   const featuredCities = country.citySlugs
     .map((slug) => cities.find((city) => city.slug === slug))
     .filter((city) => city !== undefined)
@@ -24,7 +27,10 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
     <>
       <Navigation />
       <main>
-        <PageBanner title={country.name} />
+        <PageBanner
+          title={`Study in ${countryName}`}
+          action={{ label: 'Explore student cities', href: '#student-cities' }}
+        />
 
         {/* Overview */}
         <section className="bg-white py-14 px-6">
@@ -56,7 +62,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         </section>
 
         {/* Featured cities */}
-        <section className="bg-[#F7F6F3] py-14 px-6">
+        <section id="student-cities" className="scroll-mt-28 bg-[#F7F6F3] py-14 px-6">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-7">
               <div>

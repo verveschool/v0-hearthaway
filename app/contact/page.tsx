@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <Navigation />
       <main className="bg-warm-gray">
-        <PageBanner title="Contact" />
+        <PageBanner title="Talk to HearthAway" action={{ label: 'Email us', href: `mailto:${hearthAwayContact.email}` }} />
 
         <section aria-label="Contact details" className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
           <dl className="grid gap-6 rounded-2xl border border-mid-gray bg-white p-6 sm:grid-cols-3 sm:p-8">
