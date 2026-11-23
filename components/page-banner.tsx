@@ -7,12 +7,14 @@ type PageBannerProps = {
 }
 
 export default function PageBanner({ title, action }: PageBannerProps) {
-  const mobileSize = title.length > 60 ? 'text-2xl' : 'text-3xl'
+  const headingSize = title.length > 60
+    ? 'text-2xl sm:text-3xl lg:text-4xl xl:text-5xl'
+    : 'text-3xl sm:text-4xl lg:text-5xl'
 
   return (
     <header className="flex min-h-[210px] items-center bg-[#00319D] px-6 py-5 text-white max-[360px]:px-4 sm:py-8 lg:min-h-[230px] lg:px-8 lg:py-10">
       <div className="mx-auto w-full max-w-7xl">
-        <h1 className={`font-heading ${mobileSize} font-extrabold leading-tight tracking-tight [overflow-wrap:anywhere] sm:text-4xl lg:text-5xl`}>
+        <h1 className={`font-heading ${headingSize} font-extrabold leading-tight tracking-tight [overflow-wrap:anywhere]`}>
           {title}
         </h1>
 
