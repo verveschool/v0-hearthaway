@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import { permanentRedirect } from 'next/navigation'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import AccommodationListings from '@/components/accommodation/accommodation-listings'
 import { accommodationListings } from './listing-data'
@@ -87,23 +88,13 @@ export default async function AccommodationPage({
       <Navigation />
 
       <main>
-        <section className="flex min-h-[210px] items-center bg-[#00319D] px-6 py-8 text-white lg:min-h-[230px] lg:px-8 lg:py-10">
-          <div className="mx-auto w-full max-w-7xl">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-                Explore Student Properties
-              </h1>
-
-              <Link
-                href="/accommodation/rooms"
-                className="secondary-cta mt-6 inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
-              >
-                Browse Room Types
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Link>
-            </div>
-          </div>
-        </section>
+        <PageBanner
+          title="Find your student home"
+          action={{
+            label: 'Browse room types',
+            href: initialCity === 'all' ? '/accommodation/rooms' : `/accommodation/rooms?city=${encodeURIComponent(initialCity)}`,
+          }}
+        />
 
         <section
           aria-label="Property listings"

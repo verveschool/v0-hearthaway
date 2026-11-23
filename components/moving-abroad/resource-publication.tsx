@@ -43,22 +43,17 @@ export function ResourcePublication({ articles }: ResourcePublicationProps) {
   return (
     <div className="mx-auto w-full max-w-[920px]">
       <header className="border-b border-border/70 pb-8">
-        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <h1 className="font-display text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-            Resources
-          </h1>
-          <label className="group flex w-full items-center gap-3 border-b border-border pb-3 text-muted-foreground transition-colors focus-within:border-primary md:max-w-[320px]">
-            <Search aria-hidden="true" className="size-4 shrink-0" />
-            <span className="sr-only">Search resources</span>
-            <input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search resources"
-              type="search"
-              className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/70"
-            />
-          </label>
-        </div>
+        <label className="group ml-auto flex w-full items-center gap-3 border-b border-border pb-3 text-muted-foreground transition-colors focus-within:border-primary md:max-w-[320px]">
+          <Search aria-hidden="true" className="size-4 shrink-0" />
+          <span className="sr-only">Search resources</span>
+          <input
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Search resources"
+            type="search"
+            className="min-w-0 flex-1 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground/70"
+          />
+        </label>
 
         <nav aria-label="Filter resources by topic" className="mt-8 -mb-px overflow-x-auto">
           <div className="flex min-w-max items-center gap-6">

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import { cities, getCityBySlug, getUniversitiesByCity } from '@/lib/place-data'
 import { accommodationListings } from '@/app/accommodation/listing-data'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
@@ -68,38 +69,18 @@ export default async function CityPage({ params }: CityPageProps) {
       roomTypes: property.roomTypes.map((room) => room.name),
     }))
   const countryName = city.country
+  const listingCity = cityProperties[0]?.city
+  const bannerAction = listingCity
+    ? { label: 'Browse local properties', href: `/accommodation?city=${encodeURIComponent(listingCity)}` }
+    : cityUniversities.length > 0
+      ? { label: 'See local universities', href: '#local-universities' }
+      : { label: 'Get housing advice', href: '/get-matched' }
 
   return (
     <>
       <Navigation />
       <main>
-        {/* Compact, text-only city hero */}
-        <section className="bg-[#00319D] px-6 pt-24 pb-10 lg:pt-28 lg:pb-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <p className="mb-3 text-sm font-semibold text-white/80">
-                {city.name}, {countryName}
-              </p>
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-bold text-white text-balance mb-4 leading-tight">
-                Student properties in {city.name}.
-              </h1>
-              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-5">
-                {toSentenceCase(city.studentPositioning)}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {city.universities} universities
-                </div>
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {city.avgRent}
-                </div>
-                <div className="inline-flex items-center px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {countryName}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+        <PageBanner title={`Student life in ${city.name}`} action={bannerAction} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-5xl mx-auto">
@@ -108,6 +89,9 @@ export default async function CityPage({ params }: CityPageProps) {
                 <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-4">
                   Student housing in {city.name}
                 </h2>
+                <p className="mb-4 text-sm font-semibold text-[#6B6860]">
+                  {countryName} · {city.universities} universities
+                </p>
 
                 <p className="text-[#6B6860] text-base leading-relaxed mb-4">
                   {toSentenceCase(city.description)}
@@ -170,7 +154,7 @@ export default async function CityPage({ params }: CityPageProps) {
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">
-                <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-5">
+                <h2 id="local-universities" className="mb-5 scroll-mt-28 font-heading text-2xl font-bold text-[#1A1A1A]">
                   Universities In And Near {city.name}
                 </h2>
 

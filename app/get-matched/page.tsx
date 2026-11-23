@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import { countries as countryRecords } from '@/lib/country-data'
 import { cities, universities } from '@/lib/place-data'
@@ -70,6 +71,7 @@ export default function GetMatchedPage() {
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitError, setSubmitError] = useState('')
+  const confirmation = useRef<HTMLElement>(null)
   const [form, setForm] = useState<FormData>({
     country: '',
     city: '',
@@ -87,6 +89,13 @@ export default function GetMatchedPage() {
     message: '',
     companyWebsite: ''
   })
+
+  useEffect(() => {
+    if (submitted) {
+      confirmation.current?.focus({ preventScroll: true })
+      window.scrollTo({ top: 0, behavior: 'instant' })
+    }
+  }, [submitted])
 
   const cities = citiesByCountry.get(form.country) ?? []
   const matchingUniversities = universitiesByCountry.get(form.country) ?? []
@@ -128,22 +137,20 @@ export default function GetMatchedPage() {
     return (
       <>
         <Navigation />
-        <main className="min-h-screen bg-[#F7F6F3] flex items-center justify-center pt-20 pb-20 px-6">
-          <div className="max-w-lg w-full text-center">
+        <main ref={confirmation} tabIndex={-1} className="min-h-screen bg-[#F7F6F3] focus:outline-none">
+          <PageBanner title="We’ve got your request" action={{ label: 'Explore moving guides', href: '/all-resources' }} />
+          <div className="mx-auto box-content max-w-lg px-6 pb-20 pt-12 text-center">
             <div className="w-16 h-16 rounded-full bg-[#FCC20A] flex items-center justify-center mx-auto mb-8">
               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
                 <path d="M5 14L11 20L23 8" stroke="#00319D" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
-            <h1 className="font-heading text-4xl font-bold text-[#1A1A1A] mb-4">
-              {"You're all set."}
-            </h1>
             <p className="text-[#6B6860] text-lg leading-relaxed mb-8">
               {"We've received your details and one of our accommodation advisors will be in touch within 24 hours with personalised options near "}
               {form.university || form.city || "your destination"}.
             </p>
             <div className="bg-white rounded-2xl p-6 border border-[#E8E6E1] text-left mb-8">
-              <h3 className="font-heading font-bold text-[#1A1A1A] mb-4">{"What happens next"}</h3>
+              <h2 className="font-heading font-bold text-[#1A1A1A] mb-4">{"What happens next"}</h2>
               <div className="flex flex-col gap-4">
                 {[
                   { step: '1', text: 'Our team reviews your requirements' },
@@ -170,17 +177,15 @@ export default function GetMatchedPage() {
   return (
     <>
       <Navigation />
-      <main className="min-h-screen bg-[#F7F6F3] pt-24 pb-20 px-6">
-        <div className="max-w-2xl mx-auto">
+      <main className="min-h-screen bg-[#F7F6F3]">
+        <PageBanner title="Let’s find a place that fits" action={{ label: 'Start matching', href: '#matching-form' }} />
+        <div className="mx-auto box-content max-w-2xl px-6 pb-20 pt-12">
           {/* Header */}
           <div className="text-center mb-10">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#00319D]/8 border border-[#00319D]/15 mb-5">
               <div className="w-2 h-2 rounded-full bg-[#FCC20A]" aria-hidden="true" />
               <span className="text-[#00319D] text-sm font-medium">{"Free matching process"}</span>
             </div>
-            <h1 className="font-heading text-4xl lg:text-5xl font-bold text-[#1A1A1A] text-balance mb-4">
-              {"Let's find your home."}
-            </h1>
             <p className="text-[#6B6860] text-lg">
               {"Tell us about your situation and we'll match you with the right accommodation."}
             </p>
@@ -200,7 +205,7 @@ export default function GetMatchedPage() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit}>
+          <form id="matching-form" className="scroll-mt-28" onSubmit={handleSubmit}>
             <label aria-hidden="true" className="pointer-events-none absolute -left-[10000px] h-px w-px overflow-hidden">
               Leave this field empty
               <input type="text" name="companyWebsite" tabIndex={-1} autoComplete="off" value={form.companyWebsite ?? ''} onChange={(event) => setForm((current) => ({ ...current, companyWebsite: event.target.value }))} />

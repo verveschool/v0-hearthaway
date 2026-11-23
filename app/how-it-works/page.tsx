@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ArrowRight, Bookmark, MapPin, MessageCircle } from 'lucide-react'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 
 export const metadata: Metadata = {
@@ -45,31 +46,7 @@ export default function HowItWorksPage() {
     <>
       <Navigation />
       <main className="min-h-screen bg-[#F7F6F3]">
-        <section className="bg-[#00319D] px-6 py-16 text-white sm:py-20 lg:px-8 lg:py-24">
-          <div className="mx-auto max-w-7xl">
-            <h1 className="max-w-3xl font-heading text-3xl font-extrabold leading-tight tracking-tight text-balance sm:text-4xl lg:text-5xl">
-              A clearer path to finding the right student property.
-            </h1>
-            <p className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 sm:text-lg">
-              Explore at your own pace, save the rooms that stand out, and bring in our team whenever you want a hand.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/accommodation"
-                className="secondary-cta inline-flex min-h-11 items-center justify-center gap-2 px-5 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
-              >
-                Explore Properties
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Link>
-              <Link
-                href="/get-matched"
-                className="brand-cta inline-flex min-h-12 items-center justify-center px-5 py-3 text-sm font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#00319D]"
-              >
-                Get matched
-              </Link>
-            </div>
-          </div>
-        </section>
+        <PageBanner title="How we help you find a home" action={{ label: 'Explore student homes', href: '/accommodation' }} />
 
         <section aria-labelledby="journey-heading" className="px-6 py-12 sm:py-16 lg:px-8 lg:py-20">
           <div className="mx-auto max-w-7xl">
@@ -77,6 +54,14 @@ export default function HowItWorksPage() {
               <h2 id="journey-heading" className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
                 Three steps, with room to make your own decision.
               </h2>
+              <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                <Link
+                  href="/get-matched"
+                  className="brand-cta inline-flex min-h-12 items-center justify-center px-5 py-3 text-sm font-extrabold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
+                >
+                  Get matched
+                </Link>
+              </div>
             </header>
 
             <ol className="grid gap-4 md:grid-cols-3">

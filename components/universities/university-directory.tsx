@@ -78,7 +78,7 @@ export function UniversityDirectory() {
 
   return (
     <>
-      <div className="relative mx-auto -mt-10 max-w-3xl rounded-2xl border border-[#E8E4DC] bg-white p-3 shadow-[0_18px_45px_rgba(0,49,157,0.12)]">
+      <div className="relative mx-6 max-w-3xl md:mx-auto rounded-2xl border border-[#E8E4DC] bg-white p-3 shadow-[0_18px_45px_rgba(0,49,157,0.12)]">
         <label htmlFor="university-search" className="sr-only">Search universities</label>
         <div className="relative">
           <Search className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#6B6860]" aria-hidden="true" />

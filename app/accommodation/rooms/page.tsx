@@ -3,8 +3,8 @@ import { catalogueDatabaseEnabled, cataloguePageSize, catalogueRoomPage, catalog
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { ArrowRight } from 'lucide-react'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import {
   accommodationCities,
@@ -66,25 +66,13 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
       <Navigation />
 
       <main className="min-h-screen bg-[#F7F6F3] pb-16">
-
-        {/* Compact page banner */}
-        <header className="flex min-h-[210px] items-center bg-[#00319D] px-6 py-8 text-white lg:min-h-[230px] lg:px-8 lg:py-10">
-          <div className="mx-auto w-full max-w-7xl">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl lg:text-5xl">
-                Student Room Types
-              </h1>
-
-              <Link
-                href="/accommodation"
-                className="secondary-cta mt-6 inline-flex min-h-11 items-center gap-2 px-4 py-2.5 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FCC20A]"
-              >
-                View All Properties
-                <ArrowRight aria-hidden="true" className="size-4" />
-              </Link>
-            </div>
-          </div>
-        </header>
+        <PageBanner
+          title="Find your kind of room"
+          action={{
+            label: 'Browse properties',
+            href: selectedCity ? `/accommodation?city=${encodeURIComponent(selectedCity)}` : '/accommodation',
+          }}
+        />
 
         {/* Room inventory and search */}
         <section

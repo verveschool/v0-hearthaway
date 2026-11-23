@@ -1,6 +1,7 @@
 
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -9,6 +10,7 @@ import { countries } from '@/lib/country-data'
 import {
   getMovingAbroadArticleBySlug,
   movingAbroadArticles,
+  type MovingAbroadArticleCategory,
   type MovingAbroadCountrySlug,
 } from '@/lib/moving-abroad-data'
 
@@ -16,6 +18,13 @@ type MovingAbroadArticlePageProps = {
   params: Promise<{
     slug: string
   }>
+}
+
+const guideActions: Record<MovingAbroadArticleCategory, { label: string; href: string }> = {
+  'Before you go': { label: 'Open the pre-arrival checklist', href: '/moving-abroad/pre-arrival-checklist' },
+  Accommodation: { label: 'Browse student homes', href: '/accommodation' },
+  Budgeting: { label: 'Browse budgeting guides', href: '/all-resources?topic=Budgeting' },
+  Arriving: { label: 'Explore settling-in guides', href: '/all-resources?topic=Settling%20In' },
 }
 
 export function generateStaticParams() {
@@ -111,13 +120,18 @@ export default async function MovingAbroadArticlePage({
   )
 
   const keyTakeaways = article.sections.slice(0, 3)
+  const bannerAction = article.slug === 'pre-arrival-checklist'
+    ? { label: 'Explore more pre-arrival guides', href: '/all-resources?topic=Pre-Arrival' }
+    : guideActions[article.category]
 
   return (
     <>
       <Navigation />
 
       <main>
-        {/* Minimal article header */}
+        <PageBanner title={titleCase(article.title)} action={bannerAction} />
+
+        {/* Article details */}
         <section className="bg-white px-6 pt-10 pb-9 sm:pt-12 sm:pb-10">
           <div className="max-w-7xl mx-auto">
             <div className="max-w-4xl">
@@ -125,11 +139,7 @@ export default async function MovingAbroadArticlePage({
                 {article.readTime}
               </span>
 
-              <h1 className="font-heading text-3xl sm:text-4xl lg:text-[2.625rem] font-bold text-charcoal-ink text-balance leading-[1.15] tracking-tight">
-                {titleCase(article.title)}
-              </h1>
-
-              <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed mt-4">
+              <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
                 {article.description}
               </p>
             </div>

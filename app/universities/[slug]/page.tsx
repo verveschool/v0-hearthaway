@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 import Link from 'next/link'
@@ -97,36 +98,18 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
     }))
 
   const countryName = city?.country ?? countryLabel(university.country)
+  const listingCity = universityProperties[0]?.city
+  const bannerAction = listingCity
+    ? { label: 'Browse housing in this city', href: `/accommodation?city=${encodeURIComponent(listingCity)}` }
+    : cityHref
+      ? { label: 'Get to know the city', href: cityHref }
+      : { label: 'Get housing advice', href: '/get-matched' }
 
   return (
     <>
       <Navigation />
       <main>
-        <section className="bg-[#00319D] px-6 pt-24 pb-10 lg:pt-28 lg:pb-12">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-3xl">
-              <h1 className="font-heading text-4xl lg:text-5xl font-bold text-white text-balance mb-4 leading-tight">
-                Student properties near {university.name}.
-              </h1>
-              <p className="text-white/80 text-base sm:text-lg leading-relaxed mb-5">
-                Find student properties near {university.name}. Explore local housing costs, popular neighbourhoods, and practical guidance for living in {university.city}.
-              </p>
-
-              <div className="flex flex-wrap gap-3">
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {university.city}
-                </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {countryName}
-                </div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 text-white text-sm font-medium">
-                  {university.students} students
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </section>
+        <PageBanner title={`Life near ${university.name}`} action={bannerAction} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
