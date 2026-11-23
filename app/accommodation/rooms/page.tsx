@@ -67,7 +67,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
 
       <main className="min-h-screen bg-[#F7F6F3] pb-16">
         <PageBanner
-          title="Find a room that feels right"
+          title="Find your kind of room"
           action={{
             label: 'Browse properties',
             href: selectedCity ? `/accommodation?city=${encodeURIComponent(selectedCity)}` : '/accommodation',

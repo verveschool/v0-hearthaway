@@ -11,7 +11,7 @@ export default function PageBanner({ title, action }: PageBannerProps) {
   if (title.length > 60) {
     headingSize = 'text-xl min-[400px]:text-2xl sm:text-3xl lg:text-4xl xl:text-5xl'
   } else if (title.length > 40) {
-    headingSize = 'text-2xl sm:text-4xl lg:text-5xl'
+    headingSize = 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl'
   }
 
   return (
