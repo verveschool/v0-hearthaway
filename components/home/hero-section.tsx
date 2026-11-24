@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
-import { HousingChat } from '@/components/housing-chat'
 
 const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Belgium: '/belgium', Hungary: '/hungary', Malta: '/malta', Malaysia: '/malaysia' };
 
@@ -27,8 +26,8 @@ const countries = [
 
 export default function HeroSection() {
   return (
-    <section className="bg-[#F7F6F3] px-4 pb-6 pt-8 font-sans sm:px-6 lg:px-10 lg:pb-7 lg:pt-6 xl:px-16">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 lg:flex-row lg:gap-12">
+    <section id="home-hero" className="bg-[#F7F6F3] px-4 pb-8 pt-8 font-sans sm:px-6 lg:flex lg:min-h-[calc(100svh-12rem)] lg:flex-col lg:justify-center lg:px-10 lg:pb-24 lg:pt-16 xl:px-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-6 lg:flex-row lg:gap-12">
 
         {/* Left copy panel */}
         <div className="relative z-10 flex w-full max-w-2xl flex-col justify-center lg:w-[50%]">
@@ -100,9 +99,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      <div className="mt-4 flex justify-end">
-        <HousingChat placement="hero" />
-      </div>
     </section>
   )
 }
