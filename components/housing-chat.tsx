@@ -49,17 +49,21 @@ const contactFields = [
 
 const inputStyle = 'w-full rounded-lg border border-[#E8E6E1] bg-white px-3 py-2 text-base text-[#1A1A1A] focus-visible:outline-2 focus-visible:outline-[#01329C]'
 
-export function HousingChat() {
+type ChatPlacement = 'floating' | 'hero'
+
+export function HousingChat({ placement = 'floating' }: { placement?: ChatPlacement }) {
   const pathname = usePathname()
 
   if (/^\/(?:account|team|auth|sign-in|sign-up|forgot-password|reset-password|get-matched)(?:\/|$)/.test(pathname)) {
     return null
   }
 
-  return <ChatWidget key={pathname} />
+  if ((pathname === '/') !== (placement === 'hero')) return null
+
+  return <ChatWidget key={pathname} placement={placement} />
 }
 
-function ChatWidget() {
+function ChatWidget({ placement }: { placement: ChatPlacement }) {
   const dialog = useRef<HTMLDialogElement>(null)
   const launcher = useRef<HTMLButtonElement>(null)
   const latestReply = useRef<HTMLDivElement>(null)
@@ -172,9 +176,9 @@ function ChatWidget() {
           dialog.current?.showModal()
           track('housing_chat_opened')
         }}
-        className="fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 flex min-h-16 items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#FEBB01] py-2 pr-5 pl-2 text-left text-[#1A1A1A] shadow-xl transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C] sm:right-6"
+        className={`flex max-w-full items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#FEBB01] py-2 pr-5 pl-2 text-left text-[#1A1A1A] transition-colors hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C] ${placement === 'hero' ? 'min-h-14' : 'fixed right-4 bottom-[max(1rem,env(safe-area-inset-bottom))] z-40 min-h-16 shadow-xl sm:right-6'}`}
       >
-        <span className="grid size-11 shrink-0 place-items-center rounded-full bg-[#01329C] text-white">
+        <span className={`grid shrink-0 place-items-center rounded-full bg-[#01329C] text-white ${placement === 'hero' ? 'size-9' : 'size-11'}`}>
           <MessageCircle aria-hidden="true" className="size-6" />
         </span>
         <span className="text-base font-extrabold">Chat for housing help</span>

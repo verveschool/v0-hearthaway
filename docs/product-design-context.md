@@ -31,6 +31,8 @@ Confirmed by the product owner on 15 November 2026:
 
 On 23 November 2026, the product owner specified a shared compact blue banner for public interior pages. It contains a white Manrope page heading and an optional white action, with a 210 px mobile and 230 px desktop baseline that can grow for increased text size. The homepage, authentication, account and staff screens keep their dedicated layouts.
 
+On 24 November 2026, the product owner approved a transparent welcome illustration for the homepage hero. The housing chat launcher sits in the hero below the illustration and above the trust metrics, so the homepage metrics stay visible.
+
 Public banner copy uses a warm, practical voice. Banner actions connect to an existing next step in Total Home, such as a city's housing, a property's rooms, or guides relevant to the student's stage. Preserve formal policy titles and the names of places, properties, rooms and guides. Confirm that the destination exists and avoid promising future services or guaranteed outcomes.
 
 ## Purpose, users and value
@@ -172,7 +174,7 @@ No SQL schema, migration or RLS-policy files were found in the complete reviewed
 | Secondary CTA | `.secondary-cta`: white surface with blue border/text |
 | Layout | Generous spacing, clear headings, rounded cards, accommodation imagery and practical supporting copy |
 | Components | Shared navigation/footer, home sections, form components and [button primitive](../components/ui/button.tsx); shadcn Base Nova configuration |
-| Motion/accessibility | Existing navigation states, keyboard/focus handling, reduced-motion CSS and carousel behaviour should be preserved and verified in scoped work |
+| Motion/accessibility | Existing navigation states, keyboard/focus handling, and reduced-motion CSS should be preserved and verified in scoped work |
 | Assets | Existing `public/brand/` assets; several real filenames contain leading spaces and must be used exactly |
 | Product voice | Practical, reassuring, helpful and trustworthy |
 
