@@ -77,7 +77,16 @@
       "homepage_listed": true,
       "priority_tier": "first_import",
       "first_import_order": 3,
-      "provider_key": "housing-anywhere"
+      "provider_key": "housing-anywhere",
+      "relationship_status": "owner_confirmed_existing_corporate_partner",
+      "inventory_access_status": "corporate_affiliate_agreement_active_feed_addendum_draft_received",
+      "source_route": "Outbound marketplace inventory feed promised in existing partner thread",
+      "current_source_dependencies": [
+        "feed-use addendum finalization in existing thread",
+        "outbound feed endpoint and schema",
+        "image CDN hostnames and referral URL fields"
+      ],
+      "commissionable": true
     },
     {
       "slug": "uniplaces",
@@ -107,7 +116,16 @@
       "homepage_listed": true,
       "priority_tier": "first_import",
       "first_import_order": 1,
-      "provider_key": "scraye"
+      "provider_key": "scraye",
+      "relationship_status": "owner_confirmed_existing_partner",
+      "inventory_access_status": "existing_account_and_shared_listing_links",
+      "source_route": "Scraye partner account / shared tracked listing links",
+      "current_source_dependencies": [
+        "current live listing export or supported account workflow",
+        "stable property and room IDs",
+        "current image CDN hostnames"
+      ],
+      "commissionable": true
     },
     {
       "slug": "iglu",
@@ -137,11 +155,19 @@
       "homepage_listed": true,
       "priority_tier": "first_import",
       "first_import_order": 2,
-      "provider_key": "campus-living-villages"
+      "provider_key": "campus-living-villages",
+      "relationship_status": "owner_confirmed_existing_partner",
+      "inventory_access_status": "marketing_services_agreement_and_partner_inventory_scope",
+      "source_route": "11 UK properties in signed agreement schedule; official property pages provide current room, price, availability and image references",
+      "current_source_dependencies": [
+        "confirm current partner-provided feed/portal export or authorized page refresh process",
+        "map exact room and term variants across 11 scheduled properties"
+      ],
+      "commissionable": true
     },
     {
       "slug": "nexity-studea",
-      "name": "Nexity Stud\u00e9a",
+      "name": "Nexity Studéa",
       "kind": "operator",
       "website": "https://www.nexity-studea.com/",
       "homepage_listed": true,
