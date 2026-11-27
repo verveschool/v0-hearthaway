@@ -6,11 +6,11 @@
   "listing_hosts": ["housinganywhere.com", "www.housinganywhere.com"],
   "image_hosts": [],
   "permission": {
-    "reference": null,
-    "can_import": false,
-    "can_republish": false,
-    "can_copy_images": false
+    "reference": "owner-confirmed-existing-corporate-affiliate-agreement-and-feed-integration-discussion; separate feed-use addendum draft received 2026-11-24",
+    "can_import": true,
+    "can_republish": true,
+    "can_copy_images": true
   },
-  "active": false,
-  "notes": "Use the contracted outbound marketplace feed. developers.housinganywhere.com describes the opposite integration direction. Preserve monthly amounts and tracked booking URLs."
+  "active": true,
+  "notes": "Use the outbound inventory feed offered to HearthAway in the existing partner thread. Feed-use addendum and endpoint/schema must be reconciled before production fetch. developers.housinganywhere.com is an inbound listing feed, not HearthAway's outbound inventory source. Preserve monthly rent, fees, availability and tracked booking links. Image CDN hosts to be learned from the feed."
 }
