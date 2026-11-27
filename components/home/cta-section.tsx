@@ -85,7 +85,7 @@ export default function CtaSection() {
                 {countries.length}
               </div>
               <div className="text-[#6B6860] text-sm leading-snug">
-                countries across Europe, North America, the UAE, and APAC.
+                countries across Europe, the UAE, and APAC.
               </div>
             </div>
 

@@ -29,7 +29,7 @@ export type UniversityPlace = {
   citySlug?: string
 }
 
-export const cities: CityPlace[] = [
+const allCities: CityPlace[] = [
   {
     name: 'London',
     country: 'United Kingdom',
@@ -991,7 +991,16 @@ export const cities: CityPlace[] = [
   }))
   ]
 
-export const universities: UniversityPlace[] = [
+const availableCityImages = new Set(['southampton', 'nottingham', 'cork', 'berlin', 'glasgow', 'stuttgart', 'montpellier', 'canberra', 'newcastle', 'york', 'sheffield', 'toulouse', 'coventry', 'bordeaux', 'liverpool', 'munich', 'leipzig', 'marseille', 'strasbourg', 'paris', 'london', 'frankfurt', 'manchester', 'loughborough', 'perth', 'exeter', 'brisbane', 'barcelona', 'heidelberg', 'madrid', 'birmingham', 'belfast', 'leicester', 'sharjah', 'lyon', 'dubai', 'adelaide', 'edinburgh', 'cardiff', 'aachen', 'cologne', 'melbourne', 'dresden', 'leeds', 'sydney', 'lille', 'nice', 'gold-coast', 'bristol', 'hamburg', 'galway', 'dublin', 'tuebingen', 'abu-dhabi', 'grenoble'])
+
+export const cities = allCities
+  .filter((city) => city.countryCode !== 'USA' && city.countryCode !== 'CA')
+  .map((city) => city.slug !== 'london' && city.image === '/images/city-london.png'
+    ? { ...city, image: availableCityImages.has(city.slug) ? `/images/city-${city.slug}.png` : '' }
+    : city)
+
+
+const allUniversities: UniversityPlace[] = [
   { name: 'University of Hertfordshire', city: 'Hatfield', country: 'UK', students: '30,000+', slug: 'hertfordshire', citySlug: 'hatfield' },
   { name: 'University of Exeter', city: 'Exeter', country: 'UK', students: '22,000+', slug: 'exeter', citySlug: 'exeter' },
   { name: 'University of Leicester', city: 'Leicester', country: 'UK', students: '16,000+', slug: 'leicester', citySlug: 'leicester' },
@@ -1160,6 +1169,8 @@ export const universities: UniversityPlace[] = [
   { name: 'University of Bologna', city: 'Bologna', country: 'IT', students: '90,000+', slug: 'bologna-university', citySlug: 'bologna' }
 ]
 
+export const universities = allUniversities.filter((university) => university.country !== 'USA' && university.country !== 'CA' && university.country !== 'United States' && university.country !== 'Canada')
+
 export const groupedCities: Record<string, CityPlace[]> = {
   'United Kingdom': cities.filter((city) => city.countryCode === 'UK'),
   Ireland: cities.filter((city) => city.countryCode === 'IE'),
@@ -1167,8 +1178,6 @@ export const groupedCities: Record<string, CityPlace[]> = {
   'United Arab Emirates': cities.filter((city) => city.countryCode === 'UAE'),
   Germany: cities.filter((city) => city.countryCode === 'DE'),
   Australia: cities.filter((city) => city.countryCode === 'AU'),
-  'United States': cities.filter((city) => city.countryCode === 'USA'),
-  Canada: cities.filter((city) => city.countryCode === 'CA'),
   Spain: cities.filter((city) => city.countryCode === 'ES'),
   Austria: cities.filter((city) => city.countryCode === 'AT'),
   Belgium: cities.filter((city) => city.countryCode === 'BE'),

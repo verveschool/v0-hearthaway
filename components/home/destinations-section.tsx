@@ -13,7 +13,7 @@ const popularCities = [
   { name: 'Munich', country: 'Germany', slug: 'munich', image: '/images/city-munich.png', rent: 'from €500/mo' },
   { name: 'Sydney', country: 'Australia', slug: 'sydney', image: '/images/city-sydney.png', rent: 'from A$280/wk' },
   { name: 'Melbourne', country: 'Australia', slug: 'melbourne', image: '/images/city-melbourne.png', rent: 'from A$250/wk' },
-  { name: 'Kuala Lumpur', country: 'Malaysia', slug: 'kuala-lumpur', image: '/images/city-london.png', rent: 'from RM 900/mo' },
+  { name: 'Kuala Lumpur', country: 'Malaysia', slug: 'kuala-lumpur', image: '', rent: 'from RM 900/mo' },
 ]
 
 export default function DestinationsSection() {
@@ -89,13 +89,13 @@ export default function DestinationsSection() {
               href={`/cities/${city.slug}`}
               className="group relative overflow-hidden rounded-xl h-48 flex flex-col justify-end hover:shadow-xl transition-all duration-300"
             >
-              <Image
+              {city.image ? <Image
                 src={city.image}
                 alt={`Student accommodation in ${city.name}`}
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
-              />
+              /> : <div className="absolute inset-0 bg-[#00319D]" />}
               <div className="absolute inset-0 bg-gradient-to-t from-[#00319D]/85 via-[#00319D]/20 to-transparent" />
               <div className="relative z-10 p-3.5">
                 <div className="font-extrabold text-sm text-white leading-none mb-1">{city.name}</div>

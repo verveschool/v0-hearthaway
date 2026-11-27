@@ -1,6 +1,5 @@
-import CountryHubPage from '@/app/country-hub-page'
-import { getCountryBySlug } from '@/lib/country-data'
+import { redirect } from 'next/navigation'
 
-export default function CanadaIndex() {
-  return <CountryHubPage country={getCountryBySlug('canada')} />
+export default function RetiredDestination() {
+  redirect('/cities')
 }

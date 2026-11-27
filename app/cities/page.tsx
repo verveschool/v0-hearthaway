@@ -39,13 +39,15 @@ export default function CitiesPage() {
                         className="group overflow-hidden rounded-2xl border border-[#E8E6E1] hover:shadow-xl transition-all duration-300 bg-white"
                       >
                         <div className="relative h-44 overflow-hidden">
+{city.image ? (
                           <Image
                             src={city.image}
-                            alt={`Student properties in ${city.name}`}
+                            alt={`View of ${city.name}`}
                             fill
                             className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                           />
+) : <div className="flex h-full items-center justify-center bg-[#00319D] px-4 text-center text-xl font-bold text-white">{city.name}</div>}
                         </div>
                         <div className="p-5">
                           <div className="flex items-start justify-between mb-1">

@@ -125,16 +125,7 @@ const markets = [
     name: 'Netherlands',
     description: 'English-taught programmes, bike-friendly cities, and practical support for international students.',
   },
-  {
-    flag: '🇺🇸',
-    name: 'United States',
-    description: 'A huge choice of universities, campus cultures, and career opportunities across diverse regions.',
-  },
-  {
-    flag: '🇨🇦',
-    name: 'Canada',
-    description: 'Welcoming campuses, multicultural cities, and strong support for international students.',
-  },
+
 ]
 
 export default function AboutPage() {
