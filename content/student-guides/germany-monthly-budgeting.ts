@@ -38,6 +38,8 @@ Check applicable health insurance and its dates through your institution, insure
         title: 'Keep immigration evidence and accessible funding apart',
         prose: `If you need to show funds for a study visa, check the official route and the amount, documents and funding types that apply. Germany’s federal guidance describes options such as a blocked account, a scholarship or a declaration of commitment in relevant cases. If money is held in a restricted account, ask the provider when withdrawals can start, how much is released and how you can pay expenses that arrive first. A sufficient evidence balance may coexist with a cash shortage for a room deposit and first rent.
 
+Put the deposit and first rent on the calendar next to the first day you can withdraw from a blocked account. If the housing payments come first, ask the account provider about access dates and the landlord about due dates before you agree to the room.
+
 Potential work income should be a separate scenario until your permissions, job, pay and schedule are confirmed. The federal study-and-work guidance sets out how rules differ by status and work arrangement. Check what applies to the role and whether hours, insurance or payment dates change your plan. If funds fall short, ask the international office or student services about advice and any help that actually applies. Use the next two months of payments and ask about changes before deadlines pass.`,
         sources: [s.germanVisaStudy.id, s.germanStudyAndWork.id, s.germanStudentSupport.id],
       },

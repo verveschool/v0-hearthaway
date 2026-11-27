@@ -1,17 +1,18 @@
 import type { ReviewedGuide } from './model'
+import { preArrivalTimeline } from './pre-arrival-timeline'
 import { sources as s } from './sources'
 
 export const preArrivalChecklist: ReviewedGuide = {
   slug: 'pre-arrival-checklist',
   title: 'Pre-arrival checklist for international students',
-  description: 'Plan your documents, visa evidence, housing, flights and first week in the right order, with fallback plans for delays.',
+  description: 'Use a downloadable timeline to plan your visa evidence, housing, flights and first week abroad, with a backup if your dates change.',
   topic: 'Before departure',
   reviewedOn: '2026-11-27',
   related: ['student-visa', 'choose-accommodation', 'real-cost-abroad', 'first-week'],
   body: {
-    introduction: `This checklist is for students moving abroad for a degree, exchange or other course, and for the people helping them prepare. Its purpose is to help you decide what to do now, what to confirm before you pay and what can wait until you land. A move becomes easier to manage when you know which plans depend on another decision.
+    introduction: `Before you book a flight or pay for a room, write down four dates: the first time your university needs you on campus, the earliest you can enter the country, when someone can give you the keys, and when your first payment is due. A room you pay for from Monday won't help if you land on Sunday.
 
-Start with four dates: the first activity your university requires, when you may enter and begin your stay, when you can actually get into your room and when each payment is due. The same month can contain all four without the dates lining up. A room paid from Monday does not solve a Sunday arrival, and the first day of classes may be later than a required in-person enrolment appointment.`,
+Use the timeline below to put those dates in order. If a visa, offer or room is still pending, decide now what you’ll do if it hasn’t come through by the day you need to act.`,
     takeaways: [
       'Build a dated plan from written university, immigration and accommodation instructions.',
       'Track the cost and conditions of changing housing and travel while decisions are pending.',
@@ -19,9 +20,10 @@ Start with four dates: the first activity your university requires, when you may
       'Keep your first-week list short and prioritise deadlines, safe housing and access to support.',
     ],
     sections: [
+      preArrivalTimeline,
       {
         id: 'make-a-deadline-map',
-        title: 'Turn your offer into a deadline map',
+        title: 'Write down the deadlines in your offer',
         prose: `Open the latest message from your university and write down the campus, exact programme and intake, offer conditions, acceptance date and formal enrolment steps. Distinguish a deadline to accept from a deadline to pay or arrive. If you have an academic or language condition, record the evidence the university needs, who issues it and when you can realistically send it. Save a copy of any intake change and ask the institution to confirm which documents it replaces.
 
 Ask about orientation, the latest permitted arrival, registration and how a deferral works. If your course has placements or teaching on more than one site, get the address of the site you expect to use most. A university may have more than one accommodation allocation process even when you see all its halls under one name. Find out who decides, whether applying is binding and when you can expect an answer. While an application is pending, gather private alternatives you could verify if you need them.
@@ -35,8 +37,8 @@ For each deadline keep a line with the local date and time, time zone, person re
 
 If you need financial evidence, record the amount, who may hold it, how it must be documented and the date the evidence must cover. Personal bank funds, a qualifying student loan and official financial sponsorship can have different tests. A university grant covering part of tuition leaves a balance to plan for. Keep the application calculation separate from the money you need for flights, deposits, rent and the first weeks. Arrange payments so they do not accidentally affect your ability to meet the financial evidence rules that apply to you.
 
-When a visa is granted, check your name, passport details, dates and conditions against your travel booking and university instructions. If you are travelling on a UK eVisa, UK Visas and Immigration asks you to check that the current travel document is linked to your UKVI account and that its details match the information you gave the carrier. For another route, read its specific instructions. Make a list of the documents that need to be accessible during travel, and store the rest safely. Keep a backup that you can open if your phone is flat or you cannot log in, without leaving passports or financial records in an open shared folder.`,
-        sources: [s.ukVisaFunds.id, s.ukTravelEvisa.id],
+When a visa is granted, check your name, passport details, dates and conditions against your travel booking and university instructions. If you are travelling on a UK eVisa, UK Visas and Immigration asks you to check that the current travel document is linked to your UKVI account and that its details match the information you gave the carrier. UKVI also says to wait for a visa decision before booking travel. For another route, read its own instructions. Make a list of the documents that need to be accessible during travel, and store the rest safely. Keep a backup that you can open if your phone is flat or you cannot log in, without leaving passports or financial records in an open shared folder.`,
+        sources: [s.ukVisaFunds.id, s.ukTravelEvisa.id, s.ukVisaTravelBooking.id],
       },
       {
         id: 'compare-housing-commitments',
@@ -68,7 +70,7 @@ Ask what the room actually has on the first night. Bring or arrange only the ess
       },
       {
         id: 'prepare-the-first-week',
-        title: 'Protect time for enrolment, healthcare and basic routines',
+        title: 'Make time for enrolment and healthcare',
         prose: `Put required appointments and registration deadlines in your calendar before scheduling shopping, social plans or bank visits. Save your university's international student contact and the person you can ask about course access. Ask who to notify if a delay means you miss a required activity. Where a post-arrival validation, local address registration or residence appointment applies, read the authority's instructions and keep confirmation.
 
 Prepare one way to request routine medical care, one urgent care route and the local emergency number. Check any coverage start date and whether you need to carry proof of eligibility or insurance. If you depend on a medication or accessible equipment, arrange continuity with the relevant professional and check destination, transit and carrier rules before travel. Ask the provider who handles urgent facility issues and how to open a repair ticket.
@@ -91,6 +93,6 @@ Your first normal journey to campus is worth trying when you have spare time. Fi
       { question: 'What if the visa comes through but the move-in dates do not line up?', answer: 'Check the dates on your permission and talk to your university and provider. Price a verified short stay or a change to the travel booking, and arrange a confirmed key handover for the final room.' },
       { question: 'What should a parent or supporter keep?', answer: 'Agree on a copy of the itinerary, the provider’s contact details and agreed payment dates. Share sensitive documents only where you have a purpose and a secure method.' },
     ],
-    sources: [s.ukVisaFunds, s.ukTravelEvisa, s.hearthawayRole, s.studyAustraliaHousing],
+    sources: [s.ukVisaFunds, s.ukTravelEvisa, s.ukVisaTravelBooking, s.hearthawayRole, s.studyAustraliaHousing],
   },
 }

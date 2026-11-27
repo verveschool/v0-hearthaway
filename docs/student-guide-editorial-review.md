@@ -1,0 +1,60 @@
+# Editorial review of the 31 student guides
+
+Reviewed on 27 November 2026. The review started with the 31 article bodies served by the [production sitemap](https://www.hearthaway.com/sitemap.xml). All 31 articles were read before editing. This pass keeps their URLs, titles, existing section anchors, library filters, navigation and redirects. The pre-arrival guide has a more specific search description for its new worksheet. The [article matrix](student-guide-status.csv) lists every canonical URL, source and current word count. Length was recorded for reference.
+
+The editing approach followed Paul Graham’s advice to use everyday words and sentences a reader could hear in conversation. Brian Chesky’s customer-first approach informed how the review was done: test the experience of one student with a particular problem, then give that student a next action they can actually take. [Write Simply](https://paulgraham.com/simply.html) · [Write Like You Talk](https://paulgraham.com/talk.html) · [Brian Chesky on designing from the customer’s experience](https://mastersofscale.com/brian-chesky/)
+
+## Article-by-article changes
+
+Each slug below sits under `/moving-abroad/`. The final column records the case the guide still depends on the student, provider or local authority to resolve.
+
+| Article | Meaningful change | Remaining question or dependency |
+| --- | --- | --- |
+| `pre-arrival-checklist` | Put the four dates that govern the move first. Added a six-stage timeline from offer to first week and a downloadable, printable text worksheet with spaces for dates and contacts. Included UKVI’s advice on when to book travel. | University and visa dates vary. Fill in actual dates before using the worksheet. |
+| `choose-accommodation` | Added a five-option comparison table with questions to ask before paying. Explained ensuite versus studio. Used an attributed Edinburgh student account to turn the commute advice into a class-time test. | Room allocation, after-hours support and charges need written confirmation. |
+| `real-cost-abroad` | Added a comparison of what you could lose if a course is deferred or a visa is delayed. Retained the worked whole-course budget and cash calendar. | Tuition refund terms and exchange fees depend on the institution and payment route. |
+| `student-visa` | Put the two money questions upfront. Checked UK maintenance figures and holding periods, made Ireland application versus first registration clearer, and spelled out Australian financial evidence for family applying later. Checked the French VLS-TS validation requirement. | The guide covers examples in four countries. Other routes and borderline cases still need individual official instructions. |
+| `uk-bank-account` | Started with rent due before a UK account opens. Explained the order for updating a student address and requesting a new bank letter. | Banks set different address and identity requirements. |
+| `packing-list` | Explained what a plug adapter does and added a pre-arrival delivery and collection-point check. | Carrier rules and residence parcel policies vary. |
+| `accommodation-costs` | Added a concrete question for splitting the first payment and identifying any further amount due before keys. Retained the 42-week worked comparison. | The provider must confirm the payment breakdown and what can be charged locally. |
+| `halls-vs-private` | Added an attributed Manchester postgraduate account and a question about how students actually use communal spaces. Retained the comparison and agreement checks. | Staffing, shared facilities and community differ by building. |
+| `avoid-scams` | Added a call script for checking the specific booking and payment route with the genuine provider. | Public registries can confirm limited facts. They cannot verify the individual offer. |
+| `tenancy-agreement` | Added a question to put directly to the provider when a visa is still pending on rent day. Kept the separate checks for notice and early exit. | Cancellation and release depend on the actual agreement and law. |
+| `cost-of-living` | Added a check for the night a kitchen or timetable makes cooking impractical. Preserved the weekly arithmetic. | Verify groceries, transport and bills for the student's route and room. |
+| `student-budget` | Explained the budget in terms of cash available on each due date. Added who checks that a family transfer was credited. | The student and payer need a real fallback for delayed funds. |
+| `hidden-costs` | Added a first-night list for a student who cannot buy everything at once. | Local borrowing, second-hand stock and room inventory vary. |
+| `student-discounts` | Explained how to budget while a travel discount is still pending. Kept the break-even example. | Check current fares and eligibility with the operator. |
+| `first-week` | Put access, room safety and deadlines before errands. Added a sample message that gives a repair team enough information to act. | The agreement and local rules set the condition-report deadline. |
+| `airport-to-home` | Added an after-hours key-safe and text-code check, including what happens when the code does not arrive. | Check the actual provider, terminal and transport hours. |
+| `healthcare` | Added a clinic script for direct billing, claims and accessible appointment booking. Retained the distinction between cover and access to care. | Eligibility, charges and referrals require clinic or insurer confirmation. |
+| `making-friends` | Added a simple way to ask for a smaller or quieter session after a large welcome event. | Campus and community activities vary. No HearthAway student account was available for this topic. |
+| `uae-visa-sponsorship` | Turned the pre-travel and after-arrival sequence into three questions for the university and residence. | The sponsor and responsible emirate authority must confirm the sequence for the student. |
+| `uae-housing-furnished` | Added a cooling bill question and updated the link to DEWA’s move-in service. | Cooling, tenancy registration and utility activation depend on the building and agreement. |
+| `uae-tax-free-income-planning` | Added a first-salary delay test before agreeing to up-front rent. | Work permission and any cross-border tax obligations depend on the individual case. |
+| `germany-studentenwerk-housing` | Clarified who to ask about registration when a temporary stay comes before the main room. | The municipality decides what applies to the actual stay and address. |
+| `germany-monthly-budgeting` | Put the deposit and first rent next to the first accessible date for blocked-account funds. | The account provider and housing agreement determine actual access and due dates. |
+| `germany-tenancy-law-deposits` | Added what to ask for if a provider requests a covered cash deposit in full. | The agreement classification matters before relying on section 551. |
+| `weighted-housing-comparison` | Added a test for the single missing fact that could change a close result. Kept the scoring model and worked tie. | Scores depend on verified route and room details. |
+| `after-rental-scam` | Put the bank call and fallback housing first. Added the information to have ready and a follow-up question before hanging up. | Recovery and reporting depend on how and where the money was sent. |
+| `ireland-student-housing` | Added a housing question for placements and resits. Checked the RTB’s 41-week guidance and seasonal notice rule. | Written extension terms, dates and any move-out gap need provider confirmation. |
+| `australia-student-housing` | Added the details to give a tenancy authority when a listing label and contract disagree. Checked the Queensland bond and condition-report example. | State and territory rules differ. The Queensland example has limited scope. |
+| `accessible-student-housing` | Added a pre-travel confirmation date and example wording for verifying the booked room and a necessary adjustment. | Actual room availability, dimensions and after-hours support require confirmation. |
+| `uk-student-housing` | Clarified what to ask about a fixed-term offer in England and how advance rent works for a new assured periodic tenancy with monthly payments. | Eligibility, the tenancy date and the specific agreement determine the rules. |
+| `netherlands-student-housing` | Added a decision date and a university contact step if there is still no verified place to live. Checked the official deposit and municipal registration guidance. | The municipality must confirm the registration route for the actual address and length of stay. |
+
+## Evidence and limits
+
+- The Edinburgh and Manchester examples came from their university publications. They are attributed personal examples, without direct quotes or claims about HearthAway. A targeted search of the repository and connected documents did not find publishable, attributable HearthAway student or housing-advisor accounts. Interview and case-note access remains an opportunity for a later pass.
+- The claim checks used official visa, university, health and tenancy guidance. They covered UK Student visa amounts, bank evidence and eVisa travel, Irish registration, Australian subclass 500 and Queensland rooming rules, French VLS-TS validation, England’s rental reforms, Irish SSA terms, German deposit rules, Dutch rent and registration rules, and Dubai tenancy and utility setup. Budget figures are worked examples. They were checked for arithmetic and are labelled as illustrations, with live rates and quotes left to the relevant authority or provider.
+- Link checks and claim checks answer different questions. The direct link check got HTTP 200 for 56 of 72 external sources. The other 16 gave a block, server error, connection error or timeout. Their published pages could be reached through alternate retrieval, including France-Visas, Report Fraud, UCL, the Dutch government and DEWA. A successful download alone does not verify every use of a source. Individual legal, immigration, health and provider terms remain case-specific.
+
+## Analytics review
+
+The production site mounts Vercel Web Analytics and Speed Insights. The production analytics script endpoint is available. Vercel’s Pages and Devices reports can show recorded article openings and mobile/desktop traffic. A page view does not establish that the guide was read. Speed Insights reports performance. The site has housing-chat events, and the code currently has neither a guide engagement event nor a guide-to-accommodation click event. Comparing page counts therefore gives no reliable guide-to-housing conversion rate.
+
+If the team chooses to instrument that journey later, measure a clearly defined engagement signal (such as reaching the checklist), direct clicks from a guide into property or room browsing, and advisor clicks as their own outcome. Use only the guide slug and a fixed action label. Define the denominator in the report and check event collection and plan support in Vercel before using any resulting numbers. This PR adds no tracking. [Vercel Web Analytics](https://vercel.com/docs/analytics) · [Custom event support](https://vercel.com/docs/analytics/custom-events)
+
+## Release verification
+
+- The production baseline was checked before editing. The local rendered check passed for the revised production build. The default local build hit a Next.js font-loader error. A local webpack production build using copies of the same official Manrope files passed, without changing the site’s fonts or build configuration. Production continues to serve the current library until the PR is reviewed and merged.
+- After an approved merge, run `node scripts/guides/verify-render.mjs https://www.hearthaway.com --expect-editorial`. This traverses both library indexes, checks all 31 live canonical articles and verifies the timeline, download, comparison table, anchors, metadata and redirects. Recheck the download and table in a browser at phone and desktop widths.

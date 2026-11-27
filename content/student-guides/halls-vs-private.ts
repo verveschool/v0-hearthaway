@@ -40,6 +40,8 @@ For a homestay or room in a host's home, discuss meals, kitchen use, guests, noi
         title: 'Compare how the room would work during a normal week',
         prose: `Picture a busy week with an early lecture, a late return and a day you need to work in your room. Where can you take a call, prepare a meal and store what you need? Who sees a problem with the heating or door first? If a housemate brings visitors, which rules apply and who can help? Include time to reach the place you spend your evenings. Then check the same questions for term breaks and move-in day, when opening hours and housemates may differ.
 
+In the University of Manchester’s Humanities Blog, postgraduate student Yvett describes meeting students from other courses through her residence. If that matters to you, ask how people actually use the shared spaces: is there a communal kitchen for your flat, a building-wide lounge, or a programme you would need to sign up for?
+
 A higher weekly rent may be worth it if the agreement covers the period you need and removes work you cannot take on. Compare a written rent guarantee or required security with your cash calendar. Add utilities, travel and set-up costs, including any nights uncovered by the agreement. England's university-student renting guide describes differences between private renting and certain halls arrangements, including implications for a fixed period and ending the agreement. Use the rules for your actual location and classify the agreement before relying on a notice or refund.
 
 Here is a decision example. A student on a placement with irregular hours may value a studio kitchenette and a secure building entrance after midnight. Another student on the same course who wants contact with people and can share cooking could prefer a room in a smaller residence. Give each option credit for the features the provider confirms, and discount those you would rarely use.`,
@@ -54,7 +56,7 @@ Here is a decision example. A student on a placement with irregular hours may va
             ['Homestay or digs', 'Household support and rules', 'Meals, access, notice and disagreement process'],
           ],
         },
-        sources: [s.englandStudentTenancies.id, s.irelandStudentRenting.id],
+        sources: [s.englandStudentTenancies.id, s.irelandStudentRenting.id, s.manchesterStudentHousing.id],
       },
     ],
     checklist: [
@@ -69,6 +71,6 @@ Here is a decision example. A student on a placement with irregular hours may va
       { question: 'Should I always choose halls in my first year?', answer: 'Choose the verified option that fits your support needs, dates, finances and daily routine. Ask who manages the building and what contact is available outside office hours.' },
       { question: 'Is a studio the same as private accommodation?', answer: 'Studio describes how the room is laid out. It may be offered in a university hall, managed residence or private rental. Check the facilities and agreement separately.' },
     ],
-    sources: [s.studyAustraliaHousing, s.irelandStudentRenting, s.englandStudentTenancies],
+    sources: [s.studyAustraliaHousing, s.irelandStudentRenting, s.englandStudentTenancies, s.manchesterStudentHousing],
   },
 }

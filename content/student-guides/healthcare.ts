@@ -63,6 +63,8 @@ If care intersects with your housing, ask what you need from the building. For e
 
 Try the plan with an example. Suppose a student arrives on a Saturday, the campus health service opens Monday and their policy starts on Sunday. Before travel, they should ask how Saturday's coverage is handled and check an out-of-hours contact, any immediate access rules and how they would travel there. Coverage confirmation alone would not tell them who is open. Use the actual times and dates from your own plan.
 
+Save a note you can read out at a clinic: “My cover is with ____. Does this clinic bill them directly? If I pay today, what document will I need to claim?” Ask about an interpreter or accessible booking when you make the appointment. For urgent care, use the local urgent-care route and sort out claim paperwork when you can.
+
 Keep a small record of insurance details, regular medication and medical contacts with your travel documents. Tell a supporter how you prefer to be contacted and who may have access to health information. Keep invoices and payment receipts if you need to claim. If a bill is unexpected, ask the service and insurer for the basis of the charge and the relevant review or complaint channels. Do not delay emergency help to discuss a bill.`,
       },
     ],

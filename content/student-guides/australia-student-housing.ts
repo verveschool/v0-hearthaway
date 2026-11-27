@@ -36,6 +36,8 @@ For homestay, ask about meals, laundry, guest rules and how to request a change.
 
 Queensland shows the distinction. The Residential Tenancies Authority (RTA) says on-campus student accommodation is outside the main renting legislation it administers, but a rental bond paid for on-campus accommodation must still be lodged with the RTA. Off-campus accommodation may come under different categories. For Queensland rooming accommodation covered by the relevant rules, the RTA says a bond taken must be lodged within 10 days and a condition report is required if a bond is taken. Consult the relevant rooming or general tenancy guidance before acting.
 
+If the offer says “student accommodation” but the contract uses another term, tell the authority your state, whether the property is on campus, what space you rent, and what agreement the provider gave you. Ask specifically where the bond goes and which condition form applies.
+
 In another jurisdiction, use the official guidance for the address. Ask the provider to identify the correct bond process, permissible fees, written agreement, rent changes, condition report and dispute route. If an agreement looks different from the official description, ask the applicable authority or a local advice service before paying.`,
         sources: [s.studyAustraliaHousing.id, s.queenslandStudentHousing.id, s.queenslandRooming.id],
       },

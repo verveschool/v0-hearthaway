@@ -46,6 +46,8 @@ If the listing claims that an institution endorses it, ask the housing or intern
 
 An example: you have booked a viewing and received an invoice from the established provider. A new message that appears in the same conversation says its account is temporarily unavailable and asks you to use a different bank account today. Pause. Use the number you verified when you shortlisted the room, and ask the provider's finance or reception contact to confirm the change and the correct payment route. Let a supporter know why the delay matters so they do not forward the money independently.
 
+If someone says they are renting on behalf of a real company, call the company and ask it to confirm the specific booking. Give the address and quote reference, then ask it to read back the payment route it holds on file. A search result that proves the company exists is only the first check.
+
 Ask your provider which payment options are available. The options, costs and potential recovery rights depend on the payment route and jurisdiction. A matching payee name can help but cannot tell you whether the sender is genuine or the person is entitled to let the room. If you do use an approved method, retain the invoice, verified confirmation and transaction receipt. Do not forward one-time codes or banking passwords as proof of payment.`,
         sources: [s.rentalFraud.id, s.fcaPayments.id],
       },

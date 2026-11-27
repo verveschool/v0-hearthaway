@@ -34,6 +34,8 @@ Use current local figures. Study Australia offers broad cost estimates to help s
         title: 'Price a shopping list and the services you actually use',
         prose: `Sketch meals for the days you will be at home and food you may get at campus. Take a list of ingredients to a supermarket site or price it near the actual accommodation. Consider storage, limited freezer space, dietary needs, opening times and the cost of travelling for cheaper prices. Estimate what you will carry and use before it goes off. If you have a catered room, check exactly which meals and dates the charge covers. Include some costs for eating away from home if that is part of your routine.
 
+Try your meal plan against the day you get home latest. If the kitchen is closed, crowded or far away when you need it, price one practical alternative on that day. A grocery basket based on cooking every meal can understate what you will actually spend.
+
 Add recurring laundry, connectivity and insurance or health-related costs where applicable. Check any bills announced in advance so you can spread the cost over the period they cover. Include line items for supplies and ordinary social spending if you plan to use them. Put one-off purchases and deposits somewhere else. Keeping costs distinct makes it easier to see whether a shortfall comes from the weekly routine or an arrival expense you will not repeat.`,
       },
       {

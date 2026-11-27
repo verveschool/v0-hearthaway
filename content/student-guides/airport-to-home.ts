@@ -51,6 +51,8 @@ Give a trusted person your expected route and a check-in window. Agree what to d
         title: 'Decide when to use your backup',
         prose: `Set a point at which you check the plan again. If a delay or cancellation makes the planned handover unrealistic, contact the verified provider and ask for an approved change. Get any different instructions in writing. If nobody can receive you, use an independently checked temporary option and confirm its availability, payment, entrance and next-day journey before leaving the terminal. Repeat verification if somebody asks you to pay a different recipient.
 
+If a late arrival depends on a key safe or a code, ask the provider to walk you through the process before you fly. Save the door or locker number and ask whether the code expires. If it only arrives by text, check how you can get it with your current phone number. Agree who can help if the code fails.
+
 Once you are inside, check that you can leave and regain access and that you know the lockout and urgent repairs contacts. Update your supporter if you agreed to report back. Report any immediate access problem separately from your general inventory and give yourself time to document the room within the allowed window.`,
       },
     ],

@@ -29,6 +29,7 @@ export type GuideSection = {
   points?: string[]
   steps?: string[]
   table?: GuideTable
+  worksheet?: { label: string; filename: string; text: string }
   sources?: string[]
 }
 

@@ -53,6 +53,8 @@ Check who repairs supplied furniture, appliances, the heating or essential facil
 
 In a fixed period arrangement, look for early termination or a break clause and any requirement to propose a replacement. Check whether the provider has to accept that person and when your release becomes effective. In a periodic agreement, identify the process, deadline and form of notice. Never assume that returning a key or ceasing to occupy the room ends the obligation. For example, a hypothetical agreement with a written release effective after six weeks leaves six weeks of rent to fund. At £170 per week, that is £1,020. If you also need to fund new rent during those weeks, include the overlap in your decision. This example assumes a release is available and the terms are applicable.
 
+If the provider says you can cancel on visa refusal, ask about the case that may be harder: “If my visa is still pending on the day rent starts, what will I owe, and what do I need to send you before then?” Ask them to point to the clause. Keep the answer alongside the agreement.
+
 Before moving out, get the key return and inventory procedure, deadline and address for deposit correspondence. For a refund, learn whether it goes back to the original payer or a different account. If there is a dispute, ask for an itemised explanation and find the applicable scheme, provider complaint route or local advice service. Keep formal notices and delivery evidence until the matter is resolved.`,
         sources: [s.englandStudentTenancies.id, s.englandDeposit.id, s.irelandStudentSpecific.id],
       },

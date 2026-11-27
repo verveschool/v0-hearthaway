@@ -9,7 +9,7 @@ export const studentBudget: ReviewedGuide = {
   reviewedOn: '2026-11-27',
   related: ['real-cost-abroad', 'hidden-costs', 'accommodation-costs', 'uk-bank-account'],
   body: {
-    introduction: `A term budget can balance on paper and still leave you unable to pay rent on time. Tuition can be due in one instalment while a scholarship is released monthly. A family payment may take longer than expected, and your rent is due when the provider receives it. This guide helps you and a supporter turn funding into an operating plan that accounts for dates, currencies and access.
+    introduction: `A term budget can balance on paper and still leave you unable to pay rent on time. Tuition can be due in one instalment while a scholarship is released monthly. A family payment may take longer than expected, and your rent is due when the provider receives it. This guide helps you and a supporter see how much money will be available on each day a bill is due.
 
 Use the actual funds and instalments in your own case. Keep visa financial evidence separate. Only include as a source the portion you can access for the payment you are planning.`,
     takeaways: [
@@ -39,6 +39,8 @@ Repeat with a high-cost week and a late transfer. The lowest point tells you whe
         id: 'protect-the-essentials',
         title: 'Protect rent and essentials while allowing for everyday decisions',
         prose: `Set aside the next priority payments and a separate amount for basic food, travel and an emergency. Move only what you can use towards everyday spending. If your app or bank supports saving pots, check how quickly you can access the reserve and which account a scheduled payment uses. A reserve that is held abroad, in a locked product or dependent on another person's availability may fail when your primary card stops working. Choose the amount by pricing realistic problems, such as another night's accommodation, an urgent journey or a delayed contribution.
+
+If someone sends you money, agree who checks that rent has arrived. Share the date, amount, currency and transfer reference. Check the provider’s receipt, especially if a sender’s name differs from the student’s.
 
 Review actual spending after two weeks and again after the first regular bills. If a recurring cost is higher, update the next two months. Pause flexible spending if the remaining balance no longer covers essentials. Tell a provider early if a payment may not clear and get any agreement to change it in writing. Contact university student support if you need help understanding local hardship policies or cannot fund basics. Ask what evidence it wants and whether any help is available for your enrolment and circumstances.`,
         sources: [s.irregularIncome.id],

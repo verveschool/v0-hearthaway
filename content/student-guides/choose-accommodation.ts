@@ -9,9 +9,9 @@ export const chooseAccommodation: ReviewedGuide = {
   reviewedOn: '2026-11-27',
   related: ['halls-vs-private', 'accommodation-costs', 'tenancy-agreement', 'avoid-scams'],
   body: {
-    introduction: `When choosing a student home from abroad, the easiest things to compare are the advertised rent, photos and map pin. The factors you will live with are more specific: what you hear while studying, when you can cook, how reliable your commute is and what happens if your plans change. This guide is for students starting a search and families helping to compare offers. You can use it even in a destination with few online listings.
+    introduction: `Start with the room you can live in on a bad Tuesday: you have an early class, you need to cook, and you get back after reception closes. Photos and weekly rent tell you little about how that day will go.
 
-The goal is a short list of options you would be able to live in, with enough evidence to make a commitment. Decide the requirements an offer must satisfy. Then compare everyday trade-offs among the options that meet those requirements. A good score on price or appearance cannot solve a gap in dates or an access barrier you face every day.`,
+Write down your campus, the dates you need, the most you can pay before arrival, and anything that would rule a room out. Then use the table to pick which types of housing to look at and what to ask each provider.`,
     takeaways: [
       'Confirm the campus, move-in and move-out dates, payment ceiling and any firm access or occupancy needs.',
       'Compare written terms and the full cost over the period you need housing.',
@@ -30,12 +30,21 @@ Flexible preferences might include a gym, a private kitchen or a particular part
       },
       {
         id: 'compare-housing-formats',
-        title: 'Compare formats by who provides what',
-        prose: `University accommodation can offer a familiar support contact and a population of students. It may also have application deadlines, allocation rules or a room-move policy you need to understand. A privately managed student residence can offer another route, with service levels set by the individual property and agreement. Ask whether there is an actual member of staff on site when you need help and which services are part of your rent. Check rules about overnight guests, stays during holidays and applicable enrolment status.
+        title: 'Compare halls, shared homes, studios and homestays',
+        prose: `A hall or shared house describes how the property is run. An ensuite or studio describes the space you get. An ensuite normally gives you a private bathroom, but you may still share a kitchen. A studio is usually self-contained. Ask what the floor plan and written offer actually give you.
 
-With a shared house or flat, find out whether you sign for a particular room or for a whole dwelling with others. This affects who is responsible for rent, bills and finding replacements. A studio can mean more control over cooking and quiet, but ask whether the kitchen is fully equipped, how ventilation works and what spaces and services are still shared. A homestay or room in someone's home makes house rules, meals, kitchen access and communication especially important. Learn the terms applied by your destination to the actual arrangement before you rely on any protection.
-
-Treat the advertised category as the start of your research. For example, two managed residences might both say that utilities are included. One might include electricity and internet with a usage limit, while the other requires you to pay separately for laundry and upgrade internet access. Ask the same questions of every option so that a polished listing does not receive credit for facts you have not verified.`,
+Two privately managed student residences can offer very different support. Ask who is available after hours, which bills and services the rent covers, and what happens if your dates change.`,
+        table: {
+          caption: 'Which kind of student housing should you look at?',
+          columns: ['Housing type', 'Worth a look if', 'Ask before paying'],
+          rows: [
+            ['University halls', 'You want a university housing contact and an easy way to meet other students.', 'When will I know my room? Can I stay over breaks? Who can help after hours?'],
+            ['Privately managed student residence', 'You want a student building and a clear list of services.', 'Which bills have a cap? Is anyone on site at night? What if my visa is late?'],
+            ['Shared flat or house', 'You want a choice of housemates or neighbourhood and can help run a household.', 'Do I sign for my room or the whole home? Who owes the rent if someone leaves?'],
+            ['Studio', 'You need more privacy or control over when and how you cook.', 'Is there a usable kitchen? Who may live here? How much more does it cost for the full stay?'],
+            ['Homestay', 'You want a household to help you settle in and are comfortable with shared routines.', 'Which meals are included? When can I use the kitchen? How do I give notice?'],
+          ],
+        },
         sources: [s.studyAustraliaHousing.id, s.irelandStudentRenting.id],
       },
       {
@@ -52,7 +61,10 @@ Ask for exact fee names and conditions instead of accepting a total with unexpla
         title: 'Check travel door to door, including the journey home',
         prose: `Use an operator journey planner from the exact building to the part of campus you will enter. Check at the times you expect to travel, including an early class and your latest regular return. Allow time for getting down from the room, reaching the stop, waiting and transferring, walking through campus and taking a lift if needed. Public transport changes during weekends and holidays can matter even if you expect to spend most weekdays on campus.
 
+In the University of Edinburgh’s Student Stories, one student explains how a timetable full of morning classes made the walk to lectures a priority in their second year. Try their test for your own course: look up the journey for the earliest class you expect to take, and check a backup route for the day it goes wrong.
+
 A walk that looks short on a map can cross a difficult junction or involve a station exit with stairs. A longer direct journey may be simpler when service is frequent and reliable for your hours. Check lighting and walking routes through maps or a live video, or ask a university contact familiar with the area about the route. If you depend on a particular lift, bus or shuttle, identify the alternate and what it will cost when the route is disrupted. Put verified fares in your housing comparison and give time its own row. You may care more about a long, unpredictable evening return than saving ten minutes in the morning.`,
+        sources: [s.edinburghStudentHousing.id],
       },
       {
         id: 'verify-the-offer',
@@ -64,7 +76,7 @@ Review start and end dates, guests, occupants, deposits, bills, access by staff,
       },
       {
         id: 'make-the-final-decision',
-        title: 'Resolve the unknowns and decide with your supporter',
+        title: 'Ask the questions that could change your choice',
         prose: `Compare two or three evidenced options. Record each feature as confirmed, assumed or still to ask. Give the provider a short list of outstanding questions rather than asking them to confirm every line of your spreadsheet. Which occupant may live in the unit? Is fuel for heating part of the rent? When can you collect the key if a flight is late? What happens if the allocated room does not meet a written access requirement?
 
 If the first choice relies on an unanswered question and another choice meets all your clear needs, use the cost and consequences to decide whether to wait. Keep track of how long each offer is valid and what money, if any, you would lose by stopping. For a remote decision, a HearthAway advisor can help you review your requirements and compare available information. Ask which details came directly from the provider and which you should verify before payment. Retain the provider’s signed documents and official contact details after you choose.`,
@@ -86,6 +98,6 @@ If the first choice relies on an unanswered question and another choice meets al
       { question: 'Can I choose a room before I know my timetable?', answer: 'Confirm your expected teaching campus and test a plausible range of class times. If location could change, favour choices with a usable route to both sites or clear change terms.' },
       { question: 'Do I need to book if a destination has few public listings?', answer: 'Keep the same decision criteria. Ask your institution about its residence and private rental support and build a parallel short list. Verify availability and terms with the provider before paying.' },
     ],
-    sources: [s.studyAustraliaHousing, s.irelandStudentRenting, s.englandStudentTenancies, s.hearthawayRole],
+    sources: [s.studyAustraliaHousing, s.irelandStudentRenting, s.englandStudentTenancies, s.hearthawayRole, s.edinburghStudentHousing],
   },
 }

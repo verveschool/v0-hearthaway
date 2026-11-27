@@ -13,7 +13,7 @@ export const afterRentalScam: ReviewedGuide = {
 
 A suspicious message, an accidental transfer and a dispute with a genuine provider can require different responses. Start with the actions that protect you in all three cases: pause additional payments, verify the real provider through a channel you already trust, and speak directly to the service that sent the money. You can describe what happened before deciding what type of case it is.`,
     takeaways: [
-      'Contact your payment provider immediately through a verified channel and ask what can be done.',
+      'Call the bank or payment service you used. If someone else paid, ask them to call while you verify where you can stay.',
       'Keep original records and write down a short timeline while the details are fresh.',
       'Secure any account or document that may have been exposed.',
       'Arrange the next safe night independently and report through the right local channel.',
@@ -22,7 +22,7 @@ A suspicious message, an accidental transfer and a dispute with a genuine provid
       {
         id: 'act-on-the-payment',
         title: 'Contact the payment provider and explain what happened',
-        prose: `Call the bank, card issuer or payment service using the number on your card, its official website or its app. Avoid a number or payment link from the disputed messages. If someone else paid, ask them to call from their own account and share the legitimate transaction reference. Give the amount, currency, date and time, method and recipient details from the receipt. If the payment is still scheduled or pending, ask whether the provider can stop it. If it has left, ask about tracing, recall, a card dispute or any relevant fraud claim. Ask for a reference, what documents the provider needs and the next deadline.
+        prose: `Call the bank, card issuer or payment service using the number on your card, its official website or its app. Avoid a number or payment link from the disputed messages. If someone else paid, ask them to call from their own account and share the legitimate transaction reference. Have the amount, currency, date, payment method, recipient and transaction reference ready. If the payment is still scheduled or pending, ask whether the provider can stop it. If it has left, ask about tracing, recall, a card dispute or any relevant fraud claim. Ask for a case number, which documents it needs and the next deadline. Before hanging up, ask when you should call back if you hear nothing.
 
 Tell the provider whether you authorised a transfer after receiving false instructions, saw a transaction you did not make or chose the wrong recipient by mistake. Describe the facts plainly and let them classify the claim. Rules and available remedies can depend on the payment method, provider, countries and circumstances. Plan for the possibility that no funds come back in time to cover replacement accommodation. Do not pay twice on the assumption that someone will refund the first amount.
 

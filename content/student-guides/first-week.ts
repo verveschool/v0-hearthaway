@@ -9,9 +9,9 @@ export const firstWeek: ReviewedGuide = {
   reviewedOn: '2026-11-27',
   related: ['pre-arrival-checklist', 'airport-to-home', 'healthcare', 'uk-bank-account'],
   body: {
-    introduction: `The first week starts with getting through the right door and knowing how to reach help. It can also contain deadlines for university registration, immigration follow-up and reporting the condition of your room. This guide helps students and supporters decide what to do in the first hours and what to schedule later in the week.
+    introduction: `Tonight, get into your room, check that it locks, and save the number to call if you can’t get back in. If there’s a safety problem or you can’t use an access feature you were promised, report it straight away and ask where you can safely stay.
 
-Start with the deadlines that are actually attached to your circumstances. Your agreement might ask for an inventory response within two days, your university may have an in-person enrolment appointment, and your permission may require a specific post-arrival step. Find the documents and read the stated dates. Then create a short list you can manage even if your flight was delayed or your phone is not connected.`,
+Tomorrow, check the deadline to report room damage and look at the dates in your university and immigration messages. Leave shopping and other errands until you know which of those deadlines comes first.`,
     takeaways: [
       'Set up a safe first night with access, essentials and reliable contacts.',
       'Record room condition and report defects within the applicable window.',
@@ -24,7 +24,7 @@ Start with the deadlines that are actually attached to your circumstances. Your 
         title: 'Check in and make sure you can use your room',
         prose: `At key collection, ask what the keys, codes and cards open. Confirm which route works after hours and who handles a lockout. Get the emergency procedure, work out how to reach the building after dark and locate the basic facilities. If an access feature you were promised is unusable, report it to the provider immediately with the offer details, and ask for a safe temporary arrangement and written next steps.
 
-If your accommodation cannot be accessed, use the verified provider number. Notify a supporter if the arrival plan changes. Use a pre-checked alternative or ask your university about emergency support where available. In a shared home, meet the responsible person and agree how to handle basic needs. Keep food, water, sleep and any required care in view while you resolve administrative tasks.
+If you cannot get in, call the provider on the number you checked before travelling. Let anyone expecting you know your plan has changed. If the provider cannot get you in, call your backup accommodation or ask your university about emergency support.
 
 Once inside, save the verified contacts and put the address somewhere you can find it without data. If you need assistance to evacuate, ask the provider how arrangements are recorded and how to get help. Learn the address and entrance that emergency personnel would need. Give a trusted person your local contact, time zone and a sensible check-in plan.`,
       },
@@ -32,6 +32,8 @@ Once inside, save the verified contacts and put the address somewhere you can fi
         id: 'inventory-and-defects',
         title: 'Check the inventory and report anything that affects your stay',
         prose: `Read the move-in instructions and find your deadline for returning a condition report. Before unpacking completely, compare the room and equipment with the written inventory. Take photos of existing damage, both a wide image to show where it is and a close-up. Make sure dates and room details are recorded. Check keys, locks, furniture and visibly damaged items, and flag problems you cannot safely inspect. If you are responsible for utilities and have access to meters, agree how to record readings at the start.
+
+Write enough that someone can find the problem without calling you: “Bedroom 4, left window. The handle was loose when I arrived on 6 September. It does not lock. Photos attached. Who can secure it tonight?” Keep the time you reported it and any reference number.
 
 Submit the report through the method specified by the provider and keep proof. Treat a lost key, serious leak, lack of access or hazard as a separate repair or emergency notification. Include where it is, when you found it, whether you can safely use the room and what response you need. A slow-draining shared sink and a front door you cannot lock may need different routes and urgency.
 

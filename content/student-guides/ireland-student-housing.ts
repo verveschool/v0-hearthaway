@@ -63,6 +63,8 @@ For SSA, the RTB says an arrangement should be no longer than 41 weeks unless th
         title: 'Find the change and notice procedures before you book',
         prose: `Read the agreement for visa refusal, a late decision, a cancelled place or early departure. Check the deadline and the way you have to give notice. For fixed-term SSA, RTB guidance describes a period from 1 May to 1 October during which a student can end the tenancy by serving valid 28-day notice. Follow the instructions for your dates and circumstances and check the separate rules outside that period. Different agreement types may have different notices.
 
+If your course includes a summer placement or resit, give the housing office the exact dates before you book. Ask whether the room can cover them, what an extension costs and whether you would need to move out between bookings.
+
 At key collection, record condition and inventory and report faults promptly. At move-out, check how to hand back the keys, where to send the final condition record and who receives the deposit. If you dispute a deduction, preserve evidence, receipts and notices and ask for an itemised explanation. Look up RTB dispute resolution when the arrangement falls within its remit. For other arrangements ask the university or a local advice service what routes are available.`,
         sources: [s.irelandEndingStudentTenancy.id, s.irelandStudentRenting.id],
       },

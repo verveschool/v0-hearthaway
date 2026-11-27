@@ -41,6 +41,8 @@ Keep relationships at home on a rhythm that fits both time zones. A regular mess
         title: 'Find someone who can help with the particular difficulty',
         prose: `It can take time to feel comfortable. If isolation, stress or practical problems are making sleep, study or ordinary tasks hard to manage, you can contact a wellbeing, international or disability service and ask where to start. Find out how appointments, accessibility and language support work. If an accommodation problem is the immediate cause, use the residence’s appropriate contact as well. The national German student services association describes local advisory services for international students and examples of practical support. Your own institution can tell you what services are actually available.
 
+If you have already tried a large welcome event and found it exhausting, ask an organiser for a smaller regular session, a buddy scheme or an activity with a clear task. You can write: “I’m new and I’d like to come along. Is there a quieter session, and who should I look for when I arrive?”
+
 Prepare a short explanation of what has been difficult and what you would like to change. For example, you might want a quieter study space, help finding a small activity you can afford, or advice on speaking to the accommodation team. Ask what the contact can keep private, whether there are costs and who to contact between appointments. Seek qualified medical care if you need it. If any situation is an immediate emergency, use the official local emergency service.`,
         sources: [s.australiaStudentSupport.id, s.germanStudentSupport.id],
       },
