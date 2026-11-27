@@ -27,11 +27,12 @@ export function filterProperties(listings: AccommodationListingRecord[], filters
 
     const roomPrices = rooms.flatMap((room) =>
       symbol && room.priceLabel?.startsWith(symbol) && room.priceLabel.includes('/week') && room.priceFrom != null
-        ? [room.priceFrom] : []
+        ? [Math.round(room.priceFrom / 10) * 10] : []
     )
     const propertyPrice = !roomQuery && symbol && listing.propertyPriceLabel?.startsWith(symbol)
-      && listing.propertyPriceLabel.includes('/week') ? listing.propertyPriceFrom : null
+      && listing.propertyPriceLabel.includes('/week') ? listing.propertyPriceFrom == null ? null : Math.round(listing.propertyPriceFrom / 10) * 10 : null
     const weeklyPrice = roomPrices.length ? Math.min(...roomPrices) : propertyPrice
+    if (symbol && (sort || maxWeekly !== undefined) && weeklyPrice == null) return []
     if (maxWeekly !== undefined && (weeklyPrice == null || weeklyPrice > maxWeekly)) return []
     return [{ listing: roomQuery ? { ...listing, roomTypes: rooms } : listing, weeklyPrice }]
   })

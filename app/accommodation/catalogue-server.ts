@@ -70,7 +70,7 @@ async function boundedPage(page: string | undefined, countRows: () => PromiseLik
   return Math.min(requested, Math.max(1, Math.ceil((count ?? 0) / cataloguePageSize)))
 }
 
-export async function cataloguePropertyPage({ provider, city, query, page }: Filters, refine?: (listings: AccommodationListingRecord[]) => AccommodationListingRecord[]) {
+export async function cataloguePropertyPage({ provider, city, query, page }: Filters) {
   const client = catalogueClient()
   const filtered = (head = false) => {
     let request = client.from(properties).select(propertyColumns, { count: 'exact', head })
@@ -78,25 +78,6 @@ export async function cataloguePropertyPage({ provider, city, query, page }: Fil
     if (city) request = request.eq('city', city)
     if (query) request = request.like('search_text', contains(query))
     return request
-  }
-  if (refine) {
-    const rows: Property[] = []
-    const batchSize = 100
-    for (let start = 0; ; start += batchSize) {
-      const { data, error } = await filtered().order('sort_order').order('id')
-        .range(start, start + batchSize - 1).returns<Property[]>()
-      if (error) throw error
-      rows.push(...(data ?? []))
-      if (!data || data.length < batchSize) break
-    }
-    const candidates = []
-    for (let start = 0; start < rows.length; start += 20) {
-      candidates.push(...await propertyRecords(rows.slice(start, start + 20)))
-    }
-    const listings = refine(candidates)
-    const current = await boundedPage(page, () => Promise.resolve({ count: listings.length, error: null }))
-    const start = (current - 1) * cataloguePageSize
-    return { current, total: listings.length, listings: listings.slice(start, start + cataloguePageSize) }
   }
   const current = await boundedPage(page, () => filtered(true))
   const start = (current - 1) * cataloguePageSize

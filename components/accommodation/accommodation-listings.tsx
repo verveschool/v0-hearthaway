@@ -14,6 +14,7 @@ type AccommodationListingsProps = {
   initialCity?: string
   initialQuery?: string
   filters: PropertyFilters
+  advancedFiltersEnabled: boolean
   provider?: string
   serverPage?: { total: number; next?: string; previous?: string }
 }
@@ -97,6 +98,7 @@ export default function AccommodationListings({
   initialQuery = '',
   serverPage,
   filters,
+  advancedFiltersEnabled,
   provider,
 }: AccommodationListingsProps) {
   const [pageSize, setPageSize] = useState(12)
@@ -174,6 +176,7 @@ export default function AccommodationListings({
             {cities.map((city) => <option key={city} value={city}>{city}</option>)}
           </select>
         </label>
+        {advancedFiltersEnabled ? <>
         <div className="grid gap-4 sm:col-span-2 sm:grid-cols-2 xl:col-span-3 xl:grid-cols-4">
           <label className="flex flex-col gap-2 text-sm font-bold">
             Room type
@@ -201,10 +204,11 @@ export default function AccommodationListings({
             </select>
           </label>
         </div>
-        {provider ? <input type="hidden" name="provider" value={provider} /> : null}
         <p id="price-filter-note" className="text-sm text-[#6B6860] sm:col-span-2">
           Choose a currency to filter or sort by weekly rent. Ask an advisor to check move-in dates and tenancy lengths.
         </p>
+        </> : null}
+        {provider ? <input type="hidden" name="provider" value={provider} /> : null}
         <div className="flex flex-wrap items-center gap-4">
           <button type="submit" className="secondary-cta w-fit px-4 py-2">Search properties</button>
           <Link href={clearUrl} className="text-sm font-bold text-[#00319D] underline">Clear filters</Link>

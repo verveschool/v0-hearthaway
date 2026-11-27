@@ -9,7 +9,7 @@ import PageBanner from '@/components/page-banner'
 import Footer from '@/components/footer'
 import AccommodationListings from '@/components/accommodation/accommodation-listings'
 import { accommodationListings } from './listing-data'
-import { filterProperties, getWeeklyCurrency, type PropertyFilters } from './property-filters'
+import { getWeeklyCurrency, type PropertyFilters } from './property-filters'
 
 export const metadata: Metadata = {
   title: 'Student Properties | HearthAway',
@@ -32,15 +32,14 @@ export default async function AccommodationPage({
   const currency = getWeeklyCurrency(catalogueSearchParam(params.currency))
   const max = catalogueSearchParam(params.maxWeekly)
   const sort = catalogueSearchParam(params.sort)
-  const filters: PropertyFilters = {
+  const databaseEnabled = catalogueDatabaseEnabled()
+  const filters: PropertyFilters = databaseEnabled ? {} : {
     currency,
     maxWeekly: currency && max && /^\d{1,7}$/.test(max) && Number(max) > 0 ? Number(max) : undefined,
     roomType: catalogueSearchParam(params.roomType)?.trim().slice(0, 80),
     sort: currency && (sort === 'price-asc' || sort === 'price-desc') ? sort : undefined,
   }
-  const refine = filters.roomType || filters.maxWeekly || filters.sort
-    ? (listings: typeof accommodationListings) => filterProperties(listings, filters)
-    : undefined
+
 
   if (provider === 'neonhomes' || provider === 'neon-homes' || provider === 'neonwood' || provider === 'tannhaus') {
     const params = new URLSearchParams({ provider: 'neon-wood' })
@@ -60,10 +59,10 @@ export default async function AccommodationPage({
   const requestedCity = city?.trim().slice(0, 120)
   const initialCity = cities.find((item) => item.toLowerCase() === requestedCity?.toLowerCase()) ?? (requestedCity || 'all')
   const initialQuery = query ?? ''
-  const databasePage = catalogueDatabaseEnabled() ? await cataloguePropertyPage({
+  const databasePage = databaseEnabled ? await cataloguePropertyPage({
     provider: provider === 'neon-wood' ? 'neonwood' : ['stacey','vita-student','iglu','study-inn'].find(value => value === provider),
     city: initialCity === 'all' ? undefined : initialCity, query: initialQuery, page,
-  }, refine) : undefined
+  }) : undefined
   const pageUrl = (target: number) => {
     const pagination = new URLSearchParams({ page: String(target) })
     if (provider) pagination.set('provider', provider)
@@ -129,6 +128,7 @@ export default async function AccommodationPage({
               initialCity={initialCity}
               initialQuery={initialQuery}
               filters={filters}
+              advancedFiltersEnabled={!databaseEnabled}
               provider={provider}
             />
 
