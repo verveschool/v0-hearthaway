@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { findActiveCountryForPlace } from '@/lib/country-data'
 import { cities, getCityBySlug, getUniversitiesByCity } from '@/lib/place-data'
 import { accommodationListings } from '@/app/accommodation/listing-data'
 import Navigation from '@/components/navigation'
 import PageBanner from '@/components/page-banner'
+import DestinationGuideLink from '@/components/destination-guide-link'
 import Footer from '@/components/footer'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
@@ -81,6 +83,8 @@ export default async function CityPage({ params }: CityPageProps) {
       <Navigation />
       <main>
         <PageBanner title={`Student life in ${city.name}`} action={bannerAction} />
+
+        <DestinationGuideLink country={findActiveCountryForPlace(city.countryCode)} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-5xl mx-auto">

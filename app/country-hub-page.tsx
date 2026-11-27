@@ -1,5 +1,6 @@
 import Navigation from '@/components/navigation'
 import PageBanner from '@/components/page-banner'
+import DestinationGuideLink from '@/components/destination-guide-link'
 import Footer from '@/components/footer'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -33,6 +34,8 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
           title={`Study in ${countryName}`}
           action={{ label: 'Explore student cities', href: '#student-cities' }}
         />
+
+        <DestinationGuideLink country={country} />
 
         {/* Overview */}
         <section className="bg-white py-14 px-6">
@@ -149,15 +152,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         {/* Moving abroad links */}
         <section className="bg-[#F7F6F3] py-14 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
-              <h2 className="font-heading text-2xl font-bold text-foreground">Student guides for {country.name}</h2>
-              <Link
-                href={`/moving-abroad?country=${country.slug}`}
-                className="rounded-sm py-2 font-semibold text-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
-              >
-                Browse guides for {country.name}
-              </Link>
-            </div>
+            <h2 className="mb-6 font-heading text-2xl font-bold text-foreground">Student guides for {country.name}</h2>
             <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,13rem),1fr))] gap-4">
               {movingAbroadLinks.map((guide) => (
                 <Link

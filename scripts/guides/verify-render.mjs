@@ -60,16 +60,36 @@ for (const root of ['/moving-abroad', '/all-resources']) {
   console.log(root + ' discovers all ' + discovered.size + ' guides through ' + tested.size + ' pages')
 }
 
+function mainContent(markup) {
+  return markup.match(/<main\b[^>]*>([\s\S]+?)<\/main>/)?.[1] ?? ''
+}
+
 const home = await html('/')
+const homeDiscovery = mainContent(home).split('aria-labelledby="home-student-guides"')[0]
+assert(hrefs(homeDiscovery).includes('/moving-abroad'), 'Homepage discovery library link missing')
 const featuredGuides = home.match(/<section aria-labelledby="home-student-guides"[\s\S]+?<\/section>/)?.[0]
 assert(featuredGuides && hrefs(featuredGuides).includes('/moving-abroad'), 'Homepage library link missing')
 assert.equal(hrefs(featuredGuides).filter((link) => guidePath.test(link)).length, 3, 'Homepage guide cards missing')
 for (const destination of ['uk', 'ireland', 'australia', 'netherlands']) {
   const hub = await html('/' + destination)
-  assert(hrefs(hub).includes('/moving-abroad?country=' + destination), 'Destination library entry missing: ' + destination)
+  assert(hrefs(mainContent(hub).split('</section>')[0]).includes('/moving-abroad?country=' + destination), 'Early destination library entry missing: ' + destination)
   assert(hrefs(hub).includes('/moving-abroad/' + destination + '-student-housing'), 'Local guide missing: ' + destination)
   const filteredPage = await html('/moving-abroad?country=' + destination)
   assert(hrefs(filteredPage).includes('/moving-abroad/' + destination + '-student-housing'), 'Local guide missing from destination filter: ' + destination)
+}
+
+for (const [path, destination] of [
+  ['/cities/london', 'uk'],
+  ['/universities/ucl', 'uk'],
+  ['/cities/cork', 'ireland'],
+  ['/universities/ucc', 'ireland'],
+  ['/cities/delft', 'netherlands'],
+  ['/universities/tu-delft', 'netherlands'],
+  ['/cities/msida', 'malta'],
+  ['/universities/malta-university', 'malta'],
+]) {
+  const entry = mainContent(await html(path)).split('</section>')[0]
+  assert(hrefs(entry).includes('/moving-abroad?country=' + destination), 'Early destination library entry missing: ' + path)
 }
 
 const actionPaths = new Set()

@@ -1,4 +1,5 @@
 import type { MovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
+import type { CountryCode } from '@/lib/place-data'
 
 export type CountryPlace = {
   name: string
@@ -12,6 +13,26 @@ export type CountryPlace = {
   summary: string
   overview: string
   studentHousingNotes: string
+}
+
+export const countryCodes: Record<CountryPlace['slug'], CountryCode> = {
+  uk: 'UK',
+  ireland: 'IE',
+  france: 'FR',
+  uae: 'UAE',
+  germany: 'DE',
+  australia: 'AU',
+  usa: 'USA',
+  canada: 'CA',
+  spain: 'ES',
+  austria: 'AT',
+  belgium: 'BE',
+  hungary: 'HU',
+  singapore: 'SG',
+  malaysia: 'MY',
+  malta: 'MT',
+  italy: 'IT',
+  netherlands: 'NL',
 }
 
 const allCountries: CountryPlace[] = [
@@ -197,4 +218,8 @@ export const countries = allCountries.filter((country) => country.slug !== 'usa'
 
 export function getCountryBySlug(slug: CountryPlace['slug']): CountryPlace {
   return countries.find((country) => country.slug === slug) ?? countries[0]
+}
+
+export function findActiveCountryForPlace(codeOrName: string): CountryPlace | undefined {
+  return countries.find((country) => countryCodes[country.slug] === codeOrName || country.name === codeOrName)
 }

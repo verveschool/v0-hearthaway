@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import Navigation from '@/components/navigation'
 import PageBanner from '@/components/page-banner'
+import DestinationGuideLink from '@/components/destination-guide-link'
 import Footer from '@/components/footer'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import { findActiveCountryForPlace } from '@/lib/country-data'
 import { getCityBySlug, getUniversityBySlug, universities } from '@/lib/place-data'
 import { accommodationListings } from '@/app/accommodation/listing-data'
 
@@ -110,6 +112,8 @@ export default async function UniversityPage({ params }: UniversityPageProps) {
       <Navigation />
       <main>
         <PageBanner title={`Life near ${university.name}`} action={bannerAction} />
+
+        <DestinationGuideLink country={findActiveCountryForPlace(university.country)} />
 
         <section className="bg-white py-14 px-6">
           <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-5">
