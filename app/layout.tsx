@@ -11,7 +11,7 @@ const manrope = Manrope({
   weight: ['300', '400', '500', '600', '700', '800'],
 })
 
-const brandIconPath = '/brand/  hearthaway-icon-dark.png'
+const brandIconPath = '/brand-optimized/icon-dark.png'
 const brandBannerPath = '/All_Students.png'
 
 export const metadata: Metadata = {

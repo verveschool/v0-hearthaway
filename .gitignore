@@ -14,3 +14,7 @@ node_modules
 .next/
 .DS_Store
 next-env.d.ts
+
+# Generated static image variants
+public/catalogue-media/
+public/brand-optimized/
