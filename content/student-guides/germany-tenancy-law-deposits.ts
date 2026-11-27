@@ -44,6 +44,8 @@ Ask the provider whether amounts displayed on a listing match the actual schedul
 
 The statute also sets out how a monetary deposit is held separately from the landlord's assets and how interest is handled, with an interest exception for student and youth hostels. Ask the provider how it will handle the deposit and what record you will receive. Check the statutory wording and get local advice where your arrangement or the proposed security falls outside the simple cash example. Requirements on how money is held do not mean that an online platform holds the money on your behalf.
 
+If a provider asks for all three months of a cash deposit upfront and your agreement falls under section 551, point to the instalment rule and ask for a corrected written schedule. If the provider says that rule does not apply to your room, ask which kind of agreement it is and take the answer to a local adviser.
+
 Ask what evidence and process the provider uses to record return or deductions. Get a receipt and retain it alongside the inventory and handover record. At move-out, request an itemised explanation for any amount withheld and keep access to the reply. A promised return within an assumed number of days should not be used as money for a new deposit unless you know it will arrive in time.`,
         sources: [s.germanDeposit.id],
       },

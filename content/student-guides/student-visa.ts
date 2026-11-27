@@ -9,9 +9,9 @@ export const studentVisa: ReviewedGuide = {
   reviewedOn: '2026-11-27',
   related: ['pre-arrival-checklist', 'real-cost-abroad', 'first-week', 'uae-visa-sponsorship'],
   body: {
-    introduction: `A family might have enough money to pay tuition and living expenses but still lack the type of record an immigration authority asks for. The reverse is also possible: an applicant might meet the published visa requirement and have too little left after paying deposits, flights and the first month abroad. Treat those as separate decisions.
+    introduction: `Before you move money or pay a housing deposit, check two figures: what your visa route asks you to prove and what you’ll actually spend. You can have enough for the visa and still come up short at move-in. You can also have enough for the move but hold the money in a way the visa rules do not accept.
 
-This guide is for students and supporters deciding when to arrange funds or submit an application. It explains how to build an evidence file and uses examples from the United Kingdom, Ireland, Australia and France. Use the authority's instructions for your nationality, place of application and exact route. Your university can explain how its documents and payments work. A question about your individual immigration eligibility may need qualified advice.`,
+Start with the official instructions for your route, nationality and place of application. The examples below show how the checks work in the UK, Ireland, Australia and France.`,
     takeaways: [
       'Check whether your specific route requires evidence at application, at entry, or during residence registration.',
       'Record the accepted funding type, account holder, dates, currency and proof you need for each part of the requirement.',
@@ -41,7 +41,7 @@ For cash flow, note the date the loan or award will be released, where it will g
       {
         id: 'uk-student-route',
         title: 'United Kingdom: check the CAS and the bank-fund dates',
-        prose: `For the UK Student route, start with the Confirmation of Acceptance for Studies (CAS), which records relevant course fees and study details. GOV.UK sets distinct monthly maintenance amounts for study in London and outside London, for up to nine months. Use the official amount for your course location. Check allowed offsets and any separate requirements if dependants can apply. The route includes circumstances in which you need not submit financial evidence upfront. The nationality-based document arrangement can still allow UKVI to ask for evidence, so read the eligibility and evidence instructions rather than assuming the underlying requirement disappears.
+        prose: `For the UK Student route, start with the Confirmation of Acceptance for Studies (CAS), which records relevant course fees and study details. For applications where this requirement applies, GOV.UK lists £1,529 per month in London and £1,171 per month outside London, up to nine months, as checked on 27 November 2026. Use the rate for where you study, even if you plan to live elsewhere. Check allowed offsets and any separate requirements if dependants can apply. The route includes circumstances in which you need not submit financial evidence upfront. The nationality-based document arrangement can still allow UKVI to ask for evidence, so read the eligibility and evidence instructions rather than assuming the underlying requirement disappears.
 
 Where the personal bank-funds rule applies, the required balance usually has to be held for at least 28 consecutive days and the end of the evidence period must be within 31 days before the application. The lowest balance in the relevant period matters, rather than just the last day's balance. Keep a cushion for routine deductions and currency changes. Check exactly what the official guidance accepts from a parent or other account holder and which documents accompany the statement.
 
@@ -51,17 +51,17 @@ Illustration using the published outside-London rate checked on the review date:
       {
         id: 'ireland-student-finances',
         title: 'Ireland: separate the visa step from registration',
-        prose: `Immigration Service Delivery explains when a student must show access to funds, including how the evidence stage differs for students who need a visa and those who do not. Check the course duration and the guidance for your situation. The finance page also covers statements, support from other people and the education bond alternative for eligible degree students. A bond used for immigration evidence has a different purpose from a security deposit for renting a room.
+        prose: `Immigration Service Delivery explains when a student must show access to funds, including how the evidence stage differs for students who need a visa and those who do not. Check the course duration and the guidance for your situation. If you need a visa, the financial check is generally made during the visa application. If you did not need a visa but must register student permission, check the proof of funds for first registration. The registration document list gives a route-specific checklist. The finance guidance also explains the education bond alternative for eligible degree students. A bond for immigration evidence is separate from a rental deposit.
 
 Build the next step into the plan even if you did not need an entry visa. Students required to register first-time permission should follow the instructions they are given and the procedure from Immigration Service Delivery. Keep the approved entry and enrolment evidence, proof of finance or insurance where needed and evidence of the registration appointment. If you are unsure what applies to a short course or a change of immigration status, check the authority's route before paying or making travel commitments.`,
-        sources: [s.irelandVisaFunds.id, s.irelandRegistration.id],
+        sources: [s.irelandVisaFunds.id, s.irelandRegistration.id, s.irelandRegistrationDocuments.id],
       },
       {
         id: 'australia-financial-capacity',
         title: 'Australia: use the subclass 500 document checklist',
         prose: `Use the Department of Home Affairs document checklist with your details and educational provider to identify documents to attach. If the checklist requires financial-capacity evidence, include it when you apply. Home Affairs can request it during processing. The subclass 500 guidance explains accepted categories such as deposits with a financial institution, qualifying loans and scholarships, and how to show genuine access. Check the current rule for travel, course fees, living expenses, and family or school costs where applicable, using the rule's duration and treatment of payments already made.
 
-Confirm your enrolment and health-cover documentation separately. Review the current guidance for the applicant and any family members on the application. A person joining later may have additional evidence requirements. Keep enough time to request the correct payment or loan records rather than relying on a screenshot with no account or issuer details.`,
+Confirm your enrolment and health-cover documentation separately. Review the current guidance for the applicant and any family members on the application. Home Affairs says family members applying later as subsequent entrants must attach financial evidence with their own application, even if the original applicant did not have to attach it. Keep enough time to request the correct payment or loan records rather than relying on a screenshot with no account or issuer details.`,
         sources: [s.australiaVisa.id, s.australiaVisaChecklist.id],
       },
       {
@@ -77,8 +77,8 @@ Read the wording of the visa you receive. France-Visas says a long-stay visa equ
         title: 'After submitting, keep housing and travel adaptable',
         prose: `Separate decisions you can reverse from those that commit you to rent or a flight. Read the exact cancellation clause for refusal, a late decision or a change of intake. A policy covering a refusal may still leave you liable if the result is pending at the start date. Ask what evidence, channel and deadline the provider uses and keep their answer with the agreement.
 
-Keep a simple decision date: if you have no grant by that date, notify your university, check arrival alternatives and reprice housing and flights. Once permission comes through, check your passport and grant details against the booking. For UK eVisa travel, UKVI says to check your current travel document and the matching passenger details. In every destination, distinguish what the grant allows from what your carrier or border authority asks you to produce. Keep access to supportive documents while you travel and save the post-arrival instructions separately.`,
-        sources: [s.ukTravelEvisa.id, s.franceArrival.id],
+Keep a simple decision date: if you have no grant by that date, notify your university, check arrival alternatives and reprice housing and flights. If you are applying for a UK visa, UKVI says to wait for a decision before booking travel. Once permission comes through, check the grant dates and your passport details before you book. For UK eVisa travel, UKVI says to check your current travel document and the matching passenger details. In every destination, distinguish what the grant allows from what your carrier or border authority asks you to produce. Keep access to supportive documents while you travel and save the post-arrival instructions separately.`,
+        sources: [s.ukTravelEvisa.id, s.ukVisaTravelBooking.id, s.franceArrival.id],
       },
     ],
     checklist: [
@@ -95,6 +95,6 @@ Keep a simple decision date: if you have no grant by that date, notify your univ
       { question: 'Can a deposit count towards the visa amount?', answer: 'Only rely on an offset if your authority lists that payment as eligible for your route and you have the required proof. A room deposit can also reduce the balance available to show.' },
       { question: 'Is my visa maintenance figure a monthly spending target?', answer: 'Use the amount for its stated immigration purpose. Build your living budget using your own rent, travel, healthcare, food and arrival costs.' },
     ],
-    sources: [s.ukVisaFunds, s.ukVisaAmounts, s.ukTravelEvisa, s.irelandVisaFunds, s.irelandRegistration, s.australiaVisa, s.australiaVisaChecklist, s.franceVisa, s.franceArrival],
+    sources: [s.ukVisaFunds, s.ukVisaAmounts, s.ukTravelEvisa, s.irelandVisaFunds, s.irelandRegistration, s.irelandRegistrationDocuments, s.australiaVisa, s.australiaVisaChecklist, s.franceVisa, s.franceArrival, s.ukVisaTravelBooking],
   },
 }

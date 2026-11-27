@@ -53,6 +53,8 @@ For example, a student can use a room independently when the lift works, but can
         title: 'Record confirmed adjustments and check the room again on arrival',
         prose: `Save the specific room or allocation, confirmed features, access route, support agreement and contact. Ask whose approval is needed to install equipment or modify furniture, and when it will be in place. Check if each commitment extends to holidays, a possible move or later stages of the journey. Ask what happens if the booked room is unavailable or an adjustment is incomplete.
 
+If an adjustment must be in place at move-in, ask for a date to check it before you travel. “I need the shower shown in the floor plan. Can you confirm in writing which room I’ll have and send the clear width after the shower chair is in place? Who can help if the room changes?” Use the measurements and features you actually need.
+
 On arrival, test the agreed features before committing to another major payment if the terms allow. Check keys and controls, reach the essential facilities, and ask for the current operational and emergency instructions. If anything is missing or unusable, describe its effect, attach any relevant confirmation and ask for a safe immediate solution, an owner and a follow-up time. Your university support team can help to navigate the request if the accommodation team cannot resolve it. If you are comparing several providers with HearthAway, share the housing requirements you choose to disclose and ask which details you still need to verify directly.`,
         sources: [s.hearthawayRole.id],
       },

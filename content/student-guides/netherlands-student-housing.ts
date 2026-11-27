@@ -24,6 +24,8 @@ This guide is for students and supporters weighing university-linked accommodati
         title: 'Plan a parallel search around the correct campus and dates',
         prose: `Check whether the university has its own housing, a room allocation through a separate provider or a list of places for you to research. Ask which groups can apply, when applications open, how a confirmed offer is made and when you must accept. Save the actual campus address and start date. If the university arrangement is unconfirmed or will not cover the full period, look separately for a room or an interim stay. Do not assume an admission letter or place on an allocation list reserves housing.
 
+Put a decision date before you would lose money on travel. If you still have no verified place on that date, contact your university. Ask whether you can arrive later or defer, and which housing options it can verify. Study in NL advises arranging a place to live before arriving.
+
 Compare several reachable neighbourhoods rather than relying on the city name in the advert. Check the trip to the exact campus early and late, including the cost of transport or bicycle storage if relevant. Ask whether short-term options cover registration needs and whether you can remain until the room you plan to move into is usable. Set a date before travel to decide whether you have a verified plan. If you do not, ask the institution about the consequences for your start date and what other options exist.`,
         sources: [s.dutchStudentHousing.id],
       },

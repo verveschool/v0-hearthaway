@@ -46,6 +46,8 @@ Compare basic rent and the amount payable with operating costs. Ask which servic
 
 Ask which person will issue the Wohnungsgeberbestätigung, the accommodation provider's confirmation that you moved into the dwelling, and when it will be available. The lease and that confirmation serve different purposes. Check your municipality's forms and whether an appointment, online procedure or original identity document is required. If a listing says the address cannot be registered, find out the reason and check with the authority before you rely on the room for your circumstances. Never accept an offer to register at an address where you will not actually live.
 
+If you find a short stay first, send the registration office your expected length of stay and ask what date applies and which address documents it can accept. Ask the host separately whether it will issue the confirmation. Get both answers before relying on the address.
+
 Keep the registration confirmation securely and use its correct address in later administrative steps where needed. Treat it separately from university enrolment and any residence permit you need. Ask the university or its student services office how to find help if instructions are unclear.`,
         sources: [s.housingGermany.id, s.germanRegistrationLaw.id],
       },

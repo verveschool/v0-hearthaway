@@ -39,6 +39,8 @@ Example figures in pounds can show how the categories differ. Suppose the first 
         title: 'Protect an accessible reserve from routine setup spending',
         prose: `Choose problems you need to be able to handle. You might need another night, an alternative trip, enough food or essential supplies while a transfer clears, or a minor change to a move date. Price several realistic alternatives and work out which costs could arrive together. Agree who can help, how money can be sent, and what works outside business hours. A reserve in another country with no practical payment route does little while you are unable to check in.
 
+If money is tight on arrival night, use the room inventory to make a short list you can act on: somewhere to sleep, a working phone, food, hygiene and a way to get to campus. Ask about a loan or used item before buying something you need only for a week.
+
 After you have moved, revisit your records. If a charge is still pending, leave room for it. Buy optional items once you know whether they are provided and whether you have the space or permission. If you have needed to use reserve funds, set a realistic plan to restore them without missing essentials. MoneyHelper’s guidance explains why timing, high-cost months and an emergency fund matter when income varies.`,
         sources: [s.irregularIncome.id],
       },

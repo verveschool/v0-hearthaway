@@ -85,6 +85,8 @@ When supporting someone, compare the evidence dates and day-to-day funding calen
         title: 'Decide what you can afford before making a binding commitment',
         prose: `Ask whether each proposed option works over the entire period and still works in your cautious scenario. An annual plan that needs every transfer to be punctual is sensitive to delays. Look for a manageable first payment, a term close to the dates you need and a clear route to delay or cancel if your circumstances change. Trade-offs are easier to compare if you write the actual price of each choice.
 
+Before you commit, put a price on backing out. If you turn down the course or defer, check which tuition payment, housing charge and ticket cost you can recover and by when. Put the maximum you could lose next to each offer. That number is useful while a scholarship or visa decision is still pending.
+
 If an option fails your cash test, identify the precise reason. A gap from a late award may call for an adjusted payment schedule. A gap every month calls for a lower recurring commitment or additional reliable funding. An open-ended utilities charge calls for better evidence or headroom. Seek eligible support through the institution when funding is uncertain and avoid budgeting around hoped-for employment before you know both your right to work and likely income.`,
       },
     ],

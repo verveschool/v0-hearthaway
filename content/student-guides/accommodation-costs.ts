@@ -64,6 +64,8 @@ A furnished room may still need bedding or kitchen essentials. Ask what is suppl
 
 Record what has to clear before signing, before move-in and on each payment date. If funding or guarantor arrangements affect which plans a provider offers, check the conditions, price and applicable local rules. Put fees and the exchange rate on the same row as overseas payments. For any account change, verify a separate contact through the genuine provider.
 
+If a quote says “first payment £800,” ask for the split in writing: how much is rent, how much is held as security, and how much, if any, is a non-refundable fee? Then ask what is still due before the keys. That can reveal a second payment a headline figure leaves out.
+
 Before making a decision, compare the written cost, the cash needed first, and the amount at risk under a delay or cancellation. Pick which assumptions could change the outcome, such as a gap after exams, a capped utility allowance or a transfer arriving late. Ask those questions first and record the answer with the offer.`,
         sources: [s.englandTenantFees.id, s.irelandStudentRenting.id],
       },

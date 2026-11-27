@@ -36,6 +36,8 @@ For Dubai, the General Directorate of Residency and Foreigners Affairs (GDRFA) h
 
 Create one timeline with the housing start date and another with the formal immigration and enrolment steps. Mark which commitments depend on a decision and which can carry ahead safely. For example, if qualifying entry permission is not ready, paying a fixed room term may not solve the timing. Ask whether you can change the start date, whether a late arrival is possible, and what happens if the visa is still pending when rent starts.
 
+Ask the university for a named contact and a list of steps with a location beside each one. “Which document lets me travel? Which appointment must happen after I land? Can I check into my residence if that appointment is still pending?” Ask the housing provider the last question too.
+
 Collect the permission and any written arrival instructions before committing to travel. Review which details you must present to the carrier or after arrival, and save the relevant records. If the dates change, ask the university what it can confirm and when the authority expects you to act. Keep the accommodation provider updated through its verified contact and retain any agreed changes.`,
         sources: [s.uaeStudentResidence.id, s.dubaiStudentResidence.id],
       },

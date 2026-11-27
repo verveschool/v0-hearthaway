@@ -37,6 +37,8 @@ Here is a simple hypothetical comparison. A card costs £24 and saves £3 on eac
         title: 'Check existing access and what happens after the student rate ends',
         prose: `Ask the university what it already supplies through the library, computer labs, course accounts or service licences. The correct tool may be available at no extra cost for a required project. A separately purchased plan might cover a feature you need, or only duplicate what you have. Check continuity after your course or after changing institutions, including how to export work or keep records. For phone plans, memberships or software, compare the minimum term, future price and notice period. Ask whether a new verification is required and mark its expiry in your calendar.
 
+If approval is still pending for a travel discount, budget the ordinary fare for the first few weeks. Compare the pass again once you know your real timetable and when the discount begins.
+
 In some places, student status can also affect official housing-related charges. England’s Council Tax guidance, for example, distinguishes full-time student households and mixed households, and describes eligibility and exemptions. Check your own authority and address before assuming what you will pay. Such rules have their own evidence requirements and may not align with a commercial student card. Keep the decision or reference so you can update it if your household or course status changes.`,
         sources: [s.englandCouncilTax.id],
       },

@@ -28,6 +28,8 @@ assert(sitemapPaths.includes('/moving-abroad'), 'Canonical library missing from 
 assert(!sitemapPaths.some((path) => retiredPath.test(path)), 'Retired destination in sitemap')
 const guidePaths = sitemapPaths.filter((path) => guidePath.test(path))
 assert.equal(new Set(guidePaths).size, guidePaths.length, 'Duplicate canonical article URLs')
+const expectEditorial = process.argv.includes('--expect-editorial')
+if (expectEditorial) assert.equal(guidePaths.length, 31, 'Editorial release must retain 31 guides')
 for (const slug of baseline.slugs) assert(guidePaths.includes('/moving-abroad/' + slug), 'Existing article missing: ' + slug)
 
 for (const [alias, target] of Object.entries(baseline.aliases)) {
@@ -98,6 +100,21 @@ for (let index = 0; index < guidePaths.length; index += 5) {
   for (const [path, markup] of batch) {
     const article = markup.match(/<article\b[^>]*>[\s\S]+?<\/article>/)?.[0]
     assert(article, path + ' has no rendered content')
+    if (expectEditorial && path === '/moving-abroad/pre-arrival-checklist') {
+      assert(article.includes('id="pre-arrival-timeline"'), 'Timeline heading missing')
+      const download = article.match(/download="hearthaway-pre-arrival-timeline\.txt" href="data:text\/plain;charset=utf-8,([^"]+)"/)?.[1]
+      assert(download, 'Downloadable worksheet missing')
+      const worksheet = decodeURIComponent(download)
+      assert.equal((worksheet.match(/^\[ \] /gm) ?? []).length, 6, 'Worksheet milestones missing')
+      assert(worksheet.includes('Last confirmed key collection (local time)'), 'Worksheet has no key handover field')
+    }
+    if (expectEditorial && path === '/moving-abroad/choose-accommodation') {
+      const table = article.match(/<table\b[^>]*>[\s\S]+?id="compare-housing-formats-table"[\s\S]+?<\/table>/)?.[0]
+      assert(table, 'Housing comparison table missing')
+      for (const format of ['University halls', 'Privately managed student residence', 'Shared flat or house', 'Studio', 'Homestay']) {
+        assert(table.includes(format), 'Housing comparison is missing ' + format)
+      }
+    }
     assert(markup.includes('rel="canonical" href="https://hearthaway.com' + path + '"'), path + ' has wrong canonical')
     assert.match(markup, /<meta name="description" content="[^"]+"/)
     assert.match(markup, /<time dateTime="\d{4}-\d{2}-\d{2}">/i)

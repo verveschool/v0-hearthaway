@@ -34,7 +34,7 @@ Check import and security rules separately for each destination and transit poin
         title: 'Ask what each room actually has',
         prose: `Ask for the bedroom, bathroom and kitchen inventories, not just the word furnished. Confirm mattress size, bedding, towels, storage dimensions, supplied desk and lighting, cooking utensils, fridge and plates. Identify which equipment is reserved for your room, which is shared and whether the provider sells or supplies an arrival pack. If an item is important for accessibility or a dietary requirement, ask for the actual item or measurements. In a shared dwelling, check what housemates already provide and how shared items are replaced.
 
-If the room is unfurnished, confirm whether that includes the bed, lighting or large appliances. Arrange a delivery only after checking access hours, the building's ability to receive it and who will assemble or remove packaging. Check whether you may install or bring heaters, cooking equipment or other electrical items. The sign on a travel adapter shows its purpose. For equipment that needs a different voltage or power capacity, check the manufacturer’s and provider's instructions before using it.
+If the room is unfurnished, confirm whether that includes the bed, lighting or large appliances. Arrange a delivery only after checking access hours, the building's ability to receive it and who will assemble or remove packaging. Check whether you may install or bring heaters, cooking equipment or other electrical items. A plug adapter changes the shape of the plug. It does not change the voltage. Read the voltage range on your charger or appliance and check local power and the provider’s rules before you use it.
 
 Use a three-part list. Carry the things you need before you can shop. Reserve items you cannot easily source or need installed at arrival. Buy or borrow everything else after checking the room. Asking for bed size is cheaper than replacing a new bedding set. A small shared cookware list may avoid buying several copies of things you only need once.`,
         sources: [s.studyAustraliaHousing.id],
@@ -43,6 +43,8 @@ Use a three-part list. Carry the things you need before you can shop. Reserve it
         id: 'plan-the-first-night',
         title: 'Plan the first night and your first shopping trip',
         prose: `Work out how you will sleep, wash, eat, change and make a call when you arrive. If the provider confirms no bedding and you arrive after shops close, arrange an approved bedding pack or carry a basic permitted alternative. If you expect to arrive early, check whether shops will be open and whether you can bring purchases inside before key handover. Compare the cost of arrival-ready supplies with buying once you know the room. Leave room for transport and installation, not just purchase price.
+
+Check what address a delivery can use. Some buildings will only accept parcels after you check in, and your room number may be assigned later. If you order before travelling, use a collection point you can reach and check how long it holds parcels.
 
 After you reach the room, check the inventory and list what actually needs buying. Record any damage or missing item with the provider. Buy essentials first. Find out what can be borrowed or bought second-hand at the university or locally and what you can share. For clothing, use the city weather, heating and likely routine rather than a national stereotype. Leave enough luggage space to repack or move again if a temporary stay is involved.`,
       },

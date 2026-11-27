@@ -9,7 +9,7 @@ export const ukBankAccount: ReviewedGuide = {
   reviewedOn: '2026-11-27',
   related: ['student-budget', 'real-cost-abroad', 'first-week', 'avoid-scams'],
   body: {
-    introduction: `A UK account can help with regular bills and receiving funds in pounds. Your first payment can fall due before your application is approved. Start with what you need to do: pay rent, receive money, set up bills, draw cash or make purchases. You may need different features for each of those tasks.
+    introduction: `Your first rent payment may be due before you can open a UK bank account. Ask the housing provider how you can pay it from your current account, then check which features you’ll need for regular bills, transfers and cash withdrawals.
 
 This guide helps incoming international students and supporters compare accounts and choose how to make the first payment. Use the chosen provider’s current product terms and documentation rules. Your university can supply evidence if eligible students can request it. The bank makes its own decision.`,
     takeaways: [
@@ -33,6 +33,8 @@ A current account is a bank account used for everyday transactions. A basic bank
         prose: `Ask what identity, immigration and address records the bank needs for your circumstances. It may request a passport, evidence of student status and a current address. Ask what formats it accepts, whether an in-person or online identity check is needed and when the process can start. UKCISA and the University of Warwick explain common requests. Ask your own institution when it issues a letter, what address appears on it and whether it can address it to the chosen bank.
 
 If you live in temporary housing, ask whether your evidence can be accepted and what to update when you move. If you use digital immigration evidence, follow the official process for the evidence requested. Check that your name and identifying details match the application. Submit records only through the verified route. A person offering to help you does not need your banking password or a code that authenticates a session.
+
+If your university letter shows your temporary address but you’ve already moved, ask the bank what proof it accepts for the new address. Then ask your university whether to update your student record before requesting a new letter. Getting that order right can save a second appointment.
 
 If you are unable to obtain a requested document, ask for a permissible alternative and how to resume the application. Record the earliest date you can complete the missing step and plan a second option. Keep an application reference and contact the provider using its published support route if you cannot find a status update.`,
         sources: [s.ukStudentBanking.id, s.warwickBanking.id],

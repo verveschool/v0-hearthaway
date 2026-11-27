@@ -94,6 +94,15 @@ export function GuideContent({ body }: { body: GuideBody }) {
           {paragraphs(section.prose).map((part) => <p key={part} className="leading-8">{part}</p>)}
           {section.points?.length ? <ul className="list-disc space-y-2 pl-5 leading-7">{section.points.map((item) => <li key={item}>{item}</li>)}</ul> : null}
           {section.steps?.length ? <ol className="list-decimal space-y-2 pl-5 leading-7">{section.steps.map((item) => <li key={item}>{item}</li>)}</ol> : null}
+          {section.worksheet ? (
+            <a
+              download={section.worksheet.filename}
+              href={`data:text/plain;charset=utf-8,${encodeURIComponent(section.worksheet.text)}`}
+              className={`inline-flex min-h-11 items-center ${sourceLink}`}
+            >
+              {section.worksheet.label}
+            </a>
+          ) : null}
           {section.table ? <ComparisonTable table={section.table} id={`${section.id}-table`} /> : null}
           {section.sources?.length ? <References sources={body.sources} ids={section.sources} /> : null}
         </section>

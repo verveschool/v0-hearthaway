@@ -31,6 +31,8 @@ Request an inventory with the bed size, desk, storage, seating, air-conditioning
         title: 'Separate electricity and water from cooling and other services',
         prose: `Ask whether the provider manages electricity, water, cooling, internet, laundry or cleaning. For each, establish who pays, who controls the account and how you learn the amount. Cooling may be included, billed separately or reflected in another charge, depending on the agreement and building. Ask whether bills are metered, fixed or subject to limits, how common charges are allocated and what happens in a high-use period. Find out who to call if cooling stops and whether the provider's support is available out of hours.
 
+If the quote says “cooling included”, ask what happens in a high-use month. Can the provider show the charge on an anonymised sample bill or point to the cap in the agreement? Ask whether an account, deposit or activation payment is needed before the room is usable.
+
 In Dubai, the Dubai Land Department explains how tenancy registration through Ejari works. The Dubai Electricity and Water Authority has separate instructions for activating electricity and water, including circumstances involving Ejari. Ask whether these processes apply to your accommodation and who is responsible. Check the provider's role, the relevant utility instructions and any security or activation charges directly. Other emirates and other accommodation types may have different processes and authorities.`,
         sources: [s.dubaiEjari.id, s.dubaiElectricity.id],
       },
