@@ -7,19 +7,15 @@ type CatalogueImageProps = Omit<ComponentPropsWithoutRef<'img'>, 'src'> & { src:
 const cardWidths = [320, 384, 480, 640, 828, 1080]
 const imageWidths = [384, 640, 828, 1200, 1920]
 
-/** Resize local photos via Vercel and Vita photos via their source CDN. */
+/** Serve local photos directly and resize Vita photos via their source CDN. */
 export default function CatalogueImage({ src, alt, sizes = '100vw', card = false, onError, ...props }: CatalogueImageProps) {
   const [failedSource, setFailedSource] = useState<string | null>(null)
-  const isLocal = src.startsWith('/') && !src.startsWith('//')
   const isVita = /^https:\/\/cdn\.brandfolder\.io\/2EZAWJN8\/as\/[^?#]+$/.test(src)
-  // The local Next server disables /_next/image; Vercel handles this path in deployments.
-  const useHostedOptimizer = process.env.NODE_ENV === 'production'
-  const optimize = ((useHostedOptimizer && isLocal) || isVita) && failedSource !== src
+  const optimize = isVita && failedSource !== src
   const vitaCard = isVita && card
   const optimized = (width: number) => {
     if (vitaCard) return `${src.replace(/\.[^/.]+$/, '.webp')}?width=${width}`
-    if (isVita) return `${src}?width=${width}`
-    return `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`
+    return `${src}?width=${width}`
   }
   const widths = vitaCard ? cardWidths : imageWidths
   const fallback = vitaCard ? `${src}?width=384` : src
