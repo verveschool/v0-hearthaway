@@ -18,13 +18,32 @@ Configure the intended Supabase catalogue project explicitly. Imports must prese
 - Private staging with property/room image associations and resumable failed runs. Identical completed manifests reuse their existing run.
 - Permission checks from the backend partner registry before downloading or staging partner images.
 
-### What still depends on the first source
+### Verification and publication still pending
 
-- An authorized outbound export/feed and the actual field mapping for each provider. The named configurations are integration profiles, **not implemented website crawlers or verified partner APIs**. Existing partner agreements are confirmed by the owner; the remaining source dependency is the actual technical export/feed/portal route and its current field/host schema.
+- HousingAnywhere offered an outbound inventory feed. Its correspondence says technical documentation follows a separate feed-use agreement. No endpoint, payload or withdrawal semantics have been verified.
 - Full image decoding, size/dimension quality checks, optimization and EXIF removal. The current worker validates signatures/MIME and preserves original bytes in private staging.
 - A publication transaction mapped to `catalogue.*` plus the website's `ha_catalogue_*` projections, editorial rules and asset publication rights.
-- Monthly/term rent display. The current website model contains weekly/nightly assumptions; importing a monthly value must never place it in a weekly field.
+- Review the private staged data and public projection mapping before publication. The database frontend accepts explicit source rents and dated partner offers.
 - Live network/Storage upload verification with the real authorized source, and scheduled refresh after the pilot.
+
+## Capture a portfolio in one command
+
+Run from the repository root. Use a private directory outside the checkout. Export the current catalogue baseline from the accommodation project with a read-capable database connection.
+
+```sh
+umask 077
+psql "$HA_IMPORT_DATABASE_URL" -XAt --set=ON_ERROR_STOP=1 --file=scripts/partner-import/baseline.sql > "$PRIVATE_DIR/baseline.json"
+node scripts/partner-import/batch.mjs dry-run campus-living-villages "$PRIVATE_DIR/baseline.json" "$PRIVATE_DIR"
+node scripts/partner-import/batch.mjs dry-run scraye "$PRIVATE_DIR/baseline.json" "$PRIVATE_DIR" "$SCRAYE_ENGLAND_RESULTS_URL" "$EXPECTED_COUNT"
+```
+
+CLV acquisition requires Python 3 with lxml. The adapter joins the configured 11 village pages to their published booking and room IDs. Each term retains its weekly price, contract dates, status and booking conditions. Villages linked on the separate short-stay enquiry page carry that link. Enquiry-only stays have no invented price, term dates or availability. The provider address directory supplies building addresses. Confirm ambiguous addresses before publication.
+
+Scraye requires Playwright with Chromium installed on the operator machine. The optional HEARTHAWAY_PLAYWRIGHT_MODULE environment variable accepts the path to an installed Playwright module. Sign in to the browser opened by the command and select the first England results page. Select Recently added for a more stable traversal. The CLI reads visible property details, references, applicant/feature text, fee lines and photo captions. It follows the full Photos link for original gallery order. It stores private per-listing checkpoints for one hour, keyed to the discovered inventory. Count drift, overlapping IDs, incomplete photos or changed membership prevents manifest completion. Identical addresses with distinct listings stay in duplicate review. Scraye sometimes provides only a postcode district and an availability date without a year. Those values retain the source precision. Verify tracked referral destinations before public use.
+
+To stage on an approved server, use the same command with `stage` and the server-only environment settings documented below. The private bucket and backend partner host allowlists must be configured in that environment. Use the existing stage CLI with the captured manifest for an exact retry. No command here publishes. Never use the historical catalogue promotion script for partner imports.
+
+When projecting a reviewed record, map the selected offer to room.sourceRent with amountMinor, currency and period. Use partnerOffers for each separate contract, mediaDisclaimer for the original property-level image qualification, and reviewed Supabase Storage URLs for coverImage, gallery and room images. Retain existing catalogue UUIDs, room relationships and editorial fields. The public promotion transaction still requires implementation and review.
 
 ## Run the offline pilot now
 

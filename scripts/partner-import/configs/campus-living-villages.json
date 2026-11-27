@@ -18,6 +18,54 @@
     "https://campuslivingvillages.com/united-kingdom/salford/john-lester-and-eddie-colman-courts/",
     "https://campuslivingvillages.com/united-kingdom/salford/peel-park-quarter/"
   ],
+  "short_stays_page": "https://campuslivingvillages.com/united-kingdom/short-stays-uk/",
+  "address_source": "https://campuslivingvillages.com/united-kingdom/contact-us/",
+  "addresses": {
+    "chesil-house": [
+      "1 Madeira Road",
+      "BH1 1AQ"
+    ],
+    "cranborne-house": [
+      "St Paul’s Place",
+      "BH8 8HF"
+    ],
+    "lyme-regis-house": [
+      "69 Holdenhurst Road",
+      "BH8 8FT"
+    ],
+    "okeford-house": [
+      "3 Crimea Road",
+      "BH9 1AR"
+    ],
+    "chesterman-house": [
+      "334 New Cross Road",
+      "SE14 6AG"
+    ],
+    "prince-consort-village": [
+      "230 Goldhawk Road",
+      "W12 9PL"
+    ],
+    "raymont-hall": [
+      "57-63 Wickham Road",
+      "SE4 1LX"
+    ],
+    "surrey-house": [
+      "80 Lewisham Way",
+      "SE14 6PB"
+    ],
+    "fitzroy-court": [
+      "Vicarage Street",
+      "LU1 3FA"
+    ],
+    "john-lester-and-eddie-colman-courts": [
+      "Meyrick Road",
+      "M6 5HE"
+    ],
+    "peel-park-quarter": [
+      "University Road",
+      "M5 4NJ"
+    ]
+  },
   "permission": {
     "reference": "owner-confirmed-existing-partner-agreement; signed marketing services agreement copy 2026-07-29; current source pages and CDN host verified",
     "can_import": true,

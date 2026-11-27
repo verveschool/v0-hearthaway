@@ -27,11 +27,14 @@ function PropertyCard({ listing, filters }: { listing: AccommodationListingRecor
     : null
   const currencySymbol = filters.currency && weeklyCurrencies[filters.currency]
   const comparableOnly = currencySymbol && (filters.maxWeekly !== undefined || filters.sort)
-  const startingRoom = listing.roomTypes
+  const candidates = listing.roomTypes
     .filter((room) => room.priceFrom !== null && (!comparableOnly || (
       room.priceLabel?.startsWith(currencySymbol) && room.priceLabel.includes('/week')
     )))
-    .sort((first, second) => (first.priceFrom ?? 0) - (second.priceFrom ?? 0))[0]
+  const sourceUnits = new Set(candidates.map(room =>
+    room.sourceRent ? `${room.sourceRent.currency}/${room.sourceRent.period}` : 'legacy'))
+  const mixedUnits = sourceUnits.size > 1
+  const startingRoom = mixedUnits ? undefined : candidates.sort((first, second) => (first.priceFrom ?? 0) - (second.priceFrom ?? 0))[0]
   const buildingNames = [...new Set(listing.buildings.flatMap((building) => building.name ? [building.name] : []))]
 
   return (
@@ -46,7 +49,7 @@ function PropertyCard({ listing, filters }: { listing: AccommodationListingRecor
             card
             src={previewImage}
             sizes="(min-width: 1344px) 412px, (min-width: 1280px) calc((100vw - 104px) / 3), (min-width: 1024px) calc((100vw - 84px) / 2), (min-width: 640px) calc((100vw - 68px) / 2), calc(100vw - 48px)"
-            alt={listing.galleryLabels?.[previewImage] ?? (previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`)}
+            alt={listing.mediaDisclaimer ?? listing.galleryLabels?.[previewImage] ?? (previewImageRoom ? `${previewImageRoom} room at ${listing.name}` : `${listing.name} property photo`)}
             className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
             loading="lazy"
             decoding="async"
@@ -62,6 +65,7 @@ function PropertyCard({ listing, filters }: { listing: AccommodationListingRecor
         </span>
       </div>
 
+      {previewImage && listing.mediaDisclaimer ? <p className="px-5 pt-3 text-sm">{listing.mediaDisclaimer}</p> : null}
       <div className="flex flex-1 flex-col p-5 sm:p-6">
         <div>
           <h2 className="font-heading text-xl font-extrabold leading-snug text-[#1A1A1A] group-hover:text-[#00319D] sm:text-2xl">
@@ -79,7 +83,7 @@ function PropertyCard({ listing, filters }: { listing: AccommodationListingRecor
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
           <div className="text-sm font-semibold text-[#1A1A1A]">
-            <p className="text-[#00319D]">{startingRoom?.priceLabel || (filters.roomType ? '' : listing.propertyPriceLabel) ? `From ${startingRoom?.priceLabel || listing.propertyPriceLabel}` : 'Ask for a quote'}</p>
+            <p className="text-[#00319D]">{mixedUnits ? 'See room prices' : startingRoom?.priceLabel || (filters.roomType ? '' : listing.propertyPriceLabel) ? `From ${startingRoom?.priceLabel || listing.propertyPriceLabel}` : 'Ask for a quote'}</p>
             <p className="mt-1 max-w-[260px] text-xs font-normal leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
           </div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">

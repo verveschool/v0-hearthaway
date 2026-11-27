@@ -177,7 +177,8 @@ function normalizeOffer(value, path, context) {
     errors.push(`${path}: an offer object is required`);
     value = {};
   }
-  unknownFields(value, ['external_id', 'price_minor', 'currency', 'period', 'observed_at', 'start_date', 'end_date', 'status'], path, errors);
+  unknownFields(value, ['external_id', 'price_minor', 'currency', 'period', 'observed_at', 'start_date', 'end_date', 'status', 'conditions'], path, errors);
+  if (value.conditions !== undefined && !Array.isArray(value.conditions)) errors.push(`${path}.conditions: expected a list`);
   const externalId = stringField(value.external_id, `${path}.external_id`, errors, { max: 200 });
   const price = value.price_minor;
   if (price !== null && (!Number.isSafeInteger(price) || price < 0)) {
@@ -199,6 +200,8 @@ function normalizeOffer(value, path, context) {
   return {
     external_id: externalId,
     price_minor: price === null || Number.isSafeInteger(price) ? price : null,
+    ...(Array.isArray(value.conditions) ? { conditions: value.conditions.map((text, index) =>
+      stringField(text, `${path}.conditions[${index}]`, errors)) } : {}),
     currency, period, observed_at: observedAt,
     start_date: value.start_date ?? null, end_date: value.end_date ?? null,
     status: stringField(value.status, `${path}.status`, errors, { optional: true, max: 100 }),
@@ -230,10 +233,11 @@ function normalizeProperty(value, path, context) {
     errors.push(`${path}: a property object is required`);
     value = {};
   }
-  unknownFields(value, ['external_id', 'source_url', 'name', 'address', 'postcode', 'city', 'country', 'description', 'images', 'rooms'], path, errors);
+  unknownFields(value, ['external_id', 'source_url', 'name', 'address', 'postcode', 'city', 'country', 'description', 'images', 'rooms', 'listing_reference', 'media_disclaimer', 'property_facts', 'additional_charges', 'referral_url', 'short_stay_enquiry_url'], path, errors);
   if (!Array.isArray(value.rooms) || value.rooms.length === 0) errors.push(`${path}.rooms: at least one explicit room or rentable unit is required`);
   const rooms = (Array.isArray(value.rooms) ? value.rooms : []).map((room, index) => normalizeRoom(room, `${path}.rooms[${index}]`, context));
   for (const [key] of duplicates(rooms, room => room.external_id)) conflicts.push(`${path}.rooms: duplicate external_id ${key}; no room was discarded`);
+  if ('additional_charges' in value && !Array.isArray(value.additional_charges)) errors.push(`${path}.additional_charges: expected a list`);
   const propertyImages = images(value.images, `${path}.images`, context);
   if (!propertyImages.length && !rooms.some(room => room.images.length)) errors.push(`${path}.images: at least one property or room image is required`);
   const country = stringField(value.country, `${path}.country`, errors, { max: 2 }).toUpperCase();
@@ -246,6 +250,12 @@ function normalizeProperty(value, path, context) {
     postcode: stringField(value.postcode, `${path}.postcode`, errors, { max: 40 }).toUpperCase(),
     city: stringField(value.city, `${path}.city`, errors, { max: 200 }), country,
     description: stringField(value.description, `${path}.description`, errors, { optional: true, max: 50000 }),
+    ...Object.fromEntries(['listing_reference', 'media_disclaimer', 'property_facts'].filter(key => key in value)
+      .map(key => [key, stringField(value[key], `${path}.${key}`, errors, { optional: true, max: 50000 })])),
+    ...(Array.isArray(value.additional_charges) ? { additional_charges: value.additional_charges.map((charge, i) =>
+      stringField(charge, `${path}.additional_charges[${i}]`, errors, { max: 50000 })) } : {}),
+    ...(value.short_stay_enquiry_url ? { short_stay_enquiry_url: validateUrl(value.short_stay_enquiry_url, listingHosts, `${path}.short_stay_enquiry_url`, errors) } : {}),
+    ...(value.referral_url ? { referral_url: validateUrl(value.referral_url, listingHosts, `${path}.referral_url`, errors) } : {}),
     images: propertyImages, rooms,
   };
 }

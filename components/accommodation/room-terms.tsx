@@ -1,3 +1,4 @@
+import { sourceRentDisplay } from '@/app/accommodation/presentation'
 import type { AccommodationRoomRecord } from '@/app/accommodation/listing-data'
 
 const dateFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'medium', timeZone: 'UTC' })
@@ -21,7 +22,12 @@ export default function RoomTerms({ room, compact = false }: { room: Accommodati
     <dl className="mt-4 space-y-3 text-sm text-[#4C4A45]">
       {features.length ? <div><dt className="font-bold">Room type</dt><dd>{features.join(' · ')}</dd></div> : null}
       {room.publishedAreaSqm ? <div><dt className="font-bold">Published room size</dt><dd>{room.publishedAreaSqm} m²</dd></div> : null}
-      <div><dt className="font-bold">Availability</dt><dd>Check with an advisor for your dates.</dd></div>
+      {room.partnerOffers?.length ? <div>
+        <dt className="font-bold">Provider offers</dt>
+        <dd><ul className="space-y-2">{room.partnerOffers.map(offer => <li key={offer.id}>
+          {[offer.rent && sourceRentDisplay(offer.rent)?.label, ...offer.conditions, formatDate(offer.startDate), formatDate(offer.endDate), offer.availability].filter(Boolean).join(' · ')}
+        </li>)}</ul></dd>
+      </div> : <div><dt className="font-bold">Availability</dt><dd>Check with an advisor for your dates.</dd></div>}
       {!compact ? <>
         {!room.publishedAreaSqm ? <div><dt className="font-bold">Room size</dt><dd>The provider has not supplied a size in this listing.</dd></div> : null}
         <div>
