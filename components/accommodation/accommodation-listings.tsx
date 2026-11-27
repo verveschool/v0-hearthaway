@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { ArrowRight, Building2, MapPin, Search } from 'lucide-react'
 import type { AccommodationListingRecord } from '@/app/accommodation/listing-data'
+import { filterProperties, weeklyCurrencies, type PropertyFilters } from '@/app/accommodation/property-filters'
 import { PRICE_AVAILABILITY_NOTICE } from '@/app/accommodation/presentation'
 
 type AccommodationListingsProps = {
@@ -12,17 +13,24 @@ type AccommodationListingsProps = {
   listings: AccommodationListingRecord[]
   initialCity?: string
   initialQuery?: string
-  serverPage?: { total: number; next?: string; previous?: string; provider?: string }
+  filters: PropertyFilters
+  advancedFiltersEnabled: boolean
+  provider?: string
+  serverPage?: { total: number; next?: string; previous?: string }
 }
 
-function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
+function PropertyCard({ listing, filters }: { listing: AccommodationListingRecord; filters: PropertyFilters }) {
   const previewRoom = listing.roomTypes.find((room) => room.image || room.images.length > 0)
   const previewImage = listing.coverImage ?? previewRoom?.image ?? previewRoom?.images[0] ?? listing.gallery[0] ?? null
   const previewImageRoom = previewImage
     ? listing.roomTypes.find((room) => room.images.includes(previewImage))?.name ?? null
     : null
+  const currencySymbol = filters.currency && weeklyCurrencies[filters.currency]
+  const comparableOnly = currencySymbol && (filters.maxWeekly !== undefined || filters.sort)
   const startingRoom = listing.roomTypes
-    .filter((room) => room.priceFrom !== null)
+    .filter((room) => room.priceFrom !== null && (!comparableOnly || (
+      room.priceLabel?.startsWith(currencySymbol) && room.priceLabel.includes('/week')
+    )))
     .sort((first, second) => (first.priceFrom ?? 0) - (second.priceFrom ?? 0))[0]
   const buildingNames = [...new Set(listing.buildings.flatMap((building) => building.name ? [building.name] : []))]
 
@@ -71,7 +79,7 @@ function PropertyCard({ listing }: { listing: AccommodationListingRecord }) {
 
         <div className="mt-auto flex items-center justify-between gap-3 border-t border-[#E8E6E1] pt-4">
           <div className="text-sm font-semibold text-[#1A1A1A]">
-            <p>From <span className="text-[#00319D]">{startingRoom?.priceLabel ?? listing.propertyPriceLabel}</span></p>
+            <p className="text-[#00319D]">{startingRoom?.priceLabel || (filters.roomType ? '' : listing.propertyPriceLabel) ? `From ${startingRoom?.priceLabel || listing.propertyPriceLabel}` : 'Ask for a quote'}</p>
             <p className="mt-1 max-w-[260px] text-xs font-normal leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
           </div>
           <span className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D]">
@@ -89,13 +97,16 @@ export default function AccommodationListings({
   initialCity = 'all',
   initialQuery = '',
   serverPage,
+  filters,
+  advancedFiltersEnabled,
+  provider,
 }: AccommodationListingsProps) {
   const [pageSize, setPageSize] = useState(12)
   const sentinel = useRef<HTMLDivElement>(null)
   const [selectedCity, setSelectedCity] = useState(initialCity)
   const [searchQuery, setSearchQuery] = useState(initialQuery)
   const normalizedQuery = searchQuery.trim().toLocaleLowerCase()
-  const visibleListings = serverPage ? listings : listings.filter((listing) => {
+  const visibleListings = serverPage ? listings : filterProperties(listings.filter((listing) => {
     const matchesCity = selectedCity === 'all' || listing.city.toLocaleLowerCase() === selectedCity.toLocaleLowerCase()
     if (!matchesCity || !normalizedQuery) return matchesCity
 
@@ -111,7 +122,7 @@ export default function AccommodationListings({
     ].join(' ').toLocaleLowerCase()
 
     return searchableDetails.includes(normalizedQuery)
-  })
+  }), filters)
 
   const hasMore = !serverPage && pageSize < visibleListings.length
   useEffect(() => {
@@ -124,15 +135,11 @@ export default function AccommodationListings({
     return () => observer.disconnect()
   }, [hasMore])
 
-  const clearFilters = () => {
-    setPageSize(12)
-    setSelectedCity('all')
-    setSearchQuery('')
-  }
+  const clearUrl = provider ? `/accommodation?provider=${encodeURIComponent(provider)}` : '/accommodation'
 
   return (
     <div>
-      <form onSubmit={serverPage ? undefined : event => event.preventDefault()} method="get" className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
+      <form method="get" className="grid gap-5 border-b border-[#E8E6E1] pb-6 sm:grid-cols-2 sm:items-end xl:grid-cols-[minmax(0,1fr)_minmax(260px,0.8fr)_minmax(200px,0.55fr)]">
         <div className="sm:col-span-2 xl:col-span-1">
           <h2 className="font-heading text-2xl font-extrabold tracking-tight text-[#1A1A1A] sm:text-3xl">
             Student Properties
@@ -165,37 +172,67 @@ export default function AccommodationListings({
             className="min-h-12 w-full rounded-xl border border-[#D8D5CE] bg-white px-4 text-sm font-semibold text-[#1A1A1A] outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
           >
             <option value="all">All cities</option>
+            {selectedCity !== 'all' && !cities.includes(selectedCity) ? <option value={selectedCity}>{selectedCity}</option> : null}
             {cities.map((city) => <option key={city} value={city}>{city}</option>)}
           </select>
         </label>
-        {serverPage ? <>
-          {serverPage.provider ? <input type="hidden" name="provider" value={serverPage.provider} /> : null}
-          <button type="submit" className="secondary-cta w-fit px-4 py-2">Search properties</button>
+        {advancedFiltersEnabled ? <>
+        <div className="grid gap-4 sm:col-span-2 sm:grid-cols-2 xl:col-span-3 xl:grid-cols-4">
+          <label className="flex flex-col gap-2 text-sm font-bold">
+            Room type
+            <input name="roomType" defaultValue={filters.roomType} maxLength={80} placeholder="e.g. Studio" className="min-h-12 rounded-xl border border-[#D8D5CE] bg-white px-4 font-normal" />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-bold">
+            Price currency
+            <select name="currency" defaultValue={filters.currency ?? ''} className="min-h-12 rounded-xl border border-[#D8D5CE] bg-white px-4">
+              <option value="">Choose currency</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="AUD">AUD (A$)</option>
+            </select>
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-bold">
+            Maximum weekly rent
+            <input name="maxWeekly" type="number" min={1} max={9999999} step={1} defaultValue={filters.maxWeekly} aria-describedby="price-filter-note" className="min-h-12 rounded-xl border border-[#D8D5CE] bg-white px-4" />
+          </label>
+          <label className="flex flex-col gap-2 text-sm font-bold">
+            Sort by
+            <select name="sort" defaultValue={filters.sort ?? ''} aria-describedby="price-filter-note" className="min-h-12 rounded-xl border border-[#D8D5CE] bg-white px-4">
+              <option value="">Featured</option>
+              <option value="price-asc">Weekly rent, low to high</option>
+              <option value="price-desc">Weekly rent, high to low</option>
+            </select>
+          </label>
+        </div>
+        <p id="price-filter-note" className="text-sm text-[#6B6860] sm:col-span-2">
+          Choose a currency to filter or sort by weekly rent. Ask an advisor to check move-in dates and tenancy lengths.
+        </p>
         </> : null}
+        {provider ? <input type="hidden" name="provider" value={provider} /> : null}
+        <div className="flex flex-wrap items-center gap-4">
+          <button type="submit" className="secondary-cta w-fit px-4 py-2">Search properties</button>
+          <Link href={clearUrl} className="text-sm font-bold text-[#00319D] underline">Clear filters</Link>
+        </div>
       </form>
 
       {visibleListings.length > 0 ? (
         <div>
           <div className="mt-7 grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-3">
-            {visibleListings.slice(0, pageSize).map((listing) => <PropertyCard key={listing.key} listing={listing} />)}
+            {visibleListings.slice(0, pageSize).map((listing) => <PropertyCard key={listing.key} listing={listing} filters={filters} />)}
           </div>
           {hasMore ? <div ref={sentinel} className="mt-6 text-center"><button type="button" onClick={() => setPageSize((size) => size + 12)} className="secondary-cta">Load more properties</button></div> : null}
         </div>
       ) : (
         <div className="mt-8 rounded-2xl border border-[#E8E6E1] bg-white p-8 text-center">
           <p className="text-sm text-[#6B6860]">
-            No properties match these filters. Try another city or search term.
+            {initialCity !== 'all' ? `No properties match these filters in ${initialCity}.` : 'No properties match these filters.'}
           </p>
-          <button
-            type="button"
-            onClick={() => {
-              if (serverPage) window.location.assign(serverPage.provider ? `/accommodation?provider=${encodeURIComponent(serverPage.provider)}` : "/accommodation")
-              else clearFilters()
-            }}
+          <Link
+            href="/get-matched"
             className="mt-4 rounded-lg px-3 py-2 text-sm font-bold text-[#00319D] underline underline-offset-4 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
           >
-            Clear filters
-          </button>
+            Ask an advisor for help
+          </Link>
         </div>
       )}
       {serverPage && (serverPage.previous || serverPage.next) ? <nav aria-label="Property pages" className="mt-6 flex justify-center gap-4">

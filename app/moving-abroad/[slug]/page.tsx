@@ -142,6 +142,7 @@ export default async function MovingAbroadArticlePage({
               <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
                 {article.description}
               </p>
+              {article.reviewedOn ? <p className="mt-3 text-sm text-muted-foreground">Last reviewed <time dateTime={article.reviewedOn}>{new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(article.reviewedOn))}</time></p> : null}
             </div>
           </div>
         </section>
@@ -237,6 +238,8 @@ export default async function MovingAbroadArticlePage({
                       </ul>
                     </div>
                   )}
+
+                  {section.source ? <Link href={section.source.href} className="mt-4 inline-flex font-semibold text-primary underline underline-offset-4">{section.source.label}</Link> : null}
 
                   {section.warning && (
                     <div className="rounded-xl bg-red-50 p-5 border border-red-100 mt-2">

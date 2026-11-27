@@ -184,18 +184,19 @@ function ChatWidget({ isHome }: { isHome: boolean }) {
       <button
         ref={launcher}
         type="button"
+        aria-label="Chat for housing help"
         aria-haspopup="dialog"
         onClick={() => {
           dialog.current?.showModal()
           track('housing_chat_opened')
         }}
         style={{ bottom: `max(${16 + heroOffset}px, env(safe-area-inset-bottom))` }}
-        className={`fixed right-4 z-40 flex max-w-full items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#FEBB01] py-2 pr-5 pl-2 text-left text-[#1A1A1A] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C] min-h-14 shadow-xl sm:right-6 motion-safe:transition-[bottom,background-color] motion-safe:duration-200`}
+        className={`fixed right-4 z-40 flex max-w-full items-center gap-3 rounded-full border-2 border-[#1A1A1A] bg-[#FEBB01] p-1 sm:py-2 sm:pr-5 sm:pl-2 text-left text-[#1A1A1A] hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#01329C] min-h-12 min-w-12 justify-center shadow-xl sm:min-h-14 sm:right-6 motion-safe:transition-[bottom,background-color] motion-safe:duration-200`}
       >
         <span className={`grid shrink-0 place-items-center rounded-full bg-[#01329C] text-white size-9`}>
           <MessageCircle aria-hidden="true" className="size-6" />
         </span>
-        <span className="text-base font-extrabold">Chat for housing help</span>
+        <span className="hidden text-base font-extrabold sm:inline">Chat for housing help</span>
       </button>
       <dialog
         ref={dialog}

@@ -30,7 +30,8 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
   const page = catalogueSearchParam(params.page) ?? '1'
 
   const normalizedQuery = query.toLocaleLowerCase()
-  const selectedCity = accommodationCities.includes(city) ? city : ''
+  const requestedCity = city.trim().slice(0, 120)
+  const selectedCity = accommodationCities.find((item) => item.toLowerCase() === requestedCity.toLowerCase()) ?? requestedCity
 
   const result = catalogueDatabaseEnabled() ? await catalogueRoomPage({ city: selectedCity, query: normalizedQuery, page }) : null
   const rooms = result?.listings ?? accommodationRoomListings.filter(({ property, room }) => {
@@ -101,6 +102,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                 className="min-h-11 rounded-xl border border-[#D8D5CE] bg-white px-3 text-base font-normal outline-none focus-visible:ring-2 focus-visible:ring-[#00319D]"
               >
                 <option value="">All cities</option>
+                {selectedCity && !accommodationCities.includes(selectedCity) ? <option value={selectedCity}>{selectedCity}</option> : null}
                 {accommodationCities.map((availableCity) => (
                   <option key={availableCity} value={availableCity}>
                     {availableCity}

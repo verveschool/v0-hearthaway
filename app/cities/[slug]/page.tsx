@@ -97,9 +97,9 @@ export default async function CityPage({ params }: CityPageProps) {
                   {toSentenceCase(city.description)}
                 </p>
 
-                <p className="text-[#6B6860] text-base leading-relaxed">
-                  {toSentenceCase(city.studentPositioning)}
-                </p>
+                {toSentenceCase(city.studentPositioning) !== toSentenceCase(city.description) ? (
+                  <p className="text-[#6B6860] text-base leading-relaxed">{toSentenceCase(city.studentPositioning)}</p>
+                ) : null}
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] p-8 lg:p-10">
@@ -110,7 +110,7 @@ export default async function CityPage({ params }: CityPageProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="rounded-2xl bg-white border border-[#E8E6E1] p-6">
                     <div className="text-xs text-[#6B6860] font-bold tracking-widest uppercase mb-2">
-                      Average rent range
+                      Indicative rent range
                     </div>
                     <div className="font-heading font-extrabold text-3xl text-[#00319D]">
                       {city.avgRent}
@@ -189,11 +189,14 @@ export default async function CityPage({ params }: CityPageProps) {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                   <div>
                     <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-2">Student properties in {city.name}</h2>
-                    <p className="text-[#6B6860] text-base leading-relaxed">Browse {cityProperties.length} linked {cityProperties.length === 1 ? 'property' : 'properties'} with images, room types and current listing details.</p>
+                    {cityProperties.length > 0 ? <p className="text-[#6B6860] text-base leading-relaxed">Explore {cityProperties.length} {cityProperties.length === 1 ? 'property' : 'properties'} and their room types.</p> : null}
                   </div>
-                  <Link href={`/accommodation?city=${encodeURIComponent(city.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">View all in {city.name}</Link>
+                  {cityProperties.length > 0 ? <Link href={`/accommodation?city=${encodeURIComponent(city.name)}`} className="shrink-0 text-sm font-bold text-[#00319D] hover:underline">View all in {city.name}</Link> : null}
                 </div>
-                {cityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{cityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.roomTypes.slice(0, 2).join(' · ')}</p><p className="mt-3 text-sm font-bold text-[#00319D]">From {property.propertyPriceLabel}</p><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p></div></Link>)}</div> : <p className="mt-5 text-[#6B6860]">No property listings are linked to {city.name} yet.</p>}
+                {cityProperties.length > 0 ? <div className="mt-6 grid gap-4 sm:grid-cols-2">{cityProperties.map((property) => <Link key={property.slug} href={`/accommodation/property/${property.primaryListingSlug}`} className="group overflow-hidden rounded-2xl border border-[#E8E6E1] bg-[#F7F6F3] hover:border-[#FCC20A] transition-colors"><div className="h-32 overflow-hidden bg-[#00319D]">{property.image ? <img src={property.image} alt={property.name} className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" loading="lazy" decoding="async" /> : <div aria-hidden="true" className="h-full w-full bg-[#E8E6E1]" />}</div><div className="p-4"><h3 className="font-heading font-bold text-[#1A1A1A]">{property.name}</h3><p className="mt-1 text-xs text-[#6B6860]">{property.roomTypes.slice(0, 2).join(' · ')}</p><p className="mt-3 text-sm font-bold text-[#00319D]">From {property.propertyPriceLabel}</p><p className="mt-2 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p></div></Link>)}</div> : <div className="mt-5">
+                  <p className="text-[#6B6860]">We don’t have public property listings for {city.name} yet.</p>
+                  <Link href={`/get-matched?city=${encodeURIComponent(city.slug)}#matching-form`} className="mt-3 inline-flex font-bold text-[#00319D] underline">Ask an advisor about {city.name}</Link>
+                </div>}
               </section>
 
               <section className="rounded-2xl border border-[#E8E6E1] bg-white p-8 lg:p-10">

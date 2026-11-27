@@ -1,3 +1,4 @@
+import RoomTerms from '@/components/accommodation/room-terms'
 import { catalogueDatabaseEnabled, catalogueProperty } from '../../catalogue-server'
 
 import CatalogueImage from '@/components/accommodation/catalogue-image'
@@ -361,7 +362,7 @@ export default async function PropertyDetailPage({
                             <div className="mt-4 grid grid-cols-2 gap-3">
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
                                 <p className="text-xs font-bold tracking-wide text-[#6B6860]">Price</p>
-                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">{room.priceLabel}</p>
+                                <p className="mt-1 font-heading text-xl font-extrabold text-[#00319D]">{room.priceLabel || "Ask for a quote"}</p>
                               </div>
 
                               <div className="rounded-lg bg-[#F7F6F3] p-3">
@@ -382,6 +383,8 @@ export default async function PropertyDetailPage({
                                     : `At least ${room.minimumOccupancy}`}
                               </p>
                             ) : null}
+
+                            <RoomTerms room={room} compact />
 
                             {room.features?.length ? (
                               <ul className="mt-3 flex flex-col gap-2 border-t border-[#E8E6E1] pt-3">
@@ -415,7 +418,7 @@ export default async function PropertyDetailPage({
                     Want help comparing this property with your study plans?
                   </p>
                 </div>
-                <Link href="/get-matched" className="inline-flex min-h-11 w-fit shrink-0 items-center justify-center rounded-xl bg-[#FEBB01] px-5 py-3 text-sm font-bold text-[#171717]">Ask HearthAway</Link>
+                <Link href={`/get-matched?property=${encodeURIComponent(property.slug)}#matching-form`} className="inline-flex min-h-11 w-fit shrink-0 items-center justify-center rounded-xl bg-[#FEBB01] px-5 py-3 text-sm font-bold text-[#171717]">Ask HearthAway</Link>
               </section>
 
               {/* Amenities and inclusions */}
