@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import { createClient } from '@/lib/supabase/server'
+import { getEnquiryContext } from '@/app/accommodation/enquiry-context'
 
 type PropertyEnquiry = {
   firstName: string
@@ -24,7 +25,7 @@ const legacyStringFields = [
   'phone',
   'message',
 ] as const
-const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite', 'source', 'chatTranscript'])
+const legacyFields = new Set<string>([...legacyStringFields, 'priorities', 'intent', 'companyWebsite', 'source', 'chatTranscript', 'propertySlug', 'roomSlug'])
 const propertyEnquiryFields = new Set(['firstName', 'lastName', 'phone', 'propertyName', 'enquiryType'])
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -57,6 +58,11 @@ function isPropertyEnquiry(body: Record<string, unknown>): body is Record<string
 function isLegacyForm(body: Record<string, unknown>): boolean {
   if (!Object.keys(body).every((key) => legacyFields.has(key))) return false
   const housingChat = body.source === 'housing-chat'
+  for (const key of ['propertySlug', 'roomSlug']) {
+    const slug = body[key]
+    if (slug !== undefined && (housingChat || typeof slug !== 'string' || !/^[a-z0-9-]{1,250}$/.test(slug))) return false
+  }
+  if (body.propertySlug && body.roomSlug) return false
   if (body.source !== undefined && !housingChat) return false
   if (body.chatTranscript !== undefined && (!housingChat || typeof body.chatTranscript !== 'string' || body.chatTranscript.length > 10_000)) return false
   if (housingChat && (typeof body.city !== 'string' || !body.city.trim() || body.city.length > 120)) return false
@@ -116,6 +122,16 @@ export async function POST(request: Request) {
   const { data: { user } } = await supabase.auth.getUser()
   const input = body as Record<string, unknown>
   const readText = (key: string) => typeof input[key] === 'string' ? String(input[key]).trim() : ''
+  let context: Awaited<ReturnType<typeof getEnquiryContext>>
+  if (input.propertySlug || input.roomSlug) {
+    try {
+      context = await getEnquiryContext(readText('propertySlug'), readText('roomSlug'))
+    } catch {
+      return NextResponse.json({ error: 'We could not check the selected listing. Please try again.' }, { status: 503 })
+    }
+    if (!context) return NextResponse.json({ error: 'The selected listing is no longer available.' }, { status: 400 })
+  }
+  const contextNote = context ? `Enquiring about: ${context.roomName ? `${context.roomName} at ` : ''}${context.propertyName}` : ''
   const priorities = Array.isArray(input.priorities)
     ? input.priorities.filter((item): item is string => typeof item === 'string').map((item) => item.trim()).filter(Boolean).slice(0, 16)
     : []
@@ -125,6 +141,7 @@ export async function POST(request: Request) {
     'ready-to-book': 'Ready to book',
   }
   const message = [
+    contextNote,
     validPropertyEnquiry ? '' : `Planning intent: ${intentLabels[readText('intent')] ?? intentLabels.exploring}`,
     readText('message'),
   ].filter(Boolean).join('\n\n').slice(0, 1200)
@@ -137,7 +154,7 @@ export async function POST(request: Request) {
     enquiry_type: validPropertyEnquiry
       ? input.enquiryType === 'virtual-tour' ? 'virtual_tour' : 'property'
       : 'matching',
-    room_slug: null,
+    room_slug: context?.roomSlug ?? null,
     country: readText('country').slice(0, 120) || null,
     city: readText('city').slice(0, 120) || null,
     university: readText('university').slice(0, 200) || null,
@@ -205,7 +222,10 @@ export async function POST(request: Request) {
       const response = await fetch(webhookUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(Object.fromEntries(Object.entries(body).filter(([key]) => key !== 'chatTranscript'))),
+        body: JSON.stringify({
+          ...Object.fromEntries(Object.entries(body).filter(([key]) => key !== 'chatTranscript')),
+          ...(context ? { message: [contextNote, readText('message')].filter(Boolean).join('\n\n') } : {}),
+        }),
         signal: AbortSignal.timeout(10_000),
       })
       if (!response.ok) console.error('[v0] Enquiry webhook returned a non-success status:', response.status)

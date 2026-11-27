@@ -1,3 +1,4 @@
+import RoomTerms from '@/components/accommodation/room-terms'
 import { catalogueDatabaseEnabled, catalogueRoom } from '../../catalogue-server'
 import CatalogueImage from '@/components/accommodation/catalogue-image'
 import type { Metadata } from 'next'
@@ -65,25 +66,28 @@ export default async function RoomDetailPage({ params }: RoomPageProps) {
                   <span className="text-sm text-[#6B6860]">{property.city}{property.country ? `, ${property.country}` : ''}</span>
                 </div>
                 <p className="mt-2 text-lg font-semibold text-[#00319D]">{property.name}</p>
-                {property.description ? <p className="mt-5 whitespace-pre-line text-sm leading-7 text-[#4C4A45]">{property.description}</p> : <p className="mt-5 text-sm leading-7 text-[#6B6860]">Room and property information shown here is limited to the current partner source.</p>}
+
                 {room.description ? <p className="mt-5 text-sm leading-7 text-[#4C4A45]">{room.description}</p> : null}
-                {property.inclusions.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Source-listed inclusions</h2><ul className="mt-3 grid gap-2 sm:grid-cols-2">{property.inclusions.map((inclusion) => <li key={inclusion} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]" />{inclusion}</li>)}</ul></div> : null}
-                <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Price</dt><dd className="mt-1 font-heading text-2xl font-extrabold text-[#00319D]">{getRoomPriceDisplay(room)}</dd></div>
+                {property.inclusions.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Property inclusions</h2><ul className="mt-3 grid gap-2 sm:grid-cols-2">{property.inclusions.map((inclusion) => <li key={inclusion} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]" />{inclusion}</li>)}</ul></div> : null}
+                <dl><div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Price</dt><dd className="mt-1 font-heading text-2xl font-extrabold text-[#00319D]">{getRoomPriceDisplay(room) || "Ask for a quote"}</dd></div>
                 <p className="my-4 rounded-xl bg-[#F7F6F3] p-3 text-xs leading-relaxed text-[#6B6860]">{PRICE_AVAILABILITY_NOTICE}</p>
                 
-                {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Occupancy</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.minimumOccupancy !== null && room.maximumOccupancy !== null ? `${room.minimumOccupancy}–${room.maximumOccupancy}` : room.maximumOccupancy !== null ? `Up to ${room.maximumOccupancy}` : `At least ${room.minimumOccupancy}`}</dd></div> : null}                <Link href={`/accommodation/property/${property.slug}`} className="mt-7 inline-flex font-bold text-[#00319D] underline-offset-4 hover:underline">View full property details</Link>
+                {room.minimumOccupancy !== null || room.maximumOccupancy !== null ? <div className="py-4"><dt className="text-xs font-bold tracking-wide text-[#6B6860]">Occupancy</dt><dd className="mt-1 text-sm font-semibold text-[#1A1A1A]">{room.minimumOccupancy !== null && room.maximumOccupancy !== null ? `${room.minimumOccupancy}–${room.maximumOccupancy}` : room.maximumOccupancy !== null ? `Up to ${room.maximumOccupancy}` : `At least ${room.minimumOccupancy}`}</dd></div> : null}</dl>
+                <Link href={`/accommodation/property/${property.slug}`} className="mt-7 inline-flex font-bold text-[#00319D] underline-offset-4 hover:underline">View full property details</Link>
               </div>
             </section>
 
             <aside className="h-fit rounded-3xl border border-[#E8E6E1] bg-white p-6 sm:p-8 lg:sticky lg:top-28">
               <h2 className="font-heading text-lg font-extrabold text-[#1A1A1A]">Room information</h2>
-              <dl className="mt-5 divide-y divide-[#E8E6E1]">
+              <RoomTerms room={room} />
+              <div className="mt-5">
                 {property.amenities.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Property facilities</h2><ul className="mt-3 grid gap-2 sm:grid-cols-2">{property.amenities.map((amenity) => <li key={amenity} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#FCC20A]" />{amenity}</li>)}</ul></div> : null}
                 {property.contractTerms.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Property terms and practical details</h2><ul className="mt-3 grid gap-2">{property.contractTerms.map((term) => <li key={term} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#C9783E]" />{term}</li>)}</ul></div> : null}
+                {!featureGroups.length && !room.features?.length && !room.description ? <p className="mt-4 text-sm text-[#6B6860]">Ask an advisor to confirm the layout and features of this room.</p> : null}
                 {featureGroups.length || room.features?.length ? <div className="mt-7 border-t border-[#E8E6E1] pt-6"><h2 className="font-heading text-xl font-extrabold text-[#1A1A1A]">Room features</h2>{featureGroups.length ? <div className="mt-4 grid gap-5 sm:grid-cols-2">{featureGroups.map((group) => <div key={group.label}><h3 className="text-sm font-bold text-[#1A1A1A]">{group.label}</h3><ul className="mt-2 space-y-2">{group.values?.map((feature) => <li key={feature} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#C9783E]" />{feature}</li>)}</ul></div>)}</div> : <ul className="mt-3 grid gap-2 sm:grid-cols-2">{room.features?.map((feature) => <li key={feature} className="flex items-start gap-2 text-sm text-[#4C4A45]"><span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-[#C9783E]" />{feature}</li>)}</ul>}</div> : null}
-              </dl>
+              </div>
               <div className="mt-5"><SaveRoomButton roomSlug={slug} isAuthenticated={Boolean(user)} /></div>
-              <Link href="/get-matched" className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#00319D] px-5 py-3 text-sm font-bold text-white hover:bg-[#00277D]">Ask HearthAway about this property</Link>
+              <Link href={`/get-matched?room=${encodeURIComponent(slug)}#matching-form`} className="mt-6 inline-flex min-h-11 w-full items-center justify-center rounded-xl bg-[#00319D] px-5 py-3 text-sm font-bold text-white hover:bg-[#00277D]">Ask HearthAway about this room</Link>
             </aside>
           </div>
         </div>

@@ -56,15 +56,15 @@ export const cities: CityPlace[] = [
     universities: '5',
     image: '/images/city-manchester.png',
     slug: 'manchester',
-    description: 'a high energy student metropolis with an incredible industrial music heritage and top tier academic infrastructure',
+    description: 'Manchester has a large student population and a music scene shaped by its industrial history.',
     avgRent: '£650 to £950 / mo',
-    studentPositioning: 'the oxford road corridor is the heavy center of gravity for campus life blending massive social culture with reachable living options',
+    studentPositioning: 'Oxford Road connects several university buildings, student venues and bus routes.',
     bestAreasForStudents: {
-      summary: 'fallowfield is the definitive hub for undergraduate lifestyle while victoria park and the city centre cater to postgraduate students seeking high spec inventory',
+      summary: 'Fallowfield is popular with undergraduates. Victoria Park and the city centre offer other options for students who want a different commute or room type.',
       topNeighbourhoods: ['fallowfield', 'victoria park', 'rusholme', 'oxford road', 'salford']
     },
     rentBudgeting: {
-      summary: 'private house shares along the main bus corridors offer maximum value while city centre apartments command high tier corporate rates',
+      summary: 'House shares along major bus routes can cost less than city centre apartments. Check whether bills are included and compare the total rent over the full tenancy.',
       averageMonthlyRent: '£800'
     }
   },

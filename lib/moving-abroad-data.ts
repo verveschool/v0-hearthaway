@@ -9,6 +9,7 @@ export type MovingAbroadArticleSection = {
   keyPoints?: string[]
   warning?: string
   numbers?: string[]
+  source?: { label: string; href: string }
 }
 
 export type MovingAbroadArticle = {
@@ -25,6 +26,7 @@ export type MovingAbroadArticle = {
   image?: string
   featured?: boolean
   preview?: boolean
+  reviewedOn?: string
 }
 
 export type MovingAbroadArticleCard = Pick<
@@ -53,14 +55,9 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
     countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
     sections: [
       {
-        title: 'Secure The Financial Holding Period',
-        summary: 'Immigration departments require absolute proof of liquid capital before processing any student visa application.',
-        keyPoints: [
-          'Funds must sit in a standard checking or savings account',
-          'The exact balance must remain untouched for 28 consecutive days prior to application',
-          'Using business accounts, property valuations, or crypto will result in an instant refusal'
-        ],
-        warning: 'Withdrawing even a single pound below the required threshold on day 27 means you must restart the entire 28 day holding period from zero.',
+        title: 'Check which financial documents you need',
+        summary: 'Student visa evidence depends on the destination and your circumstances. Check the current instructions from the relevant immigration authority before preparing bank statements, loan letters or sponsorship evidence.',
+        source: { label: 'Student visa financial evidence by destination', href: '/moving-abroad/student-visa' },
       },
       {
         title: 'Lock Housing Before The Cap Hits',
@@ -187,41 +184,40 @@ export const movingAbroadArticles: MovingAbroadArticle[] = [
   {
     slug: 'student-visa',
     tags: ['Student Visa', 'Immigration', 'Financial Requirements', 'Documentation'],
-    title: 'Understanding Your 2026 Student Visa Financial Mechanics',
+    title: 'How to check student visa financial requirements',
     category: 'Before you go',
-    description: 'Plan your document trail, financial seasoning periods and biometric appointments perfectly so you do not miss your intake date.',
-    readTime: '8 min read',
+    description: 'Find the official financial evidence requirements for your destination and plan your housing around your application timeline.',
+    readTime: '4 min read',
+    reviewedOn: '2026-11-26',
     stage: 'Planning',
     countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
     sections: [
       {
-        title: 'Season Your Funds Early',
-        summary: 'Immigration departments actively screen for sudden capital injections to prevent application fraud.',
-        keyPoints: [
-          'Governments want to see a stable history of clean money',
-          'Sudden, unexplained large deposits will trigger immediate fraud checks',
-          'Transfer and stabilize your required funds at least three months before filing'
-        ]
+        title: 'United Kingdom',
+        summary: 'For the UK Student visa, applicants who rely on personal bank funds and need to meet the financial requirement generally need to hold the required amount for 28 consecutive days. The evidence must be dated within 31 days of applying.',
+        keyPoints: ['Qualifying student loans and official financial sponsorship are also accepted and have separate evidence requirements.'],
+        source: { label: 'UK Visas and Immigration financial evidence guidance', href: 'https://www.gov.uk/guidance/financial-evidence-for-student-and-child-student-route-applicants' },
       },
       {
-        title: 'Use The Right Bank Accounts',
-        summary: 'Not all financial assets are accepted by immigration officials when proving your maintenance funds.',
-        keyPoints: [
-          'Only standard liquid savings and current checking accounts are valid',
-          'The account must allow immediate withdrawal of funds',
-          'Credit cards, property valuations, and mutual funds will cause an instant refusal'
-        ],
-        warning: 'Do not attempt to use business accounts to prove personal maintenance funds, even if your parents own the business.'
+        title: 'Ireland',
+        summary: 'Check Immigration Service Delivery’s requirements for your course and visa status. Where you show financial evidence depends in part on whether you need a visa to travel to Ireland.',
+        source: { label: 'Immigration Service Delivery guidance for students', href: 'https://www.irishimmigration.ie/coming-to-study-in-ireland/frequently-asked-questions-for-students/' },
       },
       {
-        title: 'Align Housing And Arrival Dates',
-        summary: 'Your visa processing timeline dictates your physical movement. Do not lock irreversible capital before approval.',
-        keyPoints: [
-          'Do not book non-refundable flights until your visa is officially granted',
-          'Ensure your tenancy agreement allows for start date adjustments',
-          'Monitor processing times closely as they spike dramatically before the autumn intake'
-        ]
-      }
+        title: 'Australia',
+        summary: 'For a subclass 500 visa, use the official document checklist. Where financial evidence is required, examples include qualifying deposits, loans and scholarships. Home Affairs may ask for evidence during processing.',
+        source: { label: 'Australian Department of Home Affairs Student visa guidance', href: 'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500' },
+      },
+      {
+        title: 'France',
+        summary: 'Use France-Visas to check the documents for your nationality, place of application and course.',
+        source: { label: 'France-Visas student guidance', href: 'https://www.france-visas.gouv.fr/en/etudiant' },
+      },
+      {
+        title: 'Other destinations and planning your arrival',
+        summary: 'Check the immigration authority or consulate for your destination before moving money or applying. Ask about accepted evidence, timing and any exceptions that apply to you.',
+        keyPoints: ['Before paying a housing deposit, ask the provider what happens if your visa is delayed or refused. Get the terms in writing.'],
+      },
     ],
     ctaVariant: 'planning',
   },
