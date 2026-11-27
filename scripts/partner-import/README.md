@@ -4,7 +4,7 @@ Import a complete authorized portfolio and its property/room images with one bat
 
 ## Current scope
 
-The priority order is Scraye, Campus Living Villages, then HousingAnywhere. `partners.json` records the 30 providers advertised on the HearthAway homepage, the five existing source adapters in this repository, and the extra Amber Student entry found only in the repository's partner directory. Backlog tiers describe an implementation sequence; they do not establish active contracts.
+The priority order is Scraye, Campus Living Villages, then HousingAnywhere. The owner has confirmed existing working agreements/inventory-sharing discussions with these partners and that they have asked HearthAway to list their inventory. Treat them as existing relationships, not prospects. `partners.json` records the 30 providers advertised on the HearthAway homepage, the five existing source adapters in this repository, and the extra Amber Student entry found only in the repository's partner directory. Backlog tiers are an operational queue, not a statement about contract status.
 
 Configure the intended Supabase catalogue project explicitly. Imports must preserve existing canonical property and room IDs and public slugs.
 
@@ -20,7 +20,7 @@ Configure the intended Supabase catalogue project explicitly. Imports must prese
 
 ### What still depends on the first source
 
-- An authorized outbound export/feed and the actual field mapping for each provider. The named configurations are integration profiles, **not implemented website crawlers or verified partner APIs**.
+- An authorized outbound export/feed and the actual field mapping for each provider. The named configurations are integration profiles, **not implemented website crawlers or verified partner APIs**. Existing partner agreements are confirmed by the owner; the remaining source dependency is the actual technical export/feed/portal route and its current field/host schema.
 - Full image decoding, size/dimension quality checks, optimization and EXIF removal. The current worker validates signatures/MIME and preserves original bytes in private staging.
 - A publication transaction mapped to `catalogue.*` plus the website's `ha_catalogue_*` projections, editorial rules and asset publication rights.
 - Monthly/term rent display. The current website model contains weekly/nightly assumptions; importing a monthly value must never place it in a weekly field.
@@ -55,7 +55,7 @@ Amounts retain their original currency and billing period. Unknown prices remain
 
 Review the definitions in an isolated test project before applying them through the project's normal migration workflow in an explicit transaction. Use `verify.sql` inside a transaction that ends in `ROLLBACK` for schema/permission verification. Do not run `verify.sql` as an unwrapped production script because its fixtures are intentionally temporary.
 
-The schema defines `ha_import_partners`, `ha_import_runs`, `ha_import_items` and `ha_import_media_sources` for private staging. It grants no table access to `anon` or `authenticated`; the server role receives only select/insert/update. Partner access defaults inactive and all rights default false. The setup does not alter existing catalogue tables or grants.
+The schema defines `ha_import_partners`, `ha_import_runs`, `ha_import_items` and `ha_import_media_sources` for private staging. It grants no table access to `anon` or `authenticated`; the server role receives only select/insert/update. New partner rows created by the bootstrap default inactive and all rights false. The accommodation project's three priority partner rows have since been activated by the owner-confirmed operating instruction; the exact backend permission references are recorded there. The setup does not alter existing catalogue tables or grants.
 
 Server environment variables:
 
@@ -80,7 +80,7 @@ node scripts/partner-import/cli.mjs register --config scripts/partner-import/con
 
 ## Run a real portfolio batch
 
-Record the permission reference, allowed listing/image hosts and applicable rights in the backend `ha_import_partners` row after the partner export is available. The local config cannot override backend permissions. Set `active`, `can_import` and `can_copy_images` only for the documented import scope. Record `can_republish` separately for the eventual publication step.
+The three priority partner rows are already active in the accommodation project based on the owner's explicit confirmation of existing agreements and inventory-sharing requests. The local config cannot override backend permissions. Before a real run, populate the exact source listing/image host allowlists from the partner's supplied feed or portal, preserve the permission reference already recorded in Supabase, and confirm source-specific fields. Do not infer image hosts from the homepage domain.
 
 ```sh
 node scripts/partner-import/cli.mjs dry-run \
