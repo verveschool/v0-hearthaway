@@ -4,7 +4,7 @@ import Link from 'next/link'
 import ReviewCollector from '@/components/home/review-collector'
 import { hearthAwayContact } from '@/lib/contact-details'
 
-const brandWordmarkPath = '/brand/hearthaway_branding.png'
+const brandWordmarkPath = '/brand-optimized/wordmark.png'
 
 const priorityDestinations = [
   { label: 'United Kingdom', href: '/uk' },
