@@ -1,25 +1,5 @@
-import { countries, type CountryPlace } from '@/lib/country-data'
-import { universities, type UniversityPlace, type CountryCode } from '@/lib/place-data'
-
-const countryCodes: Record<CountryPlace['slug'], CountryCode> = {
-  uk: 'UK',
-  ireland: 'IE',
-  france: 'FR',
-  uae: 'UAE',
-  germany: 'DE',
-  australia: 'AU',
-  usa: 'USA',
-  canada: 'CA',
-  spain: 'ES',
-  austria: 'AT',
-  belgium: 'BE',
-  hungary: 'HU',
-  singapore: 'SG',
-  malaysia: 'MY',
-  malta: 'MT',
-  italy: 'IT',
-  netherlands: 'NL',
-}
+import { countries, countryCodes, type CountryPlace } from '@/lib/country-data'
+import { universities, type UniversityPlace } from '@/lib/place-data'
 
 export type UniversityDirectoryGroup = {
   country: CountryPlace

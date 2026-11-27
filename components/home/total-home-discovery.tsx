@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import {
+  ArrowRight,
   ArrowUpRight,
+  BookOpen,
   BedDouble,
   Building2,
   GraduationCap,
@@ -47,6 +49,14 @@ export default function TotalHomeDiscovery() {
             <p className="mt-5 max-w-lg text-base leading-relaxed text-[#6B6860] sm:text-lg">
               You may know your university, your city, or only the kind of room you need. Choose a starting point and keep exploring from there.
             </p>
+            <Link
+              href="/moving-abroad"
+              className="mt-3 inline-flex min-h-11 items-center gap-2 rounded-sm py-2 font-bold text-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+            >
+              <BookOpen aria-hidden="true" className="size-5 shrink-0" />
+              Browse student guides
+              <ArrowRight aria-hidden="true" className="size-4 shrink-0" />
+            </Link>
           </header>
 
           <nav aria-label="Ways to browse student properties and rooms" className="grid gap-4 sm:grid-cols-2" data-home-reveal-stagger>
