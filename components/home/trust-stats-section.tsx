@@ -1,9 +1,10 @@
 import { countries } from '@/lib/country-data'
+import { cities, universities } from '@/lib/place-data'
 import { AnimatedMetric } from '@/components/home/home-motion'
 
 const stats = [
-  { value: 210, label: 'Cities' },
-  { value: 590, label: 'Universities' },
+  { value: cities.length, label: 'Cities' },
+  { value: universities.length, label: 'Universities' },
   { value: 18, suffix: 'k', label: 'Students helped' },
   { value: countries.length, label: 'Countries' },
 ]

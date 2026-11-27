@@ -2,13 +2,11 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight } from 'lucide-react'
 
-const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', USA: '/usa', Canada: '/canada', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Belgium: '/belgium', Hungary: '/hungary', Malta: '/malta', Malaysia: '/malaysia' };
+const countryLinks: Record<string, string> = { UK: '/uk', Ireland: '/ireland', Australia: '/australia', Germany: '/germany', UAE: '/uae', Singapore: '/singapore', Netherlands: '/netherlands', France: '/france', Italy: '/italy', Spain: '/spain', Austria: '/austria', Belgium: '/belgium', Hungary: '/hungary', Malta: '/malta', Malaysia: '/malaysia' };
 
 const countries = [
   'UK',
   'Ireland',
-  'USA',
-  'Canada',
   'Australia',
   'Germany',
   'UAE',

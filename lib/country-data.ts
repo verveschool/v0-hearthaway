@@ -36,7 +36,7 @@ export type CountryPlace = {
   movingAbroadLinks: MovingAbroadLink[]
 }
 
-export const countries: CountryPlace[] = [
+const allCountries: CountryPlace[] = [
   {
     name: 'United Kingdom',
     slug: 'uk',
@@ -231,6 +231,8 @@ export const countries: CountryPlace[] = [
     movingAbroadLinks: getMovingAbroadLinksForCountry('netherlands')
   }
 ]
+
+export const countries = allCountries.filter((country) => country.slug !== 'usa' && country.slug !== 'canada')
 
 export function getCountryBySlug(slug: CountryPlace['slug']): CountryPlace {
   return countries.find((country) => country.slug === slug) ?? countries[0]
