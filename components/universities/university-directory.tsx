@@ -33,7 +33,7 @@ function CountryDirectorySection({ group }: { group: UniversityDirectoryGroup })
           <h2 className="text-3xl font-bold tracking-tight text-[#181817]">{group.country.name}</h2>
           <p className="mt-2 max-w-2xl text-[#6B6860]">{group.all.length} universities in the directory</p>
         </div>
-        <Link href={`/moving-abroad/${group.country.slug}`} className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] hover:underline">
+        <Link href={`/${group.country.slug}`} className="inline-flex items-center gap-2 text-sm font-bold text-[#00319D] hover:underline">
           Explore {group.country.name} <ArrowRight data-icon="inline-end" />
         </Link>
       </div>

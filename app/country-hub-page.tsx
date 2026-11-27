@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import type { CountryPlace } from '@/lib/country-data'
+import { getCountryMovingAbroadLinks, isMovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
 import { cities, universities } from '@/lib/place-data'
 
 type CountryHubPageProps = {
@@ -12,6 +13,7 @@ type CountryHubPageProps = {
 }
 
 export default function CountryHubPage({ country }: CountryHubPageProps) {
+  const movingAbroadLinks = isMovingAbroadCountrySlug(country.slug) ? getCountryMovingAbroadLinks(country.slug) : []
   const countryName = ['uk', 'uae', 'usa', 'netherlands'].includes(country.slug)
     ? `the ${country.name}`
     : country.name
@@ -154,7 +156,7 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {country.movingAbroadLinks.map((guide) => (
+              {movingAbroadLinks.map((guide) => (
                 <Link
                   key={guide.href}
                   href={guide.href}

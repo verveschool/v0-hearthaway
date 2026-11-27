@@ -6,38 +6,55 @@ import { usePathname, useSearchParams } from "next/navigation"
 import { ArrowUpRight, ChevronDown, ChevronLeft, ChevronRight, Search } from "lucide-react"
 
 import { Button, buttonVariants } from "@/components/ui/button"
+import { guideTopics, type GuideTopic } from "../../content/student-guides/model"
 import type { MovingAbroadArticle } from "@/lib/moving-abroad-data"
 
-type ResourceSummary = Pick<MovingAbroadArticle, "title" | "description" | "category" | "tags" | "readTime"> & {
+type ResourceSummary = Pick<MovingAbroadArticle, "title" | "description" | "tags" | "readTime" | "countries"> & {
   href: string
+  topic: GuideTopic
 }
+
+type Destination = { slug: string; name: string }
 
 const pageSize = 10
 const controlClass = "min-h-11 rounded-lg border border-border bg-background text-sm focus-within:border-ring focus-within:ring-2 focus-within:ring-ring/40"
 const tagClass = "max-w-full rounded-full border px-2.5 py-0.5 text-xs font-medium leading-4 wrap-anywhere"
 
-export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
+function normalize(text: string) {
+  return text.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "")
+}
+
+export function ResourceLibrary({ articles, destinations }: { articles: ResourceSummary[]; destinations: Destination[] }) {
   const path = usePathname()
   const params = useSearchParams()
   const searchRef = useRef<HTMLInputElement>(null)
   const resultsRef = useRef<HTMLHeadingElement>(null)
   const query = params.get("q") ?? ""
-  const topics = useMemo(
-    () => [...new Set(articles.flatMap((article) => article.tags))].sort((a, b) => a.localeCompare(b)),
-    [articles],
-  )
   const requestedTopic = params.get("topic") ?? ""
-  const topic = topics.includes(requestedTopic) ? requestedTopic : ""
+  const topics = guideTopics.filter((name) => articles.some((article) => article.topic === name))
+  const legacyTopic = !topics.some((name) => name === requestedTopic) &&
+    articles.some((article) => article.tags.includes(requestedTopic)) ? requestedTopic : ""
+  const topic = topics.some((name) => name === requestedTopic) ? requestedTopic : legacyTopic
+  const requestedDestination = params.get("country") ?? ""
+  const destination = destinations.find(({ slug }) => slug === requestedDestination)?.slug ?? ""
+  const names = useMemo(() => new Map(destinations.map(({ slug, name }) => [slug, name])), [destinations])
+  const searchableArticles = useMemo(() => articles.map((article) => ({
+    article,
+    search: normalize([
+      article.title, article.description, article.topic, ...article.tags,
+      ...article.countries.length === 1 ? [names.get(article.countries[0]) ?? ""] : [],
+    ].join(" ")),
+  })), [articles, names])
 
-  const normalizedQuery = query.trim().toLowerCase()
-  const filteredArticles = useMemo(
-    () => articles.filter((article) =>
-      (!topic || article.tags.includes(topic)) &&
-      (!normalizedQuery || [article.title, article.description, ...article.tags]
-        .join(" ").toLowerCase().includes(normalizedQuery)),
-    ),
-    [articles, normalizedQuery, topic],
-  )
+  const terms = normalize(query.trim()).split(/\s+/).filter(Boolean)
+  const filteredArticles = searchableArticles
+    .filter(({ article, search }) =>
+      (!topic || article.topic === topic || article.tags.includes(topic)) &&
+      (!destination || article.countries.some((country) => country === destination)) &&
+      terms.every((term) => search.includes(term)),
+    )
+    .map(({ article }) => article)
+  if (destination) filteredArticles.sort((a, b) => a.countries.length - b.countries.length)
 
   const total = filteredArticles.length
   const pageCount = Math.max(1, Math.ceil(total / pageSize))
@@ -47,7 +64,7 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
   const start = (page - 1) * pageSize
   const visibleArticles = filteredArticles.slice(start, start + pageSize)
 
-  function updateFilters(nextQuery: string, nextTopic: string, mode: "pushState" | "replaceState") {
+  function updateFilters(nextQuery: string, nextTopic: string, nextDestination: string, mode: "pushState" | "replaceState") {
     const next = new URLSearchParams(window.location.search)
     const historyMethod = next.has("page") ? "pushState" : mode
     next.delete("page")
@@ -55,6 +72,8 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
     else next.delete("q")
     if (nextTopic) next.set("topic", nextTopic)
     else next.delete("topic")
+    if (nextDestination) next.set("country", nextDestination)
+    else next.delete("country")
     window.history[historyMethod](null, "", next.size ? `?${next}` : path)
   }
 
@@ -116,26 +135,43 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
               id="resource-search"
               ref={searchRef}
               value={query}
-              onChange={(event) => updateFilters(event.target.value, topic, "replaceState")}
+              onChange={(event) => updateFilters(event.target.value, topic, destination, "replaceState")}
               placeholder="Search by keyword"
+              maxLength={140}
               type="search"
               className="min-h-11 min-w-0 flex-1 bg-transparent text-base font-normal outline-none placeholder:text-muted-foreground sm:text-sm"
             />
           </span>
         </div>
-        <div className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-56">
+        <div className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-[29%]">
           <label htmlFor="resource-topic">Topic</label>
           <span className={`${controlClass} relative`}>
             <select
               id="resource-topic"
               value={topic}
-              onChange={(event) => updateFilters(query, event.target.value, "pushState")}
+              onChange={(event) => updateFilters(query, event.target.value, destination, "pushState")}
               className="min-h-11 w-full appearance-none rounded-lg bg-background py-2 pr-9 pl-3 text-base font-normal outline-none sm:text-sm"
             >
               <option value="">All topics</option>
+              {legacyTopic ? <option value={legacyTopic}>{legacyTopic}</option> : null}
               {topics.map((tag) => <option key={tag} value={tag}>{tag}</option>)}
             </select>
             <ChevronDown aria-hidden="true" className="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground" />
+          </span>
+        </div>
+        <div className="flex min-w-0 flex-col gap-1.5 text-sm font-semibold sm:w-[27%]">
+          <label htmlFor="resource-destination">Destination</label>
+          <span className={`${controlClass} relative`}>
+            <select
+              id="resource-destination"
+              value={destination}
+              onChange={(event) => updateFilters(query, topic, event.target.value, "pushState")}
+              className="min-h-11 w-full appearance-none rounded-lg bg-background py-2 pl-3 pr-9 text-base font-normal outline-none sm:text-sm"
+            >
+              <option value="">All destinations</option>
+              {destinations.map(({ slug, name }) => <option key={slug} value={slug}>{name}</option>)}
+            </select>
+            <ChevronDown aria-hidden="true" className="pointer-events-none absolute right-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           </span>
         </div>
       </div>
@@ -152,13 +188,13 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
               {total > 0 ? `Showing ${start + 1}–${start + visibleArticles.length} of ${total} ${total === 1 ? "resource" : "resources"}` : "0 resources"}
             </span>
           </h2>
-          {(query || topic) && (
+          {(query || topic || destination) && (
             <Button
               variant="link"
               type="button"
               className="min-h-11 px-2 font-semibold"
               onClick={() => {
-                updateFilters("", "", "pushState")
+                updateFilters("", "", "", "pushState")
                 searchRef.current?.focus()
               }}
             >
@@ -172,7 +208,7 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
             {visibleArticles.map((article) => (
               <article key={article.href} className="flex min-w-0 flex-col rounded-xl border border-border bg-card p-4 transition-colors focus-within:border-primary/40 hover:border-primary/30 sm:p-5">
                 <div className="mb-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
-                  <span className={`${tagClass} border-primary/15 bg-primary/5 text-primary`}>{article.category}</span>
+                  <span className={`${tagClass} border-primary/15 bg-primary/5 text-primary`}>{article.topic}</span>
                   <span className="text-xs text-muted-foreground">{article.readTime}</span>
                 </div>
                 <h3 className="font-heading text-lg leading-snug font-bold tracking-tight wrap-anywhere sm:text-xl">
@@ -186,11 +222,9 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
                   </Link>
                 </h3>
                 <p className="mb-4 text-sm leading-6 text-muted-foreground">{article.description}</p>
-                <ul aria-label="Article topics" className="mt-auto flex flex-wrap gap-1.5">
-                  {article.tags.filter((tag) => tag !== article.category).map((tag) => (
-                    <li key={tag} className={`${tagClass} border-border bg-muted text-muted-foreground`}>{tag}</li>
-                  ))}
-                </ul>
+                <p className="mt-auto text-sm font-medium text-muted-foreground">
+                  {article.countries.length === 1 ? names.get(article.countries[0]) : 'Multiple destinations'}
+                </p>
               </article>
             ))}
           </div>
@@ -198,7 +232,7 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
           <div className="rounded-xl border border-border bg-muted px-4 py-10 text-center">
             <h3 className="font-heading text-xl font-bold tracking-tight">No resources found</h3>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Try a different keyword or select another topic.
+              Try a different keyword, another topic or a wider destination filter.
             </p>
           </div>
         )}
@@ -207,7 +241,14 @@ export function ResourceLibrary({ articles }: { articles: ResourceSummary[] }) {
           <nav aria-label="Resource pagination" className="mt-6 flex flex-wrap items-center justify-center gap-1 sm:gap-2">
             {pageLink(page - 1, "Previous", "previous")}
             <div className="flex flex-wrap justify-center gap-1 sm:gap-1.5">
-              {Array.from({ length: pageCount }, (_, index) => pageLink(index + 1, String(index + 1)))}
+              {Array.from({ length: pageCount }, (_, index) => index + 1)
+                .filter((number) => pageCount <= 7 || number === 1 || number === pageCount || Math.abs(number - page) <= 1)
+                .map((number, index, pages) => (
+                  <div key={number} className="flex items-center gap-1">
+                    {index > 0 && number - pages[index - 1] > 1 ? <span aria-hidden="true" className="px-1">…</span> : null}
+                    {pageLink(number, String(number))}
+                  </div>
+                ))}
             </div>
             {pageLink(page + 1, "Next", "next")}
           </nav>

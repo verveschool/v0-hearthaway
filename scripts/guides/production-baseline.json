@@ -1,0 +1,34 @@
+{
+  "productionCommit": "96c4e36af260efb1c676371473fbb6bc3ecde5ab",
+  "checkedOn": "2026-11-27",
+  "slugs": [
+    "pre-arrival-checklist",
+    "choose-accommodation",
+    "real-cost-abroad",
+    "student-visa",
+    "uk-bank-account",
+    "packing-list",
+    "accommodation-costs",
+    "halls-vs-private",
+    "avoid-scams",
+    "tenancy-agreement",
+    "cost-of-living",
+    "student-budget",
+    "hidden-costs",
+    "student-discounts",
+    "first-week",
+    "airport-to-home",
+    "healthcare",
+    "making-friends",
+    "uae-visa-sponsorship",
+    "uae-housing-furnished",
+    "uae-tax-free-income-planning",
+    "germany-studentenwerk-housing",
+    "germany-monthly-budgeting",
+    "germany-tenancy-law-deposits"
+  ],
+  "aliases": {
+    "accommodation-guide": "choose-accommodation",
+    "budget-planning": "real-cost-abroad"
+  }
+}

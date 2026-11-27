@@ -1,32 +1,32 @@
+import { ukStudentHousing } from '../content/student-guides/uk-student-housing'
+import { netherlandsStudentHousing } from '../content/student-guides/netherlands-student-housing'
+import { accessibleStudentHousing } from '../content/student-guides/accessible-student-housing'
+import { afterRentalScam, reviewedGuides, weightedHousingComparison } from '../content/student-guides/index'
+import { australiaStudentHousing } from '../content/student-guides/australia-student-housing'
+import { irelandStudentHousing } from '../content/student-guides/ireland-student-housing'
+import { guideWordCount, type ReviewedGuide } from '../content/student-guides/model'
+
 export type MovingAbroadArticleCategory = 'Before you go' | 'Accommodation' | 'Budgeting' | 'Arriving'
 export type MovingAbroadArticleStage = 'Planning' | 'Booking' | 'Budgeting' | 'Arrival' | 'Settling in'
-export type MovingAbroadCountrySlug = 'uk' | 'ireland' | 'france' | 'uae' | 'germany' | 'australia' | 'usa' | 'canada' | 'spain' | 'austria' | 'belgium' | 'hungary' | 'singapore' | 'malta' | 'italy' | 'netherlands' | 'malaysia'
+export const guideDestinations = ['uk', 'ireland', 'france', 'uae', 'germany', 'australia', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'] as const
+export type MovingAbroadCountrySlug = (typeof guideDestinations)[number]
 export type MovingAbroadCtaVariant = 'housing' | 'planning'
 
-export type MovingAbroadArticleSection = {
-  title: string
-  summary: string
-  keyPoints?: string[]
-  warning?: string
-  numbers?: string[]
-  source?: { label: string; href: string }
-}
-
-export type MovingAbroadArticle = {
+type GuideMetadata = {
   slug: string
-  title: string
   category: MovingAbroadArticleCategory
   tags: string[]
-  description: string
-  readTime: string
   stage: MovingAbroadArticleStage
   countries: MovingAbroadCountrySlug[]
-  sections: MovingAbroadArticleSection[]
   ctaVariant: MovingAbroadCtaVariant
   image?: string
   featured?: boolean
   preview?: boolean
-  reviewedOn?: string
+}
+
+export type MovingAbroadArticle = GuideMetadata & ReviewedGuide & {
+  wordCount: number
+  readTime: string
 }
 
 export type MovingAbroadArticleCard = Pick<
@@ -43,768 +43,215 @@ export type MovingAbroadCategoryGroup = {
   articles: MovingAbroadArticleCard[]
 }
 
-export const movingAbroadArticles: MovingAbroadArticle[] = [
+const baselineGuideMetadata = [
   {
-    slug: 'pre-arrival-checklist',
+    slug: 'pre-arrival-checklist', category: 'Before you go', stage: 'Planning',
     tags: ['Pre-Arrival', 'Student Visa', 'Documentation', 'Accommodation'],
-    title: 'The Complete 2026 Pre Arrival Checklist For International Students',
-    category: 'Before you go',
-    description: 'Everything you need to sort before you travel. A tactical guide covering 2026 visa financial rules, accommodation locks and arrival prep.',
-    readTime: '12 min read',
-    stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'Check which financial documents you need',
-        summary: 'Student visa evidence depends on the destination and your circumstances. Check the current instructions from the relevant immigration authority before preparing bank statements, loan letters or sponsorship evidence.',
-        source: { label: 'Student visa financial evidence by destination', href: '/moving-abroad/student-visa' },
-      },
-      {
-        title: 'Lock Housing Before The Cap Hits',
-        summary: 'With incoming legislative caps and structural supply shortages, booking verified housing early protects your admission status.',
-        keyPoints: [
-          'Target purpose built student accommodation for fixed utility rates',
-          'Confirm transit lines before postcode prestige',
-          'Only use verified escrow platforms or direct institutional bookings'
-        ],
-        numbers: [
-          '295,000 limit on new international student commencements in Australia',
-          '€10,000 minimum living cost proof required by Irish immigration'
-        ]
-      },
-      {
-        title: 'Plan For Digital Visa Access',
-        summary: 'Physical residency permits are being rapidly phased out in favor of fully digital immigration profiles.',
-        keyPoints: [
-          'UK visas are moving entirely to the digital e-Visa system in 2026',
-          'You will need your UKVI share code active upon arrival',
-          'Retain digital copies of your Confirmation of Acceptance for Studies'
-        ]
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     featured: true,
   },
   {
-    slug: 'choose-accommodation',
+    slug: 'choose-accommodation', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Commute', 'Tenancy Agreements'],
-    title: 'How To Choose The Right Accommodation And Avoid The Commute Trap',
-    category: 'Accommodation',
-    description: 'Walking through the real decisions you face. Purpose built versus private rentals, transport line tradeoffs and how to read the contract.',
-    readTime: '10 min read',
-    stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'Anchor To Rail And Tram Lines',
-        summary: 'Do not just look at distance on a map. Commutes destroy student budgets and academic productivity.',
-        keyPoints: [
-          'Calculate the exact walking time to the nearest transit station',
-          'Factor in the monthly cost of student rail passes',
-          'Living slightly further away is only viable if you are directly on a high speed line'
-        ]
-      },
-      {
-        title: 'Purpose Built Versus Private Rentals',
-        summary: 'Choosing between managed student blocks and private house shares dictates your entire financial risk profile for the year.',
-        keyPoints: [
-          'Purpose built blocks offer fixed bills, protecting you from energy price spikes',
-          'Private rentals appear cheaper on base rent but leave you exposed to variable utility costs',
-          'Managed blocks provide built-in security and parcel management'
-        ],
-        warning: 'If you rent privately, you are personally liable for setting up and paying all internet, heating, and water accounts upon arrival.'
-      },
-      {
-        title: 'Ask About Deposit Protection',
-        summary: 'Your capital must be legally protected when entering any tenancy agreement.',
-        keyPoints: [
-          'In the UK, deposits must legally sit in a government-backed protection scheme',
-          'In Ireland, cross-check the landlord against the Residential Tenancies Board registry',
-          'Australian bonds must be lodged with the relevant state residential tenancies authority'
-        ],
-        warning: 'If a private landlord requests a cash deposit handed over directly without a formal lodging receipt, walk away immediately.'
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     featured: true,
   },
   {
-    slug: 'real-cost-abroad',
+    slug: 'real-cost-abroad', category: 'Budgeting', stage: 'Budgeting',
     tags: ['Budgeting', 'Financial Requirements', 'Cost of Living', 'Student Finance'],
-    title: 'The Real Cost Of Studying Abroad Exact 2026 Capital Requirements',
-    category: 'Budgeting',
-    description: 'Rent and tuition are just the baseline. Here are the exact government financial proofs required for the UK, Ireland and Australia.',
-    readTime: '14 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'The UK Maintenance Rule',
-        summary: 'The UK Home Office enforces strict, non-negotiable living cost thresholds that scale based on your campus location.',
-        keyPoints: [
-          'London requirements are significantly higher than regional areas',
-          'These funds are in addition to your first year of tuition fees',
-          'The money must be demonstrably yours or held by a parent or legal guardian'
-        ],
-        numbers: [
-          '£1,529 per month required for London living costs',
-          '£1,171 per month required outside London'
-        ]
-      },
-      {
-        title: 'The Australian Baseline',
-        summary: 'Australia recently adjusted its financial capacity requirements and visa application fees to reflect current economic realities.',
-        keyPoints: [
-          'Proof of funds must cover travel, tuition, and living costs',
-          'The visa application fee is substantial and non-refundable',
-          'Financial capacity rules are strictly enforced prior to visa grant'
-        ],
-        numbers: [
-          'AUD 29,710 base living cost proof required',
-          'AUD 2,000 non-refundable visa application fee'
-        ]
-      },
-      {
-        title: 'The Irish INIS Minimum',
-        summary: 'Irish immigration demands clear, upfront proof of liquid capital and tuition payments before considering any application.',
-        keyPoints: [
-          'You must hold immediate access to the required living cost threshold',
-          'A minimum tuition payment receipt is mandatory for the first year',
-          'Educational bonds are an accepted method for demonstrating financial capacity'
-        ],
-        numbers: [
-          '€10,000 absolute minimum living cost proof',
-          '€6,000 minimum first-year tuition receipt required'
-        ]
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     featured: true,
   },
   {
-    slug: 'student-visa',
+    slug: 'student-visa', category: 'Before you go', stage: 'Planning',
     tags: ['Student Visa', 'Immigration', 'Financial Requirements', 'Documentation'],
-    title: 'How to check student visa financial requirements',
-    category: 'Before you go',
-    description: 'Find the official financial evidence requirements for your destination and plan your housing around your application timeline.',
-    readTime: '4 min read',
-    reviewedOn: '2026-11-26',
-    stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'United Kingdom',
-        summary: 'For the UK Student visa, applicants who rely on personal bank funds and need to meet the financial requirement generally need to hold the required amount for 28 consecutive days. The evidence must be dated within 31 days of applying.',
-        keyPoints: ['Qualifying student loans and official financial sponsorship are also accepted and have separate evidence requirements.'],
-        source: { label: 'UK Visas and Immigration financial evidence guidance', href: 'https://www.gov.uk/guidance/financial-evidence-for-student-and-child-student-route-applicants' },
-      },
-      {
-        title: 'Ireland',
-        summary: 'Check Immigration Service Delivery’s requirements for your course and visa status. Where you show financial evidence depends in part on whether you need a visa to travel to Ireland.',
-        source: { label: 'Immigration Service Delivery guidance for students', href: 'https://www.irishimmigration.ie/coming-to-study-in-ireland/frequently-asked-questions-for-students/' },
-      },
-      {
-        title: 'Australia',
-        summary: 'For a subclass 500 visa, use the official document checklist. Where financial evidence is required, examples include qualifying deposits, loans and scholarships. Home Affairs may ask for evidence during processing.',
-        source: { label: 'Australian Department of Home Affairs Student visa guidance', href: 'https://immi.homeaffairs.gov.au/visas/getting-a-visa/visa-listing/student-500' },
-      },
-      {
-        title: 'France',
-        summary: 'Use France-Visas to check the documents for your nationality, place of application and course.',
-        source: { label: 'France-Visas student guidance', href: 'https://www.france-visas.gouv.fr/en/etudiant' },
-      },
-      {
-        title: 'Other destinations and planning your arrival',
-        summary: 'Check the immigration authority or consulate for your destination before moving money or applying. Ask about accepted evidence, timing and any exceptions that apply to you.',
-        keyPoints: ['Before paying a housing deposit, ask the provider what happens if your visa is delayed or refused. Get the terms in writing.'],
-      },
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'uk-bank-account',
+    slug: 'uk-bank-account', category: 'Before you go', stage: 'Planning',
     tags: ['Banking', 'Student Finance', 'Arrival', 'Documentation'],
-    title: 'How To Open A UK Bank Account And Bridge The Gap',
-    category: 'Before you go',
-    description: 'Traditional banks will reject you without the right paperwork. Here is the exact playbook to get your local sort code and account number fast.',
-    readTime: '5 min read',
-    stage: 'Planning',
-    countries: ['uk'],
-    sections: [
-      { title: 'The Enrollment Letter Bottleneck', summary: 'High street banks require a physical bank letter from your university. You cannot get this until you physically arrive and register on campus.' },
-      { title: 'Bridge The Gap With A Neo Bank', summary: 'Operations like Monzo or Revolut allow you to open an account faster but require you to have a UK sim card and physically be in the country.' },
-      { title: 'Plan Your First Rent Payment', summary: 'Your first month of rent and deposit usually needs to be paid before your UK account is open. Use an international transfer service to clear this hurdle.' }
-    ],
-    ctaVariant: 'planning',
+    countries: ['uk'], ctaVariant: 'planning',
   },
   {
-    slug: 'packing-list',
+    slug: 'packing-list', category: 'Before you go', stage: 'Planning',
     tags: ['Pre-Arrival', 'Packing', 'Travel', 'Student Life'],
-    title: 'The Tactical Packing List For International Students',
-    category: 'Before you go',
-    description: 'Pack for climate, classes, housing and your first few weeks of survival before your local bank accounts clear.',
-    readTime: '4 min read',
-    stage: 'Planning',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Carry On Essentials', summary: 'Keep your passport, visa grant notices, university offer letters and two weeks of any prescription medication strictly in your cabin bag.' },
-      { title: 'Pack For Your Accommodation', summary: 'Check what is already provided before bringing bedding, kitchen items or bulky homeware. Most student beds are irregular sizes anyway.' },
-      { title: 'Buy Heavy Items Locally', summary: 'Save luggage weight by planning to buy thick winter coats, toiletries and cleaning supplies after you land.' }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
   },
   {
-    slug: 'accommodation-costs',
+    slug: 'accommodation-costs', category: 'Accommodation', stage: 'Budgeting',
     tags: ['Accommodation', 'Renting', 'Cost of Living', 'Student Finance'],
-    title: 'How Much Purpose Built Student Housing Actually Costs',
-    category: 'Accommodation',
-    description: 'Real costs broken down by asset type so you can plan your capital deployment with absolute confidence.',
-    readTime: '8 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Compare The Total Run Rate', summary: 'Look beyond headline rent to internet speeds, utility caps, gym inclusions and commute costs. A slightly more expensive room near campus is often cheaper overall.' },
-      { title: 'City Demand Changes Budgets', summary: 'Popular cities like Dublin or Sydney move extremely fast. If you wait for clearance you will be forced into premium luxury studios because the mid tier sells out first.' },
-      { title: 'Match Cost To Lifestyle', summary: 'Choose the room that supports your academic routine. If you spend twelve hours a day in the library you do not need to pay a premium for a large studio kitchen.' }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     preview: true,
   },
   {
-    slug: 'halls-vs-private',
+    slug: 'halls-vs-private', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Housing Options', 'Student Life'],
-    title: 'Purpose Built Student Blocks Versus Private Rentals',
-    category: 'Accommodation',
-    description: 'Compare the two major housing formats before locking up your cash for an entire academic year.',
-    readTime: '6 min read',
-    stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Purpose Built Blocks', summary: 'These offer absolute convenience, fixed bills and built in social networks. You pay a slight premium for security and zero utility headaches.' },
-      { title: 'Private Accommodation', summary: 'Renting a house with friends offers independence and often cheaper base rent but leaves you completely exposed to internet setups and heating bill spikes.' },
-      { title: 'Choose By Support Needs', summary: 'If it is your first year abroad the built in support of a managed block is invaluable. Save the private house share for your second year.' }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
   },
   {
-    slug: 'avoid-scams',
+    slug: 'avoid-scams', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Housing Safety', 'Scams'],
-    title: 'How To Identify And Avoid Rental Fraud Syndicates',
-    category: 'Accommodation',
-    description: 'The rental market is full of sophisticated operators preying on international students. Learn the warning signs.',
-    readTime: '5 min read',
-    stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Watch For Pressure Tactics', summary: 'Be extremely cautious if a landlord pushes for an urgent Western Union transfer or avoids providing a written contract before taking your money.' },
-      { title: 'Never Wire Cash Before Viewing', summary: 'Scammers use stolen photos of premium apartments. If you cannot view it physically use a verified booking platform that holds funds in escrow.' },
-      { title: 'Cross Check The Registry', summary: 'In Ireland verify the landlord on the RTB. In the UK ensure they are using a certified deposit protection scheme. Verify everything.' }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     preview: true,
   },
   {
-    slug: 'tenancy-agreement',
+    slug: 'tenancy-agreement', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Deposits'],
-    title: 'How To Read Your Tenancy Agreement Without Getting Trapped',
-    category: 'Accommodation',
-    description: 'Review the hard legal terms before signing a binding contract for student housing abroad.',
-    readTime: '9 min read',
-    stage: 'Booking',
-    countries: ['uk', 'ireland', 'australia', 'france'],
-    sections: [
-      { title: 'Read The Dates First', summary: 'Confirm the exact start date, end date and move in rules. Ensure the contract perfectly overlaps your academic term so you are not homeless during exams.' },
-      { title: 'Understand Deposits And Guarantors', summary: 'If you do not have a local guarantor many private landlords demand six to twelve months of rent paid upfront in cash.' },
-      { title: 'Know Your Exit Clauses', summary: 'Look for break clauses. If you need to return home for an emergency you need to know exactly how much it will cost to terminate the lease.' }
-    ],
-    ctaVariant: 'housing',
+    countries: ['uk', 'ireland', 'australia', 'france'], ctaVariant: 'housing',
   },
   {
-    slug: 'cost-of-living',
+    slug: 'cost-of-living', category: 'Budgeting', stage: 'Budgeting',
     tags: ['Budgeting', 'Cost of Living', 'Transport', 'Student Finance'],
-    title: 'The Exact Weekly Cost Of Living In Major Student Hubs',
-    category: 'Budgeting',
-    description: 'Compare the hard costs of transport, groceries and everyday survival across the UK, Ireland and Australia.',
-    readTime: '7 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'The Transport Tax',
-        summary: 'Living far from campus looks cheap until you calculate the reality of daily travel expenses.',
-        keyPoints: [
-          'Calculate the exact monthly cost of student rail or bus passes',
-          'Factor in the lost hours of academic productivity during long commutes',
-          'Check if your university offers subsidised transport links'
-        ],
-        numbers: [
-          'Can exceed £150 per month in major UK transport networks'
-        ]
-      },
-      {
-        title: 'Supermarket Tiering',
-        summary: 'Where you execute your weekly food shop dictates your structural budget.',
-        keyPoints: [
-          'Discount supermarkets like Aldi or Lidl offer massive term-long savings',
-          'Premium central city supermarkets carry heavy convenience markups',
-          'Batch cooking and bulk buying staples reduces weekly spend significantly'
-        ]
-      },
-      {
-        title: 'Utility Bill Spikes',
-        summary: 'Energy costs represent the highest variable risk in student budgeting.',
-        keyPoints: [
-          'If you rent privately, prepare for brutal winter heating bills',
-          'Purpose built student housing fixes this cost upfront',
-          'Check the exact energy efficiency rating if signing a private lease'
-        ],
-        warning: 'Never sign a private lease without a clear agreement on how the utility bills will be divided among housemates.'
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
   },
   {
-    slug: 'student-budget',
+    slug: 'student-budget', category: 'Budgeting', stage: 'Budgeting',
     tags: ['Budgeting', 'Student Finance', 'Cash Flow', 'Cost of Living'],
-    title: 'How To Structure Your Cash Flow As An International Student',
-    category: 'Budgeting',
-    description: 'Build an ironclad monthly plan for rent, food, transport and emergencies.',
-    readTime: '6 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'france', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Separate Fixed And Flexible Costs', summary: 'Rent, bills, insurance and transport passes come first. Eating out and retail shopping must flex strictly around your fixed baseline.' },
-      { title: 'Plan Around Payment Dates', summary: 'Understand exactly when rent is deducted and when family transfers arrive so you avoid overdraft penalties or cash flow bottlenecks.' },
-      { title: 'Keep A Liquid Emergency Fund', summary: 'Keep a modest buffer of at least 500 dollars or pounds completely untouched to handle delayed flights or unexpected medical costs.' }
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'hidden-costs',
+    slug: 'hidden-costs', category: 'Budgeting', stage: 'Budgeting',
     tags: ['Budgeting', 'Hidden Costs', 'Student Finance', 'Cost of Living'],
-    title: 'Hidden Capital Drains New Students Never Expect',
-    category: 'Budgeting',
-    description: 'Spot the extra expenses beyond rent and tuition before you land and burn through your savings.',
-    readTime: '5 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Move In Purchases', summary: 'Bedding, kitchen pots, adapters, cleaning products and laundry tokens can easily drain your first week budget instantly.' },
-      { title: 'Admin And Setup Costs', summary: 'Budget heavily for transit cards, local sim plans, university society fees and mandatory study materials in your first month.' },
-      { title: 'Social Settling In Spend', summary: 'The first month involves heavy social spending to build your network. Set a strict limit so you do not burn your term budget in October.' }
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'student-discounts',
+    slug: 'student-discounts', category: 'Budgeting', stage: 'Budgeting',
     tags: ['Budgeting', 'Student Discounts', 'Cost of Living', 'Student Finance'],
-    title: 'How To Leverage Student Status For Structural Savings',
-    category: 'Budgeting',
-    description: 'Find the high leverage savings on transport, software and everyday essentials that actually move the needle.',
-    readTime: '4 min read',
-    stage: 'Budgeting',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Use Your Institutional Status', summary: 'Register for UNiDAYS or Student Beans immediately. Your university email address is a golden ticket for major tech and retail discounts.' },
-      { title: 'Prioritise Recurring Savings', summary: 'Securing a student discount on your monthly phone plan or local rail card matters infinitely more than a one off retail coupon.' },
-      { title: 'Avoid False Savings', summary: 'A discount only helps if the purchase already fits your budget. Spending money just to save twenty percent is a trap.' }
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'first-week',
+    slug: 'first-week', category: 'Arriving', stage: 'Arrival',
     tags: ['Arrival', 'Settling In', 'Student Life', 'Orientation'],
-    title: 'Your First Week Playbook Registration And Survival',
-    category: 'Arriving',
-    description: 'Know exactly what to do after landing to clear your admin backlog and settle into your new city.',
-    readTime: '7 min read',
-    stage: 'Arrival',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      {
-        title: 'Collect Your Biometric Permits',
-        summary: 'Securing your legal residency status is the absolute priority upon arrival.',
-        keyPoints: [
-          'UK biometric data is digital, but collect your BRP if one was explicitly issued',
-          'In Ireland, book your GNIB/IRP appointment immediately upon arrival',
-          'Keep your passport secure at all times during these processes'
-        ]
-      },
-      {
-        title: 'Secure Your Tax File Number',
-        summary: 'If you intend to work part-time, you must set up your local tax profile to avoid punitive emergency tax rates.',
-        keyPoints: [
-          'Apply for a TFN in Australia immediately',
-          'Apply for a National Insurance number in the UK on day one',
-          'Understand your exact legal working hour limits under your visa conditions'
-        ],
-        warning: 'Breaching your visa work hour limits can result in immediate deportation and cancellation of your studies.'
-      },
-      {
-        title: 'Move In And Document Everything',
-        summary: 'Protect your deposit from day one by executing a rigorous inventory check.',
-        keyPoints: [
-          'Check your room thoroughly against the provided inventory list',
-          'Take clear, date-stamped photos of any existing damage',
-          'Submit the signed inventory list back to management quickly'
-        ]
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: [...guideDestinations], ctaVariant: 'housing',
     preview: true,
   },
   {
-    slug: 'airport-to-home',
+    slug: 'airport-to-home', category: 'Arriving', stage: 'Arrival',
     tags: ['Arrival', 'Travel', 'Transport', 'Settling In'],
-    title: 'Getting From The Arrival Terminal To Your Room Safely',
-    category: 'Arriving',
-    description: 'Make your arrival seamless with a tactical first journey plan straight from the baggage claim.',
-    readTime: '5 min read',
-    stage: 'Arrival',
-    countries: ['uk', 'ireland', 'australia', 'france'],
-    sections: [
-      { title: 'Plan Before Takeoff', summary: 'Download offline maps of your destination city, check the airport express train options and know exactly what to do if your flight is delayed.' },
-      { title: 'Keep Essentials Accessible', summary: 'Have your housing contract, university welcome letter, phone battery pack and a small amount of local currency ready before you land.' },
-      { title: 'Confirm Key Collection Instructions', summary: 'Many student blocks close reception at night. If your flight lands late ensure you have the out of hours emergency contact number.' }
-    ],
-    ctaVariant: 'housing',
+    countries: ['uk', 'ireland', 'australia', 'france'], ctaVariant: 'housing',
   },
   {
-    slug: 'healthcare',
+    slug: 'healthcare', category: 'Arriving', stage: 'Settling in',
     tags: ['Arrival', 'Healthcare', 'Settling In', 'Documentation'],
-    title: 'How To Navigate Local Healthcare And Register With A Doctor',
-    category: 'Arriving',
-    description: 'Understand how to find medical support and lock down your health insurance after arriving.',
-    readTime: '4 min read',
-    stage: 'Settling in',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Pay The Immigration Health Surcharge', summary: 'In the UK you pay this upfront during the visa phase but you must still manually register with a local general practitioner to access the NHS.' },
-      { title: 'Find Your Campus Clinic', summary: 'Most major universities have a dedicated health centre. Register there on day one so you are in the system before winter flu season hits.' },
-      { title: 'Dental And Optical Are Private', summary: 'Understand that public health systems cover medical emergencies and doctor visits but dental work will cost you out of pocket. Get checkups before you fly.' }
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'making-friends',
+    slug: 'making-friends', category: 'Arriving', stage: 'Settling in',
     tags: ['Arrival', 'Student Life', 'Settling In', 'Community'],
-    title: 'Building A High Value Network In A Foreign Country',
-    category: 'Arriving',
-    description: 'Practical tactics to build a support network and break out of isolation during your first term.',
-    readTime: '6 min read',
-    stage: 'Settling in',
-    countries: ['uk', 'ireland', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia'],
-    sections: [
-      { title: 'Start With Structured Moments', summary: 'Orientation events, university societies and accommodation welcome parties are the highest leverage places to make first conversations.' },
-      { title: 'Create Repeat Routines', summary: 'Friendships grow from repeated exposure. Attending the same gym classes, library hours or cooking routines builds bonds faster than random events.' },
-      { title: 'Ask For Support Early', summary: 'If loneliness feels heavy contact your university support services or residential advisors immediately. Everyone struggles in the first month.' }
-    ],
-    ctaVariant: 'planning',
+    countries: [...guideDestinations], ctaVariant: 'planning',
   },
   {
-    slug: 'uae-visa-sponsorship',
+    slug: 'uae-visa-sponsorship', category: 'Before you go', stage: 'Planning',
     tags: ['Student Visa', 'Immigration', 'Documentation', 'Sponsorship'],
-    title: 'UAE Student Visa And Visa Sponsorship: Understanding Your Pathway',
-    category: 'Before you go',
-    description: 'Comprehensive guide to UAE student visas, employer sponsorship models, and visa-to-residency transitions unique to the emirates.',
-    readTime: '8 min read',
-    stage: 'Planning',
-    countries: ['uae'],
-    sections: [
-      {
-        title: 'University Visa Sponsorship Model',
-        summary: 'In the UAE, universities directly sponsor your visa rather than the government issuing student visas independently. Your university becomes your legal sponsor.',
-        keyPoints: [
-          'Your university manages your visa application through their Immigration department',
-          'Sponsorship requires direct admission to their accredited program',
-          'Processing typically takes 2-4 weeks after admission confirmation',
-          'Your visa is tied to your enrollment status at that specific institution'
-        ],
-        numbers: [
-          'Typical processing time: 14-28 days after document submission',
-          'Visa validity: Usually aligned with your academic year (1-4 years)'
-        ]
-      },
-      {
-        title: 'Employer Sponsorship For Post-Study Work',
-        summary: 'The UAE fast-tracks post-study work opportunities through direct employer sponsorship, a significant advantage for international students.',
-        keyPoints: [
-          'Employers can sponsor your visa immediately upon graduation',
-          'No separate work permit system required in most Emirates',
-          'Salary minimums typically apply (check current regulations)',
-          'Sponsorship transfers between employers require approval but are routine'
-        ],
-        warning: 'Never accept informal employment without official visa sponsorship. All work must be registered with your sponsoring employer in immigration records.'
-      },
-      {
-        title: 'Visa Documentation Checklist',
-        summary: 'Prepare all required documents early to avoid delays during the sponsorship application window.',
-        keyPoints: [
-          'Valid passport with minimum 6 months validity',
-          'Official university admission letter from your sponsoring institution',
-          'Medical clearance certificate (must be obtained in UAE after visa approval)',
-          'Police clearance from your home country',
-          'Proof of accommodation (your university may provide initial housing)'
-        ]
-      }
-    ],
-    ctaVariant: 'planning',
+    countries: ['uae'], ctaVariant: 'planning',
   },
   {
-    slug: 'uae-housing-furnished',
+    slug: 'uae-housing-furnished', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Housing Options', 'Furnished Housing'],
-    title: 'Understanding Furnished Housing And Utilities In The UAE',
-    category: 'Accommodation',
-    description: 'Navigate UAE student housing culture where furnished apartments with included utilities are the norm, not the exception.',
-    readTime: '7 min read',
-    stage: 'Booking',
-    countries: ['uae'],
-    sections: [
-      {
-        title: 'Furnished Apartments Are Standard',
-        summary: 'Nearly all student accommodation in the UAE comes fully furnished with appliances, furniture, and often utilities included in the quoted rent.',
-        keyPoints: [
-          'Furnished means: beds, sofa, kitchen appliances, basic furnishings included',
-          'Utilities (water, electricity, A/C) often included in monthly rent or minimal additional charge',
-          'Monthly rent is standard billing period (not weekly like UK/Australia)',
-          'Deposits typically equal 1-2 months rent, refundable at lease end'
-        ]
-      },
-      {
-        title: 'Types Of Student Housing',
-        summary: 'UAE offers diverse accommodation options from university residences to private student compounds and shared villas.',
-        keyPoints: [
-          'University accommodation: Fastest to arrange, often guaranteed for Year 1',
-          'Student compounds: Modern buildings designed specifically for international students',
-          'Shared villas: Multiple students renting different bedrooms in private homes',
-          'Private apartments: Studios or one-bedrooms rented independently'
-        ],
-        numbers: [
-          'Average furnished studio: AED 2,500-3,500 per month in Dubai, AED 1,800-2,500 in Abu Dhabi',
-          'University residence: Often AED 2,000-3,000 with meals potentially included'
-        ]
-      },
-      {
-        title: 'Lease Agreements And Tenant Rights',
-        summary: 'UAE tenancy law protects both landlords and tenants. Understand your obligations before signing.',
-        keyPoints: [
-          'Written lease agreements required by law',
-          'One-year minimum lease terms standard in Dubai and Abu Dhabi',
-          'Rent increases limited by law (typically maximum 5% annually for renewals)',
-          'Deposits held in designated escrow accounts for protection'
-        ],
-        warning: 'Always sign official contracts before making payment. Verbal agreements are not enforceable. Never transfer money to private accounts for deposits.'
-      }
-    ],
-    ctaVariant: 'housing',
+    countries: ['uae'], ctaVariant: 'housing',
   },
   {
-    slug: 'uae-tax-free-income-planning',
+    slug: 'uae-tax-free-income-planning', category: 'Budgeting', stage: 'Planning',
     tags: ['Budgeting', 'Banking', 'Financial Requirements', 'Student Finance'],
-    title: 'Tax-Free Income And Student Work: Financial Planning For UAE Study',
-    category: 'Budgeting',
-    description: 'The UAE has no personal income tax. Understand how this affects your earnings, savings strategy, and post-graduation financial planning.',
-    readTime: '6 min read',
-    stage: 'Planning',
-    countries: ['uae'],
-    sections: [
-      {
-        title: 'No Personal Income Tax Advantage',
-        summary: 'The UAE imposes no income tax on individuals, a unique advantage that significantly increases your take-home pay versus other study destinations.',
-        keyPoints: [
-          'Zero personal income tax on wages and salaries',
-          'Investment income and interest also tax-free',
-          'Your full gross salary becomes your net income',
-          'Part-time work earnings are entirely yours (after employer deductions if any)'
-        ],
-        numbers: [
-          'Income advantage vs UK: 20% higher take-home earnings (no income tax)',
-          'Income advantage vs Australia: 25-45% higher depending on tax bracket'
-        ]
-      },
-      {
-        title: 'Student Work Permissions And Earnings',
-        summary: 'Most international students are permitted part-time work as long as it does not interfere with study commitment.',
-        keyPoints: [
-          'Check with your university about part-time work permissions (typically 15-20 hours weekly allowed)',
-          'Employer must register you officially (informal work voids your visa protection)',
-          'Campus jobs typically offer AED 100-200 per hour',
-          'Off-campus roles in retail, hospitality range AED 80-150 per hour'
-        ]
-      },
-      {
-        title: 'Building Savings And Post-Study Finance',
-        summary: 'Use your tax-free years strategically to build financial position before returning home.',
-        keyPoints: [
-          'Open a UAE bank account with tax residency benefits',
-          'No obligations to report savings to home country tax authorities (check local rules)',
-          'Transfer savings home via official banking channels',
-          'Post-study employer sponsorship can continue accumulating tax-free income'
-        ]
-      }
-    ],
-    ctaVariant: 'planning',
+    countries: ['uae'], ctaVariant: 'planning',
   },
   {
-    slug: 'germany-studentenwerk-housing',
+    slug: 'germany-studentenwerk-housing', category: 'Accommodation', stage: 'Booking',
     tags: ['Accommodation', 'Renting', 'Student Housing', 'Housing Safety'],
-    title: 'Studentenwerk Dorms, WG Flats, And Finding Affordable Student Housing In Germany',
+    countries: ['germany'], ctaVariant: 'housing',
+  },
+  {
+    slug: 'germany-monthly-budgeting', category: 'Budgeting', stage: 'Booking',
+    tags: ['Budgeting', 'Cost of Living', 'Student Finance', 'Cash Flow'],
+    countries: ['germany'], ctaVariant: 'planning',
+  },
+  {
+    slug: 'germany-tenancy-law-deposits', category: 'Accommodation', stage: 'Booking',
+    tags: ['Accommodation', 'Tenancy Agreements', 'Deposits', 'Housing Safety'],
+    countries: ['germany'], ctaVariant: 'planning',
+  },
+] satisfies GuideMetadata[]
+
+const newGuides: (ReviewedGuide & GuideMetadata)[] = [
+  {
+    ...weightedHousingComparison,
     category: 'Accommodation',
-    description: 'Germany\'s unique student housing model: public Studentenwerk dorms with waitlists, shared WG flats, and the cultural norms you need to navigate successfully.',
-    readTime: '9 min read',
+    tags: ['Accommodation', 'Renting', 'Commute', 'Decision matrix', 'Shortlist'],
     stage: 'Booking',
-    countries: ['germany'],
-    sections: [
-      {
-        title: 'Studentenwerk: The Public Student Housing Authority',
-        summary: 'Most German students live in Studentenwerk dorms—subsidized public housing run by student service organizations. These offer the lowest prices but have substantial waitlists.',
-        keyPoints: [
-          'Studentenwerk dorms cost EUR 200-400 monthly (significantly cheaper than private market)',
-          'Apply immediately upon university acceptance (waitlists often 6-12 months)',
-          'Dorms vary widely: some are modern, others modest',
-          'Typically include basic furniture, utilities included in rent',
-          'Shared kitchen and living facilities foster community'
-        ],
-        numbers: [
-          'Studentenwerk dorm average cost: EUR 300 per month',
-          'Average waitlist duration: 6-12 months depending on city and university'
-        ],
-        warning: 'Do NOT assume you will get a Studentenwerk dorm immediately. Apply on day one but plan parallel housing for your first semester.'
-      },
-      {
-        title: 'WG Flats: The German Shared Housing Culture',
-        summary: 'WG (Wohngemeinschaft) shared flats are cultural staple in Germany. Multiple students rent separate bedrooms in one apartment, sharing kitchen and common areas.',
-        keyPoints: [
-          'WG is primary housing option for students in major cities',
-          'Individual bedroom rent: EUR 400-800 per month (varies by city)',
-          'You pay for your room; shared costs split equally (utilities, internet)',
-          'Landlord is often a private person, not an organization',
-          'Roommate selection happens organically through viewings and interviews'
-        ],
-        numbers: [
-          'Munich WG room: EUR 500-900 per month',
-          'Berlin WG room: EUR 400-700 per month',
-          'Leipzig WG room: EUR 300-500 per month'
-        ]
-      },
-      {
-        title: 'Finding Housing: Online Platforms And Timing',
-        summary: 'Germans rely heavily on specific online platforms. Start searching 3-6 months before your move-in date.',
-        keyPoints: [
-          'WG-Gesucht.de: Primary platform for WG ads and shared flats',
-          'ImmoScout24: Broader market but also used for student housing',
-          'Immobilienscout24: Large property portal with private landlords',
-          'University housing office may have local listings and contacts',
-          'Always arrange viewings in person or with verified video calls'
-        ],
-        warning: 'Be cautious of rental scams. Never wire money without viewing the property and meeting the landlord in person. Common scams: properties being double-rented or photos from different apartments.'
-      }
-    ],
+    countries: [...guideDestinations],
     ctaVariant: 'housing',
   },
   {
-    slug: 'germany-monthly-budgeting',
-    tags: ['Budgeting', 'Cost of Living', 'Student Finance', 'Cash Flow'],
-    title: 'Monthly Budget Planning For German University Cities: Rent, Food, And Student Life',
-    category: 'Budgeting',
-    description: 'Germany offers exceptional value for international students. Break down realistic monthly budgets by city and housing type.',
-    readTime: '8 min read',
+    ...afterRentalScam,
+    category: 'Accommodation',
+    tags: ['Accommodation', 'Renting', 'Fraud', 'Bank transfer', 'Payment'],
     stage: 'Booking',
-    countries: ['germany'],
-    sections: [
-      {
-        title: 'Breaking Down Your Monthly Budget',
-        summary: 'German student budgets vary significantly by city and housing choice. Plan realistically around housing (your largest expense).',
-        keyPoints: [
-          'Accommodation: EUR 300-800 depending on housing type and city',
-          'Food: EUR 150-250 (significantly cheaper than UK/Australia)',
-          'Transport: EUR 50-100 (student monthly pass for entire city)',
-          'Utilities (if not included): EUR 60-120',
-          'Social/leisure: EUR 100-150'
-        ],
-        numbers: [
-          'Total budget (Studentenwerk + thrifty eating): EUR 700-1,000 per month',
-          'Total budget (WG + comfortable living): EUR 1,100-1,500 per month',
-          'Monthly income needed (no income tax): EUR 700-1,500 depending on lifestyle'
-        ]
-      },
-      {
-        title: 'Student Discounts And Savings Tactics',
-        summary: 'Germany offers exceptional student discounts across nearly all sectors. Take full advantage.',
-        keyPoints: [
-          'Student ticket (Semesterticket): EUR 150-280 for unlimited monthly transport',
-          'University cafeteria meals: EUR 3-5 (heavily subsidized)',
-          'Cinema, museums, cultural events: Often 50% student discount',
-          'Software and hardware: Microsoft, Adobe student pricing available',
-          'Local businesses: Many offer 5-10% with valid student ID'
-        ]
-      },
-      {
-        title: 'Part-Time Work And Study Rules',
-        summary: 'International students typically allowed 120 hours annually of part-time work. Plan accordingly.',
-        keyPoints: [
-          'Part-time work allowed: Up to 20 hours per week during semester (120 days full-time annually)',
-          'Minimum wage (Mindestlohn): EUR 12-14 per hour',
-          'Campus jobs: EUR 12-15 per hour, flexible around classes',
-          'Tuition is free or extremely low (EUR 0-300 per semester depending on state)',
-          'Student hiwi jobs (research assistant): EUR 12-14 hourly rates'
-        ]
-      }
-    ],
+    countries: [...guideDestinations],
     ctaVariant: 'planning',
   },
   {
-    slug: 'germany-tenancy-law-deposits',
-    tags: ['Accommodation', 'Tenancy Agreements', 'Deposits', 'Housing Safety'],
-    title: 'German Tenancy Agreements, Deposits, And Landlord-Tenant Rights You Must Know',
+    ...irelandStudentHousing,
     category: 'Accommodation',
-    description: 'Germany has strong tenant protection laws. Understand your rights, deposit regulations, and what makes a valid lease agreement.',
-    readTime: '7 min read',
+    tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Deposits', 'RTB', 'Ireland'],
     stage: 'Booking',
-    countries: ['germany'],
-    sections: [
-      {
-        title: 'Valid Lease Agreements And Required Terms',
-        summary: 'German rental contracts must include specific terms. Ensure yours covers all essential protections.',
-        keyPoints: [
-          'Written contract required by law (verbal agreements unenforceable)',
-          'Must specify: rent amount, utilities included/excluded, deposit, move-in date',
-          'Cold rent (Kaltmiete): Rent without utilities',
-          'Warm rent (Warmmiete): Rent including heating (increasingly common)',
-          'Termination period typically 3 months to end of calendar month'
-        ],
-        warning: 'Never sign a contract in a language you don\'t understand. Get a German-speaking friend or professional to review it first. Contracts are legally binding.'
-      },
-      {
-        title: 'Security Deposits And Protection Rules',
-        summary: 'German law strictly regulates how deposits are handled and must be held in a special account.',
-        keyPoints: [
-          'Maximum deposit: 3 months cold rent (cannot exceed this)',
-          'Deposit must be held in separate, interest-bearing escrow account',
-          'Landlord must provide escrow account details in writing',
-          'Deposit refund within 30 days of move-out (minus legitimate deductions)',
-          'Landlord can only deduct for damage beyond normal wear and tear'
-        ],
-        numbers: [
-          'Standard deposit amount: Equivalent to 2-3 months rent',
-          'Damage to normal wear and tear distinction: Key legal protection'
-        ]
-      },
-      {
-        title: 'Your Rights As A Tenant',
-        summary: 'Germany offers exceptional tenant protections. Landlords cannot simply evict without legal process.',
-        keyPoints: [
-          'Landlord cannot raise rent more than 10% over 3 years (Mietpreisbremse)',
-          'Eviction requires serious legal breach and court proceedings',
-          'You have right to repairs: Landlord must fix major issues within days',
-          'Right to quiet enjoyment of property',
-          'Landlord cannot withhold utilities or services for rent disputes'
-        ]
-      }
-    ],
-    ctaVariant: 'planning',
-  }
+    countries: ['ireland'],
+    ctaVariant: 'housing',
+  },
+  {
+    ...australiaStudentHousing,
+    category: 'Accommodation',
+    tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Bond', 'Queensland', 'Australia'],
+    stage: 'Booking',
+    countries: ['australia'],
+    ctaVariant: 'housing',
+  },
+  {
+    ...accessibleStudentHousing,
+    category: 'Accommodation',
+    tags: ['Accommodation', 'Renting', 'Accessibility', 'Commute', 'Access needs'],
+    stage: 'Booking',
+    countries: [...guideDestinations],
+    ctaVariant: 'housing',
+  },
+  {
+    ...ukStudentHousing,
+    category: 'Accommodation',
+    tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Deposits', 'United Kingdom', 'Scotland', 'Wales', 'Northern Ireland'],
+    stage: 'Booking',
+    countries: ['uk'],
+    ctaVariant: 'housing',
+  },
+  {
+    ...netherlandsStudentHousing,
+    category: 'Accommodation',
+    tags: ['Accommodation', 'Renting', 'Tenancy Agreements', 'Deposits', 'BRP', 'Netherlands'],
+    stage: 'Booking',
+    countries: ['netherlands'],
+    ctaVariant: 'housing',
+  },
 ]
+
+const reviewedBySlug = new Map(reviewedGuides.map((guide) => [guide.slug, guide]))
+
+export const baselineGuideSlugs = baselineGuideMetadata.map(({ slug }) => slug)
+
+const allGuides = [
+  ...baselineGuideMetadata.map((metadata) => {
+    const guide = reviewedBySlug.get(metadata.slug)
+    if (!guide) throw new Error(`Missing guide content: ${metadata.slug}`)
+    return { ...metadata, ...guide }
+  }),
+  ...newGuides,
+]
+
+export const movingAbroadArticles: MovingAbroadArticle[] = allGuides.map((guide) => {
+  const wordCount = guideWordCount(guide.body)
+  return { ...guide, wordCount, readTime: `${Math.max(1, Math.ceil(wordCount / 220))} min read` }
+})
+
+export function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
+  return guideDestinations.some((slug) => slug === countrySlug)
+}
 
 const articleBySlug = new Map(movingAbroadArticles.map((article) => [article.slug, article]))
 
@@ -822,25 +269,16 @@ export const movingAbroadCategoryOrder: MovingAbroadArticleCategory[] = [
   'Arriving',
 ]
 
-export const movingAbroadCategorySlugs: Record<MovingAbroadArticleCategory, string[]> = {
-  'Before you go': ['pre-arrival-checklist', 'student-visa', 'uk-bank-account', 'packing-list', 'uae-visa-sponsorship'],
-  Accommodation: ['choose-accommodation', 'accommodation-costs', 'halls-vs-private', 'avoid-scams', 'tenancy-agreement', 'uae-housing-furnished', 'germany-studentenwerk-housing', 'germany-tenancy-law-deposits'],
-  Budgeting: ['real-cost-abroad', 'cost-of-living', 'student-budget', 'hidden-costs', 'student-discounts', 'uae-tax-free-income-planning', 'germany-monthly-budgeting'],
-  Arriving: ['first-week', 'airport-to-home', 'healthcare', 'making-friends'],
-}
-
 export const featuredGuideSlugs = ['pre-arrival-checklist', 'choose-accommodation', 'real-cost-abroad'] as const
 export const homePreviewGuideSlugs = ['pre-arrival-checklist', 'accommodation-costs', 'avoid-scams', 'first-week'] as const
 
 export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]> = {
-  uk: ['student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
-  ireland: ['student-visa', 'student-budget', 'airport-to-home', 'avoid-scams'],
+  uk: ['uk-student-housing', 'student-visa', 'cost-of-living', 'first-week', 'tenancy-agreement'],
+  ireland: ['ireland-student-housing', 'student-visa', 'student-budget', 'airport-to-home', 'avoid-scams'],
   france: ['student-visa', 'student-budget', 'airport-to-home', 'tenancy-agreement'],
   uae: ['uae-visa-sponsorship', 'uae-housing-furnished', 'uae-tax-free-income-planning'],
   germany: ['germany-studentenwerk-housing', 'germany-monthly-budgeting', 'germany-tenancy-law-deposits'],
-  australia: ['student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
-  usa: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
-  canada: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
+  australia: ['australia-student-housing', 'student-visa', 'hidden-costs', 'packing-list', 'halls-vs-private'],
   spain: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   austria: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   belgium: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
@@ -848,14 +286,8 @@ export const countryMovingAbroadSlugs: Record<MovingAbroadCountrySlug, string[]>
   singapore: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   malta: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   italy: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
-  netherlands: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
+  netherlands: ['netherlands-student-housing', 'student-visa', 'student-budget', 'avoid-scams', 'first-week'],
   malaysia: ['student-visa', 'student-budget', 'avoid-scams', 'first-week'],
-}
-
-  const movingAbroadCountrySlugs: MovingAbroadCountrySlug[] = ['uk', 'ireland', 'france', 'uae', 'germany', 'australia', 'usa', 'canada', 'spain', 'austria', 'belgium', 'hungary', 'singapore', 'malta', 'italy', 'netherlands', 'malaysia']
-
-function isMovingAbroadCountrySlug(countrySlug: string): countrySlug is MovingAbroadCountrySlug {
-  return movingAbroadCountrySlugs.some((validCountrySlug) => validCountrySlug === countrySlug)
 }
 
 export function getMovingAbroadArticleBySlug(slug: string): MovingAbroadArticle | undefined {
@@ -895,7 +327,7 @@ export function getMovingAbroadCategoryGroups(): MovingAbroadCategoryGroup[] {
   return movingAbroadCategoryOrder.map((name) => ({
     name,
     ...categoryStyles[name],
-    articles: movingAbroadCategorySlugs[name].map(getMovingAbroadArticleCard),
+    articles: getMovingAbroadArticlesByCategory(name).map(toMovingAbroadArticleCard),
   }))
 }
 
@@ -931,4 +363,8 @@ export function getCountryMovingAbroadLinks(countrySlug: MovingAbroadCountrySlug
     )
     return toMovingAbroadArticleCard(article)
   })
+}
+
+export function getRelatedGuides(article: MovingAbroadArticle): MovingAbroadArticle[] {
+  return article.related.map((slug) => assertMovingAbroadArticle(articleBySlug.get(slug), slug))
 }
