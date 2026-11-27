@@ -1,16 +1,16 @@
 {
   "slug": "scraye",
   "name": "Scraye",
-  "source_type": "partner_export",
+  "source_type": "partner_account",
   "source_format": "hearthaway-manifest-v1",
-  "listing_hosts": ["www.scraye.com", "scraye.com", "agents.scraye.com"],
+  "listing_hosts": ["www.scraye.com", "scraye.com", "agents.scraye.com", "replmsgh.com", "replyhar.com"],
   "image_hosts": [],
   "permission": {
-    "reference": null,
-    "can_import": false,
-    "can_republish": false,
-    "can_copy_images": false
+    "reference": "owner-confirmed-existing-partner-agreement-and-inventory-sharing-request; active Scraye account welcome emails and partner listing shares",
+    "can_import": true,
+    "can_republish": true,
+    "can_copy_images": true
   },
-  "active": false,
-  "notes": "Attach the authorized outbound export and its image hosts. The agent portal's bulk-listing upload is into Scraye, not an outbound inventory feed."
+  "active": true,
+  "notes": "Use the existing Scraye account and partner-shared tracked listing URLs. June 2026 email included a tracked 100+ London property portfolio link and individual Vonder Wembley, Node Limehouse and Hill House Archway links. These offers are historical; fetch current listings and preserve source referral URLs. Image CDN host remains to be discovered from the authenticated account/source."
 }
