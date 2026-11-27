@@ -51,7 +51,7 @@ Ask about renewal or change before the current permission expires. A housing app
       {
         id: 'separate-study-from-work',
         title: 'Check work and later residence separately',
-        prose: `Studying under university or parent sponsorship does not itself establish which employment you may take. For a proposed job or training placement, ask the employer or institution which authority and permission apply, when work may start and which written terms govern the placement. The Ministry of Human Resources and Emiratisation cites a student training and employment permit category for eligible circumstances. Confirm the process for the organisation and role in question.
+        prose: `Studying under university or parent sponsorship does not itself establish which employment you may take. For a proposed job or training placement, ask the employer or institution which authority and permission apply, when work may start and which written terms govern the placement. Article 6 of the federal labour law sets out work-permit requirements. Confirm the applicable process with the employer and authority for the role.
 
 When changing programmes, finishing early or graduating, ask what happens to the current sponsorship and what date you must act by. A job offer is not the same as a residence or work authorisation. Ask the employer who is responsible for the process and obtain the written details. Keep housing costs covered if the work or status transition takes longer than expected.`,
         sources: [s.uaeStudentResidence.id, s.uaeEmployment.id],

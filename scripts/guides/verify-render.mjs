@@ -60,6 +60,18 @@ for (const root of ['/moving-abroad', '/all-resources']) {
   console.log(root + ' discovers all ' + discovered.size + ' guides through ' + tested.size + ' pages')
 }
 
+const home = await html('/')
+const featuredGuides = home.match(/<section aria-labelledby="home-student-guides"[\s\S]+?<\/section>/)?.[0]
+assert(featuredGuides && hrefs(featuredGuides).includes('/moving-abroad'), 'Homepage library link missing')
+assert.equal(hrefs(featuredGuides).filter((link) => guidePath.test(link)).length, 3, 'Homepage guide cards missing')
+for (const destination of ['uk', 'ireland', 'australia', 'netherlands']) {
+  const hub = await html('/' + destination)
+  assert(hrefs(hub).includes('/moving-abroad?country=' + destination), 'Destination library entry missing: ' + destination)
+  assert(hrefs(hub).includes('/moving-abroad/' + destination + '-student-housing'), 'Local guide missing: ' + destination)
+  const filteredPage = await html('/moving-abroad?country=' + destination)
+  assert(hrefs(filteredPage).includes('/moving-abroad/' + destination + '-student-housing'), 'Local guide missing from destination filter: ' + destination)
+}
+
 const actionPaths = new Set()
 for (let index = 0; index < guidePaths.length; index += 5) {
   const batch = await Promise.all(guidePaths.slice(index, index + 5).map(async (path) => [path, await html(path)]))

@@ -29,7 +29,7 @@ Keep the initial deposit and a reserve on separate lines. A deposit you could ge
       {
         id: 'verify-work-permission-and-costs',
         title: 'Verify work permission, hours and the net effect on your budget',
-        prose: `Ask the university and prospective employer which authority and process apply to the role. The UAE Government describes private-sector work permit types, including a category for student training and employment under specified conditions. Student residence, a written offer and permission to begin work are separate. Check which steps are required and who submits documents. Verify permission before starting, and check how hours fit actual teaching, placement and travel.
+        prose: `Ask the university and prospective employer which authority and process apply to the role. Article 6 of the UAE federal labour law sets out work-permit requirements. Ask which process applies to the employment or training on offer. Student residence, a written offer and permission to begin work are separate. Check which steps are required and who submits documents. Verify permission before starting, and check how hours fit actual teaching, placement and travel.
 
 Use a written offer to assess what can reliably go into your budget. Check the pay period, first payment date, guaranteed hours and costs associated with the work. A student who must pay for a late return or eat away from home should subtract those expected costs when estimating what is left. Keep income that depends on a job you have not secured as a separate scenario. Check what happens to the housing budget if work ends or your study dates change.`,
         sources: [s.uaeEmployment.id, s.uaeStudentResidence.id],
