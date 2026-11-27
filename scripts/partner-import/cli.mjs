@@ -3,14 +3,13 @@ import { readFile, mkdir, writeFile, chmod } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { randomUUID } from 'node:crypto'
-import { auditManifest } from './core.mjs'
+import { auditManifest, validPartnerSlug } from './core.mjs'
 import { stageImages } from './media.mjs'
 
 const directory = dirname(fileURLToPath(import.meta.url))
 const MAX_JSON_BYTES = 32 * 1024 * 1024
 const BUCKET = 'ha-import-staging'
 const STALE_LEASE_MS = 30 * 60 * 1000
-const PARTNERS = new Set(['scraye', 'campus-living-villages', 'housing-anywhere'])
 
 export function parseArguments(argv) {
   const command = argv[0] ?? 'help'
@@ -169,7 +168,7 @@ export async function acquireRun(rest, partner, report, resume = false, now = ne
     method: 'PATCH', body: { status: 'staging', updated_at: now.toISOString(), errors: [] }, prefer: 'return=representation',
   })
   if (rows.length !== 1) throw new Error('Another worker acquired this import run')
-  return { run: rows[0], completed: false }
+  return { run: rows[0], completed: false, resumed: true }
 }
 
 /** Heartbeats and metadata writes share one queue; lease loss cancels media work. */
@@ -259,7 +258,7 @@ function imageEntries(property) {
 
 export async function stageManifest(manifest, baseline, localConfig, options, rest, settings, mediaWorker = stageImages, leaseOptions = {}) {
   if (manifest?.synthetic === true) throw new Error('Synthetic fixtures cannot be uploaded or staged')
-  if (!PARTNERS.has(localConfig?.slug) || manifest?.partner !== localConfig.slug) throw new Error('Manifest partner must exactly match the selected supported partner configuration')
+  if (!validPartnerSlug(localConfig?.slug) || manifest?.partner !== localConfig.slug) throw new Error('Manifest partner must exactly match the selected supported partner configuration')
   if (!Array.isArray(baseline?.properties)) throw new Error('Staging requires a catalogue baseline export')
   const rows = await rest(`/rest/v1/ha_import_partners?select=*&slug=eq.${filter(localConfig.slug)}`)
   if (!Array.isArray(rows) || rows.length !== 1 || rows[0].slug !== localConfig.slug) throw new Error('Partner is not registered in import staging')
@@ -275,14 +274,29 @@ export async function stageManifest(manifest, baseline, localConfig, options, re
   const lease = createRunLease(rest, run, leaseOptions)
   const failures = []
   try {
-    await upsert(rest, 'ha_import_items', 'run_id,external_id', report.items.map(item => ({
+    // Only the exact same manifest can reclaim this run ID. Completed item receipts
+    // already include the gallery verified by the prior worker.
+    const receipts = new Map()
+    if (acquired.resumed) {
+      for (let offset = 0; ; offset += 500) {
+        const page = await rest(`/rest/v1/ha_import_items?select=external_id,payload_hash,canonical_property_id,action&run_id=eq.${filter(run.id)}&status=eq.staged&order=external_id&offset=${offset}&limit=500`)
+        for (const row of page) receipts.set(row.external_id, row)
+        if (page.length < 500) break
+      }
+    }
+    const pending = report.items.filter(item => {
+      const prior = receipts.get(item.external_id)
+      return prior?.payload_hash !== item.payload_hash || prior.action !== item.action ||
+        prior.canonical_property_id !== (item.canonical_property_id ?? null)
+    })
+    await upsert(rest, 'ha_import_items', 'run_id,external_id', pending.map(item => ({
       run_id: run.id, external_id: item.external_id, payload: item.normalized,
       payload_hash: item.payload_hash, address_key: item.address_key,
       canonical_property_id: item.canonical_property_id ?? null,
       action: item.action, status: 'ready', errors: item.errors, warnings: item.warnings,
       gallery: [], updated_at: new Date().toISOString(),
     })), lease)
-    for (const item of report.items) {
+    for (const item of pending) {
       if (lease.signal.aborted) throw new Error('Import lease lost; stop this worker')
       const entries = imageEntries(item.normalized)
       const media = await mediaWorker(entries, {
@@ -322,7 +336,7 @@ export async function stageManifest(manifest, baseline, localConfig, options, re
 }
 
 export async function registerPartner(config, rest) {
-  if (!PARTNERS.has(config.slug)) throw new Error('Invalid partner slug')
+  if (!validPartnerSlug(config.slug)) throw new Error('Invalid partner slug')
   // New inactive configs only. Never silently overwrite permissions from an existing partner.
   const existing = await rest(`/rest/v1/ha_import_partners?select=slug&slug=eq.${filter(config.slug)}`)
   if (existing.length) return { partner: config.slug, registered: true, changed: false }

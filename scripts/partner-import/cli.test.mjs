@@ -360,3 +360,30 @@ test('synthetic marker has a strict boolean type and cannot bypass the stage gua
   assert.ok(result.errors.some(error => error.includes('manifest.synthetic')))
   assert.throws(() => requireStagingPermission({ ...input, synthetic: true }, config), /Synthetic/)
 })
+
+test('exact retry preserves completed property receipts and transfers only failed properties', async () => {
+  const store = backend()
+  const input = manifest()
+  const second = structuredClone(input.properties[0])
+  second.external_id += '-second'
+  second.source_url += '-second'
+  second.address = '42 Second Street'
+  input.properties.push(second)
+  input.expected_count = 2
+  let calls = 0
+  const first = await stageManifest(input, emptyBaseline, config, {}, store.rest, settings, async (entries, options) => {
+    calls++
+    if (calls === 2) return { assets: [], failures: [{ index: 0, code: 'IMAGE_HTTP_ERROR' }] }
+    return verifiedMedia(entries, options)
+  }, noTimer())
+  assert.equal(first.status, 'failed')
+  const firstReceipt = structuredClone(store.state.items[0])
+  calls = 0
+  const retried = await stageManifest(input, emptyBaseline, config, {}, store.rest, settings, async (entries, options) => {
+    calls++
+    return verifiedMedia(entries, options)
+  }, noTimer())
+  assert.equal(retried.status, 'staged')
+  assert.equal(calls, 1)
+  assert.deepEqual(store.state.items[0], firstReceipt)
+})

@@ -1,7 +1,14 @@
 import { createHash } from 'node:crypto';
 import { isIP } from 'node:net';
 
-const PARTNERS = new Set(['scraye', 'campus-living-villages', 'housing-anywhere']);
+import { readdirSync } from 'node:fs';
+
+const configuredPartners = new Set(readdirSync(new URL('./configs/', import.meta.url), { withFileTypes: true })
+  .filter(entry => entry.isFile() && entry.name.endsWith('.json')).map(entry => entry.name.slice(0, -5)));
+
+export function validPartnerSlug(value) {
+  return configuredPartners.has(value) && value.length <= 80 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(value);
+}
 const PERIODS = new Set(['week', 'month', 'night', 'term']);
 const CURRENCY_CODES = new Set(Intl.supportedValuesOf('currency'));
 const COUNTRY_CODES = new Set(('AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG UM US UY UZ VA VC VE VG VI VN VU WF WS YE YT ZA ZM ZW').split(' '));
@@ -48,7 +55,7 @@ function withoutObservationTimes(value) {
 }
 
 export function catalogueSourceKey(partner, externalId) {
-  if (!PARTNERS.has(partner) || typeof externalId !== 'string' || !externalId.trim()) {
+  if (!validPartnerSlug(partner) || typeof externalId !== 'string' || !externalId.trim()) {
     throw new TypeError('A supported partner and nonempty external ID are required');
   }
   return `${partner}:${externalId.trim()}`;
@@ -297,8 +304,8 @@ export function auditManifest(manifest, { config = {}, baseline = { properties: 
   if (source.synthetic !== undefined && typeof source.synthetic !== 'boolean') errors.push('manifest.synthetic: expected a boolean offline-fixture marker');
   if (source.synthetic === true) warnings.push('Synthetic fixture: offline audit only; network staging and publication are forbidden');
   if (source.schema_version !== 1) errors.push('manifest.schema_version: expected 1');
-  if (!PARTNERS.has(source.partner)) errors.push('manifest.partner: unsupported partner');
-  if (!PARTNERS.has(config.slug) || source.partner !== config.slug) errors.push('manifest.partner: must exactly match config.slug');
+  if (!validPartnerSlug(source.partner)) errors.push('manifest.partner: unsupported partner');
+  if (!validPartnerSlug(config.slug) || source.partner !== config.slug) errors.push('manifest.partner: must exactly match config.slug');
   if (source.complete !== true) errors.push('manifest.complete: partial snapshots cannot be staged as a complete portfolio');
   if (!Array.isArray(source.properties)) errors.push('manifest.properties: an array is required');
   const properties = Array.isArray(source.properties) ? source.properties : [];

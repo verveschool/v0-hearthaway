@@ -7,8 +7,8 @@ insert into public.ha_import_partners (
   can_import, can_republish, can_copy_images, active
 ) values
   ('scraye', 'Scraye',
-    array['www.scraye.com', 'scraye.com', 'agents.scraye.com'],
-    '{}'::text[], null, false, false, false, false),
+    array['www.scraye.com', 'scraye.com', 'agents.scraye.com', 'replmsgh.com', 'replyhar.com'],
+    array['assets.scraye.com'], null, false, false, false, false),
   ('campus-living-villages', 'Campus Living Villages',
     array['campuslivingvillages.com', 'www.campuslivingvillages.com'],
     array['cdn.campuslivingvillages.com'], null, false, false, false, false),

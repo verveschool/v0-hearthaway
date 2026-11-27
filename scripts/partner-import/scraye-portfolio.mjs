@@ -18,14 +18,29 @@ export function acceptPage({ start, end, total, urls }, expected, seen) {
   ids.forEach((id, index) => seen.set(id, urls[index]))
 }
 
-async function discover(page, expected) {
+export function readPortfolioCards(cards) {
+  return cards.map(card => {
+    const action = card.querySelector('[title="Listing brochure"]')?.getAttribute('hx-on:click') ?? ''
+    const photos = [...card.querySelectorAll('img')]
+    return { url: card.href, label: card.innerText,
+      brochure: action.match(/https:\/\/www\.propertyhive\.io\/[a-f0-9]+\/[a-f0-9]+/)?.[0] ?? null,
+      photoLabels: photos.map(image => image.alt),
+      photoFiles: photos.map(image => (image.getAttribute('src') || '').split('/').at(-1).split('?')[0]),
+    }
+  })
+}
+
+export async function discover(page, expected, cards) {
   const seen = new Map()
   while (seen.size < expected) {
     const start = seen.size + 1
     const range = page.getByText(new RegExp('^' + start + '–[\\d,]+ of [\\d,]+$'))
     const [first, last, total] = (await range.innerText()).replaceAll(',', '').match(/\d+/g).map(Number)
-    const urls = await page.getByRole('link', { name: /Listing photos Listing reference/ }).evaluateAll(nodes => nodes.map(node => node.href))
+    const links = page.getByRole('link', { name: /Listing photos Listing reference/ })
+    const rows = cards ? await links.evaluateAll(readPortfolioCards) : null
+    const urls = rows ? rows.map(row => row.url) : await links.evaluateAll(nodes => nodes.map(node => node.href))
     acceptPage({ start: first, end: last, total, urls }, expected, seen)
+    if (rows) cards.push(...rows)
     if (seen.size < expected) await page.getByRole('button', { name: 'Next page', exact: true }).click()
   }
   return seen
@@ -41,9 +56,11 @@ async function atomicJson(file, value) {
 export async function capturePortfolio(page, expected, directory) {
   if (!Number.isSafeInteger(expected) || expected < 1) throw new Error('Expected a positive portfolio count')
   const startUrl = page.url()
-  const inventory = await discover(page, expected)
+  const cards = []
+  const inventory = await discover(page, expected, cards)
   const checkpoint = join(directory, canonicalHash([...inventory].sort()))
   await mkdir(checkpoint, { recursive: true, mode: 0o700 })
+  await atomicJson(join(checkpoint, 'cards.json'), cards)
   const detail = await page.context().newPage()
   const properties = []
   try {
