@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "partner": "campus-living-villages",
+  "complete": true,
+  "expected_count": 1,
+  "observed_at": "2026-11-27T00:00:00Z",
+  "properties": [
+    {
+      "external_id": "SYNTHETIC-P001",
+      "source_url": "https://campuslivingvillages.com/synthetic-do-not-publish/",
+      "name": "Synthetic validation example",
+      "address": "10 Example Street",
+      "postcode": "E1 1AA",
+      "city": "London",
+      "country": "GB",
+      "description": "Synthetic fixture for offline importer tests. Never publish this record.",
+      "images": [{"url": "https://cdn.campuslivingvillages.com/synthetic-cover.jpg", "alt": "Synthetic room"}],
+      "rooms": [
+        {
+          "external_id": "SYNTHETIC-R001",
+          "name": "Synthetic Studio",
+          "images": [],
+          "offers": [
+            {
+              "external_id": "SYNTHETIC-O001",
+              "price_minor": 25000,
+              "currency": "GBP",
+              "period": "week",
+              "observed_at": "2026-11-27T00:00:00Z",
+              "status": "unknown"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

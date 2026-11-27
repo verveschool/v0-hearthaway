@@ -1,0 +1,16 @@
+{
+  "slug": "campus-living-villages",
+  "name": "Campus Living Villages",
+  "source_type": "partner_export",
+  "source_format": "hearthaway-manifest-v1",
+  "listing_hosts": ["campuslivingvillages.com", "www.campuslivingvillages.com"],
+  "image_hosts": ["cdn.campuslivingvillages.com"],
+  "permission": {
+    "reference": null,
+    "can_import": false,
+    "can_republish": false,
+    "can_copy_images": false
+  },
+  "active": false,
+  "notes": "A public directory is discovery evidence, not the authorized allotment. Preserve village, room, academic year and university eligibility."
+}

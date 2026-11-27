@@ -1,0 +1,16 @@
+{
+  "slug": "housing-anywhere",
+  "name": "HousingAnywhere",
+  "source_type": "partner_feed",
+  "source_format": "hearthaway-manifest-v1",
+  "listing_hosts": ["housinganywhere.com", "www.housinganywhere.com"],
+  "image_hosts": [],
+  "permission": {
+    "reference": null,
+    "can_import": false,
+    "can_republish": false,
+    "can_copy_images": false
+  },
+  "active": false,
+  "notes": "Use the contracted outbound marketplace feed. developers.housinganywhere.com describes the opposite integration direction. Preserve monthly amounts and tracked booking URLs."
+}
