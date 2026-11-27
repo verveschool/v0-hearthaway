@@ -1,16 +1,29 @@
 {
   "slug": "campus-living-villages",
   "name": "Campus Living Villages",
-  "source_type": "partner_export",
+  "source_type": "partner_pages",
   "source_format": "hearthaway-manifest-v1",
   "listing_hosts": ["campuslivingvillages.com", "www.campuslivingvillages.com"],
   "image_hosts": ["cdn.campuslivingvillages.com"],
+  "inventory_pages": [
+    "https://campuslivingvillages.com/united-kingdom/bournemouth/chesil-house/",
+    "https://campuslivingvillages.com/united-kingdom/bournemouth/cranborne-house/",
+    "https://campuslivingvillages.com/united-kingdom/bournemouth/lyme-regis-house/",
+    "https://campuslivingvillages.com/united-kingdom/bournemouth/okeford-house/",
+    "https://campuslivingvillages.com/united-kingdom/london/chesterman-house/",
+    "https://campuslivingvillages.com/united-kingdom/london/prince-consort-village/",
+    "https://campuslivingvillages.com/united-kingdom/london/raymont-hall/",
+    "https://campuslivingvillages.com/united-kingdom/london/surrey-house/",
+    "https://campuslivingvillages.com/united-kingdom/luton/fitzroy-court/",
+    "https://campuslivingvillages.com/united-kingdom/salford/john-lester-and-eddie-colman-courts/",
+    "https://campuslivingvillages.com/united-kingdom/salford/peel-park-quarter/"
+  ],
   "permission": {
-    "reference": null,
-    "can_import": false,
-    "can_republish": false,
-    "can_copy_images": false
+    "reference": "owner-confirmed-existing-partner-agreement; signed marketing services agreement copy 2026-07-29; current source pages and CDN host verified",
+    "can_import": true,
+    "can_republish": true,
+    "can_copy_images": true
   },
-  "active": false,
-  "notes": "A public directory is discovery evidence, not the authorized allotment. Preserve village, room, academic year and university eligibility."
+  "active": true,
+  "notes": "Owner confirmed active working agreement and inventory sharing. CLV agreement schedule contains 11 UK properties. Preserve room type, rent, start/end dates, eligibility and availability. Keep short-stay and academic-stay terms distinct; current page values are live-source snapshots, not permanent pricing."
 }
