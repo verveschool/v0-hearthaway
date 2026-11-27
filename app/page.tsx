@@ -5,7 +5,7 @@ import TotalHomeDiscovery from '@/components/home/total-home-discovery'
 import AccommodationPartnersSection from '@/components/home/accommodation-partners-section'
 import TrustStatsSection from '@/components/home/trust-stats-section'
 import HowItWorks from '@/components/home/how-it-works'
-import CtaSection from '@/components/home/cta-section'
+import MovingAbroadPreview from '@/components/home/moving-abroad-preview'
 import { HomeMotion } from '@/components/home/home-motion'
 
 export default function HomePage() {
@@ -20,6 +20,7 @@ export default function HomePage() {
         <TotalHomeDiscovery />
         <AccommodationPartnersSection />
         <HowItWorks />
+        <MovingAbroadPreview />
       </main>
 
       <Footer />

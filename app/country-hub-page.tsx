@@ -5,6 +5,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import type { CountryPlace } from '@/lib/country-data'
+import { getCountryMovingAbroadLinks, isMovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
 import { cities, universities } from '@/lib/place-data'
 
 type CountryHubPageProps = {
@@ -12,6 +13,7 @@ type CountryHubPageProps = {
 }
 
 export default function CountryHubPage({ country }: CountryHubPageProps) {
+  const movingAbroadLinks = isMovingAbroadCountrySlug(country.slug) ? getCountryMovingAbroadLinks(country.slug) : []
   const countryName = ['uk', 'uae', 'usa', 'netherlands'].includes(country.slug)
     ? `the ${country.name}`
     : country.name
@@ -147,14 +149,17 @@ export default function CountryHubPage({ country }: CountryHubPageProps) {
         {/* Moving abroad links */}
         <section className="bg-[#F7F6F3] py-14 px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="max-w-2xl mb-7">
-              <h2 className="font-heading font-bold text-2xl text-[#1A1A1A] mb-3">Plan the move, not just the room</h2>
-              <p className="text-[#6B6860] text-sm leading-relaxed">
-                Use these guides to prepare for visas, budgeting, arrival, and accommodation decisions before you fly to {country.name}.
-              </p>
+            <div className="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+              <h2 className="font-heading text-2xl font-bold text-foreground">Student guides for {country.name}</h2>
+              <Link
+                href={`/moving-abroad?country=${country.slug}`}
+                className="rounded-sm py-2 font-semibold text-primary underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ring"
+              >
+                Browse guides for {country.name}
+              </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {country.movingAbroadLinks.map((guide) => (
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(min(100%,13rem),1fr))] gap-4">
+              {movingAbroadLinks.map((guide) => (
                 <Link
                   key={guide.href}
                   href={guide.href}

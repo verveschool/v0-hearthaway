@@ -1,359 +1,112 @@
-
 import type { Metadata } from 'next'
-import Navigation from '@/components/navigation'
-import PageBanner from '@/components/page-banner'
-import Footer from '@/components/footer'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
+import Footer from '@/components/footer'
+import Navigation from '@/components/navigation'
+import PageBanner from '@/components/page-banner'
+import { GuideContent, GuideContents, guideSectionHeading } from '@/components/moving-abroad/guide-content'
 import { countries } from '@/lib/country-data'
 import {
   getMovingAbroadArticleBySlug,
+  getMovingAbroadHref,
+  getRelatedGuides,
   movingAbroadArticles,
-  type MovingAbroadArticleCategory,
-  type MovingAbroadCountrySlug,
 } from '@/lib/moving-abroad-data'
 
-type MovingAbroadArticlePageProps = {
-  params: Promise<{
-    slug: string
-  }>
-}
+type Props = { params: Promise<{ slug: string }> }
 
-const guideActions: Record<MovingAbroadArticleCategory, { label: string; href: string }> = {
-  'Before you go': { label: 'Open the pre-arrival checklist', href: '/moving-abroad/pre-arrival-checklist' },
-  Accommodation: { label: 'Browse student homes', href: '/accommodation' },
-  Budgeting: { label: 'Browse budgeting guides', href: '/all-resources?topic=Budgeting' },
-  Arriving: { label: 'Explore settling-in guides', href: '/all-resources?topic=Settling%20In' },
-}
+const dateFormat = new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' })
+const textLink = 'rounded-sm font-semibold text-primary underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring'
 
 export function generateStaticParams() {
-  return movingAbroadArticles.map((article) => ({ slug: article.slug }))
+  return movingAbroadArticles.map(({ slug }) => ({ slug }))
 }
 
-function getRelevantCountries(countrySlugs: MovingAbroadCountrySlug[]) {
-  return countrySlugs
-    .map((slug) => countries.find((country) => country.slug === slug))
-    .filter(
-      (country): country is NonNullable<(typeof countries)[number]> =>
-        country !== undefined
-    )
-}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const article = getMovingAbroadArticleBySlug((await params).slug)
+  if (!article) return {}
 
-function titleCase(text: string) {
-  return text
-    .trim()
-    .split(/\s+/)
-    .map((word) => {
-      if (!word) return word
-      return word.charAt(0).toUpperCase() + word.slice(1)
-    })
-    .join(' ')
-}
-
-function relatedGuidesForArticle(
-  articleSlug: string,
-  countrySlugs: MovingAbroadCountrySlug[],
-  category: string,
-  stage: string
-) {
-  return movingAbroadArticles
-    .filter((article) => article.slug !== articleSlug)
-    .map((article, index) => {
-      const sameCategory = article.category === category
-      const sameStage = article.stage === stage
-      const sharedCountry = article.countries.some((country) =>
-        countrySlugs.includes(country)
-      )
-
-      return {
-        article,
-        index,
-        score:
-          (sameCategory ? 6 : 0) +
-          (sameStage ? 3 : 0) +
-          (sharedCountry ? 1 : 0),
-        isTopicallyRelevant: sameCategory || sameStage,
-      }
-    })
-    .filter((match) => match.isTopicallyRelevant)
-    .sort((a, b) => b.score - a.score || a.index - b.index)
-    .slice(0, 4)
-    .map((match) => match.article)
-}
-
-export async function generateMetadata({
-  params,
-}: MovingAbroadArticlePageProps): Promise<Metadata> {
-  const { slug } = await params
-  const article = getMovingAbroadArticleBySlug(slug)
-
-  if (!article) {
-    return {
-      title: 'Guide not found',
-    }
-  }
+  const title = `${article.title} | HearthAway`
+  const description = article.description
+  const url = getMovingAbroadHref(article.slug)
 
   return {
-    title: `${titleCase(article.title)} | Moving Abroad`,
-    description: article.description,
+    title,
+    description,
+    alternates: { canonical: url },
+    openGraph: {
+      type: 'article',
+      title,
+      description,
+      url,
+      siteName: 'HearthAway',
+      locale: 'en_GB',
+      images: [{ url: '/All_Students.png', alt: 'HearthAway' }],
+    },
+    twitter: { card: 'summary_large_image', title, description, images: ['/All_Students.png'] },
   }
 }
 
-export default async function MovingAbroadArticlePage({
-  params,
-}: MovingAbroadArticlePageProps) {
-  const { slug } = await params
-  const article = getMovingAbroadArticleBySlug(slug)
+export default async function MovingAbroadArticlePage({ params }: Props) {
+  const article = getMovingAbroadArticleBySlug((await params).slug)
+  if (!article) notFound()
 
-  if (!article) {
-    notFound()
-  }
-
-  const relevantCountries = getRelevantCountries(article.countries)
-
-  const relatedGuides = relatedGuidesForArticle(
-    article.slug,
-    article.countries,
-    article.category,
-    article.stage
-  )
-
-  const keyTakeaways = article.sections.slice(0, 3)
-  const bannerAction = article.slug === 'pre-arrival-checklist'
-    ? { label: 'Explore more pre-arrival guides', href: '/all-resources?topic=Pre-Arrival' }
-    : guideActions[article.category]
+  const body = article.body
+  const relevantCountries = countries.filter((country) => article.countries.some((slug) => slug === country.slug))
+  const related = getRelatedGuides(article)
+  const action = article.ctaVariant === 'housing'
+    ? { label: 'Talk to a housing advisor', href: '/get-matched' }
+    : { label: 'Browse student guides', href: '/all-resources' }
 
   return (
     <>
       <Navigation />
-
       <main>
-        <PageBanner title={titleCase(article.title)} action={bannerAction} />
-
-        {/* Article details */}
-        <section className="bg-white px-6 pt-10 pb-9 sm:pt-12 sm:pb-10">
-          <div className="max-w-7xl mx-auto">
-            <div className="max-w-4xl">
-              <span className="inline-flex items-center rounded-full border border-primary/25 bg-white px-3 py-1.5 text-xs font-semibold text-primary mb-5">
-                {article.readTime}
-              </span>
-
-              <p className="max-w-3xl text-muted-foreground text-base sm:text-lg leading-relaxed">
-                {article.description}
-              </p>
-              {article.reviewedOn ? <p className="mt-3 text-sm text-muted-foreground">Last reviewed <time dateTime={article.reviewedOn}>{new Intl.DateTimeFormat('en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(article.reviewedOn))}</time></p> : null}
-            </div>
+        <PageBanner title={article.title} action={action} />
+        <div className="mx-auto max-w-6xl px-4 pb-16 pt-6 sm:px-6 sm:pt-9">
+          <div className="mb-7 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-muted-foreground">
+            <Link href="/all-resources" className={textLink}>Student guides</Link>
+            <span>{article.topic}</span>
+            <span>{article.readTime}</span>
+            <span>Reviewed <time dateTime={article.reviewedOn}>{dateFormat.format(new Date(article.reviewedOn))}</time></span>
           </div>
-        </section>
 
-        {/* Article content */}
-        <section className="bg-white px-6 pt-5 pb-12 lg:pb-16">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-
-            <article className="lg:col-span-2 space-y-5">
-
-              {/* Key takeaways */}
-              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-7 sm:p-8 lg:p-10">
-                <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-ink mb-3">
-                  The main decisions in this guide
-                </h2>
-
-                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed mb-6">
-                  Use these points to understand the key decisions before
-                  exploring the full guide.
-                </p>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  {keyTakeaways.map((section) => (
-                    <div
-                      key={section.title}
-                      className="rounded-xl bg-white border border-[var(--color-mid-gray)] p-5"
-                    >
-                      <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2">
-                        {titleCase(section.title)}
-                      </h3>
-
-                      <p className="text-muted-foreground text-sm leading-relaxed">
-                        {section.summary}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-
-              {/* Main article sections */}
-              {article.sections.map((section) => (
-                <section
-                  key={section.title}
-                  id={`section-${section.title}`}
-                  className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-7 sm:p-8 lg:p-10"
-                >
-                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-ink mb-4">
-                    {titleCase(section.title)}
-                  </h2>
-
-                  <p className="text-muted-foreground text-base leading-relaxed mb-6">
-                    {section.summary}
-                  </p>
-
-                  {section.keyPoints && section.keyPoints.length > 0 && (
-                    <div className="mb-6">
-                      <h3 className="text-sm font-bold text-charcoal-ink mb-3">
-                        Key Points
-                      </h3>
-
-                      <ul className="space-y-2">
-                        {section.keyPoints.map((point, idx) => (
-                          <li
-                            key={idx}
-                            className="flex items-start gap-3 text-muted-foreground text-base leading-relaxed"
-                          >
-                            <span
-                              className="mt-2 w-1.5 h-1.5 rounded-full bg-accent flex-shrink-0"
-                              aria-hidden="true"
-                            />
-                            {point}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {section.numbers && section.numbers.length > 0 && (
-                    <div className="mb-6 rounded-xl bg-[var(--color-warm-gray)] p-5 border border-[var(--color-mid-gray)]">
-                      <h3 className="text-sm font-bold text-primary mb-3">
-                        Critical Numbers
-                      </h3>
-
-                      <ul className="space-y-3">
-                        {section.numbers.map((num, idx) => (
-                          <li
-                            key={idx}
-                            className="font-heading font-bold text-lg text-charcoal-ink"
-                          >
-                            {num}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {section.source ? <Link href={section.source.href} className="mt-4 inline-flex font-semibold text-primary underline underline-offset-4">{section.source.label}</Link> : null}
-
-                  {section.warning && (
-                    <div className="rounded-xl bg-red-50 p-5 border border-red-100 mt-2">
-                      <h3 className="text-sm font-bold text-red-800 mb-2 flex items-center gap-2">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-                          />
-                        </svg>
-                        Important Warning
-                      </h3>
-
-                      <p className="text-red-900 text-sm leading-relaxed">
-                        {section.warning}
-                      </p>
-                    </div>
-                  )}
-                </section>
-              ))}
-
-              {/* Related guides */}
-              {relatedGuides.length > 0 && (
-                <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-7 sm:p-8 lg:p-10">
-                  <h2 className="font-heading font-bold text-xl sm:text-2xl text-charcoal-ink mb-5">
-                    Keep moving in the right order
-                  </h2>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    {relatedGuides.map((guide) => (
-                      <Link
-                        key={guide.slug}
-                        href={`/moving-abroad/${guide.slug}`}
-                        className="group bg-white rounded-xl p-5 border border-[var(--color-mid-gray)] hover:border-primary/30 hover:shadow-lg transition-all duration-200 flex flex-col"
-                      >
-                        <div className="flex items-center justify-end mb-4">
-                          <span className="text-xs text-muted-foreground">
-                            {guide.readTime}
-                          </span>
-                        </div>
-
-                        <h3 className="font-heading font-bold text-charcoal-ink text-base leading-snug mb-2 group-hover:text-primary transition-colors">
-                          {titleCase(guide.title)}
-                        </h3>
-
-                        <p className="text-muted-foreground text-sm leading-relaxed mb-4 flex-1">
-                          {guide.description}
-                        </p>
-
-                        <span className="text-xs font-semibold text-primary group-hover:translate-x-1 transition-transform inline-block">
-                          Read guide &rarr;
-                        </span>
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              )}
-
-            </article>
-
-            {/* Sidebar */}
-            <aside className="space-y-5">
-
-              {/* Country links */}
-              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-[var(--color-warm-gray)] p-6">
-                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-4">
-                  Country links
-                </h2>
-
-                <div className="space-y-2">
-                  {relevantCountries.map((country) => (
-                    <Link
-                      key={country.slug}
-                      href={`/${country.slug}`}
-                      className="block rounded-xl bg-white border border-[var(--color-mid-gray)] px-4 py-3 hover:border-primary/30 transition-colors"
-                    >
-                      <span className="block text-sm font-bold text-charcoal-ink mb-1">
-                        Study in {country.name}
-                      </span>
-
-                      <span className="text-xs text-muted-foreground">
-                        {country.universityCount} universities &middot;{' '}
-                        {country.currency}
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              </section>
-
-              {/* Guide details */}
-              <section className="rounded-2xl border border-[var(--color-mid-gray)] bg-white p-6">
-                <h2 className="font-heading font-bold text-xl text-charcoal-ink mb-3">
-                  Guide details
-                </h2>
-
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  Category: {article.category}. Stage: {article.stage}. This
-                  guide is designed to help you move from broad planning into
-                  a specific decision.
-                </p>
-              </section>
-
+          <div className="grid min-w-0 gap-8 lg:grid-cols-[15rem_minmax(0,48rem)] lg:gap-11">
+            <aside className="hidden self-start lg:sticky lg:block lg:top-24 lg:max-h-[calc(100dvh-7rem)] lg:overflow-y-auto lg:p-1">
+              <GuideContents body={body} id="guide-contents-heading" />
             </aside>
-          </div>
-        </section>
-      </main>
+            <article className="min-w-0 space-y-9 text-base text-foreground sm:space-y-11">
+              <GuideContent body={body} />
 
+              {relevantCountries.length > 0 ? (
+                <section aria-labelledby="guide-destinations">
+                  <h2 id="guide-destinations" className={guideSectionHeading}>Explore destinations</h2>
+                  <ul className="mt-4 flex flex-wrap gap-2">
+                    {relevantCountries.map(({ slug, name }) => (
+                      <li key={slug}><Link href={`/${slug}`} className={`${textLink} block rounded-lg border border-border px-3 py-2.5 text-sm`}>{name}</Link></li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+
+              {related.length > 0 ? (
+                <section aria-labelledby="related-guides" className="rounded-2xl border border-border bg-muted p-5 sm:p-7">
+                  <h2 id="related-guides" className={guideSectionHeading}>Related guides</h2>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                    {related.map((guide) => (
+                      <li key={guide.slug} className="min-w-0 rounded-xl border border-border bg-background p-4">
+                        <Link href={getMovingAbroadHref(guide.slug)} className={`${textLink} block leading-snug`}>{guide.title}</Link>
+                        <p className="mt-2 text-sm leading-6 text-muted-foreground">{guide.description}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              ) : null}
+            </article>
+          </div>
+        </div>
+      </main>
       <Footer />
     </>
   )

@@ -1,29 +1,8 @@
-import type { MovingAbroadArticleCard, MovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
-import {
-  countryMovingAbroadSlugs,
-  getMovingAbroadArticleCard,
-  getMovingAbroadArticlesByCountry
-} from '@/lib/moving-abroad-data'
-
-export type MovingAbroadLink = MovingAbroadArticleCard
-
-function getMovingAbroadLinksForCountry(countrySlug: MovingAbroadCountrySlug): MovingAbroadLink[] {
-  const countryArticleSlugs = new Set(
-    getMovingAbroadArticlesByCountry(countrySlug).map((article) => article.slug)
-  )
-
-  return countryMovingAbroadSlugs[countrySlug].map((articleSlug) => {
-    if (!countryArticleSlugs.has(articleSlug)) {
-      throw new Error(`moving abroad article ${articleSlug} is not valid for ${countrySlug}`)
-    }
-
-    return getMovingAbroadArticleCard(articleSlug)
-  })
-}
+import type { MovingAbroadCountrySlug } from '@/lib/moving-abroad-data'
 
 export type CountryPlace = {
   name: string
-  slug: MovingAbroadCountrySlug
+  slug: MovingAbroadCountrySlug | 'usa' | 'canada'
   currency: string
   heroImage: string
   badge: string
@@ -33,7 +12,6 @@ export type CountryPlace = {
   summary: string
   overview: string
   studentHousingNotes: string
-  movingAbroadLinks: MovingAbroadLink[]
 }
 
 const allCountries: CountryPlace[] = [
@@ -59,8 +37,7 @@ const allCountries: CountryPlace[] = [
     ],
     summary: 'a globally recognised study destination with historic universities, diverse student cities, and a broad range of accommodation options for every stage of your move.',
     overview: 'studying in the UK gives international students access to compact academic terms, strong transport links, and city choices that range from London scale to smaller campus-led communities. Students can compare historic universities, large metropolitan campuses, and specialist cities with different budgets and lifestyles.',
-    studentHousingNotes: 'The 2026 visa regulations require proof of £1,529 per month for London living costs or £1,171 outside the capital. With the shift to digital e-visas and stronger pre-arrival planning, secure a verified room early and check the contract, deposit, bills, and commute before you travel.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('uk')
+    studentHousingNotes: 'The 2026 visa regulations require proof of £1,529 per month for London living costs or £1,171 outside the capital. With the shift to digital e-visas and stronger pre-arrival planning, secure a verified room early and check the contract, deposit, bills, and commute before you travel.'
   },
   {
     name: 'Ireland',
@@ -73,8 +50,7 @@ const allCountries: CountryPlace[] = [
     universitySlugs: ['tcd', 'ucd', 'dcu', 'tud', 'ucc', 'mtu', 'galway', 'atu'],
     summary: 'a welcoming english speaking destination with respected universities, a close knit international student community, and strong city centre student life.',
     overview: 'Ireland is popular with students who want an English-speaking study experience, friendly campus communities, and access to technology, business, culture, and research networks. Housing, campus location, and transport connections are important parts of choosing between Dublin, Cork, and Galway.',
-    studentHousingNotes: 'Ireland faces a structural housing supply squeeze, so international students should secure housing before arrival. Rely on verified operators, check the lease and deposit terms carefully, and choose a room with practical access to campus and public transport.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('ireland')
+    studentHousingNotes: 'Ireland faces a structural housing supply squeeze, so international students should secure housing before arrival. Rely on verified operators, check the lease and deposit terms carefully, and choose a room with practical access to campus and public transport.'
   },
   {
     name: 'France',
@@ -87,8 +63,7 @@ const allCountries: CountryPlace[] = [
     universitySlugs: ['sorbonne', 'sciences-po', 'psl', 'lyon-univ', 'toulouse-univ', 'marseille-univ', 'montpellier-univ', 'bordeaux-univ', 'lille-univ', 'nice-univ', 'strasbourg-univ', 'grenoble-univ'],
     summary: 'a globally respected european study destination with historic universities, specialist grandes ecoles, and strong public transport links across major student cities.',
     overview: 'Studying in France gives international students access to research-led public universities, specialist business and engineering schools, and student life shaped by dense urban transport networks. Paris, Lyon, Toulouse, and other regional cities each offer a different balance of campus scale, culture, and cost.',
-    studentHousingNotes: 'France offers a mix of CROUS residences, private student residences, shared apartments, and homestays. Demand is especially intense in Paris, Lyon, and Toulouse before the main intake, so verify the room, deposit, contract, and transport connection before committing.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('france')
+    studentHousingNotes: 'France offers a mix of CROUS residences, private student residences, shared apartments, and homestays. Demand is especially intense in Paris, Lyon, and Toulouse before the main intake, so verify the room, deposit, contract, and transport connection before committing.'
   },
   {
     name: 'United Arab Emirates',
@@ -104,8 +79,7 @@ const allCountries: CountryPlace[] = [
     ],
     summary: 'a rapidly growing global education hub with international branch campuses, tax-free income, and a fast-track post-study runway for ambitious students.',
     overview: 'The UAE attracts international students seeking quality Western education brands, modern infrastructure, safety, and career opportunities in the Middle East. Dubai and Abu Dhabi host major international campuses, while Sharjah offers another established student base with strong links across the emirates.',
-    studentHousingNotes: 'UAE student housing spans apartment compounds, university residences, and shared villas. Furnished accommodation with utilities is common, but students should confirm what is included, understand the tenancy terms, and check how housing connects to campus and visa arrangements.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('uae')
+    studentHousingNotes: 'UAE student housing spans apartment compounds, university residences, and shared villas. Furnished accommodation with utilities is common, but students should confirm what is included, understand the tenancy terms, and check how housing connects to campus and visa arrangements.'
   },
   {
     name: 'Germany',
@@ -121,8 +95,7 @@ const allCountries: CountryPlace[] = [
     ],
     summary: 'world-class tuition-free public universities, leading engineering programs, and one of europe\'s largest international student populations.',
     overview: 'Germany attracts international students with essentially free higher education at public universities, world-leading research, and strong industry partnerships. Its cities range from large research centres to compact university towns, with different housing markets and transport patterns to consider.',
-    studentHousingNotes: 'Germany\'s housing model differs from the UK and Australia: public Studentenwerk dorms can have lengthy waitlists, shared WGs (flats) are a cultural norm, and rent is usually quoted monthly. Apply early, verify the address and contract, and budget for deposits and registration.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('germany')
+    studentHousingNotes: 'Germany\'s housing model differs from the UK and Australia: public Studentenwerk dorms can have lengthy waitlists, shared WGs (flats) are a cultural norm, and rent is usually quoted monthly. Apply early, verify the address and contract, and budget for deposits and registration.'
   },
   {
     name: 'Australia',
@@ -139,96 +112,84 @@ const allCountries: CountryPlace[] = [
     ],
     summary: 'a high quality study destination known for major research universities, outdoor lifestyles, multicultural cities, and flexible accommodation choices.',
     overview: 'Australia suits international students looking for globally recognised qualifications, warmer climates, and city lifestyles shaped by beaches, food, public transport, and large university campuses. Sydney, Melbourne, Brisbane, Perth, Adelaide, Canberra, and the Gold Coast each offer a distinct student experience.',
-    studentHousingNotes: 'The 2026 national cap of 295,000 international students makes university-linked housing and early planning especially important. Competition for private rentals in major hubs is fierce, so compare verified options, check the full weekly cost, and allow for transport and utilities.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('australia')
+    studentHousingNotes: 'The 2026 national cap of 295,000 international students makes university-linked housing and early planning especially important. Competition for private rentals in major hubs is fierce, so compare verified options, check the full weekly cost, and allow for transport and utilities.'
   },
   {
     name: 'United States', slug: 'usa', currency: 'USD ($)', heroImage: '/images/dest-australia.png', badge: 'Global opportunity', universityCount: '500+',
     citySlugs: ['new-york', 'boston', 'chicago', 'los-angeles', 'austin', 'seattle'], universitySlugs: ['columbia', 'nyu', 'harvard', 'boston-university', 'chicago-university', 'ucla', 'usc', 'ut-austin', 'uw-seattle', 'northeastern'],
     summary: 'a globally influential study destination with leading universities, diverse cities, and extensive career opportunities.',
     overview: 'the united states offers international students an enormous choice of institutions, campus cultures, and regional lifestyles.',
-    studentHousingNotes: 'compare university housing, verified student residences, and private rentals carefully; always budget for deposits, utilities, and health insurance.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('usa')
+    studentHousingNotes: 'compare university housing, verified student residences, and private rentals carefully; always budget for deposits, utilities, and health insurance.'
   },
   {
     name: 'Canada', slug: 'canada', currency: 'CAD (C$)', heroImage: '/images/dest-australia.png', badge: 'Welcoming campuses', universityCount: '100+',
     citySlugs: ['toronto', 'vancouver', 'montreal', 'hamilton', 'edmonton', 'waterloo', 'london-ontario', 'ottawa'], universitySlugs: ['toronto-university', 'york-university', 'ubc', 'mcgill', 'mcmaster', 'ualberta', 'waterloo', 'western-ontario', 'uottawa'],
     summary: 'a welcoming, multicultural destination with respected universities, safe cities, and strong student support.',
     overview: 'canada combines high-quality education with practical city living and clear pathways for international graduates.',
-    studentHousingNotes: 'housing demand is high in Toronto and Vancouver, so secure verified accommodation early and plan for winter utilities and transport.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('canada')
+    studentHousingNotes: 'housing demand is high in Toronto and Vancouver, so secure verified accommodation early and plan for winter utilities and transport.'
   },
   {
     name: 'Spain', slug: 'spain', currency: 'EUR (€)', heroImage: '/images/hero-building.png', badge: 'Mediterranean lifestyle', universityCount: '80+',
     citySlugs: ['madrid', 'barcelona', 'valencia'], universitySlugs: ['complutense-madrid', 'uam', 'uab', 'ub-barcelona', 'upc', 'valencia-university', 'upv'],
     summary: 'a vibrant European destination combining respected universities, warm city life, and comparatively accessible living costs.',
     overview: 'spain gives international students a choice of major research universities, specialist schools, and lively regional campuses.',
-    studentHousingNotes: 'shared flats are common and affordable, but demand rises sharply before September; confirm registration, deposits, and utility terms in writing.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('spain')
+    studentHousingNotes: 'shared flats are common and affordable, but demand rises sharply before September; confirm registration, deposits, and utility terms in writing.'
   },
   {
     name: 'Austria', slug: 'austria', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'Central Europe', universityCount: '40+',
     citySlugs: ['vienna', 'graz', 'innsbruck'], universitySlugs: ['vienna-university', 'tu-wien', 'wu-vienna', 'meduni-vienna', 'graz-university', 'tu-graz', 'innsbruck-university'],
     summary: 'a polished Central European study destination with strong public universities, excellent transport, and rich cultural life.',
     overview: 'austria suits students who value compact, well-connected cities and a high quality of life close to the wider European network.',
-    studentHousingNotes: 'student residences and shared apartments are popular; apply early, check registration requirements, and include heating in winter budgets.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('austria')
+    studentHousingNotes: 'student residences and shared apartments are popular; apply early, check registration requirements, and include heating in winter budgets.'
   },
   {
     name: 'Belgium', slug: 'belgium', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'EU capital hub', universityCount: '20+',
     citySlugs: ['brussels', 'antwerp', 'leuven'], universitySlugs: ['ulb-brussels', 'vub-brussels', 'ku-leuven', 'antwerp-university'],
     summary: 'a multilingual heart of the European Union with historic universities, compact well-connected cities, and easy access to the rest of Europe.',
     overview: 'belgium suits students who want a central european base close to major EU institutions, strong research universities, and cities that are easy to navigate on foot, by bike, or by rail.',
-    studentHousingNotes: 'student housing ranges from university kots (single rooms) to shared flats; registration with the local commune is required soon after arrival, and demand peaks before the September intake.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('belgium')
+    studentHousingNotes: 'student housing ranges from university kots (single rooms) to shared flats; registration with the local commune is required soon after arrival, and demand peaks before the September intake.'
   },
   {
     name: 'Hungary', slug: 'hungary', currency: 'HUF (Ft)', heroImage: '/images/dest-germany.png', badge: 'Affordable Central Europe', universityCount: '20+',
     citySlugs: ['budapest', 'debrecen', 'szeged'], universitySlugs: ['elte-budapest', 'semmelweis-budapest', 'bme-budapest', 'debrecen-university', 'szeged-university'],
     summary: 'an affordable Central European destination with strong medical and technical universities and a low cost of living relative to Western Europe.',
     overview: 'hungary suits students who want a highly ranked, English-taught education (particularly in medicine and engineering) at a lower cost, with easy rail access across the rest of the continent.',
-    studentHousingNotes: 'university dormitories are the cheapest option and fill up quickly; private shared flats are widely available in Budapest, Debrecen, and Szeged at a fraction of Western European rents.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('hungary')
+    studentHousingNotes: 'university dormitories are the cheapest option and fill up quickly; private shared flats are widely available in Budapest, Debrecen, and Szeged at a fraction of Western European rents.'
   },
   {
     name: 'Singapore', slug: 'singapore', currency: 'SGD (S$)', heroImage: '/images/dest-uae.png', badge: 'Asia-Pacific hub', universityCount: '20+',
     citySlugs: ['singapore-city'], universitySlugs: ['nus', 'ntu', 'smu', 'sutd'],
     summary: 'a highly connected Asia-Pacific education hub known for leading universities, safety, and strong graduate employment networks.',
     overview: 'singapore offers globally recognised institutions in a compact, efficient city with excellent public transport.',
-    studentHousingNotes: 'university halls, private residences, and shared flats all fill quickly; check lease length, air conditioning, and included utilities.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('singapore')
+    studentHousingNotes: 'university halls, private residences, and shared flats all fill quickly; check lease length, air conditioning, and included utilities.'
   },
   {
   name: 'Malaysia', slug: 'malaysia', currency: 'MYR (RM)', heroImage: '/images/dest-uae.png', badge: 'Southeast Asia hub', universityCount: '20+',
   citySlugs: ['kuala-lumpur', 'penang'], universitySlugs: ['university-malaysia', 'taylors-university', 'usm'],
   summary: 'a multicultural Southeast Asian study destination with respected universities, modern cities, and accessible student living costs.',
   overview: 'malaysia offers international students English-taught programmes, a welcoming multicultural environment, and well-connected city campuses.',
-  studentHousingNotes: 'student residences and shared apartments are common; compare furnished rooms, transport access, deposits, and included utilities before booking.',
-  movingAbroadLinks: getMovingAbroadLinksForCountry('malaysia')
+  studentHousingNotes: 'student residences and shared apartments are common; compare furnished rooms, transport access, deposits, and included utilities before booking.'
   },
   {
   name: 'Malta', slug: 'malta', currency: 'EUR (€)', heroImage: '/images/dest-ireland.png', badge: 'English-speaking Europe', universityCount: '10+',
     citySlugs: ['valletta', 'msida', 'paola', 'cospicua'], universitySlugs: ['malta-university', 'mcast', 'aum'],
     summary: 'an English-speaking Mediterranean destination with accessible city living, international campuses, and a close-knit student community.',
     overview: 'malta is a practical choice for students seeking an English-speaking European base with a warm climate and island lifestyle.',
-    studentHousingNotes: 'shared apartments are the usual route; inspect ventilation, transport connections, and summer pricing before paying a deposit.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('malta')
+    studentHousingNotes: 'shared apartments are the usual route; inspect ventilation, transport connections, and summer pricing before paying a deposit.'
   },
   {
     name: 'Italy', slug: 'italy', currency: 'EUR (€)', heroImage: '/images/hero-building.png', badge: 'Historic universities', universityCount: '90+',
     citySlugs: ['milan', 'rome', 'bologna', 'padua', 'turin', 'naples'], universitySlugs: ['milan-university', 'politecnico-milano', 'sapienza', 'bologna-university', 'padua', 'turin-university', 'naples-federico'],
     summary: 'a historic study destination with respected public universities, specialist schools, and distinctive student cities.',
     overview: 'italy combines centuries of academic tradition with strong design, engineering, business, arts, and research programmes.',
-    studentHousingNotes: 'university residences and shared apartments vary by city; plan for codice fiscale, deposits, and local registration before arrival.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('italy')
+    studentHousingNotes: 'university residences and shared apartments vary by city; plan for codice fiscale, deposits, and local registration before arrival.'
   },
   {
     name: 'Netherlands', slug: 'netherlands', currency: 'EUR (€)', heroImage: '/images/dest-germany.png', badge: 'English-taught excellence', universityCount: '50+',
     citySlugs: ['amsterdam', 'rotterdam', 'delft', 'utrecht', 'groningen'], universitySlugs: ['uva', 'erasmus-rotterdam', 'tu-delft', 'utrecht-university', 'rug'],
     summary: 'a highly international study destination with English-taught programmes, bike-friendly cities, and practical student support.',
     overview: 'the Netherlands is a strong fit for students seeking globally connected universities, applied learning, and compact cities that are easy to navigate without a car.',
-    studentHousingNotes: 'the housing shortage is real, especially in Amsterdam, Delft, and Utrecht. Start early, verify every listing, and budget for deposits and cycling costs.',
-    movingAbroadLinks: getMovingAbroadLinksForCountry('netherlands')
+    studentHousingNotes: 'the housing shortage is real, especially in Amsterdam, Delft, and Utrecht. Start early, verify every listing, and budget for deposits and cycling costs.'
   }
 ]
 

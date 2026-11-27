@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { countries } from '@/lib/country-data'
 import { cities, universities } from '@/lib/place-data'
-import { movingAbroadArticles } from '@/lib/moving-abroad-data'
+import { getMovingAbroadHref, movingAbroadArticles } from '@/lib/moving-abroad-data'
 import { accommodationListings, accommodationRoomListings } from '@/app/accommodation/listing-data'
 
 const baseUrl = 'https://hearthaway.com'
@@ -26,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const countryRoutes = countries.map((country) => `/${country.slug}`)
-  const resourceRoutes = movingAbroadArticles.map((article) => `/moving-abroad/${article.slug}`)
+  const resourceDates = new Map(movingAbroadArticles.map((article) => [getMovingAbroadHref(article.slug), article.reviewedOn]))
   const cityRoutes = cities.map((city) => `/cities/${city.slug}`)
   const universityRoutes = universities.map((university) => `/universities/${university.slug}`)
   const accommodationRoutes = [
@@ -37,7 +37,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
     ...countryRoutes,
-    ...resourceRoutes,
+    ...resourceDates.keys(),
     ...cityRoutes,
     ...universityRoutes,
     ...accommodationRoutes,
@@ -45,7 +45,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return allRoutes.map((route) => ({
     url: `${baseUrl}${route}`,
-    lastModified: new Date(),
+    lastModified: resourceDates.has(route) ? resourceDates.get(route) : new Date(),
     changeFrequency: route === '' ? 'weekly' : 'monthly',
     priority: route === '' ? 1 : route.startsWith('/accommodation') ? 0.9 : route.startsWith('/universities') || route.startsWith('/cities') ? 0.8 : 0.7,
   }))
