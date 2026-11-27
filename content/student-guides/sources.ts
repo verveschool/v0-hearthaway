@@ -73,5 +73,6 @@ export const sources = {
   manchesterStudentHousing: { id: 'manchester-student-housing-story', label: 'University of Manchester Humanities Blog · Yvett on living in university accommodation', href: 'https://sites.manchester.ac.uk/humanities-blog/2026/03/23/my-experience-in-university-accommodation/' },
   irelandRegistrationDocuments: { id: 'irish-first-registration-documents', label: 'Irish Immigration Service Delivery · Documents required for first registration', href: 'https://www.irishimmigration.ie/registering-your-immigration-permission/how-to-register-your-immigration-permission-for-the-first-time/required-documents/' },
   ukVisaTravelBooking: { id: 'uk-visa-travel-booking', label: 'UK Visas and Immigration · When to apply and book travel', href: 'https://www.gov.uk/apply-to-come-to-the-uk/check-if-you-need-a-visa-and-prepare-your-application' },
+  hearthawayStudentArrivalReview: { id: 'hearthaway-student-arrival-review', label: 'Trustpilot · A student’s public review of arranging housing before moving to the UK', href: 'https://au.trustpilot.com/review/hearthaway.com' },
   hearthawayRole: { id: 'hearthaway-advice', label: 'HearthAway · How accommodation discovery and advisor support work', href: '/how-it-works' },
 } satisfies Record<string, GuideSource>

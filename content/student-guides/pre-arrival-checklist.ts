@@ -62,11 +62,14 @@ Suppose an illustrative housing payment of £960 is due on the 1st, travel and s
       {
         id: 'plan-your-first-night',
         title: 'Plan the first night from check-in backwards',
-        prose: `Ask the accommodation team which desk or entrance you should use, local check-in hours, the latest key handover and what happens if you arrive after that time. Save the exact street address, booking reference, access instructions and a working out-of-hours number. If staff need to approve late check-in in advance, find out how to get their confirmation and how long they will hold a booking after a missed arrival.
+        prose: `An international student who reviewed HearthAway on Trustpilot said having housing arranged before moving to the UK made the move easier. To make your own booking useful on arrival, save the details you’ll need at the door.
+
+Ask the accommodation team which desk or entrance you should use, local check-in hours, the latest key handover and what happens if you arrive after that time. Save the exact street address, booking reference, access instructions and a working out-of-hours number. If staff need to approve late check-in in advance, find out how to get their confirmation and how long they will hold a booking after a missed arrival.
 
 Work backwards from key collection. Check the flight's arrival terminal, baggage and border time, transport hours and the final walk. If you have large bags, a wheelchair or a child with you, test whether your route is feasible with your equipment and the assistance you have booked. Download directions and the address. Agree an arrival check-in with a supporter who knows what to do if you miss it, allowing for time zone changes and a phone running out of charge.
 
 Ask what the room actually has on the first night. Bring or arrange only the essentials if the provider cannot supply them. Check the agreed inventory, access to a toilet and shower, and how to report a missing key or a room you cannot safely use. Take condition photos, label them by room and email or upload them within the provider's stated reporting window.`,
+        sources: [s.hearthawayStudentArrivalReview.id],
       },
       {
         id: 'prepare-the-first-week',
@@ -93,6 +96,6 @@ Your first normal journey to campus is worth trying when you have spare time. Fi
       { question: 'What if the visa comes through but the move-in dates do not line up?', answer: 'Check the dates on your permission and talk to your university and provider. Price a verified short stay or a change to the travel booking, and arrange a confirmed key handover for the final room.' },
       { question: 'What should a parent or supporter keep?', answer: 'Agree on a copy of the itinerary, the provider’s contact details and agreed payment dates. Share sensitive documents only where you have a purpose and a secure method.' },
     ],
-    sources: [s.ukVisaFunds, s.ukTravelEvisa, s.ukVisaTravelBooking, s.hearthawayRole, s.studyAustraliaHousing],
+    sources: [s.ukVisaFunds, s.ukTravelEvisa, s.ukVisaTravelBooking, s.hearthawayRole, s.studyAustraliaHousing, s.hearthawayStudentArrivalReview],
   },
 }
