@@ -148,7 +148,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                         card
                         src={room.image ?? property.coverImage ?? ''}
                         sizes="(min-width: 1280px) 392px, (min-width: 640px) calc((100vw - 84px) / 2), calc(100vw - 40px)"
-                        alt={room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`}
+                        alt={property.mediaDisclaimer ?? (room.image ? room.imageLabels?.[room.image] ?? `${room.name} room at ${property.name}` : `${room.name} room at ${property.name}`)}
                         className="aspect-[4/3] w-full bg-[#F1F0EC] object-cover transition-transform duration-300 group-hover:scale-[1.02]"
                         loading="lazy"
                         decoding="async"
@@ -160,6 +160,7 @@ export default async function RoomsPage({ searchParams }: RoomsPageProps) {
                       />
                     )}
 
+                    {property.mediaDisclaimer ? <p className="px-5 pt-3 text-sm">{property.mediaDisclaimer}</p> : null}
                     <div className="p-5">
                       <div className="flex items-center justify-between gap-3">
                         <span className="rounded-full bg-[#F7F6F3] px-3 py-1 text-[11px] font-bold tracking-wide text-[#00319D]">
