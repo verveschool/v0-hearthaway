@@ -243,15 +243,16 @@ export default async function PropertyDetailPage({
               <CatalogueImage
                 src={primaryImage}
                 alt={
-                  primaryImageRoom
+                  property.mediaDisclaimer ?? (primaryImageRoom
                     ? `${primaryImageRoom} room at ${property.name}`
-                    : `${property.name} property photo`
+                    : `${property.name} property photo`)
                 }
                 className="aspect-[16/8] max-h-[560px] w-full object-cover"
                 loading="eager"
                 fetchPriority="high"
                 decoding="async"
               />
+              {property.mediaDisclaimer ? <figcaption className="p-3 text-sm">{property.mediaDisclaimer}</figcaption> : null}
             </figure>
           ) : (
             <div className="flex aspect-[16/8] max-h-[560px] flex-col items-center justify-center gap-3 rounded-2xl bg-[#E8E6E1] text-[#6B6860]">
@@ -289,10 +290,10 @@ export default async function PropertyDetailPage({
                         roomType.images.includes(image)
                       )
 
-                      const photoLabel = room
+                      const photoLabel = property.mediaDisclaimer ?? (room
                         ? room.imageLabels?.[image] ?? `${room.name} room${room.priceLabel ? ` · ${room.priceLabel}` : ''}`
                         : property.galleryLabels?.[image] ??
-                          `${property.name} property photo`
+                          `${property.name} property photo`)
 
                       return (
                         <figure
