@@ -1,3 +1,4 @@
+import { sourceRentDisplay } from './presentation'
 import { createClient } from '@supabase/supabase-js'
 import type { AccommodationListingRecord, AccommodationRoomListing, AccommodationRoomRecord } from './listing-data'
 
@@ -20,6 +21,14 @@ const propertyColumns = 'id,slug,payload'
 const roomColumns = 'id,slug,property_id,payload'
 export const cataloguePageSize = 12
 
+function displayRoom(row: Pick<Room, 'id' | 'slug' | 'payload'>): AccommodationRoomRecord {
+  const room = { ...row.payload, catalogueId: row.id, catalogueSlug: row.slug }
+  const rent = room.sourceRent
+  if (!rent) return room
+  const display = sourceRentDisplay(rent)
+  return { ...room, priceFrom: display?.amount ?? null, pricePerNight: rent.period === 'night' ? display?.amount ?? null : null, priceLabel: display?.label ?? null }
+}
+
 async function propertyRecords(rows: Property[]) {
   if (!rows.length) return []
   const { data, error } = await catalogueClient().from(rooms)
@@ -27,7 +36,7 @@ async function propertyRecords(rows: Property[]) {
   if (error) throw error
   return rows.map(row => ({ ...row.payload, catalogueId: row.id,
     roomTypes: (data ?? []).filter(room => room.property_id === row.id)
-      .map(room => ({ ...room.payload, catalogueId: room.id, catalogueSlug: room.slug })) }))
+      .map(displayRoom) }))
 }
 
 export async function catalogueProperty(slug: string) {
@@ -45,7 +54,7 @@ export async function catalogueRoom(slug: string): Promise<AccommodationRoomList
   return {
     slug,
     property: { ...parent.data.payload, catalogueId: parent.data.id, roomTypes: [] },
-    room: { ...data.payload, catalogueId: data.id, catalogueSlug: slug },
+    room: displayRoom(data),
   }
 }
 
@@ -104,7 +113,7 @@ export async function catalogueRoomPage({ city, query, page }: Filters) {
     })[]>()
   if (error) throw error
   const listings: AccommodationRoomListing[] = (data ?? []).map(row => ({
-    slug: row.slug, room: { ...row.payload, catalogueId: row.id, catalogueSlug: row.slug },
+    slug: row.slug, room: displayRoom(row),
     property: { ...row.ha_catalogue_properties.payload, catalogueId: row.ha_catalogue_properties.id, roomTypes: [] },
   }))
   return { current, total: count ?? 0, listings }
