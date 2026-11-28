@@ -12,7 +12,18 @@ import { formatCurrencyAmount, formatSourcePrice } from './presentation'
 
 export { formatSourceAvailability, formatSourcePrice } from './presentation'
 
+export type PartnerRent = { amountMinor: number; currency: string; period: 'week' | 'month' | 'night' | 'term' }
+
 export type AccommodationRoomRecord = {
+  sourceRent?: PartnerRent
+  partnerOffers?: Array<{
+    id: string
+    rent: PartnerRent | null
+    conditions: string[]
+    startDate: string | null
+    endDate: string | null
+    availability: string | null
+  }>
   catalogueId?: string
   catalogueSlug?: string
   sourceId?: string
@@ -67,8 +78,9 @@ export type AccommodationPricingOption = {
 }
 
 export type AccommodationListingRecord = {
+  mediaDisclaimer?: string | null
   catalogueId?: string
-  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'study-inn'
+  provider: 'vita-student' | 'stacey' | 'iglu' | 'neonwood' | 'study-inn' | 'scraye' | 'campus-living-villages' | 'housing-anywhere'
   sourceBrand?: 'neonwood' | 'tannhaus'
   sourceId?: string
   key: string
@@ -649,6 +661,9 @@ export const allAccommodationListings = accommodationListings
 export function getAccommodationProviderName(provider: AccommodationListingRecord['provider']): string {
   return {
     'vita-student': 'Vita Student',
+    scraye: 'Scraye',
+    'campus-living-villages': 'Campus Living Villages',
+    'housing-anywhere': 'HousingAnywhere',
     stacey: 'STACEY',
     iglu: 'Iglu',
     neonwood: 'Neon Wood',
